@@ -1,0 +1,439 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8">
+<title>RELICTUM — Каталог коллекции · 2026</title>
+<meta name="description" content="Печатный каталог реальной коллекции RELICTUM: метеориты, ископаемая жизнь и монументы музейного уровня. Роскошь вне времени.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+:root{--ivory:#F4F0E8;--bone:#FBF8F1;--obsidian:#111;--bronze-deep:#9A6D34;--gold:#C9A96A;--stone:#7A7267;
+--hairline:rgba(154,109,52,.28);--hairline-dark:rgba(201,169,106,.3);
+--font-display:'Cormorant Garamond','Didot',serif;--font-ui:'Inter','Helvetica Neue',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;}
+@page{size:297mm 210mm;margin:0;}
+body{font-family:var(--font-ui);font-weight:300;color:var(--obsidian);background:#333;}
+img{display:block;}
+.page{width:297mm;height:210mm;position:relative;overflow:hidden;background:var(--ivory);page-break-after:always;counter-increment:pg;margin:0 auto;}
+@media screen{.page{margin:10px auto;box-shadow:0 2px 24px rgba(0,0,0,.35);}}
+.label{font-family:var(--font-ui);font-size:8.2pt;font-weight:500;letter-spacing:.22em;text-transform:uppercase;}
+.folio{position:absolute;bottom:8mm;left:16mm;right:16mm;display:flex;justify-content:space-between;align-items:baseline;font-size:7pt;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);border-top:.3mm solid var(--hairline);padding-top:2.6mm;}
+.folio .pgnum::after{content:counter(pg,decimal-leading-zero);}
+.dark .folio{color:rgba(244,240,232,.55);border-top-color:var(--hairline-dark);}
+.dark{background:#0B0A09;color:var(--ivory);}
+.cover .bg,.divider .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.cover .veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(0,0,0,0) 30%,rgba(0,0,0,.72) 100%),linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.5));}
+.cover .inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:18mm 20mm 14mm;text-align:center;}
+.wordmark{font-family:var(--font-display);font-weight:400;letter-spacing:.5em;text-indent:.5em;}
+.cover .wordmark{font-size:34pt;color:var(--ivory);}
+.cover .slogan{font-size:8.5pt;letter-spacing:.48em;text-indent:.48em;color:var(--gold);text-transform:uppercase;margin-top:4mm;font-weight:400;}
+.cover .bottom{font-size:8pt;letter-spacing:.34em;text-transform:uppercase;color:rgba(244,240,232,.78);}
+.cover .edition{font-family:var(--font-display);font-style:italic;font-size:13pt;letter-spacing:.12em;color:rgba(244,240,232,.9);}
+.manifest{display:grid;grid-template-columns:1.25fr 1fr;height:210mm;}
+.manifest .left{padding:20mm 14mm 24mm 16mm;display:flex;flex-direction:column;justify-content:center;}
+.manifest h1{font-size:33pt;line-height:1.1;margin:6mm 0 7mm;}
+.manifest h1 em{font-style:italic;color:var(--bronze-deep);}
+.manifest .lede{font-family:var(--font-display);font-size:13.5pt;line-height:1.5;color:#3d3830;max-width:62ch;}
+.manifest .lede+.lede{margin-top:4mm;}
+.manifest .right{border-left:.3mm solid var(--hairline);padding:20mm 16mm 24mm 12mm;display:flex;flex-direction:column;justify-content:center;gap:6mm;background:var(--bone);}
+.pillar{border-top:.3mm solid var(--hairline);padding-top:3.4mm;}
+.pillar:first-child{border-top:none;padding-top:0;}
+.pillar .num{font-family:var(--font-display);font-size:10.5pt;color:var(--bronze-deep);letter-spacing:.12em;}
+.pillar b{font-family:var(--font-display);font-weight:500;font-size:14pt;display:block;margin:1mm 0 1.4mm;}
+.pillar p{font-size:8.6pt;line-height:1.55;color:var(--stone);}
+.toc{padding:12mm 16mm 18mm;}
+.toc h1{font-size:24pt;margin:1.5mm 0 4mm;}
+.toc-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:7mm;}
+.toc-col .wt{font-family:var(--font-display);font-size:13pt;color:var(--bronze-deep);border-bottom:.3mm solid var(--hairline);padding-bottom:1.6mm;margin-bottom:2.4mm;}
+.toc-row{display:flex;justify-content:space-between;gap:5mm;padding:1.0mm 0;border-bottom:.25mm solid rgba(154,109,52,.14);}
+.toc-row .nm{font-size:8pt;line-height:1.16;}
+.toc-row .nm i{font-family:var(--font-display);font-style:italic;font-size:7.4pt;color:var(--bronze-deep);display:block;}
+.toc-row .rid{font-size:6.8pt;letter-spacing:.14em;color:var(--stone);white-space:nowrap;padding-top:.6mm;}
+.divider .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.25) 55%,rgba(0,0,0,.05) 100%);}
+.divider .inner{position:absolute;left:16mm;bottom:22mm;max-width:130mm;}
+.divider .kicker{color:var(--gold);}
+.divider h1{font-size:40pt;color:var(--ivory);margin:3mm 0;}
+.divider p{font-family:var(--font-display);font-style:italic;font-size:13pt;line-height:1.45;color:rgba(244,240,232,.85);}
+.exhibit{display:grid;grid-template-columns:128mm 1fr;grid-template-rows:100%;height:100%;}
+.exhibit .photo{position:relative;background:#EFEAE0;height:210mm;}
+.exhibit .photo img{width:100%;height:100%;object-fit:cover;}
+.exhibit .photo.prov::after{content:'Рабочее фото · студийная съёмка готовится';position:absolute;left:0;bottom:0;right:0;font-family:var(--font-ui);font-size:6.6pt;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);background:rgba(11,10,9,.62);padding:2.4mm 6mm;}
+.exhibit .body{padding:16mm 16mm 24mm 12mm;display:flex;flex-direction:column;}
+.exhibit .kicker{color:var(--bronze-deep);}
+.exhibit h1{font-size:24pt;line-height:1.08;margin:3mm 0 1mm;}
+.exhibit .latin{font-family:var(--font-display);font-style:italic;font-size:13pt;color:var(--bronze-deep);margin-bottom:4mm;}
+.exhibit .hook{font-family:var(--font-display);font-style:italic;font-size:12.5pt;line-height:1.42;color:#3d3830;border-top:.3mm solid var(--hairline);padding-top:3.6mm;margin-bottom:3.6mm;}
+.exhibit .desc{font-size:9pt;line-height:1.62;color:#34302a;margin-bottom:5mm;max-width:66ch;}
+.passport{border-top:.3mm solid var(--hairline);}
+.passport .row{display:grid;grid-template-columns:36mm 1fr;border-bottom:.3mm solid var(--hairline);padding:2.3mm 0;}
+.passport .k{font-size:7pt;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);padding-top:.6mm;}
+.passport .v{font-size:9.2pt;}
+.exhibit .price{font-family:var(--font-display);font-size:17pt;margin-top:auto;padding-top:6mm;}
+.exhibit .price small{font-family:var(--font-ui);font-size:7.4pt;letter-spacing:.06em;color:var(--stone);display:block;margin-top:1mm;}
+.alive{display:grid;grid-template-columns:1fr 116mm;grid-template-rows:100%;height:100%;background:#0B0A09;color:var(--ivory);}
+.alive .visual{position:relative;height:210mm;}
+.alive .visual img{width:100%;height:100%;object-fit:cover;}
+.alive .visual .shade{position:absolute;inset:0;background:linear-gradient(270deg,rgba(11,10,9,.85) 0%,rgba(11,10,9,0) 30%);}
+.alive .body{padding:16mm 16mm 24mm 12mm;display:flex;flex-direction:column;}
+.alive .kicker{color:var(--gold);}
+.alive h2{font-size:21pt;line-height:1.12;margin:3mm 0 4mm;}
+.alive .story p{font-size:8.8pt;line-height:1.66;color:rgba(244,240,232,.86);margin-bottom:3.4mm;}
+.alive .era{border-top:.3mm solid var(--hairline-dark);padding-top:3mm;}
+.alive .era b{font-family:var(--font-display);font-weight:500;font-size:12.5pt;display:block;}
+.alive .era span{font-size:7.6pt;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,240,232,.6);}
+.alive .home{display:grid;grid-template-columns:34mm 1fr;gap:4mm;align-items:center;margin-top:auto;padding-top:5mm;}
+.alive .home img{width:100%;height:24mm;object-fit:cover;}
+.alive .home .cap{font-size:7pt;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4mm;}
+.alive .home p{font-size:7.8pt;line-height:1.5;color:rgba(244,240,232,.75);}
+.services{padding:18mm 16mm 24mm;}
+.services h1{font-size:26pt;margin:2mm 0 3mm;}
+.services .dek{font-family:var(--font-display);font-style:italic;font-size:13pt;color:var(--stone);margin-bottom:9mm;}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7mm;}
+.svc{border-top:.3mm solid var(--hairline);padding-top:4mm;}
+.svc .num{font-family:var(--font-display);font-size:11pt;color:var(--bronze-deep);}
+.svc b{font-family:var(--font-display);font-weight:500;font-size:14.5pt;display:block;margin:1.6mm 0 2mm;}
+.svc p{font-size:8.6pt;line-height:1.6;color:var(--stone);}
+.svc-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:7mm;margin-top:8mm;}
+.svc-photos img{width:100%;height:46mm;object-fit:cover;}
+.final{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5mm;height:210mm;}
+.final .wordmark{font-size:26pt;}
+.final .slogan{font-size:8pt;letter-spacing:.44em;text-indent:.44em;color:var(--gold);text-transform:uppercase;}
+.final .contact{font-family:var(--font-display);font-size:13pt;line-height:1.7;color:rgba(244,240,232,.9);}
+.final .qr{width:26mm;height:26mm;margin-top:3mm;}
+.final .qr svg{width:100%;height:100%;}
+.final .note{font-size:7.4pt;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,240,232,.5);margin-top:2mm;}
+</style></head><body><section class="page dark cover"><img class="bg" src="../shared/img/still_black_tusks.jpg" alt="">
+  <div class="veil"></div><div class="inner">
+    <div><div class="wordmark">RELICTUM</div><div class="slogan">Роскошь вне времени</div></div>
+    <div><div class="edition">Каталог коллекции · MMXXVI</div><div class="bottom" style="margin-top:4mm">Земля · Жизнь · Космос</div></div>
+  </div></section><section class="page manifest">
+    <div class="left"><div class="label" style="color:var(--bronze-deep)">Дом редких природных артефактов</div>
+      <h1>Вещи, которые старше<br>любой <em>роскоши</em></h1>
+      <p class="lede">RELICTUM собирает редчайшие свидетельства глубокого времени — скелеты динозавров, бивни мамонтов, метеориты и минералы музейного уровня — и превращает их в законченные объекты для дома, кабинета и коллекции.</p>
+      <p class="lede">Каждый экспонат в этом каталоге существует в единственном экземпляре, находится в наличии и передаётся с полным паспортом происхождения. Это подлинники, возраст которых измеряется миллионами лет.</p></div>
+    <div class="right">
+      <div class="pillar"><div class="num">I</div><b>Подлинность</b><p>Каждый объект сопровождается Provenance Card: экспертиза, легальное происхождение, научное описание.</p></div>
+      <div class="pillar"><div class="num">II</div><b>Готовый объект, а не находка</b><p>Оправа, постамент и свет проектируются под экспонат: бронза, мрамор, музейное стекло.</p></div>
+      <div class="pillar"><div class="num">III</div><b>Белые перчатки</b><p>Упаковка музейного стандарта, страхование, доставка и монтаж нашей командой.</p></div>
+    </div></section><section class="page toc"><div class="label" style="color:var(--bronze-deep)">В наличии · единственные экземпляры</div>
+    <h1>Коллекция</h1><div class="toc-cols"><div class="toc-col"><div class="wt">Космос</div><div class="toc-row"><div class="nm">Палласит Сеймчан<i>Seymchan — Pallasite, PMG</i></div><div class="rid">R–0101</div></div><div class="toc-row"><div class="nm">Метеорит Дронино<i>Dronino — Iron</i></div><div class="rid">R–0103</div></div><div class="toc-row"><div class="nm">Метеорит Чинге<i>Chinga — Iron, ungrouped</i></div><div class="rid">R–0104</div></div><div class="toc-row"><div class="nm">Лунный метеорит в раме<i>Lunar meteorite</i></div><div class="rid">R–0105</div></div></div><div class="toc-col"><div class="wt">Жизнь</div><div class="toc-row"><div class="nm">Аммолитовый аммонит<i>Placenticeras costatum</i></div><div class="rid">R–0210</div></div><div class="toc-row"><div class="nm">Аммонит Arietites<i>Arietites sp.</i></div><div class="rid">R–0211</div></div><div class="toc-row"><div class="nm">Скелет кейхозавра<i>Keichousaurus hui</i></div><div class="rid">R–0212</div></div><div class="toc-row"><div class="nm">Череп пситтакозавра<i>Psittacosaurus sp.</i></div><div class="rid">R–0213</div></div><div class="toc-row"><div class="nm">Скелет пернатого динозавра<i>Anchiornis huxleyi</i></div><div class="rid">R–0214</div></div><div class="toc-row"><div class="nm">Яйца динозавра<i>Elongatoolithidae</i></div><div class="rid">R–0215</div></div><div class="toc-row"><div class="nm">Гигантский трилобит<i>Dikelokephalina brenchleyi</i></div><div class="rid">R–0217</div></div><div class="toc-row"><div class="nm">Панцирная рыба Bothriolepis<i>Bothriolepis sp.</i></div><div class="rid">R–0209</div></div><div class="toc-row"><div class="nm">Череп саблезубой кошки<i>Machairodus / Amphimachairodus sp.</i></div><div class="rid">R–0208</div></div><div class="toc-row"><div class="nm">Зуб мегалодона<i>Otodus megalodon</i></div><div class="rid">R–0201</div></div><div class="toc-row"><div class="nm">Скелет ихтиозавра<i>Mixosaurus</i></div><div class="rid">R–0218</div></div><div class="toc-row"><div class="nm">Челюсть спинозавра<i>Spinosaurus aegyptiacus</i></div><div class="rid">R–0220</div></div><div class="toc-row"><div class="nm">Череп Dunkleosteus<i>Dunkleosteus terrelli</i></div><div class="rid">R–0219</div></div><div class="toc-row"><div class="nm">Коготь крупного теропода<i>Carcharodontosaurus sp.</i></div><div class="rid">R–0221</div></div><div class="toc-row"><div class="nm">Скелет птерозавра на плите<i>Pterosauria indet.</i></div><div class="rid">R–0222</div></div><div class="toc-row"><div class="nm">Модель черепа Afrovenator<i>Afrovenator abakensis</i></div><div class="rid">R–0223</div></div></div><div class="toc-col"><div class="wt">Монументы</div><div class="toc-row"><div class="nm">Пара бивней мамонта<i>Mammuthus primigenius</i></div><div class="rid">R–0607</div></div><div class="toc-row"><div class="nm">Череп мамонта с бивнями<i>Mammuthus primigenius</i></div><div class="rid">R–0605</div></div><div class="toc-row"><div class="nm">Скелет пещерного медведя<i>Ursus spelaeus</i></div><div class="rid">R–0604</div></div><div class="toc-row"><div class="nm">Череп шерстистого носорога<i>Coelodonta antiquitatis</i></div><div class="rid">R–0608</div></div><div class="toc-row"><div class="nm">Скелет шерстистого носорога<i>Coelodonta antiquitatis</i></div><div class="rid">R–0611</div></div><div class="toc-row"><div class="nm">Скелет динозавра Jeholosaurus<i>Jeholosaurus shangyuanensis</i></div><div class="rid">R–0609</div></div><div class="toc-row"><div class="nm">Скелет пситтакозавра<i>Psittacosaurus sp.</i></div><div class="rid">R–0610</div></div><div class="toc-row"><div class="nm">Скелет крокодилиформа<i>Crocodyliformes indet.</i></div><div class="rid">R–0612</div></div></div></div>
+    <div class="folio"><span>Relictum · Каталог коллекции</span><span>Все объекты — цена по запросу</span><span class="pgnum"></span></div></section><section class="page dark divider"><img class="bg" src="../shared/img/still_black_meteor.jpg" alt=""><div class="veil"></div>
+    <div class="inner"><div class="label kicker">Раздел I</div><h1>Космос</h1><p>Вещество старше самой Земли: железо из ядра разрушенной протопланеты и настоящий фрагмент Луны. Самые древние объекты, которые можно держать в руках.</p></div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/prod_pallasite_seymchan.jpg" alt="Палласит Сеймчан"></div>
+    <div class="body">
+      <div class="label kicker">R–0101 · Метеориты · Магаданская область, Россия</div>
+      <h1>Палласит Сеймчан</h1><div class="latin">Seymchan — Pallasite, PMG</div>
+      <p class="hook">Вещество границы ядра и мантии разрушенной протопланеты — старше самой Земли.</p><p class="desc">Железо-каменный метеорит с кристаллами оливина, застывшими в никелистом железе. В коллекции — индивидуальные фрагменты, полированные срезы и оформленные образцы; редкая для Сеймчана оливиновая морфология.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 4,56 млрд лет</div></div><div class="row"><div class="k">Класс</div><div class="v">Палласит · Main Group, PMG</div></div><div class="row"><div class="k">Находка</div><div class="v">Магаданская область, Россия · 1967</div></div><div class="row"><div class="k">Состав</div><div class="v">Железо-никель + оливин</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Космос</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_dronino.jpg" alt="Метеорит Дронино"></div>
+    <div class="body">
+      <div class="label kicker">R–0103 · Метеориты · Рязанская область, Россия</div>
+      <h1>Метеорит Дронино</h1><div class="latin">Dronino — Iron</div>
+      <p class="hook">Железо, которое родилось в ядре чужой планеты и старше самой Земли.</p><p class="desc">Железный метеорит-атаксит с глубоким рельефом регмаглиптов — следами оплавления в атмосфере. Индивидуалы Дронино ценятся за «дикую», ничем не тронутую форму.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 4,5 млрд лет</div></div><div class="row"><div class="k">Находка</div><div class="v">Рязанская область · 2000</div></div><div class="row"><div class="k">Тип</div><div class="v">Атаксит · железный</div></div><div class="row"><div class="k">Форма</div><div class="v">Индивидуал с регмаглиптами</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Космос</span><span class="pgnum"></span></div>
+    </div></section><section class="page alive">
+    <div class="visual"><img src="../shared/img/still_alive_meteor.jpg" alt=""><div class="shade"></div></div>
+    <div class="body"><div class="label kicker">Встретить живым</div><h2>Оно летело к нам миллионы лет</h2>
+      <div class="story"><p>Дронино — железный метеорит-атаксит, найденный в Рязанской области в 2000 году. Его изъеденная рельефом форма — результат миллионов лет в космосе и огненного входа в атмосферу.</p><p>Это вещество из ядра разрушенной протопланеты — почти чистое никелистое железо, которому около четырёх с половиной миллиардов лет. Оно старше всего живого.</p></div>
+      <div class="era"><span>Эпоха</span><b>Рождение Солнечной системы</b></div>
+      <div class="home"><img src="../shared/img/int_ph_dronino.jpg" alt=""><div><div class="cap">В вашем доме</div><p>Один драматичный источник света — и метеорит на мраморной консоли превращается в чёрную скульптуру внеземного происхождения.</p></div></div>
+      <div class="folio" style="left:12mm"><span>Dronino — Iron</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_chinge.jpg" alt="Метеорит Чинге"></div>
+    <div class="body">
+      <div class="label kicker">R–0104 · Метеориты · Тыва, Россия</div>
+      <h1>Метеорит Чинге</h1><div class="latin">Chinga — Iron, ungrouped</div>
+      <p class="hook">Космическое железо, поднятое из сибирской земли и поставленное на пьедестал.</p><p class="desc">Богатый никелем железный метеорит (атаксит) с тёмной корой. Экспонируется на музейной стойке — самостоятельная космическая скульптура.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 4,5 млрд лет</div></div><div class="row"><div class="k">Находка</div><div class="v">Река Чинге, Тыва · 1913</div></div><div class="row"><div class="k">Состав</div><div class="v">≈ 16 % никеля · атаксит</div></div><div class="row"><div class="k">Формат</div><div class="v">Индивидуал на подставке</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Космос</span><span class="pgnum"></span></div>
+    </div></section><section class="page alive">
+    <div class="visual"><img src="../shared/img/still_black_meteor.jpg" alt=""><div class="shade"></div></div>
+    <div class="body"><div class="label kicker">Встретить живым</div><h2>Дождь железа над Сибирью</h2>
+      <div class="story"><p>Чинге — высоконикелевый железный метеорит, рассыпавшийся дождём над территорией нынешней Тывы. Индивидуальные экземпляры ценятся за плотную тёмную кору и скульптурную форму.</p><p>Каждый обломок — самостоятельное произведение возрастом около четырёх с половиной миллиардов лет; на стойке он держит пространство как абстрактная бронза, созданная космосом.</p></div>
+      <div class="era"><span>Эпоха</span><b>Рождение Солнечной системы</b></div>
+      <div class="home"><img src="../shared/img/int_ph_chinge.jpg" alt=""><div><div class="cap">В вашем доме</div><p>На тёмном постаменте метеорит становится центром сдержанного интерьера — тёплый свет играет на металле.</p></div></div>
+      <div class="folio" style="left:12mm"><span>Chinga — Iron, ungrouped</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_moon_frame.jpg" alt="Лунный метеорит в раме"></div>
+    <div class="body">
+      <div class="label kicker">R–0105 · Метеориты · Луна</div>
+      <h1>Лунный метеорит в раме</h1><div class="latin">Lunar meteorite</div>
+      <p class="hook">Настоящий кусочек Луны, который можно повесить на стену своего дома.</p><p class="desc">Фрагмент лунной коры, выбитый в космос ударом астероида и упавший на Землю, — в паспарту рядом с фотографией полной Луны. Готовый подарок космического уровня.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 4,5 млрд лет · возраст Луны</div></div><div class="row"><div class="k">Происхождение</div><div class="v">Лунная поверхность</div></div><div class="row"><div class="k">Формат</div><div class="v">Кабинетная рама</div></div><div class="row"><div class="k">Документы</div><div class="v">Provenance Card · сертификат</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Космос</span><span class="pgnum"></span></div>
+    </div></section><section class="page alive">
+    <div class="visual"><img src="../shared/img/still_alive_moon.jpg" alt=""><div class="shade"></div></div>
+    <div class="body"><div class="label kicker">Встретить живым</div><h2>Он прилетел прямо с Луны</h2>
+      <div class="story"><p>Обломок, выбитый с поверхности Луны ударом астероида, улетевший в космос и упавший на Землю как лунный метеорит. Один из самых редких и поэтичных объектов, которые можно держать в руках.</p><p>В паспарту он соседствует с фотографией полной Луны — так, что взгляд сразу связывает крошечный камень с огромным телом на ночном небе.</p></div>
+      <div class="era"><span>Эпоха</span><b>Спутник Земли · 4,5 млрд лет</b></div>
+      <div class="home"><img src="../shared/img/int_ph_moon.jpg" alt=""><div><div class="cap">В вашем доме</div><p>Рама с Луной над консолью работает как окно в космос — тихий, но безошибочно узнаваемый акцент интерьера.</p></div></div>
+      <div class="folio" style="left:12mm"><span>Lunar meteorite</span><span class="pgnum"></span></div>
+    </div></section><section class="page dark divider"><img class="bg" src="../shared/img/still_black_sabertooth.jpg" alt=""><div class="veil"></div>
+    <div class="inner"><div class="label kicker">Раздел II</div><h1>Жизнь</h1><p>От первой костяной брони девона до хищников ледниковой эпохи. Черепа, скелеты и плиты музейного уровня — портрет четырёх миллиардов лет эволюции.</p></div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_ammolite.jpg" alt="Аммолитовый аммонит"></div>
+    <div class="body">
+      <div class="label kicker">R–0210 · Аммониты · Альберта, Канада</div>
+      <h1>Аммолитовый аммонит</h1><div class="latin">Placenticeras costatum</div>
+      <p class="hook">Раковина, ставшая драгоценным камнем с радужной иризацией.</p><p class="desc">Ископаемый аммонит, окаменевший и замещённый аммолитом — редким органическим драгоценным камнем. Насыщенная радужная игра цветов и хорошо сохранённая спиральная форма.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">72–66 млн лет · мел</div></div><div class="row"><div class="k">Находка</div><div class="v">Альберта, Канада</div></div><div class="row"><div class="k">Размер</div><div class="v">Ø 16–18 см</div></div><div class="row"><div class="k">Материал</div><div class="v">Аммолит · реставрация, подставка</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_arietites.jpg" alt="Аммонит Arietites"></div>
+    <div class="body">
+      <div class="label kicker">R–0211 · Аммониты · Франция</div>
+      <h1>Аммонит Arietites</h1><div class="latin">Arietites sp.</div>
+      <p class="hook">Широко раскрытая спираль ранней юры с мощными радиальными рёбрами.</p><p class="desc">Крупный раннеюрский аммонит с необычным зеленовато-серым оттенком и контрастной полировкой, подчёркивающей рельеф раковины. Редкий по размеру и выразительности объект.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 199–193 млн лет · ранняя юра</div></div><div class="row"><div class="k">Находка</div><div class="v">Франция</div></div><div class="row"><div class="k">Размер</div><div class="v">Ø 42 см · высота 44 см</div></div><div class="row"><div class="k">Класс</div><div class="v">Cephalopoda · Ammonitida</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_keichousaurus.jpg" alt="Скелет кейхозавра"></div>
+    <div class="body">
+      <div class="label kicker">R–0212 · Морские рептилии · Гуйчжоу, Китай</div>
+      <h1>Скелет кейхозавра</h1><div class="latin">Keichousaurus hui</div>
+      <p class="hook">Морской ящер триаса, застывший в тёмной плите.</p><p class="desc">Небольшой морской завроптеригий с удлинённой шеей и конечностями, приспособленными к плаванию. Полный сочленённый скелет; крупный экземпляр для своего рода.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 245 млн лет · триас</div></div><div class="row"><div class="k">Находка</div><div class="v">Гуйчжоу, Китай</div></div><div class="row"><div class="k">Размер</div><div class="v">Плита 35,4 × 22,5 см · животное 30,5 см</div></div><div class="row"><div class="k">Тип</div><div class="v">Сочленённый скелет на плите</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_psittacosaurus_skull.jpg" alt="Череп пситтакозавра"></div>
+    <div class="body">
+      <div class="label kicker">R–0213 · Динозавры · Ляонин, Китай</div>
+      <h1>Череп пситтакозавра</h1><div class="latin">Psittacosaurus sp.</div>
+      <p class="hook">Портрет «попугайного ящера» раннего мела.</p><p class="desc">Череп небольшого растительноядного динозавра из группы ранних цератопсов: высокий короткий череп, клювовидная передняя часть челюстей и выступающие скуловые элементы.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 125 млн лет · ранний мел</div></div><div class="row"><div class="k">Находка</div><div class="v">Ляонин, Китай</div></div><div class="row"><div class="k">Размер</div><div class="v">Череп ≈ 15 см</div></div><div class="row"><div class="k">Формат</div><div class="v">На музейной стойке</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_anchiornis.jpg" alt="Скелет пернатого динозавра"></div>
+    <div class="body">
+      <div class="label kicker">R–0214 · Динозавры · Ляонин, Китай</div>
+      <h1>Скелет пернатого динозавра</h1><div class="latin">Anchiornis huxleyi</div>
+      <p class="hook">«Почти птица» — паравийный теропод поздней юры.</p><p class="desc">Небольшой пернатый теропод, чьи находки сыграли важную роль в изучении происхождения птиц. Сочленённый скелет на плите с читаемыми зубами и когтями.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 160 млн лет · поздняя юра</div></div><div class="row"><div class="k">Находка</div><div class="v">Ляонин, Китай · формация Тяоцзишань</div></div><div class="row"><div class="k">Размер</div><div class="v">Плита 53,5 × 43 см</div></div><div class="row"><div class="k">Группа</div><div class="v">Paraves · пернатый теропод</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_dino_eggs.jpg" alt="Яйца динозавра"></div>
+    <div class="body">
+      <div class="label kicker">R–0215 · Динозавры · Ляонин, Китай</div>
+      <h1>Яйца динозавра</h1><div class="latin">Elongatoolithidae</div>
+      <p class="hook">Два удлинённых яйца — форма, связанная с овирапторозаврами.</p><p class="desc">Два удлинённых ископаемых яйца на общей породе. Выразительная скорлупа с рельефной текстурой, экспонируется на кованой подставке.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 89 млн лет · поздний мел</div></div><div class="row"><div class="k">Находка</div><div class="v">Ляонин, Китай</div></div><div class="row"><div class="k">Размер</div><div class="v">Два яйца на общей породе</div></div><div class="row"><div class="k">Группа</div><div class="v">Elongatoolithidae</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_trilobite_giant.jpg" alt="Гигантский трилобит"></div>
+    <div class="body">
+      <div class="label kicker">R–0217 · Трилобиты · Загора, Марокко</div>
+      <h1>Гигантский трилобит</h1><div class="latin">Dikelokephalina brenchleyi</div>
+      <p class="hook">Морской гигант ордовика — тело более тридцати сантиметров.</p><p class="desc">Крупный морской трилобит древней Гондваны из знаменитых сланцев Fezouata. Глубокий рельеф сегментов на контрастной тёмной плите; поражает размером.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 480–472 млн лет · ордовик</div></div><div class="row"><div class="k">Находка</div><div class="v">Загора, Марокко · Fezouata</div></div><div class="row"><div class="k">Размер</div><div class="v">Плита 52,5 × 36,5 см · тело 33,5 × 27 см</div></div><div class="row"><div class="k">Класс</div><div class="v">Trilobita</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_bothriolepis.jpg" alt="Панцирная рыба Bothriolepis"></div>
+    <div class="body">
+      <div class="label kicker">R–0209 · Ископаемые рыбы · девон</div>
+      <h1>Панцирная рыба Bothriolepis</h1><div class="latin">Bothriolepis sp.</div>
+      <p class="hook">Существо, которое первым на Земле оделось в костяную броню.</p><p class="desc">Панцирная рыба девона — одно из первых существ, «одевших» тело в костяные пластины. Плита с рельефным телом; готовится авторская подставка.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 350 млн лет · девон</div></div><div class="row"><div class="k">Группа</div><div class="v">Placodermi · Antiarchi</div></div><div class="row"><div class="k">Размер</div><div class="v">≈ 50 см</div></div><div class="row"><div class="k">Документы</div><div class="v">Provenance Card · сертификат</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page alive">
+    <div class="visual"><img src="../shared/img/still_alive_bothrio.jpg" alt=""><div class="shade"></div></div>
+    <div class="body"><div class="label kicker">Встретить живым</div><h2>Век, когда жизнь научилась брони</h2>
+      <div class="story"><p>Bothriolepis — панцирная рыба девона, времени, которое палеонтологи называют «веком рыб». Голова и передняя часть тела были закованы в костяные пластины.</p><p>Триста пятьдесят миллионов лет отделяют этот отпечаток от нас — в пять раз древнее, чем самые первые динозавры.</p></div>
+      <div class="era"><span>Эпоха</span><b>Девонские моря · «век рыб»</b></div>
+      <div class="home"><img src="../shared/img/int_ph_bothrio.jpg" alt=""><div><div class="cap">В вашем доме</div><p>На парящей полке плита с рыбой становится тихим артефактом глубокого времени — тёплый свет проявляет каждую чешуйку.</p></div></div>
+      <div class="folio" style="left:12mm"><span>Bothriolepis sp.</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_sabertooth.jpg" alt="Череп саблезубой кошки"></div>
+    <div class="body">
+      <div class="label kicker">R–0208 · Саблезубые кошки · Ганьсу, Китай</div>
+      <h1>Череп саблезубой кошки</h1><div class="latin">Machairodus / Amphimachairodus sp.</div>
+      <p class="hook">Клинки, которыми природа вооружила хищника за миллионы лет до человека.</p><p class="desc">Череп одного из крупнейших саблезубых хищников неогена с клинковидными клыками — редкий предок «саблезубого тигра». Крупная взрослая особь.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">5,3–11,6 млн лет · неоген</div></div><div class="row"><div class="k">Находка</div><div class="v">Провинция Ганьсу, Китай</div></div><div class="row"><div class="k">Размер</div><div class="v">≈ 40 × 22 см</div></div><div class="row"><div class="k">Семейство</div><div class="v">Felidae</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page alive">
+    <div class="visual"><img src="../shared/img/still_alive_sabertooth.jpg" alt=""><div class="shade"></div></div>
+    <div class="body"><div class="label kicker">Встретить живым</div><h2>Он выходил на охоту в закат</h2>
+      <div class="story"><p>Один из крупнейших саблезубых хищников неогена, предок образа, который человечество назовёт «саблезубым тигром». Верхние клыки, длинные и уплощённые как кинжалы, наносили рану, от которой добыча уже не уходила.</p><p>Сорок сантиметров сосредоточенной хищной архитектуры.</p></div>
+      <div class="era"><span>Эпоха</span><b>Неогеновая саванна · 23–2,6 млн лет</b></div>
+      <div class="home"><img src="../shared/img/int_ph_sabertooth.jpg" alt=""><div><div class="cap">В вашем доме</div><p>В подсвеченной витрине череп превращается в объект созерцания — музейная подача в масштабе жилой комнаты.</p></div></div>
+      <div class="folio" style="left:12mm"><span>Machairodus / Amphimachairodus sp.</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/prod_megalodon_tooth.jpg" alt="Зуб мегалодона"></div>
+    <div class="body">
+      <div class="label kicker">R–0201 · Мегалодон · Индонезия</div>
+      <h1>Зуб мегалодона</h1><div class="latin">Otodus megalodon</div>
+      <p class="hook">Зуб крупнейшего хищника в истории океана.</p><p class="desc">Широкая треугольная коронка, массивный корень и мелко зазубренные режущие кромки — очень крупный экземпляр музейного качества на подставке.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 23 млн лет · миоцен</div></div><div class="row"><div class="k">Находка</div><div class="v">Индонезия</div></div><div class="row"><div class="k">Размер</div><div class="v">Высота 14,5 см</div></div><div class="row"><div class="k">Семейство</div><div class="v">Otodontidae</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_ichthyosaur_plate.jpg" alt="Скелет ихтиозавра"></div>
+    <div class="body">
+      <div class="label kicker">R–0218 · Морские рептилии · Гуйчжоу, Китай</div>
+      <h1>Скелет ихтиозавра</h1><div class="latin">Mixosaurus</div>
+      <p class="hook">Морской ящер мезозоя, распластанный в тонкозернистом известняке.</p><p class="desc">Окаменевший скелет ихтиозавра, прекрасно сохранившийся в плите: череп, позвоночник и элементы грудной клетки в анатомической связи. Редкая палеонтологическая находка.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">242–247 млн лет · триас</div></div><div class="row"><div class="k">Находка</div><div class="v">Гуйчжоу, Китай</div></div><div class="row"><div class="k">Размер</div><div class="v">Плита 58 × 30 см · животное 85 см</div></div><div class="row"><div class="k">Материал</div><div class="v">Известняк</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo prov"><img src="../shared/img/ph_spinosaurus_jaw.jpg" alt="Челюсть спинозавра"></div>
+    <div class="body">
+      <div class="label kicker">R–0220 · Динозавры · Северная Африка</div>
+      <h1>Челюсть спинозавра</h1><div class="latin">Spinosaurus aegyptiacus</div>
+      <p class="hook">Фрагмент челюсти крупнейшего хищного теропода Северной Африки.</p><p class="desc">Фрагмент нижней челюсти с удлинёнными коническими зубами почти круглого сечения, приспособленными для удержания скользкой добычи. Выразительный сохранившийся зубной ряд.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">100–94 млн лет · сеноман</div></div><div class="row"><div class="k">Ареал</div><div class="v">Северная Африка</div></div><div class="row"><div class="k">Тип</div><div class="v">Нижняя челюсть, фрагмент</div></div><div class="row"><div class="k">Группа</div><div class="v">Тероподы</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo prov"><img src="../shared/img/ph_dunkleosteus.jpg" alt="Череп Dunkleosteus"></div>
+    <div class="body">
+      <div class="label kicker">R–0219 · Ископаемые рыбы · поздний девон</div>
+      <h1>Череп Dunkleosteus</h1><div class="latin">Dunkleosteus terrelli</div>
+      <p class="hook">Панцирный хищник девона с режущими костяными пластинами вместо зубов.</p><p class="desc">Реконструкция черепа и головного щита крупной панцирной рыбы позднего девона. Массивные костные пластины образовывали защитную броню; вместо зубов — острые режущие кромки.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 360 млн лет · поздний девон</div></div><div class="row"><div class="k">Группа</div><div class="v">Плакодермы</div></div><div class="row"><div class="k">Тип</div><div class="v">Реконструкция черепа</div></div><div class="row"><div class="k">Комплектация</div><div class="v">Череп и подставка</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo prov"><img src="../shared/img/ph_carcharodont_claw.jpg" alt="Коготь крупного теропода"></div>
+    <div class="body">
+      <div class="label kicker">R–0221 · Динозавры · Северная Африка</div>
+      <h1>Коготь крупного теропода</h1><div class="latin">Carcharodontosaurus sp.</div>
+      <p class="hook">Когтевая фаланга одного из крупнейших хищников сеноманского века.</p><p class="desc">Крупная когтевая фаланга, образовывавшая костную основу рогового чехла — при жизни коготь был длиннее и острее. Требует подтверждённого провенанса для точной атрибуции.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">100–94 млн лет · сеноман</div></div><div class="row"><div class="k">Регион</div><div class="v">Северная Африка</div></div><div class="row"><div class="k">Размер</div><div class="v">≈ 26 см</div></div><div class="row"><div class="k">Монтаж</div><div class="v">Металлическая подставка</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo prov"><img src="../shared/img/ph_pterosaur.jpg" alt="Скелет птерозавра на плите"></div>
+    <div class="body">
+      <div class="label kicker">R–0222 · Летающие архозавры · Ляонин, Китай</div>
+      <h1>Скелет птерозавра на плите</h1><div class="latin">Pterosauria indet.</div>
+      <p class="hook">Сочленённый скелет летающего ящера в каменной плите.</p><p class="desc">Сочленённый ископаемый скелет птерозавра: вытянутый зубастый череп, лёгкий осевой скелет и сильно удлинённый четвёртый палец, поддерживавший крыло. Требует экспертизы для точной атрибуции.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 125 млн лет · ранний мел</div></div><div class="row"><div class="k">Находка</div><div class="v">Ляонин, Китай</div></div><div class="row"><div class="k">Размер</div><div class="v">Череп ≈ 15 см</div></div><div class="row"><div class="k">Тип</div><div class="v">Скелет на плите</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_afrovenator.jpg" alt="Модель черепа Afrovenator"></div>
+    <div class="body">
+      <div class="label kicker">R–0223 · Динозавры · реконструкция</div>
+      <h1>Модель черепа Afrovenator</h1><div class="latin">Afrovenator abakensis</div>
+      <p class="hook">Полноразмерная модель черепа «африканского охотника».</p><p class="desc">Полноразмерная реконструкция черепа хищного теропода из формации Тиурарен в Нигере. Авторская модель по голотипу — самостоятельный выставочный объект.</p>
+      <div class="passport"><div class="row"><div class="k">Прообраз</div><div class="v">167–161 млн лет · средняя–поздняя юра</div></div><div class="row"><div class="k">Находка</div><div class="v">Агадес, Нигер</div></div><div class="row"><div class="k">Размер модели</div><div class="v">≈ 80–90 см</div></div><div class="row"><div class="k">Тип</div><div class="v">Реконструкция по голотипу</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Жизнь</span><span class="pgnum"></span></div>
+    </div></section><section class="page dark divider"><img class="bg" src="../shared/img/still_black_rhino.jpg" alt=""><div class="veil"></div>
+    <div class="inner"><div class="label kicker">Раздел III</div><h1>Монументы</h1><p>Экспонаты, задающие масштаб пространству: полные скелеты, пары бивней, черепа в человеческий рост. Доминанты гостиной, кабинета или лобби.</p></div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_mammoth_tusks.jpg" alt="Пара бивней мамонта"></div>
+    <div class="body">
+      <div class="label kicker">R–0607 · Мамонтовая фауна · Якутия, Россия</div>
+      <h1>Пара бивней мамонта</h1><div class="latin">Mammuthus primigenius</div>
+      <p class="hook">Две дуги слоновой кости, которые несли на себе снег последней ледниковой эпохи.</p><p class="desc">Симметричная пара бивней одного зверя из якутской мерзлоты: природная патина, глубокий изгиб. Монтируются на парных подставках как единая скульптурная композиция.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">10–40 тыс лет · плейстоцен</div></div><div class="row"><div class="k">Находка</div><div class="v">Якутия, Россия</div></div><div class="row"><div class="k">Размер</div><div class="v">250 см по дуге · пара, 74 кг</div></div><div class="row"><div class="k">Документы</div><div class="v">Provenance Card · сертификат</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Монументы</span><span class="pgnum"></span></div>
+    </div></section><section class="page alive">
+    <div class="visual"><img src="../shared/img/beast_mammoth.jpg" alt=""><div class="shade"></div></div>
+    <div class="body"><div class="label kicker">Встретить живым</div><h2>Когда-то они шли по снегу</h2>
+      <div class="story"><p>Пара бивней одного зверя — редкость, которую находят единицами. Их владелец шёл по мамонтовой степи Якутии десятки тысяч лет назад.</p><p>Мерзлота сохранила кость почти нетронутой: природная патина, глубокий изгиб, живой рисунок дентина. Это не фрагмент, это монумент.</p></div>
+      <div class="era"><span>Эпоха</span><b>Мамонтовая степь · плейстоцен</b></div>
+      <div class="home"><img src="../shared/img/int_ph_tusks.jpg" alt=""><div><div class="cap">В вашем доме</div><p>На парных подставках бивни образуют единую скульптурную арку — доминанту гостиной или кабинета.</p></div></div>
+      <div class="folio" style="left:12mm"><span>Mammuthus primigenius</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/grand_mammoth_skull.jpg" alt="Череп мамонта с бивнями"></div>
+    <div class="body">
+      <div class="label kicker">R–0605 · Мамонтовая фауна · Якутия, Россия</div>
+      <h1>Череп мамонта с бивнями</h1><div class="latin">Mammuthus primigenius</div>
+      <p class="hook">Череп с полной парой бивней из вечной мерзлоты.</p><p class="desc">Выдающийся образец эпохи позднего плейстоцена. Благодаря естественной консервации в мерзлоте Якутии кость сохранила высокую целостность и анатомические детали.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">более 10 000 лет · плейстоцен</div></div><div class="row"><div class="k">Находка</div><div class="v">Якутия, Россия</div></div><div class="row"><div class="k">Размер</div><div class="v">145 × 55 × 77 см</div></div><div class="row"><div class="k">Материал</div><div class="v">Натуральная ископаемая кость</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Монументы</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/grand_cavebear_skeleton.jpg" alt="Скелет пещерного медведя"></div>
+    <div class="body">
+      <div class="label kicker">R–0604 · Мамонтовая фауна · Россия</div>
+      <h1>Скелет пещерного медведя</h1><div class="latin">Ursus spelaeus</div>
+      <p class="hook">Один из крупнейших наземных хищников ледниковой эпохи в полный рост.</p><p class="desc">Полный смонтированный скелет пещерного медведя. Мощное телосложение, массивный череп и длинные изогнутые когти — доисторический вид, вымерший около пятнадцати тысяч лет назад.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">более 12 000 лет · плейстоцен</div></div><div class="row"><div class="k">Находка</div><div class="v">Россия</div></div><div class="row"><div class="k">Размер</div><div class="v">длина 295 см · вес ≈ 150 кг</div></div><div class="row"><div class="k">Монтаж</div><div class="v">Реставрация и подставка</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Монументы</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_rhino_skull.jpg" alt="Череп шерстистого носорога"></div>
+    <div class="body">
+      <div class="label kicker">R–0608 · Мамонтовая фауна · Якутия, Россия</div>
+      <h1>Череп шерстистого носорога</h1><div class="latin">Coelodonta antiquitatis</div>
+      <p class="hook">Череп зверя, который смотрел на мир сквозь снежную бурю ледникового периода.</p><p class="desc">Полный череп с сохранёнными рогами и зубным рядом — сочетание, которое выходит на рынок единицами. Символ ледниковой Евразии.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">50–150 тыс лет · плейстоцен</div></div><div class="row"><div class="k">Находка</div><div class="v">Якутия, Россия</div></div><div class="row"><div class="k">Размер</div><div class="v">130 × 82 × 35 см · оба рога</div></div><div class="row"><div class="k">Документы</div><div class="v">Provenance Card · сертификат</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Монументы</span><span class="pgnum"></span></div>
+    </div></section><section class="page alive">
+    <div class="visual"><img src="../shared/img/still_alive_rhino.jpg" alt=""><div class="shade"></div></div>
+    <div class="body"><div class="label kicker">Встретить живым</div><h2>Он расчищал снег рогом</h2>
+      <div class="story"><p>Шерстистый носорог — второй по величине зверь мамонтовой степи после самого мамонта. Полутонный, покрытый густой шерстью, с передним рогом до метра длиной.</p><p>Наш череп сохранил оба рога и полный зубной ряд; каждая борозда на кости пережила несколько оледенений.</p></div>
+      <div class="era"><span>Эпоха</span><b>Ледниковая степь · плейстоцен</b></div>
+      <div class="home"><img src="../shared/img/int_ph_rhino.jpg" alt=""><div><div class="cap">В вашем доме</div><p>Череп на чёрном постаменте держит тёмный кабинет как единственный акцент. Направленный свет проявляет рельеф кости.</p></div></div>
+      <div class="folio" style="left:12mm"><span>Coelodonta antiquitatis</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_rhino_skeleton.jpg" alt="Скелет шерстистого носорога"></div>
+    <div class="body">
+      <div class="label kicker">R–0611 · Мамонтовая фауна · Якутия, Россия</div>
+      <h1>Скелет шерстистого носорога</h1><div class="latin">Coelodonta antiquitatis</div>
+      <p class="hook">Полный смонтированный скелет ледникового исполина.</p><p class="desc">Полный скелет шерстистого носорога с характерным массивным телосложением и крупными рогами. Обнаружен в Якутии; профессиональная сборка на скрытом каркасе.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">50–150 тыс лет · плейстоцен</div></div><div class="row"><div class="k">Находка</div><div class="v">Якутия, Россия</div></div><div class="row"><div class="k">Размер образца</div><div class="v">130 × 82 × 35 см (череп)</div></div><div class="row"><div class="k">Монтаж</div><div class="v">Профессиональная сборка</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Монументы</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_jeholosaurus.jpg" alt="Скелет динозавра Jeholosaurus"></div>
+    <div class="body">
+      <div class="label kicker">R–0609 · Динозавры · Ляонин, Китай</div>
+      <h1>Скелет динозавра Jeholosaurus</h1><div class="latin">Jeholosaurus shangyuanensis</div>
+      <p class="hook">Целый динозавр, застывший в прыжке ста двадцати миллионов лет.</p><p class="desc">Небольшой растительноядный динозавр раннего мела из знаменитой формации Исянь. Артикулированный скелет в динамичной музейной подаче — законченный экспонат «под ключ».</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 120 млн лет · ранний мел</div></div><div class="row"><div class="k">Находка</div><div class="v">Ляонин, Китай</div></div><div class="row"><div class="k">Размер</div><div class="v">смонтированный скелет 100 см</div></div><div class="row"><div class="k">Документы</div><div class="v">Provenance Card · сертификат</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Монументы</span><span class="pgnum"></span></div>
+    </div></section><section class="page alive">
+    <div class="visual"><img src="../shared/img/still_alive_jeholo.jpg" alt=""><div class="shade"></div></div>
+    <div class="body"><div class="label kicker">Встретить живым</div><h2>Он бегал между папоротников</h2>
+      <div class="story"><p>Jeholosaurus — небольшой шустрый растительноядный динозавр раннего мела из легендарной формации Исянь, той самой, что подарила науке пернатых динозавров.</p><p>Это не набор костей, а смонтированный артикулированный скелет — законченный экспонат «под ключ». Динамичная поза передаёт саму суть животного: движение.</p></div>
+      <div class="era"><span>Эпоха</span><b>Ранний мел · 145–66 млн лет</b></div>
+      <div class="home"><img src="../shared/img/int_ph_jeholo.jpg" alt=""><div><div class="cap">В вашем доме</div><p>На консоли в светлой гостиной скелет читается как живая скульптура — тень его силуэта становится частью композиции.</p></div></div>
+      <div class="folio" style="left:12mm"><span>Jeholosaurus shangyuanensis</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo"><img src="../shared/img/ph_psittacosaurus_skeleton.jpg" alt="Скелет пситтакозавра"></div>
+    <div class="body">
+      <div class="label kicker">R–0610 · Динозавры · Ляонин, Китай</div>
+      <h1>Скелет пситтакозавра</h1><div class="latin">Psittacosaurus sp.</div>
+      <p class="hook">Полный смонтированный скелет раннего цератопса.</p><p class="desc">Смонтированный скелет длиной 168 см: высокий короткий череп, клювовидные челюсти и длинные задние конечности. Комплектность более 95 %, подготовка и монтаж на музейном уровне.</p>
+      <div class="passport"><div class="row"><div class="k">Возраст</div><div class="v">≈ 125 млн лет · ранний мел</div></div><div class="row"><div class="k">Находка</div><div class="v">Ляонин, Китай</div></div><div class="row"><div class="k">Размер</div><div class="v">смонтированный скелет 168 см</div></div><div class="row"><div class="k">Комплектность</div><div class="v">более 95 %</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Монументы</span><span class="pgnum"></span></div>
+    </div></section><section class="page exhibit">
+    <div class="photo prov"><img src="../shared/img/ph_crocodyliform.jpg" alt="Скелет крокодилиформа"></div>
+    <div class="body">
+      <div class="label kicker">R–0612 · Морские рептилии · составной скелет</div>
+      <h1>Скелет крокодилиформа</h1><div class="latin">Crocodyliformes indet.</div>
+      <p class="hook">Шестиметровый длиннорылый хищник для музейного монтажа.</p><p class="desc">Составной скелет крупного длиннорылого крокодилиформа, подготовленный для музейного монтажа: череп, позвоночный столб, рёбра, конечности и хвост на металлических опорах.</p>
+      <div class="passport"><div class="row"><div class="k">Форма</div><div class="v">длиннорылая</div></div><div class="row"><div class="k">Размер</div><div class="v">около 6 м</div></div><div class="row"><div class="k">Тип</div><div class="v">составной скелет</div></div><div class="row"><div class="k">Монтаж</div><div class="v">металлические опоры</div></div></div>
+      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="folio" style="left:12mm"><span>Relictum · Монументы</span><span class="pgnum"></span></div>
+    </div></section><section class="page services"><div class="label" style="color:var(--bronze-deep)">Дом Relictum</div>
+    <h1>Как мы работаем</h1><p class="dek">От первого запроса до установленного экспоната — путь, который дом проходит вместе с вами.</p>
+    <div class="svc-grid">
+      <div class="svc"><div class="num">01</div><b>Провенанс</b><p>Экспертиза подлинности, легальное происхождение, научное описание. Provenance Card и сертификат дома.</p></div>
+      <div class="svc"><div class="num">02</div><b>Ателье</b><p>Оправа, постамент и витрина проектируются под экспонат: бронза, мрамор, музейное стекло, скрытый крепёж.</p></div>
+      <div class="svc"><div class="num">03</div><b>Белые перчатки</b><p>Музейная упаковка, страхование, доставка и монтаж нашей командой — в Москве, по России и миру.</p></div>
+      <div class="svc"><div class="num">04</div><b>Персональный поиск</b><p>Не нашли свой объект? Консьерж дома ищет экспонаты под запрос — от зуба до полного скелета.</p></div>
+    </div>
+    <div class="svc-photos"><img src="../shared/img/prov_kit_flatlay.jpg" alt=""><img src="../shared/img/mount_bronze_cradle.jpg" alt=""><img src="../shared/img/pack_leather_box_open.jpg" alt=""><img src="../shared/img/concierge_tray.jpg" alt=""></div>
+    <div class="folio"><span>Relictum · Сервис дома</span><span class="pgnum"></span></div></section><section class="page dark final"><div class="wordmark">RELICTUM</div><div class="slogan">Роскошь вне времени</div>
+    <div class="contact">concierge@relictum.ru<br>+7 900 000-00-00<br>vashikmart.github.io/relictum</div>
+    <div class="qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" width="37" height="37" class="segno"><path class="qrline" stroke="#c9a96a" d="M0 0.5h7m1 0h3m1 0h6m1 0h4m2 0h2m3 0h7m-37 1h1m5 0h1m1 0h1m2 0h1m1 0h7m1 0h1m2 0h3m1 0h1m1 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m4 0h4m2 0h1m1 0h2m2 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m2 0h1m1 0h4m1 0h2m2 0h3m1 0h2m2 0h1m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m8 0h1m1 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m2 0h1m2 0h3m5 0h1m2 0h1m6 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-28 1h1m1 0h1m1 0h1m3 0h4m1 0h1m2 0h1m2 0h1m-29 1h1m2 0h7m1 0h1m2 0h2m10 0h1m1 0h2m2 0h1m1 0h3m-37 1h1m1 0h3m5 0h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h3m3 0h1m3 0h5m-36 1h2m3 0h3m2 0h2m1 0h5m1 0h2m1 0h7m1 0h3m3 0h1m-35 1h1m2 0h1m3 0h1m1 0h1m1 0h1m2 0h5m1 0h3m2 0h1m1 0h1m3 0h4m-36 1h1m2 0h1m1 0h3m1 0h2m3 0h1m4 0h1m7 0h1m1 0h1m3 0h1m1 0h1m-36 1h1m6 0h2m1 0h1m2 0h3m4 0h1m1 0h1m1 0h1m1 0h2m3 0h2m-34 1h4m2 0h1m1 0h1m6 0h1m2 0h2m1 0h1m2 0h4m1 0h1m2 0h5m-35 1h1m1 0h1m2 0h7m1 0h1m6 0h1m1 0h1m1 0h3m1 0h2m1 0h2m1 0h1m-37 1h3m2 0h2m2 0h2m1 0h2m3 0h3m1 0h1m2 0h2m4 0h1m3 0h1m1 0h1m-35 1h1m6 0h1m1 0h1m1 0h1m3 0h1m3 0h2m4 0h3m1 0h1m1 0h1m-33 1h3m1 0h2m3 0h4m2 0h2m1 0h1m1 0h5m1 0h1m1 0h2m5 0h1m-36 1h1m2 0h1m3 0h2m2 0h2m1 0h2m2 0h2m1 0h2m1 0h2m2 0h2m1 0h2m2 0h1m-36 1h4m1 0h2m1 0h2m1 0h3m2 0h1m1 0h1m3 0h2m3 0h5m-31 1h1m2 0h1m1 0h4m2 0h1m3 0h3m2 0h2m2 0h2m1 0h1m2 0h1m1 0h2m-33 1h1m1 0h3m1 0h2m1 0h4m5 0h1m1 0h2m1 0h3m2 0h1m1 0h1m2 0h1m-36 1h4m3 0h2m2 0h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m1 0h7m1 0h1m-35 1h1m3 0h4m4 0h2m1 0h1m1 0h6m5 0h2m3 0h1m-36 1h2m2 0h2m2 0h1m2 0h1m1 0h1m3 0h3m1 0h1m1 0h2m1 0h3m3 0h2m-34 1h2m1 0h2m1 0h1m3 0h1m1 0h1m2 0h1m10 0h3m1 0h1m1 0h2m1 0h2m-37 1h1m1 0h2m3 0h1m4 0h2m2 0h1m2 0h1m3 0h1m2 0h4m1 0h1m2 0h3m-37 1h1m1 0h1m2 0h2m1 0h1m3 0h1m1 0h3m1 0h3m2 0h1m1 0h1m1 0h6m1 0h1m1 0h1m-29 1h1m2 0h3m1 0h8m2 0h1m2 0h1m3 0h1m1 0h2m-36 1h7m1 0h1m2 0h1m1 0h8m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m-37 1h1m5 0h1m1 0h2m1 0h1m8 0h2m2 0h5m3 0h1m2 0h1m-36 1h1m1 0h3m1 0h1m1 0h5m1 0h3m1 0h4m1 0h2m1 0h7m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m2 0h4m2 0h1m1 0h3m3 0h1m1 0h1m-37 1h1m1 0h3m1 0h1m6 0h2m7 0h2m1 0h1m1 0h3m2 0h1m3 0h1m-37 1h1m5 0h1m2 0h5m1 0h1m1 0h1m8 0h2m2 0h1m1 0h5m-37 1h7m1 0h5m1 0h1m3 0h2m4 0h1m3 0h1m1 0h2m2 0h1m1 0h1"/></svg></div><div class="note">Наведите камеру — каталог и видео экспонатов онлайн</div></section></body></html>
