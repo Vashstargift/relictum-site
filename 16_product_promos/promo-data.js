@@ -277,6 +277,8 @@ window.RELICTUM_PROMO = {
   }
   ,
   "R–0224": {
+    interior: { img: "int_ph_ammonite.jpg", text: "На парящей полке аммонит читается как объект современного искусства — спираль, которую нарисовала сама природа." },
+    gallery: ["int_ph_ammonite.jpg"],
     hook: "Спирали, отполированные до перламутрового блеска.",
     heroKicker: "Аммониты · коллекция",
     story: [
@@ -287,6 +289,8 @@ window.RELICTUM_PROMO = {
     alive: { title: "Флот аммонитов", text: "Спиральные раковины дрейфовали в столбах света древних морей. Опуститесь к ним.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0225": {
+    interior: { img: "int_ph_cave_lion.jpg", text: "В подсвеченной витрине тёмного кабинета череп становится центром притяжения — музейная подача в масштабе комнаты." },
+    gallery: ["int_ph_cave_lion.jpg"],
     hook: "Череп самого редкого хищника плейстоцена.",
     heroKicker: "Пещерные львы · плейстоцен",
     story: [
@@ -297,6 +301,8 @@ window.RELICTUM_PROMO = {
     alive: { title: "Он правил ледниковой степью", text: "Пещерные львы охотились там, где сегодня тундра. Войдите в их эпоху.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0226": {
+    interior: { img: "int_ph_hyena.jpg", text: "На тёмном каменном постаменте массивный череп держит кабинет как единственный акцент." },
+    gallery: ["int_ph_hyena.jpg"],
     hook: "Челюсти, дробившие кости мамонтов.",
     heroKicker: "Гиены · плейстоцен",
     story: [
@@ -307,6 +313,9 @@ window.RELICTUM_PROMO = {
     alive: { title: "Санитары ледниковой степи", text: "Гиены плейстоцена доедали то, что оставляли львы и медведи. Войдите в их эпоху.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0227": {
+    spin: "spin_dronino128.mp4",
+    interior: { img: "int_ph_dronino128.jpg", text: "На мраморной консоли метеорит превращается в чёрную скульптуру внеземного происхождения — доминанта гостиной." },
+    gallery: ["int_ph_dronino128.jpg"],
     hook: "Сто двадцать восемь килограммов вещества из ядра чужой планеты.",
     heroKicker: "Метеориты · Рязанская область",
     story: [
@@ -317,6 +326,9 @@ window.RELICTUM_PROMO = {
     alive: { title: "Оно летело к нам миллионы лет", text: "Осколок разрушенной планеты кувыркался в пустоте, пока не вспыхнул над Землёй.", video: "vid_meteor.mp4", poster: "ph_dronino128.jpg" }
   },
   "R–0613": {
+    spin: "spin_pinacosaurus.mp4",
+    interior: { img: "int_ph_pinacosaurus.jpg", text: "В светлой галерейной комнате скелет читается как живая скульптура — дневной свет проявляет рельеф костных пластин." },
+    gallery: ["int_ph_pinacosaurus.jpg"],
     hook: "Панцирный динозавр, закованный в костяную броню.",
     heroKicker: "Динозавры · Центральная Азия",
     story: [
@@ -337,6 +349,8 @@ window.RELICTUM_PROMO = {
     alive: { title: "Он высиживал свои кладки", text: "Пернатые динозавры заботились о потомстве, как птицы. Войдите в их эпоху.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0615": {
+    interior: { img: "int_ph_bison.jpg", text: "Череп с размахом рогов на светлой стене над консолью задаёт характер всей комнате." },
+    gallery: ["int_ph_bison.jpg"],
     hook: "Исполин мамонтовой степи с рогами в метр размахом.",
     heroKicker: "Мамонтовая фауна · Россия",
     story: [
