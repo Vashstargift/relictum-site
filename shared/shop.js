@@ -118,3 +118,42 @@
   if(document.readyState!=='loading') render();
   else document.addEventListener('DOMContentLoaded',render);
 })();
+
+/* ---- Лайтбокс: клик по фото экспоната открывает снимок целиком ---- */
+(function(){
+  var SEL = '.object-gallery .main img, .object-gallery .thumbs img, .ex-gallery img, .gal img, .obj-card .ph img';
+  var box, pic;
+  function build(){
+    box = document.createElement('div');
+    box.className = 'rl-lightbox';
+    box.innerHTML = '<button class="rl-lb-close" aria-label="Закрыть">×</button><img alt="">';
+    pic = box.querySelector('img');
+    box.addEventListener('click', close);
+    document.body.appendChild(box);
+    var st = document.createElement('style');
+    st.textContent =
+      '.rl-lightbox{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;' +
+      'background:rgba(10,9,8,.92);backdrop-filter:blur(6px);cursor:zoom-out;padding:clamp(16px,4vw,56px)}' +
+      '.rl-lightbox.on{display:flex}' +
+      '.rl-lightbox img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 40px 120px -40px rgba(0,0,0,.9)}' +
+      '.rl-lb-close{position:absolute;top:18px;right:22px;width:44px;height:44px;border:none;background:transparent;' +
+      'color:#F4F0E8;font-size:30px;line-height:1;cursor:pointer;font-family:inherit}' +
+      '.rl-lb-close:hover{color:#E9C98A}' +
+      'body.rl-lb-open{overflow:hidden}';
+    document.head.appendChild(st);
+  }
+  function open(src, alt){
+    if(!box) build();
+    pic.src = src; pic.alt = alt || '';
+    box.classList.add('on'); document.body.classList.add('rl-lb-open');
+  }
+  function close(){ if(box){ box.classList.remove('on'); document.body.classList.remove('rl-lb-open'); } }
+  addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  addEventListener('click', function(e){
+    var img = e.target.closest && e.target.closest(SEL);
+    if(!img || (box && box.contains(img))) return;
+    if(img.closest('a')) return;              /* карточки-ссылки открывают страницу, не лайтбокс */
+    e.preventDefault();
+    open(img.currentSrc || img.src, img.alt);
+  });
+})();
