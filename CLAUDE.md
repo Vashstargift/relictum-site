@@ -1,0 +1,96 @@
+# RELICTUM — паспорт проекта для Claude
+
+Люксовый дом редких природных артефактов (динозавры, метеориты, минералы, мамонтовая фауна).
+Владелец: **Вашик** (общение на русском). Второй бренд после Stargift/luxpodarki.ru. Рыночный референс: paleohunters.ru (мы — люксовее). Слоган: **«Роскошь вне времени»**. Оси: Земля · Жизнь · Космос + Монументы (grand) + Editions.
+
+> **Новая сессия — начни отсюда:** прочитай этот файл целиком, затем `HANDOFF.md` (состояние дел на сегодня и что делать дальше). Этого достаточно, чтобы продолжить работу без объяснений владельца.
+
+## Ссылки
+- **Публичный сайт (GitHub Pages):** https://vashikmart.github.io/relictum/ — деплой-репо `VashikMart/relictum` (public)
+- **Этот репозиторий (исходники):** `VashikMart/relictum-project` (private)
+- Хаб всего пакета: `index.html` в корне (открывает всё)
+- Основной сайт: `02_site_v1_gallery/` (V1 «The Gallery» — рабочая версия, выбрана клиентом)
+
+## Деплой (ВАЖНО)
+Два разных действия, **оба только по команде владельца**:
+- «сохрани в гит» → коммит+push в приватный `relictum-project` (сайт не меняется);
+- «задеплой» → копирование изменённых файлов в клон публичного `relictum` и push (сайт обновляется за 1–2 мин).
+
+```bash
+git clone https://github.com/VashikMart/relictum /tmp/rd   # если клона нет
+cp <изменённые файлы> /tmp/rd/<те же пути>                  # rsync есть не везде
+cd /tmp/rd && git add -A && git commit -m "..." && git push origin main
+```
+Проверка: `curl -s -o /dev/null -w "%{http_code}" https://vashikmart.github.io/relictum/<путь>` (Pages пересобирается ~1–2 мин, крупные mp4 дольше; при перезаписи картинки под тем же именем — сверять `md5` live vs local и **инкрементить cache-buster `?v=N`** во всех рендерах).
+
+⚠️ **Себестоимость (закупочные цены партнёра) не публикуется нигде** — ни в репозиториях, ни на сайте, ни в PDF. Продажные цены публиковать можно. На сайте у всех объектов — только «Цена по запросу». Исходные архивы от Михаила в публичный репо не класть.
+
+## Архитектура данных
+- **`shared/catalog.js`** — единый источник каталога: `window.RELICTUM_CATALOG` (**37 объектов — ТОЛЬКО реальная коллекция**; выдуманные концепт-карточки удалены по решению владельца, сгенерированные «под концепт» фото заменены на реальные). Поля: id (`R–XXXX`, тире ДЛИННОЕ «–»), slug, world/worldLabel, category, period, region, priceValue (null = «по запросу»), price, name, latin, meta, img (имя файла в shared/img без .jpg), age, location, size, description, href (промо-страница). catalog.html/object.html рендерят карточки и паспорта автоматически.
+- **`16_product_promos/promo-data.js`** — контент промо (33 записи): hook, heroKicker, story[], era{}, alive{title,text,video,poster}, interior{video,img,text}, gallery[], heroVideo, **spin** (360°-видео).
+- **`shared/shop.js`** — магазин: корзина/избранное/кабинет/заказы/заявки на localStorage (`relictum_cart/favs/user/orders/leads`), бейджи в наву, тосты, `esc()`. Подключён во все страницы V1.
+- Интейк нового экспоната: `16_product_promos/INTAKE.md`. Конвейер промо: скилл `.claude/skills/relictum-product-promo/SKILL.md`.
+- **Печатный PDF-каталог (data-driven)**: данные `07_product_presentations/catalog_data.js` → генератор `render_catalog_pdf.js` собирает `catalog_collection_2026.html` (НЕ править руками — перезапишется) и рендерит `RELICTUM_collection_2026.pdf` (A4 landscape, 37 экспонатов, 8 alive-разворотов). Дизайн-система: `CATALOG_DESIGN_SYSTEM.md`, конвейер: скилл `.claude/skills/relictum-catalog-pdf/SKILL.md`.
+- **Прайс-таблица:** генератор `09_admin/build_price_xlsx.py` → `RELICTUM_коллекция_цены.xlsx` (2 листа: «Коллекция» 37 строк + «Сводка»). Цены зашиты в словаре PRICES внутри скрипта. В публичном репо — только продажные; полная версия с себестоимостью и маржой — у владельца.
+
+## Реальное наличие (от партнёра Михаила @VoskresenskiyM)
+Все 37 объектов каталога — реальные. Два источника, оба разобраны:
+1. **PDF «Каталог_28_слайдов»** (26 полос) — разбор в `16_product_promos/INTAKE_MIKHAIL_CATALOG.md`.
+2. **Архив «Реликтум» из Telegram** (июль 2026, 10 экспонатов + `экспонаты.json` + `Реликтум_стоимости.xlsx`) — аммониты, 2 черепа пещерного льва, волк, мамонт, Дронино 128 кг, пинакозавр, овираптор, степной зубр, череп гиены.
+
+Цены закупки/реализации — **ВНУТРЕННЕЕ**, только в Excel. **5 позиций ждут уточнения у Михаила:** череп льва №1 (вход «10–12$» занижен), пинакозавр (точная сумма), зубр и волк (валюта $ или €?), череп гиены (цена и описание).
+
+У 8 «якорных» экспонатов есть статичные шер-страницы `16_product_promos/<name>.html` с зашитыми OG (mammoth-tusks, rhino-skull, jeholosaurus, sabertooth-skull, bothriolepis, meteorite-dronino, meteorite-chinge, lunar-frame). Остальные открываются через `exhibit.html?id=<slug>`.
+
+## Медиа-конвейеры (Higgsfield MCP)
+**КАНОН ФОТО ОБЪЕКТА** (главное правило дома — единый студийный стиль):
+`nano_banana_pro` img2img, реф = реальное фото экспоната (media_upload → PUT по presigned URL → media_confirm; либо media_import_url для веб-ссылки).
+Промпт-шаблон:
+> Professional museum catalog product photograph of THIS EXACT <объект> — keep the specimen pixel-accurate: same shape, same texture, same colouration. Present it on a minimal blackened-steel museum stand. Warm ivory seamless studio background #F4F0E8, soft diffused lighting, natural soft ground shadow, auction-house catalog style, ultra sharp. No text, no watermark, no <мусор исходника: measuring tape / room interior / hands / floor tiles>.
+
+aspect_ratio 3:4 (вертикальные) или 4:3 (горизонтальные скелеты). **НЕ делать PIL-композиты — владелец забраковал.** Объект менять нельзя, меняется только окружение.
+
+- **Интерьер (галереи и «В вашем доме»):** тот же nano_banana_pro, реф = наше студийное фото (можно передавать **job_id** прошлой генерации — экономит загрузку!), промпт «Architectural Digest interior photograph: THIS EXACT <объект>… luxury interior, editorial photography», 3:2.
+- **360°-видео (spin):** `kling3_0_turbo` image-to-video, start_image = студийное фото (или job_id), промпт «Slow cinematic 360-degree turntable orbit around this exact museum specimen… object stays perfectly centered and unchanged… no zoom, no morphing», duration 5. ⚠️ kling предлагает пресет «IN THE DARK» — ретраить с `declined_preset_id`. veo3 БЕЗ start_image не работает.
+- **Музейное видео (чёрная студия):** nano_banana кадр «pure black studio, white museum spotlight, rim light» → kling image-to-video.
+- **Скачивание:** `job_display(id)` → results.rawUrl → curl → PIL thumbnail 1500, q87–88 → `shared/img/`. Проверять глазами через Read!
+- Лимиты щедрые — генерить смело и много.
+
+## Конвенции имён медиа (shared/img)
+| Префикс | Что это |
+|---|---|
+| `ph_<slug>.jpg` | каноническое студийное фото экспоната (главное фото карточки) |
+| `int_ph_<slug>.jpg` | интерьерный кадр (секция «В вашем доме» + галерея) |
+| `g_<slug>_1/2.jpg` | доп. ракурсы в интерьере |
+| `spin_<slug>.mp4` | 360°-видео (поле `spin` в promo-data) |
+| `hero_museum_*.mp4` | видео-хиро промо (чёрная студия) |
+| `vid_*.mp4`, `era_*.mp4` | «встретить живым» / эпохи |
+| `intv_*.mp4` | интерьерный видео-проезд |
+| `still_black_*.jpg` | кадр из музейного видео (для PDF-дивайдеров и обложек) |
+| `still_alive_*.jpg` | кадр существа живьём (для alive-разворотов PDF) |
+
+Извлечение кадров: `ffmpeg -ss 2.5 -i shared/img/<video>.mp4 -frames:v 1 -q:v 2 out.jpg` → PIL thumbnail 1600 q86. (В облачной сессии ffmpeg ставится через `pip install imageio-ffmpeg`.)
+
+## Что уже есть (главное)
+- **Главная V1:** видео-карусель hero, дино-видеоблок, «Только что поступило», миры, избранные объекты (реальные экспонаты), монументальная коллекция.
+- **Промо-страницы** (exhibit.html + 8 статичных): видео-хиро → паспорт → история эпохи → **«Объект в 360°»** → «Встретить живым» (видео существа) → «В вашем доме» → галерея ракурсов → корзина/CTA.
+- **Магазин:** корзина, checkout с UI карты (оплата — СИМУЛЯЦИЯ; боевая = ЮKassa/CloudPayments + бэкенд, см. 09_admin/TECH_SPEC.md), request.html, account.html (кабинет: коллекция, тир-скидка Гость/Патрон5/Бронза8/Обсидиан12, менеджер, избранное, интересы).
+- **Админка `09_admin/control.html`:** добавление/удаление экспонатов, промо-тумблеры, «Только что поступило», редактор промо-контента, экспорт catalog.js/promo-data.js, входящие заявки+заказы.
+- **Журнал:** 10 статей с фильтрами. **Эры/концепты:** 15_concepts (eras, strata-v2, lab, deep-time). **SEO:** фавиконы-комета + уникальные description + OG.
+- **PDF-каталог** 37 экспонатов + **Excel** с ценами.
+
+## Технические квирки
+- Встроенный preview-браузер Claude морозит IntersectionObserver/rAF/видео и даёт чёрные скрины тёмных страниц → скролл-эффекты писать на scroll-хендлерах; проверять **headless Chromium через playwright-core** (в облаке: `/opt/pw-browsers/chromium`, `npm i playwright-core` в scratchpad), рендер — СКРИНШОТОМ (dump-dom ловит гонку).
+- В JS-билдерах карточек закрывающая кавычка после .jpg — ДВОЙНАЯ (`img+'.jpg?v=3"`).
+- object.html/exhibit.html — клиентский рендер: title/OG статичные (фолбэк); per-object OG — только статичные шер-страницы.
+- PDF: в генераторе полосам нужна **явная высота `210mm`** (не `100%`) — иначе контент не растягивается на страницу. QR (segno) требует `viewBox`. Шрифты в офлайн-среде — локальный @font-face CSS через `FONT_CSS_PATH` (@fontsource/cormorant-garamond + inter).
+- **Облачная сессия (Claude Code на web):** `sleep` в цепочке команд блокируется — использовать `until <проверка>; do sleep 20; done`. Сеть иногда режет CDN Higgsfield — проверять `curl` конкретного файла (корень CDN всегда отдаёт 403, это норма). GitHub Pages из песочницы может быть недоступен — проверять через клон деплой-репо.
+- Память Claude машины владельца: `~/.claude/projects/-Users-vashikproblack/memory/relictum_project.md`. **На других машинах и в облаке главный источник — этот файл + HANDOFF.md.**
+
+## Бэклог / идеи
+- Уточнить у Михаила 5 позиций с ценами (см. выше и Excel, колонка «Примечание / статус»).
+- Обработать в канон оставшиеся «рабочие» фото: Dunkleosteus, коготь кархародонтозавра, крокодилиформ, челюсть спинозавра, птерозавр (в каталоге помечены плашкой «рабочее фото» только в PDF).
+- Промо-страницы эпох (мел/плейстоцен есть, добавить девон/неоген), бэклог: `16_product_promos/BACKLOG.md`.
+- Canva-копия PDF-каталога для правок руками (импорт публичного URL PDF).
+- Боевой бэкенд: Next.js+Payload+amoCRM+платёжный шлюз (09_admin/TECH_SPEC.md).
+- Шер-страницы для остальных объектов; домен + РФ-хостинг.
