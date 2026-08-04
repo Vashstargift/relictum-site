@@ -5,6 +5,7 @@
 window.RELICTUM_CATALOG = [
   {
     "id": "R–0101",
+    "href": "../16_product_promos/exhibit.html?id=seymchan-pallasite",
     "world": "cosmos",
     "worldLabel": "Космос",
     "category": "Метеориты",
@@ -44,6 +45,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0604",
+    "href": "../16_product_promos/exhibit.html?id=cave-bear-skeleton",
     "world": "grand",
     "worldLabel": "Монументы",
     "category": "Мамонтовая фауна",
@@ -63,6 +65,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0605",
+    "href": "../16_product_promos/exhibit.html?id=mammoth-skull-tusks",
     "world": "grand",
     "worldLabel": "Монументы",
     "category": "Мамонтовая фауна",
