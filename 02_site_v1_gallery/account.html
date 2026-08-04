@@ -119,7 +119,7 @@ var ALL_INTERESTS=['Метеориты','Лунные объекты','Дино�
 
 function mini(o,favBtn){
   return '<a class="rl-mini" href="'+(o.href||('object.html?id='+o.id))+'"><img src="'+IMG+o.img+'.jpg?v=9" alt="'+o.name+'">'+
-    '<div class="b"><div class="t">'+o.name+'</div><div class="s">'+o.worldLabel+' · '+S.fmt(o.priceValue)+'</div>'+
+    '<div class="b"><div class="t">'+o.name+'</div><div class="s">'+o.worldLabel+', '+S.fmt(o.priceValue)+'</div>'+
     (favBtn?'<button class="rm" data-fav="'+o.id+'" style="margin-top:8px;background:none;border:none;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--rl-stone);cursor:pointer">Убрать из избранного</button>':'')+
     '</div></a>';
 }
@@ -128,7 +128,7 @@ function heroHTML(){
   var u=S.user(), t=S.tier();
   return '<div class="rl-label" style="color:#B08A55;margin-bottom:14px">Личный кабинет</div>'+
     '<h1 class="rl-h" style="font-size:clamp(32px,5vw,52px);color:#F4F0E8">Здравствуйте, '+S.esc(u.name)+'</h1>'+
-    '<div class="rl-tier">'+t.name+' · личная скидка '+t.discount+'%</div>'+
+    '<div class="rl-tier">'+t.name+', личная скидка '+t.discount+'%</div>'+
     '<div style="display:flex;gap:34px;margin-top:26px;flex-wrap:wrap">'+
       '<div><div class="rl-h" style="font-size:30px;color:#F4F0E8">'+(u.purchased||[]).length+'</div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,240,232,.6)">в коллекции</div></div>'+
       '<div><div class="rl-h" style="font-size:30px;color:#F4F0E8">'+S.favCount()+'</div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,240,232,.6)">в избранном</div></div>'+
@@ -155,7 +155,7 @@ function pane_promo(){
 function pane_collection(){
   var items=(S.user().purchased||[]).map(S.item).filter(Boolean);
   if(!items.length) return '<div class="rl-empty"><h2 class="rl-h" style="font-size:28px;margin-bottom:12px">Коллекция пока пуста</h2><p class="rl-muted" style="margin-bottom:22px">Оформленные объекты появятся здесь.</p><a class="rl-btn" style="width:auto;display:inline-block" href="catalog.html">Начать коллекцию</a></div>';
-  return '<div class="rl-label" style="margin-bottom:16px">Приобретённые объекты · демо-данные</div><div class="rl-cards">'+items.map(function(o){return mini(o,false)}).join('')+'</div>';
+  return '<div class="rl-label" style="margin-bottom:16px">Приобретённые объекты, демо-данные</div><div class="rl-cards">'+items.map(function(o){return mini(o,false)}).join('')+'</div>';
 }
 function pane_favorites(){
   var items=S.favItems();

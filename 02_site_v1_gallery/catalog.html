@@ -99,7 +99,7 @@
 
 <header class="page-head">
   <div class="wrap">
-    <div class="crumbs"><a href="index.html">Главная</a> · Каталог</div>
+    <div class="crumbs"><a href="index.html">Главная</a>, Каталог</div>
     <h1>Каталог</h1>
   </div>
 </header>
@@ -302,7 +302,7 @@ function render() {
     <a class="obj-card" href="${o.href||('object.html?id='+encodeURIComponent(o.id))}">
       <div class="ph"><img src="../shared/img/${o.img}.jpg?v=9" alt="${o.name}" loading="lazy"></div>
       <div class="body">
-        <div class="id">${o.id} · ${o.worldLabel}</div>
+        <div class="id">${o.id}, ${o.worldLabel}</div>
         <h3>${o.name}</h3>
         <div class="latin">${o.latin}</div>
         <div class="meta">${o.meta}</div>

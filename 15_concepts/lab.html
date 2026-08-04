@@ -125,24 +125,24 @@ footer a{color:var(--gold);text-decoration:none}
 
 <header class="top">
   <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM">
-  <div class="label">Лаборатория концептов · 9 живых прототипов</div>
+  <div class="label">Лаборатория концептов, 9 живых прототипов</div>
   <p>Интерактивные механики для сайта дома. Каждую можно потрогать прямо здесь — а потом перенести в каталог, карточки объектов и кампании.</p>
 </header>
 
-<!-- 01 · 360 -->
+<!-- 01, 360 -->
 <section class="demo">
   <div class="wrap">
     <div class="head"><span class="num">01</span><h2>Объект на 360°</h2></div>
     <p class="sub">Цифровая версия оправы «The Orbit»: тяните витрину пальцем или мышью — она вращается. Под капотом — сгенерированное турнтейбл-видео, которое скраббится жестом.</p>
     <div class="stage spin" id="spin">
-      <span class="badge">Editions № 01 · drag</span>
+      <span class="badge">Editions № 01, drag</span>
       <video id="spinV" src="../shared/img/spin_megalodon.mp4" muted playsinline loop preload="auto" autoplay></video>
     </div>
     <div class="hint">← тяните влево-вправо →</div>
   </div>
 </section>
 
-<!-- 02 · МАСШТАБ -->
+<!-- 02, МАСШТАБ -->
 <section class="demo">
   <div class="wrap">
     <div class="head"><span class="num">02</span><h2>Масштаб-слайдер</h2></div>
@@ -163,7 +163,7 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </section>
 
-<!-- 03 · ПАЛЛАСИТ -->
+<!-- 03, ПАЛЛАСИТ -->
 <section class="demo">
   <div class="wrap">
     <div class="head"><span class="num">03</span><h2>Палласит на просвет</h2></div>
@@ -181,7 +181,7 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </section>
 
-<!-- 04 · РАСКОП -->
+<!-- 04, РАСКОП -->
 <section class="demo">
   <div class="wrap">
     <div class="head"><span class="num">04</span><h2>«Раскоп»</h2></div>
@@ -195,7 +195,7 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </section>
 
-<!-- 04b · ЛУПА -->
+<!-- 04b, ЛУПА -->
 <section class="demo">
   <div class="wrap">
     <div class="head"><span class="num">05</span><h2>Лупа эксперта</h2></div>
@@ -208,7 +208,7 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </section>
 
-<!-- 06 · ПЫЛЬ -->
+<!-- 06, ПЫЛЬ -->
 <section class="demo">
   <div class="wrap">
     <div class="head"><span class="num">06</span><h2>Пыль времени</h2></div>
@@ -218,7 +218,7 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </section>
 
-<!-- 07 · ДО/ПОСЛЕ ПРЕПАРАЦИИ -->
+<!-- 07, ДО/ПОСЛЕ ПРЕПАРАЦИИ -->
 <section class="demo">
   <div class="wrap">
     <div class="head"><span class="num">07</span><h2>До / после препарации</h2></div>
@@ -227,13 +227,13 @@ footer a{color:var(--gold);text-decoration:none}
       <img src="../shared/img/prod_trilobite.jpg" alt="После препарации">
       <img class="top" src="../shared/img/trilobite_raw.jpg" alt="До препарации">
       <div class="bar"></div><div class="knob">⇄</div>
-      <span class="tag l">До · раскоп</span><span class="tag r">После · ателье</span>
+      <span class="tag l">До, раскоп</span><span class="tag r">После, ателье</span>
     </div>
     <div class="hint">тяните шторку</div>
   </div>
 </section>
 
-<!-- 08 · УФ-ЛАМПА -->
+<!-- 08, УФ-ЛАМПА -->
 <section class="demo">
   <div class="wrap">
     <div class="head"><span class="num">08</span><h2>УФ-лампа эксперта</h2></div>
@@ -248,7 +248,7 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </section>
 
-<!-- 07 · ПРОВЕНАНС-НИТЬ -->
+<!-- 07, ПРОВЕНАНС-НИТЬ -->
 <section class="demo">
   <div class="wrap">
     <div class="head"><span class="num">09</span><h2>Провенанс-нить</h2></div>
@@ -273,7 +273,7 @@ footer a{color:var(--gold);text-decoration:none}
 </footer>
 
 <script>
-/* ============ 01 · 360 SPIN (mobile-friendly) ============ */
+/* ============ 01, 360 SPIN (mobile-friendly) ============ */
 (function(){
   var el=document.getElementById('spin'),v=document.getElementById('spinV');
   var dur=0,drag=false,lastX=0,idleT=null;
@@ -301,7 +301,7 @@ footer a{color:var(--gold);text-decoration:none}
   ['touchstart','pointerdown'].forEach(function(ev){addEventListener(ev,function(){if(v.paused&&!drag)slowLoop()},{once:true,passive:true})});
 })();
 
-/* ============ 02 · SCALE v2 ============ */
+/* ============ 02, SCALE v2 ============ */
 (function(){
   var data=[
     {img:'cut_cavebear',name:'Скелет пещерного медведя',h:2.5},
@@ -339,13 +339,13 @@ footer a{color:var(--gold);text-decoration:none}
   set(0);
 })();
 
-/* ============ 03 · PALLASITE ============ */
+/* ============ 03, PALLASITE ============ */
 (function(){
   var r=document.getElementById('pallR'),box=document.getElementById('pallImgs');
   r.addEventListener('input',function(){box.style.setProperty('--o',r.value/100)});
 })();
 
-/* ============ 04 · DIG v2 ============ */
+/* ============ 04, DIG v2 ============ */
 (function(){
   var dig=document.getElementById('dig'),c=document.getElementById('digC'),ctx=c.getContext('2d');
   var rock=new Image();rock.src='../shared/img/sr_chalk.jpg';
@@ -396,7 +396,7 @@ footer a{color:var(--gold);text-decoration:none}
   dig.addEventListener('pointercancel',function(){drag=false});
 })();
 
-/* ============ 04b · LOUPE ============ */
+/* ============ 04b, LOUPE ============ */
 (function(){
   var box=document.getElementById('loupe'); if(!box) return;
   var img=box.querySelector('img'), lens=document.getElementById('lens');
@@ -417,7 +417,7 @@ footer a{color:var(--gold);text-decoration:none}
   box.addEventListener('touchmove',function(e){e.preventDefault();move(e)},{passive:false});
 })();
 
-/* ============ 07/08 · WIPE ============ */
+/* ============ 07/08, WIPE ============ */
 function makeWipe(id){
   var w=document.getElementById(id); if(!w)return;
   function setX(clientX){
@@ -433,7 +433,7 @@ function makeWipe(id){
 }
 makeWipe('wipePrep');makeWipe('wipeUV');
 
-/* ============ 07 · PROVENANCE ============ */
+/* ============ 07, PROVENANCE ============ */
 (function(){
   var steps=[
     {x:4,  yr:'1967',t:'Находка',d:'Магаданская область, СССР. Палласит Сеймчан найден при геологоразведке; классифицирован как железо-каменный метеорит группы PMG.'},
@@ -450,7 +450,7 @@ makeWipe('wipePrep');makeWipe('wipeUV');
   });
   function sel(i){
     var s=steps[i];
-    card.innerHTML='<b>'+s.t+' · '+s.yr+'</b><p>'+s.d+'</p>';
+    card.innerHTML='<b>'+s.t+', '+s.yr+'</b><p>'+s.d+'</p>';
     prog.style.width=s.x+'%';
     [...line.querySelectorAll('.pt')].forEach(function(p,k){p.classList.toggle('on',k<=i)});
   }
