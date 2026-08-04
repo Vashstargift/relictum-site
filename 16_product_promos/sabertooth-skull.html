@@ -38,7 +38,8 @@ a{color:inherit;text-decoration:none}
 .hero .lat{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.1vw,25px);color:var(--deep);margin-bottom:22px}
 .hero .hook{font-size:clamp(15px,1.9vw,18.5px);color:#3d3a35;max-width:44ch;margin-bottom:26px}
 .hero .ph{background:var(--bone);border:1px solid var(--linel);overflow:hidden;position:relative}
-.hero .ph img,.hero .ph video{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.hero .ph img{width:100%;aspect-ratio:4/5;object-fit:contain;background:var(--ivory,#F4F0E8);display:block;cursor:zoom-in}
+.hero .ph video{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
 .hero .ph.vid{background:#0A0908;border-color:rgba(176,138,85,.35)}
 .hero .ph video{position:absolute;inset:0;height:100%;opacity:0;transition:opacity .8s}
 .hero .ph video.on{opacity:1}
@@ -94,7 +95,7 @@ a{color:inherit;text-decoration:none}
 .gallery .ggrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:680px){.gallery .ggrid{grid-template-columns:1fr}}
 .gallery .gitem{border:1px solid var(--linel);overflow:hidden;background:var(--bone)}
-.gallery .gitem img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .8s var(--ease)}
+.gallery .gitem img{width:100%;aspect-ratio:3/2;object-fit:contain;background:var(--ivory,#F4F0E8);cursor:zoom-in;transition:transform .8s var(--ease)}
 .gallery .gitem:hover img{transform:scale(1.04)}
 
 /* CTA / сервис */
@@ -177,7 +178,7 @@ if(!o){
   var spinSec=(P&&P.spin)?(
     '<section class="spin"><div class="wrap">'+
       '<div class="label rv" style="color:var(--deep);margin-bottom:18px">Объект в 360°</div>'+
-      '<div class="sframe rv"><video src="'+(P.spin.indexOf('http')===0?P.spin:IMG+P.spin)+'" poster="'+IMG+o.img+'.jpg?v=5" muted loop playsinline autoplay preload="metadata"></video></div>'+
+      '<div class="sframe rv"><video src="'+(P.spin.indexOf('http')===0?P.spin:IMG+P.spin)+'" poster="'+IMG+o.img+'.jpg?v=6" muted loop playsinline autoplay preload="metadata"></video></div>'+
       '<div class="scap rv">Полный оборот вокруг подлинника — каждый ракурс реального экспоната</div>'+
     '</div></section>'):'';
   var passCells=[
@@ -223,7 +224,7 @@ if(!o){
       '<p class="hook rv">'+hook+'</p>'+
       '<div class="rv"><span class="scrollcue">Листайте</span></div>'+
     '</div>'+
-    '<div class="ph rv'+(P&&P.heroVideo?' vid':'')+'"><img src="'+IMG+o.img+'.jpg?v=5" alt="'+o.name+'">'+
+    '<div class="ph rv'+(P&&P.heroVideo?' vid':'')+'"><img src="'+IMG+o.img+'.jpg?v=6" alt="'+o.name+'">'+
       (P&&P.heroVideo?'<video id="heroVid" muted loop playsinline preload="auto" src="'+IMG+P.heroVideo+'"></video>':'')+
     '</div>'+
   '</section>'+

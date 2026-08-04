@@ -121,7 +121,7 @@
 
 /* ---- Лайтбокс: клик по фото экспоната открывает снимок целиком ---- */
 (function(){
-  var SEL = '.object-gallery .main img, .object-gallery .thumbs img, .ex-gallery img, .gal img, .obj-card .ph img';
+  var SEL = '.object-gallery .main img, .object-gallery .thumbs img, .hero .ph img, .gallery .gitem img, .ex-gallery img, .gal img, .obj-card .ph img';
   var box, pic;
   function build(){
     box = document.createElement('div');
