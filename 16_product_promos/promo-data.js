@@ -328,7 +328,7 @@ window.RELICTUM_PROMO = {
   "R–0613": {
     spin: "spin_pinacosaurus.mp4",
     interior: { img: "int_ph_pinacosaurus.jpg", text: "В светлой галерейной комнате скелет читается как живая скульптура — дневной свет проявляет рельеф костных пластин." },
-    gallery: ["int_ph_pinacosaurus.jpg"],
+    gallery: ["g_pina_1.jpg", "g_pina_2.jpg", "g_pina_3.jpg", "g_pina_4.jpg", "int_ph_pinacosaurus.jpg"],
     hook: "Панцирный динозавр, закованный в костяную броню.",
     heroKicker: "Динозавры · Центральная Азия",
     story: [
