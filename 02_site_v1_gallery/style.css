@@ -58,19 +58,35 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-
   box-shadow: 0 1px 0 var(--hairline);
   padding: 14px var(--gutter);
 }
+/* Пока шапка лежит на тёмном hero (класс on-dark ставит скрипт страницы) — светлая;
+   при скролле возвращается обычная тёмная на ivory-подложке */
+.nav.on-dark:not(.scrolled)::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(10, 9, 8, .55), rgba(10, 9, 8, 0));
+}
+.nav.on-dark:not(.scrolled) .nav-wordmark,
+.nav.on-dark:not(.scrolled) .nav-links a,
+.nav.on-dark:not(.scrolled) .nav-actions a { color: var(--bone); text-shadow: 0 1px 10px rgba(10, 9, 8, .5); }
+.nav.on-dark:not(.scrolled) .nav-tag { color: var(--sand); text-shadow: 0 1px 10px rgba(10, 9, 8, .5); }
+.nav.on-dark:not(.scrolled) .nav-links a:hover,
+.nav.on-dark:not(.scrolled) .nav-links a.active { color: #fff; border-color: var(--sand); }
+.nav.on-dark:not(.scrolled) .nav-actions a:hover { color: #fff; }
+.nav.on-dark:not(.scrolled) .nav-burger span { background: var(--bone); }
+
 .nav-logo { display: flex; align-items: center; gap: 14px; }
 .nav-logo img { height: 34px; width: auto; }
 .nav-wordmark {
   font-family: var(--font-display);
   font-size: 22px; letter-spacing: .34em; text-indent: .34em;
   color: var(--obsidian);
+  transition: color .4s var(--ease), text-shadow .4s var(--ease);
 }
-.nav-tag { font-size: 8.5px; letter-spacing: .3em; color: var(--bronze-deep); text-transform: uppercase; margin-top: 1px; }
+.nav-tag { font-size: 8.5px; letter-spacing: .3em; color: var(--bronze-deep); text-transform: uppercase; margin-top: 1px; transition: color .4s var(--ease), text-shadow .4s var(--ease); }
 .nav-links { display: flex; gap: clamp(16px, 2.6vw, 42px); list-style: none; }
 .nav-links a {
   font-size: 12px; font-weight: 400; letter-spacing: .14em; text-transform: uppercase;
   padding-bottom: 4px; border-bottom: 1px solid transparent;
-  transition: border-color .3s, color .3s;
+  transition: border-color .3s, color .3s, text-shadow .4s var(--ease);
 }
 .nav-links a:hover, .nav-links a.active { border-color: var(--bronze); color: var(--bronze-deep); }
 .nav-actions { display: flex; gap: 20px; align-items: center; font-size: 12px; letter-spacing: .12em; }

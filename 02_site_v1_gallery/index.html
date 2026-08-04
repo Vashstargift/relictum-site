@@ -553,6 +553,14 @@
 <script>
 const nav = document.getElementById('nav');
 addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), {passive:true});
+/* Пока шапка стоит на тёмном слайде героя — светлые буквы; ниже героя работает .scrolled */
+(function(){
+  const car = document.getElementById('hcar');
+  if (!car) return;
+  const sync = () => nav.classList.toggle('on-dark', !!car.querySelector('.slide.on.dark'));
+  sync();
+  new MutationObserver(sync).observe(car, {subtree:true, attributes:true, attributeFilter:['class']});
+})();
 const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('on')), {threshold:.12});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
