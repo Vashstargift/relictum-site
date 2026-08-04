@@ -13,7 +13,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Мамонтовая степь", line: "Плейстоцен · 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
     alive: { title: "Когда-то они шли по снегу", text: "Стада мамонтов брели по сухой холодной прерии Якутии так же привычно, как сегодня бродят олени по тундре.", video: "era_mammoth.mp4", poster: "beast_mammoth.jpg" },
-    interior: { video: "intv_tusks.mp4", img: "int_ph_tusks.jpg", text: "На парных подставках бивни образуют единую скульптурную арку — доминанту гостиной или кабинета. Мы проектируем крепление и свет под ваше пространство." },
+    interior: { video: "intv_tusks.mp4", img: "int_ph_tusks.jpg", text: "Дуга бивней занимает стену просторной гостиной или кабинета целиком, не оставляя места для другого декора." },
     gallery: ["g_tusks_1.jpg", "g_tusks_2.jpg"]
   },
   "R–0608": {
@@ -27,7 +27,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Ледниковая степь", line: "Плейстоцен · 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
     alive: { title: "Он расчищал снег рогом", text: "Метровый рог сгребал наст слой за слоем, пока не показывалась мёрзлая трава — обычный обед ледникового дня.", video: "vid_rhino.mp4", poster: "ph_rhino_skull.jpg" },
-    interior: { video: "intv_rhino.mp4", img: "int_ph_rhino.jpg", text: "Череп на чёрном постаменте держит тёмный кабинет как единственный акцент. Направленный свет проявляет рельеф кости и текстуру рогов." },
+    interior: { video: "intv_rhino.mp4", img: "int_ph_rhino.jpg", text: "Тёмному кабинету хватает одного этого черепа. Постамент дом изготавливает под конкретную поверхность и вес экспоната." },
     gallery: ["g_rhino_1.jpg", "g_rhino_2.jpg"]
   },
   "R–0609": {
@@ -41,7 +41,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Ранний мел", line: "Меловой период · 145 – 66 млн лет назад", href: "../15_concepts/era-cretaceous.html" },
     alive: { title: "Он бегал между папоротников", text: "Метровое тело и лёгкий костяк делали его одним из самых быстрых обитателей меловых лесов формации Исянь.", video: "vid_jeholo.mp4", poster: "beast_triceratops.jpg" },
-    interior: { video: "intv_jeholo.mp4", img: "int_ph_jeholo.jpg", text: "На консоли в светлой гостиной скелет читается как живая скульптура — тень его силуэта на стене становится частью композиции." },
+    interior: { video: "intv_jeholo.mp4", img: "int_ph_jeholo.jpg", text: "Скелет Jeholosaurus умещается на консоли в светлой гостиной, оставляя вокруг достаточно пустого пространства для взгляда." },
     gallery: ["g_jeholo_1.jpg", "g_jeholo_2.jpg"]
   },
   "R–0208": {
@@ -55,7 +55,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Неогеновая саванна", line: "Неоген · 23 – 2,6 млн лет назад", href: "../15_concepts/era-neogene.html" },
     alive: { title: "Он выходил на охоту в закат", text: "Уплощённые клыки длиной с кинжал оставляли рану, после которой добыча саванн Ганьсу уже не поднималась.", video: "vid_sabertooth.mp4", poster: "ph_sabertooth.jpg" },
-    interior: { video: "intv_sabertooth.mp4", img: "int_ph_sabertooth.jpg", text: "В подсвеченной витрине череп превращается в объект созерцания — музейная подача в масштабе жилой комнаты." },
+    interior: { video: "intv_sabertooth.mp4", img: "int_ph_sabertooth.jpg", text: "Череп саблезубой кошки умещается в витрину даже в комнате скромной площади, не занимая лишнего места на полке." },
     gallery: ["g_sabertooth_1.jpg", "g_sabertooth_2.jpg"]
   },
   "R–0209": {
@@ -69,7 +69,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Девонские моря", line: "Девон · 419 – 359 млн лет назад · «век рыб»", href: "../15_concepts/era-devonian.html" },
     alive: { title: "Век, когда жизнь научилась брони", text: "Костяные пластины на голове и груди — один из первых в истории жизни доспехов, надетых за триста пятьдесят миллионов лет до нас.", video: "vid_bothrio.mp4", poster: "ph_bothriolepis.jpg" },
-    interior: { video: "intv_bothrio.mp4", img: "int_ph_bothrio.jpg", text: "На парящей полке в кабинете плита с рыбой становится тихим артефактом глубокого времени — тёплый акцентный свет проявляет каждую чешуйку." },
+    interior: { video: "intv_bothrio.mp4", img: "int_ph_bothrio.jpg", text: "Плита с панцирной рыбой ложится на открытую полку кабинета или прихожей. Схему подсветки для чешуйчатой фактуры дом разрабатывает индивидуально." },
     gallery: ["g_bothrio_1.jpg", "g_bothrio_2.jpg"]
   },
   "R–0103": {
@@ -83,7 +83,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Рождение Солнечной системы", line: "≈ 4,5 млрд лет назад", href: "../15_concepts/deep-time.html" },
     alive: { title: "Оно летело к нам миллионы лет", text: "Регмаглипты на поверхности застыли в момент огненного входа в атмосферу — след пути длиной в четыре с половиной миллиарда лет.", video: "vid_meteor.mp4", poster: "ph_dronino.jpg" },
-    interior: { video: "intv_dronino.mp4", img: "int_ph_dronino.jpg", text: "Один драматичный источник света — и метеорит на мраморной консоли превращается в чёрную скульптуру внеземного происхождения." },
+    interior: { video: "intv_dronino.mp4", img: "int_ph_dronino.jpg", text: "Метеорит Дронино существует в единственном экземпляре, и место для него в комнате получается индивидуальным, а не типовым." },
     gallery: ["g_dronino_1.jpg", "g_dronino_2.jpg"]
   },
   "R–0104": {
@@ -97,7 +97,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Рождение Солнечной системы", line: "≈ 4,5 млрд лет назад", href: "../02_site_v1_gallery/journal-meteorite.html" },
     alive: { title: "Дождь железа над Сибирью", text: "Этот обломок падал дождём вместе с сотнями других над Тывой, а форму ему придали не резец, а миллионы лет в космосе.", video: "vid_meteor.mp4", poster: "ph_chinge.jpg" },
-    interior: { video: "intv_chinge.mp4", img: "int_ph_chinge.jpg", text: "На тёмном постаменте метеорит становится центром внимания сдержанного интерьера — тёплый свет играет на металлической поверхности." },
+    interior: { video: "intv_chinge.mp4", img: "int_ph_chinge.jpg", text: "Небольшой метеорит Чинге занимает место на консоли в прихожей или кабинете, не требуя вокруг себя пустой стены." },
     gallery: ["g_chinge_1.jpg", "g_chinge_2.jpg"]
   },
   "R–0105": {
@@ -111,7 +111,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Спутник Земли", line: "≈ 4,5 млрд лет · возраст Луны", href: "../15_concepts/deep-time.html" },
     alive: { title: "Он прилетел прямо с Луны", text: "Астероид выбил этот осколок с поверхности Луны, и в раме он снова стоит рядом с её портретом на фотографии.", video: "vid_moon.mp4", poster: "ph_moon_frame.jpg" },
-    interior: { video: "intv_moon.mp4", img: "int_ph_moon.jpg", text: "Рама с Луной на стене над консолью работает как окно в космос — тихий, но безошибочно узнаваемый акцент интерьера." },
+    interior: { video: "intv_moon.mp4", img: "int_ph_moon.jpg", text: "Рама с лунным метеоритом вешается над консолью или ставится на стол, оба варианта равноценны. Выбор стены и высоты подвеса дом обсуждает отдельно." },
     gallery: ["g_moon_1.jpg", "g_moon_2.jpg"]
   },
 
@@ -277,7 +277,7 @@ window.RELICTUM_PROMO = {
   }
   ,
   "R–0224": {
-    interior: { img: "int_ph_ammonite.jpg", text: "На парящей полке аммонит читается как объект современного искусства — спираль, которую нарисовала сама природа." },
+    interior: { img: "int_ph_ammonite.jpg", text: "Полированные аммониты раскладываются на открытой полке в порядке, который меняется по настроению хозяина комнаты." },
     gallery: ["int_ph_ammonite.jpg"],
     hook: "Спирали, отполированные до перламутрового блеска.",
     heroKicker: "Аммониты · коллекция",
@@ -289,7 +289,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Флот аммонитов", text: "Внутренние камеры раковины работали как поплавок, а спираль росла по строгой логарифмической кривой — это видно на срезе.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0225": {
-    interior: { img: "int_ph_cave_lion.jpg", text: "В подсвеченной витрине тёмного кабинета череп становится центром притяжения — музейная подача в масштабе комнаты." },
+    interior: { img: "int_ph_cave_lion.jpg", text: "Витрина с черепом пещерного льва занимает нишу тёмного кабинета целиком, оставаясь единственным предметом в поле зрения." },
     gallery: ["int_ph_cave_lion.jpg"],
     hook: "Череп самого редкого хищника плейстоцена.",
     heroKicker: "Пещерные львы · плейстоцен",
@@ -301,7 +301,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Он правил ледниковой степью", text: "Крупнее любого современного льва, этот хищник охотился на молодняк мамонтов и носорогов и оставил след на стенах пещер палеолита.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0226": {
-    interior: { img: "int_ph_hyena.jpg", text: "На тёмном каменном постаменте массивный череп держит кабинет как единственный акцент." },
+    interior: { img: "int_ph_hyena.jpg", text: "Массивный череп динокрокуты на породном основании уверенно держит кабинет с плотной тёмной палитрой." },
     gallery: ["g_hyena_1.jpg", "int_ph_hyena.jpg"],
     hook: "Самые сильные челюсти своего времени.",
     heroKicker: "Динокрокута · миоцен, Азия",
@@ -314,7 +314,7 @@ window.RELICTUM_PROMO = {
   },
   "R–0227": {
     spin: "spin_dronino128.mp4",
-    interior: { img: "int_ph_dronino128.jpg", text: "На мраморной консоли метеорит превращается в чёрную скульптуру внеземного происхождения — доминанта гостиной." },
+    interior: { img: "int_ph_dronino128.jpg", text: "Монументальный метеорит Дронино рассчитан на консоль или пол, выдерживающие серьёзный вес. Нагрузку на перекрытие дом проверяет заранее." },
     gallery: ["g_dronino128_1.jpg", "g_dronino128_2.jpg", "g_dronino128_3.jpg", "int_ph_dronino128.jpg"],
     hook: "Сто двадцать восемь килограммов вещества из ядра чужой планеты.",
     heroKicker: "Метеориты · Рязанская область",
@@ -327,7 +327,7 @@ window.RELICTUM_PROMO = {
   },
   "R–0613": {
     spin: "spin_pinacosaurus.mp4",
-    interior: { img: "int_ph_pinacosaurus.jpg", text: "В светлой галерейной комнате скелет читается как живая скульптура — дневной свет проявляет рельеф костных пластин." },
+    interior: { img: "int_ph_pinacosaurus.jpg", text: "Стальной каркас скелета пинакозавра задаёт маршрут взгляда по светлой галерейной комнате. Монтаж дом проводит на месте." },
     gallery: ["g_pina_1.jpg", "g_pina_2.jpg", "g_pina_3.jpg", "g_pina_4.jpg", "int_ph_pinacosaurus.jpg"],
     hook: "Панцирный динозавр, закованный в костяную броню.",
     heroKicker: "Динозавры · Центральная Азия",
@@ -350,7 +350,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Он высиживал свои кладки", text: "Беззубый клюв и лёгкое сложение принадлежат хищнику с несправедливым именем «похититель яиц» — на деле он высиживал свою кладку, как наседка.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0615": {
-    interior: { img: "int_ph_bison.jpg", text: "Череп с размахом рогов на светлой стене над консолью задаёт характер всей комнате." },
+    interior: { img: "int_ph_bison.jpg", text: "Рога степного зубра занимают всю стену над консолью и держат масштаб комнаты." },
     gallery: ["g_bison_1.jpg", "g_bison_2.jpg", "int_ph_bison.jpg"],
     hook: "Исполин мамонтовой степи с рогами в метр размахом.",
     heroKicker: "Мамонтовая фауна · Россия",
