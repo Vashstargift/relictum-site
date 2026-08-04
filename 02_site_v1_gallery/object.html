@@ -122,7 +122,7 @@
   if(!o) o = C[0];
 
   document.title = o.name + ' — RELICTUM';
-  document.getElementById('oImg').src = '../shared/img/'+o.img+'.jpg?v=3';
+  document.getElementById('oImg').src = '../shared/img/'+o.img+'.jpg?v=4';
   document.getElementById('oImg').alt = o.name;
   document.getElementById('oCode').textContent = o.id+' · '+o.worldLabel+' · '+o.category;
   document.getElementById('oName').textContent = o.name;
@@ -163,7 +163,7 @@
   document.getElementById('related').innerHTML = rel.map(function(r){
     var href = r.href || ('object.html?id='+encodeURIComponent(r.id));
     return '<a class="obj-card" href="'+href+'">'+
-      '<div class="ph"><img src="../shared/img/'+r.img+'.jpg?v=3" alt="'+r.name+'" loading="lazy"></div>'+
+      '<div class="ph"><img src="../shared/img/'+r.img+'.jpg?v=4" alt="'+r.name+'" loading="lazy"></div>'+
       '<div class="body"><div class="id">'+r.id+' · '+r.worldLabel+'</div>'+
       '<h3>'+r.name+'</h3><div class="latin">'+r.latin+'</div>'+
       '<div class="price"><b>'+r.price+'</b><span>Смотреть</span></div></div></a>';
