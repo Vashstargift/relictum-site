@@ -11,14 +11,16 @@
   --mist:rgba(244,240,232,.62);
   --serif:'Cormorant Garamond',serif; --sans:'Inter',sans-serif;
   --ease:cubic-bezier(.23,1,.32,1);
-}
+
+  --nav-h:88px; --head-top:168px;}
 *{margin:0;padding:0;box-sizing:border-box}
+@media(max-width:760px){:root{--nav-h:72px;--head-top:116px}}
 body{background:var(--black);color:var(--ivory);font-family:var(--sans);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,video{max-width:100%;display:block}
 h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05}
 
 /* ---------- HUD: глубиномер ---------- */
-.hud{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:flex-start;padding:16px clamp(16px,4vw,44px);background:linear-gradient(180deg,rgba(10,9,8,.82),transparent);pointer-events:none}
+.hud{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:flex-start;min-height:var(--nav-h,88px);padding:0 clamp(20px,4.5vw,72px);align-items:center;background:linear-gradient(180deg,rgba(10,9,8,.82),transparent);pointer-events:none}
 .hud .mark{font-family:var(--serif);letter-spacing:.32em;font-size:15px;text-indent:.32em;padding-top:4px}
 .hud .meter{text-align:right}
 .hud .depth{font-family:var(--serif);font-size:clamp(24px,6vw,34px);font-variant-numeric:tabular-nums;line-height:1}

@@ -50,7 +50,7 @@
 .rl-card .rowc{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;color:rgba(244,240,232,.7)}
 
 /* кабинет */
-.rl-hero-account{background:radial-gradient(120% 100% at 20% 0,#241c12,#14110E);color:#F4F0E8;padding:clamp(40px,6vw,72px) 0}
+.rl-hero-account{background:radial-gradient(120% 100% at 20% 0,#241c12,#14110E);color:#F4F0E8;padding:var(--head-top, 168px) 0 clamp(40px,6vw,72px)}
 .rl-tier{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(176,138,85,.5);border-radius:40px;padding:7px 16px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#E9C98A;margin-top:14px}
 .rl-tabs{display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--rl-line);margin:0 0 34px}
 .rl-tab{background:none;border:none;padding:14px 4px;margin-right:22px;font-size:12.5px;letter-spacing:.1em;color:var(--rl-stone);cursor:pointer;border-bottom:2px solid transparent;transition:.3s}
