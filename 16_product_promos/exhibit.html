@@ -225,6 +225,7 @@ var app=document.getElementById('app');
 if(!o){
   app.innerHTML='<div class="err"><div><div class="label">Экспонат не найден</div><h1 style="font-size:34px;margin:12px 0">Вернуться в каталог</h1><a class="btn" style="border-color:#14110E" href="../02_site_v1_gallery/catalog.html">Открыть каталог</a></div></div>';
 }else{
+  window.RL_BIO_ID=o.id;
   document.title=o.name+' — '+o.id+', RELICTUM';
   var hook = P?P.hook : (o.description||'');
   var kick = P?P.heroKicker : (o.worldLabel+', '+(o.region||''));
@@ -245,7 +246,7 @@ if(!o){
     ['Возраст', o.age||'—'],
     ['Происхождение', o.location||o.region||'—'],
     ['Размер', o.size||'—']
-  ].map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
+  ].concat(o.mount?[['Оправа', o.mount]]:[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
   var aliveSec = alive ? (
     '<section class="alive" id="aliveSec" data-video="'+(alive.video?IMG+alive.video:'')+'">'+
@@ -313,7 +314,8 @@ if(!o){
       '<div class="s rv"><b>Оправа и свет</b><p>Подставка, витрина или настенное крепление по вашему пространству.</p></div>'+
       '<div class="s rv"><b>Доставка</b><p>Упаковка музейного класса, логистика и установка на месте.</p></div>'+
     '</div>'+
-  '</div></section>';
+  '</div></section>'+
+  '<section id="bio-slot"></section>';
 
   /* reveal on scroll (без IntersectionObserver — превью его морозит) */
   var rvs=[].slice.call(document.querySelectorAll('.rv'));
@@ -385,5 +387,6 @@ if(!o){
 }
 </script>
 <script src="../shared/nav.js"></script>
+<script src="../shared/biography.js"></script>
 </body>
 </html>

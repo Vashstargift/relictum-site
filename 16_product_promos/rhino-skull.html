@@ -248,7 +248,9 @@ if(!o){
   ].map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
   var aliveSec = alive ? (
-    '<section class="alive" id="aliveSec" data-video="'+(alive.video?IMG+alive.video:'')+'">'+
+    '<section id="bio-slot"></section>
+
+<section class="alive" id="aliveSec" data-video="'+(alive.video?IMG+alive.video:'')+'">'+
       (alive.poster?'<img class="poster" src="'+IMG+alive.poster+'" alt="">':'')+
       '<div class="veil"></div>'+
       '<div class="in rv">'+
@@ -383,5 +385,6 @@ if(!o){
 }
 </script>
 <script src="../shared/nav.js"></script>
+<script src="../shared/biography.js"></script>
 </body>
 </html>
