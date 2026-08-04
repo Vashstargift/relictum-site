@@ -98,7 +98,10 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-
 .nav-actions a { color: var(--stone); transition: color .3s; }
 .nav-actions a:hover { color: var(--obsidian); }
 /* ---------- Мобильное меню ---------- */
+/* На десктопе бургер и выезжающая панель скрыты: без этого панель
+   падает в поток и печатает пункты строкой внизу страницы */
 .nav-burger { display: none; }
+.nav-drawer { display: none; }
 @media (max-width: 960px) {
   .nav-links { display: none; }
   .nav-actions { display: none; }
@@ -112,6 +115,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-
   .nav-burger.is-open span:nth-child(2) { opacity: 0; }
   .nav-burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
   .nav-drawer {
+    display: flex;
     position: fixed; inset: 0; z-index: 120;
     background: var(--ivory);
     display: flex; align-items: center; justify-content: center;
