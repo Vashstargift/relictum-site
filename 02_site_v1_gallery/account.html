@@ -118,7 +118,7 @@ var S=window.RelictumShop, IMG='../shared/img/';
 var ALL_INTERESTS=['Метеориты','Лунные объекты','Динозавры','Мамонтовая фауна','Саблезубые кошки','Аммониты','Трилобиты','Минералы','Окаменелое дерево','Монументы','Editions','Интерьерные объекты'];
 
 function mini(o,favBtn){
-  return '<a class="rl-mini" href="'+(o.href||('object.html?id='+o.id))+'"><img src="'+IMG+o.img+'.jpg?v=6" alt="'+o.name+'">'+
+  return '<a class="rl-mini" href="'+(o.href||('object.html?id='+o.id))+'"><img src="'+IMG+o.img+'.jpg?v=7" alt="'+o.name+'">'+
     '<div class="b"><div class="t">'+o.name+'</div><div class="s">'+o.worldLabel+' · '+S.fmt(o.priceValue)+'</div>'+
     (favBtn?'<button class="rm" data-fav="'+o.id+'" style="margin-top:8px;background:none;border:none;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--rl-stone);cursor:pointer">Убрать из избранного</button>':'')+
     '</div></a>';
