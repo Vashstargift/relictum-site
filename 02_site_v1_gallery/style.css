@@ -199,6 +199,9 @@ section { padding: clamp(72px, 9vw, 140px) 0; }
 .world-card { position: relative; aspect-ratio: 4 / 5.4; overflow: hidden; background: var(--obsidian); }
 .world-card img { width: 100%; height: 100%; object-fit: cover; opacity: .96; transition: transform 1.4s var(--ease), opacity .6s; }
 .world-card:hover img { transform: scale(1.05); opacity: .82; }
+/* карточка-анонс: раздел ещё не наполнен, поэтому не ведёт никуда и не реагирует на курсор */
+.world-card.is-soon { cursor: default; }
+.world-card.is-soon:hover img { transform: none; opacity: .96; }
 .world-card .meta {
   position: absolute; inset: auto 0 0 0; padding: 26px 26px 24px;
   background: linear-gradient(0deg, rgba(17,17,17,.72), rgba(17,17,17,0));
