@@ -70,8 +70,9 @@ function render(){
     area.innerHTML='<div class="rl-empty"><div class="rl-label" style="margin-bottom:12px">Пусто</div>'+
       '<h2 class="rl-h" style="font-size:32px;margin-bottom:14px">В корзине пока нет объектов</h2>'+
       '<p class="rl-muted" style="margin-bottom:26px">Каждый объект дома существует в единственном экземпляре. Начните с каталога или доверьте подбор консьержу.</p>'+
-      '<a class="rl-btn" style="width:auto;display:inline-block" href="catalog.html">Открыть каталог</a> '+
-      '<a class="rl-btn ghost" style="width:auto;display:inline-block" href="request.html">Персональный поиск</a></div>';
+      '<div class="rl-btn-row">'+
+      '<a class="rl-btn" href="catalog.html">Открыть каталог</a>'+
+      '<a class="rl-btn ghost" href="request.html">Персональный поиск</a></div></div>';
     return;
   }
   var rows=items.map(function(o){

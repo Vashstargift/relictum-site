@@ -78,13 +78,15 @@
   }
   function render(){
     var pre=paths();
-    var heart='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C1 8.5 2.5 5 6 5c2 0 3.2 1.2 4 2.3C10.8 6.2 12 5 14 5c3.5 0 5 3.5 3.5 6.5C19 15.65 12 20 12 20z"/></svg>';
-    var bag='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>';
-    var usr='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3-5.5 7-5.5s7 1.9 7 5.5"/></svg>';
+    /* Иконки дома: тонкая гравюрная линия, геометрия «кабинета редкостей».
+       Звезда-роза ветров — отмеченное, экспедиционный ящик — корзина, ключ — кабинет. */
+    var star='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"><path d="M12 2.6l2.1 6.05 6.3.35-4.9 3.95 1.65 6.1L12 15.6l-5.15 3.45 1.65-6.1-4.9-3.95 6.3-.35z"/></svg>';
+    var crate='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"><path d="M3.6 7.4h16.8v12.2H3.6z"/><path d="M3.6 11h16.8"/><path d="M9.4 7.4V4.4h5.2v3"/></svg>';
+    var key='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.4" cy="8.4" r="4"/><path d="M11.3 11.3L20 20"/><path d="M17.2 17.2l-2 2"/><path d="M14.6 14.6l-1.7 1.7"/></svg>';
     var html=
-      badge(pre+'account.html#favorites','Избранное',heart,Shop.favCount())+
-      badge(pre+'cart.html','Корзина',bag,Shop.count())+
-      badge(pre+'account.html','Личный кабинет',usr,0);
+      badge(pre+'account.html#favorites','Избранное',star,Shop.favCount())+
+      badge(pre+'cart.html','Корзина',crate,Shop.count())+
+      badge(pre+'account.html','Личный кабинет',key,0);
     document.querySelectorAll('.nav-actions').forEach(function(na){
       var wrap=na.querySelector('.rl-shopnav');
       if(!wrap){ wrap=document.createElement('span'); wrap.className='rl-shopnav'; na.appendChild(wrap); }

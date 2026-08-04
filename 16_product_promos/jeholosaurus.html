@@ -100,7 +100,9 @@ a{color:inherit;text-decoration:none}
 .cta{background:var(--coal);color:var(--ivory);padding:clamp(56px,8vw,104px) 0;text-align:center}
 .cta .price{font-family:var(--serif);font-size:clamp(30px,4vw,46px);margin-bottom:6px}
 .cta .note{font-size:12px;color:var(--mist);margin-bottom:30px}
-.cta .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:52px}
+.cta .row{display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:12px;margin-bottom:52px}
+.cta .row>*{display:inline-flex;align-items:center;justify-content:center;text-align:center}
+@media(max-width:720px){.cta .row{grid-auto-flow:row;width:100%}}
 .cta .btn.solid{background:var(--gold);color:var(--black);border-color:var(--gold)}
 .cta .btn.solid:hover{background:#fff;border-color:#fff}
 .cta .btn.ghost{color:var(--ivory)}
@@ -240,7 +242,7 @@ if(!o){
     '<div class="note rv">Один экземпляр · паспорт объекта · доставка и установка домом Relictum</div>'+
     '<div class="row rv">'+
       '<button type="button" class="btn solid" id="exCart">Добавить в корзину</button>'+
-      '<button type="button" class="btn ghost" id="exFav">В избранное ♡</button>'+
+      '<button type="button" class="btn ghost" id="exFav">В избранное<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" style="vertical-align:-2px;margin-left:7px"><path d="M12 2.6l2.1 6.05 6.3.35-4.9 3.95 1.65 6.1L12 15.6l-5.15 3.45 1.65-6.1-4.9-3.95 6.3-.35z"/></svg></button>'+
       '<a class="btn ghost" href="mailto:hello@relictum.ru?subject=Запрос: '+encodeURIComponent(o.name+' ('+o.id+')')+'">Запросить объект</a>'+
     '</div>'+
     '<div class="svc">'+
@@ -311,7 +313,7 @@ if(!o){
       if(!c||!fb) return;
       if(Sx.inCart(o.id)){ c.textContent='В корзине ✓ · перейти'; c.onclick=function(){location.href='../02_site_v1_gallery/cart.html';}; }
       else { c.textContent='Добавить в корзину'; c.onclick=function(){ Sx.addToCart(o.id); Sx.toast('«'+o.name+'» в корзине'); exRender(); }; }
-      fb.textContent = Sx.inFav(o.id)?'В избранном ♥':'В избранное ♡';
+      fb.innerHTML = Sx.inFav(o.id)?'В избранном<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" style="vertical-align:-2px;margin-left:7px"><path d="M12 2.6l2.1 6.05 6.3.35-4.9 3.95 1.65 6.1L12 15.6l-5.15 3.45 1.65-6.1-4.9-3.95 6.3-.35z"/></svg>':'В избранное<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" style="vertical-align:-2px;margin-left:7px"><path d="M12 2.6l2.1 6.05 6.3.35-4.9 3.95 1.65 6.1L12 15.6l-5.15 3.45 1.65-6.1-4.9-3.95 6.3-.35z"/></svg>';
       fb.onclick=function(){ var on=Sx.toggleFav(o.id); Sx.toast(on?'Добавлено в избранное':'Убрано из избранного'); exRender(); };
     };
     exRender();

@@ -137,7 +137,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-
   .hero-content { padding: 0 var(--gutter) 56px; margin-left: 0; max-width: 100%; }
   .hero h1 { font-size: clamp(40px, 13vw, 60px); margin: 18px 0 16px; }
   .hero p.lead { margin-bottom: 30px; }
-  .btn-row { flex-direction: column; align-items: stretch; }
+  .btn-row { display: grid; grid-auto-flow: row; grid-auto-columns: auto; width: 100%; }
   .btn-row .btn { text-align: center; }
   .nav.scrolled, .nav { padding-top: 16px; padding-bottom: 16px; }
 }
@@ -169,7 +169,9 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-
 .btn-solid:hover { background: var(--bronze-deep); border-color: var(--bronze-deep); }
 .btn-bronze { border-color: var(--bronze-deep); color: var(--bronze-deep); }
 .btn-bronze:hover { background: var(--bronze-deep); color: var(--ivory); }
-.btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
+/* Кнопки в ряду всегда одного размера: ширину задаёт самая длинная надпись */
+.btn-row { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 16px; }
+.btn-row > .btn { text-align: center; display: inline-flex; align-items: center; justify-content: center; }
 .link-arrow {
   font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--bronze-deep);
   display: inline-flex; align-items: center; gap: 10px;

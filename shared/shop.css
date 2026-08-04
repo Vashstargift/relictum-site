@@ -78,6 +78,12 @@
 .rl-success{text-align:center;max-width:520px;margin:0 auto;padding:40px 0}
 .rl-success .ok{width:64px;height:64px;border-radius:50%;border:1.5px solid var(--rl-bronze);color:var(--rl-deep);display:grid;place-items:center;margin:0 auto 24px;font-size:28px}
 
+
+/* Ряд кнопок: все элементы ряда одного размера, ширину задаёт самая длинная надпись */
+.rl-btn-row{display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:12px}
+.rl-btn-row>.rl-btn{width:auto}
+@media (max-width:760px){ .rl-btn-row{grid-auto-flow:row;width:100%} }
+
 /* Мобильные формы: шрифт меньше 16px заставляет iOS Safari зумить страницу при фокусе */
 @media (max-width:760px){
   .rl-input,.rl-select,.rl-textarea{font-size:16px}
