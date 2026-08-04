@@ -113,7 +113,9 @@ a{color:inherit;text-decoration:none}
 @media(max-width:680px){.svc{grid-template-columns:1fr;gap:24px}}
 .svc .s b{font-family:var(--serif);font-size:20px;font-weight:400;display:block;margin-bottom:6px;color:var(--gold)}
 .svc .s p{font-size:12.5px;color:var(--mist)}
-.foot{text-align:center;padding:34px 0;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#8a8175}
+.foot{text-align:center;padding:34px 0 42px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#8a8175}
+.foot a{color:inherit}.foot a:hover{color:#9A6D34}
+.foot .foot-links{display:flex;gap:22px;justify-content:center;margin-top:14px}
 
 .err{min-height:100svh;display:grid;place-items:center;text-align:center;padding:40px}
 </style>
@@ -139,7 +141,7 @@ a{color:inherit;text-decoration:none}
 
 <div class="top">
   <a class="bk" href="../02_site_v1_gallery/catalog.html">← Каталог</a>
-  <a class="mk" href="../index.html">RELICTUM</a>
+  <a class="mk" href="../02_site_v1_gallery/index.html">RELICTUM</a>
   <span class="rl-shopnav" style="color:#5c554a"></span>
 </div>
 
@@ -252,7 +254,7 @@ if(!o){
       '<div class="s rv"><b>Доставка</b><p>Упаковка музейного класса, логистика и установка на месте.</p></div>'+
     '</div>'+
   '</div></section>'+
-  '<div class="foot">RELICTUM · Роскошь вне времени</div>';
+  '<div class="foot"><a href="../02_site_v1_gallery/index.html">RELICTUM</a> · Роскошь вне времени<span class="foot-links"><a href="../02_site_v1_gallery/catalog.html">Каталог</a><a href="../02_site_v1_gallery/maison.html#concierge">Консьерж</a><a href="../02_site_v1_gallery/journal.html">Журнал</a></span></div>';
 
   /* reveal on scroll (без IntersectionObserver — превью его морозит) */
   var rvs=[].slice.call(document.querySelectorAll('.rv'));

@@ -62,6 +62,11 @@ h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05}
 .finale .btns{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .finale .btn{display:inline-block;padding:15px 30px;border:1px solid var(--bronze);color:var(--gold);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;transition:.4s var(--ease)}
 .finale .btn:hover{background:var(--gold);color:var(--black)}
+
+footer{border-top:1px solid var(--line);padding:50px 0;text-align:center}
+footer img{width:min(280px,54vw);margin:0 auto}
+footer .foot-links{display:flex;gap:22px;justify-content:center;margin-top:20px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
+footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--gold)}
 </style>
 
 <!-- rl-seo -->
@@ -245,5 +250,10 @@ all();
 function kick(){document.querySelectorAll('video[src]').forEach(function(v){v.muted=true;if(v.paused)v.play().catch(function(){})})}
 ['touchstart','pointerdown','scroll'].forEach(function(ev){addEventListener(ev,kick,{passive:true,once:false})});
 </script>
+
+<footer>
+  <a href="../02_site_v1_gallery/index.html"><img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM"></a>
+  <div class="foot-links"><a href="../02_site_v1_gallery/catalog.html">Каталог</a><a href="../02_site_v1_gallery/journal.html">Журнал</a><a href="../02_site_v1_gallery/maison.html#concierge">Консьерж</a></div>
+</footer>
 </body>
 </html>
