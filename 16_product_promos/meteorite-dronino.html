@@ -193,7 +193,7 @@ if(!o){
       (alive.poster?'<img class="poster" src="'+IMG+alive.poster+'" alt="">':'')+
       '<div class="veil"></div>'+
       '<div class="in rv">'+
-        '<div class="label">Встретить живым</div>'+
+        '<div class="label">При жизни</div>'+
         '<h2>'+alive.title+'</h2>'+
         '<p>'+alive.text+'</p>'+
         (era&&era.href?'<a class="btn" href="'+era.href+'">Войти в эпоху →</a>':'')+
@@ -204,12 +204,12 @@ if(!o){
     '<section class="home"><div class="wrap">'+
       '<div class="label rv" style="margin-bottom:18px">В вашем доме</div>'+
       '<div class="big rv" id="intBig"'+(interior.video?' data-video="'+IMG+interior.video+'"':'')+'><img src="'+IMG+interior.img+'" alt="'+o.name+' в интерьере" loading="lazy"></div>'+
-      '<div class="cap rv"><h3>Как это живёт дома</h3><p>'+interior.text+'</p></div>'+
+      '<div class="cap rv"><h3>В пространстве владельца</h3><p>'+interior.text+'</p></div>'+
     '</div></section>') : '';
 
   var gallerySec = (gallery&&gallery.length) ? (
     '<section class="gallery"><div class="wrap">'+
-      '<div class="label rv" style="margin-bottom:16px">Ещё ракурсы в интерьере</div>'+
+      '<div class="label rv" style="margin-bottom:16px">Ракурсы</div>'+
       '<div class="ggrid">'+
         gallery.map(function(g){return '<div class="gitem rv"><img src="'+IMG+g+'" alt="'+o.name+' — ракурс" loading="lazy"></div>'}).join('')+
       '</div>'+

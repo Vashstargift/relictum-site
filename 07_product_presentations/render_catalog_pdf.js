@@ -169,7 +169,7 @@ function alivePage(e){
   const story=a.story.map(p=>`<p>${esc(p)}</p>`).join('');
   return `<section class="page alive">
     <div class="visual"><img src="${IMG}${a.still}" alt=""><div class="shade"></div></div>
-    <div class="body"><div class="label kicker">Встретить живым</div><h2>${esc(a.title)}</h2>
+    <div class="body"><div class="label kicker">При жизни</div><h2>${esc(a.title)}</h2>
       <div class="story">${story}</div>
       <div class="era"><span>Эпоха</span><b>${esc(a.era)}</b></div>
       <div class="home"><img src="${IMG}${a.home}" alt=""><div><div class="cap">В вашем доме</div><p>${esc(a.homeText)}</p></div></div>
