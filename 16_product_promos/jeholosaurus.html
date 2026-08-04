@@ -6,6 +6,7 @@
 <title>Скелет динозавра Jeholosaurus — RELICTUM</title>
 <meta name="description" content="Целый смонтированный скелет динозавра Jeholosaurus, ранний мел, 120 млн лет, Ляонин. Готовый экспонат «под ключ» для дома и коллекции. Провенанс RELICTUM.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../02_site_v1_gallery/style.css">
 <style>
 :root{
   --black:#0A0908; --coal:#14110E; --ivory:#F4F0E8; --bone:#FBF8F1; --bronze:#B08A55; --gold:#E9C98A; --deep:#8F6530;
@@ -31,7 +32,7 @@ a{color:inherit;text-decoration:none}
 .rv.in{opacity:1;transform:none}
 
 /* hero */
-.hero{min-height:100svh;display:grid;grid-template-columns:1fr 1.02fr;align-items:center;gap:clamp(24px,4vw,64px);padding:96px clamp(18px,4.5vw,56px) 48px;max-width:1240px;margin:0 auto}
+.hero{min-height:100svh;display:grid;grid-template-columns:1fr 1.02fr;align-items:center;gap:clamp(24px,4vw,64px);padding:96px clamp(18px,4.5vw,56px) 48px;max-width:1120px;margin:0 auto}
 @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:96px;gap:24px}}
 .hero .txt .kick{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--deep);margin-bottom:16px}
 .hero h1{font-size:clamp(40px,6.6vw,72px);margin-bottom:8px}
@@ -140,13 +141,71 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 
-<div class="top">
-  <a class="bk" href="../02_site_v1_gallery/catalog.html">← Каталог</a>
-  <a class="mk" href="../02_site_v1_gallery/index.html">RELICTUM</a>
-  <span class="rl-shopnav" style="color:#5c554a"></span>
-</div>
-
+<nav class="nav scrolled" id="nav">
+  <a class="nav-logo" href="../02_site_v1_gallery/index.html">
+    <img src="../shared/brand/Relictum_comet.png" alt="Relictum">
+    <span>
+      <span class="nav-wordmark">RELICTUM</span>
+      <div class="nav-tag">Роскошь вне времени</div>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../02_site_v1_gallery/catalog.html" class="active">Каталог</a></li>
+    <li><a href="../02_site_v1_gallery/interiors.html">Интерьеры</a></li>
+    <li><a href="../02_site_v1_gallery/expeditions.html">Экспедиции</a></li>
+    <li><a href="../02_site_v1_gallery/journal.html">Журнал</a></li>
+    <li><a href="../15_concepts/eras.html">Эры</a></li>
+    <li><a href="../02_site_v1_gallery/maison.html">Дом Relictum</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="../02_site_v1_gallery/maison.html#concierge">Консьерж</a>
+    <a href="../02_site_v1_gallery/catalog.html" aria-label="Поиск по каталогу"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="10.4" cy="10.4" r="6.1"/><path d="M14.9 14.9L20.4 20.4"/></svg></a>
+  </div>
+</nav>
 <main id="app"><div class="err"><p>Загрузка…</p></div></main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" style="width:260px;margin-left:-14px">
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.</p>
+      </div>
+      <div>
+        <h4>Коллекции</h4>
+        <ul>
+          <li><a href="../02_site_v1_gallery/catalog.html#vita">Жизнь</a></li>
+          <li><a href="../02_site_v1_gallery/catalog.html#terra">Земля</a></li>
+          <li><a href="../02_site_v1_gallery/catalog.html#cosmos">Космос</a></li>
+          <li><a href="../02_site_v1_gallery/catalog.html#grand">Монументы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Дом</h4>
+        <ul>
+          <li><a href="../02_site_v1_gallery/maison.html">О доме</a></li>
+          <li><a href="../02_site_v1_gallery/interiors.html">Интерьеры</a></li>
+          <li><a href="../02_site_v1_gallery/expeditions.html">Экспедиции</a></li>
+          <li><a href="../02_site_v1_gallery/journal.html">Журнал</a></li>
+          <li><a href="../15_concepts/eras.html">Эры</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Сервис</h4>
+        <ul>
+          <li><a href="../02_site_v1_gallery/maison.html#concierge">Консьерж</a></li>
+          <li><a href="../02_site_v1_gallery/maison.html#provenance">Провенанс</a></li>
+          <li><a href="../02_site_v1_gallery/maison.html#delivery">Доставка</a></li>
+          <li><a href="../02_site_v1_gallery/maison.html#contacts">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 RELICTUM. Все права защищены.</span>
+      <span>Земля · Жизнь · Космос</span>
+    </div>
+  </div>
+</footer>
 
 <script>window.RL_FORCE_ID="R–0609";</script>
 <script src="../shared/catalog.js"></script>
@@ -254,8 +313,7 @@ if(!o){
       '<div class="s rv"><b>Оправа и свет</b><p>Подставка, витрина или настенное крепление по вашему пространству.</p></div>'+
       '<div class="s rv"><b>Доставка</b><p>Упаковка музейного класса, логистика и установка на месте.</p></div>'+
     '</div>'+
-  '</div></section>'+
-  '<div class="foot"><a href="../02_site_v1_gallery/index.html">RELICTUM</a>, Роскошь вне времени<span class="foot-links"><a href="../02_site_v1_gallery/catalog.html">Каталог</a><a href="../02_site_v1_gallery/maison.html#concierge">Консьерж</a><a href="../02_site_v1_gallery/journal.html">Журнал</a></span></div>';
+  '</div></section>';
 
   /* reveal on scroll (без IntersectionObserver — превью его морозит) */
   var rvs=[].slice.call(document.querySelectorAll('.rv'));
