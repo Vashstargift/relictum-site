@@ -302,7 +302,7 @@ window.RELICTUM_PROMO = {
   },
   "R–0226": {
     interior: { img: "int_ph_hyena.jpg", text: "На тёмном каменном постаменте массивный череп держит кабинет как единственный акцент." },
-    gallery: ["int_ph_hyena.jpg"],
+    gallery: ["g_hyena_1.jpg", "int_ph_hyena.jpg"],
     hook: "Челюсти, дробившие кости мамонтов.",
     heroKicker: "Гиены · плейстоцен",
     story: [
@@ -315,7 +315,7 @@ window.RELICTUM_PROMO = {
   "R–0227": {
     spin: "spin_dronino128.mp4",
     interior: { img: "int_ph_dronino128.jpg", text: "На мраморной консоли метеорит превращается в чёрную скульптуру внеземного происхождения — доминанта гостиной." },
-    gallery: ["int_ph_dronino128.jpg"],
+    gallery: ["g_dronino128_1.jpg", "g_dronino128_2.jpg", "g_dronino128_3.jpg", "int_ph_dronino128.jpg"],
     hook: "Сто двадцать восемь килограммов вещества из ядра чужой планеты.",
     heroKicker: "Метеориты · Рязанская область",
     story: [
@@ -339,6 +339,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Живой танк мелового периода", text: "По меловым равнинам Азии ходили динозавры в костяной броне. Войдите в их мир.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0614": {
+    gallery: ["g_oviraptor_1.jpg", "g_oviraptor_2.jpg", "g_oviraptor_3.jpg"],
     hook: "Пернатый хищник с беззубым клювом.",
     heroKicker: "Динозавры · Центральная Азия",
     story: [
@@ -350,7 +351,7 @@ window.RELICTUM_PROMO = {
   },
   "R–0615": {
     interior: { img: "int_ph_bison.jpg", text: "Череп с размахом рогов на светлой стене над консолью задаёт характер всей комнате." },
-    gallery: ["int_ph_bison.jpg"],
+    gallery: ["g_bison_1.jpg", "g_bison_2.jpg", "int_ph_bison.jpg"],
     hook: "Исполин мамонтовой степи с рогами в метр размахом.",
     heroKicker: "Мамонтовая фауна · Россия",
     story: [
