@@ -406,9 +406,8 @@ window.RELICTUM_PROMO = {
     alive: { title: "Глыба старше Земли", text: "Сто двадцать восемь килограммов почти чистого никелистого железа — один из крупнейших осколков этого падения, что вообще находили.", video: "vid_meteor.mp4", poster: "ph_dronino128.jpg" }
   },
   "R–0613": {
-    spin: "spin_pinacosaurus.mp4",
     interior: { img: "int_ph_pinacosaurus.jpg", text: "Стальной каркас скелета пинакозавра задаёт маршрут взгляда по светлой галерейной комнате. Монтаж дом проводит на месте." },
-    gallery: ["g_pina_1.jpg", "g_pina_2.jpg", "g_pina_3.jpg", "g_pina_4.jpg", "int_ph_pinacosaurus.jpg"],
+    gallery: ["g_pina_1.jpg", "g_pina_2.jpg", "g_pina_3.jpg", "int_ph_pinacosaurus.jpg"],
     hook: "Костные пластины-остеодермы вдоль спины — смонтированный скелет Pinacosaurus позднего мела.",
     heroKicker: "Динозавры, Центральная Азия",
     story: [
