@@ -15,6 +15,19 @@ window.RELICTUM_PROMO = {
     interior: { img: "int_ph_seymchan.jpg", text: "Срез палласита занимает место на письменном столе или каминной полке, оставаясь предметом камерного, не парадного масштаба." },
     gallery: ["g_seymchan_1.jpg", "g_seymchan_2.jpg", "g_seymchan_3.jpg", "int_ph_seymchan.jpg"]
   },
+  "R–0201": {
+    spin: "spin_megalodon.mp4",
+    hook: "Пятнадцать сантиметров по диагонали, полная эмаль и нетронутая зазубренная кромка.",
+    heroKicker: "Мегалодон, неоген, Атлантика",
+    story: [
+      "Otodus megalodon — крупнейшая акула за всю историю океана: до восемнадцати метров длины и челюсти, разводившиеся шире человеческого роста. Зубы он терял постоянно: каждая охота стоила ему нескольких, а на месте выпавшего за недели вырастал новый. Именно поэтому зубы и остались почти единственным, что от него дошло — скелет хрящевой, он не сохраняется.",
+      "Этот экземпляр подняли дайверы со дна Атлантики у побережья Южной Каролины. Эмаль сохранилась целиком, зазубренная кромка не сточена и не подправлена — сочетание, которое дом относит к музейному качеству. Пятнадцать целых четыре десятых сантиметра по диагонали."
+    ],
+    era: { title: "Неогеновый океан", line: "Неоген, 23 – 2,6 млн лет назад", href: "../15_concepts/era-neogene.html" },
+    alive: { title: "Вершина неогенового океана", text: "Восемнадцать метров длины и охота на китов: двадцать миллионов лет мегалодон занимал верх пищевой цепи, пока океан не остыл и киты не ушли в холодные воды.", poster: "beast_megalodon.jpg" },
+    interior: { img: "int_ph_megalodon.jpg", text: "Зуб держит стол сам по себе: стальной стенд поднимает его на уровень взгляда, а направленный свет проявляет зазубрины кромки." },
+    gallery: ["g_megalodon_1.jpg", "g_megalodon_2.jpg", "int_ph_megalodon.jpg"]
+  },
   "R–0604": {
     spin: "spin_cavebear.mp4",
     hook: "Почти три метра в высоту — один из крупнейших смонтированных скелетов пещерного медведя.",
@@ -42,7 +55,7 @@ window.RELICTUM_PROMO = {
     gallery: ["g_mammothskull_1.jpg", "g_mammothskull_2.jpg", "g_mammothskull_3.jpg", "int_ph_mammoth_skull.jpg"]
   },
   "R–0607": {
-    spin: "spin_tusks.mp4",
+    spin: "spin_mammoth_tusks.mp4",
     hook: "Симметричная пара бивней шерстистого мамонта из якутской мерзлоты общим весом 74 килограмма.",
     heroKicker: "Мамонтовая фауна, Якутия",
     story: [
@@ -55,7 +68,7 @@ window.RELICTUM_PROMO = {
     gallery: ["g_tusks_1.jpg", "g_tusks_2.jpg", "g_tusks_3.jpg", "int_ph_tusks.jpg"]
   },
   "R–0608": {
-    spin: "spin_rhino.mp4",
+    spin: "spin_rhino_skull.mp4",
     hook: "Череп шерстистого носорога с обоими рогами и полным зубным рядом — редкость среди находок ледниковой фауны.",
     heroKicker: "Мамонтовая фауна, Якутия",
     story: [
@@ -68,7 +81,7 @@ window.RELICTUM_PROMO = {
     gallery: ["g_rhino_1.jpg", "g_rhino_2.jpg", "g_rhino_3.jpg", "int_ph_rhino.jpg"]
   },
   "R–0609": {
-    spin: "spin_jeholo.mp4",
+    spin: "spin_jeholosaurus.mp4",
     hook: "Артикулированный скелет Jeholosaurus из формации Исянь, возраст около 120 миллионов лет.",
     heroKicker: "Динозавры, Ляонин, Китай",
     story: [
@@ -94,7 +107,7 @@ window.RELICTUM_PROMO = {
     gallery: ["g_sabertooth_1.jpg", "g_sabertooth_2.jpg", "g_sabertooth_3.jpg", "int_ph_sabertooth.jpg"]
   },
   "R–0209": {
-    spin: "spin_bothrio.mp4",
+    spin: "spin_bothriolepis.mp4",
     hook: "Плита девона с отпечатком панцирной рыбы Bothriolepis, одной из первых бронированных форм жизни.",
     heroKicker: "Ископаемые рыбы, девон",
     story: [
@@ -133,7 +146,7 @@ window.RELICTUM_PROMO = {
     gallery: ["g_chinge_1.jpg", "g_chinge_2.jpg", "g_chinge_3.jpg", "int_ph_chinge.jpg"]
   },
   "R–0105": {
-    spin: "spin_moon.mp4",
+    spin: "spin_moon_frame.mp4",
     hook: "Фрагмент лунной коры, выбитый в космос ударом астероида, оформлен в рамке с видом полной Луны.",
     heroKicker: "Метеориты, Луна",
     story: [
@@ -421,6 +434,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Глыба старше Земли", text: "Сто двадцать восемь килограммов почти чистого никелистого железа — один из крупнейших осколков этого падения, что вообще находили.", video: "vid_meteor.mp4", poster: "ph_dronino128.jpg" }
   },
   "R–0613": {
+    spin: "spin_pinacosaurus.mp4",
     interior: { img: "int_ph_pinacosaurus.jpg", text: "Стальной каркас скелета пинакозавра задаёт маршрут взгляда по светлой галерейной комнате. Монтаж дом проводит на месте." },
     gallery: ["g_pina_1.jpg", "g_pina_2.jpg", "g_pina_3.jpg", "int_ph_pinacosaurus.jpg"],
     hook: "Костные пластины-остеодермы вдоль спины — смонтированный скелет Pinacosaurus позднего мела.",
