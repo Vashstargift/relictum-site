@@ -242,7 +242,7 @@ if(!o){
     '<section class="spin"><div class="wrap">'+
       '<div class="label rv" style="color:var(--deep);margin-bottom:18px">Объект в 360°</div>'+
       '<div class="sframe rv"><img class="sbg" src="'+IMG+o.img+'.jpg?v=11" alt="" aria-hidden="true"><video src="'+(P.spin.indexOf('http')===0?P.spin:IMG+P.spin)+'" poster="'+IMG+o.img+'.jpg?v=11" muted loop playsinline autoplay preload="metadata"></video></div>'+
-      '<div class="scap rv">Визуализация: полный оборот вокруг объекта</div>'+
+      '<div class="scap rv">Визуализация: медленный поворот объекта</div>'+
     '</div></section>'):'';
   var passCells=[
     ['Эпоха', o.period||'—'],
@@ -391,5 +391,32 @@ if(!o){
 <script src="../shared/nav.js"></script>
 <script src="../shared/biography.js"></script>
 
+
+<script>
+/* Ролики бывают двух видов: новые горизонтальные почти совпадают с рамкой 16:9
+   (1284×716 против 1,778 — расхождение меньше процента), старые вертикальные не совпадают вовсе.
+   Первым даём заполнить рамку целиком: обрезаются считаные пиксели, зато нет полосок.
+   Вторым оставляем вписывание и размытую подложку. */
+(function(){
+  function fit(v){
+    if(!v.videoWidth||!v.videoHeight) return;
+    var frame=v.parentElement, fb=frame.getBoundingClientRect();
+    if(!fb.width||!fb.height) return;
+    var rv=v.videoWidth/v.videoHeight, rf=fb.width/fb.height;
+    var close=Math.abs(rv-rf)/rf < 0.08;
+    v.style.objectFit = close ? 'cover' : 'contain';
+    var bg=frame.querySelector('.sbg');
+    if(bg) bg.style.display = close ? 'none' : '';
+  }
+  function bind(){
+    document.querySelectorAll('.spin .sframe video').forEach(function(v){
+      if(v.readyState>=1) fit(v); else v.addEventListener('loadedmetadata',function(){fit(v)},{once:true});
+    });
+  }
+  if(document.readyState!=='loading') bind(); else document.addEventListener('DOMContentLoaded',bind);
+  addEventListener('resize',bind,{passive:true});
+  new MutationObserver(bind).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
