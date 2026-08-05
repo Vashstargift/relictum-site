@@ -37,7 +37,7 @@
     var aliveTitle=(p.alive&&p.alive.title)||(o.world==='cosmos'?'До Земли':'При жизни');
     var aliveText=(p.alive&&p.alive.text)||o.description||'';
     var findText=o.location||'Происхождение прослежено, данные в паспорте объекта.';
-    var mountText=(o.mount?('Оформление: '+o.mount+'. '):'')+'Атрибуция дома, шифр '+o.id+', Relictum Provenance Card.';
+    var mountText=(o.mount?('Оформление: '+o.mount+'. '):'')+'Атрибуция дома, шифр '+o.id+', Паспорт объекта Relictum.';
     var steps=[
       {x:6, yr:ageShort||'—', t:aliveTitle, d:aliveText},
       {x:38,yr:'находка', t:'Находка', d:findText},

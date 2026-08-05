@@ -82,7 +82,7 @@
       </div>
 
       <div class="prov-card" id="provenance">
-        <div class="label">Relictum Provenance Card</div>
+        <div class="label">Паспорт объекта Relictum</div>
         <p>Каждый объект дома получает нумерованный паспорт: происхождение, возраст, экспертные заключения, историю владения и QR-код цифрового досье. Для объектов старше миллиона лет — это единственная биография, написанная человеком.</p>
       </div>
     </div>
@@ -189,7 +189,7 @@
   row('Дата находки', o.found);
   row('Размер', o.size);
   row('Оформление', o.mount);
-  row('Документы','Provenance Card, сертификат, экспертиза');
+  row('Документы','Паспорт объекта, сертификат, экспертиза');
   document.getElementById('oSpec').innerHTML = rows.join('');
 
   var rel = C.filter(function(x){return x.world===o.world && x.id!==o.id});
