@@ -238,7 +238,7 @@ if(!o){
     '<section class="spin"><div class="wrap">'+
       '<div class="label rv" style="color:var(--deep);margin-bottom:18px">Объект в 360°</div>'+
       '<div class="sframe rv"><video src="'+(P.spin.indexOf('http')===0?P.spin:IMG+P.spin)+'" poster="'+IMG+o.img+'.jpg?v=11" muted loop playsinline autoplay preload="metadata"></video></div>'+
-      '<div class="scap rv">Полный оборот вокруг подлинника — каждый ракурс реального экспоната</div>'+
+      '<div class="scap rv">Визуализация: полный оборот вокруг объекта</div>'+
     '</div></section>'):'';
   var passCells=[
     ['Эпоха', o.period||'—'],
@@ -254,7 +254,7 @@ if(!o){
       (alive.poster?'<img class="poster" src="'+IMG+alive.poster+'" alt="">':'')+
       '<div class="veil"></div>'+
       '<div class="in rv">'+
-        '<div class="label">При жизни</div>'+
+        '<div class="label">До Земли</div>'+
         '<h2>'+alive.title+'</h2>'+
         '<p>'+alive.text+'</p>'+
         (era&&era.href?'<a class="btn" href="'+era.href+'">Войти в эпоху →</a>':'')+
