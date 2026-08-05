@@ -115,9 +115,20 @@ h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05}
 <meta name="twitter:image" content="https://vashikmart.github.io/relictum/shared/img/hero_light_ivory.jpg">
 <link rel="stylesheet" href="../shared/chrome.css">
 <style>
-/* шапка сайта заняла верх — индикатор эры переезжает вниз экрана */
-.hud { top:auto; bottom:0; background:linear-gradient(0deg,rgba(10,9,8,.82),transparent); }
+/* шапка сайта заняла верх, а низ занимают кнопки и подписи — индикатор эры уходит
+   к правому краю и висит по центру высоты, ничего не перекрывая */
+.hud { top:50%; bottom:auto; left:auto; right:0; transform:translateY(-50%);
+       width:auto; min-height:0; padding:0 clamp(14px,2.4vw,30px);
+       display:block; background:none; }
 .hud .mark { display:none; }
+.hud .era { text-align:right; padding:12px 0; border-right:2px solid rgba(233,201,138,.5); padding-right:14px; }
+.hud .era .n { font-size:clamp(14px,2.6vw,19px); line-height:1.15; }
+.hud .era .y { font-size:8.5px; letter-spacing:.2em; }
+@media(max-width:760px){
+  /* на телефоне правый край занят пальцем — индикатор возвращается вниз, но компактно */
+  .hud { top:auto; bottom:0; left:0; right:0; transform:none; padding:0 18px 10px; }
+  .hud .era { text-align:left; border-right:none; padding-right:0; }
+}
 </style>
 </head>
 <body>
