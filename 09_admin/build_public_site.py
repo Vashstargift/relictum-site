@@ -23,6 +23,11 @@ from datetime import date
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'public')
 DOMAIN = 'https://relictum.gallery'
+
+# Принудительный редирект на https. Включать ТОЛЬКО когда сертификат уже выпущен:
+# пока его нет, редирект уводит посетителя на неработающий https и сайт недоступен.
+# Заявка на Let's Encrypt подана 05.08.2026, выпуск занимает от нескольких часов до двух суток.
+FORCE_HTTPS = False
 OLD_URL = re.compile(r'https://[a-z0-9.-]*github\.io/relictum(?:-site)?/?')
 
 # что копируем: (источник, назначение внутри public, фильтр файлов)
@@ -171,7 +176,15 @@ def write_extras(pages):
         + ''.join(f'Disallow: /{p}\n' for p in sorted(PRIVATE - {'404.html'})) +
         f'Sitemap: {DOMAIN}/sitemap.xml\n')
 
-    open(os.path.join(OUT, '.htaccess'), 'w', encoding='utf-8').write(HTACCESS)
+    htaccess = HTACCESS
+    if not FORCE_HTTPS:
+        # без сертификата любой уход на https = недоступный сайт
+        htaccess = htaccess.replace(
+            'RewriteCond %{REQUEST_URI} !^/\\.well-known/\nRewriteCond %{HTTPS} !=on\nRewriteRule ^(.*)$ https://relictum.gallery/$1 [R=301,L]',
+            '# редирект на https выключен: сертификат ещё не выпущен (FORCE_HTTPS в build_public_site.py)')
+        htaccess = htaccess.replace('RewriteRule ^(.*)$ https://%1/$1 [R=301,L]',
+                                    'RewriteRule ^(.*)$ http://%1/$1 [R=301,L]')
+    open(os.path.join(OUT, '.htaccess'), 'w', encoding='utf-8').write(htaccess)
     open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(PAGE_404)
 
 
