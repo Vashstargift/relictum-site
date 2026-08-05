@@ -1,0 +1,85 @@
+/* RELICTUM — общая «обвязка» страниц: шапка сайта и полный подвал.
+   Подключается там, где нет style.css (страницы эпох, концепты, паспорт объекта),
+   чтобы шапка и подвал были одинаковыми на всём сайте.
+
+   Переменные объявлены НА САМИХ блоках, а не в :root — иначе они перебивали бы
+   палитру тёмных страниц, у которых свои значения под теми же именами. */
+.nav, .nav-drawer, footer {
+  --ivory:#F4F0E8; --bone:#FBF8F1; --obsidian:#111111; --bronze:#B08A55;
+  --bronze-deep:#9A6D34; --sand:#D8C8AF; --stone:#7A7267;
+  --hairline:rgba(154,109,52,.28);
+  --font-display:'Cormorant Garamond','Didot',serif;
+  --font-ui:'Inter','Helvetica Neue',sans-serif;
+  --gutter:clamp(20px,4.5vw,72px); --nav-h:88px;
+  --ease:cubic-bezier(.23,1,.32,1);
+}
+footer .wrap { max-width:1120px; margin:0 auto; padding:0 var(--gutter); }
+@media (max-width:760px){ .nav, .nav-drawer, footer { --nav-h:72px; } }
+
+/* ---------- Навигация ---------- */
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+  height: var(--nav-h);
+  padding: 0 var(--gutter);
+  transition: background .5s var(--ease), box-shadow .5s var(--ease);
+}
+/* Высота шапки одинакова на всех страницах и не меняется при скролле —
+   меняется только подложка, иначе при переходах шапка «прыгает» */
+.nav.scrolled {
+  background: rgba(244, 240, 232, .92);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 var(--hairline);
+}
+/* Пока шапка лежит на тёмном hero (класс on-dark ставит скрипт страницы) — светлая;
+   при скролле возвращается обычная тёмная на ivory-подложке */
+.nav.on-dark:not(.scrolled)::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(10, 9, 8, .55), rgba(10, 9, 8, 0));
+}
+.nav.on-dark:not(.scrolled) .nav-wordmark,
+.nav.on-dark:not(.scrolled) .nav-links a,
+.nav.on-dark:not(.scrolled) .nav-actions a { color: var(--bone); text-shadow: 0 1px 10px rgba(10, 9, 8, .5); }
+.nav.on-dark:not(.scrolled) .nav-tag { color: var(--sand); text-shadow: 0 1px 10px rgba(10, 9, 8, .5); }
+.nav.on-dark:not(.scrolled) .nav-links a:hover,
+.nav.on-dark:not(.scrolled) .nav-links a.active { color: #fff; border-color: var(--sand); }
+.nav.on-dark:not(.scrolled) .nav-actions a:hover { color: #fff; }
+.nav.on-dark:not(.scrolled) .nav-burger span { background: var(--bone); }
+
+.nav-logo { display: flex; align-items: center; gap: 14px; }
+.nav-logo img { height: 34px; width: auto; }
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 22px; letter-spacing: .34em; text-indent: .34em;
+  color: var(--obsidian);
+  transition: color .4s var(--ease), text-shadow .4s var(--ease);
+}
+.nav-tag { font-size: 8.5px; letter-spacing: .3em; color: var(--bronze-deep); text-transform: uppercase; margin-top: 1px; transition: color .4s var(--ease), text-shadow .4s var(--ease); }
+.nav-links { display: flex; gap: clamp(16px, 2.6vw, 42px); list-style: none; }
+.nav-links a {
+  color: var(--obsidian);          /* явно: на тёмных страницах ссылки наследуют светлый цвет */
+  font-size: 12px; font-weight: 400; letter-spacing: .14em; text-transform: uppercase;
+  padding-bottom: 4px; border-bottom: 1px solid transparent;
+  transition: border-color .3s, color .3s, text-shadow .4s var(--ease);
+}
+.nav-links a:hover, .nav-links a.active { border-color: var(--bronze); color: var(--bronze-deep); }
+.nav-actions { display: flex; gap: 20px; align-items: center; font-size: 12px; letter-spacing: .12em; }
+.nav-actions a { color: var(--stone); transition: color .3s; }
+.nav-logo, .nav-links a, .nav-actions a, .nav-drawer a { text-decoration: none; }
+.nav-logo { color: var(--obsidian); }
+footer a { text-decoration: none; }
+.nav-actions a:hover { color: var(--obsidian); }
+
+footer { background: var(--obsidian); color: var(--ivory); padding: clamp(60px, 7vw, 100px) 0 40px; }
+.f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 70px; }
+@media (max-width: 900px) { .f-grid { grid-template-columns: 1fr 1fr; } }
+footer .wordmark { font-family: var(--font-display); font-size: 30px; letter-spacing: .32em; }
+footer .tagline { font-size: 10px; letter-spacing: .3em; color: var(--bronze); text-transform: uppercase; margin-top: 8px; }
+footer h4 { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--bronze); margin-bottom: 18px; font-weight: 500; }
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 10px; }
+footer ul a { font-size: 13.5px; color: rgba(244,240,232,.68); transition: color .3s; }
+footer ul a:hover { color: var(--ivory); }
+.f-bottom { border-top: 1px solid rgba(176,138,85,.22); padding-top: 26px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 11.5px; letter-spacing: .1em; color: rgba(244,240,232,.4); }
+
