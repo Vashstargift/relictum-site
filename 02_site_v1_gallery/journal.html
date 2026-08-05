@@ -59,7 +59,7 @@
 <!-- Featured -->
 <section style="padding-top:30px">
   <div class="wrap">
-    <a class="split" href="journal-ammonite.html" style="background:var(--bone);border:1px solid rgba(154,109,52,.14)">
+    <a class="split" id="leadArticle" data-rubric="Глубокое время" href="journal-ammonite.html" style="background:var(--bone);border:1px solid rgba(154,109,52,.14)">
       <div class="media reveal" style="margin:0"><img src="../shared/img/journal_ammonite_macro.jpg" alt="Лопастные линии аммонита" style="aspect-ratio:3/2.4"></div>
       <div class="reveal" style="padding:clamp(26px,4vw,64px)">
         <div class="label">Глубокое время, 12 минут</div>
@@ -204,13 +204,17 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 (function(){
   var chips=document.querySelectorAll('#chips .chip');
   var cards=[].slice.call(document.querySelectorAll('#grid .j-card'));
+  var lead=document.getElementById('leadArticle');           // главная статья живёт вне сетки
+  if(lead) cards.push(lead);
   chips.forEach(function(ch){
     ch.addEventListener('click',function(){
       chips.forEach(function(c){c.classList.remove('on')});
       ch.classList.add('on');
       var f=ch.getAttribute('data-f');
       cards.forEach(function(card){
-        card.style.display=(!f||card.getAttribute('data-rubric')===f)?'':'none';
+        var show=(!f||card.getAttribute('data-rubric')===f);
+        card.style.display=show?'':'none';
+        if(card===lead){ var sec=lead.closest('section'); if(sec) sec.style.display=show?'':'none'; }
       });
     });
   });
