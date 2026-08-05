@@ -243,14 +243,14 @@ if(!o){
   var passCells=[
     ['Эпоха', o.period||'—'],
     ['Возраст', o.age||'—'],
-    ['Происхождение', o.location||o.region||'—'],
+    ['Происхождение', o.location||o.region||'—']
+  ].concat(o.found?[['Найден', o.found]]:[]).concat([
     ['Размер', o.size||'—']
-  ].map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
+  ]).concat(o.mount?[['Оправа', o.mount]]:[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
   var aliveSec = alive ? (
-    '<section id="bio-slot"></section>
-
-<section class="alive" id="aliveSec" data-video="'+(alive.video?IMG+alive.video:'')+'">'+
+    '<section id="bio-slot"></section>'+
+    '<section class="alive" id="aliveSec" data-video="'+(alive.video?IMG+alive.video:'')+'">'+
       (alive.poster?'<img class="poster" src="'+IMG+alive.poster+'" alt="">':'')+
       '<div class="veil"></div>'+
       '<div class="in rv">'+
