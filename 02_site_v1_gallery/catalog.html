@@ -8,7 +8,7 @@
 <style>
 /* ---------- Каталог с фильтрами ---------- */
 .cat-layout { display:grid; grid-template-columns:268px 1fr; gap:clamp(26px,3.5vw,56px); align-items:start; padding-bottom:30px; }
-.filters-rail { position:sticky; top:104px; border:1px solid var(--hairline); background:var(--bone); }
+.filters-rail { position:sticky; top:104px; border:1px solid var(--hairline); background:var(--bone); max-height:calc(100vh - 128px); overflow-y:auto; }
 .rail-head { display:flex; justify-content:space-between; align-items:center; padding:17px 20px; border-bottom:1px solid var(--hairline); }
 .rail-head .t { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--bronze-deep); }
 .rail-head button { background:none; border:none; font-family:var(--font-ui); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--stone); cursor:pointer; padding:0; }
@@ -16,9 +16,18 @@
 .rail-close { display:none; }
 .fsearch { padding:15px 20px; border-bottom:1px solid var(--hairline); }
 .fsearch input { width:100%; border:1px solid var(--hairline); background:transparent; padding:11px 12px; font-family:var(--font-ui); font-size:13px; color:var(--obsidian); }
-.fgroup { padding:15px 20px; border-bottom:1px solid var(--hairline); }
+.fgroup { border-bottom:1px solid var(--hairline); }
 .fgroup:last-child { border-bottom:none; }
-.fgroup-h { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--stone); margin-bottom:11px; }
+.fgroup-h { width:100%; display:flex; align-items:center; gap:9px; padding:14px 20px; background:none; border:none;
+  font-family:var(--font-ui); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--stone);
+  cursor:pointer; text-align:left; }
+.fgroup-h:hover { color:var(--obsidian); }
+.fgroup.open > .fgroup-h { color:var(--obsidian); }
+.fgroup-h .badge { background:var(--obsidian); color:var(--ivory); border-radius:9px; padding:1px 7px; font-size:10px; letter-spacing:.04em; }
+.fgroup-h .chev { margin-left:auto; font-size:9px; color:var(--bronze-deep); transition:transform .3s var(--ease); }
+.fgroup.open .chev { transform:rotate(180deg); }
+.fgroup-body { display:none; padding:0 20px 14px; max-height:min(44vh,320px); overflow-y:auto; }
+.fgroup.open .fgroup-body { display:block; }
 .fopt { display:flex; align-items:center; gap:10px; padding:6px 0; font-size:13.5px; cursor:pointer; color:#3d3a35; user-select:none; }
 .fopt:hover { color:var(--obsidian); }
 .fopt input { appearance:none; -webkit-appearance:none; width:15px; height:15px; border:1px solid var(--bronze-deep); background:transparent; cursor:pointer; flex:none; position:relative; border-radius:1px; margin:0; }
@@ -227,25 +236,31 @@ function optionValues(key) {
 }
 function countFor(key, val) { return CATALOG.filter(o => o[key] === val).length; }
 
-FACETS.forEach(f => {
-  const g = document.createElement("div"); g.className = "fgroup";
-  let html = `<div class="fgroup-h">${f.label}</div>`;
+FACETS.forEach((f, i) => {
+  const g = document.createElement("div"); g.className = "fgroup" + (i === 0 ? " open" : "");
+  let opts = "";
   optionValues(f.key).forEach(v => {
     const lbl = f.labels ? (f.labels[v] || v) : v;
-    html += `<label class="fopt"><input type="checkbox" data-k="${f.key}" value="${v}"><span>${lbl}</span><span class="fc">${countFor(f.key,v)}</span></label>`;
+    opts += `<label class="fopt"><input type="checkbox" data-k="${f.key}" value="${v}"><span>${lbl}</span><span class="fc">${countFor(f.key,v)}</span></label>`;
   });
-  g.innerHTML = html; facetsEl.appendChild(g);
+  g.innerHTML = `<button type="button" class="fgroup-h" aria-expanded="${i===0}">${f.label}`
+    + `<span class="badge" data-badge="${f.key}" hidden>0</span><span class="chev">▾</span></button>`
+    + `<div class="fgroup-body">${opts}</div>`;
+  facetsEl.appendChild(g);
 });
 // price group
 (function(){
   const g = document.createElement("div"); g.className = "fgroup";
-  let html = `<div class="fgroup-h">Цена</div>`;
+  let opts = "";
   PRICE_BRACKETS.forEach(b => {
     const n = CATALOG.filter(o => b.test(o.priceValue)).length;
-    html += `<label class="fopt"><input type="checkbox" data-k="price" value="${b.id}"><span>${b.label}</span><span class="fc">${n}</span></label>`;
+    opts += `<label class="fopt"><input type="checkbox" data-k="price" value="${b.id}"><span>${b.label}</span><span class="fc">${n}</span></label>`;
   });
-  html += `<div class="price-inputs"><input type="number" id="pmin" placeholder="от, ₽"><span>—</span><input type="number" id="pmax" placeholder="до, ₽"></div>`;
-  g.innerHTML = html; facetsEl.appendChild(g);
+  opts += `<div class="price-inputs"><input type="number" id="pmin" placeholder="от, ₽"><span>—</span><input type="number" id="pmax" placeholder="до, ₽"></div>`;
+  g.innerHTML = `<button type="button" class="fgroup-h" aria-expanded="false">Цена`
+    + `<span class="badge" data-badge="price" hidden>0</span><span class="chev">▾</span></button>`
+    + `<div class="fgroup-body">${opts}</div>`;
+  facetsEl.appendChild(g);
 })();
 
 // ---- Фильтрация ----
@@ -293,6 +308,16 @@ function renderChips() {
   }));
 }
 
+// счётчик выбранного на заголовке свёрнутой группы
+function syncBadges() {
+  facetsEl.querySelectorAll("[data-badge]").forEach(b => {
+    const k = b.dataset.badge;
+    let n = state[k] ? state[k].size : 0;
+    if (k === "price") n += (state.priceMin!=null?1:0) + (state.priceMax!=null?1:0);
+    b.hidden = !n; b.textContent = n;
+  });
+}
+
 function render() {
   let items = CATALOG.filter(matches);
   if (sortEl.value==="asc") items=[...items].sort((a,b)=>(a.priceValue??Infinity)-(b.priceValue??Infinity));
@@ -315,6 +340,7 @@ function render() {
   countEl.textContent = "Объектов: " + items.length + (activeCount() ? " из " + CATALOG.length : "");
   $("#toggleCount").textContent = activeCount();
   renderChips();
+  syncBadges();
 }
 
 function resetAll() {
@@ -326,6 +352,12 @@ function resetAll() {
 }
 
 // ---- События ----
+facetsEl.addEventListener("click", e => {
+  const h = e.target.closest(".fgroup-h");
+  if (!h) return;
+  const g = h.parentElement, open = g.classList.toggle("open");
+  h.setAttribute("aria-expanded", open);
+});
 facetsEl.addEventListener("change", e => {
   const cb = e.target;
   if (cb.dataset && cb.dataset.k === "price" && cb.type==="checkbox") { cb.checked?state.price.add(cb.value):state.price.delete(cb.value); render(); return; }
