@@ -3,6 +3,7 @@
    Здесь — история, эпоха, медиа. Открывается: exhibit.html?id=R–XXXX */
 window.RELICTUM_PROMO = {
   "R–0101": {
+    spin: "spin_seymchan.mp4",
     hook: "Кристаллы оливина в никелистом железе — вещество на границе ядра и мантии разрушенной протопланеты.",
     heroKicker: "Метеориты, Магаданская область",
     story: [
@@ -15,6 +16,7 @@ window.RELICTUM_PROMO = {
     gallery: ["g_seymchan_1.jpg", "g_seymchan_2.jpg", "g_seymchan_3.jpg", "int_ph_seymchan.jpg"]
   },
   "R–0604": {
+    spin: "spin_cavebear.mp4",
     hook: "Почти три метра в высоту — один из крупнейших смонтированных скелетов пещерного медведя.",
     heroKicker: "Мамонтовая фауна, Россия",
     story: [
@@ -27,6 +29,7 @@ window.RELICTUM_PROMO = {
     gallery: ["g_cavebear_1.jpg", "g_cavebear_2.jpg", "g_cavebear_3.jpg", "int_ph_cavebear.jpg"]
   },
   "R–0605": {
+    spin: "spin_mammoth_skull.mp4",
     hook: "Бивни карамельной патины размахом 2,4 метра, поднятые из вечной мерзлоты Якутии.",
     heroKicker: "Мамонтовая фауна, Якутия",
     story: [
@@ -144,6 +147,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0210": {
+    spin: "spin_ammolite.mp4",
     gallery: ["g_ammolite_1.jpg", "g_ammolite_2.jpg", "g_ammolite_3.jpg", "int_ph_ammolite.jpg"],
     interior: { img: "int_ph_ammolite.jpg", text: "Иризация аммолита раскрывается только при дневном свете, поэтому место у окна кабинета или библиотеки подходит ему лучше свечного полумрака гостиной." },
     hook: "Аммонит Placenticeras costatum, замещённый аммолитом с насыщенной радужной иризацией.",
@@ -156,6 +160,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Радуга меловых морей", text: "Раковина закручена по спирали, которую позже назовут золотым сечением, а перламутр вспыхивает зелёным и золотым при повороте.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0211": {
+    spin: "spin_arietites.mp4",
     gallery: ["g_arietites_1.jpg", "g_arietites_2.jpg", "g_arietites_3.jpg", "int_ph_arietites.jpg"],
     interior: { img: "int_ph_arietites.jpg", text: "Раскрытая спираль Arietites смотрится лучше на невысоком столе или консоли, где на неё глядят сверху, а не с высокого постамента." },
     hook: "Раннеюрский аммонит Arietites диаметром 42 сантиметра с мощными радиальными рёбрами.",
@@ -168,6 +173,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Бараний рог юрских морей", text: "Рёбра на раковине закручены, как бараний рог, — отсюда и название рода, а сорок два сантиметра диаметра делают находку редкой.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0212": {
+    spin: "spin_keichousaurus.mp4",
     gallery: ["g_keicho_1.jpg", "g_keicho_2.jpg", "g_keicho_3.jpg", "int_ph_keichousaurus.jpg"],
     interior: { img: "int_ph_keichousaurus.jpg", text: "Тёмная плита с кейхозавром висит на высоте вытянутой руки — рельеф удлинённой шеи и лап читается только с близкого расстояния." },
     hook: "Keichousaurus hui на тёмной плите — морской завроптеригий триаса возрастом 245 миллионов лет.",
@@ -180,6 +186,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Пионер триасовых мелководий", text: "Удлинённая шея и лапы-вёсла выдают одну из первых попыток рептилий снова освоить море — тёплые мелководья триасового Китая.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0213": {
+    spin: "spin_psittacosaurus_skull.mp4",
     gallery: ["g_psitskull_1.jpg", "g_psitskull_2.jpg", "g_psitskull_3.jpg", "int_ph_psittacosaurus_skull.jpg"],
     interior: { img: "int_ph_psittacosaurus_skull.jpg", text: "Череп пситтакозавра на музейной стойке умещается на книжной полке между томами — клювовидная форма челюстей видна с любого ракурса комнаты." },
     hook: "Клювовидная передняя часть челюстей — портрет раннего цератопса Psittacosaurus.",
@@ -192,6 +199,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Попугай меловых лесов", text: "Короткий клюв на морде читается сразу — отсюда и имя «попугайный ящер», найденный в меловых лесах провинции Ляонин.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0214": {
+    spin: "spin_anchiornis.mp4",
     gallery: ["g_anchiornis_1.jpg", "g_anchiornis_2.jpg", "g_anchiornis_3.jpg", "int_ph_anchiornis.jpg"],
     interior: { img: "int_ph_anchiornis.jpg", text: "Перьевой контур анхиорниса на плите разбирают только вблизи — экспонат вешают в кабинете на уровне глаз, а не над дверным проёмом." },
     hook: "Anchiornis huxleyi на плите позднего юрского периода — пернатый теропод с читаемыми зубами и когтями.",
@@ -204,6 +212,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Оперение до полёта", text: "Название переводится как «почти птица»: оперение у этого теропода появилось на десятки миллионов лет раньше самого полёта.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0215": {
+    spin: "spin_dino_eggs.mp4",
     gallery: ["g_eggs_1.jpg", "g_eggs_2.jpg", "g_eggs_3.jpg", "int_ph_dino_eggs.jpg"],
     interior: { img: "int_ph_dino_eggs.jpg", text: "Два яйца на кованой подставке занимают угол консоли или каминной полки — предмет, соразмерный вазе, а не музейному постаменту." },
     hook: "Два удлинённых яйца овирапторозавров возрастом 89 миллионов лет на общей породе.",
@@ -216,6 +225,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Кладка позднего мела", text: "Рельефная скорлупа двух удлинённых яиц связывает эту кладку с овирапторозаврами — родителями, высиживавшими потомство, как птицы.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0217": {
+    spin: "spin_trilobite_giant.mp4",
     gallery: ["g_trilobite_1.jpg", "g_trilobite_2.jpg", "g_trilobite_3.jpg", "int_ph_trilobite_giant.jpg"],
     interior: { img: "int_ph_trilobite_giant.jpg", text: "Сегменты гигантского трилобита читаются глубже при боковом свете; схему освещения для рельефной плиты дом продумывает под конкретную стену." },
     hook: "Трилобит Dikelokephalina из сланцев Fezouata длиной более тридцати сантиметров.",
@@ -228,6 +238,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Гигант ордовикских глубин", text: "В глубоководных сообществах сланцев Fezouata такие трилобиты вырастали крупнее двадцати сантиметров — задолго до первых рыб.", video: "era_paleozoic_sea.mp4", poster: "recon_paleozoic.jpg" }
   },
   "R–0218": {
+    spin: "spin_ichthyosaur_plate.mp4",
     gallery: ["g_ichthyo_1.jpg", "g_ichthyo_2.jpg", "g_ichthyo_3.jpg", "int_ph_ichthyosaur_plate.jpg"],
     interior: { img: "int_ph_ichthyosaur_plate.jpg", text: "Горизонтальная плита с ихтиозавром задаёт стену по своей длине, а не по привычному вертикальному простенку между окнами." },
     hook: "Mixosaurus в известняковой плите — череп, позвоночник и грудная клетка в анатомической связи.",
@@ -240,6 +251,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Пловец триасового рассвета", text: "Имя переводится как «смешанный ящер»: в его теле ещё видны черты сухопутных предков рядом с зачатками скоростного пловца.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0219": {
+    spin: "spin_dunkleosteus.mp4",
     gallery: ["g_dunkleo_1.jpg", "g_dunkleo_2.jpg", "g_dunkleo_3.jpg", "int_ph_dunkleosteus.jpg"],
     interior: { img: "int_ph_dunkleosteus.jpg", text: "Массивная броня черепа Dunkleosteus держит собственный вес плохо на обычной полке — форму опоры дом рассчитывает под конкретную комнату." },
     hook: "Реконструкция черепа Dunkleosteus с костными пластинами вместо зубов, поздний девон.",
@@ -252,6 +264,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Владыка девонских морей", text: "Вместо зубов — острые костные кромки, смыкавшиеся с силой в несколько тонн: хищник правил морями за сто миллионов лет до динозавров.", video: "era_paleozoic_sea.mp4", poster: "recon_paleozoic.jpg" }
   },
   "R–0220": {
+    spin: "spin_spinosaurus_jaw.mp4",
     gallery: ["g_spinojaw_1.jpg", "g_spinojaw_2.jpg", "g_spinojaw_3.jpg", "int_ph_spinosaurus_jaw.jpg"],
     interior: { img: "int_ph_spinosaurus_jaw.jpg", text: "Фрагмент челюсти спинозавра ложится в горизонтальную витрину на уровне пояса — зубной ряд рассматривают сверху, не поднимая экспонат." },
     hook: "Фрагмент челюсти Spinosaurus aegyptiacus с коническими зубами для удержания скользкой добычи.",
@@ -264,6 +277,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Рыболов меловой Сахары", text: "Конические зубы почти круглого сечения были созданы удерживать скользкую рыбу в реках древней Сахары — оружие крупнейшего хищника.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0221": {
+    spin: "spin_carcharodont_claw.mp4",
     gallery: ["g_claw_1.jpg", "g_claw_2.jpg", "g_claw_3.jpg", "int_ph_carcharodont_claw.jpg"],
     interior: { img: "int_ph_carcharodont_claw.jpg", text: "Коготь кархародонтозавра на металлической подставке стоит на рабочем столе рядом с письменным прибором — предмет для руки, а не для стены." },
     hook: "Когтевая фаланга Carcharodontosaurus длиной 26 сантиметров — костная основа рогового чехла.",
@@ -276,6 +290,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Соперник спинозавра", text: "При жизни этот коготь был обёрнут роговым чехлом и ещё длиннее — оружие, которым хищник делил Северную Африку со спинозавром.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0222": {
+    spin: "spin_pterosaur.mp4",
     gallery: ["g_ptero_1.jpg", "g_ptero_2.jpg", "g_ptero_3.jpg", "int_ph_pterosaur.jpg"],
     interior: { img: "int_ph_pterosaur.jpg", text: "Плита с птерозавром просит глухую стену без окна напротив: блики на камне мешают разглядеть тонкие кости крыла и вытянутый череп." },
     hook: "Скелет птерозавра на плите с зубастым черепом и удлинённым четвёртым пальцем крыла.",
@@ -288,6 +303,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Крыло на одном пальце", text: "Крыло держал единственный палец, чудовищно вытянутый и туго натягивавший кожистую перепонку — так летали задолго до птиц.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0223": {
+    spin: "spin_afrovenator.mp4",
     gallery: ["g_afro_1.jpg", "g_afro_2.jpg", "g_afro_3.jpg", "int_ph_afrovenator.jpg"],
     interior: { img: "int_ph_afrovenator.jpg", text: "Крупная модель черепа афровенатора стоит отдельно на консоли или низком постаменте, не деля пространство с другим декором." },
     hook: "Полноразмерная авторская реконструкция черепа Afrovenator abakensis по голотипу из Нигера.",
@@ -300,6 +316,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Охотник юрской Африки", text: "Лёгкое сложение и длинные ноги выдают быстрого бегуна — таким хищник разгуливал по равнинам формации Тиурарен в юрском Нигере.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0610": {
+    spin: "spin_psittacosaurus_skeleton.mp4",
     gallery: ["g_psitskel_1.jpg", "g_psitskel_2.jpg", "g_psitskel_3.jpg", "int_ph_psittacosaurus_skeleton.jpg"],
     interior: { img: "int_ph_psittacosaurus_skeleton.jpg", text: "Смонтированный пситтакозавр в полный рост занимает угол библиотеки или кабинета — высоты вытянутой руки хватает, чтобы разглядеть его целиком." },
     hook: "Смонтированный скелет Psittacosaurus длиной 168 сантиметров, комплектность свыше 95 процентов.",
@@ -312,6 +329,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Житель меловых чащ Азии", text: "На длинных задних ногах он обегал меловые леса Азии в поисках низкой зелени — сто шестьдесят восемь сантиметров живого движения.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0611": {
+    spin: "spin_rhino_skeleton.mp4",
     gallery: ["g_rhinoskel_1.jpg", "g_rhinoskel_2.jpg", "g_rhinoskel_3.jpg", "int_ph_rhino_skeleton.jpg"],
     interior: { img: "int_ph_rhino_skeleton.jpg", text: "Шерстистый носорог в собранном виде занимает угол просторной комнаты целиком — вокруг оставляют проход, а не расставляют мебель." },
     hook: "Профессиональная сборка на скрытом стальном каркасе — скелет шерстистого носорога из Якутии.",
@@ -324,6 +342,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Тяжеловес ледниковой Евразии", text: "Полутонная туша под густой шерстью двигалась по мамонтовой степи медленно и грузно — второй по массе зверь ледниковой Евразии.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0612": {
+    spin: "spin_crocodyliform.mp4",
     interior: { img: "int_ph_crocodyliform.jpg", text: "Крокодилиформ на металлических опорах растягивается почти во всю длину галерейной комнаты; секции скелета дом собирает прямо на месте." },
     gallery: ["g_croc_1.jpg", "g_croc_2.jpg", "g_croc_3.jpg", "int_ph_crocodyliform.jpg"],
     hook: "Составной скелет длиннорылого крокодилиформа длиной около шести метров.",
@@ -337,6 +356,7 @@ window.RELICTUM_PROMO = {
   }
   ,
   "R–0224": {
+    spin: "spin_ammonite_studio.mp4",
     interior: { img: "int_ph_ammonites_set.jpg", text: "Так комплект из семи предметов встаёт на открытую полку. Кадр — визуализация подачи: съёмка сделана с крупнейшего предмета, остальные показаны по его образцу." },
     gallery: ["g_ammonites_1.jpg", "g_ammonites_2.jpg", "g_ammonites_3.jpg", "int_ph_ammonite.jpg"],
     hook: "Семь полированных аммонитов: срезы с раскрытыми камерами и цельные экземпляры с перламутровой поверхностью.",
@@ -349,6 +369,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Спирали древних морей", text: "Внутренние камеры раковины работали как поплавок, а спираль росла по строгой логарифмической кривой — это видно на срезе.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0225": {
+    spin: "spin_cave_lion.mp4",
     interior: { img: "int_ph_cave_lion.jpg", text: "Витрина с черепом пещерного льва занимает нишу тёмного кабинета целиком, оставаясь единственным предметом в поле зрения." },
     gallery: ["g_cavelion_1.jpg", "g_cavelion_2.jpg", "g_cavelion_3.jpg", "int_ph_cave_lion.jpg"],
     hook: "Крупный представитель кошачьих плейстоцена — череп пещерного льва, обитавшего в Европе и Сибири.",
@@ -361,6 +382,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Гроза ледниковой Евразии", text: "Крупнее любого современного льва, этот хищник охотился на молодняк мамонтов и носорогов и оставил след на стенах пещер палеолита.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0228": {
+    spin: "spin_cave_lion2.mp4",
     interior: { img: "int_ph_cave_lion2.jpg", text: "Тёмная минерализованная кость просит тёплого света и глухого фона: каменная консоль в панельном кабинете держит череп лучше открытой полки." },
     gallery: ["g_cavelion2_1.jpg", "g_cavelion2_2.jpg", "g_cavelion2_3.jpg", "int_ph_cave_lion2.jpg"],
     hook: "Второй череп пещерного льва в коллекции — темнее первого и сильнее минерализован.",
@@ -373,6 +395,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Гроза ледниковой Евразии", text: "Крупнее любого современного льва, этот хищник охотился на молодняк мамонтов и носорогов и оставил след на стенах пещер палеолита.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0226": {
+    spin: "spin_hyena_skull.mp4",
     interior: { img: "int_ph_hyena.jpg", text: "Массивный череп динокрокуты на породном основании уверенно держит кабинет с плотной тёмной палитрой." },
     gallery: ["g_hyena_1.jpg", "g_hyena_2.jpg", "g_hyena_3.jpg", "int_ph_hyena.jpg"],
     hook: "Череп динокрокуты с короткой высокой мордой — крупнее, чем у пещерного медведя.",
@@ -410,6 +433,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Броня позднего мела", text: "Ряды костных пластин покрывали спину сплошным панцирем — брони, которую не могли пробить зубы большинства хищников мелового периода.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0614": {
+    spin: "spin_oviraptor.mp4",
     interior: { img: "int_ph_oviraptor.jpg", text: "Овираптор в динамичной позе занимает свободный угол кабинета — беззубый клюв и лёгкий костяк смонтированного скелета смотрят в комнату, не в стену." },
     gallery: ["g_oviraptor_1.jpg", "g_oviraptor_2.jpg", "g_oviraptor_3.jpg", "int_ph_oviraptor.jpg"],
     hook: "Беззубый клюв и лёгкое сложение — скелет овираптора позднего мела Центральной Азии.",
@@ -422,6 +446,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Страж собственной кладки", text: "Беззубый клюв и лёгкое сложение принадлежат хищнику с несправедливым именем «похититель яиц» — на деле он высиживал свою кладку, как наседка.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0615": {
+    spin: "spin_bison_skeleton.mp4",
     interior: { img: "int_ph_bison_skeleton.jpg", text: "Собранный скелет занимает середину гостиной и задаёт ей масштаб: подиум держит дистанцию, мебель расставляется по периметру." },
     gallery: ["g_bison_1.jpg", "g_bison_2.jpg", "g_bison_4.jpg", "int_ph_bison_skeleton.jpg"],
     hook: "Самцы степного зубра достигали двух тонн веса и рогов размахом более метра.",
@@ -434,6 +459,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Исполин ледниковых пастбищ", text: "Самцы весом до двух тонн и рогами шире метра паслись бок о бок с мамонтами — и чаще всех зверей появлялись на стенах пещер.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0616": {
+    spin: "spin_pleistocene_wolf.mp4",
     gallery: ["g_wolf_1.jpg", "g_wolf_2.jpg", "g_wolf_3.jpg", "int_ph_pleistocene_wolf.jpg"],
     interior: { img: "int_ph_pleistocene_wolf.jpg", text: "Плейстоценовый волк на низком подиуме умещается на широкой консоли — компактнее носорога и мамонта, но держится той же ледниковой компании." },
     hook: "Современник мамонта и шерстистого носорога — скелет плейстоценового волка ледниковой Евразии.",
