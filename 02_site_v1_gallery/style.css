@@ -217,21 +217,24 @@ section { padding: clamp(72px, 9vw, 140px) 0; }
 .world-card .meta span { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(244,240,232,.75); }
 
 /* ---------- Карточки объектов ---------- */
-.grid-objects { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.6vw, 40px); }
+.grid-objects { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.6vw, 40px); align-items: stretch; }
 @media (max-width: 1000px) { .grid-objects { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .grid-objects { grid-template-columns: 1fr; } }
-.obj-card { background: var(--bone); border: 1px solid rgba(154,109,52,.14); transition: box-shadow .5s var(--ease), transform .5s var(--ease); }
+/* карточка — колонка на всю высоту ячейки: цена с разделителем прижата к низу,
+   поэтому у всех карточек ряда она стоит на одной линии независимо от длины названия */
+.obj-card { display: flex; flex-direction: column; height: 100%;
+  background: var(--bone); border: 1px solid rgba(154,109,52,.14); transition: box-shadow .5s var(--ease), transform .5s var(--ease); }
 .obj-card:hover { box-shadow: 0 30px 70px -34px rgba(17,17,17,.35); transform: translateY(-4px); }
 .obj-card .ph { aspect-ratio: 4 / 5; overflow: hidden; background: var(--ivory); }
 /* экспонат показываем целиком: фон снимка — тот же ivory, поэтому поля незаметны */
 .obj-card .ph img { width: 100%; height: 100%; object-fit: contain; transition: transform 1.2s var(--ease); }
 .obj-card:hover .ph img { transform: scale(1.045); }
-.obj-card .body { padding: 24px 26px 28px; }
+.obj-card .body { padding: 24px 26px 28px; display: flex; flex-direction: column; flex: 1; }
 .obj-card .id { font-size: 10px; letter-spacing: .22em; color: var(--stone); }
 .obj-card h3 { font-size: 24px; margin: 8px 0 2px; }
 .obj-card .latin { font-family: var(--font-display); font-style: italic; font-size: 15px; color: var(--bronze-deep); }
-.obj-card .meta { font-size: 12px; color: var(--stone); margin-top: 10px; line-height: 1.7; }
-.obj-card .price { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--hairline); display: flex; justify-content: space-between; align-items: center; }
+.obj-card .meta { font-size: 12px; color: var(--stone); margin-top: 10px; margin-bottom: 16px; line-height: 1.7; }
+.obj-card .price { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--hairline); display: flex; justify-content: space-between; align-items: center; }
 .obj-card .price b { font-family: var(--font-display); font-size: 20px; font-weight: 500; }
 .obj-card .price span { font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--bronze-deep); }
 
