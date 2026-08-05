@@ -40,7 +40,6 @@ window.RELICTUM_PROMO = {
   },
   "R–0607": {
     spin: "spin_tusks.mp4",
-    heroVideo: "hero_museum_tusks.mp4",
     hook: "Симметричная пара бивней шерстистого мамонта из якутской мерзлоты общим весом 74 килограмма.",
     heroKicker: "Мамонтовая фауна, Якутия",
     story: [
@@ -54,7 +53,6 @@ window.RELICTUM_PROMO = {
   },
   "R–0608": {
     spin: "spin_rhino.mp4",
-    heroVideo: "hero_museum_rhino.mp4",
     hook: "Череп шерстистого носорога с обоими рогами и полным зубным рядом — редкость среди находок ледниковой фауны.",
     heroKicker: "Мамонтовая фауна, Якутия",
     story: [
@@ -68,7 +66,6 @@ window.RELICTUM_PROMO = {
   },
   "R–0609": {
     spin: "spin_jeholo.mp4",
-    heroVideo: "hero_museum_dino.mp4",
     hook: "Артикулированный скелет Jeholosaurus из формации Исянь, возраст около 120 миллионов лет.",
     heroKicker: "Динозавры, Ляонин, Китай",
     story: [
@@ -82,7 +79,6 @@ window.RELICTUM_PROMO = {
   },
   "R–0208": {
     spin: "spin_sabertooth.mp4",
-    heroVideo: "hero_museum_sabertooth.mp4",
     hook: "Клинковидные клыки одного из крупнейших саблезубых хищников неогена.",
     heroKicker: "Саблезубые кошки, Ганьсу, Китай",
     story: [
@@ -96,7 +92,6 @@ window.RELICTUM_PROMO = {
   },
   "R–0209": {
     spin: "spin_bothrio.mp4",
-    heroVideo: "hero_museum_bothrio.mp4",
     hook: "Плита девона с отпечатком панцирной рыбы Bothriolepis, одной из первых бронированных форм жизни.",
     heroKicker: "Ископаемые рыбы, девон",
     story: [
@@ -110,7 +105,6 @@ window.RELICTUM_PROMO = {
   },
   "R–0103": {
     spin: "spin_dronino.mp4",
-    heroVideo: "hero_museum_dronino.mp4",
     hook: "Индивидуальный экземпляр метеорита Дронино с глубоким рельефом регмаглиптов — следами оплавления в атмосфере.",
     heroKicker: "Метеориты, Рязанская область",
     story: [
@@ -124,7 +118,6 @@ window.RELICTUM_PROMO = {
   },
   "R–0104": {
     spin: "spin_chinge.mp4",
-    heroVideo: "hero_museum_meteor.mp4",
     hook: "Богатый никелем атаксит с тёмной корой, найденный на реке Чинге в Тыве.",
     heroKicker: "Метеориты, Тыва",
     story: [
@@ -138,7 +131,6 @@ window.RELICTUM_PROMO = {
   },
   "R–0105": {
     spin: "spin_moon.mp4",
-    heroVideo: "hero_museum_moon.mp4",
     hook: "Фрагмент лунной коры, выбитый в космос ударом астероида, оформлен в рамке с видом полной Луны.",
     heroKicker: "Метеориты, Луна",
     story: [
