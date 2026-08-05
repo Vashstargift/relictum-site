@@ -100,3 +100,36 @@ footer ul a:hover { color: var(--ivory); }
 .nav.on-dark.scrolled .nav-actions a:hover { color: #fff; }
 .nav.on-dark.scrolled .nav-burger span { background: var(--bone); }
 .nav.on-dark .nav-logo { color: var(--bone); }
+
+/* мобильная выезжающая панель: на десктопе скрыта, иначе висит полосой под подвалом */
+.nav-drawer { display: none; }
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .nav-actions { display: none; }
+  .nav-burger {
+    display: flex; flex-direction: column; gap: 5px;
+    width: 44px; height: 44px; align-items: center; justify-content: center;
+    background: transparent; border: none; cursor: pointer; z-index: 130; padding: 0;
+  }
+  .nav-burger span { width: 24px; height: 1.5px; background: var(--obsidian); transition: transform .35s var(--ease), opacity .25s; display: block; }
+  .nav-burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-burger.is-open span:nth-child(2) { opacity: 0; }
+  .nav-burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav-drawer {
+    display: flex;
+    position: fixed; inset: 0; z-index: 120;
+    background: var(--ivory);
+    display: flex; align-items: center; justify-content: center;
+    transform: translateX(100%); transition: transform .5s var(--ease);
+  }
+  body.nav-open { overflow: hidden; }
+  body.nav-open .nav-drawer { transform: none; }
+  .nav-drawer-inner { display: flex; flex-direction: column; align-items: center; gap: 26px; text-align: center; }
+  .nav-drawer-inner a {
+    font-family: var(--font-display); font-size: 30px; letter-spacing: .06em; color: var(--obsidian);
+    text-transform: none;
+  }
+  .nav-drawer-inner a:hover { color: var(--bronze-deep); }
+  .nav-drawer-sep { width: 46px; height: 1px; background: var(--hairline); margin: 6px 0; }
+}
+/* ---------- Мобильные формы ---------- */

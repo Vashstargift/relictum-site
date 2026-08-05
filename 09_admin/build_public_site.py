@@ -80,8 +80,13 @@ def rewrite_links(text, scope):
 # Данные каталога меняются часто, а браузер кэширует .js надолго. Поэтому к скриптам
 # дописывается ?v=<хэш содержимого>: пока данные не менялись — адрес прежний и кэш работает,
 # как только каталог правят — адрес меняется, и посетитель сразу видит новое.
+# Всё, что кэшируется браузером надолго и потому должно версионироваться (?v=…).
+# Стили сюда входят обязательно: без них правка шапки или подвала доходит
+# до постоянного посетителя только когда истечёт кэш (сейчас 7 дней).
 DATA_FILES = ['shared/catalog.js', '16_product_promos/promo-data.js',
-              'shared/shop.js', 'shared/nav.js', 'shared/biography.js']
+              'shared/shop.js', 'shared/nav.js', 'shared/biography.js',
+              'shared/chrome.css', 'shared/shop.css', 'shared/fonts.css',
+              '02_site_v1_gallery/style.css']
 
 
 def data_stamp():
@@ -95,7 +100,9 @@ def data_stamp():
 
 
 def stamp_scripts(text, stamp):
-    return re.sub(r'(<script[^>]+src="[^"]+?\.js)(")', r'\1?v=' + stamp + r'\2', text)
+    text = re.sub(r'(<script[^>]+src="[^"]+?\.js)(")', r'\1?v=' + stamp + r'\2', text)
+    # шрифты подключены внутри fonts.css и версионируются вместе с ним
+    return re.sub(r'(<link[^>]+href="[^"]+?\.css)(")', r'\1?v=' + stamp + r'\2', text)
 
 
 def public_url(rel_path):
@@ -166,8 +173,43 @@ def build():
     t = t.replace("return '02_site_v1_gallery/';", "return '';")
     open(shop, 'w', encoding='utf-8').write(t)
 
+    dropped = prune_media()
     write_extras(pages)
-    return pages, stamp
+    return pages, stamp, dropped
+
+
+# Медиа, которое лежит в репозитории, но на публичных страницах не встречается,
+# в срез не попадает: это библиотека промо-роликов, кадры для PDF и черновые
+# генерации. В репозитории они остаются, на хостинг не уезжают.
+MEDIA_EXT = ('.jpg', '.jpeg', '.png', '.mp4', '.webp', '.gif', '.svg', '.ico')
+KEEP_DIRS = ('shared/brand',)          # логотипы и фавиконы не трогаем никогда
+
+
+def prune_media():
+    haystack = []
+    for root, _, files in os.walk(OUT):
+        for f in files:
+            if f.endswith(('.html', '.js', '.css', '.xml', '.txt')):
+                haystack.append(open(os.path.join(root, f), encoding='utf-8',
+                                     errors='ignore').read())
+    blob = '\n'.join(haystack)
+
+    dropped = []
+    for root, _, files in os.walk(OUT):
+        rel_dir = os.path.relpath(root, OUT).replace(os.sep, '/')
+        if any(rel_dir == k or rel_dir.startswith(k + '/') for k in KEEP_DIRS):
+            continue
+        for f in files:
+            if not f.lower().endswith(MEDIA_EXT):
+                continue
+            stem = f.rsplit('.', 1)[0]
+            # имя целиком или без расширения (в данных картинки задаются как "ph_slug")
+            if f in blob or stem in blob:
+                continue
+            p = os.path.join(root, f)
+            dropped.append((os.path.relpath(p, OUT), os.path.getsize(p)))
+            os.remove(p)
+    return dropped
 
 
 def write_extras(pages):
@@ -242,7 +284,13 @@ ErrorDocument 404 /404.html
   ExpiresByType video/mp4 "access plus 30 days"
   ExpiresByType text/css "access plus 7 days"
   ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType text/html "access plus 10 minutes"
+</IfModule>
+
+# шрифты дома лежат у нас же — отдаём с правильным типом и надолго
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
 </IfModule>
 """
 
@@ -278,7 +326,12 @@ PAGE_404 = """<!DOCTYPE html>
 
 
 if __name__ == '__main__':
-    pages, stamp = build()
+    pages, stamp, dropped = build()
     total = sum(os.path.getsize(os.path.join(dp, f))
                 for dp, _, fs in os.walk(OUT) for f in fs)
+    if dropped:
+        saved = sum(s for _, s in dropped)
+        print(f'Не вошло в срез (нет ссылок): {len(dropped)} файлов, {saved/1024/1024:.1f} МБ')
+        for name, size in sorted(dropped, key=lambda x: -x[1])[:8]:
+            print(f'   {size/1024/1024:6.2f} МБ  {name}')
     print(f'OK · страниц {len(pages)} · вес {total/1024/1024:.0f} МБ · данные ?v={stamp} · → {OUT}')

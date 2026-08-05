@@ -146,8 +146,8 @@
     <div class="label reveal">Рассылка дома</div>
     <h2 class="reveal" style="font-size:clamp(30px,3.4vw,48px);margin:18px 0">Письма из глубины времени</h2>
     <p class="reveal" style="margin-bottom:34px">Раз в месяц: новые объекты до публикации, эссе журнала и приглашения в экспедиции.</p>
-    <form class="reveal" style="display:flex;flex-wrap:wrap;gap:12px;max-width:460px;margin:0 auto" onsubmit="return false">
-      <input type="email" placeholder="Ваш e-mail" style="flex:1 1 220px;min-width:0;background:transparent;border:1px solid rgba(176,138,85,.4);color:var(--ivory);padding:16px 20px;font-family:var(--font-ui);font-size:16px;letter-spacing:.06em">
+    <form id="subf" class="reveal" style="display:flex;flex-wrap:wrap;gap:12px;max-width:460px;margin:0 auto">
+      <input type="email" name="email" required placeholder="Ваш e-mail" style="flex:1 1 220px;min-width:0;background:transparent;border:1px solid rgba(176,138,85,.4);color:var(--ivory);padding:16px 20px;font-family:var(--font-ui);font-size:16px;letter-spacing:.06em">
       <button class="btn" style="flex:1 1 auto;border-color:var(--bronze);color:var(--bronze)">Подписаться</button>
     </form>
   </div>
@@ -157,7 +157,7 @@
   <div class="wrap">
     <div class="f-grid">
       <div>
-        <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" style="width:260px;margin-left:-14px">
+        <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" style="width:260px;margin-left:-14px" loading="lazy" decoding="async">
         <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.</p>
       </div>
       <div>
@@ -185,7 +185,7 @@
           <li><a href="maison.html#concierge">Консьерж</a></li>
           <li><a href="maison.html#provenance">Провенанс</a></li>
           <li><a href="maison.html#delivery">Доставка</a></li>
-          <li><a href="maison.html#contacts">Контакты</a></li>
+          <li><a href="maison.html#concierge">Контакты</a></li>
         </ul>
       </div>
     </div>
@@ -221,6 +221,21 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 })();
 </script>
 <script src="../shared/shop.js"></script>
+<script>
+/* подписка на рассылку: без бэкенда — открываем письмо в почтовой программе гостя */
+(function(){
+  var f=document.getElementById('subf'); if(!f) return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){ f.reportValidity(); return; }
+    var mail=(new FormData(f)).get('email')||'';
+    try{ var a=JSON.parse(localStorage.getItem('relictum_subs')||'[]'); a.unshift({date:new Date().toLocaleString('ru-RU'),email:mail}); localStorage.setItem('relictum_subs',JSON.stringify(a)); }catch(err){}
+    f.innerHTML='<p style="margin:0">Спасибо. Подтвердите подписку письмом — оно уже открыто в вашей почте.</p>';
+    window.location.href='mailto:hello@relictum.gallery?subject='+encodeURIComponent('Подписка на письма Relictum')+
+      '&body='+encodeURIComponent('Прошу подписать на рассылку дома: '+mail);
+  });
+})();
+</script>
 <script src="../shared/nav.js"></script>
 </body>
 </html>
