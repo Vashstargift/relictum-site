@@ -74,6 +74,27 @@ def rewrite_links(text, scope):
     return text
 
 
+# Данные каталога меняются часто, а браузер кэширует .js надолго. Поэтому к скриптам
+# дописывается ?v=<хэш содержимого>: пока данные не менялись — адрес прежний и кэш работает,
+# как только каталог правят — адрес меняется, и посетитель сразу видит новое.
+DATA_FILES = ['shared/catalog.js', '16_product_promos/promo-data.js',
+              'shared/shop.js', 'shared/nav.js', 'shared/biography.js']
+
+
+def data_stamp():
+    import hashlib
+    h = hashlib.sha1()
+    for rel in DATA_FILES:
+        p = os.path.join(ROOT, rel)
+        if os.path.exists(p):
+            h.update(open(p, 'rb').read())
+    return h.hexdigest()[:8]
+
+
+def stamp_scripts(text, stamp):
+    return re.sub(r'(<script[^>]+src="[^"]+?\.js)(")', r'\1?v=' + stamp + r'\2', text)
+
+
 def public_url(rel_path):
     """Адрес файла на домене. index.html схлопывается в путь папки."""
     p = rel_path.replace(os.sep, '/')
@@ -103,6 +124,7 @@ def fix_meta(text, rel_path):
 
 
 def build():
+    stamp = data_stamp()
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
     os.makedirs(OUT)
@@ -120,6 +142,7 @@ def build():
             text = rewrite_links(text, dst_dir)
             if f.endswith('.html'):
                 text = fix_meta(text, rel)
+                text = stamp_scripts(text, stamp)
                 pages.append(rel.replace(os.sep, '/'))
             open(os.path.join(d, f), 'w', encoding='utf-8').write(text)
 
@@ -141,7 +164,7 @@ def build():
     open(shop, 'w', encoding='utf-8').write(t)
 
     write_extras(pages)
-    return pages
+    return pages, stamp
 
 
 def write_extras(pages):
@@ -252,7 +275,7 @@ PAGE_404 = """<!DOCTYPE html>
 
 
 if __name__ == '__main__':
-    pages = build()
+    pages, stamp = build()
     total = sum(os.path.getsize(os.path.join(dp, f))
                 for dp, _, fs in os.walk(OUT) for f in fs)
-    print(f'OK · страниц {len(pages)} · вес {total/1024/1024:.0f} МБ · → {OUT}')
+    print(f'OK · страниц {len(pages)} · вес {total/1024/1024:.0f} МБ · данные ?v={stamp} · → {OUT}')
