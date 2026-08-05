@@ -454,6 +454,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Стая на краю тундростепи", text: "Держась стаями по краю мамонтовой степи, этот волк превосходил размером и силой современного родственника, соседствуя с мамонтом и носорогом.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0617": {
+    spin: "spin_mammoth_skeleton.mp4",
     gallery: ["g_mammothskel_1.jpg", "g_mammothskel_2.jpg", "g_mammothskel_3.jpg", "int_ph_mammoth_skeleton.jpg"],
     interior: { img: "int_ph_mammoth_skeleton.jpg", text: "Мамонт в полном сборе занимает комнату целиком; несущую способность пола под его весом дом проверяет заранее, до выбора места установки." },
     hook: "Полный скелет шерстистого мамонта на скрытом стальном каркасе, монтаж прямо на месте.",
