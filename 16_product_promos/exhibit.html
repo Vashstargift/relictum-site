@@ -66,8 +66,12 @@ a{color:inherit;text-decoration:none}
 
 /* alive — тёмная секция с видео */
 .spin{background:var(--bone);border-top:1px solid var(--linel);border-bottom:1px solid var(--linel);padding:clamp(60px,8vw,110px) 0;text-align:center}
-.spin .sframe{width:min(760px,88vw);margin:0 auto;border:1px solid var(--linel);background:#EFEAE0;box-shadow:0 30px 80px rgba(20,17,14,.12);overflow:hidden}
-.spin .sframe video{width:100%;aspect-ratio:4/3;object-fit:contain;display:block;background:#EFEAE0}
+.spin .sframe{position:relative;width:min(1120px,92vw);margin:0 auto;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--linel);background:#EFEAE0;box-shadow:0 30px 80px rgba(20,17,14,.12)}
+/* вертикальный ролик в горизонтальной рамке: пустоту закрывает размытый кадр того же экспоната */
+.spin .sframe .sbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(64px) saturate(.55);transform:scale(1.3);opacity:.5;z-index:0}
+.spin .sframe::after{content:'';position:absolute;inset:0;background:rgba(239,234,224,.62);z-index:0;pointer-events:none}
+@media(max-width:760px){.spin .sframe{aspect-ratio:4/5}}
+.spin .sframe video{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;display:block}
 .spin .scap{margin-top:18px;font-size:12.5px;letter-spacing:.08em;color:#7A7267}
 .alive{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden;background:var(--black);color:var(--ivory)}
 .alive video,.alive .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
@@ -238,7 +242,7 @@ if(!o){
   var spinSec=(P&&P.spin)?(
     '<section class="spin"><div class="wrap">'+
       '<div class="label rv" style="color:var(--deep);margin-bottom:18px">Объект в 360°</div>'+
-      '<div class="sframe rv"><video src="'+(P.spin.indexOf('http')===0?P.spin:IMG+P.spin)+'" poster="'+IMG+o.img+'.jpg?v=11" muted loop playsinline autoplay preload="metadata"></video></div>'+
+      '<div class="sframe rv"><img class="sbg" src="'+IMG+o.img+'.jpg?v=11" alt="" aria-hidden="true"><video src="'+(P.spin.indexOf('http')===0?P.spin:IMG+P.spin)+'" poster="'+IMG+o.img+'.jpg?v=11" muted loop playsinline autoplay preload="metadata"></video></div>'+
       '<div class="scap rv">Визуализация: полный оборот вокруг объекта</div>'+
     '</div></section>'):'';
   var passCells=[
@@ -390,22 +394,5 @@ if(!o){
 <script src="../shared/nav.js"></script>
 <script src="../shared/biography.js"></script>
 
-<script>
-/* Контейнер 360° принимает пропорции самого ролика: они разные (3:4, 9:16, 4:3),
-   а жёсткий формат резал кадр по краям. */
-(function(){
-  function fit(v){
-    if(!v.videoWidth||!v.videoHeight) return;
-    v.style.aspectRatio = v.videoWidth+' / '+v.videoHeight;
-  }
-  function bind(){
-    document.querySelectorAll('.spin .sframe video').forEach(function(v){
-      if(v.readyState>=1) fit(v); else v.addEventListener('loadedmetadata',function(){fit(v)},{once:true});
-    });
-  }
-  if(document.readyState!=='loading') bind(); else document.addEventListener('DOMContentLoaded',bind);
-  new MutationObserver(bind).observe(document.documentElement,{childList:true,subtree:true});
-})();
-</script>
 </body>
 </html>
