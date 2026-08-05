@@ -178,7 +178,10 @@ def write_extras(pages):
 HTACCESS = """# RELICTUM — relictum.gallery
 RewriteEngine On
 
-# только https и без www
+# только https и без www.
+# ВАЖНО: /.well-known/ исключён — по нему Let's Encrypt проверяет домен по http,
+# и редирект на https сломал бы выпуск и продление сертификата.
+RewriteCond %{REQUEST_URI} !^/\\.well-known/
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://relictum.gallery/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]
