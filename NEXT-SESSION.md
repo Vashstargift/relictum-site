@@ -14,6 +14,7 @@
 | Исходный репозиторий | `VashikMart/relictum` — прав на запись нет (403), НЕ трогаем |
 | Генерация фото | локальный CLI `~/.local/bin/nano-banana` (Gemini). Ключ: `set -a && . ~/.nano-banana/.env && set +a` |
 | Генерация видео | только облачная сессия с Higgsfield. Бриф: `16_product_promos/SPIN_VIDEOS.md` |
+| Свой домен | **relictum.gallery** на Beget, аккаунт `stargift@stargift.beget.tech`. Сборка среза и заливка: `DEPLOY.md` |
 | Архив Михаила | `~/relictum-mikhail-archive/Реликтум/` — 72 фото + `messages.html` с описаниями |
 
 **Ритуал:** работаем → «сохрани в гит» → «задеплой». Push в `main` = публикация, только по команде владельца.
