@@ -244,9 +244,9 @@ if(!o){
     ['Эпоха', o.period||'—'],
     ['Возраст', o.age||'—'],
     ['Происхождение', o.location||o.region||'—']
-  ].concat(o.found?[['Найден', o.found]]:[]).concat([
+  ].concat(o.found?[['Дата находки', o.found]]:[]).concat([
     ['Размер', o.size||'—']
-  ]).concat(o.mount?[['Оправа', o.mount]]:[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
+  ]).concat(o.mount?[['Оформление', o.mount]]:[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
   var aliveSec = alive ? (
     '<section id="bio-slot"></section>'+
@@ -312,7 +312,7 @@ if(!o){
     '</div>'+
     '<div class="svc">'+
       '<div class="s rv"><b>Провенанс</b><p>Паспорт объекта с экспертизой, происхождением и печатью дома.</p></div>'+
-      '<div class="s rv"><b>Оправа и свет</b><p>Подставка, витрина или настенное крепление по вашему пространству.</p></div>'+
+      '<div class="s rv"><b>Оформление и свет</b><p>Подставка, витрина или настенное крепление по вашему пространству.</p></div>'+
       '<div class="s rv"><b>Доставка</b><p>Упаковка музейного класса, логистика и установка на месте.</p></div>'+
     '</div>'+
   '</div></section>';
