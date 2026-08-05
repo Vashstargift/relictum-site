@@ -97,7 +97,7 @@ h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05}
 </head>
 <body>
 
-<nav class="nav scrolled" id="nav">
+<nav class="nav on-dark" id="nav">
   <a class="nav-logo" href="../02_site_v1_gallery/index.html">
     <img src="../shared/brand/Relictum_comet.png" alt="Relictum">
     <span>
@@ -374,5 +374,14 @@ addEventListener('scroll',onS,{passive:true});onS();
 </footer>
 
 <script src="../shared/nav.js"></script>
+
+<script>
+/* шапка: прозрачная над героем, тёмная при скролле — кремовой на тёмной странице быть не должно */
+(function(){
+  var n=document.querySelector('.nav'); if(!n) return;
+  function chk(){ n.classList.toggle('scrolled', (window.scrollY||document.documentElement.scrollTop) > 40); }
+  addEventListener('scroll', chk, {passive:true}); addEventListener('load', chk); chk();
+})();
+</script>
 </body>
 </html>

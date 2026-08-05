@@ -31,7 +31,9 @@ FORCE_HTTPS = True
 OLD_URL = re.compile(r'https://[a-z0-9.-]*github\.io/relictum(?:-site)?/?')
 
 # что копируем: (источник, назначение внутри public, фильтр файлов)
-def html_only(f): return f.endswith('.html')
+# lab.html — внутренняя песочница прототипов с макетными объектами, наружу не идёт
+INTERNAL = {'lab.html'}
+def html_only(f): return f.endswith('.html') and f not in INTERNAL
 def html_and_js(f): return f.endswith('.html') or f.endswith('.js')
 def showcase(f): return (f.endswith('.html') or f.endswith('.css')) and f != 'index-v2.html'
 

@@ -83,3 +83,20 @@ footer ul a { font-size: 13.5px; color: rgba(244,240,232,.68); transition: color
 footer ul a:hover { color: var(--ivory); }
 .f-bottom { border-top: 1px solid rgba(176,138,85,.22); padding-top: 26px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 11.5px; letter-spacing: .1em; color: rgba(244,240,232,.4); }
 
+
+/* Тёмные страницы (эры, концепты): шапка не уходит в кремовый при скролле.
+   Над героем она прозрачная со светлым текстом, при скролле — глубокий чёрный. */
+.nav.on-dark.scrolled {
+  background: rgba(10, 9, 8, .92);
+  border-bottom: 1px solid rgba(176, 138, 85, .28);
+  backdrop-filter: blur(10px);
+}
+.nav.on-dark.scrolled .nav-wordmark,
+.nav.on-dark.scrolled .nav-links a,
+.nav.on-dark.scrolled .nav-actions a { color: var(--bone); text-shadow: none; }
+.nav.on-dark.scrolled .nav-tag { color: var(--sand); text-shadow: none; }
+.nav.on-dark.scrolled .nav-links a:hover,
+.nav.on-dark.scrolled .nav-links a.active { color: #fff; border-color: var(--sand); }
+.nav.on-dark.scrolled .nav-actions a:hover { color: #fff; }
+.nav.on-dark.scrolled .nav-burger span { background: var(--bone); }
+.nav.on-dark .nav-logo { color: var(--bone); }
