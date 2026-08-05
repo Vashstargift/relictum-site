@@ -292,13 +292,5 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
 </script>
 <script src="../shared/nav.js"></script>
 
-<script>
-/* шапка: прозрачная над героем, тёмная при скролле — кремовой на тёмной странице быть не должно */
-(function(){
-  var n=document.querySelector('.nav'); if(!n) return;
-  function chk(){ n.classList.toggle('scrolled', (window.scrollY||document.documentElement.scrollTop) > 40); }
-  addEventListener('scroll', chk, {passive:true}); addEventListener('load', chk); chk();
-})();
-</script>
 </body>
 </html>
