@@ -66,8 +66,8 @@ a{color:inherit;text-decoration:none}
 
 /* alive — тёмная секция с видео */
 .spin{background:var(--bone);border-top:1px solid var(--linel);border-bottom:1px solid var(--linel);padding:clamp(60px,8vw,110px) 0;text-align:center}
-.spin .sframe{width:min(400px,72vw);margin:0 auto;border:1px solid var(--linel);background:#EFEAE0;box-shadow:0 30px 80px rgba(20,17,14,.12)}
-.spin .sframe video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
+.spin .sframe{width:min(760px,88vw);margin:0 auto;border:1px solid var(--linel);background:#EFEAE0;box-shadow:0 30px 80px rgba(20,17,14,.12);overflow:hidden}
+.spin .sframe video{width:100%;aspect-ratio:4/3;object-fit:contain;display:block;background:#EFEAE0}
 .spin .scap{margin-top:18px;font-size:12.5px;letter-spacing:.08em;color:#7A7267}
 .alive{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden;background:var(--black);color:var(--ivory)}
 .alive video,.alive .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
@@ -389,5 +389,23 @@ if(!o){
 </script>
 <script src="../shared/nav.js"></script>
 <script src="../shared/biography.js"></script>
+
+<script>
+/* Контейнер 360° принимает пропорции самого ролика: они разные (3:4, 9:16, 4:3),
+   а жёсткий формат резал кадр по краям. */
+(function(){
+  function fit(v){
+    if(!v.videoWidth||!v.videoHeight) return;
+    v.style.aspectRatio = v.videoWidth+' / '+v.videoHeight;
+  }
+  function bind(){
+    document.querySelectorAll('.spin .sframe video').forEach(function(v){
+      if(v.readyState>=1) fit(v); else v.addEventListener('loadedmetadata',function(){fit(v)},{once:true});
+    });
+  }
+  if(document.readyState!=='loading') bind(); else document.addEventListener('DOMContentLoaded',bind);
+  new MutationObserver(bind).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
