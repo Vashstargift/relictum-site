@@ -90,7 +90,7 @@ h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05}
 .hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--mist);animation:bob 2.4s ease-in-out infinite;z-index:2}
 @keyframes bob{50%{transform:translate(-50%,8px)}}
 .finale{background:radial-gradient(120% 80% at 50% 100%, #2a1608 0%, var(--black) 60%)}
-.finale .btns{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.finale .btns{margin-top:30px;gap:12px}  /* раскладка ряда — в shared/buttons.css */
 .finale .btn{line-height:1.1;white-space:nowrap;display:inline-block;padding:15px 32px;border:1px solid var(--bronze);color:var(--gold);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;transition:.4s var(--ease)}
 .finale .btn:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
 </style>
@@ -131,6 +131,7 @@ h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05}
 }
 </style>
 <link rel="stylesheet" href="../shared/fonts.css">
+<link rel="stylesheet" href="../shared/buttons.css">
 </head>
 <body>
 
@@ -343,8 +344,8 @@ h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05}
   <div class="in">
     <h1 style="font-size:clamp(34px,9vw,72px)">Мы поднимаем<br><em>время наверх</em></h1>
     <p>Всё, мимо чего вы прошли сквозь эры, — бивни, зубы, аммониты, трилобиты и вещество чужой планеты — есть в каталоге дома. Поднятое, атрибутированное, оформленное.</p>
-    <div class="btns">
-      <a class="btn" href="../02_site_v1_gallery/catalog.html">Каталог</a>
+    <div class="btns on-dark">
+      <a class="btn btn-solid" href="../02_site_v1_gallery/catalog.html">Каталог</a>
       <a class="btn" href="../02_site_v1_gallery/expeditions.html">Экспедиции</a>
       <a class="btn" href="eras.html">Живые эры</a>
     </div>

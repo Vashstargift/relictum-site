@@ -85,7 +85,7 @@ def rewrite_links(text, scope):
 # до постоянного посетителя только когда истечёт кэш (сейчас 7 дней).
 DATA_FILES = ['shared/catalog.js', '16_product_promos/promo-data.js',
               'shared/shop.js', 'shared/nav.js', 'shared/biography.js',
-              'shared/chrome.css', 'shared/shop.css', 'shared/fonts.css',
+              'shared/chrome.css', 'shared/shop.css', 'shared/fonts.css', 'shared/buttons.css',
               '02_site_v1_gallery/style.css']
 
 

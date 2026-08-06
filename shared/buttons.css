@@ -1,0 +1,143 @@
+/* ============================================================
+   RELICTUM · пары кнопок — единое правило дома
+   ============================================================
+
+   Решение владельца 06.08.2026: в ряду кнопок ПЕРВАЯ (левая) — с заливкой,
+   ОСТАЛЬНЫЕ — прозрачные с контуром. Цвет заливки зависит от фона:
+       тёмный фон  → заливка белая (ivory), контур белый
+       светлый фон → заливка чёрная (obsidian), контур чёрный
+
+   Разметка:
+       <div class="btn-row on-dark">        ← on-dark ставится там, где фон тёмный
+         <a class="btn btn-solid">…</a>     ← левая, с заливкой
+         <a class="btn">…</a>               ← правая, контурная
+       </div>
+
+   Контейнеры ряда исторически называются по-разному (btn-row в витрине,
+   btns на страницах эр, row в блоке покупки промо) — правило покрывает все три.
+   Цвета заданы hex, а не переменными: наборы переменных на страницах разные.
+
+   ВАЖНО про приоритет: у страниц эр есть своё `.finale .btn` (0,2,0), поэтому
+   селекторы здесь намеренно трёхклассовые — иначе постраничные стили перебьют.
+   ============================================================ */
+
+:root {
+  --rl-fill-light: #111111;   /* заливка на светлом фоне */
+  --rl-fill-dark:  #F4F0E8;   /* заливка на тёмном фоне */
+  --rl-hover-warm: #9A6D34;   /* тёплый акцент наведения (светлый фон) */
+  --rl-hover-gold: #E9C98A;   /* тёплый акцент наведения (тёмный фон) */
+}
+
+/* ---------- геометрия ряда: кнопки одного размера ----------
+
+   Зоны ответственности разделены намеренно:
+   .btn-row  — раскладку задаёт 02_site_v1_gallery/style.css (он подключается
+               ПОЗЖЕ этого файла, и при равной силе селектора выигрывает он);
+               здесь мы добавляем только width, которого там нет.
+   .btns, .cta .row — раскладки в постраничных стилях нет, задаём целиком тут.
+
+   width:max-content обязателен, а max-width ставить НЕЛЬЗЯ: с любым ограничением
+   ширины браузер считает каждую колонку по её содержимому, и кнопка с длинной
+   надписью снова оказывается шире соседней. Проверено на блоке консьержа
+   (родитель 620px) и на первом экране главной. От переполнения на узких
+   экранах защищает не max-width, а перестроение в столбец. */
+.btn-row,
+.btns,
+.cta .row {
+  width: max-content;
+}
+
+.btns,
+.cta .row {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 16px;
+}
+
+.btn-row > .btn,
+.btns > .btn,
+.cta .row > .btn {
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  line-height: 1.1;
+}
+
+/* ---------- светлый фон (по умолчанию) ---------- */
+.btn-row > .btn.btn-solid,
+.btn-row > .btn.solid,
+.btns > .btn.btn-solid,
+.btns > .btn.solid,
+.cta .row > .btn.solid {
+  background: var(--rl-fill-light);
+  color: #F4F0E8;
+  border-color: var(--rl-fill-light);
+}
+.btn-row > .btn.btn-solid:hover,
+.btn-row > .btn.solid:hover,
+.btns > .btn.btn-solid:hover,
+.btns > .btn.solid:hover,
+.cta .row > .btn.solid:hover {
+  background: var(--rl-hover-warm);
+  border-color: var(--rl-hover-warm);
+  color: #F4F0E8;
+}
+
+.btn-row > .btn:not(.btn-solid):not(.solid),
+.btns > .btn:not(.btn-solid):not(.solid) {
+  background: transparent;
+  border-color: var(--rl-fill-light);
+  color: var(--rl-fill-light);
+}
+.btn-row > .btn:not(.btn-solid):not(.solid):hover,
+.btns > .btn:not(.btn-solid):not(.solid):hover {
+  background: var(--rl-fill-light);
+  border-color: var(--rl-fill-light);
+  color: #F4F0E8;
+}
+
+/* ---------- тёмный фон ---------- */
+.btn-row.on-dark > .btn.btn-solid,
+.btn-row.on-dark > .btn.solid,
+.btns.on-dark > .btn.btn-solid,
+.btns.on-dark > .btn.solid,
+.cta .row.on-dark > .btn.solid {
+  background: var(--rl-fill-dark);
+  color: #111111;
+  border-color: var(--rl-fill-dark);
+}
+.btn-row.on-dark > .btn.btn-solid:hover,
+.btn-row.on-dark > .btn.solid:hover,
+.btns.on-dark > .btn.btn-solid:hover,
+.btns.on-dark > .btn.solid:hover,
+.cta .row.on-dark > .btn.solid:hover {
+  background: var(--rl-hover-gold);
+  border-color: var(--rl-hover-gold);
+  color: #111111;
+}
+
+.btn-row.on-dark > .btn:not(.btn-solid):not(.solid),
+.btns.on-dark > .btn:not(.btn-solid):not(.solid),
+.cta .row.on-dark > .btn:not(.solid) {
+  background: transparent;
+  border-color: var(--rl-fill-dark);
+  color: var(--rl-fill-dark);
+}
+.btn-row.on-dark > .btn:not(.btn-solid):not(.solid):hover,
+.btns.on-dark > .btn:not(.btn-solid):not(.solid):hover,
+.cta .row.on-dark > .btn:not(.solid):hover {
+  background: var(--rl-fill-dark);
+  border-color: var(--rl-fill-dark);
+  color: #111111;
+}
+
+/* На узком экране ряд разворачивается в столбец — порядок сохраняется,
+   кнопка с заливкой остаётся первой (сверху).
+   Порог у рядов из трёх кнопок выше: втроём они занимают до 900px. */
+@media (max-width: 900px) {
+  .btns, .cta .row { display: grid; grid-auto-flow: row; width: 100%; }
+  .btns > .btn, .cta .row > .btn { width: 100%; }
+}

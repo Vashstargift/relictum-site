@@ -184,7 +184,9 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-
 /* Кнопки в ряду всегда одного размера: ширину задаёт самая длинная надпись */
 .btn-row { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 16px; }
 .btn-row > .btn { text-align: center; display: inline-flex; align-items: center; justify-content: center; }
-@media (max-width: 640px) { .btn-row { display: grid; grid-auto-flow: row; width: 100%; } }
+/* Порог 760px, а не 640: пара кнопок с длинными надписями занимает до 620px
+   и на планшете в портрете уже не помещается по ширине контента. */
+@media (max-width: 760px) { .btn-row { display: grid; grid-auto-flow: row; width: 100%; } }
 .link-arrow {
   font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--bronze-deep);
   display: inline-flex; align-items: center; gap: 10px;

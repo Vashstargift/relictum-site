@@ -110,8 +110,8 @@ a{color:inherit;text-decoration:none}
 .cta .row{display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:12px;margin-bottom:52px}
 .cta .row>*{display:inline-flex;align-items:center;justify-content:center;text-align:center}
 @media(max-width:720px){.cta .row{grid-auto-flow:row;width:100%}}
-.cta .btn.solid{background:var(--gold);color:var(--black);border-color:var(--gold)}
-.cta .btn.solid:hover{background:#fff;border-color:#fff}
+/* заливка задаётся общим правилом дома в shared/buttons.css */
+
 .cta .btn.ghost{color:var(--ivory)}
 .cta .btn.ghost:hover{background:var(--ivory);color:var(--black)}
 .cta button.btn{line-height:1.1;white-space:nowrap;letter-spacing:.22em;font-size:11.5px;padding:15px 32px;font-family:inherit;cursor:pointer;background:transparent}
@@ -143,6 +143,7 @@ a{color:inherit;text-decoration:none}
 <meta name="twitter:description" content="Bothriolepis — панцирная рыба девона, 350 млн лет: существо, первым одевшееся в костяную броню. Тихий артефакт глубокого времени для кабинета. Провенанс RELICTUM.">
 <meta name="twitter:image" content="https://vashikmart.github.io/relictum/shared/img/ph_bothriolepis.jpg">
 <link rel="stylesheet" href="../shared/fonts.css">
+<link rel="stylesheet" href="../shared/buttons.css">
 </head>
 <body>
 
@@ -310,7 +311,7 @@ if(!o){
     '<div class="label rv" style="color:var(--gold);margin-bottom:14px">'+o.id+'</div>'+
     '<div class="price rv">'+(o.price||'Цена по запросу')+'</div>'+
     '<div class="note rv">Один экземпляр, паспорт объекта, доставка и установка домом Relictum</div>'+
-    '<div class="row rv">'+
+    '<div class="row rv on-dark">'+
       '<button type="button" class="btn solid" id="exCart">Добавить в корзину</button>'+
       '<button type="button" class="btn ghost" id="exFav">В избранное<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" style="vertical-align:-2px;margin-left:7px"><path d="M12 2.6l2.1 6.05 6.3.35-4.9 3.95 1.65 6.1L12 15.6l-5.15 3.45 1.65-6.1-4.9-3.95 6.3-.35z"/></svg></button>'+
       '<a class="btn ghost" href="mailto:hello@relictum.gallery?subject=Запрос: '+encodeURIComponent(o.name+' ('+o.id+')')+'">Запросить объект</a>'+
