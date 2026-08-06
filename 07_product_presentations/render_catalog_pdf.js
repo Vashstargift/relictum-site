@@ -129,12 +129,12 @@ function manifestPage(){
   return `<section class="page manifest">
     <div class="left"><div class="label" style="color:var(--bronze-deep)">Дом редких природных артефактов</div>
       <h1>Вещи, которые старше<br>любой <em>роскоши</em></h1>
-      <p class="lede">RELICTUM собирает редчайшие свидетельства глубокого времени — скелеты динозавров, бивни мамонтов, метеориты и минералы музейного уровня — и превращает их в законченные объекты для дома, кабинета и коллекции.</p>
+      <p class="lede">RELICTUM собирает редчайшие свидетельства глубокого времени — скелеты динозавров, бивни мамонтов, метеориты и минералы — и превращает их в законченные объекты для дома, кабинета и коллекции.</p>
       <p class="lede">Каждый экспонат в этом каталоге существует в единственном экземпляре, находится в наличии и передаётся с полным паспортом происхождения. Это подлинники, возраст которых измеряется миллионами лет.</p></div>
     <div class="right">
-      <div class="pillar"><div class="num">I</div><b>Подлинность</b><p>Каждый объект сопровождается Provenance Card: экспертиза, легальное происхождение, научное описание.</p></div>
-      <div class="pillar"><div class="num">II</div><b>Готовый объект, а не находка</b><p>Оправа, постамент и свет проектируются под экспонат: бронза, мрамор, музейное стекло.</p></div>
-      <div class="pillar"><div class="num">III</div><b>Белые перчатки</b><p>Упаковка музейного стандарта, страхование, доставка и монтаж нашей командой.</p></div>
+      <div class="pillar"><div class="num">I</div><b>Подлинность</b><p>Каждый объект сопровождается паспортом: экспертиза, легальное происхождение, научное описание.</p></div>
+      <div class="pillar"><div class="num">II</div><b>Готовый объект, а не находка</b><p>Оформление и постамент проектируются под экспонат: бронза, мрамор, стекло.</p></div>
+      <div class="pillar"><div class="num">III</div><b>Передача</b><p>Деревянный ящик, страховка на время пути, доставка и установка нашей командой.</p></div>
     </div></section>`;
 }
 function tocPage(){
@@ -160,7 +160,7 @@ function passportPage(e,worldTitle){
       <h1>${esc(e.name)}</h1><div class="latin">${esc(e.latin)}</div>
       <p class="hook">${esc(e.hook)}</p><p class="desc">${esc(e.desc)}</p>
       <div class="passport">${rows}</div>
-      <div class="price">Цена по запросу<small>Включая оправу, футляр, документы и доставку белыми перчатками</small></div>
+      <div class="price">Цена по запросу<small>Включая оформление, футляр, документы и бережную доставку</small></div>
       <div class="folio" style="left:12mm"><span>Relictum · ${esc(worldTitle)}</span><span class="pgnum"></span></div>
     </div></section>`;
 }
@@ -180,9 +180,9 @@ function servicePage(){
   return `<section class="page services"><div class="label" style="color:var(--bronze-deep)">Дом Relictum</div>
     <h1>Как мы работаем</h1><p class="dek">От первого запроса до установленного экспоната — путь, который дом проходит вместе с вами.</p>
     <div class="svc-grid">
-      <div class="svc"><div class="num">01</div><b>Провенанс</b><p>Экспертиза подлинности, легальное происхождение, научное описание. Provenance Card и сертификат дома.</p></div>
-      <div class="svc"><div class="num">02</div><b>Ателье</b><p>Оправа, постамент и витрина проектируются под экспонат: бронза, мрамор, музейное стекло, скрытый крепёж.</p></div>
-      <div class="svc"><div class="num">03</div><b>Белые перчатки</b><p>Музейная упаковка, страхование, доставка и монтаж нашей командой — в Москве, по России и миру.</p></div>
+      <div class="svc"><div class="num">01</div><b>Провенанс</b><p>Экспертиза подлинности, легальное происхождение, научное описание. Паспорт объекта и сертификат дома.</p></div>
+      <div class="svc"><div class="num">02</div><b>Ателье</b><p>Оформление, постамент и витрина проектируются под экспонат: бронза, мрамор, музейное стекло, скрытый крепёж.</p></div>
+      <div class="svc"><div class="num">03</div><b>Передача</b><p>Деревянный ящик, страховка, доставка и монтаж нашей командой — в Москве, по России и миру.</p></div>
       <div class="svc"><div class="num">04</div><b>Персональный поиск</b><p>Не нашли свой объект? Консьерж дома ищет экспонаты под запрос — от зуба до полного скелета.</p></div>
     </div>
     <div class="svc-photos"><img src="${IMG}prov_kit_flatlay.jpg" alt=""><img src="${IMG}mount_bronze_cradle.jpg" alt=""><img src="${IMG}pack_leather_box_open.jpg" alt=""><img src="${IMG}concierge_tray.jpg" alt=""></div>
@@ -207,7 +207,7 @@ body += servicePage() + finalPage();
 
 const html = `<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8">
 <title>RELICTUM — Каталог коллекции · 2026</title>
-<meta name="description" content="Печатный каталог реальной коллекции RELICTUM: метеориты, ископаемая жизнь и монументы музейного уровня. Роскошь вне времени.">
+<meta name="description" content="Печатный каталог реальной коллекции RELICTUM: метеориты, ископаемая жизнь и монументы. Роскошь вне времени.">
 <style>${CSS}</style></head><body>${body}</body></html>`;
 
 fs.writeFileSync(path.join(DIR,'catalog_collection_2026.html'), html);
