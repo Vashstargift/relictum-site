@@ -94,6 +94,13 @@ footer{border-top:1px solid var(--line);padding:50px 0;text-align:center}
 footer img{width:min(280px,54vw);margin:0 auto}
 footer .foot-links{display:flex;gap:22px;justify-content:center;margin-top:20px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
 footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--gold)}
+/* Ссылка на экспонат того же вида — та же плашка, что кнопки перехода в эры */
+.beast .relic{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:rgba(10,9,8,.5);border:1px solid rgba(233,201,138,.4);padding:8px 16px 8px 8px;text-decoration:none;color:var(--ivory);transition:.3s}
+.beast .relic img{width:36px;height:44px;object-fit:cover}
+.beast .relic b{font-weight:400;font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:block}
+.beast .relic small{display:block;font-size:8.5px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-top:3px}
+.beast .relic:hover{background:var(--gold);color:var(--black)}
+.beast .relic:hover small{color:var(--black)}
 </style>
 
 <!-- rl-seo -->
@@ -198,6 +205,7 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
     <h2>Спираль моря</h2>
     <p>Пока динозавры правили сушей, моря принадлежали аммонитам. Их раковины закручены в логарифмическую спираль — форму, которая растёт, не меняя пропорций.</p>
     <div class="stat"><span><b>28 см</b> Ø</span><span><b>Мадагаскар</b></span><span><b>110 млн</b> лет</span></div>
+    <a class="relic" href="../16_product_promos/exhibit.html?id=0210-placenticeras-ammolite"><img src="../shared/img/ph_ammolite.jpg?v=11" alt="" loading="lazy" decoding="async"><span><b>Смотреть экспонат →</b><small>R–0210, Аммолитовый аммонит</small></span></a>
   </div>
 </section>
 
@@ -210,17 +218,53 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
       <p>Вид определён, объект оформлен, происхождение подтверждено паспортом дома Relictum.</p>
     </div>
     <div class="grid">
-      <a class="card" href="../16_product_promos/exhibit.html?id=0610-psittacosaurus-skeleton">
-        <div class="im"><img src="../shared/img/ph_psittacosaurus_skeleton.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
-        <div class="b"><div class="id">R–0610, Монументы</div><h3>Скелет пситтакозавра</h3><div class="lat">Psittacosaurus sp.</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0210-placenticeras-ammolite">
+        <div class="im"><img src="../shared/img/ph_ammolite.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0210, Жизнь</div><h3>Аммолитовый аммонит</h3><div class="lat">Placenticeras costatum</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0213-psittacosaurus-skull">
+        <div class="im"><img src="../shared/img/ph_psittacosaurus_skull.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0213, Жизнь</div><h3>Череп пситтакозавра</h3><div class="lat">Psittacosaurus sp.</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0215-dinosaur-eggs">
+        <div class="im"><img src="../shared/img/ph_dino_eggs.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0215, Жизнь</div><h3>Яйца динозавра</h3><div class="lat">Elongatoolithidae</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0220-spinosaurus-jaw">
+        <div class="im"><img src="../shared/img/ph_spinosaurus_jaw.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0220, Жизнь</div><h3>Челюсть спинозавра</h3><div class="lat">Spinosaurus aegyptiacus</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0221-carcharodontosaurus-claw">
+        <div class="im"><img src="../shared/img/ph_carcharodont_claw.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0221, Жизнь</div><h3>Коготь крупного теропода</h3><div class="lat">Carcharodontosaurus sp.</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0222-pterosaur-plate">
+        <div class="im"><img src="../shared/img/ph_pterosaur.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0222, Жизнь</div><h3>Скелет птерозавра на плите</h3><div class="lat">Pterosauria indet.</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0224-polished-ammonites">
+        <div class="im"><img src="../shared/img/ph_ammonite_studio.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0224, Жизнь</div><h3>Аммониты полированные</h3><div class="lat">Ammonitida</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
       </a>
       <a class="card" href="../16_product_promos/jeholosaurus.html">
         <div class="im"><img src="../shared/img/ph_jeholosaurus.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
         <div class="b"><div class="id">R–0609, Монументы</div><h3>Скелет динозавра Jeholosaurus</h3><div class="lat">Jeholosaurus shangyuanensis</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
       </a>
-      <a class="card" href="../16_product_promos/exhibit.html?id=0210-placenticeras-ammolite">
-        <div class="im"><img src="../shared/img/ph_ammolite.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
-        <div class="b"><div class="id">R–0210, Жизнь</div><h3>Аммолитовый аммонит</h3><div class="lat">Placenticeras costatum</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0610-psittacosaurus-skeleton">
+        <div class="im"><img src="../shared/img/ph_psittacosaurus_skeleton.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0610, Монументы</div><h3>Скелет пситтакозавра</h3><div class="lat">Psittacosaurus sp.</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0612-crocodyliformes">
+        <div class="im"><img src="../shared/img/ph_crocodyliform.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0612, Монументы</div><h3>Скелет крокодилиформа</h3><div class="lat">Crocodyliformes indet.</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0613-pinacosaurus">
+        <div class="im"><img src="../shared/img/ph_pinacosaurus.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0613, Монументы</div><h3>Скелет пинакозавра</h3><div class="lat">Pinacosaurus</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0614-oviraptor">
+        <div class="im"><img src="../shared/img/ph_oviraptor.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0614, Монументы</div><h3>Скелет овираптора</h3><div class="lat">Oviraptoridae</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
       </a>
     </div>
   </div>

@@ -94,6 +94,13 @@ footer{border-top:1px solid var(--line);padding:50px 0;text-align:center}
 footer img{width:min(280px,54vw);margin:0 auto}
 footer .foot-links{display:flex;gap:22px;justify-content:center;margin-top:20px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
 footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--gold)}
+/* Ссылка на экспонат того же вида — та же плашка, что кнопки перехода в эры */
+.beast .relic{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:rgba(10,9,8,.5);border:1px solid rgba(233,201,138,.4);padding:8px 16px 8px 8px;text-decoration:none;color:var(--ivory);transition:.3s}
+.beast .relic img{width:36px;height:44px;object-fit:cover}
+.beast .relic b{font-weight:400;font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:block}
+.beast .relic small{display:block;font-size:8.5px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-top:3px}
+.beast .relic:hover{background:var(--gold);color:var(--black)}
+.beast .relic:hover small{color:var(--black)}
 </style>
 
 <!-- rl-seo -->
@@ -176,6 +183,7 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
     <h2>Первый<br>сверххищник</h2>
     <p>Шесть метров брони и голова, закованная в костяные пластины. Зубов у дунклеостея не было вовсе — челюсти сами затачивались друг о друга, превращаясь в самозатачивающиеся ножницы. Он смыкал их за одну пятидесятую секунды.</p>
     <div class="stat"><span><b>до 4 м</b> длина</span><span><b>до 1 т</b> вес</span><span><b>382–358 млн</b> лет</span></div>
+    <a class="relic" href="../16_product_promos/exhibit.html?id=0219-dunkleosteus"><img src="../shared/img/ph_dunkleosteus.jpg?v=11" alt="" loading="lazy" decoding="async"><span><b>Смотреть экспонат →</b><small>R–0219, Череп Dunkleosteus</small></span></a>
   </div>
 </section>
 
@@ -187,6 +195,7 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
     <h2>Жизнь<br>в панцире</h2>
     <p>Маленькая панцирная рыба, чью голову и грудь закрывал костяной короб, а грудные плавники превратились в членистые «руки». Один из самых многочисленных родов панцирных рыб: остатки Bothriolepis находят на всех континентах.</p>
     <div class="stat"><span><b>30 см</b> длина</span><span><b>Плакодермы</b></span><span><b>387–360 млн</b> лет</span></div>
+    <a class="relic" href="../16_product_promos/bothriolepis.html"><img src="../shared/img/ph_bothriolepis.jpg?v=11" alt="" loading="lazy" decoding="async"><span><b>Смотреть экспонат →</b><small>R–0209, Панцирная рыба Bothriolepis</small></span></a>
   </div>
 </section>
 
@@ -206,10 +215,6 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
       <a class="card" href="../16_product_promos/exhibit.html?id=0219-dunkleosteus">
         <div class="im"><img src="../shared/img/ph_dunkleosteus.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
         <div class="b"><div class="id">R–0219, Жизнь</div><h3>Череп Dunkleosteus</h3><div class="lat">Dunkleosteus terrelli</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
-      </a>
-      <a class="card" href="../16_product_promos/exhibit.html?id=0217-dikelokephalina">
-        <div class="im"><img src="../shared/img/ph_trilobite_giant.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
-        <div class="b"><div class="id">R–0217, Жизнь</div><h3>Гигантский трилобит</h3><div class="lat">Dikelokephalina brenchleyi</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
       </a>
     </div>
   </div>

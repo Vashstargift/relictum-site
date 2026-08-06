@@ -82,6 +82,13 @@ footer{border-top:1px solid var(--line);padding:50px 0;text-align:center}
 footer img{width:min(280px,54vw);margin:0 auto}
 footer .foot-links{display:flex;gap:22px;justify-content:center;margin-top:20px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
 footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--gold)}
+/* Ссылка на экспонат того же вида — та же плашка, что кнопки перехода в эры */
+.beast .relic{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:rgba(10,9,8,.5);border:1px solid rgba(233,201,138,.4);padding:8px 16px 8px 8px;text-decoration:none;color:var(--ivory);transition:.3s}
+.beast .relic img{width:36px;height:44px;object-fit:cover}
+.beast .relic b{font-weight:400;font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:block}
+.beast .relic small{display:block;font-size:8.5px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-top:3px}
+.beast .relic:hover{background:var(--gold);color:var(--black)}
+.beast .relic:hover small{color:var(--black)}
 </style>
 
 <!-- rl-seo -->
@@ -161,6 +168,7 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
     <h2>Шерстистый гигант</h2>
     <p>До трёх с половиной метров в холке, бивни до четырёх метров, шуба из двойного меха против сорокаградусного мороза. Вечная мерзлота сохранила их так хорошо, что бивни доходят до нас с плотной карамельной патиной.</p>
     <div class="stat"><span><b>3,4 м</b> высота</span><span><b>6 т</b> вес</span><span><b>Якутия</b></span></div>
+    <a class="relic" href="../16_product_promos/exhibit.html?id=0617-mammoth-skeleton"><img src="../shared/img/ph_mammoth_skeleton.jpg?v=11" alt="" loading="lazy" decoding="async"><span><b>Смотреть экспонат →</b><small>R–0617, Скелет мамонта</small></span></a>
   </div>
 </section>
 
@@ -171,6 +179,7 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
     <h2>Хозяин пещер</h2>
     <p>Крупнее большинства современных медведей, он зимовал в известняковых пещерах Европы — там же и оставил свои черепа целыми грудами. Классика кабинетов редкостей со времён Возрождения.</p>
     <div class="stat"><span><b>3,5 м</b> в стойке</span><span><b>1 т</b> вес</span><span><b>Карпаты</b></span></div>
+    <a class="relic" href="../16_product_promos/exhibit.html?id=cave-bear-skeleton"><img src="../shared/img/ph_cavebear.jpg?v=11" alt="" loading="lazy" decoding="async"><span><b>Смотреть экспонат →</b><small>R–0604, Скелет пещерного медведя</small></span></a>
   </div>
 </section>
 
@@ -181,6 +190,7 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
     <h2>Тень в океане</h2>
     <p>Он вымер чуть раньше, на исходе неогена, но его зубы находят по всему миру. Восемнадцать метров, зубы в ладонь — крупнейший хищник, когда-либо живший в воде.</p>
     <div class="stat"><span><b>18 м</b> длина</span><span><b>18 см</b> зуб</span><span><b>Атлантика</b></span></div>
+    <a class="relic" href="../16_product_promos/megalodon-tooth.html"><img src="../shared/img/ph_megalodon.jpg?v=11" alt="" loading="lazy" decoding="async"><span><b>Смотреть экспонат →</b><small>R–0201, Зуб мегалодона</small></span></a>
   </div>
 </section>
 
@@ -192,17 +202,45 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
       <p>Подлинные свидетели плейстоцена — с легальным происхождением из вечной мерзлоты и полным паспортом дома Relictum.</p>
     </div>
     <div class="grid">
+      <a class="card" href="../16_product_promos/exhibit.html?id=0225-cave-lion-skull">
+        <div class="im"><img src="../shared/img/ph_cave_lion.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0225, Жизнь</div><h3>Череп пещерного льва</h3><div class="lat">Panthera leo spelaea</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0228-cave-lion-skull-2">
+        <div class="im"><img src="../shared/img/ph_cave_lion2.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0228, Жизнь</div><h3>Череп пещерного льва № 2</h3><div class="lat">Panthera leo spelaea</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=cave-bear-skeleton">
+        <div class="im"><img src="../shared/img/ph_cavebear.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0604, Монументы</div><h3>Скелет пещерного медведя</h3><div class="lat">Ursus spelaeus</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
       <a class="card" href="../16_product_promos/exhibit.html?id=mammoth-skull-tusks">
         <div class="im"><img src="../shared/img/ph_mammoth_skull.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
         <div class="b"><div class="id">R–0605, Монументы</div><h3>Череп мамонта с бивнями</h3><div class="lat">Mammuthus primigenius</div><div class="pr"><b>7 400 000 ₽</b><span>Смотреть</span></div></div>
       </a>
-      <a class="card" href="../02_site_v1_gallery/catalog.html#grand">
-        <div class="im"><img src="../shared/img/ph_cavebear.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
-        <div class="b"><div class="id">R–0604, Монументы</div><h3>Скелет пещерного медведя</h3><div class="lat">Ursus spelaeus</div><div class="pr"><b>5 900 000 ₽</b><span>Смотреть</span></div></div>
+      <a class="card" href="../16_product_promos/mammoth-tusks.html">
+        <div class="im"><img src="../shared/img/ph_mammoth_tusks.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0607, Монументы</div><h3>Пара бивней мамонта</h3><div class="lat">Mammuthus primigenius</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
       </a>
-      <a class="card" href="../16_product_promos/megalodon-tooth.html">
-        <div class="im"><img src="../shared/img/ph_megalodon.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
-        <div class="b"><div class="id">R–0201, Жизнь</div><h3>Зуб мегалодона</h3><div class="lat">Otodus megalodon</div><div class="pr"><b>1 250 000 ₽</b><span>Смотреть</span></div></div>
+      <a class="card" href="../16_product_promos/rhino-skull.html">
+        <div class="im"><img src="../shared/img/ph_rhino_skull.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0608, Монументы</div><h3>Череп шерстистого носорога</h3><div class="lat">Coelodonta antiquitatis</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0611-coelodonta-skeleton">
+        <div class="im"><img src="../shared/img/ph_rhino_skeleton.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0611, Монументы</div><h3>Скелет шерстистого носорога</h3><div class="lat">Coelodonta antiquitatis</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0615-bison-priscus">
+        <div class="im"><img src="../shared/img/ph_bison_skeleton.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0615, Монументы</div><h3>Скелет степного зубра</h3><div class="lat">Bison priscus</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0616-pleistocene-wolf">
+        <div class="im"><img src="../shared/img/ph_pleistocene_wolf.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0616, Монументы</div><h3>Скелет плейстоценового волка</h3><div class="lat">Canis lupus</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
+      </a>
+      <a class="card" href="../16_product_promos/exhibit.html?id=0617-mammoth-skeleton">
+        <div class="im"><img src="../shared/img/ph_mammoth_skeleton.jpg?v=11" alt="" loading="lazy" decoding="async"></div>
+        <div class="b"><div class="id">R–0617, Монументы</div><h3>Скелет мамонта</h3><div class="lat">Mammuthus primigenius</div><div class="pr"><b>Цена по запросу</b><span>Смотреть</span></div></div>
       </a>
     </div>
   </div>
