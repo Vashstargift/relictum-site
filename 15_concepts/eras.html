@@ -32,6 +32,10 @@ h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05}
 .era .frame{position:sticky;top:0;height:100svh;overflow:hidden}
 .era .frame .media{position:absolute;inset:0}
 .era .frame img,.era .frame video{width:100%;height:100%;object-fit:cover}
+/* Ролики эр вертикальные (9:16), а секция широкая — на экране видно лишь среднюю
+   треть кадра. У триаса в неё попадали одни аммониты: ихтиозавры оставались выше,
+   дно ниже, и сцена читалась без верха и низа. Сдвигаем видимую полосу вверх. */
+.era-triassic .frame video,.era-triassic .frame img{object-position:center 22%}
 .era .frame::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,8,.42) 0%,transparent 26%,transparent 52%,rgba(10,9,8,.86) 100%)}
 .era .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 clamp(18px,5vw,60px) 6svh}
 .era .cap .inner{max-width:640px;opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
@@ -209,14 +213,14 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
     <div class="cap"><div class="inner">
       <div class="yrs">150 миллионов лет назад, открытая вода</div>
       <a href="era-jurassic.html" style="text-decoration:none;color:inherit"><h2>Флот аммонитов</h2></a>
-      <p>Спиральные раковины дрейфуют в столбах света, выше скользит ихтиозавр. Золотое сечение в каждой спирали — просто её рост.</p>
+      <p>Спиральные раковины дрейфуют в столбах света, выше скользит ихтиозавр. Спираль растёт, не меняя пропорций: раковина взрослеет, оставаясь той же формой.</p>
       <a class="relic" href="era-jurassic.html"><img src="../shared/img/beast_anchiornis.jpg" alt="" loading="lazy" decoding="async"><span><b>Войти в эру →</b><small>Юра, обитатели и объекты</small></span></a>
     </div></div>
   </div>
 </section>
 
 <!-- ТРИАС -->
-<section class="era" data-n="Триасовый период" data-y="201–252 млн лет назад">
+<section class="era era-triassic" data-n="Триасовый период" data-y="201–252 млн лет назад">
   <div class="frame">
     <div class="media"><video autoplay muted loop playsinline preload="metadata" poster="../shared/img/era_triassic_sea.jpg" data-src="../shared/img/era_triassic_sea.mp4"></video></div>
     <div class="cap"><div class="inner">
