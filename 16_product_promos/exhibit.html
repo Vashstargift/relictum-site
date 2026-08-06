@@ -308,7 +308,10 @@ if(!o){
     (era?'<div class="eratag rv"><b>'+era.title+'</b><span>'+era.line+'</span></div>':'')+
   '</div></div></section>'+
 
-  spinSec+ aliveSec+ homeSec+ gallerySec+
+  /* Биография объекта идёт сразу после 360°, а не в самом конце: блок
+     с рассказом об экспонате не должен стоять ПОСЛЕ кнопки заказа.
+     Так было на девяти статичных страницах-визитках — теперь у всех 38. */
+  spinSec+ '<section id="bio-slot"></section>'+ aliveSec+ homeSec+ gallerySec+
 
   '<section class="cta"><div class="wrap">'+
     '<div class="label rv" style="color:var(--gold);margin-bottom:14px">'+o.id+'</div>'+
@@ -324,8 +327,7 @@ if(!o){
       '<div class="s rv"><b>Оформление и свет</b><p>Подставка, витрина или настенное крепление по вашему пространству.</p></div>'+
       '<div class="s rv"><b>Доставка</b><p>Упаковка музейного класса, логистика и установка на месте.</p></div>'+
     '</div>'+
-  '</div></section>'+
-  '<section id="bio-slot"></section>';
+  '</div></section>';
 
   /* reveal on scroll (без IntersectionObserver — превью его морозит) */
   var rvs=[].slice.call(document.querySelectorAll('.rv'));

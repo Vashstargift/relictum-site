@@ -133,6 +133,79 @@ def fix_meta(text, rel_path):
     return text
 
 
+# ---------------------------------------------------------------------------
+# Страницы-визитки экспонатов
+#
+# У девяти «якорных» объектов есть собственный адрес вида /objects/<slug>.html —
+# он нужен, чтобы при отправке ссылки в мессенджер подтягивались имя, описание
+# и фото именно этого экспоната (шаблон exhibit.html работает через ?id= и такой
+# карточки дать не может).
+#
+# Раньше это были девять отдельных HTML-файлов, совпадавших с шаблоном на 96 %:
+# 3825 строк, где отличались только мета-теги. Любая правка требовала десяти
+# одинаковых изменений — так уже расходились кнопки, адрес почты и мёртвый код.
+# Теперь страницы собираются здесь из exhibit.html, а тексты для поиска лежат
+# в promo-data.js полем seo.
+# ---------------------------------------------------------------------------
+
+def object_pages():
+    """{slug: (R–ID, title, description, og_image)} — из promo-data.js и catalog.js."""
+    promo = open(os.path.join(ROOT, '16_product_promos', 'promo-data.js'), encoding='utf-8').read()
+    catalog = open(os.path.join(ROOT, 'shared', 'catalog.js'), encoding='utf-8').read()
+
+    # slug и картинка объекта — из каталога
+    meta = {}
+    for m in re.finditer(r'"id":\s*"(R–\d+)"(.*?)(?=\n\s*\{|\Z)', catalog, re.S):
+        rid, body = m.group(1), m.group(2)
+        href = re.search(r'"href":\s*"([^"]*)"', body)
+        img = re.search(r'"img":\s*"([^"]*)"', body)
+        meta[rid] = (href.group(1) if href else '', img.group(1) if img else '')
+
+    pages = {}
+    for m in re.finditer(r'"(R–\d+)"\s*:\s*\{(.*?)\n  \}', promo, re.S):
+        rid, body = m.group(1), m.group(2)
+        seo = re.search(r'seo:\s*\{\s*title:\s*"((?:[^"\\]|\\.)*)"\s*,\s*description:\s*"((?:[^"\\]|\\.)*)"\s*\}', body)
+        if not seo:
+            continue
+        href, img = meta.get(rid, ('', ''))
+        slug = href.rsplit('/', 1)[-1]
+        if not slug.endswith('.html'):
+            continue
+        pages[slug] = (rid, seo.group(1), seo.group(2), img)
+    return pages
+
+
+def write_object_pages(template_text, out_dir, stamp):
+    made = []
+    for slug, (rid, title, desc, img) in sorted(object_pages().items()):
+        rel = 'objects/' + slug
+        url = DOMAIN + '/' + rel
+        t = template_text
+
+        def one(pattern, value):
+            nonlocal t
+            t = re.sub(pattern, lambda m: m.group(1) + value + m.group(2), t, count=1)
+
+        t = re.sub(r'<title>.*?</title>', '<title>' + title + '</title>', t, count=1, flags=re.S)
+        one(r'(<meta name="description" content=")[^"]*(")', desc)
+        one(r'(<meta property="og:title" content=")[^"]*(")', title)
+        one(r'(<meta property="og:description" content=")[^"]*(")', desc)
+        one(r'(<meta property="og:type" content=")[^"]*(")', 'product')
+        one(r'(<meta property="og:image" content=")[^"]*(")', DOMAIN + '/shared/img/' + img + '.jpg')
+        one(r'(<meta property="og:url" content=")[^"]*(")', url)
+        one(r'(<link rel="canonical" href=")[^"]*(")', url)
+        one(r'(<meta name="twitter:title" content=")[^"]*(")', title)
+        one(r'(<meta name="twitter:description" content=")[^"]*(")', desc)
+        one(r'(<meta name="twitter:image" content=")[^"]*(")', DOMAIN + '/shared/img/' + img + '.jpg')
+
+        # шаблон берёт объект из ?id=, странице-визитке он задан жёстко
+        t = t.replace('</head>', '<script>window.RL_FORCE_ID="' + rid + '";</script>\n</head>', 1)
+
+        open(os.path.join(out_dir, slug), 'w', encoding='utf-8').write(t)
+        made.append(rel)
+    return made
+
+
 def build():
     stamp = data_stamp()
     if os.path.isdir(OUT):
@@ -155,6 +228,11 @@ def build():
                 text = stamp_scripts(text, stamp)
                 pages.append(rel.replace(os.sep, '/'))
             open(os.path.join(d, f), 'w', encoding='utf-8').write(text)
+
+    # страницы-визитки экспонатов собираются из exhibit.html (см. object_pages)
+    tpl_path = os.path.join(OUT, 'objects', 'exhibit.html')
+    tpl = open(tpl_path, encoding='utf-8').read()
+    pages += write_object_pages(tpl, os.path.join(OUT, 'objects'), stamp)
 
     # медиа и общие скрипты
     shutil.copytree(os.path.join(ROOT, 'shared'), os.path.join(OUT, 'shared'),
@@ -256,7 +334,7 @@ def write_extras(pages):
     open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(PAGE_404)
 
 
-HTACCESS = """# RELICTUM — relictum.gallery
+HTACCESS = r"""# RELICTUM — relictum.gallery
 RewriteEngine On
 
 # только https и без www.
