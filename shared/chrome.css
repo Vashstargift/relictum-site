@@ -83,6 +83,10 @@ footer ul { list-style: none; }
 footer ul li { margin-bottom: 10px; }
 footer ul a { font-size: 13.5px; color: rgba(244,240,232,.68); transition: color .3s; }
 footer ul a:hover { color: var(--ivory); }
+/* Зона нажатия ссылок подвала: сама строка 16px высотой, для пальца мало.
+   Добавляем вертикальный отступ — внешне ничего не меняется, но касаться проще. */
+footer ul a { display: inline-block; padding: 6px 0; }
+
 .f-bottom { border-top: 1px solid rgba(176,138,85,.22); padding-top: 26px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 11.5px; letter-spacing: .1em; color: rgba(244,240,232,.4); }
 
 

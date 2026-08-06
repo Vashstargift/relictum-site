@@ -303,6 +303,10 @@ footer ul { list-style: none; }
 footer ul li { margin-bottom: 10px; }
 footer ul a { font-size: 13.5px; color: rgba(244,240,232,.68); transition: color .3s; }
 footer ul a:hover { color: var(--ivory); }
+/* Зона нажатия ссылок подвала: сама строка 16px высотой, для пальца мало.
+   Добавляем вертикальный отступ — внешне ничего не меняется, но касаться проще. */
+footer ul a { display: inline-block; padding: 6px 0; }
+
 .f-bottom { border-top: 1px solid rgba(176,138,85,.22); padding-top: 26px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 11.5px; letter-spacing: .1em; color: rgba(244,240,232,.4); }
 
 /* ---------- Появление при скролле ---------- */
@@ -372,3 +376,7 @@ footer ul a:hover { color: var(--ivory); }
 .article-related span { font-size: 12.5px; color: var(--stone); }
 .article-nav { max-width: 680px; margin: 60px auto 0; display: flex; justify-content: space-between; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
 .article-nav a { color: var(--bronze-deep); }
+
+/* Зона нажатия ссылок-стрелок: сама строка 23px, для пальца маловато.
+   Отступ добавляем только на телефоне, чтобы не менять ритм на десктопе. */
+@media (max-width: 760px) { .link-arrow { padding: 7px 0; } .crumbs a { display: inline-block; padding: 5px 0; } }

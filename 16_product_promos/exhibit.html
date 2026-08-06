@@ -74,8 +74,10 @@ a{color:inherit;text-decoration:none}
 /* вертикальный ролик в горизонтальной рамке: пустоту закрывает размытый кадр того же экспоната */
 .spin .sframe .sbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(64px) saturate(.55);transform:scale(1.3);opacity:.5;z-index:0}
 .spin .sframe::after{content:'';position:absolute;inset:0;background:rgba(239,234,224,.62);z-index:0;pointer-events:none}
-@media(max-width:760px){.spin .sframe{aspect-ratio:4/5}}
-.spin .sframe video{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;display:block}
+/* На телефоне рамка была вертикальной 4:5, а все 38 роликов сняты широкими (16:9):
+   видео вписывалось по ширине и оставляло по 120 px пустоты сверху и снизу.
+   Соотношение теперь одно на всех экранах — кадр заполняет рамку целиком. */
+.spin .sframe video{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
 .spin .scap{margin-top:18px;font-size:12.5px;letter-spacing:.08em;color:#7A7267}
 .alive{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden;background:var(--black);color:var(--ivory)}
 .alive video,.alive .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
