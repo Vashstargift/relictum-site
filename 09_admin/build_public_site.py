@@ -252,6 +252,7 @@ def build():
     open(shop, 'w', encoding='utf-8').write(t)
 
     dropped = prune_media()
+    stamp_media(OUT)   # ?v=<хэш файла> у картинок и видео — иначе кэш держит старое
     write_extras(pages)
     return pages, stamp, dropped
 
@@ -261,6 +262,55 @@ def build():
 # генерации. В репозитории они остаются, на хостинг не уезжают.
 MEDIA_EXT = ('.jpg', '.jpeg', '.png', '.mp4', '.webp', '.gif', '.svg', '.ico')
 KEEP_DIRS = ('shared/brand',)          # логотипы и фавиконы не трогаем никогда
+
+
+# ---------------------------------------------------------------------------
+# Версия у медиа в адресе
+#
+# Картинки и видео отдаются с кэшем на 30 дней (.htaccess). Если файл перезаписан
+# под тем же именем, у постоянного посетителя месяц остаётся старая копия — так и
+# случилось с переснятыми роликами эр. Поэтому к каждой ссылке дописывается ?v=
+# с хэшем СОДЕРЖИМОГО этого файла: поменялся файл — поменялся адрес, не менялся —
+# кэш продолжает работать.
+# ---------------------------------------------------------------------------
+MEDIA_STAMP_EXT = ('.mp4', '.jpg', '.jpeg', '.png', '.webp')
+MEDIA_ATTR = re.compile(
+    r'((?:src|poster|data-src)=")([^"?]+?\.(?:mp4|jpg|jpeg|png|webp))(")', re.I)
+
+
+def stamp_media(out_dir):
+    import hashlib
+    cache = {}
+
+    def digest(abs_path):
+        if abs_path not in cache:
+            try:
+                with open(abs_path, 'rb') as fh:
+                    cache[abs_path] = hashlib.sha1(fh.read()).hexdigest()[:8]
+            except OSError:
+                cache[abs_path] = None
+        return cache[abs_path]
+
+    touched = 0
+    for root, _, files in os.walk(out_dir):
+        for f in files:
+            if not f.endswith('.html'):
+                continue
+            page = os.path.join(root, f)
+            text = open(page, encoding='utf-8').read()
+
+            def add(m):
+                url = m.group(2)
+                target = (os.path.join(out_dir, url.lstrip('/')) if url.startswith('/')
+                          else os.path.normpath(os.path.join(root, url)))
+                d = digest(target)
+                return m.group(0) if d is None else m.group(1) + url + '?v=' + d + m.group(3)
+
+            new = MEDIA_ATTR.sub(add, text)
+            if new != text:
+                open(page, 'w', encoding='utf-8').write(new)
+                touched += 1
+    return touched
 
 
 def prune_media():
