@@ -50,7 +50,7 @@
   <div class="rl-wrap" id="hero"></div>
 </header>
 
-<section style="padding-top:34px">
+<section id="tabsSection" style="padding-top:34px">
   <div class="rl-wrap">
     <div class="rl-tabs" id="tabs">
       <button class="rl-tab on" data-t="promo">Обзор</button>
@@ -111,11 +111,9 @@
 <script>
 var S=window.RelictumShop, IMG='../shared/img/';
 
-/* демо-наполнение при первом входе */
-(function seed(){
-  var u=S.user();
-  if(!u._seeded){ u._seeded=true; if(!u.purchased||!u.purchased.length){u.purchased=['R–0201','R–0104'];} if(!u.interests.length){u.interests=['Метеориты','Мамонтовая фауна'];} if(u.name==='Гость')u.name='Гость дома'; S.saveUser(u); }
-})();
+/* Демо-наполнение убрано: раньше любому посетителю дорисовывались две
+   «уже купленные» вещи и чужие интересы. Кабинет должен показывать только
+   то, что человек сделал сам. */
 
 var ALL_INTERESTS=['Метеориты','Лунные объекты','Динозавры','Мамонтовая фауна','Саблезубые кошки','Аммониты','Трилобиты','Минералы','Окаменелое дерево','Монументы','Editions','Интерьерные объекты'];
 
@@ -128,6 +126,15 @@ function mini(o,favBtn){
 
 function heroHTML(){
   var u=S.user(), t=S.tier();
+  setTimeout(function(){                       // выход из кабинета
+    var h=document.getElementById('hero');
+    if(!h || document.getElementById('signOut')) return;
+    var b=document.createElement('button');
+    b.id='signOut'; b.textContent='Выйти';
+    b.style.cssText='margin-top:26px;background:none;border:1px solid rgba(244,240,232,.35);color:rgba(244,240,232,.75);padding:9px 20px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;font-family:inherit';
+    b.onclick=function(){ S.signOut(); location.reload(); };
+    h.appendChild(b);
+  },0);
   return '<div class="rl-label" style="color:#B08A55;margin-bottom:14px">Личный кабинет</div>'+
     '<h1 class="rl-h" style="font-size:clamp(32px,5vw,52px);color:#F4F0E8">Здравствуйте, '+S.esc(u.name)+'</h1>'+
     '<div class="rl-tier">'+t.name+', личная скидка '+t.discount+'%</div>'+
@@ -209,10 +216,54 @@ function wire(t){
   }
 }
 
-document.getElementById('hero').innerHTML=heroHTML();
 document.getElementById('tabs').addEventListener('click',function(e){var b=e.target.closest('.rl-tab');if(b)show(b.dataset.t);});
-var start=(location.hash||'#promo').slice(1); if(!PANES[start])start='promo';
-show(start);
+/* Патроны дома: пока человек не оставил данные, кабинета нет — есть приглашение.
+   Настоящий вход с паролем требует бэкенда (см. NEXT-SESSION.md); здесь данные
+   хранятся в браузере, а дому уходит письмо. */
+function joinHTML(){
+  return '<div class="rl-label" style="color:#B08A55;margin-bottom:14px">Патроны дома</div>'+
+    '<h1 class="rl-h" style="font-size:clamp(32px,5vw,52px);color:#F4F0E8">Вступить в круг патронов</h1>'+
+    '<p style="color:rgba(244,240,232,.72);max-width:48ch;margin-top:16px;font-size:15px">'+
+      'Патрон дома получает личную скидку, ранний доступ к новым объектам до публикации '+
+      'в каталоге, персональный поиск под запрос и приглашения на закрытые события.</p>'+
+    '<form id="joinForm" style="display:grid;gap:14px;max-width:420px;margin-top:30px">'+
+      '<input name="name" required placeholder="Имя и фамилия" style="background:transparent;border:none;border-bottom:1px solid rgba(244,240,232,.35);color:#F4F0E8;padding:12px 2px;font-size:16px;font-family:inherit">'+
+      '<input name="email" required type="email" placeholder="E-mail" style="background:transparent;border:none;border-bottom:1px solid rgba(244,240,232,.35);color:#F4F0E8;padding:12px 2px;font-size:16px;font-family:inherit">'+
+      '<input name="phone" placeholder="Телефон (по желанию)" style="background:transparent;border:none;border-bottom:1px solid rgba(244,240,232,.35);color:#F4F0E8;padding:12px 2px;font-size:16px;font-family:inherit">'+
+      '<button class="rl-btn" style="justify-self:start;margin-top:10px">Стать патроном</button>'+
+      '<span style="font-size:11px;color:rgba(244,240,232,.5)">Отправляя, вы соглашаетесь на обработку контактов для связи. Дом не передаёт их третьим лицам.</span>'+
+    '</form>';
+}
+
+function mountJoin(){
+  document.getElementById('hero').innerHTML=joinHTML();
+  document.getElementById('tabsSection').style.display='none';
+  var f=document.getElementById('joinForm');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){ f.reportValidity(); return; }
+    var fd=new FormData(f);
+    var d={name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone')||''};
+    S.registerPatron(d);
+    S.addLead({date:new Date().toLocaleString('ru-RU'),type:'Заявка в патроны',
+               name:d.name,contact:d.email,desc:'Телефон: '+(d.phone||'не указан')});
+    S.toast('Добро пожаловать, '+d.name.split(' ')[0]);
+    var body='Имя: '+d.name+'\nE-mail: '+d.email+'\nТелефон: '+(d.phone||'не указан');
+    window.location.href='mailto:concierge@relictum.gallery?subject='+
+      encodeURIComponent('Заявка в патроны дома')+'&body='+encodeURIComponent(body);
+    setTimeout(mountAccount,400);
+  });
+}
+
+function mountAccount(){
+  document.getElementById('hero').innerHTML=heroHTML();
+  document.getElementById('tabsSection').style.display='';
+  var start=(location.hash||'#promo').slice(1); if(!PANES[start])start='promo';
+  show(start);
+}
+
+if(S.isPatron()) mountAccount(); else mountJoin();
+
 </script>
 <script src="../shared/nav.js"></script>
 </body>

@@ -34,6 +34,10 @@ a{color:inherit;text-decoration:none}
 /* hero */
 .hero{min-height:100svh;display:grid;grid-template-columns:1fr 1.02fr;align-items:center;gap:clamp(24px,4vw,64px);padding:96px clamp(18px,4.5vw,56px) 48px;max-width:1120px;margin:0 auto}
 @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:96px;gap:24px}}
+.hero .txt .buy{margin:26px 0 6px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hero .txt .buy-price{font-family:var(--serif);font-size:clamp(21px,2.4vw,29px);color:var(--black)}
+.hero .txt .buy .btn{white-space:nowrap}
+@media(max-width:900px){.hero .txt .buy{margin:20px 0 4px}}
 .hero .txt .kick{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--deep);margin-bottom:16px}
 .hero h1{font-size:clamp(40px,6.6vw,72px);margin-bottom:8px}
 .hero .lat{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.1vw,25px);color:var(--deep);margin-bottom:22px}
@@ -289,6 +293,14 @@ if(!o){
       '<h1 class="rv">'+o.name+'</h1>'+
       '<div class="lat rv">'+(o.latin||'')+'</div>'+
       '<p class="hook rv">'+hook+'</p>'+
+      /* Цена и действие сразу у фото: раньше их можно было найти только
+         прокрутив страницу до самого низа. Нижний блок покупки остаётся. */
+      '<div class="buy rv">'+
+        '<div class="buy-price">'+(o.price||'Цена по запросу')+'</div>'+
+        (o.priceValue
+          ? '<button type="button" class="btn btn-solid" id="heroCart">Добавить в корзину</button>'
+          : '<a class="btn btn-solid" id="heroAsk" href="mailto:hello@relictum.gallery?subject='+encodeURIComponent('Запрос: '+o.name+' ('+o.id+')')+'">Запросить объект</a>')+
+      '</div>'+
       '<div class="rv"><span class="scrollcue">Листайте</span></div>'+
     '</div>'+
     /* Главное фото первого экрана: грузим сразу и с высоким приоритетом —
@@ -324,7 +336,7 @@ if(!o){
     '</div>'+
     '<div class="svc">'+
       '<div class="s rv"><b>Провенанс</b><p>Паспорт объекта с экспертизой, происхождением и печатью дома.</p></div>'+
-      '<div class="s rv"><b>Оформление и свет</b><p>Подставка, витрина или настенное крепление по вашему пространству.</p></div>'+
+      '<div class="s rv"><b>Оформление</b><p>Подставка, витрина или настенное крепление — под ваше пространство.</p></div>'+
       '<div class="s rv"><b>Доставка</b><p>Деревянный ящик, страховка на время пути и установка на месте.</p></div>'+
     '</div>'+
   '</div></section>';
@@ -386,9 +398,14 @@ if(!o){
     var Sx=window.RelictumShop;
     var exRender=function(){
       var c=document.getElementById('exCart'), fb=document.getElementById('exFav');
+      var hc=document.getElementById('heroCart');   // та же кнопка на первом экране
       if(!c||!fb) return;
-      if(Sx.inCart(o.id)){ c.textContent='В корзине ✓, перейти'; c.onclick=function(){location.href='../02_site_v1_gallery/cart.html';}; }
-      else { c.textContent='Добавить в корзину'; c.onclick=function(){ Sx.addToCart(o.id); Sx.toast('«'+o.name+'» в корзине'); exRender(); }; }
+      var inCart=Sx.inCart(o.id);
+      [c,hc].forEach(function(btn){
+        if(!btn) return;
+        if(inCart){ btn.textContent='В корзине ✓, перейти'; btn.onclick=function(){location.href='../02_site_v1_gallery/cart.html';}; }
+        else { btn.textContent='Добавить в корзину'; btn.onclick=function(){ Sx.addToCart(o.id); Sx.toast('«'+o.name+'» в корзине'); exRender(); }; }
+      });
       fb.innerHTML = Sx.inFav(o.id)
         ? 'В избранном<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" style="vertical-align:-2px;margin-left:7px"><path d="M12 2.6l2.1 6.05 6.3.35-4.9 3.95 1.65 6.1L12 15.6l-5.15 3.45 1.65-6.1-4.9-3.95 6.3-.35z"/></svg>'
         : 'В избранное<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" style="vertical-align:-2px;margin-left:7px"><path d="M12 2.6l2.1 6.05 6.3.35-4.9 3.95 1.65 6.1L12 15.6l-5.15 3.45 1.65-6.1-4.9-3.95 6.3-.35z"/></svg>';

@@ -32,11 +32,22 @@
       var u=readObj(USER_KEY);
       if(!u){
         u={ name:'Гость', email:'', phone:'', manager:'Ирина Вологдина', managerRole:'Персональный консультант дома',
-            since:'2026', purchased:[], interests:[] };
+            since:'2026', purchased:[], interests:[], registered:false };
         localStorage.setItem(USER_KEY,JSON.stringify(u));
       }
+      if(u.registered===undefined) u.registered=false;
       return u;
     },
+    /* Патрон дома — тот, кто оставил свои данные. До этого кабинет показывает
+       приглашение вступить, а не выдуманную коллекцию. */
+    isPatron:function(){ return !!this.user().registered; },
+    registerPatron:function(d){
+      var u=this.user();
+      u.name=d.name||u.name; u.email=d.email||u.email; u.phone=d.phone||u.phone;
+      u.registered=true; u.since=String(new Date().getFullYear());
+      this.saveUser(u); return u;
+    },
+    signOut:function(){ localStorage.removeItem(USER_KEY); emit(); },
     saveUser:function(u){ localStorage.setItem(USER_KEY,JSON.stringify(u)); emit(); },
     /* оформленный заказ переносит товары в "коллекцию" */
     placeOrder:function(){

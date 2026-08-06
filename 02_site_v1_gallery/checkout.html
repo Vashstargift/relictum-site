@@ -15,17 +15,17 @@
 <link rel="icon" href="../shared/brand/favicon.ico">
 <link rel="apple-touch-icon" href="../shared/brand/apple-touch-icon.png">
 <meta name="theme-color" content="#0A0908">
-<meta name="description" content="Оформление заказа RELICTUM: контактные данные, доставка и безопасная оплата. Резервирование объекта и подтверждение консультантом.">
+<meta name="description" content="Оформление заказа RELICTUM: контактные данные и доставка. Резервирование объекта и подтверждение консультантом.">
 <link rel="canonical" href="https://vashikmart.github.io/relictum/02_site_v1_gallery/checkout.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RELICTUM">
 <meta property="og:title" content="Оформление заказа — RELICTUM">
-<meta property="og:description" content="Оформление заказа RELICTUM: контактные данные, доставка и безопасная оплата. Резервирование объекта и подтверждение консультантом.">
+<meta property="og:description" content="Оформление заказа RELICTUM: контактные данные и доставка. Резервирование объекта и подтверждение консультантом.">
 <meta property="og:image" content="https://vashikmart.github.io/relictum/shared/img/hero_light_ivory.jpg">
 <meta property="og:url" content="https://vashikmart.github.io/relictum/02_site_v1_gallery/checkout.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Оформление заказа — RELICTUM">
-<meta name="twitter:description" content="Оформление заказа RELICTUM: контактные данные, доставка и безопасная оплата. Резервирование объекта и подтверждение консультантом.">
+<meta name="twitter:description" content="Оформление заказа RELICTUM: контактные данные и доставка. Резервирование объекта и подтверждение консультантом.">
 <meta name="twitter:image" content="https://vashikmart.github.io/relictum/shared/img/hero_light_ivory.jpg">
 </head>
 <body>
@@ -123,16 +123,13 @@ function form(){
       '<div class="rl-field"><label>Телефон</label><input class="rl-input" name="phone" placeholder="+7" required></div></div>'+
     '<div class="rl-field"><label>Адрес доставки</label><input class="rl-input" name="addr" placeholder="Город, улица, дом" required></div>'+
 
-    '<div class="rl-label" style="margin:28px 0 16px">Оплата</div>'+
-    '<div class="rl-card"><div class="brand">RELICTUM</div>'+
-      '<div class="num" id="cnum">•••• •••• •••• ••••</div>'+
-      '<div class="rowc"><span id="cname">ДЕРЖАТЕЛЬ КАРТЫ</span><span id="cexp">ММ/ГГ</span></div></div>'+
-    '<div class="rl-field"><label>Номер карты</label><input class="rl-input" id="num" inputmode="numeric" placeholder="0000 0000 0000 0000" maxlength="19" required></div>'+
-    '<div class="rl-row"><div class="rl-field"><label>Срок</label><input class="rl-input" id="exp" placeholder="ММ/ГГ" maxlength="5" required></div>'+
-      '<div class="rl-field"><label>CVC</label><input class="rl-input" id="cvc" inputmode="numeric" placeholder="•••" maxlength="4" required></div></div>'+
-    '<div class="rl-field"><label>Имя на карте</label><input class="rl-input" id="holder" placeholder="IVAN PETROV" required></div>'+
-    '<div class="rl-note">🔒 Демо-оформление. Реальные платежи проходят через защищённый шлюз (ЮKassa / CloudPayments) — данные карты не сохраняются и не передаются в этом прототипе.</div>'+
-    '<button class="rl-btn" type="submit" id="pay" style="margin-top:8px">Подтвердить и оплатить</button>'+
+    /* Оплаты на сайте нет. Форма карты была имитацией: поля ничего не проводили,
+       а надпись обещала защищённый шлюз, которого не существует. Оставляем
+       честный порядок — заявка, дальше связывается менеджер. */
+    '<div class="rl-label" style="margin:28px 0 16px">Как проходит оформление</div>'+
+    '<div class="rl-note">С вами свяжется персональный менеджер дома: подтвердит наличие и итоговую сумму, согласует доставку и удобный способ оплаты. Объекты резервируются за вами на время согласования.</div>'+
+    '<div class="rl-field"><label>Комментарий к заказу (по желанию)</label><input class="rl-input" name="note" placeholder="Сроки, пожелания по доставке и оформлению"></div>'+
+    '<button class="rl-btn" type="submit" id="pay" style="margin-top:8px">Отправить заявку</button>'+
     '</div>'+summary()+'</div></form>';
 }
 
@@ -140,40 +137,35 @@ function money(v){return v.replace(/\D/g,'').replace(/(.{4})/g,'$1 ').trim();}
 
 function bind(){
   var f=document.getElementById('co');
-  var num=document.getElementById('num'),exp=document.getElementById('exp'),cvc=document.getElementById('cvc'),holder=document.getElementById('holder');
-  num.addEventListener('input',function(){num.value=money(num.value);document.getElementById('cnum').textContent=num.value||'•••• •••• •••• ••••';});
-  exp.addEventListener('input',function(){var v=exp.value.replace(/\D/g,'').slice(0,4);if(v.length>2)v=v.slice(0,2)+'/'+v.slice(2);exp.value=v;document.getElementById('cexp').textContent=v||'ММ/ГГ';});
-  cvc.addEventListener('input',function(){cvc.value=cvc.value.replace(/\D/g,'');});
-  holder.addEventListener('input',function(){document.getElementById('cname').textContent=(holder.value||'ДЕРЖАТЕЛЬ КАРТЫ').toUpperCase();});
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    var ok=true;
-    [['num',num.value.replace(/\s/g,'').length>=13],['exp',/^\d\d\/\d\d$/.test(exp.value)],['cvc',cvc.value.length>=3]].forEach(function(p){
-      var el=document.getElementById(p[0]); el.classList.toggle('rl-err',!p[1]); if(!p[1])ok=false;
-    });
     if(!f.checkValidity()){f.reportValidity();return;}
-    if(!ok)return;
-    var btn=document.getElementById('pay'); btn.disabled=true; btn.textContent='Обработка платежа…';
-    // сохранить контакт в кабинет
+    var btn=document.getElementById('pay'); btn.disabled=true; btn.textContent='Отправляем…';
     var u=S.user(); var fd=new FormData(f);
     u.name=(fd.get('fname')+' '+fd.get('lname')).trim(); u.email=fd.get('email'); u.phone=fd.get('phone'); S.saveUser(u);
     var orderItems=S.cartItems().map(function(o){return o.name}); var orderTotal=S.total();
+    S.addOrder({date:new Date().toLocaleString('ru-RU'),name:u.name,email:u.email,phone:u.phone,
+                addr:fd.get('addr'),note:fd.get('note')||'',items:orderItems,total:orderTotal});
+    var ids=S.placeOrder();
+    // дублируем письмом: сетевой отправки у сайта пока нет
+    var body='Имя: '+u.name+'\nE-mail: '+u.email+'\nТелефон: '+u.phone+
+             '\nАдрес: '+(fd.get('addr')||'')+'\nКомментарий: '+(fd.get('note')||'—')+
+             '\n\nОбъекты:\n'+orderItems.join('\n')+'\nИтог: '+S.fmt(orderTotal);
     setTimeout(function(){
-      S.addOrder({date:new Date().toLocaleString('ru-RU'),name:u.name,email:u.email,phone:u.phone,addr:fd.get('addr'),items:orderItems,total:orderTotal});
-      var ids=S.placeOrder();
-      success(ids.length);
-    }, 1600);
+      success(ids.length, body);
+    }, 400);
   });
 }
 
-function success(n){
+function success(n, body){
   area.innerHTML='<div class="rl-success"><div class="ok">✓</div>'+
-    '<div class="rl-label" style="margin-bottom:12px">Заказ оформлен</div>'+
-    '<h2 class="rl-h" style="font-size:34px;margin-bottom:14px">Спасибо. Объект ваш.</h2>'+
-    '<p class="rl-muted" style="margin-bottom:10px">'+n+' объект'+(n>1?'а':'')+' зарезервировано за вами. Персональный консультант свяжется в течение рабочего дня, чтобы подтвердить детали, доставку и установку.</p>'+
-    '<p class="rl-muted" style="margin-bottom:28px">Объекты добавлены в вашу коллекцию в личном кабинете.</p>'+
-    '<a class="rl-btn" style="width:auto;display:inline-block" href="account.html">Открыть личный кабинет</a> '+
-    '<a class="rl-btn ghost" style="width:auto;display:inline-block" href="catalog.html">В каталог</a></div>';
+    '<div class="rl-label" style="margin-bottom:12px">Заявка принята</div>'+
+    '<h2 class="rl-h" style="font-size:34px;margin-bottom:14px">Спасибо. Объект зарезервирован.</h2>'+
+    '<p class="rl-muted" style="margin-bottom:10px">'+n+' объект'+(n>1?'а':'')+' отложено за вами. Персональный менеджер дома свяжется в течение рабочего дня: подтвердит наличие и итоговую сумму, согласует доставку и удобный способ оплаты.</p>'+
+    '<p class="rl-muted" style="margin-bottom:24px">Оплата на сайте не проводится — все расчёты идут напрямую с домом.</p>'+
+    '<a class="rl-btn" style="width:auto;display:inline-block" href="mailto:concierge@relictum.gallery?subject='+
+      encodeURIComponent('Заказ в Relictum')+'&body='+encodeURIComponent(body||'')+'">Продублировать письмом</a> '+
+    '<a class="rl-btn ghost" style="width:auto;display:inline-block" href="account.html">Личный кабинет</a></div>';
   window.scrollTo(0,0);
 }
 

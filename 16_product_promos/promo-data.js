@@ -12,7 +12,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Рождение Солнечной системы", line: "≈ 4,5 млрд лет назад", href: "../15_concepts/deep-time.html" },
     alive: { title: "Сплав ядра и мантии", text: "Никелистое железо и кристаллы оливина застыли на границе ядра и мантии протопланеты, разрушенной за миллиарды лет до появления Земли.", video: "vid_meteor.mp4", poster: "ph_seymchan.jpg" },
-    interior: { img: "int_ph_seymchan.jpg", text: "Срез палласита занимает место на письменном столе или каминной полке, оставаясь предметом камерного, не парадного масштаба." },
+    interior: { video: "intv_seymchan.mp4", img: "int_ph_seymchan.jpg", text: "Срез палласита занимает место на письменном столе или каминной полке, оставаясь предметом камерного, не парадного масштаба." },
     gallery: ["g_seymchan_1.jpg", "g_seymchan_2.jpg", "g_seymchan_3.jpg", "int_ph_seymchan.jpg"]
   },
   "R–0201": {
@@ -28,7 +28,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Неогеновый океан", line: "Неоген, 23 – 2,6 млн лет назад", href: "../15_concepts/era-neogene.html" },
     alive: { title: "Двадцать миллионов лет наверху", text: "Восемнадцать метров длины и охота на китов: двадцать миллионов лет мегалодон занимал верх пищевой цепи, пока океан не остыл и киты не ушли в холодные воды.", poster: "beast_megalodon.jpg" },
-    interior: { img: "int_ph_megalodon.jpg", text: "Зуб держит стол сам по себе: стальной стенд поднимает его на уровень взгляда, а направленный свет проявляет зазубрины кромки." },
+    interior: { video: "intv_megalodon.mp4", img: "int_ph_megalodon.jpg", text: "Зуб держит стол сам по себе: стальной стенд поднимает его на уровень взгляда, а направленный свет проявляет зазубрины кромки." },
     gallery: ["g_megalodon_1.jpg", "g_megalodon_2.jpg", "int_ph_megalodon.jpg"]
   },
   "R–0604": {
@@ -41,7 +41,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Ледниковая Евразия", line: "Плейстоцен, 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
     alive: { title: "Зимовщик ледниковых пещер", text: "Зимой он неделями спал в глубоких пещерах Европы и Сибири, оставляя на стенах царапины когтей и утоптанные земляные лежанки.", video: "era_mammoth.mp4", poster: "beast_cavebear.jpg" },
-    interior: { img: "int_ph_cavebear.jpg", text: "Скелет такого размера держит пространство просторного холла или галереи и не нуждается в соседстве другой крупной мебели." },
+    interior: { video: "intv_cavebear.mp4", img: "int_ph_cavebear.jpg", text: "Скелет такого размера держит пространство просторного холла или галереи и не нуждается в соседстве другой крупной мебели." },
     gallery: ["g_cavebear_1.jpg", "g_cavebear_2.jpg", "g_cavebear_3.jpg", "int_ph_cavebear.jpg"]
   },
   "R–0605": {
@@ -189,7 +189,7 @@ window.RELICTUM_PROMO = {
   "R–0210": {
     spin: "spin_ammolite.mp4",
     gallery: ["g_ammolite_1.jpg", "g_ammolite_2.jpg", "g_ammolite_3.jpg", "int_ph_ammolite.jpg"],
-    interior: { img: "int_ph_ammolite.jpg", text: "Иризация аммолита раскрывается только при дневном свете, поэтому место у окна кабинета или библиотеки подходит ему лучше свечного полумрака гостиной." },
+    interior: { video: "intv_ammolite.mp4", img: "int_ph_ammolite.jpg", text: "Иризация аммолита раскрывается только при дневном свете, поэтому место у окна кабинета или библиотеки подходит ему лучше свечного полумрака гостиной." },
     hook: "Аммонит Placenticeras costatum, замещённый аммолитом с насыщенной радужной иризацией.",
     heroKicker: "Аммониты, Альберта, Канада",
     story: [
@@ -202,7 +202,7 @@ window.RELICTUM_PROMO = {
   "R–0211": {
     spin: "spin_arietites.mp4",
     gallery: ["g_arietites_1.jpg", "g_arietites_2.jpg", "g_arietites_3.jpg", "int_ph_arietites.jpg"],
-    interior: { img: "int_ph_arietites.jpg", text: "Раскрытая спираль Arietites смотрится лучше на невысоком столе или консоли, где на неё глядят сверху, а не с высокого постамента." },
+    interior: { video: "intv_arietites.mp4", img: "int_ph_arietites.jpg", text: "Раскрытая спираль Arietites смотрится лучше на невысоком столе или консоли, где на неё глядят сверху, а не с высокого постамента." },
     hook: "Раннеюрский аммонит Arietites диаметром 42 сантиметра с мощными радиальными рёбрами.",
     heroKicker: "Аммониты, Франция",
     story: [
