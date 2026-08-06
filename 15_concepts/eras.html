@@ -92,15 +92,23 @@ footer .foot-links a{color:var(--mist)}footer .foot-links a:hover{color:var(--go
 /* шапка сайта заняла верх, а низ занимают кнопки и подписи — индикатор эры уходит
    к правому краю и висит по центру высоты, ничего не перекрывая */
 .hud { top:50%; bottom:auto; left:auto; right:0; transform:translateY(-50%);
-       width:auto; min-height:0; padding:0 clamp(14px,2.4vw,30px);
-       display:block; background:none; }
+       width:auto; min-height:0; padding:14px clamp(14px,2.4vw,30px) 14px clamp(46px,7vw,96px);
+       display:block;
+       background:none; }
+/* Индикатор висит поверх кадра, а кадры бывают светлыми (саванна неогена,
+   лёд плейстоцена) — белый текст на них пропадал. Подложку-прямоугольник
+   ставить нельзя: её края видны на светлом фоне. Поэтому тень у самих букв —
+   в три слоя, от резкой к размытой: получается мягкий ореол без панели. */
+.hud .era .n, .hud .era .y {
+  text-shadow:0 0 4px rgba(10,9,8,.95), 0 0 14px rgba(10,9,8,.85), 0 1px 28px rgba(10,9,8,.7); }
 .hud .mark { display:none; }
 .hud .era { text-align:right; padding:12px 0; border-right:2px solid rgba(233,201,138,.5); padding-right:14px; }
 .hud .era .n { font-size:clamp(14px,2.6vw,19px); line-height:1.15; }
 .hud .era .y { font-size:8.5px; letter-spacing:.2em; }
 @media(max-width:760px){
   /* на телефоне правый край занят пальцем — индикатор возвращается вниз, но компактно */
-  .hud { top:auto; bottom:0; left:0; right:0; transform:none; padding:0 18px 10px; }
+  .hud { top:auto; bottom:0; left:0; right:0; transform:none; padding:26px 18px 10px;
+         background:linear-gradient(0deg, rgba(10,9,8,.75), rgba(10,9,8,.4) 45%, rgba(10,9,8,0)); }
   .hud .era { text-align:left; border-right:none; padding-right:0; }
 }
 </style>
