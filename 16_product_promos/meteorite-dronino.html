@@ -291,8 +291,11 @@ if(!o){
       '<p class="hook rv">'+hook+'</p>'+
       '<div class="rv"><span class="scrollcue">Листайте</span></div>'+
     '</div>'+
-    '<div class="ph rv'+(P&&P.heroVideo?' vid':'')+'"><img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'" loading="lazy" decoding="async">'+
-      (P&&P.heroVideo?'<video id="heroVid" muted loop playsinline preload="auto" src="'+IMG+P.heroVideo+'"></video>':'')+
+    /* Главное фото первого экрана: грузим сразу и с высоким приоритетом —
+       это самый крупный элемент страницы, ленивая загрузка его тормозила.
+       Ветка heroVideo убрана: поля heroVideo в promo-data больше нет
+       (ролики чёрной студии вынесены в отдельную библиотеку 05.08). */
+    '<div class="ph rv"><img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'" fetchpriority="high" decoding="async">'+
     '</div>'+
   '</section>'+
 

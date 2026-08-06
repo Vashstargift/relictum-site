@@ -337,9 +337,11 @@ function render() {
   if (sortEl.value==="asc") items=[...items].sort((a,b)=>(a.priceValue??Infinity)-(b.priceValue??Infinity));
   if (sortEl.value==="desc") items=[...items].sort((a,b)=>(b.priceValue??-1)-(a.priceValue??-1));
 
-  grid.innerHTML = items.length ? items.map(o => `
+  // Первый ряд карточек виден сразу — его фото грузим обычным образом,
+  // остальные лениво. Ленивая загрузка того, что уже на экране, только тормозит.
+  grid.innerHTML = items.length ? items.map((o, n) => `
     <a class="obj-card" href="${o.href||('object.html?id='+encodeURIComponent(o.id))}">
-      <div class="ph"><img src="../shared/img/${o.img}.jpg?v=11" alt="${o.name}" loading="lazy"></div>
+      <div class="ph"><img src="../shared/img/${o.img}.jpg?v=11" alt="${o.name}"${n < 4 ? '' : ' loading="lazy"'} decoding="async"></div>
       <div class="body">
         <div class="id">${o.id}, ${o.worldLabel}</div>
         <h3>${o.name}</h3>

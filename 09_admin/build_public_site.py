@@ -288,9 +288,25 @@ ErrorDocument 404 /404.html
   ExpiresByType text/html "access plus 10 minutes"
 </IfModule>
 
-# шрифты дома лежат у нас же — отдаём с правильным типом и надолго
+# Шрифты дома лежат у нас же. ForceType, а не AddType: сервер по умолчанию
+# отдаёт .woff2 как application/font-woff2 (устаревший тип), из-за чего правило
+# ExpiresByType font/woff2 не срабатывало и кэш был 30 дней вместо года.
 <IfModule mod_mime.c>
   AddType font/woff2 .woff2
+</IfModule>
+<FilesMatch "\.woff2$">
+  ForceType font/woff2
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+
+# Служебные заголовки. Сайт статический, форм с деньгами нет, поэтому набор
+# минимальный и безопасный: запрет угадывать тип файла, запрет показывать сайт
+# внутри чужого фрейма и обрезка реферера до домена.
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Content-Security-Policy "frame-ancestors 'self'"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 """
 

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Череп саблезубой кошки Machairodus — RELICTUM</title>
-<meta name="description" content="Череп саблезубой кошки Machairodus, 5–12 млн лет, Ганьсу. Клинки неогенового хищника на музейной стойке — акцент люкс-интерьера, подарок вне времени. Провенанс и доставка домом RELICTUM.">
+<meta name="description" content="Череп саблезубой кошки Machairodus, 5–12 млн лет, Ганьсу. Клинковидные клыки неогенового хищника на музейной стойке.">
 
 <link rel="stylesheet" href="../02_site_v1_gallery/style.css">
 <style>
@@ -135,12 +135,12 @@ a{color:inherit;text-decoration:none}
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="RELICTUM">
 <meta property="og:title" content="Череп саблезубой кошки Machairodus — RELICTUM">
-<meta property="og:description" content="Череп саблезубой кошки Machairodus, 5–12 млн лет, Ганьсу. Клинки неогенового хищника на музейной стойке — акцент люкс-интерьера, подарок вне времени. Провенанс и доставка домом RELICTUM.">
+<meta property="og:description" content="Череп саблезубой кошки Machairodus, 5–12 млн лет, Ганьсу. Клинковидные клыки неогенового хищника на музейной стойке.">
 <meta property="og:image" content="https://vashikmart.github.io/relictum/shared/img/ph_sabertooth.jpg">
 <meta property="og:url" content="https://vashikmart.github.io/relictum/16_product_promos/sabertooth-skull.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Череп саблезубой кошки Machairodus — RELICTUM">
-<meta name="twitter:description" content="Череп саблезубой кошки Machairodus, 5–12 млн лет, Ганьсу. Клинки неогенового хищника на музейной стойке — акцент люкс-интерьера, подарок вне времени. Провенанс и доставка домом RELICTUM.">
+<meta name="twitter:description" content="Череп саблезубой кошки Machairodus, 5–12 млн лет, Ганьсу. Клинковидные клыки неогенового хищника на музейной стойке.">
 <meta name="twitter:image" content="https://vashikmart.github.io/relictum/shared/img/ph_sabertooth.jpg">
 <link rel="stylesheet" href="../shared/fonts.css">
 <link rel="stylesheet" href="../shared/buttons.css">
@@ -291,8 +291,11 @@ if(!o){
       '<p class="hook rv">'+hook+'</p>'+
       '<div class="rv"><span class="scrollcue">Листайте</span></div>'+
     '</div>'+
-    '<div class="ph rv'+(P&&P.heroVideo?' vid':'')+'"><img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'" loading="lazy" decoding="async">'+
-      (P&&P.heroVideo?'<video id="heroVid" muted loop playsinline preload="auto" src="'+IMG+P.heroVideo+'"></video>':'')+
+    /* Главное фото первого экрана: грузим сразу и с высоким приоритетом —
+       это самый крупный элемент страницы, ленивая загрузка его тормозила.
+       Ветка heroVideo убрана: поля heroVideo в promo-data больше нет
+       (ролики чёрной студии вынесены в отдельную библиотеку 05.08). */
+    '<div class="ph rv"><img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'" fetchpriority="high" decoding="async">'+
     '</div>'+
   '</section>'+
 

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Пара бивней мамонта, 250 см — RELICTUM</title>
-<meta name="description" content="Пара бивней шерстистого мамонта из мерзлоты Якутии: 250 см по дуге, 74 кг, 10–40 тыс лет. Монумент для люкс-интерьера и коллекции. Музейное видео, провенанс и доставка домом RELICTUM.">
+<meta name="description" content="Пара бивней шерстистого мамонта из мерзлоты Якутии: 250 см по дуге, 74 кг, 10–40 тыс лет. Монумент для интерьера и коллекции.">
 
 <link rel="stylesheet" href="../02_site_v1_gallery/style.css">
 <style>
@@ -135,12 +135,12 @@ a{color:inherit;text-decoration:none}
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="RELICTUM">
 <meta property="og:title" content="Пара бивней мамонта, 250 см — RELICTUM">
-<meta property="og:description" content="Пара бивней шерстистого мамонта из мерзлоты Якутии: 250 см по дуге, 74 кг, 10–40 тыс лет. Монумент для люкс-интерьера и коллекции. Музейное видео, провенанс и доставка домом RELICTUM.">
+<meta property="og:description" content="Пара бивней шерстистого мамонта из мерзлоты Якутии: 250 см по дуге, 74 кг, 10–40 тыс лет. Монумент для интерьера и коллекции.">
 <meta property="og:image" content="https://vashikmart.github.io/relictum/shared/img/ph_mammoth_tusks.jpg">
 <meta property="og:url" content="https://vashikmart.github.io/relictum/16_product_promos/mammoth-tusks.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Пара бивней мамонта, 250 см — RELICTUM">
-<meta name="twitter:description" content="Пара бивней шерстистого мамонта из мерзлоты Якутии: 250 см по дуге, 74 кг, 10–40 тыс лет. Монумент для люкс-интерьера и коллекции. Музейное видео, провенанс и доставка домом RELICTUM.">
+<meta name="twitter:description" content="Пара бивней шерстистого мамонта из мерзлоты Якутии: 250 см по дуге, 74 кг, 10–40 тыс лет. Монумент для интерьера и коллекции.">
 <meta name="twitter:image" content="https://vashikmart.github.io/relictum/shared/img/ph_mammoth_tusks.jpg">
 <link rel="stylesheet" href="../shared/fonts.css">
 <link rel="stylesheet" href="../shared/buttons.css">
@@ -291,8 +291,11 @@ if(!o){
       '<p class="hook rv">'+hook+'</p>'+
       '<div class="rv"><span class="scrollcue">Листайте</span></div>'+
     '</div>'+
-    '<div class="ph rv'+(P&&P.heroVideo?' vid':'')+'"><img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'" loading="lazy" decoding="async">'+
-      (P&&P.heroVideo?'<video id="heroVid" muted loop playsinline preload="auto" src="'+IMG+P.heroVideo+'"></video>':'')+
+    /* Главное фото первого экрана: грузим сразу и с высоким приоритетом —
+       это самый крупный элемент страницы, ленивая загрузка его тормозила.
+       Ветка heroVideo убрана: поля heroVideo в promo-data больше нет
+       (ролики чёрной студии вынесены в отдельную библиотеку 05.08). */
+    '<div class="ph rv"><img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'" fetchpriority="high" decoding="async">'+
     '</div>'+
   '</section>'+
 
