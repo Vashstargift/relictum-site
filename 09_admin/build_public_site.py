@@ -332,8 +332,10 @@ def prune_media():
             if not f.lower().endswith(MEDIA_EXT):
                 continue
             stem = f.rsplit('.', 1)[0]
-            # имя целиком или без расширения (в данных картинки задаются как "ph_slug")
-            if f in blob or stem in blob:
+            # имя целиком или без расширения (в данных картинки задаются как "ph_slug").
+            # Хвост проверяем обязательно: голое `stem in blob` считает «ph_cave_lion»
+            # использованным из-за «ph_cave_lion2.jpg» — сироты так оставались в срезе.
+            if f in blob or re.search(re.escape(stem) + r'(?![0-9A-Za-z_])', blob):
                 continue
             p = os.path.join(root, f)
             dropped.append((os.path.relpath(p, OUT), os.path.getsize(p)))

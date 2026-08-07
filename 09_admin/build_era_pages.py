@@ -49,7 +49,7 @@ BEAST_LINK = {
     'Otodus megalodon':         'R–0201',
     'Mammuthus primigenius':    'R–0617',   # полный скелет — самый крупный из трёх
     'Ursus spelaeus':           'R–0604',
-    'Cleoniceras besairiei':    'R–0210',   # меловой аммонит того же времени
+    'Cleoniceras besairiei':    'R–0224',   # аммолит снят с сайта, спираль показывают полированные аммониты
     # Tyrannosaurus rex и Triceratops horridus — предметов нет, ссылки не будет
 }
 
