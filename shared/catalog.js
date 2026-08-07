@@ -600,6 +600,28 @@ window.RELICTUM_CATALOG = [
     "href": "../16_product_promos/exhibit.html?id=0224-polished-ammonites"
   },
   {
+    "id": "R–0229",
+    "world": "vita",
+    "worldLabel": "Жизнь",
+    "category": "Пещерные львы",
+    "period": "Плейстоцен",
+    "era": "Кайнозой",
+    "region": "—",
+    "name": "Череп пещерного льва в витрине",
+    "latin": "Panthera leo spelaea",
+    "meta": "Евразия, плейстоцен<br>40 × 30 × 28 см",
+    "price": "Цена по запросу",
+    "img": "ph_cave_lion_vitrine",
+    "priceValue": null,
+    "slug": "0229-cave-lion-skull-vitrine",
+    "age": "2,6 млн – 11 тыс лет, плейстоцен",
+    "location": "Евразия",
+    "size": "40 × 30 × 28 см",
+    "mount": "Стеклянная витрина на чёрном основании, опора из чернёной стали",
+    "description": "Полный череп пещерного льва с нижней челюстью, смонтированный в раскрытой позе на стальной опоре. Кость минерализована до тёплого бурого тона, сохранены оба верхних и оба нижних клыка и зубной ряд. Объект поставляется в собственной стеклянной витрине на чёрном основании — его не нужно ничем дополнять.",
+    "href": "../16_product_promos/exhibit.html?id=0229-cave-lion-skull-vitrine"
+  },
+  {
     "id": "R–0228",
     "world": "vita",
     "worldLabel": "Жизнь",
