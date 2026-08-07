@@ -101,7 +101,7 @@ function initCfg(){
   c.hidden = c.hidden || {};      // скрыт из каталога
   c.deleted = c.deleted || {};    // удалён из каталога
   c.newObjects = c.newObjects || [];  // добавленные объекты
-  c.featured = c.featured || CAT.filter(function(o){return String(o.href||'').indexOf('exhibit.html')>=0}).slice(0,4).map(function(o){return o.id});
+  c.featured = c.featured || CAT.filter(function(o){return String(o.href||'').indexOf('exhibit.html')>=0}).slice(0,3).map(function(o){return o.id});
   c.drafts = c.drafts || {};      // черновики промо-контента
   CAT.forEach(function(o){ if(c.promo[o.id]===undefined) c.promo[o.id]=String(o.href||'').indexOf('exhibit.html')>=0; });
   saveCfg(c); return c;
@@ -178,7 +178,7 @@ function paneHome(){
   }).join('');
   return '<div class="card"><div class="label">Блок «Только что поступило»</div>'+
     '<h2 style="font-size:24px;margin:8px 0 4px">Что показывать на главной</h2>'+
-    '<p class="muted">Отметьте до 4 объектов для блока «Только что поступило» на главной странице. Выбрано: <b id="featCount">'+C.featured.length+'</b>/4</p>'+
+    '<p class="muted">Отметьте 3 или 6 объектов для блока «Только что поступило» на главной странице: сетка выкладывает карточки по три в ряд, и любое другое число оставляет неполный ряд. Выбрано: <b id="featCount">'+C.featured.length+'</b>/4</p>'+
     '<div class="note">Порядок = порядок выбора. Изменения применяются после экспорта на вкладке «Экспорт и деплой».</div>'+
     '<div class="grid3" style="margin-top:14px">'+picks+'</div></div>';
 }
@@ -297,7 +297,7 @@ function buildBrief(){
   var hidden=Object.keys(C.hidden).filter(function(k){return C.hidden[k]}).map(function(k){var o=CAT.find(function(x){return x.id===k});return o?o.id+' '+o.name:k});
   return 'БРИФ ДЛЯ CLAUDE — применить настройки панели RELICTUM\n\n'+
     '1) ПРОМО-СТРАНИЦЫ включены для:\n - '+promoOn.join('\n - ')+'\n\n'+
-    '2) БЛОК «Только что поступило» на главной (до 4):\n - '+feat.join('\n - ')+'\n\n'+
+    '2) БЛОК «Только что поступило» на главной (3 или 6):\n - '+feat.join('\n - ')+'\n\n'+
     '3) СКРЫТЬ из каталога:\n - '+(hidden.length?hidden.join('\n - '):'—')+'\n\n'+
     '4) Приложен promo-data.js с черновиками. Прогенерируй недостающие видео/интерьеры (скилл relictum-product-promo), проставь href у объектов в catalog.js, обнови блок главной, задеплой.\n';
 }
@@ -322,7 +322,7 @@ function bind(t){
   var ci=document.getElementById('clearInbox'); if(ci)ci.onclick=function(){if(confirm('Очистить все заявки и заказы?')){localStorage.removeItem('relictum_leads');localStorage.removeItem('relictum_orders');render();toast('Очищено');}};
   document.querySelectorAll('[data-feat]').forEach(function(p){p.onclick=function(){
     var id=p.dataset.feat, i=C.featured.indexOf(id);
-    if(i>=0)C.featured.splice(i,1); else{ if(C.featured.length>=4){toast('Максимум 4 объекта');return;} C.featured.push(id); }
+    if(i>=0)C.featured.splice(i,1); else{ if(C.featured.length>=6){toast('Максимум 6 объектов');return;} C.featured.push(id); }
     saveCfg(C); render();
   };});
   if(t==='export'){
