@@ -225,8 +225,11 @@ const CATALOG = window.RELICTUM_CATALOG;
 
 const FACETS = [
   {key:"world", label:"Мир", labels:{vita:"Жизнь",terra:"Земля",cosmos:"Космос",grand:"Монументы",editions:"Editions"}, order:["vita","terra","cosmos","grand","editions"]},
-  {key:"category", label:"Тип объекта"},
-  {key:"period", label:"Эпоха", order:["До зарождения жизни","Триас","Юра","Мел","Палеоген","Неоген","Девон","Плейстоцен"]},
+  /* Делим по эрам, а не по видам (решение владельца 06.08): «Мегалодон»,
+     «Саблезубые кошки», «Трилобиты» — это виды, а не структура коллекции.
+     Мелкие периоды остались отдельным фильтром для тех, кому нужна точность. */
+  {key:"era", label:"Эра", order:["Палеозой","Мезозой","Кайнозой","До зарождения жизни"]},
+  {key:"period", label:"Период", skip:["Палеозой","Мезозой","Кайнозой"], order:["Ордовик","Девон","Триас","Юра","Мел","Палеоген","Неоген","Миоцен","Плейстоцен","До зарождения жизни"]},
   {key:"region", label:"Регион находки"}
 ];
 const PRICE_BRACKETS = [
@@ -237,7 +240,7 @@ const PRICE_BRACKETS = [
   {id:"request", label:"Цена по запросу", test:v=>v==null}
 ];
 
-const state = {world:new Set(),category:new Set(),period:new Set(),region:new Set(),price:new Set(),q:"",sort:"default",priceMin:null,priceMax:null};
+const state = {world:new Set(),era:new Set(),period:new Set(),region:new Set(),price:new Set(),q:"",sort:"default",priceMin:null,priceMax:null};
 
 const $ = s => document.querySelector(s);
 const facetsEl = $("#facets"), grid = $("#grid"), countEl = $("#count"),
@@ -247,6 +250,7 @@ const facetsEl = $("#facets"), grid = $("#grid"), countEl = $("#count"),
 function optionValues(key) {
   const facet = FACETS.find(f => f.key === key);
   let vals = [...new Set(CATALOG.map(o => o[key]).filter(v => v && v !== "—"))];
+  if (facet.skip) vals = vals.filter(v => facet.skip.indexOf(v) < 0);
   if (facet.order) vals.sort((a,b) => facet.order.indexOf(a) - facet.order.indexOf(b));
   else vals.sort((a,b) => a.localeCompare(b,'ru'));
   return vals;
@@ -282,7 +286,7 @@ FACETS.forEach((f, i) => {
 
 // ---- Фильтрация ----
 function matches(o) {
-  for (const k of ["world","category","period","region"])
+  for (const k of ["world","era","period","region"])
     if (state[k].size && !state[k].has(o[k])) return false;
   if (state.price.size) {
     const ok = PRICE_BRACKETS.some(b => state.price.has(b.id) && b.test(o.priceValue));
@@ -291,14 +295,14 @@ function matches(o) {
   if (state.priceMin != null && (o.priceValue == null || o.priceValue < state.priceMin)) return false;
   if (state.priceMax != null && (o.priceValue == null || o.priceValue > state.priceMax)) return false;
   if (state.q) {
-    const hay = (o.name+" "+o.latin+" "+o.meta+" "+o.worldLabel+" "+o.category+" "+o.period+" "+o.region).toLowerCase();
+    const hay = (o.name+" "+o.latin+" "+o.meta+" "+o.worldLabel+" "+o.era+" "+o.category+" "+o.period+" "+o.region).toLowerCase();
     if (!hay.includes(state.q)) return false;
   }
   return true;
 }
 
 function activeCount() {
-  return state.world.size+state.category.size+state.period.size+state.region.size+state.price.size+
+  return state.world.size+state.era.size+state.period.size+state.region.size+state.price.size+
     (state.priceMin!=null?1:0)+(state.priceMax!=null?1:0);
 }
 
@@ -310,7 +314,7 @@ function labelFor(k,v){
 
 function renderChips() {
   const chips = [];
-  ["world","category","period","region","price"].forEach(k => {
+  ["world","era","period","region","price"].forEach(k => {
     state[k].forEach(v => chips.push({k,v,text:labelFor(k,v)}));
   });
   if (state.priceMin!=null) chips.push({k:"priceMin",v:null,text:"от "+state.priceMin.toLocaleString('ru')+" ₽"});
@@ -365,7 +369,7 @@ function render() {
 }
 
 function resetAll() {
-  ["world","category","period","region","price"].forEach(k => state[k].clear());
+  ["world","era","period","region","price"].forEach(k => state[k].clear());
   state.priceMin=state.priceMax=null; state.q="";
   facetsEl.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false);
   $("#pmin").value=""; $("#pmax").value=""; searchEl.value="";

@@ -185,7 +185,9 @@
   var rows=[];
   function row(k,v){ if(v) rows.push('<tr><td>'+k+'</td><td>'+v+'</td></tr>'); }
   row('Категория', o.category);
-  row('Период', o.period && o.period!=='—' ? o.period : null);
+  row('Эра', o.era && o.era!=='До зарождения жизни' ? o.era : null);
+  // период показываем, только если он уточнён: у части объектов датировка охватывает всю эру
+  row('Период', o.period && o.period!=='—' && o.period!==o.era ? o.period : null);
   row('Возраст', o.age);
   row('Происхождение', o.location);
   row('Дата находки', o.found);
