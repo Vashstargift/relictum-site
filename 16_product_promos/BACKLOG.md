@@ -1,7 +1,7 @@
 # Бэклог промо-страниц экспонатов Relictum
 
 Основано на ассортименте paleohunters.ru (data/paleohunters_research.json): почти всё из их
-каталога будет и у нас. Шаблон промо: `mammoth-tusk.html` / `megalodon-tooth.html`
+каталога будет и у нас. Шаблон промо: `exhibit.html` (единый рендер по promo-data.js)
 (hero-паспорт → провенанс-нить → «в вашем доме» → «встретить живым»→эпоха → сервис).
 Полный конвейер описан в скилле `.claude/skills/relictum-product-promo/SKILL.md`.
 

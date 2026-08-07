@@ -31,13 +31,12 @@ FORCE_HTTPS = True
 OLD_URL = re.compile(r'https://[a-z0-9.-]*github\.io/relictum(?:-site)?/?')
 
 # что копируем: (источник, назначение внутри public, фильтр файлов)
-# lab.html — внутренняя песочница прототипов с макетными объектами, наружу не идёт
-INTERNAL = {'lab.html',          # внутренняя песочница прототипов
-            'mammoth-tusk.html', # страница объекта R–0403, которого нет в коллекции
-            'strata-v2.html'}    # черновой дубль strata.html, на него никто не ссылается
-def html_only(f): return f.endswith('.html') and f not in INTERNAL
-def html_and_js(f): return (f.endswith('.html') or f.endswith('.js')) and f not in INTERNAL
-def showcase(f): return (f.endswith('.html') or f.endswith('.css')) and f != 'index-v2.html'
+# Список исключений больше не нужен: черновики (lab.html, strata-v2.html,
+# mammoth-tusk.html, index-v2.html) удалены из репозитория 07.08.2026 —
+# всё, что здесь лежит, идёт наружу.
+def html_only(f): return f.endswith('.html')
+def html_and_js(f): return f.endswith('.html') or f.endswith('.js')
+def showcase(f): return f.endswith('.html') or f.endswith('.css')
 
 COPY = [
     ('02_site_v1_gallery', '', showcase),
