@@ -606,7 +606,7 @@ window.RELICTUM_CATALOG = [
     "category": "Пещерные львы",
     "period": "Плейстоцен",
     "era": "Кайнозой",
-    "region": "—",
+    "region": "Евразия",
     "name": "Череп пещерного льва в витрине",
     "latin": "Panthera leo spelaea",
     "meta": "Евразия, плейстоцен<br>40 × 30 × 28 см",
