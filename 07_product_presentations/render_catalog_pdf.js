@@ -55,7 +55,12 @@ img{display:block;}
 .pillar p{font-size:8.6pt;line-height:1.55;color:var(--stone);}
 .toc{padding:12mm 16mm 18mm;}
 .toc h1{font-size:24pt;margin:1.5mm 0 4mm;}
-.toc-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:7mm;}
+.toc-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:7mm;align-items:start;}
+/* Раздел «Жизнь» перерос полосу: даём ему две доли и разливаем в два столбца,
+   иначе последние строки уезжают под колонтитул. */
+.toc-col.wide{grid-column:span 2;}
+.toc-col.wide .rows{columns:2;column-gap:7mm;}
+.toc-col .toc-row{break-inside:avoid;}
 .toc-col .wt{font-family:var(--font-display);font-size:13pt;color:var(--bronze-deep);border-bottom:.3mm solid var(--hairline);padding-bottom:1.6mm;margin-bottom:2.4mm;}
 .toc-row{display:flex;justify-content:space-between;gap:5mm;padding:1.0mm 0;border-bottom:.25mm solid rgba(154,109,52,.14);}
 .toc-row .nm{font-size:8pt;line-height:1.16;}
@@ -139,9 +144,11 @@ function manifestPage(){
 }
 function tocPage(){
   const cols = WORLDS.map(w=>{
-    const rows = EXHIBITS.filter(e=>e.world===w.key).map(e=>
+    const items = EXHIBITS.filter(e=>e.world===w.key);
+    const rows = items.map(e=>
       `<div class="toc-row"><div class="nm">${esc(e.name)}<i>${esc(e.latin)}</i></div><div class="rid">${esc(e.id)}</div></div>`).join('');
-    return `<div class="toc-col"><div class="wt">${esc(w.title)}</div>${rows}</div>`;
+    const wide = items.length > 14 ? ' wide' : '';
+    return `<div class="toc-col${wide}"><div class="wt">${esc(w.title)}</div><div class="rows">${rows}</div></div>`;
   }).join('');
   return `<section class="page toc"><div class="label" style="color:var(--bronze-deep)">В наличии · единственные экземпляры</div>
     <h1>Коллекция</h1><div class="toc-cols">${cols}</div>
