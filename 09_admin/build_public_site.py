@@ -17,7 +17,7 @@
 Запуск:  python3 09_admin/build_public_site.py
 Выход:   public/  (в .gitignore, деплоится rsync-ом)
 """
-import os, re, shutil, sys
+import os, re, shutil, subprocess, sys
 from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -251,6 +251,7 @@ def build():
     t = t.replace("return '02_site_v1_gallery/';", "return '';")
     open(shop, 'w', encoding='utf-8').write(t)
 
+    prerender_catalog()
     dropped = prune_media()
     stamp_media(OUT)   # ?v=<хэш файла> у картинок и видео — иначе кэш держит старое
     write_extras(pages)
@@ -311,6 +312,45 @@ def stamp_media(out_dir):
                 open(page, 'w', encoding='utf-8').write(new)
                 touched += 1
     return touched
+
+
+def prerender_catalog():
+    """Впечатывает карточки каталога в HTML при сборке.
+
+    Каталог рендерится клиентским JS, поэтому поисковики, LLM-агенты и любой
+    клиент без JS видели пустую сетку — и делали вывод, что экспонаты
+    «не опубликованы». Здесь та же разметка, что строит render() в
+    catalog.html, генерируется заранее и кладётся в #grid; скрипт при загрузке
+    просто перерисует её же. Данные берём из УЖЕ переписанного
+    public/shared/catalog.js — ссылки там ведут на objects/.
+    """
+    import json
+    js = ("global.window={};"
+          f"eval(require('fs').readFileSync({json.dumps(os.path.join(OUT,'shared','catalog.js'))},'utf8'));"
+          "process.stdout.write(JSON.stringify(window.RELICTUM_CATALOG));")
+    items = json.loads(subprocess.run(['node','-e',js],capture_output=True,text=True,check=True).stdout)
+
+    def esc(x): return str(x).replace('&','&amp;').replace('<','&lt;').replace('"','&quot;')
+    cards = []
+    for n, o in enumerate(items):
+        href = o.get('href') or ('object.html?id=' + o['id'])
+        lazy = '' if n < 4 else ' loading="lazy"'
+        img, name, world = o['img'], o['name'], o['worldLabel']
+        latin, meta, price = o.get('latin', ''), o.get('meta', ''), o.get('price', '')
+        cards.append(
+            '<a class="obj-card" href="' + esc(href) + '">'
+            '<div class="ph"><img src="shared/img/' + img + '.jpg?v=11" alt="' + esc(name) + '"' + lazy + ' decoding="async"></div>'
+            '<div class="body"><div class="id">' + o['id'] + ', ' + esc(world) + '</div>'
+            '<h3>' + esc(name) + '</h3><div class="latin">' + esc(latin) + '</div>'
+            '<div class="meta">' + meta + '</div>'
+            '<div class="price"><b>' + esc(price) + '</b><span>Смотреть</span></div></div></a>')
+    p = os.path.join(OUT, 'catalog.html')
+    t = open(p, encoding='utf-8').read()
+    t = t.replace('<div class="grid-objects" id="grid"></div>',
+                  '<div class="grid-objects" id="grid">' + ''.join(cards) + '</div>', 1)
+    t = t.replace('<div class="rail-count" id="count"></div>',
+                  f'<div class="rail-count" id="count">Объектов: {len(items)}</div>', 1)
+    open(p, 'w', encoding='utf-8').write(t)
 
 
 def prune_media():
