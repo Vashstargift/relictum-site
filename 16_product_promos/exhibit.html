@@ -85,16 +85,33 @@ a{color:inherit;text-decoration:none}
 .story .eratag b{font-family:var(--serif);font-size:22px;font-weight:400}
 .story .eratag span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--deep)}
 
-/* life — реконструкция: существо в позе экспоната + анатомическая схема */
+/* life — слайдер «жизнь → скелет → фото»: три слоя в одном кадре */
 .life{padding:clamp(60px,8vw,120px) 0;background:var(--bone,#FBF8F1)}
-.life .in2{max-width:1120px;margin:0 auto}
-.life .lead{color:var(--deep);max-width:60ch;margin:14px 0 34px}
-.life .lgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,28px);align-items:start}
-@media(max-width:760px){.life .lgrid{grid-template-columns:1fr}}
-.life figure{margin:0;border:1px solid var(--linel,#E4DCCB);background:var(--ivory,#F4F0E8)}
-.life figure img{width:100%;display:block}
-.life figcaption{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--deep);padding:12px 14px;border-top:1px solid var(--linel,#E4DCCB)}
-.life .sci{font-size:12.5px;color:var(--deep);margin-top:18px;max-width:70ch}
+.life .in2{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(280px,1fr) minmax(320px,560px);gap:clamp(24px,4vw,64px);align-items:center}
+@media(max-width:900px){.life .in2{grid-template-columns:1fr}}
+.life .lead{color:var(--deep);max-width:52ch;margin:14px 0 0}
+.life .sci{font-size:12.5px;color:var(--deep);margin-top:16px;max-width:52ch}
+.cmp{position:relative}
+.cmp .frame{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--linel,#E4DCCB);background:var(--ivory,#F4F0E8);cursor:zoom-in}
+.cmp .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.cmp .frame .ln{position:absolute;top:0;bottom:0;width:1px;background:var(--gold,#E9C98A);box-shadow:0 0 0 .5px rgba(10,9,8,.25);z-index:3;pointer-events:none}
+.cmp .ctrl{margin-top:14px}
+.cmp input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:26px;background:transparent;cursor:ew-resize;display:block}
+.cmp input[type=range]::-webkit-slider-runnable-track{height:1px;background:var(--linel,#E4DCCB)}
+.cmp input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--bone,#FBF8F1);border:1px solid var(--bronze,#B08A55);margin-top:-11px;box-shadow:0 1px 6px rgba(10,9,8,.18)}
+.cmp input[type=range]::-moz-range-track{height:1px;background:var(--linel,#E4DCCB)}
+.cmp input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--bone,#FBF8F1);border:1px solid var(--bronze,#B08A55);box-shadow:0 1px 6px rgba(10,9,8,.18)}
+.cmp .marks{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--deep);margin-top:6px}
+.cmp .marks b{font-weight:400;color:var(--black)}
+/* полноэкранный просмотр */
+.cmp-pop{position:fixed;inset:0;z-index:90;background:rgba(10,9,8,.94);display:none;place-items:center;padding:4vh 4vw}
+.cmp-pop.on{display:grid}
+.cmp-pop .box{width:min(72vh,92vw);max-width:680px}
+.cmp-pop .frame{cursor:default}
+.cmp-pop .x{position:absolute;top:18px;right:22px;background:none;border:none;color:var(--mist,#B9B2A6);font-size:30px;line-height:1;cursor:pointer;padding:8px}
+.cmp-pop .x:hover{color:var(--bone,#FBF8F1)}
+.cmp-pop .marks{color:var(--mist,#B9B2A6)}
+.cmp-pop .marks b{color:var(--bone,#FBF8F1)}
 /* alive — тёмная секция с видео */
 .spin{background:var(--bone);border-top:1px solid var(--linel);border-bottom:1px solid var(--linel);padding:clamp(60px,8vw,110px) 0;text-align:center}
 .spin .sframe{position:relative;width:min(1120px,92vw);margin:0 auto;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--linel);background:#EFEAE0;box-shadow:0 30px 80px rgba(20,17,14,.12)}
@@ -289,18 +306,27 @@ if(!o){
   ]).concat(o.mount?[['Оформление', o.mount]]:[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
   var life = P?P.life:null;
+  function cmpHTML(pref){
+    return '<div class="cmp" id="'+pref+'">'+
+      '<div class="frame">'+
+        '<img src="'+IMG+life.img+'" alt="'+o.name+' — реконструкция при жизни">'+
+        '<img class="l-anat" src="'+IMG+life.diagram+'" alt="'+o.name+' — анатомическая схема">'+
+        '<img class="l-photo" src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'">'+
+        '<div class="ln"></div>'+
+      '</div>'+
+      '<div class="ctrl"><input type="range" min="0" max="200" value="0" step="0.5" aria-label="Жизнь — скелет — фото">'+
+      '<div class="marks"><b>При жизни</b><span>Скелет</span><span>Экспонат</span></div></div>'+
+    '</div>';
+  }
   var lifeSec = life ? (
     '<section class="life"><div class="wrap"><div class="in2">'+
-      '<div class="label rv" style="margin-bottom:4px">При жизни</div>'+
-      '<h2 class="rv">'+life.title+'</h2>'+
-      '<p class="lead rv">'+life.text+'</p>'+
-      '<div class="lgrid">'+
-        '<figure class="rv"><img src="'+IMG+life.img+'" alt="'+o.name+' — реконструкция при жизни" loading="lazy" decoding="async">'+
-          '<figcaption>Экспонат, оживший в своей позе</figcaption></figure>'+
-        '<figure class="rv"><img src="'+IMG+life.diagram+'" alt="'+o.name+' — анатомическая схема" loading="lazy" decoding="async">'+
-          '<figcaption>Анатомическая схема скелета</figcaption></figure>'+
+      '<div>'+
+        '<div class="label rv" style="margin-bottom:4px">При жизни</div>'+
+        '<h2 class="rv">'+life.title+'</h2>'+
+        '<p class="lead rv">'+life.text+'</p>'+
+        '<div class="sci rv">Потяните рычажок: реконструкция — анатомическая схема — экспонат. Поза и ракурс совпадают. Научная реконструкция по опубликованным данным о виде.</div>'+
       '</div>'+
-      '<div class="sci rv">Научная реконструкция по опубликованным данным о виде; поза и пропорции повторяют экспонат.</div>'+
+      '<div class="rv">'+cmpHTML('cmpMain')+'</div>'+
     '</div></div></section>') : '';
 
   var aliveSec = alive ? (
@@ -384,6 +410,44 @@ if(!o){
       '<div class="s rv"><b>Доставка</b><p>Деревянный ящик, страховка на время пути и установка на месте.</p></div>'+
     '</div>'+
   '</div></section>';
+
+  /* слайдер «жизнь → скелет → фото» + полноэкранный просмотр */
+  function initCmp(root){
+    var r=root.querySelector('input[type=range]'),
+        anat=root.querySelector('.l-anat'), photo=root.querySelector('.l-photo'),
+        ln=root.querySelector('.ln');
+    function upd(){
+      var v=r.value/100;                       // 0..2
+      var a=Math.min(v,1), b=Math.max(v-1,0);  // границы двух шторок
+      /* следующее состояние наезжает СПРАВА — под подписями Жизнь→Скелет→Экспонат */
+      anat.style.clipPath='inset(0 0 0 '+((1-a)*100)+'%)';
+      photo.style.clipPath='inset(0 0 0 '+((1-b)*100)+'%)';
+      var edge=(v<=1?(1-a):(1-b))*100;
+      ln.style.left='calc('+edge+'% - .5px)';
+      ln.style.opacity=(edge<=0.5||edge>=99.5)?0:1;
+    }
+    r.addEventListener('input',upd); upd();
+    return upd;
+  }
+  if(life){
+    var mainCmp=document.getElementById('cmpMain');
+    initCmp(mainCmp);
+    /* клик по кадру — полноэкранный просмотр с тем же рычажком */
+    var pop=document.createElement('div'); pop.className='cmp-pop';
+    pop.innerHTML='<button class="x" aria-label="Закрыть">×</button><div class="box">'+cmpHTML('cmpPop')+'</div>';
+    document.body.appendChild(pop);
+    var popCmp=pop.querySelector('.cmp'); initCmp(popCmp);
+    function openPop(){
+      popCmp.querySelector('input').value=mainCmp.querySelector('input').value;
+      popCmp.querySelector('input').dispatchEvent(new Event('input'));
+      pop.classList.add('on'); document.body.style.overflow='hidden';
+    }
+    function closePop(){ pop.classList.remove('on'); document.body.style.overflow=''; }
+    mainCmp.querySelector('.frame').addEventListener('click',openPop);
+    pop.querySelector('.x').addEventListener('click',closePop);
+    pop.addEventListener('click',function(e){ if(e.target===pop) closePop(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closePop(); });
+  }
 
   /* reveal on scroll (без IntersectionObserver — превью его морозит) */
   var rvs=[].slice.call(document.querySelectorAll('.rv'));
