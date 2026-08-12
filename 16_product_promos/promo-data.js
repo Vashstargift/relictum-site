@@ -16,6 +16,12 @@ window.RELICTUM_PROMO = {
     gallery: ["g_seymchan_1.jpg", "g_seymchan_2.jpg", "g_seymchan_3.jpg", "int_ph_seymchan.jpg"]
   },
   "R–0201": {
+    life: {
+      img: "life_megalodon.jpg",
+      diagram: "anat_megalodon.jpg",
+      title: "Пасть, к которой прилагался зуб",
+      text: "Мегалодон идёт на зрителя: ряды треугольных зазубренных зубов — таких же, как экспонат. Открытый океан миоцена."
+    },
     // Своя страница-визитка: заголовок и описание для поиска и мессенджеров.
     // Раньше лежали в отдельном HTML-файле на каждый объект.
     seo: { title: "Зуб мегалодона — R–0201, RELICTUM", description: "Зуб Otodus megalodon 15,4 см с полной эмалью и нетронутой зазубренной кромкой. Поднят со дна Атлантики у Южной Каролины. Паспорт объекта и оформление дома Relictum." },
@@ -32,6 +38,12 @@ window.RELICTUM_PROMO = {
     gallery: ["g_megalodon_1.jpg", "g_megalodon_2.jpg", "int_ph_megalodon.jpg"]
   },
   "R–0604": {
+    life: {
+      img: "life_cavebear.jpg",
+      diagram: "anat_cavebear.jpg",
+      title: "Подъём в полный рост",
+      text: "Пещерный медведь встаёт на задние лапы так же, как смонтирован скелет. Вокруг — пещера ледниковой Европы, его настоящий дом и место зимовок."
+    },
     spin: "spin_cavebear.mp4",
     hook: "Почти три метра от носа до хвоста — полный смонтированный скелет пещерного медведя.",
     heroKicker: "Мамонтовая фауна, Россия",
@@ -45,6 +57,12 @@ window.RELICTUM_PROMO = {
     gallery: ["g_cavebear_1.jpg", "g_cavebear_2.jpg", "g_cavebear_3.jpg", "int_ph_cavebear.jpg"]
   },
   "R–0605": {
+    life: {
+      img: "life_mammoth_skull.jpg",
+      diagram: "anat_mammoth_skull.jpg",
+      title: "Хобот и бивни той же дуги",
+      text: "Голова мамонта с бивнями, изогнутыми той же дугой, что у экспоната. Снежная степь под мягким светом."
+    },
     spin: "spin_mammoth_skull.mp4",
     hook: "Бивни карамельной патины размахом 2,4 метра, поднятые из вечной мерзлоты Якутии.",
     heroKicker: "Мамонтовая фауна, Якутия",
@@ -58,6 +76,12 @@ window.RELICTUM_PROMO = {
     gallery: ["g_mammothskull_1.jpg", "g_mammothskull_2.jpg", "g_mammothskull_3.jpg", "int_ph_mammoth_skull.jpg"]
   },
   "R–0607": {
+    life: {
+      img: "life_mammoth_tusks.jpg",
+      diagram: "anat_mammoth_tusks.jpg",
+      title: "Дуга в снегопаде",
+      text: "Мамонт, чьи бивни описывают ту же перекрещенную дугу, что пара на подставке. Снегопад над степью."
+    },
     // Своя страница-визитка: заголовок и описание для поиска и мессенджеров.
     // Раньше лежали в отдельном HTML-файле на каждый объект.
     seo: { title: "Пара бивней мамонта, 250 см — RELICTUM", description: "Пара бивней шерстистого мамонта из мерзлоты Якутии: 250 см по дуге, 74 кг, 10–40 тыс лет. Монумент для интерьера и коллекции." },
@@ -74,6 +98,12 @@ window.RELICTUM_PROMO = {
     gallery: ["g_tusks_1.jpg", "g_tusks_2.jpg", "g_tusks_3.jpg", "int_ph_tusks.jpg"]
   },
   "R–0608": {
+    life: {
+      img: "life_rhino_skull.jpg",
+      diagram: "anat_rhino_skull.jpg",
+      title: "Два рога в профиль",
+      text: "Голова шерстистого носорога в том же ракурсе, что череп: два рога, густая шерсть. Зимняя степь."
+    },
     // Своя страница-визитка: заголовок и описание для поиска и мессенджеров.
     // Раньше лежали в отдельном HTML-файле на каждый объект.
     seo: { title: "Череп шерстистого носорога — RELICTUM", description: "Череп шерстистого носорога Coelodonta с обоими рогами, Якутия, 50–150 тыс лет. Полный зубной ряд, оба рога — редкая сохранность." },
@@ -90,6 +120,12 @@ window.RELICTUM_PROMO = {
     gallery: ["g_rhino_1.jpg", "g_rhino_2.jpg", "g_rhino_3.jpg", "int_ph_rhino.jpg"]
   },
   "R–0208": {
+    life: {
+      img: "life_sabertooth.jpg",
+      diagram: "anat_sabertooth.jpg",
+      title: "Оскал длиной в ладонь",
+      text: "Махайрод скалится под тем же углом, что распахнутый череп: клинковидные клыки, напряжённая морда. Саванна миоцена. Род определён, вид уточняется — облик по роду."
+    },
     // Своя страница-визитка: заголовок и описание для поиска и мессенджеров.
     // Раньше лежали в отдельном HTML-файле на каждый объект.
     seo: { title: "Череп саблезубой кошки Machairodus — RELICTUM", description: "Череп саблезубой кошки Machairodus, 5–12 млн лет, Ганьсу. Клинковидные клыки неогенового хищника на музейной стойке." },
@@ -106,6 +142,12 @@ window.RELICTUM_PROMO = {
     gallery: ["g_sabertooth_1.jpg", "g_sabertooth_2.jpg", "g_sabertooth_3.jpg", "int_ph_sabertooth.jpg"]
   },
   "R–0209": {
+    life: {
+      img: "life_bothriolepis.jpg",
+      diagram: "anat_bothriolepis.jpg",
+      title: "Бронированный пловец у дна",
+      text: "Ботриолепис плывёт над девонским дном в той же дуге, что рельеф плиты: костяная броня корпуса, членистые грудные плавники."
+    },
     // Своя страница-визитка: заголовок и описание для поиска и мессенджеров.
     // Раньше лежали в отдельном HTML-файле на каждый объект.
     seo: { title: "Панцирная рыба Bothriolepis, девон — RELICTUM", description: "Bothriolepis — панцирная рыба девона, 350 млн лет: существо, первым одевшееся в костяную броню. Тихий артефакт глубокого времени для кабинета. Провенанс RELICTUM." },
@@ -171,6 +213,12 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0211": {
+    life: {
+      img: "life_arietites.jpg",
+      diagram: "anat_arietites.jpg",
+      title: "Спираль с жильцом",
+      text: "Живой аммонит с той же широкой ребристой спиралью: мягкое тело и щупальца из устья раковины. Раннеюрское море."
+    },
     spin: "spin_arietites.mp4",
     gallery: ["g_arietites_1.jpg", "g_arietites_2.jpg", "g_arietites_3.jpg", "int_ph_arietites.jpg"],
     interior: { video: "intv_arietites.mp4", img: "int_ph_arietites.jpg", text: "Раскрытая спираль Arietites смотрится лучше на невысоком столе или консоли, где на неё глядят сверху, а не с высокого постамента." },
@@ -203,6 +251,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Лапы превратились в вёсла", text: "Удлинённая шея и лапы-вёсла выдают одну из первых попыток рептилий снова освоить море — тёплые мелководья триасового Китая.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0213": {
+    life: {
+      img: "life_psittacosaurus_skull.jpg",
+      diagram: "anat_psittacosaurus_skull.jpg",
+      title: "Клюв попугая на морде ящера",
+      text: "Голова пситтакозавра в том же трёхчетвертном ракурсе, что череп: клюв, скуловые выросты, чешуя. Туманный лес Джехола."
+    },
     spin: "spin_psittacosaurus_skull.mp4",
     gallery: ["g_psitskull_1.jpg", "g_psitskull_2.jpg", "g_psitskull_3.jpg", "int_ph_psittacosaurus_skull.jpg"],
     interior: { video: "intv_psittacosaurus_skull.mp4", img: "int_ph_psittacosaurus_skull.jpg", text: "Череп пситтакозавра на музейной стойке умещается на книжной полке между томами — клювовидная форма челюстей видна с любого ракурса комнаты." },
@@ -216,6 +270,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Клюв дал ему имя", text: "Короткий клюв на морде читается сразу — отсюда и имя «попугайный ящер», найденный в меловых лесах провинции Ляонин.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0214": {
+    life: {
+      img: "life_anchiornis.jpg",
+      diagram: "anat_anchiornis.jpg",
+      title: "Четыре крыла на лесной подстилке",
+      text: "Анхиорнис в той же распластанной позе, что отпечаток: чёрно-серое оперение с белыми полосами и рыжий хохолок — окрас известен по ископаемым меланосомам."
+    },
     spin: "spin_anchiornis.mp4",
     gallery: ["g_anchiornis_1.jpg", "g_anchiornis_2.jpg", "g_anchiornis_3.jpg", "int_ph_anchiornis.jpg"],
     interior: { video: "intv_anchiornis.mp4", img: "int_ph_anchiornis.jpg", text: "Перьевой контур анхиорниса на плите разбирают только вблизи — экспонат вешают в кабинете на уровне глаз, а не над дверным проёмом." },
@@ -229,6 +289,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Оперение до полёта", text: "Название переводится как «почти птица»: оперение у этого теропода появилось на десятки миллионов лет раньше самого полёта.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0215": {
+    life: {
+      img: "life_dino_eggs.jpg",
+      diagram: "anat_dino_eggs.jpg",
+      title: "Кладка под охраной",
+      text: "Гнездо овирапторозавра: кольцо таких же удлинённых яиц, ближняя пара лежит как экспонат. Пески Гоби. Принадлежность яиц — по группе Elongatoolithidae."
+    },
     spin: "spin_dino_eggs.mp4",
     gallery: ["g_eggs_1.jpg", "g_eggs_2.jpg", "g_eggs_3.jpg", "int_ph_dino_eggs.jpg"],
     interior: { video: "intv_dino_eggs.mp4", img: "int_ph_dino_eggs.jpg", text: "Два яйца на кованой подставке занимают угол консоли или каминной полки — предмет, соразмерный вазе, а не музейному постаменту." },
@@ -242,6 +308,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Кладка позднего мела", text: "Рельефная скорлупа двух удлинённых яиц связывает эту кладку с овирапторозаврами — родителями, высиживавшими потомство, как птицы.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0217": {
+    life: {
+      img: "life_trilobite_giant.jpg",
+      diagram: "anat_trilobite_giant.jpg",
+      title: "Ползущий сквозь ордовик",
+      text: "Гигантский трилобит ползёт по дну в той же дорсальной позе, что на плите: сегментная броня, длинные щёчные шипы. Ордовикское мелководье."
+    },
     spin: "spin_trilobite_giant.mp4",
     gallery: ["g_trilobite_1.jpg", "g_trilobite_2.jpg", "g_trilobite_3.jpg", "int_ph_trilobite_giant.jpg"],
     interior: { video: "intv_trilobite_giant.mp4", img: "int_ph_trilobite_giant.jpg", text: "Сегменты гигантского трилобита читаются глубже при боковом свете; схему освещения для рельефной плиты дом продумывает под конкретную стену." },
@@ -255,6 +327,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Гигант ордовикских глубин", text: "В глубоководных сообществах сланцев Fezouata такие трилобиты вырастали крупнее двадцати сантиметров — задолго до первых рыб.", video: "era_paleozoic_sea.mp4", poster: "recon_paleozoic.jpg" }
   },
   "R–0218": {
+    life: {
+      img: "life_ichthyosaur_plate.jpg",
+      diagram: "anat_ichthyosaur_plate.jpg",
+      title: "Изгиб тела в толще моря",
+      text: "Миксозавр плывёт с тем же изгибом тела, что скелет на плите: дельфинья посадка, зубастая морда, крупный глаз. Открытое триасовое море."
+    },
     spin: "spin_ichthyosaur_plate.mp4",
     gallery: ["g_ichthyo_1.jpg", "g_ichthyo_2.jpg", "g_ichthyo_3.jpg", "int_ph_ichthyosaur_plate.jpg"],
     interior: { video: "intv_ichthyosaur_plate.mp4", img: "int_ph_ichthyosaur_plate.jpg", text: "Горизонтальная плита с ихтиозавром задаёт стену по своей длине, а не по привычному вертикальному простенку между окнами." },
@@ -268,6 +346,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Пловец триасового рассвета", text: "Имя переводится как «смешанный ящер»: в его теле ещё видны черты сухопутных предков рядом с зачатками скоростного пловца.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0219": {
+    life: {
+      img: "life_dunkleosteus.jpg",
+      diagram: "anat_dunkleosteus.jpg",
+      title: "Броня вместо зубов",
+      text: "Голова дунклеостея в том же ракурсе, что череп: костные лезвия челюстей вместо зубов. Сумрак девонского моря."
+    },
     spin: "spin_dunkleosteus.mp4",
     gallery: ["g_dunkleo_1.jpg", "g_dunkleo_2.jpg", "g_dunkleo_3.jpg", "int_ph_dunkleosteus.jpg"],
     interior: { video: "intv_dunkleosteus.mp4", img: "int_ph_dunkleosteus.jpg", text: "Массивная броня черепа Dunkleosteus держит собственный вес плохо на обычной полке — форму опоры дом рассчитывает под конкретную комнату." },
@@ -281,6 +365,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Костные кромки вместо зубов", text: "Вместо зубов — острые костные кромки, смыкавшиеся с силой в несколько тонн: хищник правил морями за сто миллионов лет до динозавров.", video: "era_paleozoic_sea.mp4", poster: "recon_paleozoic.jpg" }
   },
   "R–0220": {
+    life: {
+      img: "life_spinosaurus_jaw.jpg",
+      diagram: "anat_spinosaurus_jaw.jpg",
+      title: "Челюсть для скользкой добычи",
+      text: "Голова спинозавра в профиль, пасть приоткрыта под углом фрагмента челюсти: конические зубы, узкая крокодилья морда. Речные отмели Кем-Кема."
+    },
     spin: "spin_spinosaurus_jaw.mp4",
     gallery: ["g_spinojaw_1.jpg", "g_spinojaw_2.jpg", "g_spinojaw_3.jpg", "int_ph_spinosaurus_jaw.jpg"],
     interior: { video: "intv_spinosaurus_jaw.mp4", img: "int_ph_spinosaurus_jaw.jpg", text: "Фрагмент челюсти спинозавра ложится в горизонтальную витрину на уровне пояса — зубной ряд рассматривают сверху, не поднимая экспонат." },
@@ -294,6 +384,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Рыболов меловой Сахары", text: "Конические зубы почти круглого сечения были созданы удерживать скользкую рыбу в реках древней Сахары — оружие крупнейшего хищника.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0221": {
+    life: {
+      img: "life_carcharodont_claw.jpg",
+      diagram: "anat_carcharodont_claw.jpg",
+      title: "Коготь на весу",
+      text: "Кархародонтозаврид заносит переднюю лапу: кривизна когтя повторяет ископаемое. Меловая пойма Северной Африки. Род — по когтю, облик обобщён."
+    },
     spin: "spin_carcharodont_claw.mp4",
     gallery: ["g_claw_1.jpg", "g_claw_2.jpg", "g_claw_3.jpg", "int_ph_carcharodont_claw.jpg"],
     interior: { video: "intv_carcharodont_claw.mp4", img: "int_ph_carcharodont_claw.jpg", text: "Коготь кархародонтозавра на металлической подставке стоит на рабочем столе рядом с письменным прибором — предмет для руки, а не для стены." },
@@ -307,6 +403,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Соперник спинозавра", text: "При жизни этот коготь был обёрнут роговым чехлом и ещё длиннее — оружие, которым хищник делил Северную Африку со спинозавром.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0222": {
+    life: {
+      img: "life_pterosaur.jpg",
+      diagram: "anat_pterosaur.jpg",
+      title: "Размах, снятый с плиты",
+      text: "Птерозавр раскрывает крылья в той же конфигурации, что скелет на плите, — перепонки вдоль удлинённого пальца. Лагуна мелового периода. Вид не определён, облик обобщённый."
+    },
     spin: "spin_pterosaur.mp4",
     gallery: ["g_ptero_1.jpg", "g_ptero_2.jpg", "g_ptero_3.jpg", "int_ph_pterosaur.jpg"],
     interior: { video: "intv_pterosaur.mp4", img: "int_ph_pterosaur.jpg", text: "Плита с птерозавром просит глухую стену без окна напротив: блики на камне мешают разглядеть тонкие кости крыла и вытянутый череп." },
@@ -320,6 +422,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Крыло на одном пальце", text: "Крыло держал единственный палец, чудовищно вытянутый и туго натягивавший кожистую перепонку — так летали задолго до птиц.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0223": {
+    life: {
+      img: "life_afrovenator.jpg",
+      diagram: "anat_afrovenator.jpg",
+      title: "Африканский охотник в профиль",
+      text: "Голова афровенатора в том же профиле, что модель черепа. Юрская пойма. Экспонат — авторская реконструкция, и облик здесь — тоже реконструкция."
+    },
     spin: "spin_afrovenator.mp4",
     gallery: ["g_afro_1.jpg", "g_afro_2.jpg", "g_afro_3.jpg", "int_ph_afrovenator.jpg"],
     interior: { video: "intv_afrovenator.mp4", img: "int_ph_afrovenator.jpg", text: "Крупная модель черепа афровенатора стоит отдельно на консоли или низком постаменте, не деля пространство с другим декором." },
@@ -352,6 +460,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Житель меловых чащ Азии", text: "На длинных задних ногах он обегал меловые леса Азии в поисках низкой зелени — сто шестьдесят восемь сантиметров живого движения.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0611": {
+    life: {
+      img: "life_rhino_skeleton.jpg",
+      diagram: "anat_rhino_skeleton.jpg",
+      title: "Шерсть поверх костей",
+      text: "Носорог повторяет постановку скелета шаг в шаг. Мамонтовая степь, сухая трава и первый снег — ландшафт, в котором вид прожил сотни тысяч лет."
+    },
     spin: "spin_rhino_skeleton.mp4",
     gallery: ["g_rhinoskel_1.jpg", "g_rhinoskel_2.jpg", "g_rhinoskel_3.jpg", "int_ph_rhino_skeleton.jpg"],
     interior: { video: "intv_rhino_skeleton.mp4", img: "int_ph_rhino_skeleton.jpg", text: "Шерстистый носорог в собранном виде занимает угол просторной комнаты целиком — вокруг оставляют проход, а не расставляют мебель." },
@@ -365,6 +479,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Полтонны под густой шерстью", text: "Полутонная туша под густой шерстью двигалась по мамонтовой степи медленно и грузно — второй по массе зверь ледниковой Евразии.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0612": {
+    life: {
+      img: "life_crocodyliform.jpg",
+      diagram: "anat_crocodyliform.jpg",
+      title: "Низкий шаг охотника на отмели",
+      text: "Крокодилиформ поднимается на тех же четырёх точках опоры, что и монтаж. Меловая река, песчаная отмель. Вид определён до группы, поэтому облик обобщённый."
+    },
     spin: "spin_crocodyliform.mp4",
     interior: { video: "intv_crocodyliform.mp4", img: "int_ph_crocodyliform.jpg", text: "Крокодилиформ на металлических опорах растягивается почти во всю длину галерейной комнаты; секции скелета дом собирает прямо на месте." },
     gallery: ["g_croc_1.jpg", "g_croc_2.jpg", "g_croc_3.jpg", "int_ph_crocodyliform.jpg"],
@@ -379,6 +499,12 @@ window.RELICTUM_PROMO = {
   }
   ,
   "R–0224": {
+    life: {
+      img: "life_ammonite_studio.jpg",
+      diagram: "anat_ammonite_studio.jpg",
+      title: "Семь спиралей в толще воды",
+      text: "Живые аммониты тех же форм и размеров, что полированный набор. Тёплое мезозойское море над песчаным дном."
+    },
     spin: "spin_ammonite_studio.mp4",
     interior: { video: "intv_ammonites_set.mp4", img: "int_ph_ammonites_set.jpg", text: "Так комплект из семи предметов встаёт на открытую полку. Кадр — визуализация подачи: съёмка сделана с крупнейшего предмета, остальные показаны по его образцу." },
     gallery: ["g_ammonites_1.jpg", "g_ammonites_2.jpg", "g_ammonites_3.jpg", "int_ph_ammonite.jpg"],
@@ -392,6 +518,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Спирали древних морей", text: "Внутренние камеры раковины работали как поплавок, а спираль росла по строгой логарифмической кривой — это видно на срезе.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0229": {
+    life: {
+      img: "life_cave_lion_vitrine.jpg",
+      diagram: "anat_cave_lion_vitrine.jpg",
+      title: "Пар из раскрытой пасти",
+      text: "Пещерный лев в том же профиле и с тем же оскалом, что череп: тяжёлая морда, светлая зимняя шерсть. Ледниковая степь."
+    },
     spin: "spin_cave_lion_vitrine.mp4",
     interior: { video: "intv_cave_lion_vitrine.mp4", img: "int_ph_cave_lion_vitrine.jpg", text: "Витрина уже собрана: стекло на чёрном основании ставится на каменную консоль или низкий стеллаж и не требует ни подсветки, ни отдельного постамента." },
     gallery: ["int_ph_cave_lion_vitrine.jpg", "g_cavelion_vitrine_1.jpg"],
@@ -420,6 +552,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Гребень для жевательных мышц", text: "Высокий гребень черепной коробки нёс жевательные мышцы — сложение крупной кошки, охотившейся в ледниковой Евразии. Видовая атрибуция черепа уточняется экспертизой.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0226": {
+    life: {
+      img: "life_hyena_skull.jpg",
+      diagram: "anat_hyena_skull.jpg",
+      title: "Челюсти, дробившие кость",
+      text: "Динокрокута анфас, как и череп: широкая морда и жевательные мышцы, дробившие кости. Равнины миоцена в сумерках."
+    },
     spin: "spin_hyena_skull.mp4",
     interior: { video: "intv_hyena.mp4", img: "int_ph_hyena.jpg", text: "Массивный череп динокрокуты на породном основании уверенно держит кабинет с плотной тёмной палитрой." },
     gallery: ["g_hyena_1.jpg", "g_hyena_2.jpg", "g_hyena_3.jpg", "int_ph_hyena.jpg"],
@@ -446,6 +584,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Глыба старше Земли", text: "Сто двадцать восемь килограммов почти чистого никелистого железа — один из крупнейших осколков этого падения, что вообще находили.", video: "vid_meteor.mp4", poster: "ph_dronino128.jpg" }
   },
   "R–0613": {
+    life: {
+      img: "life_pinacosaurus.jpg",
+      diagram: "anat_pinacosaurus.jpg",
+      title: "Броня, идущая по бархану",
+      text: "Пинакозавр несёт панцирь в той же низкой стойке, что скелет. Пески Гоби позднего мела на закате."
+    },
     spin: "spin_pinacosaurus.mp4",
     interior: { video: "intv_pinacosaurus.mp4", img: "int_ph_pinacosaurus.jpg", text: "Стальной каркас скелета пинакозавра задаёт маршрут взгляда по светлой галерейной комнате. Монтаж дом проводит на месте." },
     gallery: ["g_pina_1.jpg", "g_pina_2.jpg", "g_pina_3.jpg", "int_ph_pinacosaurus.jpg"],
@@ -459,6 +603,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Броня позднего мела", text: "Ряды костных пластин покрывали спину сплошным панцирем — брони, которую не могли пробить зубы большинства хищников мелового периода.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0614": {
+    life: {
+      img: "life_oviraptor.jpg",
+      diagram: "anat_oviraptor.jpg",
+      title: "Перья поверх лёгкого скелета",
+      text: "Овирапторид стоит в позе монтажа: птичий шаг, короткий клюв, оперённые руки. Красные пески Гоби. Определение — до семейства, облик обобщён по овирапторидам."
+    },
     spin: "spin_oviraptor.mp4",
     interior: { video: "intv_oviraptor.mp4", img: "int_ph_oviraptor.jpg", text: "Овираптор в динамичной позе занимает свободный угол кабинета — беззубый клюв и лёгкий костяк смонтированного скелета смотрят в комнату, не в стену." },
     gallery: ["g_oviraptor_1.jpg", "g_oviraptor_2.jpg", "g_oviraptor_3.jpg", "int_ph_oviraptor.jpg"],
@@ -472,6 +622,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Страж собственной кладки", text: "Беззубый клюв и лёгкое сложение принадлежат хищнику с несправедливым именем «похититель яиц» — на деле он высиживал свою кладку, как наседка.", video: "era_cretaceous.mp4", poster: "recon_cretaceous.jpg" }
   },
   "R–0615": {
+    life: {
+      img: "life_bison_skeleton.jpg",
+      diagram: "anat_bison_skeleton.jpg",
+      title: "Горб и рога на холодном ветру",
+      text: "Степной зубр в той же постановке, что скелет: высокий горб, тяжёлые рога. Холодная степь, ветер в сухой траве."
+    },
     spin: "spin_bison_skeleton.mp4",
     interior: { video: "intv_bison_skeleton.mp4", img: "int_ph_bison_skeleton.jpg", text: "Собранный скелет занимает середину гостиной и задаёт ей масштаб: подиум держит дистанцию, мебель расставляется по периметру." },
     gallery: ["g_bison_1.jpg", "g_bison_2.jpg", "g_bison_4.jpg", "int_ph_bison_skeleton.jpg"],
@@ -485,6 +641,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Чаще других попадал на стены пещер", text: "Самцы весом до двух тонн и рогами шире метра паслись бок о бок с мамонтами — и чаще всех зверей появлялись на стенах пещер.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0616": {
+    life: {
+      img: "life_pleistocene_wolf.jpg",
+      diagram: "anat_pleistocene_wolf.jpg",
+      title: "Крадущийся шаг ледниковой ночи",
+      text: "Волк идёт тем же крадущимся шагом, каким смонтирован скелет. Кромка заснеженной тайги в синих сумерках."
+    },
     spin: "spin_pleistocene_wolf.mp4",
     gallery: ["g_wolf_1.jpg", "g_wolf_2.jpg", "g_wolf_3.jpg", "int_ph_pleistocene_wolf.jpg"],
     interior: { video: "intv_pleistocene_wolf.mp4", img: "int_ph_pleistocene_wolf.jpg", text: "Плейстоценовый волк на низком подиуме умещается на широкой консоли — компактнее носорога и мамонта, но держится той же ледниковой компании." },
@@ -498,6 +660,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Стая на краю тундростепи", text: "Держась стаями по краю мамонтовой степи, этот волк превосходил размером и силой современного родственника, соседствуя с мамонтом и носорогом.", video: "era_mammoth.mp4", poster: "recon_cenozoic.jpg" }
   },
   "R–0617": {
+    life: {
+      img: "life_mammoth_skeleton.jpg",
+      diagram: "anat_mammoth_skeleton.jpg",
+      title: "Тот же шаг сквозь снег",
+      text: "Мамонт повторяет шаг скелета: покатая спина, высокий купол головы, дуги бивней. Заснеженная степь в низком золотом свете."
+    },
     spin: "spin_mammoth_skeleton.mp4",
     gallery: ["g_mammothskel_1.jpg", "g_mammothskel_2.jpg", "g_mammothskel_3.jpg", "int_ph_mammoth_skeleton.jpg"],
     interior: { video: "intv_mammoth_skeleton.mp4", img: "int_ph_mammoth_skeleton.jpg", text: "Мамонт в полном сборе занимает комнату целиком; несущую способность пола под его весом дом проверяет заранее, до выбора места установки." },

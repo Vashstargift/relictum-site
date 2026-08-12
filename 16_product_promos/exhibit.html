@@ -309,13 +309,13 @@ if(!o){
   function cmpHTML(pref){
     return '<div class="cmp" id="'+pref+'">'+
       '<div class="frame">'+
-        '<img src="'+IMG+life.img+'" alt="'+o.name+' — реконструкция при жизни">'+
+        '<img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'">'+
         '<img class="l-anat" src="'+IMG+life.diagram+'" alt="'+o.name+' — анатомическая схема">'+
-        '<img class="l-photo" src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'">'+
+        '<img class="l-life" src="'+IMG+life.img+'" alt="'+o.name+' — реконструкция при жизни">'+
         '<div class="ln"></div>'+
       '</div>'+
-      '<div class="ctrl"><input type="range" min="0" max="200" value="0" step="0.5" aria-label="Жизнь — скелет — фото">'+
-      '<div class="marks"><b>При жизни</b><span>Скелет</span><span>Экспонат</span></div></div>'+
+      '<div class="ctrl"><input type="range" min="0" max="200" value="0" step="0.5" aria-label="Экспонат — скелет — при жизни">'+
+      '<div class="marks"><b>Экспонат</b><span>Скелет</span><span>При жизни</span></div></div>'+
     '</div>';
   }
   var lifeSec = life ? (
@@ -324,7 +324,7 @@ if(!o){
         '<div class="label rv" style="margin-bottom:4px">При жизни</div>'+
         '<h2 class="rv">'+life.title+'</h2>'+
         '<p class="lead rv">'+life.text+'</p>'+
-        '<div class="sci rv">Потяните рычажок: реконструкция — анатомическая схема — экспонат. Поза и ракурс совпадают. Научная реконструкция по опубликованным данным о виде.</div>'+
+        '<div class="sci rv">Потяните рычажок: экспонат — анатомическая схема — реконструкция при жизни. Поза и ракурс совпадают. Научная реконструкция по опубликованным данным о виде.</div>'+
       '</div>'+
       '<div class="rv">'+cmpHTML('cmpMain')+'</div>'+
     '</div></div></section>') : '';
@@ -414,14 +414,14 @@ if(!o){
   /* слайдер «жизнь → скелет → фото» + полноэкранный просмотр */
   function initCmp(root){
     var r=root.querySelector('input[type=range]'),
-        anat=root.querySelector('.l-anat'), photo=root.querySelector('.l-photo'),
+        anat=root.querySelector('.l-anat'), life=root.querySelector('.l-life'),
         ln=root.querySelector('.ln');
     function upd(){
       var v=r.value/100;                       // 0..2
       var a=Math.min(v,1), b=Math.max(v-1,0);  // границы двух шторок
       /* следующее состояние наезжает СПРАВА — под подписями Жизнь→Скелет→Экспонат */
       anat.style.clipPath='inset(0 0 0 '+((1-a)*100)+'%)';
-      photo.style.clipPath='inset(0 0 0 '+((1-b)*100)+'%)';
+      life.style.clipPath='inset(0 0 0 '+((1-b)*100)+'%)';
       var edge=(v<=1?(1-a):(1-b))*100;
       ln.style.left='calc('+edge+'% - .5px)';
       ln.style.opacity=(edge<=0.5||edge>=99.5)?0:1;
