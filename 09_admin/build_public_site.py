@@ -339,7 +339,8 @@ def prerender_catalog():
         latin, meta, price = o.get('latin', ''), o.get('meta', ''), o.get('price', '')
         cards.append(
             '<a class="obj-card" href="' + esc(href) + '">'
-            '<div class="ph"><img src="shared/img/' + img + '.jpg?v=11" alt="' + esc(name) + '"' + lazy + ' decoding="async"></div>'
+            '<div class="ph">' + (('<span class="badge">' + esc(o['status']) + '</span>') if o.get('status') else '')
+            + '<img src="shared/img/' + img + '.jpg?v=11" alt="' + esc(name) + '"' + lazy + ' decoding="async"></div>'
             '<div class="body"><div class="id">' + o['id'] + ', ' + esc(world) + '</div>'
             '<h3>' + esc(name) + '</h3><div class="latin">' + esc(latin) + '</div>'
             '<div class="meta">' + meta + '</div>'

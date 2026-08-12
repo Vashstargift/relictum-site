@@ -75,6 +75,8 @@
 }
 
 @media (max-width:760px){ .fsearch input, .price-inputs input, .sort-wrap select { font-size:16px } }
+.obj-card .ph{position:relative}
+.obj-card .badge{position:absolute;top:12px;left:12px;z-index:2;background:var(--black,#0A0908);color:var(--gold,#E9C98A);font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px}
 </style>
 
 <!-- rl-seo -->
@@ -348,7 +350,7 @@ function render() {
   // остальные лениво. Ленивая загрузка того, что уже на экране, только тормозит.
   grid.innerHTML = items.length ? items.map((o, n) => `
     <a class="obj-card" href="${o.href||('object.html?id='+encodeURIComponent(o.id))}">
-      <div class="ph"><img src="../shared/img/${o.img}.jpg?v=11" alt="${o.name}"${n < 4 ? '' : ' loading="lazy"'} decoding="async"></div>
+      <div class="ph">${o.status?'<span class="badge">'+o.status+'</span>':''}<img src="../shared/img/${o.img}.jpg?v=11" alt="${o.name}"${n < 4 ? '' : ' loading="lazy"'} decoding="async"></div>
       <div class="body">
         <div class="id">${o.id}, ${o.worldLabel}</div>
         <h3>${o.name}</h3>
