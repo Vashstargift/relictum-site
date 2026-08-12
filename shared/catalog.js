@@ -33,7 +33,7 @@ window.RELICTUM_CATALOG = [
     "category": "Мегалодон",
     "period": "Неоген",
     "era": "Кайнозой",
-    "region": "США",
+    "region": "Индонезия",
     "name": "Зуб мегалодона",
     "latin": "Otodus megalodon",
     "meta": "Индонезия, ≈ 23 млн лет<br>Высота 14,5 см",
