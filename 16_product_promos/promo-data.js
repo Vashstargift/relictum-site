@@ -518,6 +518,7 @@ window.RELICTUM_PROMO = {
     alive: { title: "Спирали древних морей", text: "Внутренние камеры раковины работали как поплавок, а спираль росла по строгой логарифмической кривой — это видно на срезе.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0230": {
+    spin: "spin_nothosaurus.mp4",
     life: {
       img: "life_nothosaurus.jpg",
       diagram: "anat_nothosaurus.jpg",
