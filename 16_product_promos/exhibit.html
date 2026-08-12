@@ -85,6 +85,16 @@ a{color:inherit;text-decoration:none}
 .story .eratag b{font-family:var(--serif);font-size:22px;font-weight:400}
 .story .eratag span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--deep)}
 
+/* life — реконструкция: существо в позе экспоната + анатомическая схема */
+.life{padding:clamp(60px,8vw,120px) 0;background:var(--bone,#FBF8F1)}
+.life .in2{max-width:1120px;margin:0 auto}
+.life .lead{color:var(--deep);max-width:60ch;margin:14px 0 34px}
+.life .lgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,28px);align-items:start}
+@media(max-width:760px){.life .lgrid{grid-template-columns:1fr}}
+.life figure{margin:0;border:1px solid var(--linel,#E4DCCB);background:var(--ivory,#F4F0E8)}
+.life figure img{width:100%;display:block}
+.life figcaption{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--deep);padding:12px 14px;border-top:1px solid var(--linel,#E4DCCB)}
+.life .sci{font-size:12.5px;color:var(--deep);margin-top:18px;max-width:70ch}
 /* alive — тёмная секция с видео */
 .spin{background:var(--bone);border-top:1px solid var(--linel);border-bottom:1px solid var(--linel);padding:clamp(60px,8vw,110px) 0;text-align:center}
 .spin .sframe{position:relative;width:min(1120px,92vw);margin:0 auto;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--linel);background:#EFEAE0;box-shadow:0 30px 80px rgba(20,17,14,.12)}
@@ -278,6 +288,21 @@ if(!o){
     ['Размер', o.size||'—']
   ]).concat(o.mount?[['Оформление', o.mount]]:[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
+  var life = P?P.life:null;
+  var lifeSec = life ? (
+    '<section class="life"><div class="wrap"><div class="in2">'+
+      '<div class="label rv" style="margin-bottom:4px">При жизни</div>'+
+      '<h2 class="rv">'+life.title+'</h2>'+
+      '<p class="lead rv">'+life.text+'</p>'+
+      '<div class="lgrid">'+
+        '<figure class="rv"><img src="'+IMG+life.img+'" alt="'+o.name+' — реконструкция при жизни" loading="lazy" decoding="async">'+
+          '<figcaption>Экспонат, оживший в своей позе</figcaption></figure>'+
+        '<figure class="rv"><img src="'+IMG+life.diagram+'" alt="'+o.name+' — анатомическая схема" loading="lazy" decoding="async">'+
+          '<figcaption>Анатомическая схема скелета</figcaption></figure>'+
+      '</div>'+
+      '<div class="sci rv">Научная реконструкция по опубликованным данным о виде; поза и пропорции повторяют экспонат.</div>'+
+    '</div></div></section>') : '';
+
   var aliveSec = alive ? (
     '<section class="alive" id="aliveSec" data-video="'+(alive.video?IMG+alive.video:'')+'">'+
       (alive.poster?'<img class="poster" src="'+IMG+alive.poster+'" alt="" loading="lazy" decoding="async">':'')+
@@ -342,7 +367,7 @@ if(!o){
   /* Биография объекта идёт сразу после 360°, а не в самом конце: блок
      с рассказом об экспонате не должен стоять ПОСЛЕ кнопки заказа.
      Так было на девяти статичных страницах-визитках — теперь у всех 38. */
-  spinSec+ '<section id="bio-slot"></section>'+ aliveSec+ homeSec+ gallerySec+
+  spinSec+ '<section id="bio-slot"></section>'+ lifeSec+ aliveSec+ homeSec+ gallerySec+
 
   '<section class="cta"><div class="wrap">'+
     '<div class="label rv" style="color:var(--gold);margin-bottom:14px">'+o.id+'</div>'+

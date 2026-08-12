@@ -184,6 +184,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Бараний рог юрских морей", text: "Рёбра на раковине закручены, как бараний рог, — отсюда и название рода, а сорок два сантиметра диаметра делают находку редкой.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0212": {
+    life: {
+      img: "life_keichousaurus.jpg",
+      diagram: "anat_keichousaurus.jpg",
+      title: "Изгиб, в котором его нашли",
+      text: "Кейхозавр оживает в том же изгибе, в котором застыл на плите: та же дуга длинной шеи, тот же разворот ласт и хвоста. Вокруг — мелкая тёплая лагуна триасового Гуйчжоу: солнце сквозь воду, морские лилии на песчаном дне."
+    },
     spin: "spin_keichousaurus.mp4",
     gallery: ["g_keicho_1.jpg", "g_keicho_2.jpg", "g_keicho_3.jpg", "int_ph_keichousaurus.jpg"],
     interior: { video: "intv_keichousaurus.mp4", img: "int_ph_keichousaurus.jpg", text: "Тёмная плита с кейхозавром висит на высоте вытянутой руки — рельеф удлинённой шеи и лап читается только с близкого расстояния." },
@@ -327,6 +333,12 @@ window.RELICTUM_PROMO = {
     alive: { title: "Длинные ноги и лёгкий костяк", text: "Лёгкое сложение и длинные ноги выдают быстрого бегуна — таким хищник разгуливал по равнинам формации Тиурарен в юрском Нигере.", video: "era_jurassic_sea.mp4", poster: "sci_jurassic_sea.jpg" }
   },
   "R–0610": {
+    life: {
+      img: "life_psittacosaurus_skeleton.jpg",
+      diagram: "anat_psittacosaurus_skeleton.jpg",
+      title: "Тот же шаг, 125 миллионов лет спустя",
+      text: "Реконструкция повторяет позу экспоната — тот же шаг, тот же разворот головы. Окрас восстановлен по ископаемым меланосомам вида: тёмная спина, светлое брюхо, ряд щетин на хвосте. Вокруг — лес Ляонина раннего мела: гинкго, хвойные и папоротники у озера."
+    },
     spin: "spin_psittacosaurus_skeleton.mp4",
     gallery: ["g_psitskel_1.jpg", "g_psitskel_2.jpg", "g_psitskel_3.jpg", "int_ph_psittacosaurus_skeleton.jpg"],
     interior: { video: "intv_psittacosaurus_skeleton.mp4", img: "int_ph_psittacosaurus_skeleton.jpg", text: "Смонтированный пситтакозавр в полный рост занимает угол библиотеки или кабинета — высоты вытянутой руки хватает, чтобы разглядеть его целиком." },
