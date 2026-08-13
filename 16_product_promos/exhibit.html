@@ -318,30 +318,33 @@ if(!o){
     ['Происхождение', o.location||o.region||'—']
   ].concat(o.found?[['Дата находки', o.found]]:[]).concat([
     ['Размер', o.size||'—']
-  ]).concat(o.mount?[['Оформление', o.mount]]:[]).concat(o.status?[['Наличие', o.status]]:[]).concat((P&&P.profile&&P.profile.facts)?Object.keys(P.profile.facts).filter(function(k){return k!=='Сохранность'&&k!=='Ценность'}).map(function(k){return [k,P.profile.facts[k]]}):[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
+  ]).concat(o.mount?[['Оформление', o.mount]]:[]).concat(o.status?[['Наличие', o.status]]:[]).concat((P&&P.profile&&P.profile.facts)?Object.keys(P.profile.facts).filter(function(k){return k!=='Сохранность'&&k!=='Ценность'&&k!=='Редкость'}).map(function(k){return [k,P.profile.facts[k]]}):[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
   var life = P?P.life:null;
   function cmpHTML(pref){
     return '<div class="cmp" id="'+pref+'">'+
       '<div class="frame">'+
         '<img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'">'+
-        '<img class="l-anat" src="'+IMG+life.diagram+'" alt="'+o.name+' — анатомическая схема">'+
-        '<img class="l-life" src="'+IMG+life.img+'" alt="'+o.name+' — реконструкция при жизни">'+
+        (life.diagram?'<img class="l-anat" src="'+IMG+life.diagram+'" alt="'+o.name+' — анатомическая схема">':'')+
+        '<img class="l-life" src="'+IMG+life.img+'" alt="'+o.name+' — '+(life.stateLabel||'реконструкция при жизни')+'">'+
         '<div class="ln"></div>'+
       '</div>'+
-      '<div class="ctrl"><input type="range" min="0" max="200" value="0" step="0.5" aria-label="Экспонат — скелет — при жизни">'+
-      '<div class="marks"><b>Экспонат</b><span>Скелет</span><span>При жизни</span></div></div>'+
+      (life.diagram
+        ? '<div class="ctrl"><input type="range" min="0" max="200" value="0" step="0.5" aria-label="Экспонат — скелет — при жизни">'+
+          '<div class="marks"><b>Экспонат</b><span>Скелет</span><span>При жизни</span></div></div>'
+        : '<div class="ctrl"><input type="range" min="0" max="100" value="0" step="0.5" aria-label="Экспонат — в недрах">'+
+          '<div class="marks"><b>Экспонат</b><span>'+(life.stateLabel||'В недрах')+'</span></div></div>')+
     '</div>';
   }
   var lifeSec = life ? (
     '<section class="life"><div class="wrap"><div class="in2">'+
       '<div>'+
-        '<div class="label rv" style="margin-bottom:4px">При жизни</div>'+
+        '<div class="label rv" style="margin-bottom:4px">'+(life.label||'При жизни')+'</div>'+
         '<h2 class="rv">'+life.title+'</h2>'+
         ((P&&P.profile&&P.profile.paragraphs)
           ? '<div class="lead rv">'+P.profile.paragraphs.map(function(t){return '<p>'+t+'</p>'}).join('')+'</div>'
           : '<p class="lead rv">'+life.text+'</p>')+
-        '<div class="sci rv">Потяните рычажок: экспонат — анатомическая схема — реконструкция при жизни. Поза и ракурс совпадают. Научная реконструкция по опубликованным данным о виде.</div>'+
+        '<div class="sci rv">'+(life.diagram?'Потяните рычажок: экспонат — анатомическая схема — реконструкция при жизни. Поза и ракурс совпадают. Научная реконструкция по опубликованным данным о виде.':'Потяните рычажок: экспонат — и то, как он лежал в недрах до извлечения. Реконструкция среды по типу месторождения.')+'</div>'+
       '</div>'+
       '<div class="rv">'+cmpHTML('cmpMain')+'</div>'+
     '</div></div></section>') : '';
@@ -413,9 +416,9 @@ if(!o){
        Ветка heroVideo убрана: поля heroVideo в promo-data больше нет
        (ролики чёрной студии вынесены в отдельную библиотеку 05.08). */
     '<div class="ph rv"><img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'" fetchpriority="high" decoding="async">'+
-    ((P&&P.profile&&P.profile.facts&&(P.profile.facts['Сохранность']||P.profile.facts['Ценность']))?
+    ((P&&P.profile&&P.profile.facts&&(P.profile.facts['Сохранность']||P.profile.facts['Ценность']||P.profile.facts['Редкость']))?
       '<div class="apprise">'+
-        (P.profile.facts['Сохранность']?'<div class="row"><span>Сохранность</span><b>'+P.profile.facts['Сохранность']+'</b></div>':'')+
+        (P.profile.facts['Сохранность']?'<div class="row"><span>Сохранность</span><b>'+P.profile.facts['Сохранность']+'</b></div>':'')+(P.profile.facts['Редкость']?'<div class="row"><span>Редкость</span><b>'+P.profile.facts['Редкость']+'</b></div>':'')+
         (P.profile.facts['Ценность']?'<div class="row"><span>Ценность</span><b>'+P.profile.facts['Ценность']+'</b></div>':'')+
       '</div>':'')+
     '</div>'+
@@ -457,6 +460,14 @@ if(!o){
     var r=root.querySelector('input[type=range]'),
         anat=root.querySelector('.l-anat'), life=root.querySelector('.l-life'),
         ln=root.querySelector('.ln');
+    if(!anat){
+      var upd1=function(){
+        var b=Math.min(1,Math.max(0,r.value/100));
+        life.style.clipPath='inset(0 0 0 '+((1-b)*100)+'%)';
+        ln.style.left=((1-b)*100)+'%'; ln.style.opacity=(b>0.02&&b<0.98)?1:0;
+      };
+      r.addEventListener('input',upd1); upd1(); return;
+    }
     function upd(){
       var v=r.value/100;                       // 0..2
       var a=Math.min(v,1), b=Math.max(v-1,0);  // границы двух шторок

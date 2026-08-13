@@ -811,7 +811,7 @@ window.RELICTUM_CATALOG = [
     "category": "Минералы",
     "region": "Китай",
     "name": "Антимонит",
-    "meta": "Стибнит на постаменте, Китай",
+    "meta": "Стибнит на постаменте, Китай<br>Под заказ",
     "price": "Цена по запросу",
     "img": "ph_stibnite",
     "priceValue": null,
@@ -819,6 +819,7 @@ window.RELICTUM_CATALOG = [
     "location": "Wuning Mine, Цзянси, Китай",
     "size": "24,5 × 20 × 13 см, вес 2 кг",
     "mount": "Полированное деревянное основание с латунной табличкой",
+    "status": "Под заказ",
     "description": "Друза с кристаллом больше 13 сантиметров — впечатляющий размер для антимонита.",
     "href": "../16_product_promos/exhibit.html?id=0256-stibnite"
   },
