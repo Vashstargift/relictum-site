@@ -117,6 +117,10 @@ a{color:inherit;text-decoration:none}
 .cmp-pop .x:hover{color:var(--bone,#FBF8F1)}
 .cmp-pop .marks{color:var(--mist,#B9B2A6)}
 .cmp-pop .marks b{color:var(--bone,#FBF8F1)}
+/* similar — «Смотрите похожие» перед CTA */
+.similar{padding:clamp(56px,7vw,100px) 0;background:var(--ivory,#F4F0E8)}
+.similar .in2{max-width:1120px;margin:0 auto}
+.similar h2{margin:6px 0 26px}
 /* alive — тёмная секция с видео */
 .spin{background:var(--bone);border-top:1px solid var(--linel);border-bottom:1px solid var(--linel);padding:clamp(60px,8vw,110px) 0;text-align:center}
 .spin .sframe{position:relative;width:min(1120px,92vw);margin:0 auto;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--linel);background:#EFEAE0;box-shadow:0 30px 80px rgba(20,17,14,.12)}
@@ -336,6 +340,24 @@ if(!o){
       '<div class="rv">'+cmpHTML('cmpMain')+'</div>'+
     '</div></div></section>') : '';
 
+  /* похожие: категория важнее периода, период важнее мира; себя исключаем */
+  var similar = (window.RELICTUM_CATALOG||[]).filter(function(c){return c.id!==o.id})
+    .map(function(c){return {c:c, s:(c.category===o.category?4:0)+(c.period===o.period?2:0)+(c.world===o.world?1:0)}})
+    .sort(function(a,b){return b.s-a.s}).slice(0,3).map(function(x){return x.c});
+  var similarSec = similar.length===3 ? (
+    '<section class="similar"><div class="wrap"><div class="in2">'+
+      '<div class="label rv">Коллекция</div>'+
+      '<h2 class="rv">Смотрите похожие</h2>'+
+      '<div class="grid-objects">'+
+        similar.map(function(c){return '<a class="obj-card rv" href="'+(c.href||('object.html?id='+encodeURIComponent(c.id)))+'">'+
+          '<div class="ph"><img src="'+IMG+c.img+'.jpg?v=11" alt="'+c.name+'" loading="lazy" decoding="async"></div>'+
+          '<div class="body"><div class="id">'+c.id+', '+c.worldLabel+'</div>'+
+          '<h3>'+c.name+'</h3><div class="latin">'+(c.latin||'')+'</div>'+
+          '<div class="meta">'+(c.meta||'')+'</div>'+
+          '<div class="price"><b>'+(c.price||'Цена по запросу')+'</b><span>Смотреть</span></div></div></a>'}).join('')+
+      '</div>'+
+    '</div></div></section>') : '';
+
   var aliveSec = alive ? (
     '<section class="alive" id="aliveSec" data-video="'+(alive.video?IMG+alive.video:'')+'">'+
       (alive.poster?'<img class="poster" src="'+IMG+alive.poster+'" alt="" loading="lazy" decoding="async">':'')+
@@ -401,7 +423,7 @@ if(!o){
   /* Биография объекта идёт сразу после 360°, а не в самом конце: блок
      с рассказом об экспонате не должен стоять ПОСЛЕ кнопки заказа.
      Так было на девяти статичных страницах-визитках — теперь у всех 38. */
-  spinSec+ '<section id="bio-slot"></section>'+ lifeSec+ aliveSec+ homeSec+ gallerySec+
+  spinSec+ '<section id="bio-slot"></section>'+ lifeSec+ aliveSec+ homeSec+ gallerySec+ similarSec+
 
   '<section class="cta"><div class="wrap">'+
     '<div class="label rv" style="color:var(--gold);margin-bottom:14px">'+o.id+'</div>'+
