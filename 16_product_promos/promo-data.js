@@ -961,7 +961,7 @@ window.RELICTUM_PROMO = {
       paragraphs: [
         "Четырнадцать бабочек тёплой гаммы: тигровые полосы, янтарь и охра рядом с чёрным бархатом крыльев парусников. Каждый экземпляр подписан этикеткой вида.",
         "Рама собрана как единая композиция: три колонки по пять экземпляров, ритм цвета выстроен по диагоналям.",
-        "В составе: Papilio bachus (Перу), Papilio lowi (Филиппины), Papilio zagreus (Перу), Papilio hermeli (Филиппины), Papilio deiphobus (Индонезия), Papilio stockleyi (Таиланд), Papilio demodocus (Конго), Papilio karna (Индонезия), Papilio lycophron (Перу), Hypolimnas pandarus, самка (Индонезия), Papilio lormieri (ЦАР), Hypolimnas pandarus, самец (Индонезия), Anaea archidona (Перу), Historis odius (Перу). Названия — по этикеткам изготовителя; уточнения владельца будут внесены."
+        "В составе: Papilio bachus (Перу), Papilio lowi (Филиппины), Papilio zagreus (Перу), Papilio hermeli (Филиппины), Papilio deiphobus (Индонезия), Papilio stockleyi (Таиланд; по признакам — комплекс павлиньих парусников Papilio bianor, имя на этикетке, вероятно, подвидовое), Papilio demodocus (Конго), Papilio karna (Индонезия), Papilio lycophron (Перу), Hypolimnas pandarus, самка (Индонезия), Papilio lormieri (ЦАР), Hypolimnas pandarus, самец (Индонезия), Anaea archidona (Перу), Historis odius (Перу). Названия — по этикеткам изготовителя; уточнения владельца будут внесены."
       ]
     },
     hook: "Кабинетная коллекция из пятнадцати тропических бабочек.",
