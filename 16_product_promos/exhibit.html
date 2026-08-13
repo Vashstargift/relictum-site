@@ -290,7 +290,7 @@ if(!o){
   document.title=o.name+' — '+o.id+', RELICTUM';
   var hook = P?P.hook : (o.description||'');
   var kick = P?P.heroKicker : (o.worldLabel+', '+(o.region||''));
-  var storyHtml = P?P.story.map(function(t){return '<p>'+t+'</p>'}).join('') : '<p>'+(o.description||'')+'</p>';
+  var storyHtml = (P&&P.story)?P.story.map(function(t){return '<p>'+t+'</p>'}).join('') : '<p>'+(o.description||'')+'</p>';
   var alive = P?P.alive:null;
   var era = P?P.era:null;
   var interior = P?P.interior:null;
@@ -390,7 +390,7 @@ if(!o){
 
   '<section class="pass"><div class="wrap"><div class="grid">'+passCells+'</div></div></section>'+
 
-  ((P&&P.profile)?'':
+  ((P&&P.profile&&P.life&&P.profile.paragraphs)?'':
   '<section class="story"><div class="wrap"><div class="in2">'+
     '<div class="label rv" style="margin-bottom:16px">История</div>'+
     '<h2 class="rv">'+(P&&P.era?P.era.title:o.name)+'</h2>'+
