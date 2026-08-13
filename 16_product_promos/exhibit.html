@@ -121,6 +121,12 @@ a{color:inherit;text-decoration:none}
 .similar{padding:clamp(56px,7vw,100px) 0;background:var(--ivory,#F4F0E8)}
 .similar .in2{max-width:1120px;margin:0 auto}
 .similar h2{margin:6px 0 26px}
+/* apprise — оценка экземпляра под главным фото */
+.apprise{margin-top:14px;border:1px solid var(--linel,#E4DCCB);background:var(--bone,#FBF8F1);padding:16px 18px}
+.apprise .row{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:7px 0;align-items:baseline}
+.apprise .row+.row{border-top:1px solid var(--linel,#E4DCCB)}
+.apprise span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--deep)}
+.apprise b{font-family:var(--serif);font-weight:400;font-size:15.5px;line-height:1.45}
 /* alive — тёмная секция с видео */
 .spin{background:var(--bone);border-top:1px solid var(--linel);border-bottom:1px solid var(--linel);padding:clamp(60px,8vw,110px) 0;text-align:center}
 .spin .sframe{position:relative;width:min(1120px,92vw);margin:0 auto;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--linel);background:#EFEAE0;box-shadow:0 30px 80px rgba(20,17,14,.12)}
@@ -312,7 +318,7 @@ if(!o){
     ['Происхождение', o.location||o.region||'—']
   ].concat(o.found?[['Дата находки', o.found]]:[]).concat([
     ['Размер', o.size||'—']
-  ]).concat(o.mount?[['Оформление', o.mount]]:[]).concat(o.status?[['Наличие', o.status]]:[]).concat((P&&P.profile&&P.profile.facts)?Object.keys(P.profile.facts).map(function(k){return [k,P.profile.facts[k]]}):[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
+  ]).concat(o.mount?[['Оформление', o.mount]]:[]).concat(o.status?[['Наличие', o.status]]:[]).concat((P&&P.profile&&P.profile.facts)?Object.keys(P.profile.facts).filter(function(k){return k!=='Сохранность'&&k!=='Ценность'}).map(function(k){return [k,P.profile.facts[k]]}):[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
   var life = P?P.life:null;
   function cmpHTML(pref){
@@ -407,6 +413,11 @@ if(!o){
        Ветка heroVideo убрана: поля heroVideo в promo-data больше нет
        (ролики чёрной студии вынесены в отдельную библиотеку 05.08). */
     '<div class="ph rv"><img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'" fetchpriority="high" decoding="async">'+
+    ((P&&P.profile&&P.profile.facts&&(P.profile.facts['Сохранность']||P.profile.facts['Ценность']))?
+      '<div class="apprise">'+
+        (P.profile.facts['Сохранность']?'<div class="row"><span>Сохранность</span><b>'+P.profile.facts['Сохранность']+'</b></div>':'')+
+        (P.profile.facts['Ценность']?'<div class="row"><span>Ценность</span><b>'+P.profile.facts['Ценность']+'</b></div>':'')+
+      '</div>':'')+
     '</div>'+
   '</section>'+
 
