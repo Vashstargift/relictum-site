@@ -600,6 +600,27 @@ window.RELICTUM_CATALOG = [
     "href": "../16_product_promos/exhibit.html?id=0224-polished-ammonites"
   },
   {
+    "id": "R–0263",
+    "world": "vita",
+    "worldLabel": "Жизнь",
+    "category": "Мамонтовая фауна",
+    "period": "Плейстоцен",
+    "era": "Кайнозой",
+    "region": "Россия",
+    "name": "Нога мамонта",
+    "meta": "Мумифицированная, с шерстью, в витрине",
+    "price": "Цена по запросу",
+    "img": "ph_mammoth_leg",
+    "priceValue": null,
+    "slug": "0263-mammoth-leg",
+    "age": "плейстоцен",
+    "location": "Россия, зона вечной мерзлоты",
+    "size": "По запросу",
+    "mount": "Стеклянная витрина на деревянном основании",
+    "description": "Мумифицированная нога шерстистого мамонта с сохранившимися мягкими тканями, кожей и рыжей шерстью — в стеклянной витрине на деревянном основании.",
+    "href": "../16_product_promos/exhibit.html?id=0263-mammoth-leg"
+  },
+  {
     "id": "R–0245",
     "world": "vita",
     "worldLabel": "Жизнь",
