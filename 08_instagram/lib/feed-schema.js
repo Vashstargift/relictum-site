@@ -30,8 +30,10 @@ function validatePost(sources, post) {
 
   // Пост целиком отсутствует (null/undefined) — дальше нечего проверять,
   // без ранней остановки следующая же строка уронит всё исключением.
+  // Формулировка отдельная от «нет поля id»: там пост есть, просто без
+  // одного поля, а здесь нет самого поста — это разные вещи.
   if (!post) {
-    problems.push('(без id): нет поля id');
+    problems.push('(без id): поста нет вовсе — элемент ленты пуст (null/undefined)');
     return { ok: false, problems };
   }
 
@@ -101,7 +103,13 @@ function checkRhythm(feed) {
   for (const idx of sortedIdx) {
     const group = groups.get(idx).slice().sort((a, b) => a.slot - b.slot);
     const tripleSlots = [idx * 3 + 1, idx * 3 + 2, idx * 3 + 3];
-    const isComplete = tripleSlots.every((slot) => group.some((p) => p.slot === slot)) && group.length === 3;
+    // Полнота тройки — по числу РАЗНЫХ слотов, а не по числу постов: дубль
+    // слота (два поста с одним и тем же slot) не должен превращать полную
+    // тройку в неполную и подменять строгое «ровно 1» на мягкое «не
+    // больше 1» — иначе тройка с нулём товарных при дубле слота молчаливо
+    // проходит проверку.
+    const distinctSlots = new Set(group.map((p) => p.slot)).size;
+    const isComplete = tripleSlots.every((slot) => group.some((p) => p.slot === slot)) && distinctSlots === 3;
     const goodPosts = group.filter((p) => p.exhibit !== null && p.exhibit !== undefined);
     const goods = goodPosts.length;
 

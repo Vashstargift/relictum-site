@@ -194,3 +194,56 @@ test('validateFeed переживает битый (null) элемент в ма
   assert.equal(r.ok, false);
   assert.ok(r.problems.length > 0 || r.posts.some((p) => !p.ok));
 });
+
+// --- зона риска: полнота тройки должна считаться по числу РАЗНЫХ слотов,
+// а не по числу постов (дубль слота не должен превращать полную тройку в
+// неполную и подменять строгое «ровно 1» на мягкое «не больше 1») ---
+
+test('ритм: дубль слота в полной тройке без товарных — всё равно нарушение', () => {
+  // Репро из повторного ревью: слот 1 задан дважды, слоты 2 и 3 — по разу.
+  // Тройка {1,2,3} по различным слотам полная, товарных постов ноль —
+  // нарушение «ровно 1», а не мягкое «не больше 1» (которое здесь бы не
+  // сработало, т.к. 0 <= 1).
+  const feed = [
+    { id: 'a1', date: '2026-08-18', rubric: 'object', slot: 1, exhibit: null, format: 'carousel',
+      frames: [{ type: 'video', src: 'spin_megalodon.mp4', crop: '4:5' }],
+      caption: { lead: 'x' }, tags: [], facts: [], status: 'ready', blockers: [] },
+    { id: 'a2', date: '2026-08-18', rubric: 'object', slot: 1, exhibit: null, format: 'carousel',
+      frames: [{ type: 'video', src: 'spin_megalodon.mp4', crop: '4:5' }],
+      caption: { lead: 'x' }, tags: [], facts: [], status: 'ready', blockers: [] },
+    { id: 'b', date: '2026-08-18', rubric: 'object', slot: 2, exhibit: null, format: 'carousel',
+      frames: [{ type: 'video', src: 'spin_megalodon.mp4', crop: '4:5' }],
+      caption: { lead: 'x' }, tags: [], facts: [], status: 'ready', blockers: [] },
+    { id: 'c', date: '2026-08-18', rubric: 'object', slot: 3, exhibit: null, format: 'carousel',
+      frames: [{ type: 'video', src: 'spin_megalodon.mp4', crop: '4:5' }],
+      caption: { lead: 'x' }, tags: [], facts: [], status: 'ready', blockers: [] },
+  ];
+  const r = checkRhythm(feed);
+  assert.equal(r.ok, false, 'полная по числу различных слотов тройка {1,2,3} без товарных должна считаться нарушением');
+});
+
+test('ритм: дубль слота в полной тройке с двумя товарными — тоже нарушение', () => {
+  // Тот же дубль слота 1, но теперь товарных два (a1 и c) — нарушение
+  // «ровно 1» должно ловиться независимо от того, как считать полноту.
+  const feed = [
+    goodPost({ id: 'a1', slot: 1, exhibit: 'megalodon-tooth' }),
+    goodPost({ id: 'a2', slot: 1, exhibit: null }),
+    goodPost({ id: 'b', slot: 2, exhibit: null }),
+    goodPost({ id: 'c', slot: 3, exhibit: 'megalodon-tooth' }),
+  ];
+  const r = checkRhythm(feed);
+  assert.equal(r.ok, false, 'два товарных в тройке — нарушение независимо от дубля слота');
+});
+
+// --- зона риска: сообщение о полностью отсутствующем посте не должно
+// звучать так, будто пост есть, но у него не хватает поля id ---
+
+test('validatePost(null): сообщение говорит, что поста нет вовсе, а не что у него нет id', () => {
+  const r = validatePost(s, null);
+  const msg = r.problems.join(' ');
+  // Старый текст «нет поля id» вводил в заблуждение — как будто пост есть,
+  // просто без одного поля. Проверяем, что формулировка не повторяет этот
+  // текст и явно указывает на отсутствие самого поста.
+  assert.doesNotMatch(msg, /нет поля id/, 'сообщение не должно звучать как «пост есть, но без поля id»');
+  assert.match(msg, /нет|отсутств/i);
+});
