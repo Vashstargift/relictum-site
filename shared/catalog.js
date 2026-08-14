@@ -4,6 +4,29 @@
    Используется: catalog.html, object.html, главная. */
 window.RELICTUM_CATALOG = [
   {
+    "id": "R–0271",
+    "world": "grand",
+    "worldLabel": "Монументы",
+    "category": "Динозавры",
+    "period": "Мел",
+    "era": "Мезозой",
+    "region": "США",
+    "latin": "Triceratops sp.",
+    "name": "Череп трицератопса",
+    "meta": "Поздний мел, Северная Америка<br>По предзаказу",
+    "price": "Цена по запросу",
+    "img": "ph_triceratops",
+    "priceValue": null,
+    "status": "По предзаказу",
+    "slug": "0271-triceratops-skull",
+    "age": "≈ 68–66 млн лет, поздний мел (маастрихт)",
+    "location": "Северная Америка",
+    "size": "По запросу",
+    "mount": "Мощение на опоре из чернёной стали",
+    "description": "Череп трицератопса с полным воротником и обоими надглазничными рогами. Объект ожидается в коллекции и открыт по предзаказу.",
+    "href": "../16_product_promos/exhibit.html?id=0271-triceratops-skull"
+  },
+  {
     "id": "R–0246",
     "world": "terra",
     "worldLabel": "Земля",
