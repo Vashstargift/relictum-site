@@ -47,36 +47,78 @@ async function buildPost(sources, post) {
   fs.rmSync(dir, { recursive: true, force: true });
   fs.mkdirSync(dir, { recursive: true });
 
-  const files = [];
-  for (let i = 0; i < post.frames.length; i++) {
-    const f = post.frames[i];
-    const n = String(i + 1).padStart(2, '0');
-    const crop = f.crop || (post.format === 'single' ? '1:1' : '4:5');
+  try {
+    const files = [];
+    // Находка 1: meta.json.files должен перечислять РОВНО то, что реально
+    // лежит в папке (в т.ч. обложки NN_cover.jpg), и различать роль каждой
+    // записи — кадр листания или обложка к кадру. order у кадра — его
+    // позиция в порядке листания (без пропусков и повторов); у обложки —
+    // order её собственного кадра (не отдельная позиция), чтобы потребитель
+    // однозначно читал порядок листания и не путал обложку со следующим
+    // кадром.
+    const fileEntries = [];
+    for (let i = 0; i < post.frames.length; i++) {
+      const f = post.frames[i];
+      const n = String(i + 1).padStart(2, '0');
+      const order = i + 1;
+      const crop = f.crop || (post.format === 'single' ? '1:1' : '4:5');
 
-    if (f.type === 'video') {
-      const out = path.join(dir, `${n}.mp4`);
-      await renderVideo({ src: f.src, crop, out, trim: f.trim || null });
-      await extractCover({ src: out, at: 2.0, out: path.join(dir, `${n}_cover.jpg`) });
-      files.push(`${n}.mp4`);
-    } else if (f.type === 'photo') {
-      const out = path.join(dir, `${n}.jpg`);
-      await renderPhoto({ src: f.src, crop, out });
-      files.push(`${n}.jpg`);
-    } else {
-      const out = path.join(dir, `${n}.png`);
-      const height = crop === '1:1' ? 1080 : 1350;
-      await renderCard({ tpl: f.tpl, data: f.data || {}, out, width: 1080, height });
-      files.push(`${n}.png`);
+      if (f.type === 'video') {
+        const out = path.join(dir, `${n}.mp4`);
+        await renderVideo({ src: f.src, crop, out, trim: f.trim || null });
+        const coverName = `${n}_cover.jpg`;
+        await extractCover({ src: out, at: 2.0, out: path.join(dir, coverName) });
+        files.push(`${n}.mp4`);
+        fileEntries.push({ name: `${n}.mp4`, role: 'frame', order });
+        fileEntries.push({ name: coverName, role: 'cover', order });
+      } else if (f.type === 'photo') {
+        const out = path.join(dir, `${n}.jpg`);
+        await renderPhoto({ src: f.src, crop, out });
+        files.push(`${n}.jpg`);
+        fileEntries.push({ name: `${n}.jpg`, role: 'frame', order });
+      } else {
+        const out = path.join(dir, `${n}.png`);
+        const height = crop === '1:1' ? 1080 : 1350;
+        await renderCard({ tpl: f.tpl, data: f.data || {}, out, width: 1080, height });
+        files.push(`${n}.png`);
+        fileEntries.push({ name: `${n}.png`, role: 'frame', order });
+      }
+    }
+
+    fs.writeFileSync(path.join(dir, 'caption.txt'), captionText(post), 'utf8');
+    fs.writeFileSync(
+      path.join(dir, 'meta.json'),
+      JSON.stringify({ id: post.id, date: post.date, rubric: post.rubric, exhibit: post.exhibit, slot: post.slot, format: post.format, files: fileEntries }, null, 2),
+      'utf8'
+    );
+    return { dir, files };
+  } catch (err) {
+    // Находка 3: недописанная папка (первые кадры без caption.txt/meta.json)
+    // не должна выглядеть как готовая — при любом сбое сборки поста удаляем
+    // папку целиком, чтобы на выдаче не оставалось полусобранных постов,
+    // неотличимых от готовых при простом просмотре каталога.
+    fs.rmSync(dir, { recursive: true, force: true });
+    throw err;
+  }
+}
+
+// Находка 2: собирает список постов с изоляцией ошибок — падение одного
+// поста не прерывает сборку остальных. Возвращает сводку: какие посты
+// собраны и какие упали с какой причиной, чтобы эта информация не терялась.
+async function buildAll(sources, targets) {
+  const built = [];
+  const failed = [];
+  for (const post of targets) {
+    try {
+      const r = await buildPost(sources, post);
+      built.push(post.id);
+      console.log(`✓ ${post.id} → ${path.relative(REPO, r.dir)} (${r.files.length} кадров)`);
+    } catch (err) {
+      failed.push({ id: post.id, message: err.message });
+      console.error(`✗ ${post.id} не собран: ${err.message}`);
     }
   }
-
-  fs.writeFileSync(path.join(dir, 'caption.txt'), captionText(post), 'utf8');
-  fs.writeFileSync(
-    path.join(dir, 'meta.json'),
-    JSON.stringify({ id: post.id, date: post.date, rubric: post.rubric, exhibit: post.exhibit, slot: post.slot, format: post.format, files }, null, 2),
-    'utf8'
-  );
-  return { dir, files };
+  return { built, failed };
 }
 
 function report(result) {
@@ -111,6 +153,13 @@ async function main(argv) {
   let targets;
   if (idIndex !== -1) {
     const id = argv[idIndex + 1];
+    // Находка 5: без значения id — это отсутствующий аргумент, а не пост с
+    // id «undefined». Раньше сообщение выглядело так, будто такой пост
+    // действительно искали.
+    if (id === undefined) {
+      console.error('Флаг --id указан без значения — укажи id поста, например --id p03');
+      return 1;
+    }
     targets = feed.filter((p) => p.id === id);
     if (targets.length === 0) {
       console.error(`Нет поста с id «${id}»`);
@@ -123,9 +172,15 @@ async function main(argv) {
     return 1;
   }
 
-  for (const post of targets) {
-    const r = await buildPost(sources, post);
-    console.log(`✓ ${post.id} → ${path.relative(REPO, r.dir)} (${r.files.length} кадров)`);
+  // Находка 2: сборка идёт с изоляцией ошибок постов (см. buildAll) — падение
+  // одного не мешает собрать остальные, а сводка в конце гарантирует, что
+  // информация о несобранном не потеряется.
+  const summary = await buildAll(sources, targets);
+  console.log(`Итого: собрано ${summary.built.length} из ${targets.length}`);
+  if (summary.failed.length > 0) {
+    console.error(`Не собраны (${summary.failed.length}):`);
+    for (const f of summary.failed) console.error(`  ✗ ${f.id}: ${f.message}`);
+    return 1;
   }
   return 0;
 }
@@ -137,4 +192,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { loadFeed, outDirFor, buildPost, main };
+module.exports = { loadFeed, outDirFor, buildPost, buildAll, main };
