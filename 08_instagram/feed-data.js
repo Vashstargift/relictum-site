@@ -54,13 +54,14 @@ window.RELICTUM_FEED = [
     frames: [
       { type: 'video', src: 'spin_megalodon.mp4', crop: '1:1' },
       { type: 'photo', src: 'int_ph_megalodon.jpg', crop: '4:5' },
-      { type: 'card', tpl: 'spec', data: { name: 'Зуб мегалодона', rows: [['Возраст', '≈ 23 млн лет, миоцен'], ['Оформление', 'На опоре из чернёной стали']] } },
+      { type: 'card', tpl: 'spec', data: { name: 'Зуб мегалодона', rows: [['Возраст', '≈ 23 млн лет, миоцен'], ['Оформление', 'Стальной стенд']] } },
       { type: 'card', tpl: 'end', data: {} },
     ],
     caption: { lead: 'Зуб мегалодона', body: 'Эмаль сохранила цвет породы, в которой зуб пролежал миоцен целиком.', cta: 'Стоимость и наличие — по запросу в галерею.' },
     tags: ['#relictum', '#мегалодон'],
     facts: [
       { claim: 'возраст', value: '≈ 23 млн лет, миоцен', source: 'catalog.js:megalodon-tooth.age', checked: true },
+      { claim: 'оформление', value: 'Стальной стенд', source: 'catalog.js:megalodon-tooth.mount', checked: true },
     ],
     status: 'ready',
     blockers: [],
@@ -73,7 +74,7 @@ window.RELICTUM_FEED = [
     exhibit: null,
     format: 'single',
     frames: [
-      { type: 'card', tpl: 'figure', data: { name: 'Dunkleosteus', big: '≈ 360 млн лет', sub: 'Возраст черепа панцирной рыбы позднего девона.' } },
+      { type: 'card', tpl: 'figure', data: { name: 'Dunkleosteus', big: '≈ 360 млн лет, поздний девон', sub: 'Возраст черепа панцирной рыбы позднего девона.' } },
     ],
     caption: { lead: '360 миллионов лет', body: 'Броневые пластины головы хищной панцирной рыбы девонского моря.', cta: '' },
     tags: ['#relictum', '#девон'],
@@ -120,6 +121,7 @@ window.RELICTUM_FEED = [
     tags: ['#relictum', '#мамонт'],
     facts: [
       { claim: 'возраст', value: '≈ 30 000 лет', source: 'catalog.js:mammoth-skull-tusks.age', checked: true },
+      { claim: 'оформление', value: 'Гранитный блок, бронзовые опоры', source: 'catalog.js:mammoth-skull-tusks.mount', checked: true },
     ],
     status: 'ready',
     blockers: [],
@@ -152,7 +154,7 @@ window.RELICTUM_FEED = [
     exhibit: null,
     format: 'single',
     frames: [
-      { type: 'card', tpl: 'figure', data: { name: 'Трилобит', big: '≈ 480–472 млн лет', sub: 'Возраст гигантского трилобита раннего ордовика.' } },
+      { type: 'card', tpl: 'figure', data: { name: 'Трилобит', big: '≈ 480–472 млн лет, ранний ордовик', sub: 'Возраст гигантского трилобита раннего ордовика.' } },
     ],
     caption: { lead: '480 миллионов лет', body: 'Гигантский трилобит ордовикского моря — редкая величина для этой группы.', cta: '' },
     tags: ['#relictum', '#трилобит'],
@@ -179,6 +181,7 @@ window.RELICTUM_FEED = [
     tags: ['#relictum', '#носорог'],
     facts: [
       { claim: 'возраст', value: '50–150 тыс лет, плейстоцен', source: 'catalog.js:0611-coelodonta-skeleton.age', checked: true },
+      { claim: 'оформление', value: 'Профессиональная сборка на скрытом каркасе', source: 'catalog.js:0611-coelodonta-skeleton.mount', checked: true },
     ],
     status: 'ready',
     blockers: [],
@@ -208,7 +211,7 @@ window.RELICTUM_FEED = [
     exhibit: null,
     format: 'single',
     frames: [
-      { type: 'card', tpl: 'figure', data: { name: 'Кейхозавр', big: '≈ 245 млн лет', sub: 'Возраст скелета кейхозавра триасового периода.' } },
+      { type: 'card', tpl: 'figure', data: { name: 'Кейхозавр', big: '≈ 245 млн лет, триасовый период', sub: 'Возраст скелета кейхозавра триасового периода.' } },
     ],
     caption: { lead: '245 миллионов лет', body: 'Морская рептилия раннего триаса, поднявшаяся вскоре после величайшего вымирания.', cta: '' },
     tags: ['#relictum', '#триас'],
@@ -235,6 +238,7 @@ window.RELICTUM_FEED = [
     tags: ['#relictum', '#пещерныймедведь'],
     facts: [
       { claim: 'возраст', value: 'более 12 000 лет, плейстоцен', source: 'catalog.js:cave-bear-skeleton.age', checked: true },
+      { claim: 'оформление', value: 'Стальной штырь на чернёном основании', source: 'catalog.js:cave-bear-skeleton.mount', checked: true },
     ],
     status: 'ready',
     blockers: [],
@@ -248,11 +252,11 @@ window.RELICTUM_FEED = [
     format: 'carousel',
     frames: [
       { type: 'video', src: 'era_hadean.mp4', crop: '4:5' },
-      { type: 'card', tpl: 'era', data: { era: 'Катархей', when: '4,6 — 4 млрд лет назад', fact: 'Древнейший эон Земли, современники которого сохранились лишь в метеоритах.' } },
+      { type: 'card', tpl: 'era', data: { era: 'Катархей', when: '4,6 — 4 млрд лет назад', fact: 'Древнейший эон Земли. Целых пород той эпохи не сохранилось — редкое исключение: цирконы Джек-Хиллз в Австралии, почти до 4,4 млрд лет.' } },
       { type: 'card', tpl: 'end', data: {} },
     ],
-    caption: { lead: 'Катархей', body: 'Самый ранний эон планеты — из него до нас дошли только метеориты.', cta: '' },
-    tags: ['#relictum', '#метеорит', '#космос'],
+    caption: { lead: 'Катархей', body: 'Самый ранний эон планеты. Целых пород катархея на Земле не осталось — сохранились лишь отдельные минералы, кристаллы циркона возрастом почти до 4,4 млрд лет.', cta: '' },
+    tags: ['#relictum', '#цирконы', '#космос'],
     facts: [
       { claim: 'датировка эона', value: '4,6 — 4 млрд лет назад', source: 'eras.js:hadean.when', checked: true },
     ],
@@ -293,6 +297,7 @@ window.RELICTUM_FEED = [
     tags: ['#relictum', '#мамонт'],
     facts: [
       { claim: 'возраст', value: '2,6 млн – 11 тыс лет, плейстоцен', source: 'catalog.js:0617-mammoth-skeleton.age', checked: true },
+      { claim: 'оформление', value: 'Скрытый стальной каркас, монтаж на месте', source: 'catalog.js:0617-mammoth-skeleton.mount', checked: true },
     ],
     status: 'ready',
     blockers: [],

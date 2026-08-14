@@ -32,6 +32,32 @@ const MAX_TITLE_LENGTH = 60; // заголовок карточки: data.title/
 // Поле заголовка карточки для каждого шаблона, где заголовок есть.
 const TITLE_FIELD_BY_TEMPLATE = { cover: 'title', spec: 'name', figure: 'name' };
 
+// Соответствие «шаблон карточки → какие поля данных несут проверяемое
+// зрителем утверждение». Раньше это было зашито только для era (датировка
+// в data.when) — из-за этого у figure и spec число, показанное на
+// карточке, могло разойтись с числом, зарегистрированным фактом поста:
+// зритель видит одно, а сверено другое. Каждое поле отсюда обязано найти
+// в facts[] поста запись, чьё value дословно (после нормализации пробелов)
+// совпадает со значением поля, и чей source резолвится.
+//
+// Шаблоны cover и end проверяемых утверждений не несут (cover — обложка,
+// end — служебная закрывающая карточка) и в это соответствие не входят —
+// checkCardConfirmed для них просто ничего не требует.
+//
+// Функция для каждого шаблона возвращает список { path, value } — path
+// нужен только для текста ошибки, value — то, что должно быть подтверждено.
+const CONFIRMABLE_FIELDS_BY_TEMPLATE = {
+  era: (data) => [{ path: 'data.when', value: data ? data.when : undefined }],
+  figure: (data) => [{ path: 'data.big', value: data ? data.big : undefined }],
+  spec: (data) => {
+    const rows = Array.isArray(data && data.rows) ? data.rows : [];
+    return rows.map((row, i) => ({
+      path: `data.rows[${i}][1]`,
+      value: Array.isArray(row) ? row[1] : undefined,
+    }));
+  },
+};
+
 // Обходит data кадра карточки рекурсивно (объекты и массивы, напр. рядки
 // паспорта data.rows) и собирает все строковые значения вместе с их путём
 // (для сообщения об ошибке) — так предел длины проверяется одинаково для
@@ -85,27 +111,34 @@ function norm(v) {
   return String(v).replace(/\s+/g, ' ').trim();
 }
 
-// Карточка шаблона «era» несёт крупную геологическую датировку прямо в
-// data.when, минуя обычный путь через факты — без этой проверки такое
-// число вообще не сверяется. Требуем, чтобы среди фактов поста нашёлся
-// хотя бы один, чьё value дословно (после нормализации пробелов) совпадает
-// с data.when и чей source резолвится (т.е. действительно на что-то
-// ссылается, а не просто похож на ссылку).
-function checkEraCardConfirmed(sources, post, frame, frameLabel, bad) {
-  const when = frame.data ? frame.data.when : undefined;
-  if (typeof when !== 'string' || when.trim() === '') {
-    bad(`${frameLabel}: у карточки эпохи нет датировки (data.when)`);
-    return;
-  }
+// Карточки шаблонов era/figure/spec несут утверждение, которое зритель
+// видит прямо на плитке (датировка, крупное число, строка паспорта) —
+// минуя обычный путь через факты, если бы не эта проверка: такое значение
+// вообще не сверялось бы. Требуем для каждого поля из
+// CONFIRMABLE_FIELDS_BY_TEMPLATE, чтобы среди фактов поста нашёлся хотя бы
+// один, чьё value дословно совпадает со значением на карточке и чей source
+// резолвится (т.е. действительно на что-то ссылается, а не просто похож
+// на ссылку).
+function checkCardConfirmed(sources, post, frame, frameLabel, bad) {
+  const getFields = CONFIRMABLE_FIELDS_BY_TEMPLATE[frame.tpl];
+  if (!getFields) return; // шаблон без проверяемых утверждений (cover, end)
+
   const facts = Array.isArray(post.facts) ? post.facts : [];
-  const confirmed = facts.some((f) => {
-    if (!f || typeof f.value !== 'string') return false;
-    if (norm(f.value) !== norm(when)) return false;
-    return resolveSource(sources, f.source).ok;
+  const fields = getFields(frame.data);
+  fields.forEach(({ path, value }) => {
+    if (typeof value !== 'string' || value.trim() === '') {
+      bad(`${frameLabel}: у карточки нет значения в ${path}`);
+      return;
+    }
+    const confirmed = facts.some((f) => {
+      if (!f || typeof f.value !== 'string') return false;
+      if (norm(f.value) !== norm(value)) return false;
+      return resolveSource(sources, f.source).ok;
+    });
+    if (!confirmed) {
+      bad(`${frameLabel}: запись «${value}» (${path}) не подтверждена фактом поста — добавь в facts запись, чьё value дословно совпадает с ${path} и чей source резолвится`);
+    }
   });
-  if (!confirmed) {
-    bad(`${frameLabel}: датировка «${when}» на карточке эпохи не подтверждена фактом поста — добавь в facts запись, чьё value дословно совпадает с data.when и чей source резолвится (например, eras.js:<слаг>.when)`);
-  }
 }
 
 // Проверка одного поста: обязательные поля, рубрика, формат, статус,
@@ -151,7 +184,7 @@ function validatePost(sources, post) {
         if (!TEMPLATES.includes(f.tpl)) bad(`${n}: неизвестный шаблон «${f.tpl}»`);
         else {
           validateCardData(f, n, bad);
-          if (f.tpl === 'era') checkEraCardConfirmed(sources, post, f, n, bad);
+          checkCardConfirmed(sources, post, f, n, bad);
         }
       } else {
         bad(`${n}: неизвестный тип «${f.type}»`);
@@ -254,6 +287,7 @@ module.exports = {
   SPEC_MAX_ROWS,
   MAX_TEXT_LENGTH,
   MAX_TITLE_LENGTH,
+  CONFIRMABLE_FIELDS_BY_TEMPLATE,
   validatePost,
   checkRhythm,
   validateFeed,

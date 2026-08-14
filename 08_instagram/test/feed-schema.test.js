@@ -275,8 +275,26 @@ test('паспорт: шесть строк в data.rows (больше пред�
 });
 
 test('паспорт: пять строк в data.rows (ровно предел) проходит', () => {
+  // Значения строк должны быть подтверждаемыми фактами (см. проверку
+  // «карточка spec: каждая строка подтверждается фактом» ниже) — поэтому
+  // вместо выдуманных «Значение N» берём реальные пять полей паспорта
+  // megalodon-tooth (R–0201) из promo-data.js и регистрируем их фактами.
+  const rows = [
+    ['Среда обитания', 'Тёплые моря миоцена'],
+    ['Классификация', 'Otodus megalodon, крупнейшая известная акула в истории океана'],
+    ['Особенности', 'Высота коронки 14,5 см, зазубренная режущая кромка, полная эмаль'],
+    ['Сохранность', 'Эмаль сохранилась целиком, кромка не сточена и не подправлена'],
+    ['Ценность', 'Крупный зуб редкой степени сохранности, готовый самостоятельный экспонат'],
+  ];
+  assert.equal(rows.length, SPEC_MAX_ROWS, 'в фикстуре ровно SPEC_MAX_ROWS строк — иначе тест перестаёт быть тестом границы');
   const r = validatePost(s, goodPost({
-    frames: [{ type: 'card', tpl: 'spec', data: { name: 'Экспонат', rows: specRows(SPEC_MAX_ROWS) } }],
+    frames: [{ type: 'card', tpl: 'spec', data: { name: 'Экспонат', rows } }],
+    facts: rows.map(([label, value]) => ({
+      claim: label,
+      value,
+      source: `promo-data.js:R–0201.profile.facts.${label}`,
+      checked: true,
+    })),
   }));
   assert.equal(r.ok, true, r.problems.join('; '));
 });
@@ -368,6 +386,59 @@ test('пост с карточкой era: факт с нерезолвящимс
   }));
   assert.equal(r.ok, false);
   assert.match(r.problems.join(' '), /не подтверждена фактом/);
+});
+
+// --- карточка рубрики figure: показанное число обязано подтверждаться
+// фактом поста (тот же пробел, что и у era, только раньше не проверялся) ---
+
+test('пост с карточкой figure без подтверждающего факта отклоняется', () => {
+  const r = validatePost(s, goodPost({
+    rubric: 'figure',
+    exhibit: null,
+    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Сеймчан', big: '≈ 4,56 млрд лет', sub: 'x' } }],
+    facts: [],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /не подтверждена фактом/);
+});
+
+test('пост с карточкой figure с подтверждающим фактом проходит', () => {
+  const r = validatePost(s, goodPost({
+    rubric: 'figure',
+    exhibit: null,
+    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Сеймчан', big: '≈ 4,56 млрд лет', sub: 'x' } }],
+    facts: [{ claim: 'возраст', value: '≈ 4,56 млрд лет', source: 'catalog.js:seymchan-pallasite.age', checked: true }],
+  }));
+  assert.equal(r.ok, true, r.problems.join('; '));
+});
+
+// --- карточка рубрики spec: каждая строка паспорта (второй элемент пары)
+// обязана подтверждаться фактом поста ---
+
+test('пост с карточкой spec: строка без подтверждающего факта отклоняется', () => {
+  const r = validatePost(s, goodPost({
+    frames: [{ type: 'card', tpl: 'spec', data: {
+      name: 'Зуб мегалодона',
+      rows: [['Возраст', '≈ 23 млн лет, миоцен']],
+    } }],
+    facts: [],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /не подтверждена фактом/);
+});
+
+test('пост с карточкой spec: все строки с подтверждающими фактами проходят', () => {
+  const r = validatePost(s, goodPost({
+    frames: [{ type: 'card', tpl: 'spec', data: {
+      name: 'Зуб мегалодона',
+      rows: [['Возраст', '≈ 23 млн лет, миоцен'], ['Оформление', 'Стальной стенд']],
+    } }],
+    facts: [
+      { claim: 'возраст', value: '≈ 23 млн лет, миоцен', source: 'catalog.js:megalodon-tooth.age', checked: true },
+      { claim: 'оформление', value: 'Стальной стенд', source: 'catalog.js:megalodon-tooth.mount', checked: true },
+    ],
+  }));
+  assert.equal(r.ok, true, r.problems.join('; '));
 });
 
 // --- реальная лента месяца (Задача 6) ---
