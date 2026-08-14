@@ -304,7 +304,23 @@ if(!o){
   var alive = P?P.alive:null;
   var era = P?P.era:null;
   var interior = P?P.interior:null;
-  var gallery = P?P.gallery:null;
+  /* Галерея собирается сама, а не ведётся руками: сначала интерьер,
+     затем анатомический чертёж и реконструкция при жизни, затем чистые
+     дополнительные ракурсы из promo-data. Нечётный счёт добирается главным
+     кадром — сетка идёт в две колонки, и ряды должны быть полными.
+     Дубли отсекаются: один и тот же файл не попадёт в галерею дважды. */
+  var gallery = (function(){
+    var out=[], seen={};
+    function add(x){ if(x && !seen[x]){ seen[x]=1; out.push(x); } }
+    if(P){
+      add(P.interior && P.interior.img);
+      add(P.life && P.life.diagram);
+      add(P.life && P.life.img);
+      (P.gallery||[]).forEach(add);
+    }
+    if(out.length && out.length%2) add(o.img+'.jpg');
+    return out.length>=2 ? out : [];
+  })();
 
   var spinSec=(P&&P.spin)?(
     '<section class="spin"><div class="wrap">'+
