@@ -322,9 +322,11 @@ if(!o){
     var out=[], seen={};
     function add(x){ if(x && !seen[x]){ seen[x]=1; out.push(x); } }
     if(P){
-      add(P.interior && P.interior.img);
+      /* Чертёж и реконструкция идут парой первыми — в сетке из двух колонок
+         они всегда встают в один ряд и читаются рядом, как задумано. */
       add(P.life && P.life.diagram);
       add(P.life && P.life.img);
+      add(P.interior && P.interior.img);
       (P.gallery||[]).forEach(add);
     }
     if(out.length && out.length%2) add(o.img+'.jpg');
