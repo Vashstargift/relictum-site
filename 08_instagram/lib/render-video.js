@@ -22,9 +22,36 @@ const UPSCALE_WARN_THRESHOLD = 1.6;
 // Центральный кроп. Подложки отклонены: размытая даёт призрак объекта,
 // заливка цветом — видимый шов (фон исходников неоднороден).
 const CROPS = {
-  '4:5': { filter: 'crop=ih*4/5:ih,scale=1080:1350:flags=lanczos', width: 1080, height: 1350 },
-  '1:1': { filter: 'crop=ih:ih,scale=1080:1080:flags=lanczos', width: 1080, height: 1080 },
+  '4:5': { width: 1080, height: 1350 },
+  '1:1': { width: 1080, height: 1080 },
 };
+
+// Прямоугольник центрального кропа для исходника ЛЮБОЙ ориентации.
+// Прежняя формула (crop=ih*4/5:ih) молча считала исходник горизонтальным:
+// на вертикальном 1080×1920 она просила кадр шириной 1536 пикселей — шире
+// самого исходника, и ffmpeg падал сырым английским сообщением. Берём
+// наибольший прямоугольник целевого соотношения, который влезает в кадр:
+// по одной стороне упираемся в исходник, вторую считаем от неё. Стороны
+// приводим к чётным — h264 не кодирует нечётные размеры.
+function cropRect(spec, srcWidth, srcHeight) {
+  if (!Number.isFinite(srcWidth) || !Number.isFinite(srcHeight) || srcWidth < 2 || srcHeight < 2) {
+    throw new Error(`не разобрал размеры исходника (${srcWidth}x${srcHeight})`);
+  }
+  const ratio = spec.width / spec.height;
+  const even = (n) => Math.max(2, Math.floor(n / 2) * 2);
+  return {
+    width: even(Math.min(srcWidth, srcHeight * ratio)),
+    height: even(Math.min(srcHeight, srcWidth / ratio)),
+  };
+}
+
+// Фильтр ffmpeg: центральный кроп посчитанного прямоугольника и масштаб под
+// целевой размер. Размеры кропа считаем в JS по реальным размерам исходника,
+// а не выражением от ih/iw — так формула видна и проверяема в тестах.
+function cropFilter(spec, srcWidth, srcHeight) {
+  const rect = cropRect(spec, srcWidth, srcHeight);
+  return `crop=${rect.width}:${rect.height},scale=${spec.width}:${spec.height}:flags=lanczos`;
+}
 
 function resolveSrc(src) {
   const file = path.isAbsolute(src) ? src : path.join(IMG_DIR, src);
@@ -89,11 +116,11 @@ function cleanupPartial(out) {
   }
 }
 
-// Кроп всегда сохраняет полную высоту исходника и обрезает только ширину
-// под целевые пропорции (см. CROPS), поэтому итоговый масштаб равномерен
-// и равен spec.height / sourceHeight. Предупреждаем, если апскейл заметный.
-function warnIfUpscaled(file, crop, spec, sourceHeight) {
-  const factor = spec.height / sourceHeight;
+// Кроп вырезает прямоугольник целевого соотношения (см. cropRect) и тянет
+// его до целевого размера — масштаб равномерен и равен
+// spec.height / высоту кропа. Предупреждаем, если апскейл заметный.
+function warnIfUpscaled(file, crop, spec, sourceWidth, sourceHeight) {
+  const factor = spec.height / cropRect(spec, sourceWidth, sourceHeight).height;
   if (factor > UPSCALE_WARN_THRESHOLD) {
     process.stderr.write(
       `апскейл: ${path.basename(file)} формат ${crop} ×${factor.toFixed(2)} `
@@ -110,7 +137,8 @@ async function renderVideo({ src, crop = '4:5', out, trim = null }) {
   fs.mkdirSync(path.dirname(out), { recursive: true });
 
   const srcInfo = probeVideo(file);
-  warnIfUpscaled(file, crop, spec, srcInfo.height);
+  warnIfUpscaled(file, crop, spec, srcInfo.width, srcInfo.height);
+  const filter = cropFilter(spec, srcInfo.width, srcInfo.height);
 
   const args = ['-y', '-v', 'error'];
   // -ss и -t — входные опции: обе должны стоять перед «своим» -i (видео),
@@ -121,7 +149,7 @@ async function renderVideo({ src, crop = '4:5', out, trim = null }) {
     // Reels без аудиодорожки не принимаются — подмешиваем тишину
     args.push('-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100', '-shortest');
   }
-  args.push('-vf', spec.filter, '-c:v', 'libx264', '-crf', '20', '-pix_fmt', 'yuv420p',
+  args.push('-vf', filter, '-c:v', 'libx264', '-crf', '20', '-pix_fmt', 'yuv420p',
     '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', out);
 
   try {
@@ -144,10 +172,11 @@ async function renderPhoto({ src, crop = '4:5', out }) {
   fs.mkdirSync(path.dirname(out), { recursive: true });
 
   const srcSize = probeSize(file);
-  warnIfUpscaled(file, crop, spec, srcSize.height);
+  warnIfUpscaled(file, crop, spec, srcSize.width, srcSize.height);
+  const filter = cropFilter(spec, srcSize.width, srcSize.height);
 
   try {
-    await run(['-y', '-v', 'error', '-i', file, '-vf', spec.filter, '-q:v', '2', out]);
+    await run(['-y', '-v', 'error', '-i', file, '-vf', filter, '-q:v', '2', out]);
     const got = probeSize(out);
     if (got.width !== spec.width || got.height !== spec.height) {
       throw new Error(`ожидали ${spec.width}x${spec.height}, получили ${got.width}x${got.height}`);
@@ -166,4 +195,4 @@ async function extractCover({ src, at = 2.5, out }) {
   return { path: out };
 }
 
-module.exports = { probeVideo, renderVideo, renderPhoto, extractCover, CROPS };
+module.exports = { probeVideo, renderVideo, renderPhoto, extractCover, cropRect, cropFilter, CROPS };

@@ -188,6 +188,54 @@ test('renderVideo: обрезка даёт верную длительность
   assert.ok(dur > 1.7 && dur < 2.3, `ожидали ~2с, получили ${dur}`);
 });
 
+// I3: формула кропа была рассчитана на горизонтальный исходник
+// (crop=ih*4/5:ih) — на вертикальном 1080×1920 она просит кадр шире
+// исходника, и ffmpeg падает сырым сообщением. Сегодня таких файлов в
+// shared/img нет, но появятся: собираем вертикальный ролик во временном
+// каталоге ОС из существующего и гоняем оба формата.
+const VERTICAL = path.join(tmp, 'vertical-1080x1920.mp4');
+execFileSync(process.env.FFMPEG_PATH || 'ffmpeg', [
+  '-y', '-v', 'error', '-i', SPIN, '-t', '3',
+  '-vf', 'scale=1080:1920,setsar=1', '-c:v', 'libx264', '-crf', '28', '-pix_fmt', 'yuv420p',
+  VERTICAL,
+]);
+
+test('вертикальный исходник 1080×1920: кроп 4:5 не роняет нарезку', async () => {
+  assert.deepEqual(
+    { width: probeVideo(VERTICAL).width, height: probeVideo(VERTICAL).height },
+    { width: 1080, height: 1920 },
+    'фикстура должна быть вертикальной'
+  );
+  const out = path.join(tmp, 'vertical-45.mp4');
+  const r = await renderVideo({ src: VERTICAL, crop: '4:5', out });
+  assert.equal(r.width, 1080);
+  assert.equal(r.height, 1350);
+});
+
+test('вертикальный исходник 1080×1920: кроп 1:1 не роняет нарезку', async () => {
+  const out = path.join(tmp, 'vertical-11.mp4');
+  const r = await renderVideo({ src: VERTICAL, crop: '1:1', out });
+  assert.equal(r.width, 1080);
+  assert.equal(r.height, 1080);
+});
+
+test('вертикальный исходник: фото любой ориентации тоже режется', async () => {
+  const portrait = path.join(tmp, 'portrait.jpg');
+  execFileSync(process.env.FFMPEG_PATH || 'ffmpeg', [
+    '-y', '-v', 'error', '-f', 'lavfi', '-i', 'color=c=gray:s=1200x2000:d=1',
+    '-frames:v', '1', portrait,
+  ]);
+  const out45 = path.join(tmp, 'portrait-45.jpg');
+  const r45 = await renderPhoto({ src: portrait, crop: '4:5', out: out45 });
+  assert.equal(r45.width, 1080);
+  assert.equal(r45.height, 1350);
+
+  const out11 = path.join(tmp, 'portrait-11.jpg');
+  const r11 = await renderPhoto({ src: portrait, crop: '1:1', out: out11 });
+  assert.equal(r11.width, 1080);
+  assert.equal(r11.height, 1080);
+});
+
 // Находка 6: renderPhoto при неизвестном кропе не перечислял варианты,
 // в отличие от renderVideo.
 test('renderPhoto отклоняет неизвестный кроп и перечисляет доступные варианты', async () => {

@@ -41,6 +41,9 @@ body {
 }
 .title { font-family: var(--serif); font-weight: 300; font-size: 104px; line-height: 1.04; margin-top: 28px; }
 .big { font-family: var(--serif); font-weight: 300; font-size: 168px; line-height: 1; }
+/* период карточки «Цифра» — вынесен из крупного поля отдельной строкой
+   под числом: крупное поле держит только число, период читается тише */
+.period { font-size: 38px; color: var(--deep); margin-top: 18px; line-height: 1.3; }
 .sub { font-size: 30px; color: var(--stone); margin-top: 24px; line-height: 1.5; }
 .rule { height: 1px; background: var(--line); margin: 44px 0; }
 .spec { font-size: 30px; line-height: 2.05; }

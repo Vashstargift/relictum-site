@@ -3,9 +3,15 @@ const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { execFileSync } = require('child_process');
 const { loadSources } = require('../lib/sources.js');
 const { readPngSize } = require('../lib/render-card.js');
-const { loadFeed, outDirFor, buildPost, buildAll, main } = require('../build_feed.js');
+const { loadFeed, outDirFor, buildPost, buildAll, pruneOutDir, main } = require('../build_feed.js');
+
+// Находка I4: тесты собирали посты в настоящий каталог выдачи out/, и после
+// прогона среди пятнадцати постов оставались фальшивые. Всё, что тесты
+// пишут, живёт во временном каталоге ОС.
+const OUT = fs.mkdtempSync(path.join(os.tmpdir(), 'relictum-out-'));
 
 // main() пишет в консоль по ходу работы — в тестах, которые проверяют только
 // код возврата/сообщения, глушим её, чтобы не засорять вывод прогона.
@@ -42,7 +48,7 @@ test('outDirFor без экспоната берёт id поста', () => {
 test('buildPost собирает кадры по порядку и подпись', async () => {
   const s = loadSources();
   const post = loadFeed().find((p) => p.id === 'p03');
-  const r = await buildPost(s, post);
+  const r = await buildPost(s, post, OUT);
   assert.ok(fs.existsSync(path.join(r.dir, 'caption.txt')));
   assert.ok(fs.existsSync(path.join(r.dir, 'meta.json')));
   assert.equal(r.files.length, post.frames.length);
@@ -60,7 +66,7 @@ test('buildPost собирает кадры по порядку и подпис�
 test('meta.json перечисляет все файлы папки, включая обложки видео-кадров, и различает их роль', async () => {
   const s = loadSources();
   const post = loadFeed().find((p) => p.id === 'p03'); // video, photo, spec-card, end-card
-  const r = await buildPost(s, post);
+  const r = await buildPost(s, post, OUT);
 
   const actualFiles = fs.readdirSync(r.dir)
     .filter((f) => f !== 'caption.txt' && f !== 'meta.json')
@@ -114,7 +120,7 @@ test('buildAll: падение одного поста не мешает соб�
   global.window = prevWindow;
 
   const s = loadSources();
-  const { result: summary } = await quiet(() => buildAll(s, feed));
+  const { result: summary } = await quiet(() => buildAll(s, feed, OUT));
 
   assert.deepEqual(summary.built.sort(), ['ok-1', 'ok-2'], 'здоровые посты должны собраться несмотря на соседний брак');
   assert.equal(summary.failed.length, 1);
@@ -124,7 +130,7 @@ test('buildAll: падение одного поста не мешает соб�
   // Находка 3 заодно: недостроенная папка упавшего поста не должна остаться
   // на диске похожей на готовую.
   const brokenPost = feed.find((p) => p.id === 'broken');
-  assert.equal(fs.existsSync(outDirFor(brokenPost)), false, 'папка упавшего поста должна быть удалена целиком');
+  assert.equal(fs.existsSync(outDirFor(brokenPost, OUT)), false, 'папка упавшего поста должна быть удалена целиком');
 });
 
 // Находка 4: main() — контракт командной строки — не был покрыт тестами
@@ -173,23 +179,169 @@ test('main(["--id"]) без значения прямо говорит, что i
   assert.doesNotMatch(joined, /undefined/, `сообщение не должно упоминать undefined: ${joined}`);
 });
 
-// Находка 6: ветка кропа по умолчанию (когда у кадра он не указан) реально
-// используется каждым карточным кадром (card никогда не задаёт crop явно) —
-// именно она выбирает высоту канваса: 1:1 для одиночных постов, 4:5 для
-// остальных. Проверяем оба плеча тернарника напрямую по итоговым PNG.
-test('buildPost: карточка без явного crop получает высоту по умолчанию (single → 1080×1080, иначе → 1080×1350)', async () => {
+// Находка 6: высоту канваса карточки выбирает пропорция поста (кадр своей
+// не имеет — C2): 1:1 даёт 1080×1080, 4:5 — 1080×1350. Проверяем оба плеча
+// напрямую по итоговым PNG.
+test('buildPost: высота карточки берётся из пропорции поста (1:1 → 1080×1080, 4:5 → 1080×1350)', async () => {
   const s = loadSources();
   const feed = loadFeed();
 
-  const single = feed.find((p) => p.id === 'p02'); // format: single, карточка без crop
-  const rSingle = await buildPost(s, single);
-  const singlePng = readPngSize(fs.readFileSync(path.join(rSingle.dir, rSingle.files[0])));
-  assert.equal(singlePng.width, 1080);
-  assert.equal(singlePng.height, 1080, 'single без явного crop должен давать квадратную карточку');
+  const square = feed.find((p) => p.id === 'p02'); // aspect: 1:1
+  const rSquare = await buildPost(s, square, OUT);
+  const squarePng = readPngSize(fs.readFileSync(path.join(rSquare.dir, rSquare.files[0])));
+  assert.equal(squarePng.width, 1080);
+  assert.equal(squarePng.height, 1080, 'пост 1:1 должен давать квадратную карточку');
 
-  const carousel = feed.find((p) => p.id === 'p01'); // format: carousel, карточка era без crop
-  const rCarousel = await buildPost(s, carousel);
-  const eraCardPng = readPngSize(fs.readFileSync(path.join(rCarousel.dir, rCarousel.files[1])));
+  const portrait = feed.find((p) => p.id === 'p01'); // aspect: 4:5
+  const rPortrait = await buildPost(s, portrait, OUT);
+  const eraCardPng = readPngSize(fs.readFileSync(path.join(rPortrait.dir, rPortrait.files[1])));
   assert.equal(eraCardPng.width, 1080);
-  assert.equal(eraCardPng.height, 1350, 'carousel без явного crop должен давать портретную карточку');
+  assert.equal(eraCardPng.height, 1350, 'пост 4:5 должен давать портретную карточку');
+});
+
+// C2: все кадры поста собираются в одной пропорции — Instagram приводит
+// карусель к одному соотношению, и кадр другой пропорции он обрежет
+// (у карточки-паспорта срезался бы колонтитул).
+test('buildPost: все кадры товарного поста собраны в одной пропорции 1:1', async () => {
+  const s = loadSources();
+  const post = loadFeed().find((p) => p.id === 'p03');
+  const r = await buildPost(s, post, OUT);
+  const meta = JSON.parse(fs.readFileSync(path.join(r.dir, 'meta.json'), 'utf8'));
+  assert.equal(meta.aspect, '1:1');
+
+  const sizes = [];
+  for (const name of r.files) {
+    const file = path.join(r.dir, name);
+    if (name.endsWith('.png')) {
+      const s2 = readPngSize(fs.readFileSync(file));
+      sizes.push(`${s2.width}x${s2.height}`);
+    } else {
+      const probe = execFileSync(process.env.FFPROBE_PATH || 'ffprobe', [
+        '-v', 'error', '-select_streams', 'v:0',
+        '-show_entries', 'stream=width,height', '-of', 'csv=p=0', file,
+      ]).toString().trim().replace(',', 'x');
+      sizes.push(probe);
+    }
+  }
+  assert.deepEqual([...new Set(sizes)], ['1080x1080'], `все кадры должны быть 1:1, а получили ${sizes.join(', ')}`);
+});
+
+// I6: обложка — единственное, что видно в сетке ленты, и снимать её жёстко
+// на 2,0 секунды нельзя: на некоторых роликах в этот момент животное частью
+// вне кадра. Время задаётся у кадра.
+test('buildPost: обложка снимается со времени, заданного у кадра', async () => {
+  const s = loadSources();
+  const base = loadFeed().find((p) => p.id === 'p12');
+  const videoFrame = base.frames.find((f) => f.type === 'video');
+  assert.equal(typeof videoFrame.cover, 'number', 'у кадра p12 должно быть своё время обложки');
+
+  const withDefault = Object.assign({}, base, {
+    id: 'cover-default',
+    exhibit: null,
+    frames: [Object.assign({}, videoFrame, { cover: undefined })],
+  });
+  const withOwn = Object.assign({}, base, {
+    id: 'cover-own',
+    exhibit: null,
+    frames: [videoFrame],
+  });
+
+  const rDefault = await buildPost(s, withDefault, OUT);
+  const rOwn = await buildPost(s, withOwn, OUT);
+  const a = fs.readFileSync(path.join(rDefault.dir, '01_cover.jpg'));
+  const b = fs.readFileSync(path.join(rOwn.dir, '01_cover.jpg'));
+  assert.ok(!a.equals(b), 'обложка со своим временем должна отличаться от обложки по умолчанию');
+});
+
+// --- I2: негодный пост не должен блокировать сборку годных ---
+
+// Синтетическая лента во временном каталоге: два здоровых поста и один без
+// ассета. Боевую feed-data.js для этого ломать незачем.
+function writeFeed(dir, body) {
+  const file = path.join(dir, `feed-${Math.random().toString(36).slice(2)}.js`);
+  fs.writeFileSync(file, body, 'utf8');
+  return file;
+}
+
+const MIXED_FEED = `
+  window.RELICTUM_FEED = [
+    { id: 'ok-a', date: '2026-01-01', rubric: 'era', slot: 1, exhibit: null, format: 'single', aspect: '1:1',
+      frames: [{ type: 'card', tpl: 'end', data: {} }],
+      caption: { lead: 'Годный' }, tags: [], facts: [], status: 'ready', blockers: [] },
+    { id: 'no-asset', date: '2026-01-02', rubric: 'era', slot: 2, exhibit: null, format: 'single', aspect: '1:1',
+      frames: [{ type: 'video', src: 'нет-такого-файла.mp4' }],
+      caption: { lead: 'Черновик без ассета' }, tags: [], facts: [], status: 'ready', blockers: [] },
+    { id: 'ok-b', date: '2026-01-03', rubric: 'object', slot: 3, exhibit: 'megalodon-tooth', format: 'single', aspect: '1:1',
+      frames: [{ type: 'card', tpl: 'end', data: {} }],
+      caption: { lead: 'Годный товарный' }, tags: [], facts: [], status: 'ready', blockers: [] },
+  ];
+`;
+
+test('--all: негодный пост пропускается с объяснением, годные собираются', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'relictum-feed-'));
+  const feedFile = writeFeed(dir, MIXED_FEED);
+  const outRoot = path.join(dir, 'out');
+
+  const { result: code, errors } = await quiet(() => main(['--all'], { outRoot, feedFile }));
+
+  const dirs = fs.readdirSync(outRoot).sort();
+  assert.deepEqual(dirs, ['2026-01-01_era_ok-a', '2026-01-03_object_megalodon-tooth'], 'годные посты должны собраться');
+  assert.notEqual(code, 0, 'пропуск поста должен давать ненулевой код');
+  const joined = errors.join('\n');
+  assert.match(joined, /no-asset/);
+  assert.match(joined, /не найден/, 'причина пропуска должна быть названа');
+});
+
+test('--id по здоровому посту собирается, даже если в ленте есть негодный', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'relictum-feed-'));
+  const feedFile = writeFeed(dir, MIXED_FEED);
+  const outRoot = path.join(dir, 'out');
+
+  const { result: code } = await quiet(() => main(['--id', 'ok-b'], { outRoot, feedFile }));
+
+  assert.equal(code, 0, 'здоровый пост собирается несмотря на соседний брак в ленте');
+  assert.deepEqual(fs.readdirSync(outRoot), ['2026-01-03_object_megalodon-tooth']);
+});
+
+test('--check по-прежнему сообщает обо всех проблемах ленты и возвращает ненулевой код', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'relictum-feed-'));
+  const feedFile = writeFeed(dir, MIXED_FEED);
+
+  const { result: code, errors } = await quiet(() => main(['--check'], { outRoot: path.join(dir, 'out'), feedFile }));
+
+  assert.notEqual(code, 0);
+  assert.match(errors.join('\n'), /no-asset/);
+});
+
+// --- I5: полная сборка приводит выдачу в соответствие с лентой ---
+
+test('--all убирает из выдачи папки, которых нет в ленте', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'relictum-feed-'));
+  const feedFile = writeFeed(dir, `
+    window.RELICTUM_FEED = [
+      { id: 'ok-a', date: '2026-01-01', rubric: 'era', slot: 1, exhibit: null, format: 'single', aspect: '1:1',
+        frames: [{ type: 'card', tpl: 'end', data: {} }],
+        caption: { lead: 'Годный' }, tags: [], facts: [], status: 'ready', blockers: [] },
+    ];
+  `);
+  const outRoot = path.join(dir, 'out');
+  // Папка от прошлого прогона: пост перенесли на другую дату — старая
+  // осталась бы в выдаче, и владелец рискует залить именно её.
+  fs.mkdirSync(path.join(outRoot, '2025-12-01_era_ok-a'), { recursive: true });
+  fs.writeFileSync(path.join(outRoot, '2025-12-01_era_ok-a', 'caption.txt'), 'старьё\n', 'utf8');
+
+  const { result: code } = await quiet(() => main(['--all'], { outRoot, feedFile }));
+
+  assert.equal(code, 0);
+  assert.deepEqual(fs.readdirSync(outRoot), ['2026-01-01_era_ok-a'], 'устаревшая папка должна быть убрана');
+});
+
+test('pruneOutDir не трогает папки, которые велено сохранить, и терпит отсутствие каталога', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'relictum-prune-'));
+  fs.mkdirSync(path.join(dir, 'keep'));
+  fs.mkdirSync(path.join(dir, 'drop'));
+  const removed = pruneOutDir(dir, [path.join(dir, 'keep')]);
+  assert.deepEqual(removed, ['drop']);
+  assert.deepEqual(fs.readdirSync(dir), ['keep']);
+  assert.deepEqual(pruneOutDir(path.join(dir, 'нет-такого'), []), []);
 });

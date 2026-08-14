@@ -9,6 +9,7 @@
   <div class="content">
     <div class="kicker" id="kicker"></div>
     <div class="big" id="big"></div>
+    <div class="period" id="period"></div>
     <div class="rule"></div>
     <div class="sub" id="sub"></div>
   </div>
@@ -19,6 +20,12 @@
   document.getElementById('kicker').textContent = d.name || '';
   document.getElementById('big').textContent = d.big || '';
   document.getElementById('sub').textContent = d.sub || '';
+  // Период вынесен из крупного поля: кеглем 168 фраза с ним расползалась на
+  // три-четыре строки. Пустое поле убираем из потока целиком, чтобы карточка
+  // без периода (например, «≈ 4,56 млрд лет») не получила лишний отступ.
+  var period = document.getElementById('period');
+  if (d.period) period.textContent = d.period;
+  else period.remove();
 </script>
 </body>
 </html>

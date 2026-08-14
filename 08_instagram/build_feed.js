@@ -10,18 +10,20 @@ const fs = require('fs');
 const path = require('path');
 const { OUT_DIR, REPO } = require('./lib/paths.js');
 const { loadSources } = require('./lib/sources.js');
-const { validateFeed } = require('./lib/feed-schema.js');
+const { validateFeed, postAspect } = require('./lib/feed-schema.js');
 const { renderCard } = require('./lib/render-card.js');
 const { renderVideo, renderPhoto, extractCover } = require('./lib/render-video.js');
 
 const FEED_FILE = path.join(REPO, '08_instagram', 'feed-data.js');
 
-function loadFeed() {
+// feedFile параметризован ради тестов: они гоняют CLI на синтетической
+// ленте во временном каталоге, не трогая боевую feed-data.js.
+function loadFeed(feedFile = FEED_FILE) {
   const prev = global.window;
   global.window = {};
   try {
-    delete require.cache[require.resolve(FEED_FILE)];
-    require(FEED_FILE);
+    delete require.cache[require.resolve(feedFile)];
+    require(feedFile);
     const feed = global.window.RELICTUM_FEED;
     if (!Array.isArray(feed)) throw new Error('feed-data.js не отдал RELICTUM_FEED');
     return feed;
@@ -30,10 +32,19 @@ function loadFeed() {
   }
 }
 
-function outDirFor(post) {
+// Каталог выдачи поста. outRoot параметризован, чтобы тесты собирали посты
+// во временный каталог ОС, а не в боевую выдачу: раньше прогон тестов
+// оставлял среди пятнадцати настоящих постов фальшивые.
+function outDirFor(post, outRoot = OUT_DIR) {
   const tail = post.exhibit || post.id;
-  return path.join(OUT_DIR, `${post.date}_${post.rubric}_${tail}`);
+  return path.join(outRoot, `${post.date}_${post.rubric}_${tail}`);
 }
+
+// Момент, с которого снимается обложка видео-кадра (секунды). Обложка —
+// единственное, что видно в сетке ленты, и на некоторых роликах в момент по
+// умолчанию объект оказывается частью вне кадра; поэтому время настраивается
+// у кадра (frame.cover).
+const DEFAULT_COVER_AT = 2.0;
 
 function captionText(post) {
   const c = post.caption || {};
@@ -42,8 +53,8 @@ function captionText(post) {
     .join('\n\n') + '\n';
 }
 
-async function buildPost(sources, post) {
-  const dir = outDirFor(post);
+async function buildPost(sources, post, outRoot = OUT_DIR) {
+  const dir = outDirFor(post, outRoot);
   fs.rmSync(dir, { recursive: true, force: true });
   fs.mkdirSync(dir, { recursive: true });
 
@@ -57,17 +68,21 @@ async function buildPost(sources, post) {
     // однозначно читал порядок листания и не путал обложку со следующим
     // кадром.
     const fileEntries = [];
+    // Пропорция — одна на весь пост (см. lib/feed-schema.js): кадр не может
+    // иметь собственную, иначе Instagram обрежет карусель к одному
+    // соотношению и часть кадров потеряет края.
+    const crop = postAspect(post);
     for (let i = 0; i < post.frames.length; i++) {
       const f = post.frames[i];
       const n = String(i + 1).padStart(2, '0');
       const order = i + 1;
-      const crop = f.crop || (post.format === 'single' ? '1:1' : '4:5');
 
       if (f.type === 'video') {
         const out = path.join(dir, `${n}.mp4`);
         await renderVideo({ src: f.src, crop, out, trim: f.trim || null });
         const coverName = `${n}_cover.jpg`;
-        await extractCover({ src: out, at: 2.0, out: path.join(dir, coverName) });
+        const coverAt = typeof f.cover === 'number' ? f.cover : DEFAULT_COVER_AT;
+        await extractCover({ src: out, at: coverAt, out: path.join(dir, coverName) });
         files.push(`${n}.mp4`);
         fileEntries.push({ name: `${n}.mp4`, role: 'frame', order });
         fileEntries.push({ name: coverName, role: 'cover', order });
@@ -88,7 +103,7 @@ async function buildPost(sources, post) {
     fs.writeFileSync(path.join(dir, 'caption.txt'), captionText(post), 'utf8');
     fs.writeFileSync(
       path.join(dir, 'meta.json'),
-      JSON.stringify({ id: post.id, date: post.date, rubric: post.rubric, exhibit: post.exhibit, slot: post.slot, format: post.format, files: fileEntries }, null, 2),
+      JSON.stringify({ id: post.id, date: post.date, rubric: post.rubric, exhibit: post.exhibit, slot: post.slot, format: post.format, aspect: crop, files: fileEntries }, null, 2),
       'utf8'
     );
     return { dir, files };
@@ -105,12 +120,12 @@ async function buildPost(sources, post) {
 // Находка 2: собирает список постов с изоляцией ошибок — падение одного
 // поста не прерывает сборку остальных. Возвращает сводку: какие посты
 // собраны и какие упали с какой причиной, чтобы эта информация не терялась.
-async function buildAll(sources, targets) {
+async function buildAll(sources, targets, outRoot = OUT_DIR) {
   const built = [];
   const failed = [];
   for (const post of targets) {
     try {
-      const r = await buildPost(sources, post);
+      const r = await buildPost(sources, post, outRoot);
       built.push(post.id);
       console.log(`✓ ${post.id} → ${path.relative(REPO, r.dir)} (${r.files.length} кадров)`);
     } catch (err) {
@@ -128,9 +143,25 @@ function report(result) {
   for (const problem of result.problems) console.error(`  ✗ ${problem}`);
 }
 
-async function main(argv) {
+// Находка I5: сборка чистила только папку текущего поста, и после переноса
+// дат в выдаче оставались папки от прошлых прогонов — владелец рискует
+// залить старую. Полная сборка приводит каталог выдачи в соответствие с
+// лентой: всё, чего в ленте нет, из выдачи убирается.
+function pruneOutDir(outRoot, keepDirs) {
+  if (!fs.existsSync(outRoot)) return [];
+  const keep = new Set(keepDirs.map((d) => path.basename(d)));
+  const removed = [];
+  for (const entry of fs.readdirSync(outRoot, { withFileTypes: true })) {
+    if (!entry.isDirectory() || keep.has(entry.name)) continue;
+    fs.rmSync(path.join(outRoot, entry.name), { recursive: true, force: true });
+    removed.push(entry.name);
+  }
+  return removed;
+}
+
+async function main(argv, { outRoot = OUT_DIR, feedFile = FEED_FILE } = {}) {
   const sources = loadSources();
-  const feed = loadFeed();
+  const feed = loadFeed(feedFile);
   const result = validateFeed(sources, feed);
 
   if (argv.includes('--check')) {
@@ -143,13 +174,20 @@ async function main(argv) {
     return 1;
   }
 
-  if (!result.ok) {
-    console.error('Сборка остановлена — сначала почините ленту (--check):');
-    report(result);
-    return 1;
-  }
+  // Находка I2: раньше любая проблема ленты отменяла сборку целиком, включая
+  // --id по здоровому посту: один добавленный черновик без ассета — и
+  // пятнадцать готовых постов перестают собираться. Негодные посты теперь
+  // пропускаются с объяснением, годные собираются. Честность отчёта на этом
+  // не страдает: --check по-прежнему говорит обо всех проблемах и возвращает
+  // ненулевой код, и здесь пропуски тоже дают ненулевой код.
+  const problemsById = new Map(result.posts.map((p) => [p.id, p.problems]));
+  const isBuildable = (post) => {
+    const problems = problemsById.get(post && post.id);
+    return Array.isArray(problems) && problems.length === 0;
+  };
 
   const idIndex = argv.indexOf('--id');
+  const isAll = idIndex === -1 && argv.includes('--all');
   let targets;
   if (idIndex !== -1) {
     const id = argv[idIndex + 1];
@@ -172,17 +210,40 @@ async function main(argv) {
     return 1;
   }
 
+  // Негодные посты отсеиваем здесь, с объяснением по каждому, — сборка
+  // остальных продолжается.
+  const buildable = targets.filter(isBuildable);
+  const skipped = targets.filter((p) => !isBuildable(p));
+  for (const post of skipped) {
+    const id = post && post.id ? post.id : '(без id)';
+    console.error(`⊘ ${id} пропущен — пост не прошёл проверку:`);
+    for (const problem of problemsById.get(id) || []) console.error(`    ✗ ${problem}`);
+  }
+  // Проблемы уровня ленты (дубли слотов, ритм, раскладка) сборке отдельных
+  // постов не мешают, но замолчать их нельзя — печатаем и учитываем в коде
+  // возврата.
+  for (const problem of result.problems) console.error(`  ✗ ${problem}`);
+
   // Находка 2: сборка идёт с изоляцией ошибок постов (см. buildAll) — падение
   // одного не мешает собрать остальные, а сводка в конце гарантирует, что
   // информация о несобранном не потеряется.
-  const summary = await buildAll(sources, targets);
+  const summary = await buildAll(sources, buildable, outRoot);
   console.log(`Итого: собрано ${summary.built.length} из ${targets.length}`);
+
+  if (isAll) {
+    const removed = pruneOutDir(outRoot, summary.built
+      .map((id) => feed.find((p) => p.id === id))
+      .filter(Boolean)
+      .map((p) => outDirFor(p, outRoot)));
+    for (const name of removed) console.log(`− убрана устаревшая папка выдачи: ${name}`);
+  }
+
   if (summary.failed.length > 0) {
     console.error(`Не собраны (${summary.failed.length}):`);
     for (const f of summary.failed) console.error(`  ✗ ${f.id}: ${f.message}`);
-    return 1;
   }
-  return 0;
+  const clean = summary.failed.length === 0 && skipped.length === 0 && result.problems.length === 0;
+  return clean ? 0 : 1;
 }
 
 if (require.main === module) {
@@ -192,4 +253,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { loadFeed, outDirFor, buildPost, buildAll, main };
+module.exports = { loadFeed, outDirFor, buildPost, buildAll, pruneOutDir, main };

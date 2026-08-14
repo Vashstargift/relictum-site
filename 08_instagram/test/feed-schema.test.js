@@ -6,10 +6,12 @@ const {
   checkRhythm,
   checkGridLayout,
   validateFeed,
+  postAspect,
   RUBRICS,
   SPEC_MAX_ROWS,
   MAX_TEXT_LENGTH,
   MAX_TITLE_LENGTH,
+  MAX_BIG_LENGTH,
 } = require('../lib/feed-schema.js');
 
 const s = loadSources();
@@ -472,6 +474,173 @@ test('пост с карточкой spec: все строки с подтвер
       { claim: 'оформление', value: 'Стальной стенд', source: 'catalog.js:megalodon-tooth.mount', checked: true },
     ],
   }));
+  assert.equal(r.ok, true, r.problems.join('; '));
+});
+
+// --- C2: пропорция — свойство поста, а не кадра ---
+//
+// Instagram приводит карусель к одному соотношению сторон: если первый кадр
+// собран 1:1, а остальные 4:5, зритель увидит кадры 4:5 обрезанными до
+// квадрата — у карточки-паспорта срежется колонтитул. Пропорция задаётся
+// один раз на пост (post.aspect) и применяется ко всем его кадрам; разнобой
+// внутри поста валидатор обязан ловить.
+
+test('разнобой пропорций внутри поста отклоняется', () => {
+  const r = validatePost(s, goodPost({
+    aspect: '1:1',
+    frames: [
+      { type: 'video', src: 'spin_megalodon.mp4', crop: '1:1' },
+      { type: 'photo', src: 'int_ph_megalodon.jpg', crop: '4:5' },
+      { type: 'card', tpl: 'end', data: {} },
+    ],
+  }));
+  assert.equal(r.ok, false, 'кадры 1:1 и 4:5 в одном посте — брак карусели');
+  assert.match(r.problems.join(' '), /пропорц/i);
+});
+
+test('разнобой пропорций ловится и без явного post.aspect (по умолчанию поста)', () => {
+  const r = validatePost(s, goodPost({
+    frames: [
+      { type: 'video', src: 'spin_megalodon.mp4', crop: '1:1' },
+      { type: 'photo', src: 'int_ph_megalodon.jpg', crop: '4:5' },
+    ],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /пропорц/i);
+});
+
+test('пост с единой пропорцией 1:1 проходит', () => {
+  const r = validatePost(s, goodPost({
+    aspect: '1:1',
+    frames: [
+      { type: 'video', src: 'spin_megalodon.mp4' },
+      { type: 'photo', src: 'int_ph_megalodon.jpg' },
+      { type: 'card', tpl: 'end', data: {} },
+    ],
+  }));
+  assert.equal(r.ok, true, r.problems.join('; '));
+});
+
+test('неизвестная пропорция поста отклоняется', () => {
+  const r = validatePost(s, goodPost({ aspect: '16:9' }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /пропорц/i);
+});
+
+test('postAspect: явное поле поста важнее умолчания, умолчание зависит от формата', () => {
+  assert.equal(postAspect({ format: 'carousel', aspect: '1:1' }), '1:1');
+  assert.equal(postAspect({ format: 'single' }), '1:1');
+  assert.equal(postAspect({ format: 'carousel' }), '4:5');
+});
+
+// --- C3: крупное поле карточки «Цифра» ---
+//
+// Кегль крупного поля — 168 пикселей: целая фраза с периодом переносится на
+// три-четыре строки, выдавливает волосяную линейку и сажает подзаголовок на
+// колонтитул. Общий предел в 220 знаков для такого кегля не связывает —
+// нужен отдельный, короткий.
+
+test('карточка «Цифра»: крупное поле длиннее предела отклоняется', () => {
+  const r = validatePost(s, goodPost({
+    rubric: 'figure',
+    exhibit: null,
+    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Трилобит', big: 'а'.repeat(MAX_BIG_LENGTH + 1), sub: 'x' } }],
+    facts: [],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), new RegExp(`крупное поле.*${MAX_BIG_LENGTH} знаков`));
+});
+
+test('карточка «Цифра»: предел крупного поля 18–20 знаков и настоящие значения ленты в него влезают', () => {
+  assert.ok(MAX_BIG_LENGTH >= 18 && MAX_BIG_LENGTH <= 20, `ожидали предел 18–20 знаков, а не ${MAX_BIG_LENGTH}`);
+  for (const big of ['≈ 4,56 млрд лет', '≈ 360 млн лет', '≈ 480–472 млн лет', '≈ 245 млн лет']) {
+    assert.ok(big.length <= MAX_BIG_LENGTH, `«${big}» (${big.length}) не влезает в предел ${MAX_BIG_LENGTH}`);
+  }
+});
+
+test('карточка «Цифра»: период вынесен в подзаголовок, а сверяется показанное целиком', () => {
+  // Период ушёл из крупного поля в data.period — но зритель по-прежнему видит
+  // всё утверждение целиком, поэтому подтверждать факт обязано «крупное поле,
+  // период», а не одно крупное поле.
+  const r = validatePost(s, goodPost({
+    rubric: 'figure',
+    exhibit: null,
+    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Трилобит', big: '≈ 480–472 млн лет', period: 'ранний ордовик', sub: 'x' } }],
+    facts: [{ claim: 'возраст', value: '≈ 480–472 млн лет, ранний ордовик', source: 'catalog.js:0217-dikelokephalina.age', checked: true }],
+  }));
+  assert.equal(r.ok, true, r.problems.join('; '));
+});
+
+test('карточка «Цифра»: период на карточке, которого нет в факте, не проходит', () => {
+  const r = validatePost(s, goodPost({
+    rubric: 'figure',
+    exhibit: null,
+    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Трилобит', big: '≈ 480–472 млн лет', period: 'поздний ордовик', sub: 'x' } }],
+    facts: [{ claim: 'возраст', value: '≈ 480–472 млн лет, ранний ордовик', source: 'catalog.js:0217-dikelokephalina.age', checked: true }],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /не подтверждена фактом/);
+});
+
+// --- C1: реконструкция должна называться реконструкцией ---
+//
+// Машинная сверка проверяет дословное совпадение с полем age, но не то, к чему
+// число относится: у реконструкции возраст принадлежит виду, а не предмету.
+// Если паспорт экспоната (location/description) говорит «реконструкция», пост
+// обязан назвать это в тексте карточки или в подписи.
+
+function reconstructionPost(over = {}) {
+  return goodPost(Object.assign({
+    rubric: 'figure',
+    exhibit: null,
+    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Dunkleosteus', big: '≈ 360 млн лет', period: 'поздний девон', sub: 'Возраст панцирной рыбы как вида.' } }],
+    caption: { lead: 'Броня вместо зубов', body: 'Панцирная рыба девонских морей.', cta: '' },
+    facts: [{ claim: 'возраст', value: '≈ 360 млн лет, поздний девон', source: 'catalog.js:0219-dunkleosteus.age', checked: true }],
+  }, over));
+}
+
+test('пост об экспонате-реконструкции без слова «реконструкция» отклоняется', () => {
+  const r = validatePost(s, reconstructionPost());
+  assert.equal(r.ok, false, 'возраст вида выдан за возраст предмета — это брак');
+  assert.match(r.problems.join(' '), /реконструкц/i);
+});
+
+test('пост об экспонате-реконструкции проходит, если карточка называет это прямо', () => {
+  const r = validatePost(s, reconstructionPost({
+    frames: [{ type: 'card', tpl: 'figure', data: {
+      name: 'Dunkleosteus',
+      big: '≈ 360 млн лет',
+      period: 'поздний девон',
+      sub: 'Возраст панцирной рыбы как вида. Сам объект — научная реконструкция черепа.',
+    } }],
+  }));
+  assert.equal(r.ok, true, r.problems.join('; '));
+});
+
+test('пост об экспонате-реконструкции проходит, если это названо в подписи', () => {
+  const r = validatePost(s, reconstructionPost({
+    caption: {
+      lead: 'Броня вместо зубов',
+      body: 'Объект в галерее — реконструкция черепа и головного щита по научным данным.',
+      cta: '',
+    },
+  }));
+  assert.equal(r.ok, true, r.problems.join('; '));
+});
+
+test('привязка через post.exhibit тоже включает проверку реконструкции', () => {
+  const r = validatePost(s, reconstructionPost({
+    exhibit: '0219-dunkleosteus',
+    rubric: 'object',
+    frames: [{ type: 'card', tpl: 'end', data: {} }],
+    facts: [],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /реконструкц/i);
+});
+
+test('обычный ископаемый экспонат слова «реконструкция» не требует', () => {
+  const r = validatePost(s, goodPost());
   assert.equal(r.ok, true, r.problems.join('; '));
 });
 

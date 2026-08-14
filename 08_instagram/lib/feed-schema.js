@@ -22,12 +22,35 @@ const CROPS = ['4:5', '1:1'];
 const STATUSES = ['draft', 'ready', 'blocked'];
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
+// Пропорция — свойство ПОСТА, а не отдельного кадра. Instagram приводит всю
+// карусель к одному соотношению сторон: если первый кадр собран 1:1, а
+// остальные 4:5, зритель увидит кадры 4:5 обрезанными до квадрата — у
+// карточки-паспорта срежется колонтитул, композиция сломается. Поэтому
+// соотношение задаётся один раз в post.aspect и применяется ко всем кадрам
+// поста; кадру остаётся только не противоречить посту (см. проверку ниже).
+const ASPECTS = CROPS;
+const DEFAULT_ASPECT = '4:5';
+const DEFAULT_ASPECT_BY_FORMAT = { single: '1:1' };
+
 // Пределы данных карточки — правильное место остановить перегруз контента
 // это валидатор ленты («сократи»), а не рендерер, который молча ужимает
 // шрифт до нечитаемого. Карточки должны быть свёрстаны, а не подогнаны.
 const SPEC_MAX_ROWS = 5; // паспорт (tpl=spec): не больше строк в data.rows
 const MAX_TEXT_LENGTH = 220; // любое текстовое значение в data карточки
 const MAX_TITLE_LENGTH = 60; // заголовок карточки: data.title/data.name
+// Крупное поле карточки «Цифра» (tpl=figure, data.big) набирается кеглем
+// 168 пикселей — общий предел в 220 знаков для него не связывает вовсе:
+// целая фраза с периодом переносится на три-четыре строки, выдавливает
+// волосяную линейку и сажает подзаголовок на колонтитул. Предел подобран
+// по факту: настоящие значения ленты («≈ 480–472 млн лет» — самое длинное,
+// 17 знаков) укладываются в одну-две строки, а фраза с периодом — нет.
+// Период карточки живёт в отдельном поле data.period под линейкой.
+const MAX_BIG_LENGTH = 20;
+
+// Признак того, что предмет — не сама ископаемая находка, а её воспроизведение.
+// Одним и тем же выражением ищем и в паспорте экспоната (там это повод
+// требовать раскрытия), и в тексте поста (там это само раскрытие).
+const RECONSTRUCTION_RE = /реконструкц|реплик|копи[яию]|новодел|слепок|модел/i;
 
 // Поле заголовка карточки для каждого шаблона, где заголовок есть.
 const TITLE_FIELD_BY_TEMPLATE = { cover: 'title', spec: 'name', figure: 'name' };
@@ -48,7 +71,20 @@ const TITLE_FIELD_BY_TEMPLATE = { cover: 'title', spec: 'name', figure: 'name' }
 // нужен только для текста ошибки, value — то, что должно быть подтверждено.
 const CONFIRMABLE_FIELDS_BY_TEMPLATE = {
   era: (data) => [{ path: 'data.when', value: data ? data.when : undefined }],
-  figure: (data) => [{ path: 'data.big', value: data ? data.big : undefined }],
+  // Карточка «Цифра»: период вынесен из крупного поля в data.period (иначе
+  // фраза целиком не влезает в кегль 168), но зритель по-прежнему видит
+  // утверждение целиком — «≈ 480–472 млн лет» и под ним «ранний ордовик».
+  // Поэтому подтверждать фактом обязано именно показанное целиком, а не
+  // одно крупное поле: иначе период можно было бы дописать на карточку в
+  // обход всякой сверки.
+  figure: (data) => {
+    const big = data ? data.big : undefined;
+    const period = data ? data.period : undefined;
+    if (typeof big === 'string' && typeof period === 'string' && period.trim() !== '') {
+      return [{ path: 'data.big + data.period', value: `${big}, ${period}` }];
+    }
+    return [{ path: 'data.big', value: big }];
+  },
   spec: (data) => {
     const rows = Array.isArray(data && data.rows) ? data.rows : [];
     return rows.map((row, i) => ({
@@ -81,6 +117,14 @@ function validateCardData(frame, frameLabel, bad) {
   const titleField = TITLE_FIELD_BY_TEMPLATE[frame.tpl];
   if (titleField && typeof data[titleField] === 'string' && data[titleField].length > MAX_TITLE_LENGTH) {
     bad(`${frameLabel}: заголовок карточки («${titleField}») длиннее ${MAX_TITLE_LENGTH} знаков (сейчас ${data[titleField].length})`);
+  }
+
+  if (frame.tpl === 'figure' && typeof data.big === 'string' && data.big.length > MAX_BIG_LENGTH) {
+    bad(
+      `${frameLabel}: крупное поле карточки «Цифра» (data.big) длиннее ${MAX_BIG_LENGTH} знаков `
+      + `(сейчас ${data.big.length}) — кеглем 168 это уедет на три-четыре строки и выдавит линейку; `
+      + 'оставь в крупном поле только число, а период перенеси в data.period'
+    );
   }
 
   if (frame.tpl === 'spec') {
@@ -141,6 +185,77 @@ function checkCardConfirmed(sources, post, frame, frameLabel, bad) {
   });
 }
 
+// Пропорция поста: явное поле post.aspect, иначе умолчание по формату
+// (одиночный пост — квадрат, всё остальное — 4:5). Один и тот же ответ
+// используют и валидатор, и сборка — чтобы «пропорция поста» означала
+// ровно одно и то же в обоих местах.
+function postAspect(post) {
+  if (post && typeof post.aspect === 'string') return post.aspect;
+  const byFormat = post ? DEFAULT_ASPECT_BY_FORMAT[post.format] : undefined;
+  return byFormat || DEFAULT_ASPECT;
+}
+
+// Собирает весь текст, который зритель прочитает в посте: данные карточек
+// плюс подпись. Нужен проверке раскрытия реконструкции — ей всё равно, где
+// именно это сказано, лишь бы было сказано.
+function postShownText(post) {
+  const parts = [];
+  const frames = Array.isArray(post.frames) ? post.frames : [];
+  for (const f of frames) {
+    if (f && f.type === 'card') {
+      const texts = [];
+      collectTexts(f.data || {}, '', texts);
+      texts.forEach(({ text }) => parts.push(text));
+    }
+  }
+  const c = post.caption || {};
+  for (const k of ['lead', 'body', 'cta']) {
+    if (typeof c[k] === 'string') parts.push(c[k]);
+  }
+  return parts.join(' ');
+}
+
+// Экспонаты, о которых пост говорит: явная привязка post.exhibit и все
+// slug'и catalog.js, на которые ссылаются факты поста. Второе обязательно:
+// у карточек рубрики figure post.exhibit пустой (пост «воздушный»), но
+// число на карточке взято из паспорта конкретного предмета — именно этот
+// предмет зритель и видит.
+function postCatalogSlugs(post) {
+  const slugs = new Set();
+  if (post.exhibit !== null && post.exhibit !== undefined) slugs.add(post.exhibit);
+  const facts = Array.isArray(post.facts) ? post.facts : [];
+  for (const f of facts) {
+    const m = /^catalog\.js:([^.]+)\./.exec(String(f && f.source || ''));
+    if (m) slugs.add(m[1]);
+  }
+  return [...slugs];
+}
+
+// «Возраст вида» ≠ «возраст предмета». Машинная сверка фактов проверяет
+// дословное совпадение с полем паспорта, но не то, к чему число относится:
+// у реконструкции возраст принадлежит виду, а сам предмет сделан недавно.
+// Поэтому: если паспорт экспоната (location или description) говорит, что
+// это воспроизведение, пост обязан назвать это прямо — в тексте карточки
+// или в подписи. Не называет — не проходит.
+function checkReconstructionDisclosed(sources, post, bad) {
+  const shown = postShownText(post);
+  const disclosed = RECONSTRUCTION_RE.test(shown);
+  for (const slug of postCatalogSlugs(post)) {
+    const exhibit = findExhibit(sources, slug);
+    if (!exhibit) continue; // отсутствие экспоната ловит отдельная проверка
+    const passport = [exhibit.location, exhibit.description]
+      .filter((v) => typeof v === 'string')
+      .join(' ');
+    if (!RECONSTRUCTION_RE.test(passport)) continue;
+    if (disclosed) continue;
+    bad(
+      `экспонат «${slug}» в каталоге назван воспроизведением («${String(exhibit.location || '').trim()}»), `
+      + 'а пост нигде этого не называет: возраст относится к виду, а не к самому предмету — '
+      + 'скажи в тексте карточки или в подписи, что это реконструкция, иначе пост продаёт возраст предмета, которому несколько лет'
+    );
+  }
+}
+
 // Проверка одного поста: обязательные поля, рубрика, формат, статус,
 // привязка к экспонату каталога, кадры (файлы в shared/img существуют,
 // src — имя файла, а не путь/URL), подпись и сверка фактов с паспортами.
@@ -170,6 +285,11 @@ function validatePost(sources, post) {
     if (!findExhibit(sources, post.exhibit)) bad(`экспонат «${post.exhibit}» не найден в каталоге`);
   }
 
+  if (post.aspect !== undefined && !ASPECTS.includes(post.aspect)) {
+    bad(`неизвестная пропорция поста «${post.aspect}», доступны ${ASPECTS.join(', ')}`);
+  }
+  const aspect = postAspect(post);
+
   if (!Array.isArray(post.frames) || post.frames.length === 0) {
     bad('нет ни одного кадра');
   } else {
@@ -179,7 +299,20 @@ function validatePost(sources, post) {
         if (!f.src) return bad(`${n}: нет src`);
         if (/[:/\\]/.test(f.src)) return bad(`${n}: src должен быть именем файла в shared/img, а не путём`);
         if (!fs.existsSync(path.join(IMG_DIR, f.src))) bad(`${n}: файл «${f.src}» не найден в shared/img`);
+        if (f.cover !== undefined && (typeof f.cover !== 'number' || !Number.isFinite(f.cover) || f.cover < 0)) {
+          bad(`${n}: время обложки (cover) должно быть неотрицательным числом секунд, а не «${f.cover}»`);
+        }
+        // Пропорция кадра либо не задана вовсе (берётся из поста), либо
+        // обязана совпадать с пропорцией поста: разнобой внутри карусели
+        // Instagram приведёт к одному соотношению и обрежет остальные кадры.
         if (f.crop && !CROPS.includes(f.crop)) bad(`${n}: неизвестный кроп «${f.crop}»`);
+        else if (f.crop && f.crop !== aspect) {
+          bad(
+            `${n}: пропорция кадра «${f.crop}» расходится с пропорцией поста «${aspect}» — `
+            + 'внутри одного поста пропорция общая (Instagram приведёт карусель к одному соотношению '
+            + 'и обрежет остальные кадры, у паспорта срежется колонтитул); задай пропорцию один раз в post.aspect'
+          );
+        }
       } else if (f.type === 'card') {
         if (!TEMPLATES.includes(f.tpl)) bad(`${n}: неизвестный шаблон «${f.tpl}»`);
         else {
@@ -193,6 +326,8 @@ function validatePost(sources, post) {
   }
 
   if (!post.caption || !post.caption.lead) bad('нет подписи (caption.lead)');
+
+  checkReconstructionDisclosed(sources, post, bad);
 
   // Сверка фактов делегирована facts.js — там же учтена привязка факта
   // к экспонату поста (post.exhibit), дублировать эту логику не нужно.
@@ -319,10 +454,14 @@ function validateFeed(sources, feed) {
 module.exports = {
   RUBRICS,
   TEMPLATES,
+  ASPECTS,
   SPEC_MAX_ROWS,
   MAX_TEXT_LENGTH,
   MAX_TITLE_LENGTH,
+  MAX_BIG_LENGTH,
+  RECONSTRUCTION_RE,
   CONFIRMABLE_FIELDS_BY_TEMPLATE,
+  postAspect,
   validatePost,
   checkRhythm,
   checkGridLayout,
