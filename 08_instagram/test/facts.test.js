@@ -86,7 +86,7 @@ test('checkPostFacts пропускает факт catalog.js со своим э
 });
 
 test('checkPostFacts запрещает факт promo-data.js с чужим id', () => {
-  // у megalodon-tooth id = R–0201, а не R–0609 (это cave-bear-skeleton)
+  // у megalodon-tooth id = R–0201, а не R–0609 (это 0609-jeholosaurus)
   const post = {
     id: 'p-fraud-promo',
     exhibit: 'megalodon-tooth',
@@ -118,6 +118,41 @@ test('checkPostFacts: у поста без привязки к экспонат�
               source: 'catalog.js:megalodon-tooth.age', checked: true }]
   };
   assert.equal(checkPostFacts(s, post).ok, true);
+});
+
+test('checkPostFacts: exhibit: \'\' (пустая строка) не снимает привязку', () => {
+  const post = {
+    id: 'a9', exhibit: '',
+    facts: [{ claim: 'x', value: 'более 12 000 лет, плейстоцен',
+              source: 'catalog.js:cave-bear-skeleton.age', checked: true }]
+  };
+  const r = checkPostFacts(s, post);
+  assert.equal(r.ok, false);
+});
+
+test('checkPostFacts: exhibit: 0 не снимает привязку', () => {
+  const post = {
+    id: 'a10', exhibit: 0,
+    facts: [{ claim: 'x', value: 'более 12 000 лет, плейстоцен',
+              source: 'catalog.js:cave-bear-skeleton.age', checked: true }]
+  };
+  const r = checkPostFacts(s, post);
+  assert.equal(r.ok, false);
+});
+
+// --- Находка 4 (minor): читаемое сообщение, если экспонат поста не найден ---
+
+test('checkPostFacts: если post.exhibit не найден в каталоге, сообщение об этом прямое (не «ожидался «null»»)', () => {
+  const post = {
+    id: 'p-no-such-exhibit',
+    exhibit: 'нет-такого-экспоната',
+    facts: [{ claim: 'зацепка', value: 'что угодно',
+              source: 'promo-data.js:R–0609.hook', checked: true }]
+  };
+  const r = checkPostFacts(s, post);
+  assert.equal(r.ok, false);
+  assert.match(r.problems[0], /не найден в catalog\.js/);
+  assert.doesNotMatch(r.problems[0], /ожидался «null»/);
 });
 
 // --- Находка 2 (important): резолв обязан доходить до скаляра ---

@@ -22,6 +22,25 @@ const { findExhibit, findPromo } = require('./sources.js');
 
 const REF_RE = /^([^:]+):([^.]+)\.(.+)$/;
 
+// Единая таблица источников: где искать запись по ключу (find) и какой
+// ключ считается «своим» для экспонанта поста (expectedKey). И resolveSource,
+// и проверка привязки в checkFact берут ветвление file → логика отсюда,
+// чтобы при добавлении нового источника не забыть поправить обе ветки.
+const SOURCE_FILES = {
+  'catalog.js': {
+    find: (sources, key) => findExhibit(sources, key),
+    // для catalog.js ключ ссылки должен совпадать со slug'ом поста
+    expectedKey: (exhibit) => exhibit.slug,
+  },
+  'promo-data.js': {
+    find: (sources, key) => findPromo(sources, key),
+    // для promo-data.js ключ ссылки должен совпадать с полем id того же
+    // экспоната; если экспонат поста не нашёлся в каталоге — id узнать
+    // неоткуда (см. отдельную проверку в checkFact)
+    expectedKey: (exhibit) => exhibit.id,
+  },
+};
+
 function norm(v) {
   return String(v).replace(/\s+/g, ' ').trim();
 }
@@ -40,10 +59,9 @@ function resolveSource(sources, ref) {
   if (!parsed) return { ok: false, value: null, reason: `не разобрал ссылку «${ref}»` };
   const { file, key, fieldPath } = parsed;
 
-  let root;
-  if (file === 'catalog.js') root = findExhibit(sources, key);
-  else if (file === 'promo-data.js') root = findPromo(sources, key);
-  else return { ok: false, value: null, reason: `неизвестный файл «${file}»` };
+  const def = SOURCE_FILES[file];
+  if (!def) return { ok: false, value: null, reason: `неизвестный файл «${file}»` };
+  const root = def.find(sources, key);
 
   if (!root) return { ok: false, value: null, reason: `не нашёл запись «${key}» в ${file}` };
 
@@ -94,19 +112,26 @@ function checkFact(sources, fact, exhibit) {
   if (!parsed) return { ok: false, reason: `не разобрал ссылку «${fact.source}»`, actual: null };
 
   if (exhibit) {
-    if (parsed.file === 'catalog.js' && parsed.key !== exhibit.slug) {
-      return {
-        ok: false,
-        reason: `факт «${fact.claim}» ссылается на чужой экспонат «${parsed.key}» (catalog.js), для этого поста ожидался «${exhibit.slug}»`,
-        actual: null,
-      };
-    }
-    if (parsed.file === 'promo-data.js' && parsed.key !== exhibit.id) {
-      return {
-        ok: false,
-        reason: `факт «${fact.claim}» ссылается на чужой экспонат «${parsed.key}» (promo-data.js), для этого поста ожидался «${exhibit.id}»`,
-        actual: null,
-      };
+    const def = SOURCE_FILES[parsed.file];
+    if (def) {
+      const expected = def.expectedKey(exhibit);
+      if (expected === null) {
+        // Экспонат поста не нашёлся в каталоге вообще — сравнивать ключ
+        // не с чем, и подставлять «ожидался «null»» в сообщение нельзя,
+        // это нечитаемо. Говорим прямо, в чём дело.
+        return {
+          ok: false,
+          reason: `факт «${fact.claim}»: экспонат поста «${exhibit.slug}» не найден в catalog.js, привязку к ${parsed.file} проверить нельзя`,
+          actual: null,
+        };
+      }
+      if (parsed.key !== expected) {
+        return {
+          ok: false,
+          reason: `факт «${fact.claim}» ссылается на чужой экспонат «${parsed.key}» (${parsed.file}), для этого поста ожидался «${expected}»`,
+          actual: null,
+        };
+      }
     }
   }
 
@@ -124,8 +149,10 @@ function checkPostFacts(sources, post) {
 
   // Привязка поста к экспонату: если post.exhibit задан, вычисляем
   // ожидаемые ключи для обоих файлов-источников заранее, один раз.
+  // Явная проверка на null/undefined, а не truthy: '', 0, false — валидные
+  // (хоть и странные) значения slug'а, и не должны отключать привязку.
   let exhibit = null;
-  if (post.exhibit) {
+  if (post.exhibit !== null && post.exhibit !== undefined) {
     const found = findExhibit(sources, post.exhibit);
     exhibit = { slug: post.exhibit, id: found ? found.id : null };
   }
