@@ -4,21 +4,32 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../../shared/fonts.css">
 <link rel="stylesheet" href="card.css">
+<script src="fit-content.js"></script>
 </head>
 <body>
-  <div class="kicker">Паспорт объекта</div>
-  <div class="title" id="name"></div>
-  <div class="rule"></div>
-  <div class="spec" id="rows"></div>
+  <div class="content">
+    <div class="kicker">Паспорт объекта</div>
+    <div class="title" id="name"></div>
+    <div class="rule"></div>
+    <div class="spec" id="rows"></div>
+  </div>
   <div class="foot">RELICTUM</div>
 <!--CARD_DATA-->
 <script>
   var d = window.CARD_DATA || {};
   document.getElementById('name').textContent = d.name || '';
   var rows = d.rows || [];
-  document.getElementById('rows').innerHTML = rows
-    .map(function (r) { return '<div><b>' + r[0] + '</b><br>' + r[1] + '</div>'; })
-    .join('');
+  var container = document.getElementById('rows');
+  rows.forEach(function (r) {
+    var row = document.createElement('div');
+    var label = document.createElement('b');
+    label.textContent = r[0];
+    row.appendChild(label);
+    row.appendChild(document.createElement('br'));
+    row.appendChild(document.createTextNode(r[1]));
+    container.appendChild(row);
+  });
+  fitContent();
 </script>
 </body>
 </html>

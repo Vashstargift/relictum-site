@@ -9,6 +9,9 @@
   --line: rgba(154, 109, 52, .28);
   --serif: 'Cormorant Garamond', serif;
   --sans: 'Inter', sans-serif;
+  /* поля страницы — единственный источник правды; колонтитул и body берут их отсюда */
+  --pad-x: 84px;
+  --pad-y: 96px;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 100%; height: 100%; }
@@ -19,10 +22,22 @@ body {
   font-weight: 300;
   display: flex;
   flex-direction: column;
+  padding: var(--pad-y) var(--pad-x);
+}
+/* смысловой блок карточки: занимает всё место, которое колонтитул (обычный
+   flex-элемент ниже, не абсолютный) ему оставляет, и центрируется внутри
+   этого места. min-height: 0 нужен, чтобы flex-элемент мог сжаться меньше
+   контента и не выталкивать колонтитул за пределы кадра на длинных карточках. */
+.content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding: 96px 84px;
-  /* якорь для .foot — колонтитул выходит из потока и позиционируется от полей body */
-  position: relative;
+  /* если контент (напр. длинный паспорт) не помещается в отведённое место —
+     скрипт шаблона аккуратно уменьшает масштаб блока вокруг его центра, не
+     трогая раскладку колонтитула; на коротком контенте scale остаётся 1 */
+  transform-origin: center;
 }
 .kicker {
   font-size: 24px; font-weight: 500; letter-spacing: .24em;
@@ -34,13 +49,11 @@ body {
 .rule { height: 1px; background: var(--line); margin: 44px 0; }
 .spec { font-size: 30px; line-height: 2.05; }
 .spec b { font-weight: 500; color: var(--deep); font-size: 22px; letter-spacing: .16em; text-transform: uppercase; }
-/* колонтитул убран из потока: не участвует в распределении свободного места
-   между элементами смыслового блока, стоит колонтитулом у нижнего поля страницы */
+/* колонтитул — обычный flex-элемент body (не абсолютный): всегда резервирует
+   своё место, .content никогда не может наехать на него */
 .foot {
-  position: absolute;
-  left: 84px;
-  right: 84px;
-  bottom: 96px;
+  flex-shrink: 0;
+  margin-top: 28px;
   font-size: 24px; letter-spacing: .2em; text-transform: uppercase; color: var(--stone);
 }
 .center { align-items: center; text-align: center; justify-content: center; }
