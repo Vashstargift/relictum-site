@@ -1,9 +1,13 @@
 // Схема Instagram-поста галереи Relictum и проверка ритма ленты «2+1».
 //
-// Правило дома: лента читается сеткой по три плитки в ряд. В каждой тройке
-// подряд идущих слотов (по возрастанию post.slot) ровно один пост товарный
-// (задан post.exhibit), остальные два — «воздушные» (exhibit: null). При
-// скролле это читается крестиком; нарушение ритма — брак ленты.
+// Правило дома: лента читается сеткой по три плитки в ряд. Тройки задаются
+// НОМЕРОМ слота, а не позицией поста в массиве: пост со slot=n принадлежит
+// тройке Math.floor((n-1)/3), то есть {1,2,3}, {4,5,6}, {7,8,9}... Если
+// тройка собрана целиком (все три слота есть в ленте), в ней должен быть
+// ровно один товарный пост (задан post.exhibit), остальные два —
+// «воздушные» (exhibit: null). Если тройка неполная (в ленте есть не все
+// три слота), отсутствие постов само по себе нарушением не считается, но
+// два и более товарных поста в такой тройке — всё равно брак.
 
 const fs = require('fs');
 const path = require('path');
@@ -23,10 +27,18 @@ const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 // src — имя файла, а не путь/URL), подпись и сверка фактов с паспортами.
 function validatePost(sources, post) {
   const problems = [];
-  const id = post && post.id ? post.id : '(без id)';
+
+  // Пост целиком отсутствует (null/undefined) — дальше нечего проверять,
+  // без ранней остановки следующая же строка уронит всё исключением.
+  if (!post) {
+    problems.push('(без id): нет поля id');
+    return { ok: false, problems };
+  }
+
+  const id = post.id ? post.id : '(без id)';
   const bad = (msg) => problems.push(`${id}: ${msg}`);
 
-  if (!post || !post.id) bad('нет поля id');
+  if (!post.id) bad('нет поля id');
   if (!DATE_RE.test(post.date || '')) bad(`дата должна быть в формате ГГГГ-ММ-ДД, а не «${post.date}»`);
   if (!RUBRICS.includes(post.rubric)) bad(`неизвестная рубрика «${post.rubric}»`);
   if (!Number.isInteger(post.slot) || post.slot < 1) bad(`slot должен быть целым ≥1, а не «${post.slot}»`);
@@ -64,22 +76,45 @@ function validatePost(sources, post) {
   return { ok: problems.length === 0, problems };
 }
 
-// Ритм «2+1»: сортируем ленту по slot и режем на тройки подряд идущих
-// постов. В каждой полной тройке должен быть ровно один товарный пост
-// (post.exhibit не null/undefined). Хвост короче трёх постов не проверяем —
-// ритм оценивается только на завершённых тройках.
+// Ритм «2+1»: группируем посты по номеру тройки, вычисленному из slot
+// (пост со slot=n принадлежит тройке Math.floor((n-1)/3)), а не по позиции
+// в массиве — иначе дыра в нумерации слотов сдвигает группы и прячет
+// настоящее нарушение. Посты с негодным slot (не целое число ≥1) в
+// группировке не участвуют — это уже отдельно ловит validatePost.
+//
+// Для тройки, где в ленте есть все три слота (полная), требуется ровно
+// один товарный пост. Для неполной тройки (не все три слота представлены)
+// отсутствие постов само по себе не нарушение, но два и более товарных —
+// нарушение независимо от полноты.
 function checkRhythm(feed) {
   const problems = [];
-  const sorted = [...feed].sort((a, b) => a.slot - b.slot);
-  for (let i = 0; i < sorted.length; i += 3) {
-    const group = sorted.slice(i, i + 3);
-    if (group.length < 3) break;
-    const goods = group.filter((p) => p.exhibit !== null && p.exhibit !== undefined).length;
-    if (goods !== 1) {
-      const ids = group.map((p) => p.id).join(', ');
-      problems.push(`ритм 2+1 нарушен в тройке (${ids}): товарных ${goods}, а должен быть 1`);
+  const valid = feed.filter((p) => p && Number.isInteger(p.slot) && p.slot >= 1);
+
+  const groups = new Map(); // индекс тройки -> посты этой тройки
+  for (const p of valid) {
+    const idx = Math.floor((p.slot - 1) / 3);
+    if (!groups.has(idx)) groups.set(idx, []);
+    groups.get(idx).push(p);
+  }
+
+  const sortedIdx = [...groups.keys()].sort((a, b) => a - b);
+  for (const idx of sortedIdx) {
+    const group = groups.get(idx).slice().sort((a, b) => a.slot - b.slot);
+    const tripleSlots = [idx * 3 + 1, idx * 3 + 2, idx * 3 + 3];
+    const isComplete = tripleSlots.every((slot) => group.some((p) => p.slot === slot)) && group.length === 3;
+    const goodPosts = group.filter((p) => p.exhibit !== null && p.exhibit !== undefined);
+    const goods = goodPosts.length;
+
+    const violated = isComplete ? goods !== 1 : goods > 1;
+    if (violated) {
+      const need = isComplete ? 'ровно 1' : 'не больше 1';
+      const postsDesc = group.map((p) => `${p.id} (slot ${p.slot})`).join(', ');
+      problems.push(
+        `ритм 2+1 нарушен в тройке слотов {${tripleSlots.join(', ')}}: товарных ${goods}, а должно быть ${need}; посты в тройке: ${postsDesc}`
+      );
     }
   }
+
   return { ok: problems.length === 0, problems };
 }
 
@@ -89,17 +124,22 @@ function validateFeed(sources, feed) {
   const problems = [];
   const posts = feed.map((p) => {
     const r = validatePost(sources, p);
-    return { id: p.id, ok: r.ok, problems: r.problems };
+    const id = p && p.id ? p.id : '(без id)';
+    return { id, ok: r.ok, problems: r.problems };
   });
 
+  // Битые элементы (null/undefined) уже отражены в problems через
+  // validatePost выше — здесь их просто пропускаем, чтобы не упасть.
   const seenSlot = new Map();
   for (const p of feed) {
+    if (!p) continue;
     if (seenSlot.has(p.slot)) problems.push(`slot ${p.slot} занят дважды: ${seenSlot.get(p.slot)} и ${p.id}`);
     else seenSlot.set(p.slot, p.id);
   }
 
   const seenId = new Set();
   for (const p of feed) {
+    if (!p) continue;
     if (seenId.has(p.id)) problems.push(`id «${p.id}» встречается дважды`);
     seenId.add(p.id);
   }
