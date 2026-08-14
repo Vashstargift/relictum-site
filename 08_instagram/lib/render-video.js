@@ -3,8 +3,21 @@ const path = require('path');
 const { execFileSync, execFile } = require('child_process');
 const { IMG_DIR } = require('./paths.js');
 
-const FFMPEG = process.env.FFMPEG_PATH || 'ffmpeg';
-const FFPROBE = process.env.FFPROBE_PATH || 'ffprobe';
+// Читаем переменные окружения не в момент require(), а при каждом вызове —
+// иначе переопределение FFMPEG_PATH/FFPROBE_PATH в рантайме (в т.ч. в тестах,
+// чтобы подсунуть подставной бинарник) не имеет эффекта, потому что модуль
+// уже закэшировал старое значение (тот же приём, что и chromePath() в
+// render-card.js).
+function ffmpegBin() {
+  return process.env.FFMPEG_PATH || 'ffmpeg';
+}
+function ffprobeBin() {
+  return process.env.FFPROBE_PATH || 'ffprobe';
+}
+
+// Порог, после которого апскейл кропа до целевого размера считаем заметным
+// на глаз («на грани мыла») и предупреждаем, а не молчим.
+const UPSCALE_WARN_THRESHOLD = 1.6;
 
 // Центральный кроп. Подложки отклонены: размытая даёт призрак объекта,
 // заливка цветом — видимый шов (фон исходников неоднороден).
@@ -20,30 +33,74 @@ function resolveSrc(src) {
 }
 
 function probeVideo(file) {
-  const v = execFileSync(FFPROBE, [
-    '-v', 'error', '-select_streams', 'v:0',
-    '-show_entries', 'stream=width,height:format=duration',
-    '-of', 'default=noprint_wrappers=1:nokey=1', file,
-  ]).toString().trim().split('\n');
-  const a = execFileSync(FFPROBE, [
-    '-v', 'error', '-select_streams', 'a',
-    '-show_entries', 'stream=codec_name', '-of', 'csv=p=0', file,
-  ]).toString().trim();
-  return {
-    width: Number(v[0]),
-    height: Number(v[1]),
-    duration: Number(v[2]),
-    hasAudio: a.length > 0,
-  };
+  if (!fs.existsSync(file)) throw new Error(`нет файла ${file}`);
+  try {
+    const v = execFileSync(ffprobeBin(), [
+      '-v', 'error', '-select_streams', 'v:0',
+      '-show_entries', 'stream=width,height:format=duration',
+      '-of', 'default=noprint_wrappers=1:nokey=1', file,
+    ]).toString().trim().split('\n');
+    const a = execFileSync(ffprobeBin(), [
+      '-v', 'error', '-select_streams', 'a',
+      '-show_entries', 'stream=codec_name', '-of', 'csv=p=0', file,
+    ]).toString().trim();
+    return {
+      width: Number(v[0]),
+      height: Number(v[1]),
+      duration: Number(v[2]),
+      hasAudio: a.length > 0,
+    };
+  } catch (err) {
+    throw new Error(`не удалось прочитать видео ${file}`);
+  }
+}
+
+// Размеры кадра для изображений (renderPhoto: и источник, и результат).
+function probeSize(file) {
+  if (!fs.existsSync(file)) throw new Error(`нет файла ${file}`);
+  try {
+    const v = execFileSync(ffprobeBin(), [
+      '-v', 'error', '-select_streams', 'v:0',
+      '-show_entries', 'stream=width,height', '-of', 'csv=p=0', file,
+    ]).toString().trim().split(',');
+    return { width: Number(v[0]), height: Number(v[1]) };
+  } catch (err) {
+    throw new Error(`не удалось прочитать изображение ${file}`);
+  }
 }
 
 function run(args) {
   return new Promise((resolve, reject) => {
-    execFile(FFMPEG, args, { maxBuffer: 1 << 24 }, (err, stdout, stderr) => {
+    execFile(ffmpegBin(), args, { maxBuffer: 1 << 24 }, (err, stdout, stderr) => {
       if (err) return reject(new Error(`ffmpeg упал:\n${stderr}`));
       resolve(stderr);
     });
   });
+}
+
+// Best-effort удаление недописанного результата, чтобы после падения
+// рендера (на любом этапе — сам ffmpeg или последующая проверка размеров)
+// по пути назначения не оставался битый файл.
+function cleanupPartial(out) {
+  try {
+    if (fs.existsSync(out)) fs.unlinkSync(out);
+  } catch (_) {
+    // не критично — файл всё равно битый, лучшее, что можем — попытаться
+  }
+}
+
+// Кроп всегда сохраняет полную высоту исходника и обрезает только ширину
+// под целевые пропорции (см. CROPS), поэтому итоговый масштаб равномерен
+// и равен spec.height / sourceHeight. Предупреждаем, если апскейл заметный.
+function warnIfUpscaled(file, crop, spec, sourceHeight) {
+  const factor = spec.height / sourceHeight;
+  if (factor > UPSCALE_WARN_THRESHOLD) {
+    process.stderr.write(
+      `апскейл: ${path.basename(file)} формат ${crop} ×${factor.toFixed(2)} `
+      + `(порог ×${UPSCALE_WARN_THRESHOLD})\n`
+    );
+  }
+  return factor;
 }
 
 async function renderVideo({ src, crop = '4:5', out, trim = null }) {
@@ -52,38 +109,54 @@ async function renderVideo({ src, crop = '4:5', out, trim = null }) {
   const file = resolveSrc(src);
   fs.mkdirSync(path.dirname(out), { recursive: true });
 
-  const args = ['-y', '-v', 'error'];
-  if (trim) args.push('-ss', String(trim[0]));
-  args.push('-i', file);
-  if (trim) args.push('-t', String(trim[1]));
+  const srcInfo = probeVideo(file);
+  warnIfUpscaled(file, crop, spec, srcInfo.height);
 
-  const hasAudio = probeVideo(file).hasAudio;
-  if (!hasAudio) {
+  const args = ['-y', '-v', 'error'];
+  // -ss и -t — входные опции: обе должны стоять перед «своим» -i (видео),
+  // иначе -t привяжется к следующему -i (тишине), а не к видео.
+  if (trim) args.push('-ss', String(trim[0]), '-t', String(trim[1]));
+  args.push('-i', file);
+  if (!srcInfo.hasAudio) {
     // Reels без аудиодорожки не принимаются — подмешиваем тишину
     args.push('-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100', '-shortest');
   }
   args.push('-vf', spec.filter, '-c:v', 'libx264', '-crf', '20', '-pix_fmt', 'yuv420p',
     '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', out);
 
-  await run(args);
-  const got = probeVideo(out);
-  if (got.width !== spec.width || got.height !== spec.height) {
-    throw new Error(`ожидали ${spec.width}x${spec.height}, получили ${got.width}x${got.height}`);
+  try {
+    await run(args);
+    const got = probeVideo(out);
+    if (got.width !== spec.width || got.height !== spec.height) {
+      throw new Error(`ожидали ${spec.width}x${spec.height}, получили ${got.width}x${got.height}`);
+    }
+    return { path: out, width: got.width, height: got.height };
+  } catch (err) {
+    cleanupPartial(out);
+    throw err;
   }
-  return { path: out, width: got.width, height: got.height };
 }
 
 async function renderPhoto({ src, crop = '4:5', out }) {
   const spec = CROPS[crop];
-  if (!spec) throw new Error(`неизвестный кроп «${crop}»`);
+  if (!spec) throw new Error(`неизвестный кроп «${crop}», доступны ${Object.keys(CROPS).join(', ')}`);
   const file = resolveSrc(src);
   fs.mkdirSync(path.dirname(out), { recursive: true });
-  await run(['-y', '-v', 'error', '-i', file, '-vf', spec.filter, '-q:v', '2', out]);
-  const got = execFileSync(FFPROBE, [
-    '-v', 'error', '-select_streams', 'v:0',
-    '-show_entries', 'stream=width,height', '-of', 'csv=p=0', out,
-  ]).toString().trim().split(',');
-  return { path: out, width: Number(got[0]), height: Number(got[1]) };
+
+  const srcSize = probeSize(file);
+  warnIfUpscaled(file, crop, spec, srcSize.height);
+
+  try {
+    await run(['-y', '-v', 'error', '-i', file, '-vf', spec.filter, '-q:v', '2', out]);
+    const got = probeSize(out);
+    if (got.width !== spec.width || got.height !== spec.height) {
+      throw new Error(`ожидали ${spec.width}x${spec.height}, получили ${got.width}x${got.height}`);
+    }
+    return { path: out, width: got.width, height: got.height };
+  } catch (err) {
+    cleanupPartial(out);
+    throw err;
+  }
 }
 
 async function extractCover({ src, at = 2.5, out }) {
