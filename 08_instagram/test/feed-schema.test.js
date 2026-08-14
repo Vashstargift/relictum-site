@@ -4,6 +4,7 @@ const { loadSources } = require('../lib/sources.js');
 const {
   validatePost,
   checkRhythm,
+  checkGridLayout,
   validateFeed,
   RUBRICS,
   SPEC_MAX_ROWS,
@@ -185,6 +186,39 @@ test('ритм: посты с негодным slot не участвуют в �
     goodPost({ id: 'junk', slot: undefined, exhibit: 'megalodon-tooth' }),
   ];
   const r = checkRhythm(feed);
+  assert.equal(r.ok, true, r.problems.join('; '));
+});
+
+// --- раскладка сетки: ритм 2+1 может формально держаться, но товарные всё
+// равно выстроятся в одну колонку сетки 3×N (вертикальная полоса вместо
+// чередования «крестиком») ---
+
+function gridSlots(exhibitSlots) {
+  const feed = [];
+  for (let slot = 1; slot <= 15; slot += 1) {
+    feed.push(goodPost({
+      id: `g${slot}`,
+      slot,
+      exhibit: exhibitSlots.includes(slot) ? 'megalodon-tooth' : null,
+    }));
+  }
+  return feed;
+}
+
+test('раскладка сетки: товарные в слотах 3,6,9,12,15 — все в одной колонке, отклоняется', () => {
+  // Формально ритм 2+1 соблюдён (по одному товарному на тройку), но
+  // ((slot-1)%3)+1 у всех пяти даёт колонку 3 — вертикальная полоса.
+  const feed = gridSlots([3, 6, 9, 12, 15]);
+  assert.equal(checkRhythm(feed).ok, true, 'ритм 2+1 в этой раскладке формально соблюдён');
+  const r = checkGridLayout(feed);
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /колонк/);
+});
+
+test('раскладка сетки: товарные в слотах 3,5,7,12,14 — колонки вразброс, проходит', () => {
+  const feed = gridSlots([3, 5, 7, 12, 14]);
+  assert.equal(checkRhythm(feed).ok, true, 'ритм 2+1 должен быть соблюдён и в рабочей раскладке');
+  const r = checkGridLayout(feed);
   assert.equal(r.ok, true, r.problems.join('; '));
 });
 

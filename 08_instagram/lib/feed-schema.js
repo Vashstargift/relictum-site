@@ -249,6 +249,40 @@ function checkRhythm(feed) {
   return { ok: problems.length === 0, problems };
 }
 
+// Раскладка сетки: Instagram показывает ленту плитками по три в ряд, номер
+// колонки поста со slot=n — ((n-1) % 3) + 1 (1, 2 или 3). Ритм 2+1 сам по
+// себе не гарантирует, что товарные посты не выстроятся в одну колонку —
+// формально «один товарный на тройку» может держаться, даже если этот
+// единственный товарный каждый раз стоит третьим в тройке (slot 3, 6, 9,
+// 12, 15…): тогда все товарные попадают в колонку 3 и при скролле в сетке
+// видна сплошная вертикальная полоса вместо чередования «крестиком».
+// Проверяем отдельно от ритма: среди товарных постов (exhibit задан)
+// с валидным slot должно быть больше одной РАЗНОЙ колонки — если товарных
+// меньше двух, «полоса» физически невозможна, и проверка не срабатывает.
+function checkGridLayout(feed) {
+  const problems = [];
+  const goods = feed.filter(
+    (p) => p && Number.isInteger(p.slot) && p.slot >= 1 && p.exhibit !== null && p.exhibit !== undefined
+  );
+  if (goods.length < 2) return { ok: true, problems };
+
+  const colOf = (p) => ((p.slot - 1) % 3) + 1;
+  const columns = new Set(goods.map(colOf));
+  if (columns.size === 1) {
+    const col = [...columns][0];
+    const postsDesc = goods
+      .slice()
+      .sort((a, b) => a.slot - b.slot)
+      .map((p) => `${p.id} (slot ${p.slot})`)
+      .join(', ');
+    problems.push(
+      `раскладка сетки: все товарные посты попадают в колонку ${col} из трёх (сетка 3×N, колонка = ((slot-1)%3)+1) — в ленте это читается как сплошная вертикальная полоса, а не чередование «крестиком»; разведи товарные по разным колонкам, сохранив ровно один на тройку слотов: ${postsDesc}`
+    );
+  }
+
+  return { ok: problems.length === 0, problems };
+}
+
 // Проверка всей ленты: каждый пост по отдельности + отсутствие дублей
 // slot/id + ритм 2+1.
 function validateFeed(sources, feed) {
@@ -276,6 +310,7 @@ function validateFeed(sources, feed) {
   }
 
   problems.push(...checkRhythm(feed).problems);
+  problems.push(...checkGridLayout(feed).problems);
 
   const ok = problems.length === 0 && posts.every((p) => p.ok);
   return { ok, posts, problems };
@@ -290,5 +325,6 @@ module.exports = {
   CONFIRMABLE_FIELDS_BY_TEMPLATE,
   validatePost,
   checkRhythm,
+  checkGridLayout,
   validateFeed,
 };
