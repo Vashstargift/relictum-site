@@ -93,4 +93,4 @@ async function renderCard({ tpl, data, out, width = 1080, height = 1350 }) {
   return { path: out, ...size };
 }
 
-module.exports = { renderCard, readPngSize, buildInjectedHtml };
+module.exports = { renderCard, readPngSize, buildInjectedHtml, chromePath };

@@ -34,10 +34,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* если контент (напр. длинный паспорт) не помещается в отведённое место —
-     скрипт шаблона аккуратно уменьшает масштаб блока вокруг его центра, не
-     трогая раскладку колонтитула; на коротком контенте scale остаётся 1 */
-  transform-origin: center;
 }
 .kicker {
   font-size: 24px; font-weight: 500; letter-spacing: .24em;

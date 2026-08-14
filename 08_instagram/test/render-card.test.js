@@ -4,19 +4,19 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const { execFile } = require('child_process');
-const { renderCard, readPngSize, buildInjectedHtml } = require('../lib/render-card.js');
+const { renderCard, readPngSize, buildInjectedHtml, chromePath } = require('../lib/render-card.js');
 const { TEMPLATES_DIR } = require('../lib/paths.js');
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'relictum-card-'));
 
-const CHROME = process.env.CHROME_PATH
-  || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-
 // Дампит итоговый DOM страницы через `chrome --dump-dom`, чтобы проверить,
 // что именно оказалось в разметке после выполнения инлайнового скрипта шаблона.
+// Путь к Chrome берём из того же chromePath(), что использует сам
+// render-card.js — раньше тест хранил свою копию строки пути, и она могла
+// разъехаться с модулем при обновлении.
 function dumpDom(htmlFile) {
   return new Promise((resolve, reject) => {
-    execFile(CHROME, [
+    execFile(chromePath(), [
       '--headless', '--disable-gpu', '--no-sandbox',
       '--virtual-time-budget=8000',
       '--allow-file-access-from-files',

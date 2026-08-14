@@ -1,7 +1,15 @@
 const test = require('node:test');
 const assert = require('node:assert');
 const { loadSources } = require('../lib/sources.js');
-const { validatePost, checkRhythm, validateFeed, RUBRICS } = require('../lib/feed-schema.js');
+const {
+  validatePost,
+  checkRhythm,
+  validateFeed,
+  RUBRICS,
+  SPEC_MAX_ROWS,
+  MAX_TEXT_LENGTH,
+  MAX_TITLE_LENGTH,
+} = require('../lib/feed-schema.js');
 
 const s = loadSources();
 
@@ -246,4 +254,75 @@ test('validatePost(null): сообщение говорит, что поста �
   // текст и явно указывает на отсутствие самого поста.
   assert.doesNotMatch(msg, /нет поля id/, 'сообщение не должно звучать как «пост есть, но без поля id»');
   assert.match(msg, /нет|отсутств/i);
+});
+
+// --- пределы данных карточки: ограничить данные на входе вместо того,
+// чтобы рендерер молча ужимал шрифт — лента должна говорить автору
+// «сократи», а не подгонять контент под кадр ---
+
+function specRows(n) {
+  const rows = [];
+  for (let i = 0; i < n; i += 1) rows.push([`Метка ${i + 1}`, `Значение ${i + 1}`]);
+  return rows;
+}
+
+test('паспорт: шесть строк в data.rows (больше предела) отклоняется', () => {
+  const r = validatePost(s, goodPost({
+    frames: [{ type: 'card', tpl: 'spec', data: { name: 'Экспонат', rows: specRows(SPEC_MAX_ROWS + 1) } }],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /паспорте больше 5 строк/);
+});
+
+test('паспорт: пять строк в data.rows (ровно предел) проходит', () => {
+  const r = validatePost(s, goodPost({
+    frames: [{ type: 'card', tpl: 'spec', data: { name: 'Экспонат', rows: specRows(SPEC_MAX_ROWS) } }],
+  }));
+  assert.equal(r.ok, true, r.problems.join('; '));
+});
+
+test('паспорт: строка не из двух непустых строк отклоняется', () => {
+  const r = validatePost(s, goodPost({
+    frames: [{ type: 'card', tpl: 'spec', data: { name: 'Экспонат', rows: [['Только метка']] } }],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /парой из двух непустых строк/);
+});
+
+test('паспорт: строка с пустым вторым элементом тоже отклоняется', () => {
+  const r = validatePost(s, goodPost({
+    frames: [{ type: 'card', tpl: 'spec', data: { name: 'Экспонат', rows: [['Метка', '   ']] } }],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /парой из двух непустых строк/);
+});
+
+test('текст в data длиннее предела (221 знак) отклоняется', () => {
+  const r = validatePost(s, goodPost({
+    frames: [{ type: 'card', tpl: 'end', data: { line: 'а'.repeat(MAX_TEXT_LENGTH + 1) } }],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), new RegExp(`длиннее ${MAX_TEXT_LENGTH} знаков`));
+});
+
+test('текст в data ровно предела (220 знаков) проходит', () => {
+  const r = validatePost(s, goodPost({
+    frames: [{ type: 'card', tpl: 'end', data: { line: 'а'.repeat(MAX_TEXT_LENGTH) } }],
+  }));
+  assert.equal(r.ok, true, r.problems.join('; '));
+});
+
+test('заголовок карточки длиннее предела (61 знак) отклоняется', () => {
+  const r = validatePost(s, goodPost({
+    frames: [{ type: 'card', tpl: 'cover', data: { title: 'а'.repeat(MAX_TITLE_LENGTH + 1) } }],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), new RegExp(`заголовок карточки .* длиннее ${MAX_TITLE_LENGTH} знаков`));
+});
+
+test('заголовок карточки ровно предела (60 знаков) проходит', () => {
+  const r = validatePost(s, goodPost({
+    frames: [{ type: 'card', tpl: 'cover', data: { title: 'а'.repeat(MAX_TITLE_LENGTH), kicker: 'x', sub: 'x' } }],
+  }));
+  assert.equal(r.ok, true, r.problems.join('; '));
 });

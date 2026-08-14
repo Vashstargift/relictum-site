@@ -22,6 +22,65 @@ const CROPS = ['4:5', '1:1'];
 const STATUSES = ['draft', 'ready', 'blocked'];
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
+// Пределы данных карточки — правильное место остановить перегруз контента
+// это валидатор ленты («сократи»), а не рендерер, который молча ужимает
+// шрифт до нечитаемого. Карточки должны быть свёрстаны, а не подогнаны.
+const SPEC_MAX_ROWS = 5; // паспорт (tpl=spec): не больше строк в data.rows
+const MAX_TEXT_LENGTH = 220; // любое текстовое значение в data карточки
+const MAX_TITLE_LENGTH = 60; // заголовок карточки: data.title/data.name
+
+// Поле заголовка карточки для каждого шаблона, где заголовок есть.
+const TITLE_FIELD_BY_TEMPLATE = { cover: 'title', spec: 'name', figure: 'name' };
+
+// Обходит data кадра карточки рекурсивно (объекты и массивы, напр. рядки
+// паспорта data.rows) и собирает все строковые значения вместе с их путём
+// (для сообщения об ошибке) — так предел длины проверяется одинаково для
+// любого текстового поля, а не только для перечисленных по имени.
+function collectTexts(value, fieldPath, out) {
+  if (typeof value === 'string') {
+    out.push({ path: fieldPath, text: value });
+  } else if (Array.isArray(value)) {
+    value.forEach((v, i) => collectTexts(v, `${fieldPath}[${i}]`, out));
+  } else if (value && typeof value === 'object') {
+    Object.entries(value).forEach(([k, v]) => collectTexts(v, fieldPath ? `${fieldPath}.${k}` : k, out));
+  }
+}
+
+// Проверка данных кадра типа card: пределы на паспорт (spec), длину любого
+// текстового значения и длину заголовка карточки. bad(msg) уже знает id
+// поста, сюда передаём только текст «что именно превышено».
+function validateCardData(frame, frameLabel, bad) {
+  const data = frame.data || {};
+
+  const titleField = TITLE_FIELD_BY_TEMPLATE[frame.tpl];
+  if (titleField && typeof data[titleField] === 'string' && data[titleField].length > MAX_TITLE_LENGTH) {
+    bad(`${frameLabel}: заголовок карточки («${titleField}») длиннее ${MAX_TITLE_LENGTH} знаков (сейчас ${data[titleField].length})`);
+  }
+
+  if (frame.tpl === 'spec') {
+    const rows = Array.isArray(data.rows) ? data.rows : [];
+    if (rows.length > SPEC_MAX_ROWS) {
+      bad(`${frameLabel}: в паспорте больше ${SPEC_MAX_ROWS} строк в data.rows (сейчас ${rows.length}) — сократи паспорт`);
+    }
+    rows.forEach((row, i) => {
+      const isPair = Array.isArray(row) && row.length === 2
+        && typeof row[0] === 'string' && row[0].trim() !== ''
+        && typeof row[1] === 'string' && row[1].trim() !== '';
+      if (!isPair) {
+        bad(`${frameLabel}: строка паспорта ${i + 1} (data.rows[${i}]) должна быть парой из двух непустых строк`);
+      }
+    });
+  }
+
+  const texts = [];
+  collectTexts(data, '', texts);
+  texts.forEach(({ path, text }) => {
+    if (text.length > MAX_TEXT_LENGTH) {
+      bad(`${frameLabel}: текст в data.${path} длиннее ${MAX_TEXT_LENGTH} знаков (сейчас ${text.length}) — сократи`);
+    }
+  });
+}
+
 // Проверка одного поста: обязательные поля, рубрика, формат, статус,
 // привязка к экспонату каталога, кадры (файлы в shared/img существуют,
 // src — имя файла, а не путь/URL), подпись и сверка фактов с паспортами.
@@ -63,6 +122,7 @@ function validatePost(sources, post) {
         if (f.crop && !CROPS.includes(f.crop)) bad(`${n}: неизвестный кроп «${f.crop}»`);
       } else if (f.type === 'card') {
         if (!TEMPLATES.includes(f.tpl)) bad(`${n}: неизвестный шаблон «${f.tpl}»`);
+        else validateCardData(f, n, bad);
       } else {
         bad(`${n}: неизвестный тип «${f.type}»`);
       }
@@ -158,4 +218,13 @@ function validateFeed(sources, feed) {
   return { ok, posts, problems };
 }
 
-module.exports = { RUBRICS, TEMPLATES, validatePost, checkRhythm, validateFeed };
+module.exports = {
+  RUBRICS,
+  TEMPLATES,
+  SPEC_MAX_ROWS,
+  MAX_TEXT_LENGTH,
+  MAX_TITLE_LENGTH,
+  validatePost,
+  checkRhythm,
+  validateFeed,
+};
