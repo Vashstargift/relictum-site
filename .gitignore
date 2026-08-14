@@ -3,3 +3,6 @@
 
 # собранный публичный срез для relictum.gallery (255 МБ, пересобирается скриптом)
 public/
+
+# собранные посты Instagram — пересобираются из feed-data.js
+08_instagram/out/
