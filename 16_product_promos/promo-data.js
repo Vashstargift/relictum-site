@@ -975,8 +975,8 @@ window.RELICTUM_PROMO = {
   "R–0266": {
     life: {
       img: "life_snake_portrait.jpg",
+      diagram: "anat_snake_portrait.jpg",
       label: "При жизни",
-      stateLabel: "При жизни",
       title: "Волна, у которой четыреста позвонков",
       text: ""
     },
@@ -1028,8 +1028,8 @@ window.RELICTUM_PROMO = {
   "R–0268": {
     life: {
       img: "life_snake_large.jpg",
+      diagram: "anat_snake_large.jpg",
       label: "При жизни",
-      stateLabel: "При жизни",
       title: "Волна, у которой четыреста позвонков",
       text: ""
     },
@@ -1081,8 +1081,8 @@ window.RELICTUM_PROMO = {
   "R–0270": {
     life: {
       img: "life_snake_tall.jpg",
+      diagram: "anat_snake_tall.jpg",
       label: "При жизни",
-      stateLabel: "При жизни",
       title: "Волна, у которой четыреста позвонков",
       text: ""
     },
