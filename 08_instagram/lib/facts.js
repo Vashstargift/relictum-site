@@ -8,6 +8,7 @@
 //   <файл>:<ключ>.<путь.к.полю>
 //   catalog.js:<slug>.<путь>       — экспонат из shared/catalog.js, ключ — slug
 //   promo-data.js:<id>.<путь>      — запись из promo-data.js, ключ — id (вида «R–0609», длинное тире)
+//   eras.js:<slug>.<путь>          — геологическое подразделение из eras-data.js, ключ — слаг записи
 //
 // Привязка факта к экспоненту поста: если у поста задан post.exhibit
 // (не null), КАЖДЫЙ его факт обязан ссылаться именно на этот экспонат —
@@ -16,9 +17,12 @@
 // Для promo-data.js ключ должен совпадать с полем id того же экспоната
 // (экспонат ищем через findExhibit(sources, post.exhibit)). Если
 // post.exhibit равен null (или не задан) — пост не привязан к товару,
-// ссылка может указывать на любой ключ.
+// ссылка может указывать на любой ключ. Для eras.js привязка к экспонату
+// не проверяется вовсе (эпоха не принадлежит конкретному экспонату) —
+// у источника просто нет expectedKey, и проверка привязки его молча
+// пропускает.
 
-const { findExhibit, findPromo } = require('./sources.js');
+const { findExhibit, findPromo, findEra } = require('./sources.js');
 
 const REF_RE = /^([^:]+):([^.]+)\.(.+)$/;
 
@@ -38,6 +42,12 @@ const SOURCE_FILES = {
     // экспоната; если экспонат поста не нашёлся в каталоге — id узнать
     // неоткуда (см. отдельную проверку в checkFact)
     expectedKey: (exhibit) => exhibit.id,
+  },
+  'eras.js': {
+    find: (sources, key) => findEra(sources, key),
+    // expectedKey нарочно нет: эпоха не принадлежит конкретному
+    // экспонату, привязка к post.exhibit на этот источник не
+    // распространяется.
   },
 };
 
@@ -113,7 +123,10 @@ function checkFact(sources, fact, exhibit) {
 
   if (exhibit) {
     const def = SOURCE_FILES[parsed.file];
-    if (def) {
+    // def без expectedKey (сейчас — eras.js) на привязку к экспонату
+    // не претендует: эпоха не принадлежит конкретному экспонату, и её
+    // ключ разрешён любым независимо от post.exhibit.
+    if (def && def.expectedKey) {
       const expected = def.expectedKey(exhibit);
       if (expected === null) {
         // Экспонат поста не нашёлся в каталоге вообще — сравнивать ключ

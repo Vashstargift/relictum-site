@@ -327,6 +327,49 @@ test('заголовок карточки ровно предела (60 знак
   assert.equal(r.ok, true, r.problems.join('; '));
 });
 
+// --- карточка рубрики era: датировка обязана подтверждаться фактом поста ---
+
+function eraPost(over = {}) {
+  return goodPost(Object.assign({
+    rubric: 'era',
+    exhibit: null,
+    frames: [
+      { type: 'card', tpl: 'era', data: { era: 'Меловой период', when: '145 — 66 млн лет назад', fact: 'Проверочный факт.' } },
+      { type: 'card', tpl: 'end', data: {} },
+    ],
+    facts: [],
+  }, over));
+}
+
+test('пост с карточкой era без подтверждающего факта отклоняется', () => {
+  const r = validatePost(s, eraPost());
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /не подтверждена фактом/);
+});
+
+test('пост с карточкой era с подтверждающим фактом (eras.js) проходит', () => {
+  const r = validatePost(s, eraPost({
+    facts: [{ claim: 'датировка периода', value: '145 — 66 млн лет назад', source: 'eras.js:cretaceous.when', checked: true }],
+  }));
+  assert.equal(r.ok, true, r.problems.join('; '));
+});
+
+test('пост с карточкой era: факт с другим значением датировки не подтверждает карточку', () => {
+  const r = validatePost(s, eraPost({
+    facts: [{ claim: 'датировка периода', value: '145 — 65 млн лет назад', source: 'eras.js:cretaceous.when', checked: true }],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /не подтверждена фактом/);
+});
+
+test('пост с карточкой era: факт с нерезолвящимся источником не подтверждает карточку', () => {
+  const r = validatePost(s, eraPost({
+    facts: [{ claim: 'датировка периода', value: '145 — 66 млн лет назад', source: 'eras.js:нет-такой-эпохи.when', checked: true }],
+  }));
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /не подтверждена фактом/);
+});
+
 // --- реальная лента месяца (Задача 6) ---
 
 test('реальная лента feed-data.js проходит валидацию', () => {

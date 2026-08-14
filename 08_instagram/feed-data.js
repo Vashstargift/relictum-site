@@ -2,7 +2,9 @@
    Правится руками; всё остальное производное.
    Ритм 2+1: в каждой тройке слотов ровно один товарный пост (exhibit != null).
    Каждое число в facts обязано сверяться с паспортом: catalog.js по slug,
-   promo-data.js по id вида R–0609. Не сверено — не публикуется. */
+   promo-data.js по id вида R–0609, eras.js по слагу геологического
+   подразделения (для датировок на карточках рубрики era). Не сверено —
+   не публикуется. */
 window.RELICTUM_FEED = [
   {
     id: 'p01',
@@ -18,7 +20,9 @@ window.RELICTUM_FEED = [
     ],
     caption: { lead: 'Плейстоцен', body: 'Эпоха, в которой мамонтовая степь была самым обширным биомом планеты.', cta: '' },
     tags: ['#relictum', '#палеонтология', '#плейстоцен'],
-    facts: [],
+    facts: [
+      { claim: 'датировка эпохи', value: '2,6 млн — 11,7 тыс лет назад', source: 'eras.js:pleistocene.when', checked: true },
+    ],
     status: 'ready',
     blockers: [],
   },
@@ -93,7 +97,9 @@ window.RELICTUM_FEED = [
     ],
     caption: { lead: 'Меловой период', body: 'Последняя глава эры динозавров — самая долгая и самая разнообразная.', cta: '' },
     tags: ['#relictum', '#мел', '#палеонтология'],
-    facts: [],
+    facts: [
+      { claim: 'датировка периода', value: '145 — 66 млн лет назад', source: 'eras.js:cretaceous.when', checked: true },
+    ],
     status: 'ready',
     blockers: [],
   },
@@ -127,12 +133,14 @@ window.RELICTUM_FEED = [
     format: 'carousel',
     frames: [
       { type: 'video', src: 'era_paleozoic_sea.mp4', crop: '4:5' },
-      { type: 'card', tpl: 'era', data: { era: 'Палеозойское море', when: '541 — 252 млн лет назад', fact: 'Трилобиты и панцирные рыбы населяли тёплые мелководные шельфы.' } },
+      { type: 'card', tpl: 'era', data: { era: 'Палеозойская эра', when: '539 — 252 млн лет назад', fact: 'Трилобиты и панцирные рыбы населяли тёплые мелководные шельфы.' } },
       { type: 'card', tpl: 'end', data: {} },
     ],
-    caption: { lead: 'Палеозойское море', body: 'Мелководные шельфы, где задолго до динозавров правили трилобиты.', cta: '' },
+    caption: { lead: 'Палеозойская эра', body: 'Мелководные шельфы, где задолго до динозавров правили трилобиты.', cta: '' },
     tags: ['#relictum', '#палеозой'],
-    facts: [],
+    facts: [
+      { claim: 'датировка эры', value: '539 — 252 млн лет назад', source: 'eras.js:paleozoic.when', checked: true },
+    ],
     status: 'ready',
     blockers: [],
   },
@@ -240,12 +248,14 @@ window.RELICTUM_FEED = [
     format: 'carousel',
     frames: [
       { type: 'video', src: 'era_hadean.mp4', crop: '4:5' },
-      { type: 'card', tpl: 'era', data: { era: 'Катархей', when: '4,6 — 4 млрд лет назад', fact: 'Древнейшая эра Земли, современники которой сохранились лишь в метеоритах.' } },
+      { type: 'card', tpl: 'era', data: { era: 'Катархей', when: '4,6 — 4 млрд лет назад', fact: 'Древнейший эон Земли, современники которого сохранились лишь в метеоритах.' } },
       { type: 'card', tpl: 'end', data: {} },
     ],
-    caption: { lead: 'Катархей', body: 'Самая ранняя эра планеты — из неё до нас дошли только метеориты.', cta: '' },
+    caption: { lead: 'Катархей', body: 'Самый ранний эон планеты — из него до нас дошли только метеориты.', cta: '' },
     tags: ['#relictum', '#метеорит', '#космос'],
-    facts: [],
+    facts: [
+      { claim: 'датировка эона', value: '4,6 — 4 млрд лет назад', source: 'eras.js:hadean.when', checked: true },
+    ],
     status: 'ready',
     blockers: [],
   },

@@ -13,7 +13,7 @@ const fs = require('fs');
 const path = require('path');
 const { IMG_DIR } = require('./paths.js');
 const { findExhibit } = require('./sources.js');
-const { checkPostFacts } = require('./facts.js');
+const { checkPostFacts, resolveSource } = require('./facts.js');
 
 const RUBRICS = ['object', 'figure', 'era', 'interior', 'expedition', 'ritual', 'editions'];
 const TEMPLATES = ['cover', 'figure', 'era', 'spec', 'end'];
@@ -81,6 +81,33 @@ function validateCardData(frame, frameLabel, bad) {
   });
 }
 
+function norm(v) {
+  return String(v).replace(/\s+/g, ' ').trim();
+}
+
+// Карточка шаблона «era» несёт крупную геологическую датировку прямо в
+// data.when, минуя обычный путь через факты — без этой проверки такое
+// число вообще не сверяется. Требуем, чтобы среди фактов поста нашёлся
+// хотя бы один, чьё value дословно (после нормализации пробелов) совпадает
+// с data.when и чей source резолвится (т.е. действительно на что-то
+// ссылается, а не просто похож на ссылку).
+function checkEraCardConfirmed(sources, post, frame, frameLabel, bad) {
+  const when = frame.data ? frame.data.when : undefined;
+  if (typeof when !== 'string' || when.trim() === '') {
+    bad(`${frameLabel}: у карточки эпохи нет датировки (data.when)`);
+    return;
+  }
+  const facts = Array.isArray(post.facts) ? post.facts : [];
+  const confirmed = facts.some((f) => {
+    if (!f || typeof f.value !== 'string') return false;
+    if (norm(f.value) !== norm(when)) return false;
+    return resolveSource(sources, f.source).ok;
+  });
+  if (!confirmed) {
+    bad(`${frameLabel}: датировка «${when}» на карточке эпохи не подтверждена фактом поста — добавь в facts запись, чьё value дословно совпадает с data.when и чей source резолвится (например, eras.js:<слаг>.when)`);
+  }
+}
+
 // Проверка одного поста: обязательные поля, рубрика, формат, статус,
 // привязка к экспонату каталога, кадры (файлы в shared/img существуют,
 // src — имя файла, а не путь/URL), подпись и сверка фактов с паспортами.
@@ -122,7 +149,10 @@ function validatePost(sources, post) {
         if (f.crop && !CROPS.includes(f.crop)) bad(`${n}: неизвестный кроп «${f.crop}»`);
       } else if (f.type === 'card') {
         if (!TEMPLATES.includes(f.tpl)) bad(`${n}: неизвестный шаблон «${f.tpl}»`);
-        else validateCardData(f, n, bad);
+        else {
+          validateCardData(f, n, bad);
+          if (f.tpl === 'era') checkEraCardConfirmed(sources, post, f, n, bad);
+        }
       } else {
         bad(`${n}: неизвестный тип «${f.type}»`);
       }

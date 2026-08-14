@@ -185,3 +185,33 @@ test('checkFact по-прежнему считает пустую строку �
   assert.equal(r.ok, false);
   assert.match(r.reason, /нет поля/);
 });
+
+// --- Задача: eras.js — третий источник фактов, для датировок на карточках рубрики era ---
+
+test('resolveSource достаёт датировку из eras.js по слагу', () => {
+  const r = resolveSource(s, 'eras.js:pleistocene.when');
+  assert.equal(r.ok, true, r.reason);
+  assert.equal(r.value, '2,6 млн — 11,7 тыс лет назад');
+});
+
+test('resolveSource ругается на неизвестный слаг эпохи в eras.js', () => {
+  const r = resolveSource(s, 'eras.js:нет-такой-эпохи.when');
+  assert.equal(r.ok, false);
+  assert.match(r.reason, /не нашёл запись/);
+});
+
+test('checkFact пропускает факт, сверенный по eras.js', () => {
+  const f = { claim: 'датировка', value: '145 — 66 млн лет назад', source: 'eras.js:cretaceous.when', checked: true };
+  assert.equal(checkFact(s, f).ok, true);
+});
+
+test('checkFact на eras.js не требует привязки к экспонату поста (эпоха не принадлежит экспонату)', () => {
+  // post.exhibit задан (megalodon-tooth), но факт ссылается на eras.js —
+  // проверка «чужой экспонат» на этот источник не распространяется.
+  const post = {
+    id: 'p-era-with-exhibit',
+    exhibit: 'megalodon-tooth',
+    facts: [{ claim: 'датировка', value: '539 — 252 млн лет назад', source: 'eras.js:paleozoic.when', checked: true }],
+  };
+  assert.equal(checkPostFacts(s, post).ok, true);
+});
