@@ -37,6 +37,14 @@
 - Интейк нового экспоната: `16_product_promos/INTAKE.md`. Конвейер промо: скилл `.claude/skills/relictum-product-promo/SKILL.md`.
 - **Печатный PDF-каталог (data-driven)**: данные `07_product_presentations/catalog_data.js` → генератор `render_catalog_pdf.js` собирает `catalog_collection_2026.html` (НЕ править руками — перезапишется) и рендерит `RELICTUM_collection_2026.pdf` (A4 landscape, 37 экспонатов, 8 alive-разворотов). Дизайн-система: `CATALOG_DESIGN_SYSTEM.md`, конвейер: скилл `.claude/skills/relictum-catalog-pdf/SKILL.md`.
 - **Прайс-таблица:** генератор `09_admin/build_price_xlsx.py` → `RELICTUM_коллекция_цены.xlsx` (2 листа: «Коллекция» 37 строк + «Сводка»). Цены зашиты в словаре PRICES внутри скрипта. В публичном репо — только продажные; полная версия с себестоимостью и маржой — у владельца.
+- **Instagram-конвейер (data-driven)**: данные `08_instagram/feed-data.js` → `build_feed.js`
+  собирают готовые к постингу папки в `08_instagram/out/` (в `.gitignore`). Карточки — headless
+  Chrome по шаблонам `08_instagram/templates/`, видео — ffmpeg центральным кропом (спинам всегда
+  1:1 — горизонтальная съёмка иначе даёт заметный апскейл в 4:5). Моделей не зовёт. Факты сверяются
+  с тремя источниками (`shared/catalog.js` по slug, `promo-data.js` по id `R–0609`,
+  `08_instagram/eras-data.js` по слагу геологического подразделения) по правилу «показано — значит
+  сверено»: `--check` не пропускает несверенные факты. Тесты — `node --test 08_instagram/test/*.test.js`
+  (форма с каталогом без глоба на этой версии Node падает). Подробности: `08_instagram/README.md`.
 
 > ⚠️ PDF-каталог (37 экспонатов) и прайс-таблица (37 строк) собирались до роста коллекции и
 > **отстают от `catalog.js` (79)**. Пересобрать при следующей правке этих артефактов.
