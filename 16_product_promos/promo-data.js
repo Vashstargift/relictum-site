@@ -28,9 +28,10 @@ window.RELICTUM_PROMO = {
     hook: "Полный скелет метрового бегуна из знаменитой жехольской фауны.",
     interior: { img: "int_ph_jeholosaurus.jpg", text: "Скелет метровой длины — редкий случай динозавра, которому хватает консоли: он читается целиком, не требуя зала." },
     era: { title: "Лес Джехола", line: "Ранний мел, около 125 млн лет назад", href: "../15_concepts/era-cretaceous.html" },
-    gallery: ["g_jeholosaurus_1.jpg"]
+    gallery: ["int_ph_jeholosaurus.jpg", "anat_jeholosaurus.jpg", "life_jeholosaurus.jpg", "ph_jeholosaurus.jpg"]
   },
   "R–0271": {
+    gallery: ["int_ph_triceratops.jpg", "anat_triceratops.jpg", "life_triceratops.jpg", "ph_triceratops.jpg"],
     life: {
       img: "life_triceratops.jpg",
       diagram: "anat_triceratops.jpg",
@@ -68,7 +69,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Рождение Солнечной системы", line: "≈ 4,5 млрд лет назад", href: "../15_concepts/deep-time.html" },
     alive: { title: "Сплав ядра и мантии", text: "Никелистое железо и кристаллы оливина застыли на границе ядра и мантии протопланеты, разрушенной за миллиарды лет до появления Земли.", video: "vid_meteor.mp4", poster: "ph_seymchan.jpg" },
     interior: { video: "intv_seymchan.mp4", img: "int_ph_seymchan.jpg", text: "Срез палласита занимает место на письменном столе или каминной полке, оставаясь предметом камерного, не парадного масштаба." },
-    gallery: ["g_seymchan_1.jpg", "g_seymchan_2.jpg", "g_seymchan_3.jpg", "int_ph_seymchan.jpg"]
+    gallery: ["int_ph_seymchan.jpg", "g_seymchan_1.jpg", "g_seymchan_2.jpg", "g_seymchan_3.jpg"]
   },
   "R–0201": {
     profile: {
@@ -105,7 +106,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Неогеновый океан", line: "Неоген, 23 – 2,6 млн лет назад", href: "../15_concepts/era-neogene.html" },
     alive: { title: "Двадцать миллионов лет наверху", text: "Восемнадцать метров длины и охота на китов: двадцать миллионов лет мегалодон занимал верх пищевой цепи, пока океан не остыл и киты не ушли в холодные воды.", poster: "beast_megalodon.jpg" },
     interior: { video: "intv_megalodon.mp4", img: "int_ph_megalodon.jpg", text: "Зуб держит стол сам по себе: стальной стенд поднимает его на уровень взгляда, а направленный свет проявляет зазубрины кромки." },
-    gallery: ["g_megalodon_1.jpg", "g_megalodon_2.jpg", "int_ph_megalodon.jpg"]
+    gallery: ["int_ph_megalodon.jpg", "anat_megalodon.jpg", "life_megalodon.jpg", "g_megalodon_1.jpg", "g_megalodon_2.jpg", "ph_megalodon.jpg"]
   },
   "R–0604": {
     profile: {
@@ -139,7 +140,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Ледниковая Евразия", line: "Плейстоцен, 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
     alive: { title: "Зимовщик ледниковых пещер", text: "Зимой он неделями спал в глубоких пещерах Европы и Сибири, оставляя на стенах царапины когтей и утоптанные земляные лежанки.", video: "era_mammoth.mp4", poster: "beast_cavebear.jpg" },
     interior: { video: "intv_cavebear.mp4", img: "int_ph_cavebear.jpg", text: "Скелет такого размера держит пространство просторного холла или галереи и не нуждается в соседстве другой крупной мебели." },
-    gallery: ["g_cavebear_1.jpg", "g_cavebear_2.jpg", "g_cavebear_3.jpg", "int_ph_cavebear.jpg"]
+    gallery: ["int_ph_cavebear.jpg", "anat_cavebear.jpg", "life_cavebear.jpg", "g_cavebear_1.jpg", "g_cavebear_2.jpg", "g_cavebear_3.jpg"]
   },
   "R–0605": {
     profile: {
@@ -173,7 +174,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Мамонтовая степь", line: "Плейстоцен, 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
     alive: { title: "Бивнями счищал снег", text: "Бивни служили не только оружием: ими мамонты счищали снег со мёрзлой травы и обдирали кору с редких деревьев тундростепи.", video: "era_mammoth.mp4", poster: "beast_mammoth.jpg" },
     interior: { video: "intv_mammoth_skull.mp4", img: "int_ph_mammoth_skull.jpg", text: "Череп с бивнями занимает нишу над консолью или каминным порталом, задавая масштаб всей комнате без дополнительного декора." },
-    gallery: ["g_mammothskull_1.jpg", "g_mammothskull_2.jpg", "g_mammothskull_3.jpg", "int_ph_mammoth_skull.jpg"]
+    gallery: ["int_ph_mammoth_skull.jpg", "anat_mammoth_skull.jpg", "life_mammoth_skull.jpg", "g_mammothskull_1.jpg", "g_mammothskull_2.jpg", "g_mammothskull_3.jpg"]
   },
   "R–0607": {
     profile: {
@@ -210,7 +211,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Мамонтовая степь", line: "Плейстоцен, 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
     alive: { title: "Прерия на месте нынешней тундры", text: "Стада мамонтов брели по сухой холодной прерии Якутии так же привычно, как сегодня бродят олени по тундре.", video: "era_mammoth.mp4", poster: "beast_mammoth.jpg" },
     interior: { video: "intv_tusks.mp4", img: "int_ph_tusks.jpg", text: "Дуга бивней занимает стену просторной гостиной или кабинета целиком, не оставляя места для другого декора." },
-    gallery: ["g_tusks_1.jpg", "g_tusks_2.jpg", "g_tusks_3.jpg", "int_ph_tusks.jpg"]
+    gallery: ["int_ph_tusks.jpg", "anat_mammoth_tusks.jpg", "life_mammoth_tusks.jpg", "g_tusks_3.jpg"]
   },
   "R–0608": {
     profile: {
@@ -247,7 +248,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Ледниковая степь", line: "Плейстоцен, 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
     alive: { title: "Зимой еда была только под снегом", text: "Метровый рог сгребал наст слой за слоем, пока не показывалась мёрзлая трава — обычный обед ледникового дня.", video: "vid_rhino.mp4", poster: "ph_rhino_skull.jpg" },
     interior: { video: "intv_rhino.mp4", img: "int_ph_rhino.jpg", text: "Тёмному кабинету хватает одного этого черепа. Постамент дом изготавливает под конкретную поверхность и вес экспоната." },
-    gallery: ["g_rhino_1.jpg", "g_rhino_2.jpg", "g_rhino_3.jpg", "int_ph_rhino.jpg"]
+    gallery: ["int_ph_rhino.jpg", "anat_rhino_skull.jpg", "life_rhino_skull.jpg", "g_rhino_2.jpg"]
   },
   "R–0208": {
     profile: {
@@ -284,7 +285,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Неогеновая саванна", line: "Неоген, 23 – 2,6 млн лет назад", href: "../15_concepts/era-neogene.html" },
     alive: { title: "Клинок неогеновой саванны", text: "Уплощённые клыки длиной с кинжал оставляли рану, после которой добыча саванн Ганьсу уже не поднималась.", video: "vid_sabertooth.mp4", poster: "ph_sabertooth.jpg" },
     interior: { video: "intv_sabertooth.mp4", img: "int_ph_sabertooth.jpg", text: "Череп саблезубой кошки умещается в витрину даже в комнате скромной площади, не занимая лишнего места на полке." },
-    gallery: ["g_sabertooth_1.jpg", "g_sabertooth_2.jpg", "g_sabertooth_3.jpg", "int_ph_sabertooth.jpg"]
+    gallery: ["int_ph_sabertooth.jpg", "anat_sabertooth.jpg", "life_sabertooth.jpg", "g_sabertooth_2.jpg", "g_sabertooth_3.jpg", "ph_sabertooth.jpg"]
   },
   "R–0209": {
     profile: {
@@ -321,7 +322,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Девонские моря", line: "Девон, 419 – 359 млн лет назад, «век рыб»", href: "../15_concepts/era-devonian.html" },
     alive: { title: "Костяной короб вместо чешуи", text: "Костяные пластины на голове и груди — один из первых в истории жизни доспехов, надетых за триста пятьдесят миллионов лет до нас.", video: "vid_bothrio.mp4", poster: "ph_bothriolepis.jpg" },
     interior: { video: "intv_bothrio.mp4", img: "int_ph_bothrio.jpg", text: "Плита с панцирной рыбой ложится на открытую полку кабинета или прихожей. Схему подсветки для чешуйчатой фактуры дом разрабатывает индивидуально." },
-    gallery: ["g_bothrio_1.jpg", "g_bothrio_2.jpg", "g_bothrio_3.jpg", "int_ph_bothrio.jpg"]
+    gallery: ["int_ph_bothrio.jpg", "anat_bothriolepis.jpg", "life_bothriolepis.jpg", "g_bothrio_2.jpg", "g_bothrio_3.jpg", "ph_bothriolepis.jpg"]
   },
   "R–0103": {
     // Своя страница-визитка: заголовок и описание для поиска и мессенджеров.
@@ -337,7 +338,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Рождение Солнечной системы", line: "≈ 4,5 млрд лет назад", href: "../15_concepts/deep-time.html" },
     alive: { title: "След огненного падения", text: "Регмаглипты на поверхности застыли в момент огненного входа в атмосферу — след пути длиной в четыре с половиной миллиарда лет.", video: "vid_meteor.mp4", poster: "ph_dronino.jpg" },
     interior: { video: "intv_dronino.mp4", img: "int_ph_dronino.jpg", text: "Метеорит Дронино существует в единственном экземпляре, и место для него в комнате получается индивидуальным, а не типовым." },
-    gallery: ["g_dronino_1.jpg", "g_dronino_2.jpg", "g_dronino_3.jpg", "int_ph_dronino.jpg"]
+    gallery: ["int_ph_dronino.jpg", "g_dronino_2.jpg", "g_dronino_3.jpg", "ph_dronino.jpg"]
   },
   "R–0104": {
     // Своя страница-визитка: заголовок и описание для поиска и мессенджеров.
@@ -353,7 +354,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Рождение Солнечной системы", line: "≈ 4,5 млрд лет назад", href: "../02_site_v1_gallery/journal-meteorite.html" },
     alive: { title: "Железный дождь Тывы", text: "Этот обломок падал дождём вместе с сотнями других над Тывой, а форму ему придали не резец, а миллионы лет в космосе.", video: "vid_meteor.mp4", poster: "ph_chinge.jpg" },
     interior: { video: "intv_chinge.mp4", img: "int_ph_chinge.jpg", text: "Небольшой метеорит Чинге занимает место на консоли в прихожей или кабинете, не требуя вокруг себя пустой стены." },
-    gallery: ["g_chinge_1.jpg", "g_chinge_2.jpg", "g_chinge_3.jpg", "int_ph_chinge.jpg"]
+    gallery: ["int_ph_chinge.jpg", "g_chinge_2.jpg", "g_chinge_3.jpg", "ph_chinge.jpg"]
   },
   "R–0105": {
     // Своя страница-визитка: заголовок и описание для поиска и мессенджеров.
@@ -369,7 +370,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Спутник Земли", line: "≈ 4,5 млрд лет, возраст Луны", href: "../15_concepts/deep-time.html" },
     alive: { title: "Осколок лунной коры", text: "Астероид выбил этот осколок с поверхности Луны, и в раме он снова стоит рядом с её портретом на фотографии.", video: "vid_moon.mp4", poster: "ph_moon_frame.jpg" },
     interior: { video: "intv_moon.mp4", img: "int_ph_moon.jpg", text: "Рама с лунным метеоритом вешается над консолью или ставится на стол, оба варианта равноценны. Выбор стены и высоты подвеса дом обсуждает отдельно." },
-    gallery: ["g_moon_1.jpg", "g_moon_2.jpg", "g_moon_3.jpg", "int_ph_moon.jpg"]
+    gallery: ["int_ph_moon.jpg", "g_moon_3.jpg"]
   },
 
   "R–0211": {
@@ -396,7 +397,7 @@ window.RELICTUM_PROMO = {
       text: "Живой аммонит с той же широкой ребристой спиралью: мягкое тело и щупальца из устья раковины. Раннеюрское море."
     },
     spin: "spin_arietites.mp4",
-    gallery: ["g_arietites_1.jpg", "g_arietites_2.jpg", "g_arietites_3.jpg", "int_ph_arietites.jpg"],
+    gallery: ["int_ph_arietites.jpg", "anat_arietites.jpg", "life_arietites.jpg", "g_arietites_1.jpg", "g_arietites_2.jpg", "g_arietites_3.jpg"],
     interior: { video: "intv_arietites.mp4", img: "int_ph_arietites.jpg", text: "Раскрытая спираль Arietites смотрится лучше на невысоком столе или консоли, где на неё глядят сверху, а не с высокого постамента." },
     hook: "Раннеюрский аммонит Arietites диаметром 42 сантиметра с мощными радиальными рёбрами.",
     heroKicker: "Аммониты, Франция",
@@ -430,7 +431,7 @@ window.RELICTUM_PROMO = {
       text: "Кейхозавр оживает в том же изгибе, в котором застыл на плите: та же дуга длинной шеи, тот же разворот ласт и хвоста. Вокруг — мелкая тёплая лагуна триасового Гуйчжоу: солнце сквозь воду, морские лилии на песчаном дне."
     },
     spin: "spin_keichousaurus.mp4",
-    gallery: ["g_keicho_1.jpg", "g_keicho_2.jpg", "g_keicho_3.jpg", "int_ph_keichousaurus.jpg"],
+    gallery: ["int_ph_keichousaurus.jpg", "anat_keichousaurus.jpg", "life_keichousaurus.jpg", "g_keicho_2.jpg", "g_keicho_3.jpg", "ph_keichousaurus.jpg"],
     interior: { video: "intv_keichousaurus.mp4", img: "int_ph_keichousaurus.jpg", text: "Тёмная плита с кейхозавром висит на высоте вытянутой руки — рельеф удлинённой шеи и лап читается только с близкого расстояния." },
     hook: "Keichousaurus hui на тёмной плите — морской завроптеригий триаса возрастом 245 миллионов лет.",
     heroKicker: "Морские рептилии, Гуйчжоу, Китай",
@@ -464,7 +465,7 @@ window.RELICTUM_PROMO = {
       text: "Голова пситтакозавра в том же трёхчетвертном ракурсе, что череп: клюв, скуловые выросты, чешуя. Туманный лес Джехола."
     },
     spin: "spin_psittacosaurus_skull.mp4",
-    gallery: ["g_psitskull_1.jpg", "g_psitskull_2.jpg", "g_psitskull_3.jpg", "int_ph_psittacosaurus_skull.jpg"],
+    gallery: ["int_ph_psittacosaurus_skull.jpg", "anat_psittacosaurus_skull.jpg", "life_psittacosaurus_skull.jpg", "g_psitskull_1.jpg", "g_psitskull_2.jpg", "g_psitskull_3.jpg"],
     interior: { video: "intv_psittacosaurus_skull.mp4", img: "int_ph_psittacosaurus_skull.jpg", text: "Череп пситтакозавра на музейной стойке умещается на книжной полке между томами — клювовидная форма челюстей видна с любого ракурса комнаты." },
     hook: "Клювовидная передняя часть челюстей — портрет раннего цератопса Psittacosaurus.",
     heroKicker: "Динозавры, Ляонин, Китай",
@@ -498,7 +499,7 @@ window.RELICTUM_PROMO = {
       text: "Анхиорнис в той же распластанной позе, что отпечаток: чёрно-серое оперение с белыми полосами и рыжий хохолок — окрас известен по ископаемым меланосомам."
     },
     spin: "spin_anchiornis.mp4",
-    gallery: ["g_anchiornis_1.jpg", "g_anchiornis_2.jpg", "g_anchiornis_3.jpg", "int_ph_anchiornis.jpg"],
+    gallery: ["int_ph_anchiornis.jpg", "anat_anchiornis.jpg", "life_anchiornis.jpg", "g_anchiornis_2.jpg", "g_anchiornis_3.jpg", "ph_anchiornis.jpg"],
     interior: { video: "intv_anchiornis.mp4", img: "int_ph_anchiornis.jpg", text: "Перьевой контур анхиорниса на плите разбирают только вблизи — экспонат вешают в кабинете на уровне глаз, а не над дверным проёмом." },
     hook: "Anchiornis huxleyi на плите позднего юрского периода — пернатый теропод с читаемыми зубами и когтями.",
     heroKicker: "Динозавры, Ляонин, Китай",
@@ -532,7 +533,7 @@ window.RELICTUM_PROMO = {
       text: "Гнездо овирапторозавра: кольцо таких же удлинённых яиц, ближняя пара лежит как экспонат. Пески Гоби. Принадлежность яиц — по группе Elongatoolithidae."
     },
     spin: "spin_dino_eggs.mp4",
-    gallery: ["g_eggs_1.jpg", "g_eggs_2.jpg", "g_eggs_3.jpg", "int_ph_dino_eggs.jpg"],
+    gallery: ["int_ph_dino_eggs.jpg", "anat_dino_eggs.jpg", "life_dino_eggs.jpg", "g_eggs_1.jpg", "g_eggs_2.jpg", "g_eggs_3.jpg"],
     interior: { video: "intv_dino_eggs.mp4", img: "int_ph_dino_eggs.jpg", text: "Два яйца на кованой подставке занимают угол консоли или каминной полки — предмет, соразмерный вазе, а не музейному постаменту." },
     hook: "Два удлинённых яйца овирапторозавров возрастом 89 миллионов лет на общей породе.",
     heroKicker: "Динозавры, Ляонин, Китай",
@@ -566,7 +567,7 @@ window.RELICTUM_PROMO = {
       text: "Гигантский трилобит ползёт по дну в той же дорсальной позе, что на плите: сегментная броня, длинные щёчные шипы. Ордовикское мелководье."
     },
     spin: "spin_trilobite_giant.mp4",
-    gallery: ["g_trilobite_1.jpg", "g_trilobite_2.jpg", "g_trilobite_3.jpg", "int_ph_trilobite_giant.jpg"],
+    gallery: ["int_ph_trilobite_giant.jpg", "anat_trilobite_giant.jpg", "life_trilobite_giant.jpg", "g_trilobite_2.jpg", "g_trilobite_3.jpg", "ph_trilobite_giant.jpg"],
     interior: { video: "intv_trilobite_giant.mp4", img: "int_ph_trilobite_giant.jpg", text: "Сегменты гигантского трилобита читаются глубже при боковом свете; схему освещения для рельефной плиты дом продумывает под конкретную стену." },
     hook: "Трилобит Dikelokephalina из сланцев Fezouata длиной более тридцати сантиметров.",
     heroKicker: "Трилобиты, Загора, Марокко",
@@ -600,7 +601,7 @@ window.RELICTUM_PROMO = {
       text: "Миксозавр плывёт с тем же изгибом тела, что скелет на плите: дельфинья посадка, зубастая морда, крупный глаз. Открытое триасовое море."
     },
     spin: "spin_ichthyosaur_plate.mp4",
-    gallery: ["g_ichthyo_1.jpg", "g_ichthyo_2.jpg", "g_ichthyo_3.jpg", "int_ph_ichthyosaur_plate.jpg"],
+    gallery: ["int_ph_ichthyosaur_plate.jpg", "anat_ichthyosaur_plate.jpg", "life_ichthyosaur_plate.jpg", "g_ichthyo_2.jpg"],
     interior: { video: "intv_ichthyosaur_plate.mp4", img: "int_ph_ichthyosaur_plate.jpg", text: "Горизонтальная плита с ихтиозавром задаёт стену по своей длине, а не по привычному вертикальному простенку между окнами." },
     hook: "Mixosaurus в известняковой плите — череп, позвоночник и грудная клетка в анатомической связи.",
     heroKicker: "Морские рептилии, Гуйчжоу, Китай",
@@ -634,7 +635,7 @@ window.RELICTUM_PROMO = {
       text: "Голова дунклеостея в том же ракурсе, что череп: костные лезвия челюстей вместо зубов. Сумрак девонского моря."
     },
     spin: "spin_dunkleosteus.mp4",
-    gallery: ["g_dunkleo_1.jpg", "g_dunkleo_2.jpg", "g_dunkleo_3.jpg", "int_ph_dunkleosteus.jpg"],
+    gallery: ["int_ph_dunkleosteus.jpg", "anat_dunkleosteus.jpg", "life_dunkleosteus.jpg", "g_dunkleo_2.jpg", "g_dunkleo_3.jpg", "ph_dunkleosteus.jpg"],
     interior: { video: "intv_dunkleosteus.mp4", img: "int_ph_dunkleosteus.jpg", text: "Массивная броня черепа Dunkleosteus держит собственный вес плохо на обычной полке — форму опоры дом рассчитывает под конкретную комнату." },
     hook: "Реконструкция черепа Dunkleosteus с костными пластинами вместо зубов, поздний девон.",
     heroKicker: "Ископаемые рыбы, поздний девон",
@@ -668,7 +669,7 @@ window.RELICTUM_PROMO = {
       text: "Голова спинозавра в профиль, пасть приоткрыта под углом фрагмента челюсти: конические зубы, узкая крокодилья морда. Речные отмели Кем-Кема."
     },
     spin: "spin_spinosaurus_jaw.mp4",
-    gallery: ["g_spinojaw_1.jpg", "g_spinojaw_2.jpg", "g_spinojaw_3.jpg", "int_ph_spinosaurus_jaw.jpg"],
+    gallery: ["int_ph_spinosaurus_jaw.jpg", "anat_spinosaurus_jaw.jpg", "life_spinosaurus_jaw.jpg", "g_spinojaw_2.jpg", "g_spinojaw_3.jpg", "ph_spinosaurus_jaw.jpg"],
     interior: { video: "intv_spinosaurus_jaw.mp4", img: "int_ph_spinosaurus_jaw.jpg", text: "Фрагмент челюсти спинозавра ложится в горизонтальную витрину на уровне пояса — зубной ряд рассматривают сверху, не поднимая экспонат." },
     hook: "Фрагмент челюсти Spinosaurus aegyptiacus с коническими зубами для удержания скользкой добычи.",
     heroKicker: "Динозавры, Северная Африка",
@@ -702,7 +703,7 @@ window.RELICTUM_PROMO = {
       text: "Кархародонтозаврид заносит переднюю лапу: кривизна когтя повторяет ископаемое. Меловая пойма Северной Африки. Род — по когтю, облик обобщён."
     },
     spin: "spin_carcharodont_claw.mp4",
-    gallery: ["g_claw_1.jpg", "g_claw_2.jpg", "g_claw_3.jpg", "int_ph_carcharodont_claw.jpg"],
+    gallery: ["int_ph_carcharodont_claw.jpg", "anat_carcharodont_claw.jpg", "life_carcharodont_claw.jpg", "g_claw_2.jpg", "g_claw_3.jpg", "ph_carcharodont_claw.jpg"],
     interior: { video: "intv_carcharodont_claw.mp4", img: "int_ph_carcharodont_claw.jpg", text: "Коготь кархародонтозавра на металлической подставке стоит на рабочем столе рядом с письменным прибором — предмет для руки, а не для стены." },
     hook: "Когтевая фаланга Carcharodontosaurus длиной 26 сантиметров — костная основа рогового чехла.",
     heroKicker: "Динозавры, Северная Африка",
@@ -736,7 +737,7 @@ window.RELICTUM_PROMO = {
       text: "Птерозавр раскрывает крылья в той же конфигурации, что скелет на плите, — перепонки вдоль удлинённого пальца. Лагуна мелового периода. Вид не определён, облик обобщённый."
     },
     spin: "spin_pterosaur.mp4",
-    gallery: ["g_ptero_1.jpg", "g_ptero_2.jpg", "g_ptero_3.jpg", "int_ph_pterosaur.jpg"],
+    gallery: ["int_ph_pterosaur.jpg", "anat_pterosaur.jpg", "life_pterosaur.jpg", "g_ptero_3.jpg"],
     interior: { video: "intv_pterosaur.mp4", img: "int_ph_pterosaur.jpg", text: "Плита с птерозавром просит глухую стену без окна напротив: блики на камне мешают разглядеть тонкие кости крыла и вытянутый череп." },
     hook: "Скелет птерозавра на плите с зубастым черепом и удлинённым четвёртым пальцем крыла.",
     heroKicker: "Летающие архозавры, Ляонин, Китай",
@@ -770,7 +771,7 @@ window.RELICTUM_PROMO = {
       text: "Голова афровенатора в том же профиле, что модель черепа. Юрская пойма. Экспонат — авторская реконструкция, и облик здесь — тоже реконструкция."
     },
     spin: "spin_afrovenator.mp4",
-    gallery: ["g_afro_1.jpg", "g_afro_2.jpg", "g_afro_3.jpg", "int_ph_afrovenator.jpg"],
+    gallery: ["int_ph_afrovenator.jpg", "anat_afrovenator.jpg", "life_afrovenator.jpg", "g_afro_1.jpg", "g_afro_2.jpg", "g_afro_3.jpg"],
     interior: { video: "intv_afrovenator.mp4", img: "int_ph_afrovenator.jpg", text: "Крупная модель черепа афровенатора стоит отдельно на консоли или низком постаменте, не деля пространство с другим декором." },
     hook: "Полноразмерная авторская реконструкция черепа Afrovenator abakensis — по эталонному экземпляру из Нигера, тому самому, по которому вид описан.",
     heroKicker: "Динозавры, реконструкция, Нигер",
@@ -804,7 +805,7 @@ window.RELICTUM_PROMO = {
       text: "Реконструкция повторяет позу экспоната — тот же шаг, тот же разворот головы. Окрас восстановлен по ископаемым меланосомам вида: тёмная спина, светлое брюхо, ряд щетин на хвосте. Вокруг — лес Ляонина раннего мела: гинкго, хвойные и папоротники у озера."
     },
     spin: "spin_psittacosaurus_skeleton.mp4",
-    gallery: ["g_psitskel_1.jpg", "g_psitskel_2.jpg", "g_psitskel_3.jpg", "int_ph_psittacosaurus_skeleton.jpg"],
+    gallery: ["int_ph_psittacosaurus_skeleton.jpg", "anat_psittacosaurus_skeleton.jpg", "life_psittacosaurus_skeleton.jpg", "g_psitskel_1.jpg", "g_psitskel_2.jpg", "ph_psittacosaurus_skeleton.jpg"],
     interior: { video: "intv_psittacosaurus_skeleton.mp4", img: "int_ph_psittacosaurus_skeleton.jpg", text: "Смонтированный пситтакозавр в полный рост занимает угол библиотеки или кабинета — высоты вытянутой руки хватает, чтобы разглядеть его целиком." },
     hook: "Смонтированный скелет Psittacosaurus длиной 168 сантиметров, комплектность свыше 95 процентов.",
     heroKicker: "Динозавры, Ляонин, Китай",
@@ -838,7 +839,7 @@ window.RELICTUM_PROMO = {
       text: "Носорог повторяет постановку скелета шаг в шаг. Мамонтовая степь, сухая трава и первый снег — ландшафт, в котором вид прожил сотни тысяч лет."
     },
     spin: "spin_rhino_skeleton.mp4",
-    gallery: ["g_rhinoskel_1.jpg", "g_rhinoskel_2.jpg", "g_rhinoskel_3.jpg", "int_ph_rhino_skeleton.jpg"],
+    gallery: ["int_ph_rhino_skeleton.jpg", "anat_rhino_skeleton.jpg", "life_rhino_skeleton.jpg", "g_rhinoskel_2.jpg"],
     interior: { video: "intv_rhino_skeleton.mp4", img: "int_ph_rhino_skeleton.jpg", text: "Шерстистый носорог в собранном виде занимает угол просторной комнаты целиком — вокруг оставляют проход, а не расставляют мебель." },
     hook: "Профессиональная сборка на скрытом стальном каркасе — скелет шерстистого носорога из Якутии.",
     heroKicker: "Мамонтовая фауна, Якутия, Россия",
@@ -873,7 +874,7 @@ window.RELICTUM_PROMO = {
     },
     spin: "spin_crocodyliform.mp4",
     interior: { video: "intv_crocodyliform.mp4", img: "int_ph_crocodyliform.jpg", text: "Крокодилиформ на металлических опорах растягивается почти во всю длину галерейной комнаты; секции скелета дом собирает прямо на месте." },
-    gallery: ["g_croc_1.jpg", "g_croc_2.jpg", "g_croc_3.jpg", "int_ph_crocodyliform.jpg"],
+    gallery: ["int_ph_crocodyliform.jpg", "anat_crocodyliform.jpg", "life_crocodyliform.jpg", "g_croc_1.jpg", "g_croc_2.jpg", "g_croc_3.jpg"],
     hook: "Составной скелет длиннорылого крокодилиформа длиной около шести метров.",
     heroKicker: "Морские рептилии, составной скелет",
     story: [
@@ -908,7 +909,7 @@ window.RELICTUM_PROMO = {
     },
     spin: "spin_ammonite_studio.mp4",
     interior: { video: "intv_ammonites_set.mp4", img: "int_ph_ammonites_set.jpg", text: "Так комплект из семи предметов встаёт на открытую полку. Кадр — визуализация подачи: съёмка сделана с крупнейшего предмета, остальные показаны по его образцу." },
-    gallery: ["g_ammonites_1.jpg", "g_ammonites_2.jpg", "g_ammonites_3.jpg", "int_ph_ammonite.jpg"],
+    gallery: ["int_ph_ammonites_set.jpg", "anat_ammonite_studio.jpg", "life_ammonite_studio.jpg", "g_ammonites_2.jpg", "g_ammonites_3.jpg", "int_ph_ammonite.jpg"],
     hook: "Семь полированных аммонитов: срезы с раскрытыми камерами и цельные экземпляры с перламутровой поверхностью.",
     heroKicker: "Аммониты, коллекция",
     story: [
@@ -942,7 +943,7 @@ window.RELICTUM_PROMO = {
     },
     hook: "Кабинетная коллекция из пятнадцати тропических бабочек.",
     interior: { img: "int_ph_butterflies_dark.jpg", text: "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате." },
-    gallery: ["g_butterflies_dark_1.jpg"]
+    gallery: ["int_ph_butterflies_dark.jpg", "life_butterflies_dark.jpg"]
   },
 
   "R–0265": {
@@ -969,7 +970,7 @@ window.RELICTUM_PROMO = {
     },
     hook: "Кабинетная коллекция из пятнадцати тропических бабочек.",
     interior: { img: "int_ph_butterflies_blue.jpg", text: "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате." },
-    gallery: ["g_butterflies_blue_1.jpg"]
+    gallery: ["int_ph_butterflies_blue.jpg", "life_butterflies_blue.jpg"]
   },
 
   "R–0266": {
@@ -995,7 +996,7 @@ window.RELICTUM_PROMO = {
     },
     hook: "Смонтированный скелет змеи волной на чёрном фоне.",
     interior: { img: "int_ph_snake_portrait.jpg", text: "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате." },
-    gallery: ["g_snake_portrait_1.jpg"]
+    gallery: ["int_ph_snake_portrait.jpg", "anat_snake_portrait.jpg", "life_snake_portrait.jpg", "ph_snake_portrait.jpg"]
   },
 
   "R–0267": {
@@ -1022,7 +1023,7 @@ window.RELICTUM_PROMO = {
     },
     hook: "Кабинетная коллекция из пятнадцати тропических бабочек.",
     interior: { img: "int_ph_butterflies_amber.jpg", text: "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате." },
-    gallery: ["g_butterflies_amber_1.jpg"]
+    gallery: ["int_ph_butterflies_amber.jpg", "life_butterflies_amber.jpg"]
   },
 
   "R–0268": {
@@ -1048,7 +1049,7 @@ window.RELICTUM_PROMO = {
     },
     hook: "Крупный смонтированный скелет змеи широкими кольцами.",
     interior: { img: "int_ph_snake_large.jpg", text: "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате." },
-    gallery: ["g_snake_large_1.jpg"]
+    gallery: ["int_ph_snake_large.jpg", "anat_snake_large.jpg", "life_snake_large.jpg", "ph_snake_large.jpg"]
   },
 
   "R–0269": {
@@ -1075,7 +1076,7 @@ window.RELICTUM_PROMO = {
     },
     hook: "Кабинетная коллекция из пятнадцати бабочек.",
     interior: { img: "int_ph_butterflies_warm.jpg", text: "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате." },
-    gallery: ["g_butterflies_warm_1.jpg"]
+    gallery: ["int_ph_butterflies_warm.jpg", "life_butterflies_warm.jpg"]
   },
 
   "R–0270": {
@@ -1101,7 +1102,7 @@ window.RELICTUM_PROMO = {
     },
     hook: "Скелет змеи нисходящей волной в вытянутой раме.",
     interior: { img: "int_ph_snake_tall.jpg", text: "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате." },
-    gallery: ["g_snake_tall_1.jpg"]
+    gallery: ["int_ph_snake_tall.jpg", "anat_snake_tall.jpg", "life_snake_tall.jpg", "ph_snake_tall.jpg"]
   },
 
   "R–0263": {
@@ -1129,7 +1130,7 @@ window.RELICTUM_PROMO = {
     hook: "Мягкие ткани, кожа и шерсть — то, что мерзлота отдаёт почти никогда.",
     interior: { img: "int_ph_mammoth_leg.jpg", text: "Витрина с ногой мамонта работает как кабинетная кунсткамера: один предмет, один луч света — и разговор в комнате уже не о мебели." },
     era: { title: "Ледниковая Евразия", line: "Плейстоцен, 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
-    gallery: ["g_mammoth_leg_1.jpg", "g_mammoth_leg_2.jpg", "g_mammoth_leg_3.jpg"]
+    gallery: ["int_ph_mammoth_leg.jpg", "life_mammoth_leg.jpg"]
   },
 
   "R–0245": {
@@ -1154,7 +1155,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Первые членистоногие, вышедшие из воды на сушу, — родня всем сухопутным членистоногим, включая насекомых.",
-    gallery: ["g_eurypterid_1.jpg"]
+    gallery: ["anat_eurypterid.jpg", "life_eurypterid.jpg", "g_eurypterid_1.jpg", "ph_eurypterid.jpg"]
   },
 
   "R–0246": {
@@ -1180,7 +1181,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Целестин крайне редко образует кристаллы такого размера.",
-    gallery: ["g_celestine_1.jpg"]
+    gallery: ["situ_celestine.jpg", "g_celestine_1.jpg"]
   },
 
   "R–0247": {
@@ -1206,7 +1207,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Редкий минерал; образцы такого размера — особенная редкость.",
-    gallery: ["g_pseudomalachite_1.jpg"]
+    gallery: ["situ_pseudomalachite.jpg", "g_pseudomalachite_1.jpg"]
   },
 
   "R–0248": {
@@ -1232,7 +1233,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Десять крупных кубов и сотня кристаллов поменьше — геометрия, которую природа собрала сама.",
-    gallery: ["g_pyrite_1.jpg"]
+    gallery: ["situ_pyrite.jpg", "g_pyrite_1.jpg"]
   },
 
   "R–0249": {
@@ -1258,7 +1259,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Три генерации кварца в одном образце: агат, бесцветный кварц и фиолетовый аметист.",
-    gallery: ["g_amethyst_druse45_1.jpg"]
+    gallery: ["situ_amethyst_druse45.jpg", "g_amethyst_druse45_1.jpg"]
   },
 
   "R–0250": {
@@ -1284,7 +1285,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Фиолетовая гора, присыпанная золотом пирита.",
-    gallery: ["g_fluorite_pyrite_1.jpg"]
+    gallery: ["situ_fluorite_pyrite.jpg", "g_fluorite_pyrite_1.jpg"]
   },
 
   "R–0251": {
@@ -1309,7 +1310,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Более 50 отпечатков организмов, живших до кембрийского взрыва.",
-    gallery: ["g_nemiana_1.jpg"]
+    gallery: ["anat_nemiana.jpg", "life_nemiana.jpg", "g_nemiana_1.jpg", "ph_nemiana.jpg"]
   },
 
   "R–0252": {
@@ -1335,7 +1336,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Метровая жеода с сотнями кристаллов — кристаллический мир, в котором легко зависнуть надолго.",
-    gallery: ["g_amethyst_geode123_1.jpg"]
+    gallery: ["situ_amethyst_geode123.jpg", "g_amethyst_geode123_1.jpg"]
   },
 
   "R–0253": {
@@ -1359,7 +1360,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Передняя и задняя лапы хищника, превосходившего размером современных медведей.",
-    gallery: ["g_cavebear_paws_1.jpg"]
+    gallery: ["anat_cavebear_paws.jpg", "life_cavebear_paws.jpg", "g_cavebear_paws_1.jpg", "ph_cavebear_paws.jpg"]
   },
 
   "R–0254": {
@@ -1385,7 +1386,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Уругвайский аметист — особо насыщенный цвет кристаллов.",
-    gallery: ["g_amethyst_druse35_1.jpg"]
+    gallery: ["situ_amethyst_druse35.jpg", "g_amethyst_druse35_1.jpg"]
   },
 
   "R–0255": {
@@ -1411,7 +1412,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Редкий хромовый гранат, названный в честь графа Уварова.",
-    gallery: ["g_uvarovite_1.jpg"]
+    gallery: ["situ_uvarovite.jpg", "g_uvarovite_1.jpg"]
   },
 
   "R–0256": {
@@ -1437,7 +1438,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Друза с кристаллом больше 13 сантиметров — впечатляющий размер для антимонита.",
-    gallery: ["g_stibnite_1.jpg"]
+    gallery: ["situ_stibnite.jpg", "g_stibnite_1.jpg"]
   },
 
   "R–0257": {
@@ -1463,7 +1464,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Более двухсот кристаллов с золотистыми включениями гётита.",
-    gallery: ["g_amethyst_druse51_1.jpg"]
+    gallery: ["situ_amethyst_druse51.jpg", "g_amethyst_druse51_1.jpg"]
   },
 
   "R–0258": {
@@ -1489,7 +1490,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Сотня чётких кристаллов с полностью отработанного месторождения.",
-    gallery: ["g_rockcrystal47_1.jpg"]
+    gallery: ["situ_rockcrystal47.jpg", "g_rockcrystal47_1.jpg"]
   },
 
   "R–0259": {
@@ -1515,7 +1516,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Марматит — железистая разновидность сфалерита с почти металлическим блеском.",
-    gallery: ["g_sphalerite_1.jpg"]
+    gallery: ["situ_sphalerite.jpg", "g_sphalerite_1.jpg"]
   },
 
   "R–0260": {
@@ -1541,7 +1542,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Крупный натёчный малахит из «геологической сенсации» Катанги.",
-    gallery: ["g_malachite_congo_1.jpg"]
+    gallery: ["situ_malachite_congo.jpg", "g_malachite_congo_1.jpg"]
   },
 
   "R–0261": {
@@ -1567,7 +1568,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Сотня кристаллов, выстроенных в одном направлении.",
-    gallery: ["g_rockcrystal50_1.jpg"]
+    gallery: ["situ_rockcrystal50.jpg", "g_rockcrystal50_1.jpg"]
   },
 
   "R–0262": {
@@ -1593,7 +1594,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     hook: "Огромная септария с перегородками из симбирцита.",
-    gallery: ["g_septaria_1.jpg"]
+    gallery: ["situ_septaria.jpg", "g_septaria_1.jpg"]
   },
 
   "R–0231": {
@@ -1619,7 +1620,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     interior: { img: "int_ph_crinoid_fan.jpg", text: "Плита с морской лилией держит стену как гравюра большого формата: тёплый камень, глубокий рельеф, ни одной повторяющейся композиции в серии." },
-    gallery: ["g_crinoid_fan_1.jpg"],
+    gallery: ["int_ph_crinoid_fan.jpg", "anat_crinoid_fan.jpg", "life_crinoid_fan.jpg", "g_crinoid_fan_1.jpg"],
     hook: "Крупный раскрытый веер Traumatocrinus на цельной плите — парадный экземпляр серии.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1647,7 +1648,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_round_1.jpg", "g_crinoid_round_2.jpg"],
+    gallery: ["int_ph_crinoid_round.jpg", "anat_crinoid_round.jpg", "life_crinoid_round.jpg", "g_crinoid_round_2.jpg"],
     hook: "Редкая подача: крона раскрыта полным кругом, руки читаются до кончиков.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1675,7 +1676,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_frame_fan_1.jpg"],
+    gallery: ["int_ph_crinoid_frame_fan.jpg", "anat_crinoid_frame_fan.jpg", "life_crinoid_frame_fan.jpg", "g_crinoid_frame_fan_1.jpg"],
     hook: "Веер на прямом стебле в деревянной раме — готовый кабинетный объект.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1703,7 +1704,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_bud_1.jpg"],
+    gallery: ["int_ph_crinoid_bud.jpg", "anat_crinoid_bud.jpg", "life_crinoid_bud.jpg", "g_crinoid_bud_1.jpg"],
     hook: "Сомкнутая крона на изящно изогнутом стебле — самый графичный экземпляр серии.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1731,7 +1732,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_tall_1.jpg"],
+    gallery: ["int_ph_crinoid_tall.jpg", "anat_crinoid_tall.jpg", "life_crinoid_tall.jpg", "g_crinoid_tall_1.jpg"],
     hook: "Высокая вертикальная композиция: веер венчает стебель во всю плиту.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1759,7 +1760,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_floats_1.jpg", "g_crinoid_floats_2.jpg"],
+    gallery: ["int_ph_crinoid_floats.jpg", "anat_crinoid_floats.jpg", "life_crinoid_floats.jpg", "g_crinoid_floats_1.jpg", "g_crinoid_floats_2.jpg", "ph_crinoid_floats.jpg"],
     hook: "Взрослая крона и рядом — малые кроны той же колонии, редкий групповой сюжет.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1787,7 +1788,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_pair_1.jpg"],
+    gallery: ["int_ph_crinoid_pair.jpg", "anat_crinoid_pair.jpg", "life_crinoid_pair.jpg", "g_crinoid_pair_1.jpg"],
     hook: "Два стебля уходят параллельно вниз — строгая, почти каллиграфическая плита.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1815,7 +1816,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_arc_1.jpg"],
+    gallery: ["int_ph_crinoid_arc.jpg", "anat_crinoid_arc.jpg", "life_crinoid_arc.jpg", "g_crinoid_arc_1.jpg"],
     hook: "Стебель входит в кадр дугой из угла — динамичная композиция для кабинета.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1843,7 +1844,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_small_fan_1.jpg"],
+    gallery: ["int_ph_crinoid_small_fan.jpg", "anat_crinoid_small_fan.jpg", "life_crinoid_small_fan.jpg", "ph_crinoid_small_fan.jpg"],
     hook: "Камерный экземпляр: небольшой веер, склонённый набок, для настольной подачи.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1871,7 +1872,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_colony_tall_1.jpg"],
+    gallery: ["int_ph_crinoid_colony_tall.jpg", "anat_crinoid_colony_tall.jpg", "life_crinoid_colony_tall.jpg", "g_crinoid_colony_tall_1.jpg"],
     hook: "Высокая плита с целой колонией — десятки крон на тонких стеблях.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1899,7 +1900,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_colony_1.jpg"],
+    gallery: ["int_ph_crinoid_colony.jpg", "anat_crinoid_colony.jpg", "life_crinoid_colony.jpg", "g_crinoid_colony_1.jpg"],
     hook: "Колония, расходящаяся из одного узла, — сцена дрейфа, застывшая целиком.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1927,7 +1928,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_group_1.jpg"],
+    gallery: ["int_ph_crinoid_group.jpg", "anat_crinoid_group.jpg", "life_crinoid_group.jpg", "g_crinoid_group_1.jpg"],
     hook: "Группа крон на плите свободной формы — самый скульптурный экземпляр.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1955,7 +1956,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_cluster_1.jpg"],
+    gallery: ["int_ph_crinoid_cluster.jpg", "anat_crinoid_cluster.jpg", "life_crinoid_cluster.jpg", "g_crinoid_cluster_1.jpg"],
     hook: "Плотное переплетение крон и стеблей — фактура, которую хочется разглядывать.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -1983,7 +1984,7 @@ window.RELICTUM_PROMO = {
         "Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus — редкий случай, когда научный документ выглядит как готовое произведение для стены. Объект поставляется под заказ: дом подбирает и оформляет экземпляр по запросу."
       ]
     },
-    gallery: ["g_crinoid_trio_1.jpg"],
+    gallery: ["int_ph_crinoid_trio.jpg", "anat_crinoid_trio.jpg", "life_crinoid_trio.jpg", "g_crinoid_trio_1.jpg"],
     hook: "Три кроны в одном кадре камня — ритмичная вертикальная плита.",
     era: { title: "Триасовое море", line: "≈ 235 млн лет назад", href: "../15_concepts/era-triassic.html" }
   },
@@ -2012,7 +2013,7 @@ window.RELICTUM_PROMO = {
       text: "Нотозавр оживает в позе плиты: голова у правого края, размах ласт и длинный хвост влево. Мелкое тёплое море триасового Китая, рябь солнца на песчаном дне."
     },
     interior: { video: "intv_nothosaurus.mp4", img: "int_ph_nothosaurus.jpg", text: "Полутораметровая плита ведёт себя как произведение искусства: горизонтальный монтаж над консолью, скользящий свет по рельефу кости." },
-    gallery: ["g_notho_1.jpg", "g_notho_2.jpg", "g_notho_3.jpg", "int_ph_nothosaurus.jpg"],
+    gallery: ["int_ph_nothosaurus.jpg", "anat_nothosaurus.jpg", "life_nothosaurus.jpg", "ph_nothosaurus.jpg"],
     hook: "Скелет от черепа до хвоста на цельной плите длиной более полутора метров. Поставляется под заказ.",
     heroKicker: "Морские рептилии, средний триас",
     era: { title: "Триасовые моря", line: "Триасовый период, 252–201 млн лет назад", href: "../15_concepts/era-triassic.html" },
@@ -2043,7 +2044,7 @@ window.RELICTUM_PROMO = {
     },
     spin: "spin_cave_lion_vitrine.mp4",
     interior: { video: "intv_cave_lion_vitrine.mp4", img: "int_ph_cave_lion_vitrine.jpg", text: "Витрина уже собрана: стекло на чёрном основании ставится на каменную консоль или низкий стеллаж и не требует ни подсветки, ни отдельного постамента." },
-    gallery: ["int_ph_cave_lion_vitrine.jpg", "g_cavelion_vitrine_1.jpg"],
+    gallery: ["int_ph_cave_lion_vitrine.jpg", "anat_cave_lion_vitrine.jpg", "life_cave_lion_vitrine.jpg", "g_cavelion_vitrine_1.jpg"],
     hook: "Полный череп с нижней челюстью — редкость: обычно челюсть теряется в отложениях.",
     heroKicker: "Пещерные львы, плейстоцен",
     era: { title: "Ледниковая Евразия", line: "Плейстоцен, 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
@@ -2053,7 +2054,7 @@ window.RELICTUM_PROMO = {
   "R–0228": {
     spin: "spin_cave_lion2.mp4",
     interior: { video: "intv_cave_lion2.mp4", img: "int_ph_cave_lion2.jpg", text: "Тёмная минерализованная кость просит тёплого света и глухого фона: каменная консоль в панельном кабинете держит череп лучше открытой полки." },
-    gallery: ["g_cavelion2_1.jpg", "g_cavelion2_2.jpg", "g_cavelion2_3.jpg", "int_ph_cave_lion2.jpg"],
+    gallery: ["int_ph_cave_lion2.jpg", "g_cavelion2_1.jpg", "g_cavelion2_2.jpg", "ph_cave_lion2.jpg"],
     hook: "Единственный череп коллекции, поданный анфас, — зверь смотрит на вас.",
     heroKicker: "Пещерные львы, плейстоцен",
     era: { title: "Ледниковая Евразия", line: "Плейстоцен, 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
@@ -2083,7 +2084,7 @@ window.RELICTUM_PROMO = {
     },
     spin: "spin_hyena_skull.mp4",
     interior: { video: "intv_hyena.mp4", img: "int_ph_hyena.jpg", text: "Массивный череп динокрокуты на породном основании уверенно держит кабинет с плотной тёмной палитрой." },
-    gallery: ["g_hyena_1.jpg", "g_hyena_2.jpg", "g_hyena_3.jpg", "int_ph_hyena.jpg"],
+    gallery: ["int_ph_hyena.jpg", "anat_hyena_skull.jpg", "life_hyena_skull.jpg", "g_hyena_1.jpg", "g_hyena_2.jpg", "g_hyena_3.jpg"],
     hook: "Череп динокрокуты с короткой высокой мордой — крупнее, чем у пещерного медведя.",
     heroKicker: "Динокрокута, миоцен, Азия",
     era: { title: "Неогеновая саванна", line: "Неоген, 23 – 2,6 млн лет назад", href: "../15_concepts/era-neogene.html" },
@@ -2092,7 +2093,7 @@ window.RELICTUM_PROMO = {
   "R–0227": {
     spin: "spin_dronino128.mp4",
     interior: { video: "intv_dronino128.mp4", img: "int_ph_dronino128.jpg", text: "Монументальный метеорит Дронино рассчитан на консоль или пол, выдерживающие серьёзный вес. Нагрузку на перекрытие дом проверяет заранее." },
-    gallery: ["g_dronino128_1.jpg", "g_dronino128_2.jpg", "g_dronino128_3.jpg", "int_ph_dronino128.jpg"],
+    gallery: ["int_ph_dronino128.jpg", "g_dronino128_1.jpg", "g_dronino128_2.jpg", "g_dronino128_3.jpg"],
     hook: "Метеорит Дронино массой 128 килограммов — один из крупнейших найденных экземпляров этого падения.",
     heroKicker: "Метеориты, Рязанская область",
     era: { title: "Рождение Солнечной системы", line: "≈ 4,5 млрд лет назад", href: "../15_concepts/deep-time.html" },
@@ -2122,7 +2123,7 @@ window.RELICTUM_PROMO = {
     },
     spin: "spin_pinacosaurus.mp4",
     interior: { video: "intv_pinacosaurus.mp4", img: "int_ph_pinacosaurus.jpg", text: "Стальной каркас скелета пинакозавра задаёт маршрут взгляда по светлой галерейной комнате. Монтаж дом проводит на месте." },
-    gallery: ["g_pina_1.jpg", "g_pina_2.jpg", "g_pina_3.jpg", "int_ph_pinacosaurus.jpg"],
+    gallery: ["int_ph_pinacosaurus.jpg", "anat_pinacosaurus.jpg", "life_pinacosaurus.jpg", "g_pina_1.jpg", "g_pina_3.jpg", "ph_pinacosaurus.jpg"],
     hook: "Костные пластины-остеодермы вдоль спины — смонтированный скелет Pinacosaurus позднего мела.",
     heroKicker: "Динозавры, Центральная Азия",
     era: { title: "Поздний мел", line: "Меловой период, 145–66 млн лет назад", href: "../15_concepts/era-cretaceous.html" },
@@ -2152,7 +2153,7 @@ window.RELICTUM_PROMO = {
     },
     spin: "spin_oviraptor.mp4",
     interior: { video: "intv_oviraptor.mp4", img: "int_ph_oviraptor.jpg", text: "Овираптор в динамичной позе занимает свободный угол кабинета — беззубый клюв и лёгкий костяк смонтированного скелета смотрят в комнату, не в стену." },
-    gallery: ["g_oviraptor_1.jpg", "g_oviraptor_2.jpg", "g_oviraptor_3.jpg", "int_ph_oviraptor.jpg"],
+    gallery: ["int_ph_oviraptor.jpg", "anat_oviraptor.jpg", "life_oviraptor.jpg", "g_oviraptor_1.jpg", "g_oviraptor_2.jpg", "g_oviraptor_3.jpg"],
     hook: "Беззубый клюв и лёгкое сложение — скелет овираптора позднего мела Центральной Азии.",
     heroKicker: "Динозавры, Центральная Азия",
     era: { title: "Поздний мел", line: "Меловой период, 145–66 млн лет назад", href: "../15_concepts/era-cretaceous.html" },
@@ -2182,7 +2183,7 @@ window.RELICTUM_PROMO = {
     },
     spin: "spin_bison_skeleton.mp4",
     interior: { video: "intv_bison_skeleton.mp4", img: "int_ph_bison_skeleton.jpg", text: "Собранный скелет занимает середину гостиной и задаёт ей масштаб: подиум держит дистанцию, мебель расставляется по периметру." },
-    gallery: ["g_bison_1.jpg", "g_bison_2.jpg", "g_bison_4.jpg", "int_ph_bison_skeleton.jpg"],
+    gallery: ["int_ph_bison_skeleton.jpg", "anat_bison_skeleton.jpg", "life_bison_skeleton.jpg", "g_bison_1.jpg", "g_bison_2.jpg", "g_bison_4.jpg"],
     hook: "Самцы степного зубра достигали двух тонн веса и рогов размахом более метра.",
     heroKicker: "Мамонтовая фауна, Россия",
     era: { title: "Мамонтовая степь", line: "Плейстоцен, 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
@@ -2211,7 +2212,7 @@ window.RELICTUM_PROMO = {
       text: "Волк идёт тем же крадущимся шагом, каким смонтирован скелет. Кромка заснеженной тайги в синих сумерках."
     },
     spin: "spin_pleistocene_wolf.mp4",
-    gallery: ["g_wolf_1.jpg", "g_wolf_2.jpg", "g_wolf_3.jpg", "int_ph_pleistocene_wolf.jpg"],
+    gallery: ["int_ph_pleistocene_wolf.jpg", "anat_pleistocene_wolf.jpg", "life_pleistocene_wolf.jpg", "g_wolf_2.jpg", "g_wolf_3.jpg", "ph_pleistocene_wolf.jpg"],
     interior: { video: "intv_pleistocene_wolf.mp4", img: "int_ph_pleistocene_wolf.jpg", text: "Плейстоценовый волк на низком подиуме умещается на широкой консоли — компактнее носорога и мамонта, но держится той же ледниковой компании." },
     hook: "Современник мамонта и шерстистого носорога — скелет плейстоценового волка ледниковой Евразии.",
     heroKicker: "Мамонтовая фауна, Россия",
@@ -2241,7 +2242,7 @@ window.RELICTUM_PROMO = {
       text: "Мамонт повторяет шаг скелета: покатая спина, высокий купол головы, дуги бивней. Заснеженная степь в низком золотом свете."
     },
     spin: "spin_mammoth_skeleton.mp4",
-    gallery: ["g_mammothskel_1.jpg", "g_mammothskel_2.jpg", "g_mammothskel_3.jpg", "int_ph_mammoth_skeleton.jpg"],
+    gallery: ["int_ph_mammoth_skeleton.jpg", "anat_mammoth_skeleton.jpg", "life_mammoth_skeleton.jpg", "g_mammothskel_1.jpg", "g_mammothskel_2.jpg", "ph_mammoth_skeleton.jpg"],
     interior: { video: "intv_mammoth_skeleton.mp4", img: "int_ph_mammoth_skeleton.jpg", text: "Мамонт в полном сборе занимает комнату целиком; несущую способность пола под его весом дом проверяет заранее, до выбора места установки." },
     hook: "Полный скелет шерстистого мамонта на скрытом стальном каркасе, монтаж прямо на месте.",
     heroKicker: "Мамонтовая фауна, Якутия",

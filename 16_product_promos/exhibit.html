@@ -349,6 +349,15 @@ if(!o){
       '<div class="rv">'+cmpHTML('cmpMain')+'</div>'+
     '</div></div></section>') : '';
 
+  /* Ссылка на соседний экспонат. В каталоге путь записан от корня домена
+     («objects/exhibit.html?id=…»), а эта страница сама лежит в /objects/ —
+     без нормализации ссылка уходила в /objects/objects/ и давала 404. */
+  function sameFolder(h){
+    if(!h) return '';
+    h = h.replace('../16_product_promos/','').replace(/^objects\//,'');
+    return h;
+  }
+
   /* похожие: категория важнее периода, период важнее мира; себя исключаем */
   var similar = (window.RELICTUM_CATALOG||[]).filter(function(c){return c.id!==o.id})
     .map(function(c){return {c:c, s:(c.category===o.category?4:0)+(c.period===o.period?2:0)+(c.world===o.world?1:0)}})
@@ -358,7 +367,7 @@ if(!o){
       '<div class="label rv">Коллекция</div>'+
       '<h2 class="rv">Смотрите похожие</h2>'+
       '<div class="grid-objects">'+
-        similar.map(function(c){return '<a class="obj-card rv" href="'+(c.href||('object.html?id='+encodeURIComponent(c.id)))+'">'+
+        similar.map(function(c){return '<a class="obj-card rv" href="'+sameFolder(c.href)+'">'+
           '<div class="ph"><img src="'+IMG+c.img+'.jpg?v=11" alt="'+c.name+'" loading="lazy" decoding="async"></div>'+
           '<div class="body"><div class="id">'+c.id+', '+c.worldLabel+'</div>'+
           '<h3>'+c.name+'</h3><div class="latin">'+(c.latin||'')+'</div>'+
