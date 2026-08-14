@@ -165,7 +165,11 @@ a{color:inherit;text-decoration:none}
 .gallery .ggrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:680px){.gallery .ggrid{grid-template-columns:1fr}}
 .gallery .gitem{border:1px solid var(--linel);overflow:hidden;background:var(--bone)}
-.gallery .gitem img{width:100%;aspect-ratio:3/2;object-fit:contain;background:var(--ivory,#F4F0E8);cursor:zoom-in;transition:transform .8s var(--ease)}
+/* Плитка принимает пропорции самого снимка: кадр заполняет её целиком —
+   ни светлых полей по краям, ни подрезки. Фиксированный формат не годится:
+   в галерее рядом стоят вертикальный чертёж и широкий интерьерный кадр. */
+.gallery .gitem img{width:100%;height:auto;display:block;background:var(--ivory,#F4F0E8);cursor:zoom-in;transition:transform .8s var(--ease)}
+.gallery .ggrid{align-items:start}
 .gallery .gitem:hover img{transform:scale(1.04)}
 
 /* CTA / сервис */
@@ -328,13 +332,21 @@ if(!o){
       '<div class="sframe rv"><img class="sbg" src="'+IMG+o.img+'.jpg?v=11" alt="" aria-hidden="true" loading="lazy" decoding="async"><video src="'+(P.spin.indexOf('http')===0?P.spin:IMG+P.spin)+'" poster="'+IMG+o.img+'.jpg?v=11" muted loop playsinline autoplay preload="metadata"></video></div>'+
       '<div class="scap rv">Визуализация объекта</div>'+
     '</div></section>'):'';
+  /* Пустую характеристику лучше не показывать вовсе, чем показывать прочерк
+     или «по запросу»: паспорт дома должен состоять из фактов. */
+  function known(v){
+    if(!v) return false;
+    var t=String(v).trim();
+    if(!t || t==='—' || t==='-') return false;
+    return !/^(по запросу|уточняется|уточняются|не установлен[ао]?)$/i.test(t);
+  }
   var passCells=[
-    ['Эпоха', o.period||'—'],
-    ['Возраст', o.age||'—'],
-    ['Происхождение', o.location||o.region||'—']
-  ].concat(o.found?[['Дата находки', o.found]]:[]).concat([
-    ['Размер', o.size||'—']
-  ]).concat(o.mount?[['Оформление', o.mount]]:[]).concat(o.status?[['Наличие', o.status]]:[]).concat((P&&P.profile&&P.profile.facts)?Object.keys(P.profile.facts).filter(function(k){return k!=='Сохранность'&&k!=='Ценность'&&k!=='Редкость'}).map(function(k){return [k,P.profile.facts[k]]}):[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
+    ['Эпоха', o.period],
+    ['Возраст', o.age],
+    ['Происхождение', o.location||o.region],
+    ['Дата находки', o.found],
+    ['Размер', o.size]
+  ].filter(function(c){return known(c[1])}).concat(o.mount?[['Оформление', o.mount]]:[]).concat(o.status?[['Наличие', o.status]]:[]).concat((P&&P.profile&&P.profile.facts)?Object.keys(P.profile.facts).filter(function(k){return k!=='Сохранность'&&k!=='Ценность'&&k!=='Редкость'&&known(P.profile.facts[k])}).map(function(k){return [k,P.profile.facts[k]]}):[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
   var life = P?P.life:null;
   function cmpHTML(pref){
@@ -449,7 +461,7 @@ if(!o){
     '</div>'+
   '</section>'+
 
-  '<section class="pass"><div class="wrap"><div class="grid">'+passCells+'</div></div></section>'+
+  '<section class="pass"><div class="wrap"><div class="grid">'+passCells+'</div></div></section>'+ lifeSec+
 
   ((P&&P.profile&&P.life&&P.profile.paragraphs)?'':
   '<section class="story"><div class="wrap"><div class="in2">'+
@@ -462,7 +474,7 @@ if(!o){
   /* Биография объекта идёт сразу после 360°, а не в самом конце: блок
      с рассказом об экспонате не должен стоять ПОСЛЕ кнопки заказа.
      Так было на девяти статичных страницах-визитках — теперь у всех 38. */
-  spinSec+ '<section id="bio-slot"></section>'+ lifeSec+ aliveSec+ homeSec+ gallerySec+ similarSec+
+  spinSec+ '<section id="bio-slot"></section>'+ aliveSec+ homeSec+ gallerySec+ similarSec+
 
   '<section class="cta"><div class="wrap">'+
     '<div class="label rv" style="color:var(--gold);margin-bottom:14px">'+o.id+'</div>'+
