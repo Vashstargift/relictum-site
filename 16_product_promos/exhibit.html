@@ -481,7 +481,7 @@ if(!o){
   /* Биография объекта идёт сразу после 360°, а не в самом конце: блок
      с рассказом об экспонате не должен стоять ПОСЛЕ кнопки заказа.
      Так было на девяти статичных страницах-визитках — теперь у всех 38. */
-  spinSec+ '<section id="bio-slot"></section>'+ aliveSec+ homeSec+ gallerySec+ similarSec+
+  spinSec+ aliveSec+ homeSec+ gallerySec+ similarSec+
 
   '<section class="cta"><div class="wrap">'+
     '<div class="label rv" style="color:var(--gold);margin-bottom:14px">'+o.id+'</div>'+
@@ -642,7 +642,6 @@ if(!o){
 }
 </script>
 <script src="../shared/nav.js"></script>
-<script src="../shared/biography.js"></script>
 
 
 <script>
