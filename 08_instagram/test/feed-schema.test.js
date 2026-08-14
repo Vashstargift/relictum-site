@@ -326,3 +326,22 @@ test('заголовок карточки ровно предела (60 знак
   }));
   assert.equal(r.ok, true, r.problems.join('; '));
 });
+
+// --- реальная лента месяца (Задача 6) ---
+
+test('реальная лента feed-data.js проходит валидацию', () => {
+  const prev = global.window;
+  global.window = {};
+  try {
+    delete require.cache[require.resolve('../feed-data.js')];
+    require('../feed-data.js');
+    const feed = global.window.RELICTUM_FEED;
+    assert.ok(Array.isArray(feed), 'feed-data.js должен отдать RELICTUM_FEED');
+    assert.equal(feed.length, 15, `ожидали 15 постов, получили ${feed.length}`);
+    const r = validateFeed(s, feed);
+    const all = r.problems.concat(...r.posts.map((p) => p.problems));
+    assert.equal(r.ok, true, all.join('\n'));
+  } finally {
+    global.window = prev;
+  }
+});
