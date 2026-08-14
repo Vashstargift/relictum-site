@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../shared/fonts.css">
+<link rel="stylesheet" href="card.css">
+</head>
+<body>
+  <div class="kicker" id="kicker"></div>
+  <div class="big" id="big"></div>
+  <div class="rule"></div>
+  <div class="sub" id="sub"></div>
+  <div class="foot">RELICTUM</div>
+<!--CARD_DATA-->
+<script>
+  var d = window.CARD_DATA || {};
+  document.getElementById('kicker').textContent = d.name || '';
+  document.getElementById('big').textContent = d.big || '';
+  document.getElementById('sub').textContent = d.sub || '';
+</script>
+</body>
+</html>

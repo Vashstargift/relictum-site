@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../shared/fonts.css">
+<link rel="stylesheet" href="card.css">
+</head>
+<body class="center">
+  <div class="kicker" id="kicker"></div>
+  <div class="big" id="when"></div>
+  <div class="rule" style="width:220px"></div>
+  <div class="sub" id="fact" style="max-width:760px"></div>
+<!--CARD_DATA-->
+<script>
+  var d = window.CARD_DATA || {};
+  document.getElementById('kicker').textContent = d.era || '';
+  document.getElementById('when').textContent = d.when || '';
+  document.getElementById('fact').textContent = d.fact || '';
+</script>
+</body>
+</html>

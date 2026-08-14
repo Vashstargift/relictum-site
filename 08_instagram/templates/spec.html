@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../shared/fonts.css">
+<link rel="stylesheet" href="card.css">
+</head>
+<body>
+  <div class="kicker">Паспорт объекта</div>
+  <div class="title" id="name"></div>
+  <div class="rule"></div>
+  <div class="spec" id="rows"></div>
+  <div class="foot">RELICTUM</div>
+<!--CARD_DATA-->
+<script>
+  var d = window.CARD_DATA || {};
+  document.getElementById('name').textContent = d.name || '';
+  var rows = d.rows || [];
+  document.getElementById('rows').innerHTML = rows
+    .map(function (r) { return '<div><b>' + r[0] + '</b><br>' + r[1] + '</div>'; })
+    .join('');
+</script>
+</body>
+</html>
