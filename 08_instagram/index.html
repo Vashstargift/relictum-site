@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RELICTUM — Instagram: лента, посты, тексты</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/fonts.css">
 <style>
 :root {
   --ivory:#F4F0E8; --bone:#FBF8F1; --black:#111111; --bronze:#B08A55; --deep:#9A6D34;
@@ -218,6 +218,17 @@ table.rub td:first-child { font-family:var(--serif); font-size:17px; white-space
 <footer style="padding:50px 0;text-align:center">
   <img src="../shared/brand/Relictum_lockup_light.png" alt="RELICTUM" style="width:min(360px,60vw);margin:0 auto">
 </footer>
+
+<section class="wrap" id="board">
+  <div class="label">Борд</div>
+  <h2>Лента: сетка, календарь, статусы</h2>
+  <p class="intro">Читается из <code>feed-data.js</code>. Ритм 2+1: в каждой тройке один товарный пост.</p>
+  <div id="board-filters" style="margin:24px 0;display:flex;gap:10px;flex-wrap:wrap"></div>
+  <div id="board-grid" class="grid" style="max-width:420px;margin:24px 0"></div>
+  <table class="rub" id="board-table"></table>
+</section>
+<script src="feed-data.js"></script>
+<script src="board.js"></script>
 
 </body>
 </html>
