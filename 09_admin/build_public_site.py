@@ -354,6 +354,28 @@ def make_tile(src, img_dir, name):
     bg.save(os.path.join(img_dir, 'tile_' + name), quality=88)
 
 
+_MEDIA_STAMP = None
+
+
+def media_stamp():
+    """Версия медиатеки: имена и размеры файлов shared/img.
+
+    Картинки перезаписываются под теми же именами; без версии в адресе браузер
+    неделями показывает из кэша прежний кадр — правка «не доходит».
+    """
+    global _MEDIA_STAMP
+    if _MEDIA_STAMP:
+        return _MEDIA_STAMP
+    import hashlib
+    d = os.path.join(ROOT, 'shared', 'img')      # считаем по исходной медиатеке:
+    h = hashlib.sha1()                            # срез собирается в несколько шагов,
+    for f in sorted(os.listdir(d)):               # и версия должна быть одна на всю сборку
+        h.update(f.encode('utf-8'))
+        h.update(str(os.path.getsize(os.path.join(d, f))).encode('utf-8'))
+    _MEDIA_STAMP = h.hexdigest()[:8]
+    return _MEDIA_STAMP
+
+
 def write_focus_map():
     """Считает вертикальную посадку объекта в каждом кадре галереи.
 
@@ -406,9 +428,15 @@ def write_focus_map():
             continue
         p = (centre - vis / 2) / (1 - vis)
         focus[f] = round(max(0.0, min(1.0, p)) * 100)
+    # Версия медиатеки. Картинки перезаписываются под теми же именами, и без
+    # неё браузер отдаёт из кэша старый кадр — правку не видно неделями.
+    mv = media_stamp()
+
     path = os.path.join(OUT, 'shared', 'focus.js')
     with open(path, 'w', encoding='utf-8') as fh:
         fh.write('window.RELICTUM_FOCUS = ' + json.dumps(focus, ensure_ascii=False) + ';\n')
+        fh.write("window.RELICTUM_MV = '" + mv + "';\n")
+    print(f'   версия медиатеки: {mv}')
     print(f'   focus.js: посадка посчитана для {len(focus)} кадров')
 
 
@@ -438,7 +466,7 @@ def prerender_catalog():
         cards.append(
             '<a class="obj-card" href="' + esc(href) + '">'
             '<div class="ph">' + (('<span class="badge">' + esc(o['status']) + '</span>') if o.get('status') else '')
-            + '<img src="shared/img/' + img + '.jpg?v=11" alt="' + esc(name) + '"' + lazy + ' decoding="async"></div>'
+            + '<img src="shared/img/' + img + '.jpg?v=' + media_stamp() + '" alt="' + esc(name) + '"' + lazy + ' decoding="async"></div>'
             '<div class="body"><div class="id">' + o['id'] + ', ' + esc(world) + '</div>'
             '<h3>' + esc(name) + '</h3><div class="latin">' + esc(latin) + '</div>'
             '<div class="meta">' + meta + '</div>'

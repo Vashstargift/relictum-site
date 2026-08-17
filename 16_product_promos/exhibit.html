@@ -301,6 +301,9 @@ function find(id){
   return null;
 }
 var IMG='../shared/img/';
+/* Медиа перезаписывается под теми же именами, поэтому к каждому адресу
+   дописываем версию медиатеки — иначе браузер показывает старый кадр. */
+function MV(u){ var v=window.RELICTUM_MV; return v? u+(u.indexOf('?')<0?'?v=':'&v=')+v : u; }
 var id=q(); var o=find(id); var P=(window.RELICTUM_PROMO||{})[o&&o.id];
 var app=document.getElementById('app');
 
@@ -338,7 +341,7 @@ if(!o){
   var spinSec=(P&&P.spin)?(
     '<section class="spin"><div class="wrap">'+
       '<div class="label rv" style="color:var(--deep);margin-bottom:18px">Объект в 360°</div>'+
-      '<div class="sframe rv"><img class="sbg" src="'+IMG+o.img+'.jpg?v=11" alt="" aria-hidden="true" loading="lazy" decoding="async"><video src="'+(P.spin.indexOf('http')===0?P.spin:IMG+P.spin)+'" poster="'+IMG+o.img+'.jpg?v=11" muted loop playsinline autoplay preload="metadata"></video></div>'+
+      '<div class="sframe rv"><img class="sbg" src="'+MV(IMG+o.img+'.jpg')+'" alt="" aria-hidden="true" loading="lazy" decoding="async"><video src="'+(P.spin.indexOf('http')===0?P.spin:IMG+P.spin)+'" poster="'+MV(IMG+o.img+'.jpg')+'" muted loop playsinline autoplay preload="metadata"></video></div>'+
       '<div class="scap rv">Визуализация объекта</div>'+
     '</div></section>'):'';
   /* Пустую характеристику лучше не показывать вовсе, чем показывать прочерк
@@ -361,9 +364,9 @@ if(!o){
   function cmpHTML(pref){
     return '<div class="cmp" id="'+pref+'">'+
       '<div class="frame">'+
-        '<img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'">'+
-        (life.diagram?'<img class="l-anat" src="'+IMG+life.diagram+'" alt="'+o.name+' — анатомическая схема">':'')+
-        '<img class="l-life" src="'+IMG+life.img+'" alt="'+o.name+' — '+(life.stateLabel||'реконструкция при жизни')+'">'+
+        '<img src="'+MV(IMG+o.img+'.jpg')+'" alt="'+o.name+'">'+
+        (life.diagram?'<img class="l-anat" src="'+MV(IMG+life.diagram)+'" alt="'+o.name+' — анатомическая схема">':'')+
+        '<img class="l-life" src="'+MV(IMG+life.img)+'" alt="'+o.name+' — '+(life.stateLabel||'реконструкция при жизни')+'">'+
         '<div class="ln"></div>'+
       '</div>'+
       (life.diagram
@@ -407,7 +410,7 @@ if(!o){
       '<h2 class="rv">Смотрите похожие</h2>'+
       '<div class="grid-objects">'+
         similar.map(function(c){return '<a class="obj-card rv" href="'+sameFolder(c.href)+'">'+
-          '<div class="ph"><img src="'+IMG+c.img+'.jpg?v=11" alt="'+c.name+'" loading="lazy" decoding="async"></div>'+
+          '<div class="ph"><img src="'+MV(IMG+c.img+'.jpg')+'" alt="'+c.name+'" loading="lazy" decoding="async"></div>'+
           '<div class="body"><div class="id">'+c.id+', '+c.worldLabel+'</div>'+
           '<h3>'+c.name+'</h3><div class="latin">'+(c.latin||'')+'</div>'+
           '<div class="meta">'+(c.meta||'')+'</div>'+
@@ -417,7 +420,7 @@ if(!o){
 
   var aliveSec = alive ? (
     '<section class="alive" id="aliveSec" data-video="'+(alive.video?IMG+alive.video:'')+'">'+
-      (alive.poster?'<img class="poster" src="'+IMG+alive.poster+'" alt="" loading="lazy" decoding="async">':'')+
+      (alive.poster?'<img class="poster" src="'+MV(IMG+alive.poster)+'" alt="" loading="lazy" decoding="async">':'')+
       '<div class="veil"></div>'+
       '<div class="in rv">'+
         '<div class="label">'+(o.world==='cosmos'?'До Земли':'При жизни')+'</div>'+
@@ -430,7 +433,7 @@ if(!o){
   var homeSec = interior ? (
     '<section class="home"><div class="wrap">'+
       '<div class="label rv" style="margin-bottom:18px">В вашем доме</div>'+
-      '<div class="big rv" id="intBig"'+(interior.video?' data-video="'+IMG+interior.video+'"':'')+'><img src="'+IMG+interior.img+'" alt="'+o.name+' в интерьере" loading="lazy"></div>'+
+      '<div class="big rv" id="intBig"'+(interior.video?' data-video="'+IMG+interior.video+'"':'')+'><img src="'+MV(IMG+interior.img)+'" alt="'+o.name+' в интерьере" loading="lazy"></div>'+
       '<div class="cap rv"><h3>В пространстве владельца</h3><p>'+interior.text+'</p></div>'+
     '</div></section>') : '';
 
@@ -447,7 +450,7 @@ if(!o){
           var fy=(window.RELICTUM_FOCUS||{})[g], st='', src=IMG+g;
           if(fy==='tile') src=IMG+'tile_'+g;
           else if(fy!==undefined) st=' style="object-position:center '+fy+'%"';
-          return '<div class="gitem rv"><img src="'+src+'" data-full="'+IMG+g+'"'+st+' alt="'+o.name+' — ракурс" loading="lazy"></div>'}).join('')+
+          return '<div class="gitem rv"><img src="'+MV(src)+'" data-full="'+MV(IMG+g)+'"'+st+' alt="'+o.name+' — ракурс" loading="lazy"></div>'}).join('')+
       '</div>'+
     '</div></section>') : '';
 
@@ -472,7 +475,7 @@ if(!o){
        это самый крупный элемент страницы, ленивая загрузка его тормозила.
        Ветка heroVideo убрана: поля heroVideo в promo-data больше нет
        (ролики чёрной студии вынесены в отдельную библиотеку 05.08). */
-    '<div class="ph rv"><img src="'+IMG+o.img+'.jpg?v=11" alt="'+o.name+'" fetchpriority="high" decoding="async">'+
+    '<div class="ph rv"><img src="'+MV(IMG+o.img+'.jpg')+'" alt="'+o.name+'" fetchpriority="high" decoding="async">'+
     ((P&&P.profile&&P.profile.facts&&(P.profile.facts['Сохранность']||P.profile.facts['Ценность']||P.profile.facts['Редкость']))?
       '<div class="apprise">'+
         (P.profile.facts['Сохранность']?'<div class="row"><span>Сохранность</span><b>'+P.profile.facts['Сохранность']+'</b></div>':'')+(P.profile.facts['Редкость']?'<div class="row"><span>Редкость</span><b>'+P.profile.facts['Редкость']+'</b></div>':'')+
