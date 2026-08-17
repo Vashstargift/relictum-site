@@ -333,8 +333,21 @@ def make_tile(src, img_dir, name):
     pad = (W - w) // 2
     out = np.zeros((h, W, 3), dtype=np.uint8)
     out[:, pad:pad + w] = a
-    out[:, :pad] = a[:, :1]             # продолжение левой кромки построчно
-    out[:, pad + w:] = a[:, -1:]        # и правой
+
+    edge = np.concatenate([a[:, :8].reshape(-1, 3), a[:, -8:].reshape(-1, 3)])
+    if edge.std() < 26:
+        # Студийный кадр: фон ровный, продолжаем его построчно — на стыке
+        # цвета совпадают пиксель в пиксель, шва нет по построению.
+        out[:, :pad] = a[:, :1]
+        out[:, pad + w:] = a[:, -1:]
+    else:
+        # Сцена «при жизни» или интерьер: построчная растяжка даёт горизонтальные
+        # смазы. Поля заполняем зеркальным продолжением самого кадра.
+        left = a[:, :pad][:, ::-1] if pad <= w else np.tile(a[:, ::-1], (1, pad // w + 1, 1))[:, :pad]
+        right = a[:, -pad:][:, ::-1] if pad <= w else np.tile(a[:, ::-1], (1, pad // w + 1, 1))[:, :pad]
+        out[:, :pad] = left
+        out[:, pad + w:] = right
+
     im = Image.fromarray(out)
     bg = im.filter(ImageFilter.GaussianBlur(18))
     bg.paste(Image.fromarray(a), (pad, 0))   # сам кадр остаётся резким
