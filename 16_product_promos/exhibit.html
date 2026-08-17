@@ -437,6 +437,19 @@ if(!o){
       '<div class="cap rv"><h3>В пространстве владельца</h3><p>'+interior.text+'</p></div>'+
     '</div></section>') : '';
 
+  /* Композиция: вариант оформления экспоната в паре с другим объектом дома
+     (например, хищник и жертва). Данные — P.combo {img, title, text, href, linkLabel}. */
+  var combo = P ? P.combo : null;
+  var comboSec = combo ? (
+    '<section class="home combo"><div class="wrap">'+
+      '<div class="label rv" style="margin-bottom:18px">'+(combo.label||'Композиция')+'</div>'+
+      '<div class="big rv"><img src="'+MV(IMG+combo.img)+'" alt="'+o.name+' — композиция" loading="lazy"></div>'+
+      (combo.img2?'<div class="big rv" style="margin-top:14px"><img src="'+MV(IMG+combo.img2)+'" alt="'+o.name+' — сцена при жизни" loading="lazy"></div>':'')+
+      '<div class="cap rv"><h3>'+combo.title+'</h3><p>'+combo.text+'</p>'+
+      (combo.href?'<p style="margin-top:14px"><a class="btn" href="'+combo.href+'">'+(combo.linkLabel||'Смотреть второй экспонат →')+'</a></p>':'')+
+      '</div>'+
+    '</div></section>') : '';
+
   var gallerySec = (gallery&&gallery.length) ? (
     '<section class="gallery"><div class="wrap">'+
       '<div class="label rv" style="margin-bottom:16px">Галерея</div>'+
@@ -497,7 +510,7 @@ if(!o){
   /* Биография объекта идёт сразу после 360°, а не в самом конце: блок
      с рассказом об экспонате не должен стоять ПОСЛЕ кнопки заказа.
      Так было на девяти статичных страницах-визитках — теперь у всех 38. */
-  spinSec+ aliveSec+ homeSec+ gallerySec+ similarSec+
+  spinSec+ aliveSec+ homeSec+ comboSec+ gallerySec+ similarSec+
 
   '<section class="cta"><div class="wrap">'+
     '<div class="label rv" style="color:var(--gold);margin-bottom:14px">'+o.id+'</div>'+
