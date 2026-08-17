@@ -252,6 +252,7 @@ def build():
     open(shop, 'w', encoding='utf-8').write(t)
 
     prerender_catalog()
+    write_focus_map()
     dropped = prune_media()
     stamp_media(OUT)   # ?v=<хэш файла> у картинок и видео — иначе кэш держит старое
     write_extras(pages)
@@ -314,6 +315,131 @@ def stamp_media(out_dir):
     return touched
 
 
+def make_tile(src, img_dir, name):
+    """Собирает горизонтальную плитку 3:2 из вертикального кадра.
+
+    Кадр ставится целиком по центру, а поля по бокам заполняются продолжением
+    его же фона: каждая строка полей красится цветом крайнего пикселя этой
+    строки и слегка размывается. Стыка нет по построению — на границе цвета
+    совпадают пиксель в пиксель, а дальше фон плавно уходит в поле.
+    """
+    import numpy as np
+    from PIL import Image, ImageFilter
+    a = np.asarray(src.convert('RGB')).astype(np.uint8)
+    h, w = a.shape[:2]
+    W = int(round(h * 3 / 2))
+    if W <= w:
+        return
+    pad = (W - w) // 2
+    out = np.zeros((h, W, 3), dtype=np.uint8)
+    out[:, pad:pad + w] = a
+
+    edge = np.concatenate([a[:, :8].reshape(-1, 3), a[:, -8:].reshape(-1, 3)])
+    if edge.std() < 26:
+        # Студийный кадр: фон ровный, продолжаем его построчно — на стыке
+        # цвета совпадают пиксель в пиксель, шва нет по построению.
+        out[:, :pad] = a[:, :1]
+        out[:, pad + w:] = a[:, -1:]
+    else:
+        # Сцена «при жизни» или интерьер: построчная растяжка даёт горизонтальные
+        # смазы. Поля заполняем зеркальным продолжением самого кадра.
+        left = a[:, :pad][:, ::-1] if pad <= w else np.tile(a[:, ::-1], (1, pad // w + 1, 1))[:, :pad]
+        right = a[:, -pad:][:, ::-1] if pad <= w else np.tile(a[:, ::-1], (1, pad // w + 1, 1))[:, :pad]
+        out[:, :pad] = left
+        out[:, pad + w:] = right
+
+    im = Image.fromarray(out)
+    bg = im.filter(ImageFilter.GaussianBlur(18))
+    bg.paste(Image.fromarray(a), (pad, 0))   # сам кадр остаётся резким
+    bg.save(os.path.join(img_dir, 'tile_' + name), quality=88)
+
+
+_MEDIA_STAMP = None
+
+
+def media_stamp():
+    """Версия медиатеки: имена и размеры файлов shared/img.
+
+    Картинки перезаписываются под теми же именами; без версии в адресе браузер
+    неделями показывает из кэша прежний кадр — правка «не доходит».
+    """
+    global _MEDIA_STAMP
+    if _MEDIA_STAMP:
+        return _MEDIA_STAMP
+    import hashlib
+    d = os.path.join(ROOT, 'shared', 'img')      # считаем по исходной медиатеке:
+    h = hashlib.sha1()                            # срез собирается в несколько шагов,
+    for f in sorted(os.listdir(d)):               # и версия должна быть одна на всю сборку
+        h.update(f.encode('utf-8'))
+        h.update(str(os.path.getsize(os.path.join(d, f))).encode('utf-8'))
+    _MEDIA_STAMP = h.hexdigest()[:8]
+    return _MEDIA_STAMP
+
+
+def write_focus_map():
+    """Считает вертикальную посадку объекта в каждом кадре галереи.
+
+    Плитка галереи горизонтальная (3:2), а каноны, чертежи и реконструкции
+    вертикальные (4:5) — часть высоты неизбежно уходит под обрез. Обрезка по
+    центру холста режет то постамент, то голову: объект сидит в кадре по-разному.
+    Поэтому считаем, где объект реально находится, и центрируем в окне ЕГО, а не
+    холст. Результат — карта {файл: object-position Y в процентах} в focus.js.
+    """
+    import json
+    try:
+        import numpy as np
+        from PIL import Image
+    except ImportError:
+        print('   focus.js пропущен: нет numpy/Pillow')
+        return
+    img_dir = os.path.join(OUT, 'shared', 'img')
+    focus = {}
+    for f in sorted(os.listdir(img_dir)):
+        if not f.endswith('.jpg') or not f.startswith(('ph_', 'anat_', 'life_', 'situ_')):
+            continue
+        try:
+            src = Image.open(os.path.join(img_dir, f))
+            im = src.convert('L')
+        except Exception:
+            continue
+        w, h = im.size
+        if w >= h:                      # горизонтальные кадры не обрезаются
+            continue
+        a = np.asarray(im).astype(float)
+        border = np.concatenate([a[:8].ravel(), a[-8:].ravel()])
+        bg = np.median(border)
+        if border.std() > 34:           # кадр без ровного фона (сцена «при жизни»,
+            continue                    # интерьер) — обрезать по центру безопасно
+        rows = (np.abs(a - bg) > 26).mean(axis=1)
+        ys = np.flatnonzero(rows > 0.02)
+        if len(ys) == 0:
+            continue
+        top, bot = ys[0] / h, ys[-1] / h
+        centre = (top + bot) / 2
+        vis = (2 / 3) * (w / h)         # какая доля высоты видна в плитке 3:2
+        if vis >= 1:
+            continue
+        if bot - top > vis - 0.02:
+            # Объект выше видимого окна (медведь, стоящий во весь кадр): любая
+            # обрезка режет либо голову, либо лапы. Вписываем целиком — фон
+            # студийного кадра совпадает с цветом плитки, стыка не видно.
+            make_tile(src, img_dir, f)
+            focus[f] = 'tile'           # плитка собрана отдельно, кадр в ней целиком
+            continue
+        p = (centre - vis / 2) / (1 - vis)
+        focus[f] = round(max(0.0, min(1.0, p)) * 100)
+    # Версия медиатеки. Картинки перезаписываются под теми же именами, и без
+    # неё браузер отдаёт из кэша старый кадр — правку не видно неделями.
+    mv = media_stamp()
+
+    path = os.path.join(OUT, 'shared', 'focus.js')
+    with open(path, 'w', encoding='utf-8') as fh:
+        fh.write('window.RELICTUM_FOCUS = ' + json.dumps(focus, ensure_ascii=False) + ';\n')
+        fh.write("window.RELICTUM_MV = '" + mv + "';\n")
+    print(f'   версия медиатеки: {mv}')
+    print(f'   focus.js: посадка посчитана для {len(focus)} кадров')
+
+
 def prerender_catalog():
     """Впечатывает карточки каталога в HTML при сборке.
 
@@ -340,7 +466,7 @@ def prerender_catalog():
         cards.append(
             '<a class="obj-card" href="' + esc(href) + '">'
             '<div class="ph">' + (('<span class="badge">' + esc(o['status']) + '</span>') if o.get('status') else '')
-            + '<img src="shared/img/' + img + '.jpg?v=11" alt="' + esc(name) + '"' + lazy + ' decoding="async"></div>'
+            + '<img src="shared/img/' + img + '.jpg?v=' + media_stamp() + '" alt="' + esc(name) + '"' + lazy + ' decoding="async"></div>'
             '<div class="body"><div class="id">' + o['id'] + ', ' + esc(world) + '</div>'
             '<h3>' + esc(name) + '</h3><div class="latin">' + esc(latin) + '</div>'
             '<div class="meta">' + meta + '</div>'
@@ -372,6 +498,11 @@ def prune_media():
             if not f.lower().endswith(MEDIA_EXT):
                 continue
             stem = f.rsplit('.', 1)[0]
+            # Плитки галереи (tile_<кадр>.jpg) собирает сборщик, а имя им шаблон
+            # склеивает уже в браузере — в тексте страниц его нет. Держим плитку,
+            # пока жив её исходный кадр.
+            if f.startswith('tile_'):
+                stem = f[len('tile_'):].rsplit('.', 1)[0]
             # имя целиком или без расширения (в данных картинки задаются как "ph_slug").
             # Хвост проверяем обязательно: голое `stem in blob` считает «ph_cave_lion»
             # использованным из-за «ph_cave_lion2.jpg» — сироты так оставались в срезе.

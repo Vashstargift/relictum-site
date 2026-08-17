@@ -143,9 +143,16 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-
 @media (max-width: 760px) {
   :root { --nav-h: 72px; --head-top: 116px; }
   .hero { align-items: end; }
-  .hero-media::after {
-    background: linear-gradient(180deg, rgba(244,240,232,0) 0%, rgba(244,240,232,.35) 34%, rgba(244,240,232,.82) 60%, rgba(244,240,232,.98) 80%);
+  /* На узком экране текст стоит выше по кадру, чем на десктопе, и светло-серая
+     подводка тонула в фотографии. Вуаль набирает плотность раньше, а сама
+     подводка на мобильном темнее. */
+  /* Специфичность обязательна: базовое правило .hero-media::after объявлено
+     НИЖЕ этого медиазапроса, и при равном весе побеждало оно — на телефоне
+     мобильная вуаль не применялась вовсе, текст лежал прямо на фотографии. */
+  .hero .hero-media::after {
+    background: linear-gradient(180deg, rgba(244,240,232,0) 0%, rgba(244,240,232,.55) 18%, rgba(244,240,232,.92) 38%, rgba(244,240,232,.99) 58%);
   }
+  .hero .hero-content p.lead { color: var(--deep); }
   .hero-content { padding: 0 var(--gutter) 56px; margin-left: 0; max-width: 100%; }
   .hero h1 { font-size: clamp(40px, 13vw, 60px); margin: 18px 0 16px; }
   .hero p.lead { margin-bottom: 30px; }
