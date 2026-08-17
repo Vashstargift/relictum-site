@@ -2255,5 +2255,27 @@ window.RELICTUM_CATALOG = [
     "mount": "Чернёная сталь",
     "description": "Фрагмент древнего дерева, сохранившийся в камне. При фоссилизации органическое вещество древесины постепенно замещалось минеральными соединениями, и первоначальная структура осталась: текстура волокон, годичные кольца, особенности строения.",
     "href": "../16_product_promos/exhibit.html?id=0290-petrified-wood"
+  },
+  {
+    "id": "R–0298",
+    "world": "vita",
+    "worldLabel": "Жизнь",
+    "category": "Аммониты",
+    "period": "Мел",
+    "era": "Мезозой",
+    "region": "Россия",
+    "latin": "Speetoniceras versicolor",
+    "name": "Аммонит Speetoniceras",
+    "meta": "Поволжье, ранний мел",
+    "price": "200 000 ₽",
+    "img": "ph_ammo_speet_small",
+    "priceValue": 200000,
+    "slug": "0298-speetoniceras-small",
+    "age": "Ранний мел",
+    "location": "Поволжье, Россия",
+    "size": "20 см",
+    "mount": "Чернёная сталь",
+    "description": "Раковина Speetoniceras около двадцати сантиметров в поперечнике: крупные регулярные рёбра идут через весь оборот. Часть внешнего оборота утрачена — видно устройство камер.",
+    "href": "../16_product_promos/exhibit.html?id=0298-speetoniceras-small"
   }
 ];
