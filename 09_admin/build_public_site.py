@@ -315,6 +315,32 @@ def stamp_media(out_dir):
     return touched
 
 
+def make_tile(src, img_dir, name):
+    """Собирает горизонтальную плитку 3:2 из вертикального кадра.
+
+    Кадр ставится целиком по центру, а поля по бокам заполняются продолжением
+    его же фона: каждая строка полей красится цветом крайнего пикселя этой
+    строки и слегка размывается. Стыка нет по построению — на границе цвета
+    совпадают пиксель в пиксель, а дальше фон плавно уходит в поле.
+    """
+    import numpy as np
+    from PIL import Image, ImageFilter
+    a = np.asarray(src.convert('RGB')).astype(np.uint8)
+    h, w = a.shape[:2]
+    W = int(round(h * 3 / 2))
+    if W <= w:
+        return
+    pad = (W - w) // 2
+    out = np.zeros((h, W, 3), dtype=np.uint8)
+    out[:, pad:pad + w] = a
+    out[:, :pad] = a[:, :1]             # продолжение левой кромки построчно
+    out[:, pad + w:] = a[:, -1:]        # и правой
+    im = Image.fromarray(out)
+    bg = im.filter(ImageFilter.GaussianBlur(18))
+    bg.paste(Image.fromarray(a), (pad, 0))   # сам кадр остаётся резким
+    bg.save(os.path.join(img_dir, 'tile_' + name), quality=88)
+
+
 def write_focus_map():
     """Считает вертикальную посадку объекта в каждом кадре галереи.
 
@@ -355,17 +381,15 @@ def write_focus_map():
             continue
         top, bot = ys[0] / h, ys[-1] / h
         centre = (top + bot) / 2
-        vis = (2 / 3) / (w / h)         # какая доля высоты видна в плитке 3:2
+        vis = (2 / 3) * (w / h)         # какая доля высоты видна в плитке 3:2
         if vis >= 1:
             continue
         if bot - top > vis - 0.02:
             # Объект выше видимого окна (медведь, стоящий во весь кадр): любая
             # обрезка режет либо голову, либо лапы. Вписываем целиком — фон
             # студийного кадра совпадает с цветом плитки, стыка не видно.
-            rgb = np.asarray(src.convert('RGB'))
-            edge = np.concatenate([rgb[:8].reshape(-1, 3), rgb[-8:].reshape(-1, 3)])
-            tone = ''.join('%02x' % int(v) for v in np.median(edge, axis=0))
-            focus[f] = 'fit:#' + tone   # плитке зададим фон самого кадра — без шва
+            make_tile(src, img_dir, f)
+            focus[f] = 'tile'           # плитка собрана отдельно, кадр в ней целиком
             continue
         p = (centre - vis / 2) / (1 - vis)
         focus[f] = round(max(0.0, min(1.0, p)) * 100)
@@ -433,6 +457,11 @@ def prune_media():
             if not f.lower().endswith(MEDIA_EXT):
                 continue
             stem = f.rsplit('.', 1)[0]
+            # Плитки галереи (tile_<кадр>.jpg) собирает сборщик, а имя им шаблон
+            # склеивает уже в браузере — в тексте страниц его нет. Держим плитку,
+            # пока жив её исходный кадр.
+            if f.startswith('tile_'):
+                stem = f[len('tile_'):].rsplit('.', 1)[0]
             # имя целиком или без расширения (в данных картинки задаются как "ph_slug").
             # Хвост проверяем обязательно: голое `stem in blob` считает «ph_cave_lion»
             # использованным из-за «ph_cave_lion2.jpg» — сироты так оставались в срезе.
