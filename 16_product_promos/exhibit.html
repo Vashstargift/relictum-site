@@ -355,7 +355,7 @@ if(!o){
     ['Происхождение', o.location||o.region],
     ['Дата находки', o.found],
     ['Размер', o.size]
-  ].filter(function(c){return known(c[1])}).concat(o.mount?[['Оформление', o.mount]]:[]).concat(o.status?[['Наличие', o.status]]:[]).concat((P&&P.profile&&P.profile.facts)?Object.keys(P.profile.facts).filter(function(k){return k!=='Сохранность'&&k!=='Ценность'&&k!=='Редкость'&&known(P.profile.facts[k])}).map(function(k){return [k,P.profile.facts[k]]}):[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
+  ].filter(function(c){return known(c[1])}).concat(o.mount?[['Оформление', o.mount]]:[]).concat(o.qty?[['В наличии', o.qty]]:[]).concat(o.status?[['Наличие', o.status]]:[]).concat((P&&P.profile&&P.profile.facts)?Object.keys(P.profile.facts).filter(function(k){return k!=='Сохранность'&&k!=='Ценность'&&k!=='Редкость'&&known(P.profile.facts[k])}).map(function(k){return [k,P.profile.facts[k]]}):[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
   var life = P?P.life:null;
   function cmpHTML(pref){
