@@ -252,6 +252,7 @@ def build():
     open(shop, 'w', encoding='utf-8').write(t)
 
     prerender_catalog()
+    write_focus_map()
     dropped = prune_media()
     stamp_media(OUT)   # ?v=<хэш файла> у картинок и видео — иначе кэш держит старое
     write_extras(pages)
@@ -312,6 +313,66 @@ def stamp_media(out_dir):
                 open(page, 'w', encoding='utf-8').write(new)
                 touched += 1
     return touched
+
+
+def write_focus_map():
+    """Считает вертикальную посадку объекта в каждом кадре галереи.
+
+    Плитка галереи горизонтальная (3:2), а каноны, чертежи и реконструкции
+    вертикальные (4:5) — часть высоты неизбежно уходит под обрез. Обрезка по
+    центру холста режет то постамент, то голову: объект сидит в кадре по-разному.
+    Поэтому считаем, где объект реально находится, и центрируем в окне ЕГО, а не
+    холст. Результат — карта {файл: object-position Y в процентах} в focus.js.
+    """
+    import json
+    try:
+        import numpy as np
+        from PIL import Image
+    except ImportError:
+        print('   focus.js пропущен: нет numpy/Pillow')
+        return
+    img_dir = os.path.join(OUT, 'shared', 'img')
+    focus = {}
+    for f in sorted(os.listdir(img_dir)):
+        if not f.endswith('.jpg') or not f.startswith(('ph_', 'anat_', 'life_', 'situ_')):
+            continue
+        try:
+            src = Image.open(os.path.join(img_dir, f))
+            im = src.convert('L')
+        except Exception:
+            continue
+        w, h = im.size
+        if w >= h:                      # горизонтальные кадры не обрезаются
+            continue
+        a = np.asarray(im).astype(float)
+        border = np.concatenate([a[:8].ravel(), a[-8:].ravel()])
+        bg = np.median(border)
+        if border.std() > 34:           # кадр без ровного фона (сцена «при жизни»,
+            continue                    # интерьер) — обрезать по центру безопасно
+        rows = (np.abs(a - bg) > 26).mean(axis=1)
+        ys = np.flatnonzero(rows > 0.02)
+        if len(ys) == 0:
+            continue
+        top, bot = ys[0] / h, ys[-1] / h
+        centre = (top + bot) / 2
+        vis = (2 / 3) / (w / h)         # какая доля высоты видна в плитке 3:2
+        if vis >= 1:
+            continue
+        if bot - top > vis - 0.02:
+            # Объект выше видимого окна (медведь, стоящий во весь кадр): любая
+            # обрезка режет либо голову, либо лапы. Вписываем целиком — фон
+            # студийного кадра совпадает с цветом плитки, стыка не видно.
+            rgb = np.asarray(src.convert('RGB'))
+            edge = np.concatenate([rgb[:8].reshape(-1, 3), rgb[-8:].reshape(-1, 3)])
+            tone = ''.join('%02x' % int(v) for v in np.median(edge, axis=0))
+            focus[f] = 'fit:#' + tone   # плитке зададим фон самого кадра — без шва
+            continue
+        p = (centre - vis / 2) / (1 - vis)
+        focus[f] = round(max(0.0, min(1.0, p)) * 100)
+    path = os.path.join(OUT, 'shared', 'focus.js')
+    with open(path, 'w', encoding='utf-8') as fh:
+        fh.write('window.RELICTUM_FOCUS = ' + json.dumps(focus, ensure_ascii=False) + ';\n')
+    print(f'   focus.js: посадка посчитана для {len(focus)} кадров')
 
 
 def prerender_catalog():

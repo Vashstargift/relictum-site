@@ -175,6 +175,7 @@ a{color:inherit;text-decoration:none}
    заполняет плитку без светлых полей. Подрезка не теряет ничего — по клику
    снимок открывается целиком в полноэкранном просмотре. */
 .gallery .gitem img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;background:var(--ivory,#F4F0E8);cursor:zoom-in;transition:transform .8s var(--ease)}
+/* посадка задаётся индивидуально из focus.js — см. сборщик */
 .gallery .gitem:hover img{transform:scale(1.04)}
 
 /* CTA / сервис */
@@ -289,6 +290,7 @@ a{color:inherit;text-decoration:none}
 </footer>
 
 <script src="../shared/catalog.js"></script>
+<script src="../shared/focus.js"></script>
 <script src="promo-data.js"></script>
 <script src="../shared/shop.js"></script>
 <script>
@@ -434,7 +436,15 @@ if(!o){
     '<section class="gallery"><div class="wrap">'+
       '<div class="label rv" style="margin-bottom:16px">Галерея</div>'+
       '<div class="ggrid">'+
-        gallery.map(function(g){return '<div class="gitem rv"><img src="'+IMG+g+'" alt="'+o.name+' — ракурс" loading="lazy"></div>'}).join('')+
+        gallery.map(function(g){
+          /* Каноны, чертежи и реконструкции вертикальные (4:5), плитка горизонтальная (3:2):
+             при обрезке по центру у объектов с низкой посадкой срезался постамент.
+             Кадрирование смещено вниз — сверху у таких кадров пустой фон. */
+          var fy=(window.RELICTUM_FOCUS||{})[g], st='';
+          if(typeof fy==='string' && fy.indexOf('fit')===0)
+            st=' style="object-fit:contain;background:'+(fy.split(':')[1]||'#F4F0E8')+'"';
+          else if(fy!==undefined) st=' style="object-position:center '+fy+'%"';
+          return '<div class="gitem rv"><img src="'+IMG+g+'"'+st+' alt="'+o.name+' — ракурс" loading="lazy"></div>'}).join('')+
       '</div>'+
     '</div></section>') : '';
 
