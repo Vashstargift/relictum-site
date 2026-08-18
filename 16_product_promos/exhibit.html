@@ -162,6 +162,7 @@ a{color:inherit;text-decoration:none}
 
 /* дома */
 .home{padding:clamp(56px,8vw,110px) 0}
+.home.combo{padding-top:0}
 .home .big{border:1px solid var(--linel);overflow:hidden;margin-bottom:26px;position:relative}
 .home .big img,.home .big video{width:100%;aspect-ratio:16/8.4;object-fit:cover;display:block}
 .home .big video{position:absolute;inset:0;height:100%;opacity:0;transition:opacity .8s}
@@ -445,12 +446,22 @@ if(!o){
   /* Композиция: вариант оформления экспоната в паре с другим объектом дома
      (например, хищник и жертва). Данные — P.combo {img, title, text, href, linkLabel}. */
   var combo = P ? P.combo : null;
+  /* Композиция — слайдер трёх состояний (студия → при жизни → в интерьере)
+     в горизонтальном кадре; механика та же, что у «Экспонат — Скелет — При жизни». */
   var comboSec = combo ? (
     '<section class="home combo"><div class="wrap">'+
       '<div class="label rv" style="margin-bottom:18px">'+(combo.label||'Композиция')+'</div>'+
-      '<div class="big rv"><img src="'+MV(IMG+combo.img)+'" alt="'+o.name+' — композиция" loading="lazy"></div>'+
-      (combo.img2?'<div class="big rv" style="margin-top:14px"><img src="'+MV(IMG+combo.img2)+'" alt="'+o.name+' — сцена при жизни" loading="lazy"></div>':'')+
-      '<div class="cap rv"><h3>'+combo.title+'</h3><p>'+combo.text+'</p>'+
+      '<div class="cmp rv" id="cmpCombo" style="max-width:920px;margin:0 auto">'+
+        '<div class="frame" style="aspect-ratio:3/2;cursor:default">'+
+          '<img src="'+MV(IMG+combo.img)+'" alt="'+o.name+' — композиция">'+
+          (combo.img2?'<img class="l-anat" src="'+MV(IMG+combo.img2)+'" alt="'+o.name+' — сцена при жизни">':'')+
+          (combo.img3?'<img class="l-life" src="'+MV(IMG+combo.img3)+'" alt="'+o.name+' — композиция в интерьере">':'')+
+          '<div class="ln"></div>'+
+        '</div>'+
+        '<div class="ctrl"><input type="range" min="0" max="'+(combo.img3?200:100)+'" value="0" step="0.5" aria-label="Композиция — при жизни — в интерьере">'+
+          '<div class="marks"><b>Композиция</b><span>При жизни</span>'+(combo.img3?'<span>В интерьере</span>':'')+'</div></div>'+
+      '</div>'+
+      '<div class="cap rv" style="margin-top:24px"><h3>'+combo.title+'</h3><p>'+combo.text+'</p>'+
       (combo.href?'<p style="margin-top:14px"><a class="btn" href="'+combo.href+'">'+(combo.linkLabel||'Смотреть второй экспонат →')+'</a></p>':'')+
       '</div>'+
     '</div></section>') : '';
@@ -562,6 +573,7 @@ if(!o){
     r.addEventListener('input',upd); upd();
     return upd;
   }
+  if(combo && combo.img2){ initCmp(document.getElementById('cmpCombo')); }
   if(life){
     var mainCmp=document.getElementById('cmpMain');
     initCmp(mainCmp);
