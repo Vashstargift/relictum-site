@@ -2080,7 +2080,7 @@ window.RELICTUM_CATALOG = [
     "slug": "0297-spinosaurus-tooth",
     "age": "≈ 112–93 млн лет, меловой период",
     "location": "Марокко",
-    "size": "В раме",
+    "size": "По запросу",
     "mount": "Глубокая рама",
     "description": "Зуб спинозавра, оформленный в глубокую раму: длинный конус эмали с тонкими вертикальными рёбрами — форма, приспособленная удерживать рыбу.",
     "href": "../16_product_promos/exhibit.html?id=0297-spinosaurus-tooth",
