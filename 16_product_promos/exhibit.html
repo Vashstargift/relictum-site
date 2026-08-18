@@ -37,7 +37,10 @@ a{color:inherit;text-decoration:none}
 /* Цена и действие: столбиком, кнопка под ценой. В строку рядом они спорили
    друг с другом по весу — цена набрана антиквой, кнопка капителью. */
 .hero .txt .buy{margin:30px 0 8px;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
-.hero .txt .buy-price .avail{font-family:var(--sans,Inter);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--deep);vertical-align:middle}
+.hero .txt .buy .buy-row{display:flex;gap:12px;flex-wrap:wrap;align-items:stretch}
+/* Статус набран тем же кеглем и ритмом, что и кнопка: 11.5px/.22em/капитель,
+   те же поля — раньше «Под заказ» выглядел чужим рядом с ценой и кнопкой. */
+.hero .txt .buy .status{display:inline-flex;align-items:center;padding:14px 30px;border:1px solid var(--linel);color:var(--deep);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;line-height:1.1;white-space:nowrap}
 .hero .txt .buy-price{font-family:var(--serif);font-size:clamp(23px,2.6vw,32px);line-height:1;color:var(--black)}
 /* Кнопка контурная, а не сплошная: на светлом первом экране чёрная плашка
    перебивала цену, набранную антиквой. Заливка приходит при наведении. */
@@ -55,6 +58,8 @@ a{color:inherit;text-decoration:none}
   .hero .ph{order:2;margin-top:24px}
   .hero .txt .buy{order:3;margin:26px 0 0;gap:14px;align-items:center;text-align:center;width:100%}
   .hero .txt .buy .btn{width:100%;max-width:340px}
+  .hero .txt .buy .buy-row{width:100%;justify-content:center}
+  .hero .txt .buy .status{flex:0 1 auto}
 }
 .hero .txt .kick{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--deep);margin-bottom:16px}
 .hero h1{font-size:clamp(40px,6.6vw,72px);margin-bottom:8px}
@@ -477,10 +482,13 @@ if(!o){
       /* Цена и действие сразу у фото: раньше их можно было найти только
          прокрутив страницу до самого низа. Нижний блок покупки остаётся. */
       '<div class="buy rv">'+
-        '<div class="buy-price">'+(o.price||'Цена по запросу')+(o.status?' <span class="avail">· '+o.status+'</span>':'')+'</div>'+
-        (o.priceValue
-          ? '<button type="button" class="btn" id="heroCart">Добавить в корзину</button>'
-          : '<a class="btn" id="heroAsk" href="mailto:hello@relictum.gallery?subject='+encodeURIComponent('Запрос: '+o.name+' ('+o.id+')')+'">Запросить объект</a>')+
+        '<div class="buy-price">'+(o.price||'Цена по запросу')+'</div>'+
+        '<div class="buy-row">'+
+          (o.status?'<span class="status">'+o.status+'</span>':'')+
+          (o.priceValue
+            ? '<button type="button" class="btn" id="heroCart">Добавить в корзину</button>'
+            : '<a class="btn" id="heroAsk" href="mailto:hello@relictum.gallery?subject='+encodeURIComponent('Запрос: '+o.name+' ('+o.id+')')+'">Запросить объект</a>')+
+        '</div>'+
       '</div>'+
       '<div class="rv"><span class="scrollcue">Листайте</span></div>'+
     '</div>'+
