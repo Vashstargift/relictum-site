@@ -1196,6 +1196,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0245": {
+    "interior": {"img": "int_ph_eurypterid.jpg", "text": "Плита с ракоскорпионом на двух штырях — графика палеозоя над ореховой консолью."},
     life: {
       img: "life_eurypterid.jpg",
       diagram: "anat_eurypterid.jpg",
@@ -1221,6 +1222,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0246": {
+    "interior": {"img": "int_ph_celestine.jpg", "text": "Небесно-голубые кристаллы целестина живут при дневном свете: место образца — у окна, на дереве или камне."},
     life: {
       img: "situ_celestine.jpg",
       label: "Происхождение",
@@ -1247,6 +1249,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0247": {
+    "interior": {"img": "int_ph_pseudomalachite.jpg", "text": "Глубокая зелень псевдомалахита держит на себе взгляд в спокойной комнате — ему достаточно светлого постамента."},
     life: {
       img: "situ_pseudomalachite.jpg",
       label: "Происхождение",
@@ -1273,6 +1276,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0248": {
+    "interior": {"img": "int_ph_pyrite.jpg", "text": "Зеркальные кубы пирита собирают свет окна: тёмная каменная консоль подчёркивает металл."},
     life: {
       img: "situ_pyrite.jpg",
       label: "Происхождение",
@@ -1299,6 +1303,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0249": {
+    "interior": {"img": "int_ph_amethyst_druse45.jpg", "text": "Друза в рост книги стоит на низком постаменте у кресла — вечером кристаллы глубже всего."},
     life: {
       img: "situ_amethyst_druse45.jpg",
       label: "Происхождение",
@@ -1325,6 +1330,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0250": {
+    "interior": {"img": "int_ph_fluorite_pyrite.jpg", "text": "Плита флюорита с пиритом лежит на консоли как ландшафт в миниатюре."},
     life: {
       img: "situ_fluorite_pyrite.jpg",
       label: "Происхождение",
@@ -1351,6 +1357,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0251": {
+    "interior": {"img": "int_ph_nemiana.jpg", "text": "Плита с медузоидами тиха и старше всех в доме — полка с книгами ей впору."},
     life: {
       img: "life_nemiana.jpg",
       diagram: "anat_nemiana.jpg",
@@ -1376,6 +1383,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0252": {
+    "interior": {"img": "int_ph_amethyst_geode123.jpg", "text": "Жеода в человеческий рост встречает у прохода — ей нужен пол, а не постамент."},
     life: {
       img: "situ_amethyst_geode123.jpg",
       label: "Происхождение",
@@ -1402,6 +1410,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0253": {
+    "interior": {"img": "int_ph_cavebear_paws.jpg", "text": "Пара лап на общей подставке — камерная вертикаль для консоли или каминной полки."},
     life: {
       img: "life_cavebear_paws.jpg",
       diagram: "anat_cavebear_paws.jpg",
@@ -1426,6 +1435,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0254": {
+    "interior": {"img": "int_ph_amethyst_druse35.jpg", "text": "Малая друза дружит с книжной полкой: аметист любит боковой свет."},
     life: {
       img: "situ_amethyst_druse35.jpg",
       label: "Происхождение",
@@ -1452,6 +1462,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0255": {
+    "interior": {"img": "int_ph_uvarovite.jpg", "text": "Изумрудная корка уваровита на тёмном камне — самое насыщенное пятно цвета в комнате."},
     life: {
       img: "situ_uvarovite.jpg",
       label: "Происхождение",
@@ -1478,6 +1489,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0256": {
+    "interior": {"img": "int_ph_stibnite.jpg", "text": "Стальные клинки антимонита читаются как скульптура — светлый постамент и воздух вокруг."},
     life: {
       img: "situ_stibnite.jpg",
       label: "Происхождение",
@@ -1504,6 +1516,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0257": {
+    "interior": {"img": "int_ph_amethyst_druse51.jpg", "text": "Крупная друза на низком постаменте задаёт центр тяжести всей стене."},
     life: {
       img: "situ_amethyst_druse51.jpg",
       label: "Происхождение",
@@ -1530,6 +1543,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0258": {
+    "interior": {"img": "int_ph_rockcrystal47.jpg", "text": "Горный хрусталь у окна ловит дневной свет всеми гранями."},
     life: {
       img: "situ_rockcrystal47.jpg",
       label: "Происхождение",
@@ -1556,6 +1570,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0259": {
+    "interior": {"img": "int_ph_sphalerite.jpg", "text": "Сфалерит с кальцитом на тёмной консоли: блеск металла и белизна кальцита в одном образце."},
     life: {
       img: "situ_sphalerite.jpg",
       label: "Происхождение",
@@ -1582,6 +1597,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0260": {
+    "interior": {"img": "int_ph_malachite_congo.jpg", "text": "Полосатый малахит — готовая картина; консоль орехового дерева тёплому зелёному к лицу."},
     life: {
       img: "situ_malachite_congo.jpg",
       label: "Происхождение",
@@ -1608,6 +1624,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0261": {
+    "interior": {"img": "int_ph_rockcrystal50.jpg", "text": "Большой куст хрусталя стоит на полу на низком постаменте — как ледяная скульптура."},
     life: {
       img: "situ_rockcrystal50.jpg",
       label: "Происхождение",
@@ -1634,6 +1651,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0262": {
+    "interior": {"img": "int_ph_septaria.jpg", "text": "Септария-диск у стены работает как рельеф: сетка прожилок читается с расстояния."},
     life: {
       img: "situ_septaria.jpg",
       label: "Происхождение",
