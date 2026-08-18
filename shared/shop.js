@@ -136,7 +136,10 @@
 (function(){
   /* .gallery .gitem img намеренно НЕ здесь: у страницы экспоната свой лайтбокс
      (открывает полный кадр по data-full); двойной попап перекрывал крестики. */
-  var SEL = '.object-gallery .main img, .object-gallery .thumbs img, .hero .ph img, .ex-gallery img, .gal img, .obj-card .ph img';
+  /* .media img — контентные фото витрины (экспедиции, дом, интерьеры, журнал):
+     любые из них открываются на весь экран; фото внутри ссылок-карточек
+     лайтбокс пропускает (см. проверку closest('a') ниже). */
+  var SEL = '.object-gallery .main img, .object-gallery .thumbs img, .hero .ph img, .ex-gallery img, .gal img, .obj-card .ph img, .media img';
   var box, pic;
   function build(){
     box = document.createElement('div');
@@ -154,6 +157,7 @@
       '.rl-lb-close{position:absolute;top:18px;right:22px;width:44px;height:44px;border:none;background:transparent;' +
       'color:#F4F0E8;font-size:30px;line-height:1;cursor:pointer;font-family:inherit}' +
       '.rl-lb-close:hover{color:#E9C98A}' +
+      '.media img{cursor:zoom-in}a .media img{cursor:pointer}' +
       'body.rl-lb-open{overflow:hidden}';
     document.head.appendChild(st);
   }
