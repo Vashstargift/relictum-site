@@ -556,7 +556,30 @@ def write_extras(pages):
         htaccess = htaccess.replace('RewriteRule ^(.*)$ https://%1/$1 [R=301,L]',
                                     'RewriteRule ^(.*)$ http://%1/$1 [R=301,L]')
     open(os.path.join(OUT, '.htaccess'), 'w', encoding='utf-8').write(htaccess)
+    open(os.path.join(OUT, 'cors.php'), 'w', encoding='utf-8').write(CORS_PHP)
     open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(PAGE_404)
+
+
+CORS_PHP = r"""<?php
+/* Отдача медиа с CORS-заголовками: /cors/<путь> -> этот файл.
+   Только чтение файлов внутри веб-корня, только медиа-расширения. */
+$f = isset($_GET['f']) ? $_GET['f'] : '';
+if ($f === '' || strpos($f, '..') !== false || $f[0] === '/') { http_response_code(400); exit; }
+$root = __DIR__;
+$path = realpath($root . '/' . $f);
+if ($path === false || strpos($path, $root . DIRECTORY_SEPARATOR) !== 0 || !is_file($path)) { http_response_code(404); exit; }
+$ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+$types = array('jpg'=>'image/jpeg','jpeg'=>'image/jpeg','png'=>'image/png','webp'=>'image/webp','gif'=>'image/gif',
+               'svg'=>'image/svg+xml','mp4'=>'video/mp4','webm'=>'video/webm','css'=>'text/css','js'=>'application/javascript',
+               'woff'=>'font/woff','woff2'=>'font/woff2');
+if (!isset($types[$ext])) { http_response_code(403); exit; }
+header('Content-Type: ' . $types[$ext]);
+header('Content-Length: ' . filesize($path));
+header('Access-Control-Allow-Origin: *');
+header('Timing-Allow-Origin: *');
+header('Cache-Control: max-age=2592000');
+readfile($path);
+"""
 
 
 HTACCESS = r"""# RELICTUM — relictum.gallery
@@ -571,7 +594,23 @@ RewriteRule ^(.*)$ https://relictum.gallery/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
+# /cors/<путь-к-файлу> — те же медиа, но с CORS-заголовками. Нужен браузерным
+# инструментам (Claude Design и пр.): статику Beget раздаёт nginx-ом, который
+# игнорирует Header-директивы, а PHP проходит через Apache — там заголовки наши.
+RewriteRule ^cors/(.+)$ cors.php?f=$1 [L,QSA]
+
 ErrorDocument 404 /404.html
+
+# CORS для медиа: без Access-Control-Allow-Origin браузерные инструменты
+# (Claude Design, Figma-плагины, canvas-редакторы) не могут загрузить картинку
+# с сайта — fetch блокируется политикой same-origin. Отдаём медиа всем: файлы
+# публичные, ничего приватного тут нет.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpe?g|png|webp|gif|svg|mp4|webm|woff2?|css|js)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Timing-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
 
 # сжатие текста
 <IfModule mod_deflate.c>
