@@ -83,7 +83,7 @@ window.RELICTUM_CATALOG = [
     "price": "Цена по запросу",
     "img": "ph_triceratops",
     "priceValue": null,
-    "status": "По предзаказу",
+    "status": "Под заказ",
     "slug": "0271-triceratops-skull",
     "age": "≈ 68–66 млн лет, поздний мел (маастрихт)",
     "location": "Северная Америка",
@@ -1497,8 +1497,7 @@ window.RELICTUM_CATALOG = [
     "size": "По запросу",
     "mount": "Рама под стеклом",
     "description": "Кабинетная коллекция из четырнадцати тропических бабочек.",
-    "href": "../16_product_promos/exhibit.html?id=0264-butterflies-dark",
-    "status": "Под заказ"
+    "href": "../16_product_promos/exhibit.html?id=0264-butterflies-dark"
   },
   {
     "id": "R–0288",
@@ -1671,8 +1670,7 @@ window.RELICTUM_CATALOG = [
     "size": "По запросу",
     "mount": "Рама под стеклом",
     "description": "Кабинетная коллекция из четырнадцати тропических бабочек.",
-    "href": "../16_product_promos/exhibit.html?id=0265-butterflies-blue",
-    "status": "Под заказ"
+    "href": "../16_product_promos/exhibit.html?id=0265-butterflies-blue"
   },
   {
     "id": "R–0266",
@@ -2143,8 +2141,7 @@ window.RELICTUM_CATALOG = [
     "size": "По запросу",
     "mount": "Рама под стеклом",
     "description": "Кабинетная коллекция из четырнадцати бабочек.",
-    "href": "../16_product_promos/exhibit.html?id=0269-butterflies-warm",
-    "status": "Под заказ"
+    "href": "../16_product_promos/exhibit.html?id=0269-butterflies-warm"
   },
   {
     "id": "R–0270",
