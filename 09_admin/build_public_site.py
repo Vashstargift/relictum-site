@@ -457,6 +457,7 @@ def prerender_catalog():
     items = json.loads(subprocess.run(['node','-e',js],capture_output=True,text=True,check=True).stdout)
 
     def esc(x): return str(x).replace('&','&amp;').replace('<','&lt;').replace('"','&quot;')
+    items = [o for o in items if not o.get('hidden')]   # спрятанные не впечатываем
     cards = []
     for n, o in enumerate(items):
         href = o.get('href') or ('object.html?id=' + o['id'])

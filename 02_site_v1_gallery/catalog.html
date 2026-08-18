@@ -224,7 +224,7 @@
 <script src="../shared/catalog.js"></script>
 <script src="../shared/focus.js"></script>
 <script>
-const CATALOG = window.RELICTUM_CATALOG;
+const CATALOG = window.RELICTUM_CATALOG.filter(o => !o.hidden);   /* спрятанные не показываем */
 
 const FACETS = [
   {key:"world", label:"Мир", labels:{vita:"Жизнь",terra:"Земля",cosmos:"Космос",grand:"Монументы",editions:"Editions"}, order:["vita","terra","cosmos","grand","editions"]},
