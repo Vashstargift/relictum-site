@@ -65,7 +65,7 @@ test('buildPost собирает кадры по порядку и подпис�
 // читаться однозначно (у обложки — order её кадра, но другая роль).
 test('meta.json перечисляет все файлы папки, включая обложки видео-кадров, и различает их роль', async () => {
   const s = loadSources();
-  const post = loadFeed().find((p) => p.id === 'p03'); // video, photo, spec-card, end-card
+  const post = loadFeed().find((p) => p.id === 'p03'); // photo, video, spec-card, end-card
   const r = await buildPost(s, post, OUT);
 
   const actualFiles = fs.readdirSync(r.dir)
@@ -76,11 +76,11 @@ test('meta.json перечисляет все файлы папки, включ�
 
   assert.deepEqual(listedNames, actualFiles, 'meta.json.files должен перечислять ровно то, что реально лежит в папке');
 
-  const cover = meta.files.find((e) => e.name === '01_cover.jpg');
+  const cover = meta.files.find((e) => e.name === '02_cover.jpg');
   assert.ok(cover, 'обложка видео-кадра должна попасть в список');
   assert.equal(cover.role, 'cover');
 
-  const frame = meta.files.find((e) => e.name === '01.mp4');
+  const frame = meta.files.find((e) => e.name === '02.mp4');
   assert.ok(frame);
   assert.equal(frame.role, 'frame');
 
@@ -188,7 +188,7 @@ test('buildPost: высота карточки берётся из пропор�
 
   const square = feed.find((p) => p.id === 'p02'); // aspect: 1:1
   const rSquare = await buildPost(s, square, OUT);
-  const squarePng = readPngSize(fs.readFileSync(path.join(rSquare.dir, rSquare.files[0])));
+  const squarePng = readPngSize(fs.readFileSync(path.join(rSquare.dir, rSquare.files[1])));
   assert.equal(squarePng.width, 1080);
   assert.equal(squarePng.height, 1080, 'пост 1:1 должен давать квадратную карточку');
 

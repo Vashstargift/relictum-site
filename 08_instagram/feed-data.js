@@ -56,9 +56,10 @@ window.RELICTUM_FEED = [
     rubric: 'figure',
     slot: 2,
     exhibit: null,
-    format: 'single',
+    format: 'carousel',
     aspect: '1:1',
     frames: [
+      { type: 'photo', src: 'int_ph_seymchan.jpg' },
       { type: 'card', tpl: 'figure', data: { name: 'Сеймчан', big: '≈ 4,56 млрд лет', sub: 'Возраст вещества палласита — старше Земли.' } },
     ],
     caption: { lead: 'Палласит Сеймчан', body: 'Полированный срез железно-каменного метеорита показывает янтарные зёрна оливина в никелистом железе. Рисунок застыл при кристаллизации и не повторяется ни у одного другого среза.', cta: '' },
@@ -78,8 +79,8 @@ window.RELICTUM_FEED = [
     format: 'carousel',
     aspect: '1:1',
     frames: [
-      { type: 'video', src: 'spin_megalodon.mp4' },
       { type: 'photo', src: 'int_ph_megalodon.jpg' },
+      { type: 'video', src: 'spin_megalodon.mp4' },
       { type: 'card', tpl: 'spec', data: { name: 'Зуб мегалодона', rows: [['Возраст', '≈ 23 млн лет, миоцен'], ['Оформление', 'Стальной стенд']] } },
       { type: 'card', tpl: 'end', data: {} },
     ],
@@ -101,13 +102,14 @@ window.RELICTUM_FEED = [
     rubric: 'figure',
     slot: 4,
     exhibit: null,
-    format: 'single',
+    format: 'carousel',
     aspect: '1:1',
     // Возраст здесь — возраст ВИДА, а не предмета: сам объект в галерее
     // сделан по научным данным (catalog.js:0219-dunkleosteus.location —
     // «Реконструкция по научным данным»). Карточка и подпись говорят это
     // прямо, иначе пост продавал бы возраст предмета, которому несколько лет.
     frames: [
+      { type: 'photo', src: 'int_ph_dunkleosteus.jpg' },
       { type: 'card', tpl: 'figure', data: { name: 'Dunkleosteus', big: '≈ 360 млн лет', period: 'поздний девон', sub: 'Возраст панцирной рыбы как вида. Сам объект — научная реконструкция черепа и головного щита.' } },
     ],
     caption: { lead: 'Броня вместо зубов', body: 'Dunkleosteus terrelli — панцирная рыба девонских морей: голову закрывали массивные костные пластины, а вместо зубов смыкались острые режущие костные кромки. Она жила почти за сто миллионов лет до первых динозавров. Объект в галерее — реконструкция черепа и головного щита по научным данным; названный возраст относится к самой рыбе.', cta: '' },
@@ -127,8 +129,8 @@ window.RELICTUM_FEED = [
     format: 'carousel',
     aspect: '1:1',
     frames: [
-      { type: 'video', src: 'spin_mammoth_skull.mp4' },
       { type: 'photo', src: 'int_ph_mammoth_skull.jpg' },
+      { type: 'video', src: 'spin_mammoth_skull.mp4' },
       { type: 'card', tpl: 'spec', data: { name: 'Череп мамонта с бивнями', rows: [['Возраст', '≈ 30 000 лет'], ['Оформление', 'Гранитный блок, бронзовые опоры']] } },
       { type: 'card', tpl: 'end', data: {} },
     ],
@@ -171,8 +173,8 @@ window.RELICTUM_FEED = [
     format: 'carousel',
     aspect: '1:1',
     frames: [
-      { type: 'video', src: 'spin_rhino_skeleton.mp4' },
       { type: 'photo', src: 'int_ph_rhino_skeleton.jpg' },
+      { type: 'video', src: 'spin_rhino_skeleton.mp4' },
       { type: 'card', tpl: 'spec', data: { name: 'Скелет шерстистого носорога', rows: [['Возраст', '50–150 тыс лет, плейстоцен'], ['Оформление', 'Профессиональная сборка на скрытом каркасе']] } },
       { type: 'card', tpl: 'end', data: {} },
     ],
@@ -191,10 +193,11 @@ window.RELICTUM_FEED = [
     rubric: 'figure',
     slot: 8,
     exhibit: null,
-    format: 'single',
+    format: 'carousel',
     aspect: '1:1',
     frames: [
-      { type: 'card', tpl: 'figure', data: { name: 'Трилобит', big: '≈ 480–472 млн лет', period: 'ранний ордовик', sub: 'Возраст гигантского трилобита из сланцев Fezouata.' } },
+      { type: 'photo', src: 'int_ph_trilobite_giant.jpg' },
+      { type: 'card', tpl: 'figure', data: { name: 'Трилобит', big: '≈ 480–472 млн лет', period: 'ранний ордовик', sub: 'Возраст гигантского трилобита раннего ордовика.' } },
     ],
     caption: { lead: 'Сланцы Fezouata, Марокко', body: 'Dikelokephalina — род крупных морских трилобитов древней Гондваны. Трилобиты этой формации заметно крупнее привычных находок и доходят до тридцати с лишним сантиметров, что для группы редкость.', cta: '' },
     tags: ['#relictum', '#трилобит', '#марокко'],
@@ -249,10 +252,11 @@ window.RELICTUM_FEED = [
     rubric: 'figure',
     slot: 11,
     exhibit: null,
-    format: 'single',
+    format: 'carousel',
     aspect: '1:1',
     frames: [
-      { type: 'card', tpl: 'figure', data: { name: 'Кейхозавр', big: '≈ 245 млн лет', period: 'триасовый период', sub: 'Возраст скелета кейхозавра из Гуйчжоу.' } },
+      { type: 'photo', src: 'int_ph_keichousaurus.jpg' },
+      { type: 'card', tpl: 'figure', data: { name: 'Кейхозавр', big: '≈ 245 млн лет', period: 'триасовый период', sub: 'Возраст скелета кейхозавра триасового периода.' } },
     ],
     caption: { lead: 'Лапы, ставшие вёслами', body: 'Keichousaurus hui — небольшая морская рептилия из группы завроптеригий, населявшая тёплые мелководья триасового Китая. Один из первых опытов рептилий вернуться в море.', cta: '' },
     tags: ['#relictum', '#триас', '#морскиерептилии'],
@@ -319,8 +323,8 @@ window.RELICTUM_FEED = [
     format: 'carousel',
     aspect: '1:1',
     frames: [
-      { type: 'video', src: 'spin_mammoth_skeleton.mp4' },
       { type: 'photo', src: 'int_ph_mammoth_skeleton.jpg' },
+      { type: 'video', src: 'spin_mammoth_skeleton.mp4' },
       { type: 'card', tpl: 'spec', data: { name: 'Скелет мамонта', rows: [['Возраст', '2,6 млн – 11 тыс лет, плейстоцен'], ['Оформление', 'Скрытый стальной каркас, монтаж на месте']] } },
       { type: 'card', tpl: 'end', data: {} },
     ],

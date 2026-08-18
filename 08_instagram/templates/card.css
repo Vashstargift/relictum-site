@@ -56,3 +56,13 @@ body {
   font-size: 24px; letter-spacing: .2em; text-transform: uppercase; color: var(--stone);
 }
 .center { align-items: center; text-align: center; justify-content: center; }
+
+/* Тёмный вариант карточки — музейная «чёрная студия» дома.
+   Используется шаблоном «Цифра»: цифра на чёрном держит сетку профиля
+   контрастом, как чёрные плитки в макете index.html. */
+body.dark{background:var(--black); color:var(--ivory)}
+body.dark .kicker{color:#C8A163}
+body.dark .period{color:#C8A163}
+body.dark .sub{color:#B8B0A4}
+body.dark .rule{background:rgba(200,161,99,.35)}
+body.dark .foot{color:#8C857A}
