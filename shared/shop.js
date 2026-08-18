@@ -134,7 +134,9 @@
 
 /* ---- Лайтбокс: клик по фото экспоната открывает снимок целиком ---- */
 (function(){
-  var SEL = '.object-gallery .main img, .object-gallery .thumbs img, .hero .ph img, .gallery .gitem img, .ex-gallery img, .gal img, .obj-card .ph img';
+  /* .gallery .gitem img намеренно НЕ здесь: у страницы экспоната свой лайтбокс
+     (открывает полный кадр по data-full); двойной попап перекрывал крестики. */
+  var SEL = '.object-gallery .main img, .object-gallery .thumbs img, .hero .ph img, .ex-gallery img, .gal img, .obj-card .ph img';
   var box, pic;
   function build(){
     box = document.createElement('div');
@@ -162,6 +164,8 @@
   }
   function close(){ if(box){ box.classList.remove('on'); document.body.classList.remove('rl-lb-open'); } }
   addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  /* bfcache: «назад» восстанавливает страницу с открытым лайтбоксом */
+  addEventListener('pageshow', close);
   addEventListener('click', function(e){
     var img = e.target.closest && e.target.closest(SEL);
     if(!img || (box && box.contains(img))) return;
