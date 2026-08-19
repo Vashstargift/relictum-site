@@ -132,6 +132,7 @@ window.RELICTUM_CATALOG = [
     "location": "Sakoany deposit, Мадагаскар",
     "size": "Около 20 × 17 × 13,5 см",
     "description": "Целестин крайне редко образует кристаллы такого размера.",
+    "hidden": true,
     "href": "../16_product_promos/exhibit.html?id=0246-celestine"
   },
   {
@@ -1416,6 +1417,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0222",
+    "hidden": true,
     "href": "../16_product_promos/exhibit.html?id=0222-pterosaur-plate",
     "world": "vita",
     "worldLabel": "Жизнь",
@@ -1720,6 +1722,7 @@ window.RELICTUM_CATALOG = [
     "size": "Плита 58 × 151,5 × 4 см, вес 140 кг",
     "mount": "Плита на стальном настенном креплении",
     "description": "Морская рептилия триаса на цельной сланцевой плите: скелет от вытянутого зубастого черепа до длинного хвоста лежит рельефом в камне, кость глубокого чёрного тона контрастирует с серой породой. Единственный объект коллекции, поставляемый под заказ.",
+    "hidden": true,
     "href": "../16_product_promos/exhibit.html?id=0230-nothosaurus"
   },
   {
