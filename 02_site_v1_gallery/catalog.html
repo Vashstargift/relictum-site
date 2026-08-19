@@ -28,7 +28,7 @@
 .fgroup-h .badge { background:var(--obsidian); color:var(--ivory); border-radius:9px; padding:1px 7px; font-size:10px; letter-spacing:.04em; }
 .fgroup-h .chev { margin-left:auto; font-size:9px; color:var(--bronze-deep); transition:transform .3s var(--ease); }
 .fgroup.open .chev { transform:rotate(180deg); }
-.fgroup-body { display:none; padding:0 20px 14px; max-height:min(44vh,320px); overflow-y:auto; }
+.fgroup-body { display:none; padding:0 20px 14px; max-height:min(52vh,400px); overflow-y:auto; }
 .fgroup.open .fgroup-body { display:block; }
 .fopt { display:flex; align-items:center; gap:10px; padding:6px 0; font-size:13.5px; cursor:pointer; color:#3d3a35; user-select:none; }
 .fopt:hover { color:var(--obsidian); }
@@ -226,7 +226,33 @@
 <script>
 const CATALOG = window.RELICTUM_CATALOG.filter(o => !o.hidden);   /* спрятанные не показываем */
 
+/* Бытовые группы поверх служебной категории: клиент ищет «метеориты» и
+   «минералы», а не «Ракоскорпионов» и «Эдиакарскую фауну». Одиночные
+   категории собраны в понятные корзины — деление по видам, от которого
+   владелец отказалась 06.08, сюда не возвращается. */
+const KINDS = [
+  ["Метеориты",                ["Метеориты"]],
+  ["Динозавры",                ["Динозавры"]],
+  ["Минералы и кристаллы",     ["Минералы","Жеоды"]],
+  ["Звери ледникового периода",["Мамонтовая фауна","Пещерные львы","Саблезубые кошки","Гиены"]],
+  ["Морские лилии",            ["Морские лилии"]],
+  ["Морские ящеры и рыбы",     ["Морские рептилии","Ископаемые рыбы","Мегалодон","Крокодилиформы"]],
+  ["Аммониты",                 ["Аммониты"]],
+  ["Бабочки и змеи",           ["Бабочки","Змеи"]],
+  ["Древнейшая жизнь",         ["Трилобиты","Ракоскорпионы","Эдиакарская фауна"]],
+  ["Окаменелое дерево",        ["Ископаемая древесина"]]
+];
+const KIND_OF = {};
+KINDS.forEach(([kind, cats]) => cats.forEach(c => { KIND_OF[c] = kind; }));
+/* Наличие: «Под заказ» проставляется явно, всё остальное лежит в доме. */
+CATALOG.forEach(o => {
+  o.kind  = KIND_OF[o.category] || o.category;
+  o.avail = o.status === "Под заказ" ? "Под заказ" : "В наличии";
+});
+
 const FACETS = [
+  {key:"avail", label:"Наличие", order:["В наличии","Под заказ"]},
+  {key:"kind", label:"Тип объекта", order:KINDS.map(k => k[0])},
   {key:"world", label:"Мир", labels:{vita:"Жизнь",terra:"Земля",cosmos:"Космос",grand:"Монументы",editions:"Editions"}, order:["vita","terra","cosmos","grand","editions"]},
   /* Делим по эрам, а не по видам (решение владельца 06.08): «Мегалодон»,
      «Саблезубые кошки», «Трилобиты» — это виды, а не структура коллекции.
@@ -243,7 +269,7 @@ const PRICE_BRACKETS = [
   {id:"request", label:"Цена по запросу", test:v=>v==null}
 ];
 
-const state = {world:new Set(),era:new Set(),period:new Set(),region:new Set(),price:new Set(),q:"",sort:"default",priceMin:null,priceMax:null};
+const state = {avail:new Set(),kind:new Set(),world:new Set(),era:new Set(),period:new Set(),region:new Set(),price:new Set(),q:"",sort:"default",priceMin:null,priceMax:null};
 
 const $ = s => document.querySelector(s);
 const facetsEl = $("#facets"), grid = $("#grid"), countEl = $("#count"),
@@ -261,13 +287,13 @@ function optionValues(key) {
 function countFor(key, val) { return CATALOG.filter(o => o[key] === val).length; }
 
 FACETS.forEach((f, i) => {
-  const g = document.createElement("div"); g.className = "fgroup" + (i === 0 ? " open" : "");
+  const g = document.createElement("div"); g.className = "fgroup" + (i < 2 ? " open" : "");
   let opts = "";
   optionValues(f.key).forEach(v => {
     const lbl = f.labels ? (f.labels[v] || v) : v;
     opts += `<label class="fopt"><input type="checkbox" data-k="${f.key}" value="${v}"><span>${lbl}</span><span class="fc">${countFor(f.key,v)}</span></label>`;
   });
-  g.innerHTML = `<button type="button" class="fgroup-h" aria-expanded="${i===0}">${f.label}`
+  g.innerHTML = `<button type="button" class="fgroup-h" aria-expanded="${i<2}">${f.label}`
     + `<span class="badge" data-badge="${f.key}" hidden>0</span><span class="chev">▾</span></button>`
     + `<div class="fgroup-body">${opts}</div>`;
   facetsEl.appendChild(g);
@@ -289,7 +315,7 @@ FACETS.forEach((f, i) => {
 
 // ---- Фильтрация ----
 function matches(o) {
-  for (const k of ["world","era","period","region"])
+  for (const k of ["avail","kind","world","era","period","region"])
     if (state[k].size && !state[k].has(o[k])) return false;
   if (state.price.size) {
     const ok = PRICE_BRACKETS.some(b => state.price.has(b.id) && b.test(o.priceValue));
@@ -298,26 +324,26 @@ function matches(o) {
   if (state.priceMin != null && (o.priceValue == null || o.priceValue < state.priceMin)) return false;
   if (state.priceMax != null && (o.priceValue == null || o.priceValue > state.priceMax)) return false;
   if (state.q) {
-    const hay = (o.name+" "+o.latin+" "+o.meta+" "+o.worldLabel+" "+o.era+" "+o.category+" "+o.period+" "+o.region).toLowerCase();
+    const hay = (o.name+" "+o.latin+" "+o.meta+" "+o.worldLabel+" "+o.era+" "+o.category+" "+o.kind+" "+o.avail+" "+o.period+" "+o.region).toLowerCase();
     if (!hay.includes(state.q)) return false;
   }
   return true;
 }
 
 function activeCount() {
-  return state.world.size+state.era.size+state.period.size+state.region.size+state.price.size+
+  return state.avail.size+state.kind.size+state.world.size+state.era.size+state.period.size+state.region.size+state.price.size+
     (state.priceMin!=null?1:0)+(state.priceMax!=null?1:0);
 }
 
 function labelFor(k,v){
-  if(k==="world") return FACETS[0].labels[v]||v;
+  if(k==="world") return (FACETS.find(f=>f.key==="world").labels||{})[v]||v;
   if(k==="price") return (PRICE_BRACKETS.find(b=>b.id===v)||{}).label||v;
   return v;
 }
 
 function renderChips() {
   const chips = [];
-  ["world","era","period","region","price"].forEach(k => {
+  ["avail","kind","world","era","period","region","price"].forEach(k => {
     state[k].forEach(v => chips.push({k,v,text:labelFor(k,v)}));
   });
   if (state.priceMin!=null) chips.push({k:"priceMin",v:null,text:"от "+state.priceMin.toLocaleString('ru')+" ₽"});
@@ -372,7 +398,7 @@ function render() {
 }
 
 function resetAll() {
-  ["world","era","period","region","price"].forEach(k => state[k].clear());
+  ["avail","kind","world","era","period","region","price"].forEach(k => state[k].clear());
   state.priceMin=state.priceMax=null; state.q="";
   facetsEl.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false);
   $("#pmin").value=""; $("#pmax").value=""; searchEl.value="";
