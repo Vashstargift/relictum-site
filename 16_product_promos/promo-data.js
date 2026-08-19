@@ -2594,7 +2594,10 @@ window.RELICTUM_PROMO = {
       "img": "int_ph_met_seymchan_frame.jpg",
       "text": "Спил в глубокой раме готов к стене: вешается как графика, а читается как окно в космос."
     },
-    "gallery": []
+    "gallery": [
+   "int_ph_met_seymchan_frame.jpg",
+   "ph_met_seymchan_frame.jpg"
+  ]
   },
 
   "R–0288": {
