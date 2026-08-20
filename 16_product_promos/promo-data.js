@@ -1438,7 +1438,7 @@ window.RELICTUM_PROMO = {
       "text": "Одна лапа на консоли держит внимание вернее, чем целая витрина: вертикаль, свет сбоку, ничего лишнего."
     },
     "life": {
-      "img": "life_cavebear_paws.jpg",
+      "img": "life_cavebear_paw_front.jpg",
       "diagram": "anat_cavebear_paw_front.jpg",
       "title": "Лапа, которой он держал ледниковый мир",
       "text": ""
@@ -3191,7 +3191,7 @@ window.RELICTUM_PROMO = {
       "text": "Тяжёлая пяточная кость держит композицию снизу — лапа читается как скульптура даже издалека."
     },
     "life": {
-      "img": "life_cavebear_paws.jpg",
+      "img": "life_cavebear_paw_hind.jpg",
       "diagram": "anat_cavebear_paw_hind.jpg",
       "title": "Опора, на которую вставал ледниковый хищник",
       "text": ""
