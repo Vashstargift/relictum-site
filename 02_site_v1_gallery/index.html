@@ -94,7 +94,7 @@
 
 <!-- HERO-КАРУСЕЛЬ -->
 <header class="hcar" id="hcar">
-  <div class="slide dark on">
+  <div class="slide dark on" data-dur="13200">
     <div class="media"><video muted loop playsinline preload="auto" poster="../shared/img/hm_raptor.jpg" data-src="../shared/img/promo/hero_raptor.mp4"></video></div>
     <div class="in">
       <div class="label">Экспонат в вашем доме</div>
@@ -573,10 +573,13 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     slides.forEach(function(s,k){s.classList.toggle('on',k===i)});
     dots.forEach(function(d,k){d.classList.toggle('on',k===i)});
     loadVid(slides[i]); playVid(slides[i]); loadVid(slides[(i+1)%slides.length]);
-    if(manual)restart();
+    restart();
   }
   function next(){go(i+1)}
-  function restart(){clearInterval(timer);timer=setInterval(next,DUR)}
+  /* У слайда может быть своя длительность: в первом ролике смонтированы два
+     плана с переходом, и общие 6,5 с уводили его на середине. */
+  function durOf(n){return +(slides[n].dataset.dur||0)||DUR}
+  function restart(){clearTimeout(timer);timer=setTimeout(next,durOf(i))}
   car.querySelector('.arrow.next').onclick=function(){go(i+1,true)};
   car.querySelector('.arrow.prev').onclick=function(){go(i-1,true)};
   var tx=0;
