@@ -328,7 +328,7 @@ window.RELICTUM_PROMO = {
     },
     life: {
       img: "life_rhino_skull.jpg",
-      diagram: "anat_rhino_skull.jpg",
+      "stateLabel": "При жизни",
       title: "Два рога в профиль",
       text: "Голова шерстистого носорога в том же ракурсе, что череп: два рога, густая шерсть. Зимняя степь."
     },
@@ -2833,7 +2833,6 @@ window.RELICTUM_PROMO = {
     ],
     "life": {
       "img": "life_keicho_pink.jpg",
-      "diagram": "anat_keicho_pink.jpg",
       "label": "При жизни",
       "stateLabel": "При жизни",
       "title": "Триасовое мелководье",
