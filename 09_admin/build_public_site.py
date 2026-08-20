@@ -607,8 +607,14 @@ function clean($s) { return trim(str_replace(array("\r", "\n"), ' ', (string)$s)
 $kind = clean($in['kind']);
 $data = isset($in['data']) && is_array($in['data']) ? $in['data'] : array();
 
+/* Служебное в письмо не пишем: дом читает заявку, а не дамп формы. */
+$SKIP   = array('date','type','consent','items','total','contact','page','payment');
+$LABELS = array('name'=>'Имя','phone'=>'Телефон','email'=>'Почта','desc'=>'Запрос',
+                'note'=>'Комментарий','addr'=>'Доставка','era'=>'Эпоха','budget'=>'Бюджет');
 $lines = array();
 foreach ($data as $k => $v) {
+    if (in_array($k, $SKIP, true) || $v === '' || $v === null) { continue; }
+    $k = isset($LABELS[$k]) ? $LABELS[$k] : $k;
     if (is_array($v)) {
         $parts = array();
         foreach ($v as $it) {
@@ -624,10 +630,19 @@ foreach ($data as $k => $v) {
     $lines[] = clean($k) . ': ' . clean($v);
 }
 
-$body  = "Заявка с сайта relictum.gallery\n";
-$body .= "Тип: " . $kind . "\n";
-if (!empty($in['page'])) { $body .= "Страница: " . clean($in['page']) . "\n"; }
-$body .= "\n" . implode("\n", $lines) . "\n";
+$body  = "Заявка с сайта relictum.gallery — " . $kind . "\n\n";
+$body .= implode("\n", $lines) . "\n";
+if (!empty($data['items']) && is_array($data['items'])) {
+    $body .= "\nОбъекты:\n";
+    foreach ($data['items'] as $it) {
+        if (is_array($it)) {
+            $body .= '— ' . (isset($it['title']) ? $it['title'] : '') .
+                     (isset($it['price']) && $it['price'] ? ', ' . number_format($it['price'], 0, '', ' ') . ' руб.' : '') .
+                     (isset($it['url']) ? "\n  " . $it['url'] : '') . "\n";
+        } else { $body .= '— ' . $it . "\n"; }
+    }
+    if (!empty($data['total'])) { $body .= "\nИтого: " . number_format($data['total'], 0, '', ' ') . " руб.\n"; }
+}
 
 $subject = '=?UTF-8?B?' . base64_encode('RELICTUM — ' . $kind) . '?=';
 $headers  = "From: RELICTUM <$FROM>\r\n";
@@ -664,14 +679,25 @@ if (!empty($in['consent']) && is_readable($keyFile)) {
            каталога StarGift с их id, а каталог Relictum свой — заказ бы
            отклонился или лёг с чужими позициями. Состав заказа уходит текстом
            в message. */
+        /* Если в заявке есть позиции в схеме приёмника — отправляем её как
+           заказ: только для 'order' он собирает письмо вёрсткой, с фотографией
+           и ссылкой на объект. Всё прочее уходит типом 'relictum' и ложится в
+           общий список заявок. */
+        $rich = (!empty($data['items']) && is_array($data['items']) && !empty($data['items'][0]['title']));
         $payload = array(
-            'form_type' => 'relictum',
+            'form_type' => $rich ? 'order' : 'relictum',
             'name'      => isset($data['name']) ? clean($data['name']) : 'Гость Relictum',
             'phone'     => $phone,
             'email'     => isset($data['email']) ? clean($data['email']) : '',
-            'message'   => "Заявка с сайта relictum.gallery\nТип: $kind\n\n" . implode("\n", $lines),
+            'message'   => ($rich ? '' : "Заявка с сайта relictum.gallery — $kind\n\n")
+                           . implode("\n", $lines),
             'consent'   => true,
         );
+        if ($rich) {
+            $payload['items']   = $data['items'];
+            $payload['total']   = isset($data['total']) ? $data['total'] : 0;
+            $payload['payment'] = isset($data['payment']) ? clean($data['payment']) : 'по счёту';
+        }
 
         $ch = curl_init('https://stargift.ru/api/send-form.php');
         curl_setopt_array($ch, array(
