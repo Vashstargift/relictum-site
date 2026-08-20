@@ -642,8 +642,58 @@ foreach (array('email', 'contact') as $key) {
     }
 }
 
-$ok = @mail($TO, $subject, $body, $headers);
-echo $ok ? '{"ok":true}' : '{"ok":false}';
+/* 1. Основной канал — приёмник StarGift: он кладёт заявку в crm_requests
+      и сам шлёт письмо. Ходим сервер-к-серверу с ключом бота: CORS и CSRF
+      этого пути не касаются. Ключ лежит в конфиге StarGift на том же
+      аккаунте — сюда не копируется и в репозиторий не попадает. */
+$crm = false;
+/* Ключ лежит отдельным файлом ВНЕ веб-корня (~/relictum.gallery/.sg-key, chmod 600):
+   конфиг StarGift этому сайту не читается — процессы сайтов изолированы по правам,
+   а в репозиторий секрет попасть не должен. */
+$keyFile = __DIR__ . '/../.sg-key';
+if (!empty($in['consent']) && is_readable($keyFile)) {
+    $key = trim((string)@file_get_contents($keyFile));
+    $phone = '';
+    foreach (array('phone', 'contact') as $k) {
+        if (!empty($data[$k]) && strlen(preg_replace('/\D/', '', $data[$k])) >= 11) { $phone = $data[$k]; break; }
+    }
+    if ($key !== '' && $phone !== '') {
+        /* Всё уходит одним типом 'relictum' и ложится в таблицу questions —
+           туда же, куда лиды с форм stargift.ru, и попадает в счётчик новых
+           заявок CRM. Ветку 'order' не используем: она завязана на позиции
+           каталога StarGift с их id, а каталог Relictum свой — заказ бы
+           отклонился или лёг с чужими позициями. Состав заказа уходит текстом
+           в message. */
+        $payload = array(
+            'form_type' => 'relictum',
+            'name'      => isset($data['name']) ? clean($data['name']) : 'Гость Relictum',
+            'phone'     => $phone,
+            'email'     => isset($data['email']) ? clean($data['email']) : '',
+            'message'   => "Заявка с сайта relictum.gallery\nТип: $kind\n\n" . implode("\n", $lines),
+            'consent'   => true,
+        );
+
+        $ch = curl_init('https://stargift.ru/api/send-form.php');
+        curl_setopt_array($ch, array(
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_UNICODE),
+            CURLOPT_HTTPHEADER => array('Content-Type: application/json', 'X-Bot-Key: ' . $key),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 8,
+        ));
+        $resp = curl_exec($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        $crm = ($code === 200 && strpos((string)$resp, '"success":true') !== false);
+    }
+}
+
+/* 2. Запасной канал — письмо своими силами. Шлём, только если в CRM не легло:
+      иначе дом получит два письма на одну заявку. */
+$mailed = false;
+if (!$crm) { $mailed = @mail($TO, $subject, $body, $headers); }
+
+echo json_encode(array('ok' => ($crm || $mailed), 'crm' => $crm, 'mail' => $mailed));
 """
 
 HTACCESS = r"""# RELICTUM — relictum.gallery

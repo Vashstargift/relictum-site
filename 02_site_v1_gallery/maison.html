@@ -171,8 +171,10 @@
         <div class="label" style="margin-bottom:24px">Запрос в галерею</div>
         <form id="cform" style="display:grid;gap:16px">
           <input name="name" required placeholder="Имя" style="border:none;border-bottom:1px solid var(--hairline);background:transparent;padding:12px 2px;font-family:var(--font-ui);font-size:16px">
-          <input name="contact" required placeholder="Телефон или e-mail" style="border:none;border-bottom:1px solid var(--hairline);background:transparent;padding:12px 2px;font-family:var(--font-ui);font-size:16px">
+          <input name="phone" required type="tel" placeholder="Телефон" style="border:none;border-bottom:1px solid var(--hairline);background:transparent;padding:12px 2px;font-family:var(--font-ui);font-size:16px">
+          <input name="email" type="email" placeholder="E-mail (по желанию)" style="border:none;border-bottom:1px solid var(--hairline);background:transparent;padding:12px 2px;font-family:var(--font-ui);font-size:16px">
           <textarea name="desc" placeholder="Что вы ищете? Эпоха, объект, бюджет, интерьер…" rows="4" style="border:none;border-bottom:1px solid var(--hairline);background:transparent;padding:12px 2px;font-family:var(--font-ui);font-size:16px;resize:vertical"></textarea>
+          <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--stone);line-height:1.45;margin-top:4px"><input type="checkbox" name="consent" required style="margin-top:2px"><span>Согласен на обработку персональных данных</span></label>
           <button id="csend" class="btn btn-solid" style="justify-self:start;margin-top:10px">Отправить запрос</button>
           <span style="font-size:11px;color:var(--stone)">Конфиденциально. Отвечаем в течение одного дня.</span>
         </form>
@@ -262,12 +264,14 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   f.addEventListener('submit',function(e){
     e.preventDefault();
     if(!f.checkValidity()){ f.reportValidity(); return; }
-    var fd=new FormData(f), name=fd.get('name')||'', contact=fd.get('contact')||'', desc=fd.get('desc')||'';
+    var fd=new FormData(f), name=fd.get('name')||'', phone=fd.get('phone')||'', email=fd.get('email')||'', desc=fd.get('desc')||'';
+    var contact=phone+(email?(', '+email):'');
     var S=window.RelictumShop;
-    S.addLead({date:new Date().toLocaleString('ru-RU'),type:'Консьерж',name:name,contact:contact,desc:desc}); S.send('консьерж', {date:new Date().toLocaleString('ru-RU'),type:'Консьерж',name:name,contact:contact,desc:desc});
+    var rec={date:new Date().toLocaleString('ru-RU'),type:'Консьерж',name:name,phone:phone,email:email,contact:contact,desc:desc,consent:!!fd.get('consent')};
+    S.addLead(rec); S.send('консьерж', rec);
     var u=S.user(); if(name)u.name=name;
-    if(contact.indexOf('@')>=0)u.email=contact; else u.phone=contact; S.saveUser(u);
-    var body='Имя: '+name+'\nКонтакт: '+contact+'\n\n'+desc;
+    if(email)u.email=email; if(phone)u.phone=phone; S.saveUser(u);
+    var body='Имя: '+name+'\nТелефон: '+phone+(email?('\nE-mail: '+email):'')+'\n\n'+desc;
     f.innerHTML='<div class="label" style="margin-bottom:14px">Запрос принят</div>'+
       '<p style="margin-bottom:20px">Консьерж дома свяжется с вами в течение одного рабочего дня.</p>'+
       '<a class="btn" href="mailto:info@stargift.ru?subject='+

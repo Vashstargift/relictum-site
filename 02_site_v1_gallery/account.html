@@ -188,7 +188,7 @@ function pane_data(){
       '<div class="rl-field"><label>Телефон</label><input class="rl-input" name="phone" value="'+S.esc(u.phone||'')+'"></div></div>'+
     '<div class="rl-row"><div class="rl-field"><label>Статус</label><input class="rl-input" value="'+t.name+'" disabled></div>'+
       '<div class="rl-field"><label>Скидка</label><input class="rl-input" value="'+t.discount+'%" disabled></div></div>'+
-    '<button class="rl-btn" type="submit" style="width:auto;padding-left:40px;padding-right:40px">Сохранить</button></form>'+
+    '<label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:#7A7267;line-height:1.45;margin:8px 0"><input type="checkbox" name="consent" required style="margin-top:2px"><span>Согласен на обработку персональных данных</span></label><button class="rl-btn" type="submit" style="width:auto;padding-left:40px;padding-right:40px">Сохранить</button></form>'+
     '<p class="rl-muted" style="margin-top:26px;font-size:12px"><a href="#" id="reset" style="color:var(--rl-stone);text-decoration:underline">Сбросить кабинет к демо-состоянию</a></p>'+
     '</div><div><div class="rl-label" style="margin-bottom:14px">Ваш персональный менеджер</div>'+
     '<div class="rl-manager"><div class="av">'+initials+'</div><div><b style="font-family:\'Cormorant Garamond\',serif;font-size:20px;display:block">'+u.manager+'</b>'+
@@ -248,7 +248,7 @@ function mountJoin(){
     S.registerPatron(d);
     S.addLead({date:new Date().toLocaleString('ru-RU'),type:'Заявка в патроны',
                name:d.name,contact:d.email,desc:'Телефон: '+(d.phone||'не указан')}); S.send('заявка в патроны', {date:new Date().toLocaleString('ru-RU'),type:'Заявка в патроны',
-               name:d.name,contact:d.email,desc:'Телефон: '+(d.phone||'не указан')});
+               name:d.name,contact:d.email,desc:'Телефон: '+(d.phone||'не указан'),consent:!!(f&&f.querySelector&&f.querySelector('[name=consent]')&&f.querySelector('[name=consent]').checked)});
     S.toast('Добро пожаловать, '+d.name.split(' ')[0]);
     var body='Имя: '+d.name+'\nE-mail: '+d.email+'\nТелефон: '+(d.phone||'не указан');
     window.location.href='mailto:info@stargift.ru?subject='+

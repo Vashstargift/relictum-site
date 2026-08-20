@@ -117,7 +117,7 @@ function form(){
     '<div class="rl-label" style="margin:24px 0 14px">Как с вами связаться</div>'+
     '<div class="rl-row"><div class="rl-field"><label>Имя</label><input class="rl-input" name="name" value="'+S.esc(u.name==='Гость'?'':u.name)+'" required></div>'+
       '<div class="rl-field"><label>Телефон или e-mail</label><input class="rl-input" name="contact" value="'+S.esc(u.email||u.phone||'')+'" required></div></div>'+
-    '<button class="rl-btn" type="submit" id="send" style="margin-top:6px">Отправить заявку</button>'+
+    '<label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:#7A7267;line-height:1.45;margin:8px 0"><input type="checkbox" name="consent" required style="margin-top:2px"><span>Согласен на обработку персональных данных</span></label><button class="rl-btn" type="submit" id="send" style="margin-top:6px">Отправить заявку</button>'+
     '<div class="rl-note" style="margin-top:14px">Отвечаем в течение рабочего дня. Заявка ни к чему не обязывает.</div>'+
   '</form>';
 }
@@ -136,7 +136,7 @@ document.getElementById('rq').addEventListener('submit',function(e){
   // сохранить контакт
   var u=S.user(),fd=new FormData(f); if(fd.get('name'))u.name=fd.get('name');
   var c=fd.get('contact')||''; if(c.indexOf('@')>=0)u.email=c; else u.phone=c; S.saveUser(u);
-  S.addLead({date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),contact:c}); S.send('запрос объекта', {date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),contact:c});
+  S.addLead({date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),contact:c}); S.send('запрос объекта', {date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),contact:c,consent:!!(f&&f.querySelector&&f.querySelector('[name=consent]')&&f.querySelector('[name=consent]').checked)});
   setTimeout(success,1100);
 });
 </script>
