@@ -101,6 +101,7 @@
     </div>
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
+      <span><a href="tel:+74952335111" style="color:inherit">+7 495 233 5111</a> &nbsp;·&nbsp; <a href="mailto:info@stargift.ru" style="color:inherit">info@stargift.ru</a></span>
       <span>Земля · Жизнь · Космос</span>
     </div>
   </div>
@@ -246,10 +247,11 @@ function mountJoin(){
     var d={name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone')||''};
     S.registerPatron(d);
     S.addLead({date:new Date().toLocaleString('ru-RU'),type:'Заявка в патроны',
+               name:d.name,contact:d.email,desc:'Телефон: '+(d.phone||'не указан')}); S.send('заявка в патроны', {date:new Date().toLocaleString('ru-RU'),type:'Заявка в патроны',
                name:d.name,contact:d.email,desc:'Телефон: '+(d.phone||'не указан')});
     S.toast('Добро пожаловать, '+d.name.split(' ')[0]);
     var body='Имя: '+d.name+'\nE-mail: '+d.email+'\nТелефон: '+(d.phone||'не указан');
-    window.location.href='mailto:concierge@relictum.gallery?subject='+
+    window.location.href='mailto:info@stargift.ru?subject='+
       encodeURIComponent('Заявка в патроны дома')+'&body='+encodeURIComponent(body);
     setTimeout(mountAccount,400);
   });

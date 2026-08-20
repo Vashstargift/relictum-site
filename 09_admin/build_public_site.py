@@ -557,6 +557,7 @@ def write_extras(pages):
                                     'RewriteRule ^(.*)$ http://%1/$1 [R=301,L]')
     open(os.path.join(OUT, '.htaccess'), 'w', encoding='utf-8').write(htaccess)
     open(os.path.join(OUT, 'cors.php'), 'w', encoding='utf-8').write(CORS_PHP)
+    open(os.path.join(OUT, 'send.php'), 'w', encoding='utf-8').write(SEND_PHP)
     open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(PAGE_404)
 
 
@@ -581,6 +582,69 @@ header('Cache-Control: max-age=2592000');
 readfile($path);
 """
 
+
+SEND_PHP = r"""<?php
+/* Приём заявок и заказов с сайта -> письмо в дом.
+   До этого формы писали только в localStorage посетителя, и до дома
+   ничего не доходило. Адрес получателя зашит: открытого релея тут нет. */
+$TO   = 'info@stargift.ru';
+$FROM = 'noreply@relictum.gallery';
+
+header('Content-Type: application/json; charset=utf-8');
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); echo '{"ok":false}'; exit; }
+
+$raw = file_get_contents('php://input', false, null, 0, 64 * 1024);
+$in  = json_decode($raw, true);
+if (!is_array($in) || empty($in['kind'])) { http_response_code(400); echo '{"ok":false}'; exit; }
+
+/* Простой тормоз против спама: не чаще одного письма в 20 секунд с адреса. */
+$stamp = sys_get_temp_dir() . '/relictum_send_' . md5($_SERVER['REMOTE_ADDR']);
+if (file_exists($stamp) && time() - filemtime($stamp) < 20) { http_response_code(429); echo '{"ok":false}'; exit; }
+touch($stamp);
+
+function clean($s) { return trim(str_replace(array("\r", "\n"), ' ', (string)$s)); }
+
+$kind = clean($in['kind']);
+$data = isset($in['data']) && is_array($in['data']) ? $in['data'] : array();
+
+$lines = array();
+foreach ($data as $k => $v) {
+    if (is_array($v)) {
+        $parts = array();
+        foreach ($v as $it) {
+            if (is_array($it)) {
+                $name = isset($it['name']) ? $it['name'] : '';
+                $qty  = isset($it['qty']) ? $it['qty'] : '';
+                $price = isset($it['price']) ? $it['price'] : '';
+                $parts[] = trim($name . ' ' . ($qty ? ('x' . $qty) : '') . ' ' . $price);
+            } else { $parts[] = (string)$it; }
+        }
+        $v = implode('; ', $parts);
+    }
+    $lines[] = clean($k) . ': ' . clean($v);
+}
+
+$body  = "Заявка с сайта relictum.gallery\n";
+$body .= "Тип: " . $kind . "\n";
+if (!empty($in['page'])) { $body .= "Страница: " . clean($in['page']) . "\n"; }
+$body .= "\n" . implode("\n", $lines) . "\n";
+
+$subject = '=?UTF-8?B?' . base64_encode('RELICTUM — ' . $kind) . '?=';
+$headers  = "From: RELICTUM <$FROM>\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+
+/* Ответить посетителю можно прямо из письма, если он оставил e-mail. */
+foreach (array('email', 'contact') as $key) {
+    if (!empty($data[$key]) && filter_var($data[$key], FILTER_VALIDATE_EMAIL)) {
+        $headers .= 'Reply-To: ' . clean($data[$key]) . "\r\n";
+        break;
+    }
+}
+
+$ok = @mail($TO, $subject, $body, $headers);
+echo $ok ? '{"ok":true}' : '{"ok":false}';
+"""
 
 HTACCESS = r"""# RELICTUM — relictum.gallery
 RewriteEngine On

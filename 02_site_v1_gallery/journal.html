@@ -193,6 +193,7 @@
     </div>
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
+      <span><a href="tel:+74952335111" style="color:inherit">+7 495 233 5111</a> &nbsp;·&nbsp; <a href="mailto:info@stargift.ru" style="color:inherit">info@stargift.ru</a></span>
       <span>Земля · Жизнь · Космос</span>
     </div>
   </div>
@@ -233,7 +234,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     var mail=(new FormData(f)).get('email')||'';
     try{ var a=JSON.parse(localStorage.getItem('relictum_subs')||'[]'); a.unshift({date:new Date().toLocaleString('ru-RU'),email:mail}); localStorage.setItem('relictum_subs',JSON.stringify(a)); }catch(err){}
     f.innerHTML='<p style="margin:0">Спасибо. Подтвердите подписку письмом — оно уже открыто в вашей почте.</p>';
-    window.location.href='mailto:hello@relictum.gallery?subject='+encodeURIComponent('Подписка на письма Relictum')+
+    window.location.href='mailto:info@stargift.ru?subject='+encodeURIComponent('Подписка на письма Relictum')+
       '&body='+encodeURIComponent('Прошу подписать на рассылку дома: '+mail);
   });
 })();

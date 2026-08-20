@@ -159,9 +159,11 @@
         <h2>Один контакт — весь мир редкостей</h2>
         <p>Поиск объекта под запрос, закрытые лоты, участие в международных естественнонаучных аукционах, оценка и выкуп коллекций.</p>
         <table class="spec" style="max-width:440px">
-          <!-- ТЕЛЕФОН: строка скрыта до получения реального номера от владельца.
-               Вернуть: <tr><td>Телефон</td><td>НОМЕР</td></tr> -->
-          <tr><td>Почта</td><td>concierge@relictum.gallery</td></tr>
+          <!-- Пока дом пользуется контактами StarGift: свои ящики на relictum.gallery
+               не заведены, письма на них никуда не приходили. -->
+          <tr><td>Телефон</td><td><a href="tel:+74952335111">+7 495 233 5111</a></td></tr>
+          <tr><td>Почта</td><td><a href="mailto:info@stargift.ru">info@stargift.ru</a></td></tr>
+          <tr><td>Telegram</td><td><a href="https://t.me/stargiftgallerybot" target="_blank" rel="noopener">@stargiftgallerybot</a></td></tr>
           <tr><td>Галерея</td><td>Москва, по записи</td></tr>
         </table>
       </div>
@@ -240,6 +242,7 @@
     </div>
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
+      <span><a href="tel:+74952335111" style="color:inherit">+7 495 233 5111</a> &nbsp;·&nbsp; <a href="mailto:info@stargift.ru" style="color:inherit">info@stargift.ru</a></span>
       <span>Земля · Жизнь · Космос</span>
     </div>
   </div>
@@ -261,13 +264,13 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     if(!f.checkValidity()){ f.reportValidity(); return; }
     var fd=new FormData(f), name=fd.get('name')||'', contact=fd.get('contact')||'', desc=fd.get('desc')||'';
     var S=window.RelictumShop;
-    S.addLead({date:new Date().toLocaleString('ru-RU'),type:'Консьерж',name:name,contact:contact,desc:desc});
+    S.addLead({date:new Date().toLocaleString('ru-RU'),type:'Консьерж',name:name,contact:contact,desc:desc}); S.send('консьерж', {date:new Date().toLocaleString('ru-RU'),type:'Консьерж',name:name,contact:contact,desc:desc});
     var u=S.user(); if(name)u.name=name;
     if(contact.indexOf('@')>=0)u.email=contact; else u.phone=contact; S.saveUser(u);
     var body='Имя: '+name+'\nКонтакт: '+contact+'\n\n'+desc;
     f.innerHTML='<div class="label" style="margin-bottom:14px">Запрос принят</div>'+
       '<p style="margin-bottom:20px">Консьерж дома свяжется с вами в течение одного рабочего дня.</p>'+
-      '<a class="btn" href="mailto:concierge@relictum.gallery?subject='+
+      '<a class="btn" href="mailto:info@stargift.ru?subject='+
       encodeURIComponent('Запрос в галерею Relictum')+'&body='+encodeURIComponent(body)+
       '" style="justify-self:start">Продублировать письмом</a>';
   });

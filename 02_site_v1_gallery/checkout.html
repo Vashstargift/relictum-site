@@ -93,6 +93,7 @@
     </div>
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
+      <span><a href="tel:+74952335111" style="color:inherit">+7 495 233 5111</a> &nbsp;·&nbsp; <a href="mailto:info@stargift.ru" style="color:inherit">info@stargift.ru</a></span>
       <span>Земля · Жизнь · Космос</span>
     </div>
   </div>
@@ -145,6 +146,7 @@ function bind(){
     u.name=(fd.get('fname')+' '+fd.get('lname')).trim(); u.email=fd.get('email'); u.phone=fd.get('phone'); S.saveUser(u);
     var orderItems=S.cartItems().map(function(o){return o.name}); var orderTotal=S.total();
     S.addOrder({date:new Date().toLocaleString('ru-RU'),name:u.name,email:u.email,phone:u.phone,
+                addr:fd.get('addr'),note:fd.get('note')||'',items:orderItems,total:orderTotal}); S.send('заказ', {date:new Date().toLocaleString('ru-RU'),name:u.name,email:u.email,phone:u.phone,
                 addr:fd.get('addr'),note:fd.get('note')||'',items:orderItems,total:orderTotal});
     var ids=S.placeOrder();
     // дублируем письмом: сетевой отправки у сайта пока нет
@@ -163,7 +165,7 @@ function success(n, body){
     '<h2 class="rl-h" style="font-size:34px;margin-bottom:14px">Спасибо. Объект зарезервирован.</h2>'+
     '<p class="rl-muted" style="margin-bottom:10px">'+n+' объект'+(n>1?'а':'')+' отложено за вами. Персональный менеджер дома свяжется в течение рабочего дня: подтвердит наличие и итоговую сумму, согласует доставку и удобный способ оплаты.</p>'+
     '<p class="rl-muted" style="margin-bottom:24px">Оплата на сайте не проводится — все расчёты идут напрямую с домом.</p>'+
-    '<a class="rl-btn" style="width:auto;display:inline-block" href="mailto:concierge@relictum.gallery?subject='+
+    '<a class="rl-btn" style="width:auto;display:inline-block" href="mailto:info@stargift.ru?subject='+
       encodeURIComponent('Заказ в Relictum')+'&body='+encodeURIComponent(body||'')+'">Продублировать письмом</a> '+
     '<a class="rl-btn ghost" style="width:auto;display:inline-block" href="account.html">Личный кабинет</a></div>';
   window.scrollTo(0,0);

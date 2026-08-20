@@ -94,6 +94,7 @@
     </div>
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
+      <span><a href="tel:+74952335111" style="color:inherit">+7 495 233 5111</a> &nbsp;·&nbsp; <a href="mailto:info@stargift.ru" style="color:inherit">info@stargift.ru</a></span>
       <span>Земля · Жизнь · Космос</span>
     </div>
   </div>
@@ -135,7 +136,7 @@ document.getElementById('rq').addEventListener('submit',function(e){
   // сохранить контакт
   var u=S.user(),fd=new FormData(f); if(fd.get('name'))u.name=fd.get('name');
   var c=fd.get('contact')||''; if(c.indexOf('@')>=0)u.email=c; else u.phone=c; S.saveUser(u);
-  S.addLead({date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),contact:c});
+  S.addLead({date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),contact:c}); S.send('запрос объекта', {date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),contact:c});
   setTimeout(success,1100);
 });
 </script>

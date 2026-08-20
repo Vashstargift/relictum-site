@@ -71,7 +71,17 @@
     getOrders:function(){ try{return JSON.parse(localStorage.getItem('relictum_orders'))||[]}catch(e){return[]} },
     addOrder:function(rec){ var a=this.getOrders(); a.unshift(rec); localStorage.setItem('relictum_orders',JSON.stringify(a)); },
     getLeads:function(){ try{return JSON.parse(localStorage.getItem('relictum_leads'))||[]}catch(e){return[]} },
-    addLead:function(rec){ var a=this.getLeads(); a.unshift(rec); localStorage.setItem('relictum_leads',JSON.stringify(a)); }
+    addLead:function(rec){ var a=this.getLeads(); a.unshift(rec); localStorage.setItem('relictum_leads',JSON.stringify(a)); },
+    /* Отправка на сервер: локальная копия остаётся у посетителя (кабинет,
+       история заказов), но теперь письмо уходит и в дом. Ошибка сети не должна
+       ломать сценарий — интерфейс уже показал подтверждение. */
+    send:function(kind,rec){
+      try{
+        var url=(location.pathname.indexOf('/objects/')>=0?'../':'')+'send.php';
+        return fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({kind:kind,page:location.href,data:rec})}).catch(function(){});
+      }catch(e){}
+    }
   };
   window.RelictumShop=Shop;
 
