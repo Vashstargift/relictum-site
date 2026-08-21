@@ -369,8 +369,25 @@ function syncBadges() {
   });
 }
 
+/* Порядок по умолчанию: сначала наличие, «под заказ» вплетается каждым
+   пятым — так первый экран показывает то, что можно купить сразу, но и
+   заказные позиции не уезжают все в конец витрины. */
+function weave(list) {
+  const stock = list.filter(o => o.avail === "В наличии");
+  const order = list.filter(o => o.avail !== "В наличии");
+  if (!stock.length || !order.length) return list;
+  const out = []; let oi = 0;
+  stock.forEach((o, i) => {
+    out.push(o);
+    if ((i + 1) % 4 === 0 && oi < order.length) out.push(order[oi++]);
+  });
+  while (oi < order.length) out.push(order[oi++]);
+  return out;
+}
+
 function render() {
   let items = CATALOG.filter(matches);
+  if (sortEl.value === "default") items = weave(items);
   if (sortEl.value==="asc") items=[...items].sort((a,b)=>(a.priceValue??Infinity)-(b.priceValue??Infinity));
   if (sortEl.value==="desc") items=[...items].sort((a,b)=>(b.priceValue??-1)-(a.priceValue??-1));
 

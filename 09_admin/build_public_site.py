@@ -458,6 +458,19 @@ def prerender_catalog():
 
     def esc(x): return str(x).replace('&','&amp;').replace('<','&lt;').replace('"','&quot;')
     items = [o for o in items if not o.get('hidden')]   # спрятанные не впечатываем
+    # Порядок как у render() в catalog.html: наличие вперёд, «под заказ»
+    # каждым пятым. Иначе предрендер и скрипт дают разный порядок, и сетка
+    # на глазах перестраивается после загрузки.
+    stock = [o for o in items if o.get('status') != 'Под заказ']
+    order = [o for o in items if o.get('status') == 'Под заказ']
+    if stock and order:
+        woven, oi = [], 0
+        for i, o in enumerate(stock):
+            woven.append(o)
+            if (i + 1) % 4 == 0 and oi < len(order):
+                woven.append(order[oi]); oi += 1
+        woven.extend(order[oi:])
+        items = woven
     cards = []
     for n, o in enumerate(items):
         href = o.get('href') or ('object.html?id=' + o['id'])
