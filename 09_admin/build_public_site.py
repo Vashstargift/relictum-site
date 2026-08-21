@@ -83,7 +83,7 @@ def rewrite_links(text, scope):
 # Всё, что кэшируется браузером надолго и потому должно версионироваться (?v=…).
 # Стили сюда входят обязательно: без них правка шапки или подвала доходит
 # до постоянного посетителя только когда истечёт кэш (сейчас 7 дней).
-DATA_FILES = ['shared/catalog.js', '16_product_promos/promo-data.js',
+DATA_FILES = ['shared/catalog.js', 'shared/order.js', '16_product_promos/promo-data.js',
               'shared/shop.js', 'shared/nav.js', 'shared/biography.js',
               'shared/chrome.css', 'shared/shop.css', 'shared/fonts.css', 'shared/buttons.css',
               '02_site_v1_gallery/style.css']
@@ -451,26 +451,19 @@ def prerender_catalog():
     public/shared/catalog.js — ссылки там ведут на objects/.
     """
     import json
+    # Порядок карточек считает shared/order.js — тот же файл, что и на
+    # странице. Своя реализация здесь означала бы две расходящиеся копии и
+    # перестроение сетки после загрузки.
     js = ("global.window={};"
+          f"eval(require('fs').readFileSync({json.dumps(os.path.join(OUT,'shared','order.js'))},'utf8'));"
           f"eval(require('fs').readFileSync({json.dumps(os.path.join(OUT,'shared','catalog.js'))},'utf8'));"
-          "process.stdout.write(JSON.stringify(window.RELICTUM_CATALOG));")
+          "var c=window.RELICTUM_CATALOG.filter(function(o){return !o.hidden})"
+          ".map(function(o){o.avail=(o.status==='Под заказ')?'Под заказ':'В наличии';return o});"
+          "process.stdout.write(JSON.stringify(window.RELICTUM_ORDER.arrange(c)));")
     items = json.loads(subprocess.run(['node','-e',js],capture_output=True,text=True,check=True).stdout)
 
     def esc(x): return str(x).replace('&','&amp;').replace('<','&lt;').replace('"','&quot;')
-    items = [o for o in items if not o.get('hidden')]   # спрятанные не впечатываем
-    # Порядок как у render() в catalog.html: наличие вперёд, «под заказ»
-    # каждым пятым. Иначе предрендер и скрипт дают разный порядок, и сетка
-    # на глазах перестраивается после загрузки.
-    stock = [o for o in items if o.get('status') != 'Под заказ']
-    order = [o for o in items if o.get('status') == 'Под заказ']
-    if stock and order:
-        woven, oi = [], 0
-        for i, o in enumerate(stock):
-            woven.append(o)
-            if (i + 1) % 4 == 0 and oi < len(order):
-                woven.append(order[oi]); oi += 1
-        woven.extend(order[oi:])
-        items = woven
+
     cards = []
     for n, o in enumerate(items):
         href = o.get('href') or ('object.html?id=' + o['id'])
