@@ -95,7 +95,7 @@
 <!-- HERO-КАРУСЕЛЬ -->
 <header class="hcar" id="hcar">
   <div class="slide dark on" data-dur="13200">
-    <div class="media"><video muted loop playsinline preload="auto" poster="../shared/img/hm_psittacosaurus.jpg" data-src="../shared/img/promo/hero_psittacosaurus.mp4"></video></div>
+    <div class="media"><video muted loop playsinline preload="auto" poster="../shared/img/hm_psittacosaurus.jpg" data-poster-m="../shared/img/hm_psittacosaurus_m.jpg" data-src="../shared/img/promo/hero_psittacosaurus.mp4" data-src-m="../shared/img/promo/hero_psittacosaurus_m.mp4"></video></div>
     <div class="in">
       <div class="label">Экспонат в вашем доме</div>
       <h1>Роскошь<br>вне <em>времени</em></h1>
@@ -113,7 +113,7 @@
     </div>
   </div>
   <div class="slide dark" data-dur="13200">
-    <div class="media"><video muted loop playsinline preload="none" poster="../shared/img/hm_raptor.jpg" data-src="../shared/img/promo/hero_raptor.mp4"></video></div>
+    <div class="media"><video muted loop playsinline preload="none" poster="../shared/img/hm_raptor.jpg" data-poster-m="../shared/img/hm_raptor_m.jpg" data-src="../shared/img/promo/hero_raptor.mp4" data-src-m="../shared/img/promo/hero_raptor_m.mp4"></video></div>
     <div class="in">
       <div class="label">Интерьеры</div>
       <h2>Музейные древности<br>у вас <em>дома</em></h2>
@@ -576,7 +576,15 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   var i=0,timer=null,DUR=6500;
   slides.forEach(function(s,k){var b=document.createElement('button');if(k===0)b.className='on';b.onclick=function(){go(k,true)};dotsBox.appendChild(b)});
   var dots=[].slice.call(dotsBox.children);
-  function loadVid(s){var v=s.querySelector('video[data-src]');if(v&&!v.src){v.src=v.dataset.src;v.load();}}
+  /* Узкий экран получает вертикальный ролик: 16:9 в портретной рамке
+     обрезается до четверти ширины, и от скелета остаются рёбра. */
+  var NARROW = matchMedia('(max-width:767px)').matches;
+  function loadVid(s){
+    var v=s.querySelector('video[data-src]'); if(!v||v.src) return;
+    if(NARROW && v.dataset.srcM){ if(v.dataset.posterM) v.poster=v.dataset.posterM; v.src=v.dataset.srcM; }
+    else v.src=v.dataset.src;
+    v.load();
+  }
   function playVid(s){var v=s.querySelector('video');if(v){v.play().catch(function(){});}}
   function go(n,manual){
     i=(n+slides.length)%slides.length;

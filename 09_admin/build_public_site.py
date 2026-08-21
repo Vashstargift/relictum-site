@@ -277,7 +277,7 @@ KEEP_DIRS = ('shared/brand',)          # логотипы и фавиконы н
 # ---------------------------------------------------------------------------
 MEDIA_STAMP_EXT = ('.mp4', '.jpg', '.jpeg', '.png', '.webp')
 MEDIA_ATTR = re.compile(
-    r'((?:src|poster|data-src)=")([^"?]+?\.(?:mp4|jpg|jpeg|png|webp))(")', re.I)
+    r'((?:src|poster|data-src|data-src-m|data-poster-m)=")([^"?]+?\.(?:mp4|jpg|jpeg|png|webp))(")', re.I)
 
 
 def stamp_media(out_dir):
