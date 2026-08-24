@@ -35,8 +35,12 @@
 @media(max-width:768px){
   .hcar .slide{align-items:end}
   .hcar .slide.dark .media::after{background:linear-gradient(180deg,transparent 26%,rgba(10,9,8,.92) 86%)}
-  .hcar .slide .in{margin-left:0;padding-bottom:13svh;max-width:100%}
-  .hcar .slide h1,.hcar .slide h2{font-size:clamp(40px,12vw,60px)}
+  /* Текст слайда не должен упираться в шапку: кегли меньше, отступы плотнее,
+     сверху страховочный зазор до низа шапки */
+  .hcar .slide .in{margin-left:0;padding-top:calc(var(--nav-h,72px) + 16px);padding-bottom:11svh;max-width:100%}
+  .hcar .slide .in .label{margin-bottom:12px}
+  .hcar .slide h1,.hcar .slide h2{font-size:clamp(30px,9vw,42px);margin-bottom:14px}
+  .hcar .slide p{font-size:14px;line-height:1.55;margin-bottom:22px}
   .hcar .arrow{display:none}
 }
 /* полноширинный видео-блок «динозавры» */
