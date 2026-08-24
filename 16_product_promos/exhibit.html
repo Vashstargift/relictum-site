@@ -329,6 +329,31 @@ if(!o){
   var kick = (P&&P.heroKicker) || (o.category&&o.category!=='—'?o.category:o.worldLabel) + (o.region&&o.region!=='—'?', '+o.region:'');
   var storyHtml = (P&&P.story)?P.story.map(function(t){return '<p>'+t+'</p>'}).join('') : '<p>'+(o.description||'')+'</p>';
   var alive = P?P.alive:null;
+  /* У части экспонатов своего ролика «встретить живым» нет — тогда блок
+     «При жизни» показывает стандартное видео их эпохи (те же ролики,
+     что в разделе «Эры»). Заголовок и подпись берём из era{} промо-данных. */
+  if(!alive){
+    var ERA_VID={
+      'Плейстоцен':['era_mammoth.mp4','era_mammoth.jpg'],
+      'Неогеновый период':['era_neogene.mp4','era_neogene.jpg'],
+      'Меловой период':['era_cretaceous.mp4','era_cretaceous.jpg'],
+      'Юрский период':['era_jurassic_sea.mp4','era_jurassic_sea.jpg'],
+      'Триасовый период':['era_triassic_sea.mp4','era_triassic_sea.jpg'],
+      'Девонский период':['era_paleozoic_sea.mp4','era_paleozoic_sea.jpg'],
+      'Ордовикский период':['era_paleozoic_sea.mp4','era_paleozoic_sea.jpg'],
+      'Силурийский период':['era_paleozoic_sea.mp4','era_paleozoic_sea.jpg'],
+      'Каменноугольный период':['era_paleozoic_sea.mp4','era_paleozoic_sea.jpg'],
+      'Эдиакарский период':['era_precambrian.mp4','era_precambrian.jpg'],
+      'Ранний докембрий':['era_precambrian.mp4','era_precambrian.jpg'],
+      'До зарождения жизни':['era_hadean.mp4','era_hadean.jpg']
+    };
+    var ev=ERA_VID[o.period];
+    if(ev){
+      alive={ title:(P&&P.era&&P.era.title)?P.era.title:o.period,
+              text:(P&&P.era&&P.era.line)?P.era.line:(o.age||''),
+              video:ev[0], poster:ev[1] };
+    }
+  }
   var era = P?P.era:null;
   var interior = P?P.interior:null;
   /* Галерея собирается сама, а не ведётся руками: сначала интерьер,
