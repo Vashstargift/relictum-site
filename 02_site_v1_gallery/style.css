@@ -219,12 +219,14 @@ section { padding: clamp(72px, 9vw, 140px) 0; }
 .world-card.is-soon:hover img { transform: none; opacity: .96; }
 .world-card .meta {
   position: absolute; inset: auto 0 0 0; padding: 26px 26px 24px;
-  background: linear-gradient(0deg, rgba(17,17,17,.82) 30%, rgba(17,17,17,0));
-  color: var(--ivory);
+  /* Ивори-градиент под тёмный текст: на студийном фоне не виден, а тёмные
+     основания стоек и жеод приглушает ровно под подписью. */
+  background: linear-gradient(0deg, rgba(244,240,232,.92) 45%, rgba(244,240,232,0));
+  color: var(--obsidian);
 }
-.world-card .meta .latin { font-size: 10px; letter-spacing: .3em; color: var(--sand); text-transform: uppercase; }
+.world-card .meta .latin { font-size: 10px; letter-spacing: .3em; color: var(--bronze-deep); text-transform: uppercase; }
 .world-card .meta h3 { font-size: 30px; margin: 6px 0 4px; }
-.world-card .meta span { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(244,240,232,.75); }
+.world-card .meta span { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
 
 /* ---------- Карточки объектов ---------- */
 .grid-objects { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.6vw, 40px); align-items: stretch; }
