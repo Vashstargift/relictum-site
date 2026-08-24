@@ -39,9 +39,11 @@
      не работает — cover заполняет высоту точно). Метеорит не трогаем. */
   .hcar .slide .media{overflow:hidden}
   .hcar .slide .media img,.hcar .slide .media video{height:140%;transform:translateY(-28.57%)}
-  /* первый и последний слайды — объект ещё выше */
-  .hcar .slide:nth-of-type(1) .media img,.hcar .slide:nth-of-type(1) .media video,
-  .hcar .slide:nth-of-type(4) .media img,.hcar .slide:nth-of-type(4) .media video{height:165%;transform:translateY(-39.39%)}
+  /* пситтакозавр — выше; динозавры мела — чуть выше базы; раптор — сильнее всех:
+     его голова сидит низко в кадре, вытягиваем её в чистую верхнюю зону */
+  .hcar .slide:nth-of-type(1) .media img,.hcar .slide:nth-of-type(1) .media video{height:165%;transform:translateY(-39.39%)}
+  .hcar .slide:nth-of-type(3) .media img,.hcar .slide:nth-of-type(3) .media video{height:150%;transform:translateY(-33.33%)}
+  .hcar .slide:nth-of-type(4) .media img,.hcar .slide:nth-of-type(4) .media video{height:190%;transform:translateY(-47.37%);object-position:8% 50%}
   .hcar .slide:nth-of-type(2) .media img,.hcar .slide:nth-of-type(2) .media video{height:100%;transform:none}
   .hcar .slide.dark .media::after{background:linear-gradient(180deg,transparent 20%,rgba(10,9,8,.45) 42%,rgba(10,9,8,.96) 68%)}
   .hcar .slide .in{margin-left:0;padding-top:calc(var(--nav-h,72px) + 16px);padding-bottom:11svh;max-width:100%}
