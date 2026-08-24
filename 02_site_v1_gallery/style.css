@@ -169,7 +169,9 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(90deg, rgba(244,240,232,.94) 0%, rgba(244,240,232,.72) 34%, rgba(244,240,232,0) 62%);
 }
-.hero-content { position: relative; z-index: 2; max-width: 640px; padding: 140px var(--gutter) 100px; margin-left: max(calc((100vw - var(--maxw)) / 2), 0px); }
+/* Текст хиро выровнен по левой границе логотипа шапки: шапка — во всю ширину
+   с полем var(--gutter), поэтому никакого центрирования, только то же поле. */
+.hero-content { position: relative; z-index: 2; max-width: 640px; padding: 140px var(--gutter) 100px; margin-left: 0; }
 .hero h1 { font-size: clamp(48px, 6.4vw, 96px); font-weight: 400; margin: 26px 0 22px; }
 .hero h1 em { font-style: italic; color: var(--bronze-deep); }
 .hero p.lead { font-size: 17px; color: var(--stone); max-width: 440px; margin-bottom: 42px; }
