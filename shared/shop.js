@@ -188,3 +188,112 @@
     open(img.currentSrc || img.src, img.alt);
   });
 })();
+
+/* ---- Плавающий контакт (по образцу StarGift): кнопка снизу справа,
+        попап — подбор, WhatsApp, телефон и обратный звонок в CRM ---- */
+(function(){
+  var S = window.RelictumShop; if(!S) return;
+  /* те же три строки, что в paths(): билдер публичного среза переписывает их
+     под раскладку домена, поэтому дублируем дословно */
+  function pre(){
+    var p=location.pathname;
+    if(p.indexOf('/02_site_v1_gallery/')>=0) return '';
+    if(p.indexOf('/16_product_promos/')>=0) return '../02_site_v1_gallery/';
+    return '02_site_v1_gallery/';
+  }
+  var P = pre();
+  var PHONE_H='+7 495 233 5111', PHONE='+74952335111', WA='https://wa.me/74952335111';
+
+  var st=document.createElement('style');
+  st.textContent =
+    '.rl-fab{position:fixed;right:22px;bottom:22px;z-index:220;width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;'+
+      'background:#14110E;color:#F4F0E8;display:flex;align-items:center;justify-content:center;'+
+      'box-shadow:0 10px 30px -8px rgba(10,9,8,.55);transition:transform .25s,background .25s}'+
+    '.rl-fab:hover{transform:scale(1.06);background:#0A0908}'+
+    '.rl-cpop{position:fixed;right:22px;bottom:90px;z-index:220;width:min(320px,calc(100vw - 32px));'+
+      'background:#FBF8F1;border:1px solid rgba(154,109,52,.28);box-shadow:0 30px 80px -20px rgba(10,9,8,.45);'+
+      'opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .25s,transform .25s}'+
+    '.rl-cpop.on{opacity:1;transform:none;pointer-events:auto}'+
+    '.rl-cpop .h{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(154,109,52,.18)}'+
+    '.rl-cpop .h b{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#9A6D34;font-weight:500}'+
+    '.rl-cpop .h button{background:none;border:none;cursor:pointer;font-size:18px;line-height:1;color:#7A7267;padding:2px 4px}'+
+    '.rl-cpop .row{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid rgba(154,109,52,.1);'+
+      'color:#14110E;font-size:14px;cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;width:100%;text-align:left;font-family:inherit;transition:background .25s}'+
+    'a.rl-crow{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid rgba(154,109,52,.1);color:#14110E;font-size:14px;transition:background .25s}'+
+    '.rl-cpop .row:hover,a.rl-crow:hover{background:rgba(154,109,52,.07)}'+
+    '.rl-cpop .ic{width:36px;height:36px;border-radius:50%;background:rgba(154,109,52,.1);display:flex;align-items:center;justify-content:center;flex:none;color:#9A6D34}'+
+    '.rl-cpop form{padding:18px 20px}'+
+    '.rl-cpop form p{font-size:12.5px;color:#7A7267;margin:0 0 12px;line-height:1.5}'+
+    '.rl-cpop input[type=text],.rl-cpop input[type=tel]{width:100%;font-size:16px;font-family:inherit;padding:11px 2px;margin-bottom:10px;'+
+      'background:transparent;border:none;border-bottom:1px solid rgba(20,17,14,.22);outline:none}'+
+    '.rl-cpop label.cns{display:flex;gap:8px;align-items:flex-start;font-size:11px;color:#7A7267;line-height:1.45;margin:8px 0 14px}'+
+    '.rl-cpop label.cns a{color:inherit;text-decoration:underline}'+
+    '.rl-cpop .go{width:100%;padding:13px 0;background:#14110E;color:#F4F0E8;border:none;cursor:pointer;'+
+      'font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-family:inherit}'+
+    '.rl-cpop .back{width:100%;padding:9px 0 2px;background:none;border:none;cursor:pointer;font-size:11px;color:#7A7267;font-family:inherit}'+
+    '.rl-cpop .ok{padding:26px 20px;text-align:center;font-size:14px;color:#14110E}'+
+    '.rl-cpop .ok small{display:block;margin-top:8px;font-size:12px;color:#7A7267}'+
+    '@media(max-width:720px){.rl-fab{right:16px;bottom:16px}.rl-cpop{right:16px;bottom:84px}}';
+  document.head.appendChild(st);
+
+  var icoChat='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.6-.8L3 20l1-4.2a8.3 8.3 0 0 1-1-4.3 8.4 8.4 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z"/></svg>';
+  var icoX='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  var icoStar='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><path d="M12 2.6l2.1 6.05 6.3.35-4.9 3.95 1.65 6.1L12 15.6l-5.15 3.45 1.65-6.1-4.9-3.95 6.3-.35z"/></svg>';
+  var icoWa='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.004 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
+  var icoTel='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
+  var icoBack='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
+
+  function menuHTML(){
+    return '<div class="h"><b>Связаться с домом</b><button type="button" data-c aria-label="Закрыть">'+icoX+'</button></div>'+
+      '<a class="rl-crow" href="'+P+'request.html"><span class="ic">'+icoStar+'</span><span>Персональный подбор</span></a>'+
+      '<a class="rl-crow" href="'+WA+'" target="_blank" rel="noopener"><span class="ic">'+icoWa+'</span><span>WhatsApp</span></a>'+
+      '<a class="rl-crow" href="tel:'+PHONE+'"><span class="ic">'+icoTel+'</span><span>'+PHONE_H+'</span></a>'+
+      '<button type="button" class="row" data-cb><span class="ic">'+icoBack+'</span><span>Обратный звонок</span></button>';
+  }
+  function formHTML(){
+    var u=S.user();
+    return '<div class="h"><b>Обратный звонок</b><button type="button" data-c aria-label="Закрыть">'+icoX+'</button></div>'+
+      '<form data-f><p>Оставьте номер — наш менеджер свяжется с вами в течение 15 минут после обращения.</p>'+
+      '<input type="text" name="name" placeholder="Имя" value="'+S.esc(u.name==='Гость'?'':u.name)+'" required>'+
+      '<input type="tel" name="phone" placeholder="+7 (___) ___-__-__" value="'+S.esc(u.phone||'')+'" required>'+
+      '<label class="cns"><input type="checkbox" name="consent" required style="margin-top:2px">'+
+        '<span>Я предоставляю своё <a href="'+P+'consent.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с <a href="'+P+'privacy.html" target="_blank">политикой конфиденциальности</a></span></label>'+
+      '<button class="go" type="submit">Жду звонка</button>'+
+      '<button class="back" type="button" data-b>&#8592; Назад</button></form>';
+  }
+  function okHTML(name){
+    return '<div class="h"><b>Заявка принята</b><button type="button" data-c aria-label="Закрыть">'+icoX+'</button></div>'+
+      '<div class="ok">Спасибо'+(name?(', '+S.esc(name.split(' ')[0])):'')+'.<small>Наш менеджер свяжется с вами в течение 15 минут после обращения.</small></div>';
+  }
+
+  var fab=document.createElement('button');
+  fab.className='rl-fab'; fab.type='button'; fab.setAttribute('aria-label','Связаться с домом');
+  fab.innerHTML=icoChat;
+  var pop=document.createElement('div');
+  pop.className='rl-cpop'; pop.innerHTML=menuHTML();
+  document.body.appendChild(pop); document.body.appendChild(fab);
+
+  function close(){ pop.classList.remove('on'); fab.innerHTML=icoChat; setTimeout(function(){ pop.innerHTML=menuHTML(); },250); }
+  function open(){ pop.classList.add('on'); fab.innerHTML=icoX; }
+  fab.addEventListener('click', function(){ pop.classList.contains('on')?close():open(); });
+  document.addEventListener('mousedown', function(e){
+    if(pop.classList.contains('on') && !pop.contains(e.target) && !fab.contains(e.target)) close();
+  });
+  addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+
+  pop.addEventListener('click', function(e){
+    if(e.target.closest('[data-c]')) { close(); return; }
+    if(e.target.closest('[data-cb]')) { pop.innerHTML=formHTML(); return; }
+    if(e.target.closest('[data-b]')) { pop.innerHTML=menuHTML(); return; }
+  });
+  pop.addEventListener('submit', function(e){
+    var f=e.target.closest('[data-f]'); if(!f) return;
+    e.preventDefault();
+    if(!f.checkValidity()){ f.reportValidity(); return; }
+    var fd=new FormData(f), name=fd.get('name')||'', phone=fd.get('phone')||'';
+    var u=S.user(); if(name)u.name=name; if(phone)u.phone=phone; S.saveUser(u);
+    var rec={date:new Date().toLocaleString('ru-RU'),type:'Обратный звонок',name:name,phone:phone,contact:phone,consent:true};
+    S.addLead(rec); S.send('обратный звонок', rec);
+    pop.innerHTML=okHTML(name);
+  });
+})();
