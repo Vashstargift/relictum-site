@@ -245,7 +245,7 @@ a{color:inherit;text-decoration:none}
   <ul class="nav-links">
     <li><a href="../02_site_v1_gallery/catalog.html" class="active">Каталог</a></li>
     <li><a href="../02_site_v1_gallery/interiors.html">Интерьеры</a></li>
-    <li><a href="../02_site_v1_gallery/expeditions.html">Экспедиции</a></li>
+    <li><a href="../02_site_v1_gallery/expeditions.html">Экспедиции</a></li><li><a href="../15_concepts/eras.html">Эры</a></li>
     
     <li><a href="../02_site_v1_gallery/maison.html">О нас</a></li>
   </ul>
@@ -278,6 +278,7 @@ a{color:inherit;text-decoration:none}
           <li><a href="../02_site_v1_gallery/maison.html">О доме</a></li>
           <li><a href="../02_site_v1_gallery/interiors.html">Интерьеры</a></li>
           <li><a href="../02_site_v1_gallery/expeditions.html">Экспедиции</a></li>
+          <li><a href="../15_concepts/eras.html">Эры</a></li>
           <li><a href="../02_site_v1_gallery/maison.html#concierge">Консьерж</a></li>
         </ul>
       </div>
@@ -430,9 +431,7 @@ if(!o){
       '</div>'+
     '</div></div></section>') : '';
 
-  /* Блок «При жизни» снят со страниц экспонатов (решение владельца 24.08.2026):
-     данные alive в promo-data сохранены, вернуть — убрать false && ниже. */
-  var aliveSec = false && alive ? (
+  var aliveSec = alive ? (
     '<section class="alive" id="aliveSec" data-video="'+(alive.video?MV(IMG+alive.video):'')+'">'+
       (alive.poster?'<img class="poster" src="'+MV(IMG+alive.poster)+'" alt="" loading="lazy" decoding="async">':'')+
       '<div class="veil"></div>'+
@@ -440,9 +439,7 @@ if(!o){
         '<div class="label">'+(o.world==='cosmos'?'До Земли':'При жизни')+'</div>'+
         '<h2>'+alive.title+'</h2>'+
         '<p>'+alive.text+'</p>'+
-        /* Раздел эр скрыт (24.08.2026) — кнопка «Войти в эпоху» отключена.
-           Вернуть: (era&&era.href?'<a class="btn" href="'+era.href+'">Войти в эпоху →</a>':'') */
-        ''+
+        (era&&era.href?'<a class="btn" href="'+era.href+'">Войти в эпоху →</a>':'')+
       '</div>'+
     '</section>') : '';
 
