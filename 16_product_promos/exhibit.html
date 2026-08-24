@@ -42,6 +42,9 @@ a{color:inherit;text-decoration:none}
    и украшений: просто тихая строка бронзой рядом с действием. */
 .hero .txt .buy .status{display:inline-flex;align-items:center;padding:14px 0;color:var(--deep);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;line-height:1.1;white-space:nowrap}
 .hero .txt .buy-price{font-family:var(--serif);font-size:clamp(23px,2.6vw,32px);line-height:1;color:var(--black)}
+/* Количество экземпляров — тихая капитель бронзой сразу под ценой.
+   Отрицательный отступ съедает часть общего gap колонки .buy. */
+.hero .txt .buy .buy-qty{margin-top:-10px;color:var(--deep);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;line-height:1.1}
 /* Кнопка контурная, а не сплошная: на светлом первом экране чёрная плашка
    перебивала цену, набранную антиквой. Заливка приходит при наведении. */
 .hero .txt .buy .btn{white-space:nowrap;padding:14px 30px;background:transparent;border:1px solid var(--black);color:var(--black)}
@@ -493,6 +496,7 @@ if(!o){
          прокрутив страницу до самого низа. Нижний блок покупки остаётся. */
       '<div class="buy rv">'+
         '<div class="buy-price">'+(o.price||'Цена по запросу')+'</div>'+
+        (o.qty?'<div class="buy-qty">'+o.qty+'</div>':'')+
         '<div class="buy-row">'+
           (o.priceValue
             ? '<button type="button" class="btn" id="heroCart">Добавить в корзину</button>'
@@ -533,7 +537,7 @@ if(!o){
   '<section class="cta"><div class="wrap">'+
     '<div class="label rv" style="color:var(--gold);margin-bottom:14px">'+o.id+'</div>'+
     '<div class="price rv">'+(o.price||'Цена по запросу')+(o.status?' <span style="font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)">· '+o.status+'</span>':'')+'</div>'+
-    '<div class="note rv">Один экземпляр, паспорт объекта, доставка и установка домом Relictum</div>'+
+    '<div class="note rv">'+(o.qty||'Один экземпляр')+', паспорт объекта, доставка и установка домом Relictum</div>'+
     '<div class="row rv on-dark">'+
       '<button type="button" class="btn solid" id="exCart">Добавить в корзину</button>'+
       '<button type="button" class="btn ghost" id="exFav">В избранное<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" style="vertical-align:-2px;margin-left:7px"><path d="M12 2.6l2.1 6.05 6.3.35-4.9 3.95 1.65 6.1L12 15.6l-5.15 3.45 1.65-6.1-4.9-3.95 6.3-.35z"/></svg></button>'+
