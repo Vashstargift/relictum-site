@@ -280,8 +280,12 @@
   function close(){ pop.classList.remove('on'); fab.innerHTML=icoChat; setTimeout(function(){ pop.innerHTML=menuHTML(); },250); }
   function open(){ pop.classList.add('on'); fab.innerHTML=icoX; }
   fab.addEventListener('click', function(){ pop.classList.contains('on')?close():open(); });
+  /* значок связи в шапке открывает тот же попап (без JS уводит на #concierge) */
+  document.querySelectorAll('.rl-nav-contact').forEach(function(el){
+    el.addEventListener('click', function(e){ e.preventDefault(); pop.classList.contains('on')?close():open(); });
+  });
   document.addEventListener('mousedown', function(e){
-    if(pop.classList.contains('on') && !pop.contains(e.target) && !fab.contains(e.target)) close();
+    if(pop.classList.contains('on') && !pop.contains(e.target) && !fab.contains(e.target) && !e.target.closest('.rl-nav-contact')) close();
   });
   addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
 
