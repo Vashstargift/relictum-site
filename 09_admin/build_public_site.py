@@ -270,8 +270,10 @@ def hide_eras():
     вместе с раскомментированием 15_concepts в COPY, когда раздел вернётся."""
     d = os.path.join(OUT, 'eras')
     os.makedirs(d, exist_ok=True)
+    # RedirectMatch, а не Redirect: Redirect приклеивает хвост пути к цели
+    # (/eras/eras.html -> /eras.html, а это 404). Тут всё уходит на главную.
     open(os.path.join(d, '.htaccess'), 'w', encoding='utf-8').write(
-        'Redirect 302 /eras/ https://relictum.gallery/\n')
+        'RedirectMatch 302 ^/eras/ https://relictum.gallery/\n')
     print('   /eras/ скрыт: .htaccess-редирект на главную')
 
 
