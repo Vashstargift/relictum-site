@@ -40,7 +40,8 @@
   .hcar .slide .in{margin-left:0;padding-top:calc(var(--nav-h,72px) + 16px);padding-bottom:11svh;max-width:100%}
   .hcar .slide .in .label{margin-bottom:12px}
   .hcar .slide h1,.hcar .slide h2{font-size:clamp(30px,9vw,42px);margin-bottom:14px}
-  .hcar .slide p{font-size:14px;line-height:1.55;margin-bottom:22px}
+  /* Длинные подводки на телефоне закрывали кадр целиком — обрезаем до трёх строк */
+  .hcar .slide p{font-size:14px;line-height:1.55;margin-bottom:22px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
   .hcar .arrow{display:none}
 }
 /* полноширинный видео-блок «динозавры» */
