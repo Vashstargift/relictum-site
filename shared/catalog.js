@@ -284,6 +284,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0232",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
@@ -412,6 +413,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0233",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
@@ -540,6 +542,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0234",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
@@ -644,6 +647,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0235",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
@@ -1007,6 +1011,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0238",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
@@ -1136,6 +1141,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0239",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
@@ -1267,6 +1273,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0240",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
@@ -1422,6 +1429,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0241",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
@@ -1588,6 +1596,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0242",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
@@ -1774,6 +1783,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0243",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
@@ -2045,6 +2055,7 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0244",
+    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские лилии",
