@@ -54,7 +54,7 @@ window.RELICTUM_PROMO = {
     },
     interior: { img: "int_ph_raptor.jpg", text: "Скелет двухметрового хищника держит комнату один: ему нужна глубина, тёмный фон и один направленный луч." },
     era: { title: "Последнее утро мезозоя", line: "Поздний мел", href: "../15_concepts/era-cretaceous.html" },
-    gallery: []
+    gallery: ["gal_yakimanka_4.jpg"]
   },
 
   "R–0273": {
@@ -499,7 +499,7 @@ window.RELICTUM_PROMO = {
     era: { title: "Спутник Земли", line: "≈ 4,5 млрд лет, возраст Луны", href: "../15_concepts/deep-time.html" },
     alive: { title: "Осколок лунной коры", text: "Астероид выбил этот осколок с поверхности Луны, и в раме он снова стоит рядом с её портретом на фотографии.", video: "vid_moon.mp4", poster: "ph_moon_frame.jpg" },
     interior: { video: "intv_moon.mp4", img: "int_ph_moon.jpg", text: "Рама с лунным метеоритом вешается над консолью или ставится на стол, оба варианта равноценны. Выбор стены и высоты подвеса дом обсуждает отдельно." },
-    gallery: ["g_moon_fragment.jpg", "int_ph_moon.jpg", "g_moon_3.jpg"]
+    gallery: ["g_moon_fragment.jpg", "int_ph_moon.jpg", "g_moon_3.jpg", "gal_yakimanka_7.jpg"]
   },
 
   "R–0211": {
@@ -931,7 +931,7 @@ window.RELICTUM_PROMO = {
       text: "Реконструкция повторяет позу экспоната — тот же шаг, тот же разворот головы. Окрас восстановлен по ископаемым меланосомам вида: тёмная спина, светлое брюхо, ряд щетин на хвосте. Вокруг — лес Ляонина раннего мела: гинкго, хвойные и папоротники у озера."
     },
     spin: "spin_psittacosaurus_skeleton.mp4",
-    gallery: ["int_ph_psittacosaurus_skeleton.jpg", "anat_psittacosaurus_skeleton.jpg", "life_psittacosaurus_skeleton.jpg", "g_psitskel_1.jpg", "g_psitskel_2.jpg", "ph_psittacosaurus_skeleton.jpg"],
+    gallery: ["gal_yakimanka_6.jpg", "gal_yakimanka_5.jpg", "int_ph_psittacosaurus_skeleton.jpg", "anat_psittacosaurus_skeleton.jpg", "life_psittacosaurus_skeleton.jpg", "g_psitskel_1.jpg", "g_psitskel_2.jpg", "ph_psittacosaurus_skeleton.jpg"],
     interior: { video: "intv_psittacosaurus_skeleton.mp4", img: "int_ph_psittacosaurus_skeleton.jpg", text: "Смонтированный пситтакозавр в полный рост занимает угол библиотеки или кабинета — высоты вытянутой руки хватает, чтобы разглядеть его целиком." },
     hook: "Полный скелет «попугайного ящера» — одного из самых ранних цератопсов, из меловых лесов Ляонина.",
     heroKicker: "Динозавры, Ляонин, Китай",
