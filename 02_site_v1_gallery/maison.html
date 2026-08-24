@@ -116,7 +116,40 @@
       </div>
       <p class="sub">ТЦ «Гименей», 10:00–22:00, без выходных</p>
     </div>
-    <div class="media reveal" style="margin:0 0 22px"><img src="../shared/img/gal_yakimanka_10.jpg" alt="Вход в галерею Stargift в ТЦ «Гименей»" style="width:100%;aspect-ratio:2/1;object-fit:cover;object-position:center 38%" loading="lazy" decoding="async"></div>
+    <!-- Слайдер живых фото галереи (как на контактах Stargift) -->
+    <style>
+    .gslider{position:relative;aspect-ratio:2/1;overflow:hidden;background:var(--obsidian)}
+    .gslider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s var(--ease)}
+    .gslider img.on{opacity:1}
+    .gslider .gs-a{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border:none;background:rgba(10,9,8,.45);color:#F4F0E8;font-size:22px;line-height:1;cursor:pointer;transition:background .3s;backdrop-filter:blur(4px)}
+    .gslider .gs-a:hover{background:rgba(10,9,8,.75)}
+    .gslider .gs-a.prev{left:0}.gslider .gs-a.next{right:0}
+    .gslider .gs-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
+    .gslider .gs-dots button{width:26px;height:2px;border:none;padding:0;background:rgba(244,240,232,.45);cursor:pointer;transition:background .3s}
+    .gslider .gs-dots button.on{background:var(--bronze)}
+    @media(max-width:720px){.gslider{aspect-ratio:4/3}}
+    </style>
+    <div class="reveal gslider" id="gslider" style="margin:0 0 22px">
+      <img src="../shared/img/gal_yakimanka_10.jpg" alt="Вход в галерею Stargift в ТЦ «Гименей»" style="object-position:center 38%" class="on" decoding="async">
+      <img src="../shared/img/gal_yakimanka_6.jpg" alt="Зал галереи: скелет пситтакозавра" loading="lazy" decoding="async">
+      <img src="../shared/img/gal_yakimanka_2.jpg" alt="Бивень мамонта в зале галереи" loading="lazy" decoding="async">
+      <img src="../shared/img/gal_yakimanka_7.jpg" alt="Лунный метеорит в раме" loading="lazy" decoding="async">
+      <button type="button" class="gs-a prev" aria-label="Предыдущее фото">‹</button>
+      <button type="button" class="gs-a next" aria-label="Следующее фото">›</button>
+      <div class="gs-dots"></div>
+    </div>
+    <script>
+    (function(){
+      var s=document.getElementById('gslider'); if(!s) return;
+      var imgs=[].slice.call(s.querySelectorAll('img')), dots=s.querySelector('.gs-dots'), i=0, tm;
+      imgs.forEach(function(_,k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Фото '+(k+1));if(!k)b.className='on';b.addEventListener('click',function(){go(k);reset();});dots.appendChild(b);});
+      function go(k){i=(k+imgs.length)%imgs.length;imgs.forEach(function(im,j){im.classList.toggle('on',j===i)});dots.querySelectorAll('button').forEach(function(b,j){b.classList.toggle('on',j===i)});}
+      function reset(){clearInterval(tm);tm=setInterval(function(){go(i+1)},5000);}
+      s.querySelector('.prev').addEventListener('click',function(){go(i-1);reset();});
+      s.querySelector('.next').addEventListener('click',function(){go(i+1);reset();});
+      reset();
+    })();
+    </script>
     <div class="reveal" style="display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap">
       <p style="font-size:13px;color:var(--stone);line-height:1.6;margin:0;max-width:56ch">Галерея в самом центре Москвы: окружение ТЦ «Гименей» составляют «Президент-отель» и парк искусств «Музеон». Бесплатная парковка для посетителей — по паролю «Stargift».</p>
       <p style="font-size:14px;margin:0;white-space:nowrap"><a href="tel:+74952335111">+7 495 233 5111</a> &nbsp;·&nbsp; <a href="mailto:info@stargift.ru">info@stargift.ru</a> &nbsp;·&nbsp; <a href="https://wa.me/74952335111" target="_blank" rel="noopener">WhatsApp</a></p>
