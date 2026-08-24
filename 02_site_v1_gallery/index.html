@@ -34,14 +34,14 @@
 .hcar .arrow.prev{left:8px}.hcar .arrow.next{right:8px}
 @media(max-width:768px){
   .hcar .slide{align-items:end}
-  .hcar .slide.dark .media::after{background:linear-gradient(180deg,transparent 26%,rgba(10,9,8,.92) 86%)}
-  /* Текст слайда не должен упираться в шапку: кегли меньше, отступы плотнее,
-     сверху страховочный зазор до низа шапки */
+  /* Кадр уводим вверх, а под текстом — плотная чёрная растяжка: объект живёт
+     в верхней половине экрана, текст читается на градиенте, а не на нём */
+  .hcar .slide .media img,.hcar .slide .media video{object-position:50% 16%}
+  .hcar .slide.dark .media::after{background:linear-gradient(180deg,transparent 20%,rgba(10,9,8,.45) 42%,rgba(10,9,8,.96) 68%)}
   .hcar .slide .in{margin-left:0;padding-top:calc(var(--nav-h,72px) + 16px);padding-bottom:11svh;max-width:100%}
   .hcar .slide .in .label{margin-bottom:12px}
   .hcar .slide h1,.hcar .slide h2{font-size:clamp(30px,9vw,42px);margin-bottom:14px}
-  /* Длинные подводки на телефоне закрывали кадр целиком — обрезаем до трёх строк */
-  .hcar .slide p{font-size:14px;line-height:1.55;margin-bottom:22px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .hcar .slide p{font-size:14px;line-height:1.55;margin-bottom:22px}
   .hcar .arrow{display:none}
 }
 /* полноширинный видео-блок «динозавры» */
