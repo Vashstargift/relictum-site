@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Дом Relictum — О нас, консьерж, подлинность</title>
+<title>Дом Relictum — О нас, галерея, подлинность</title>
 <link rel="stylesheet" href="../shared/fonts.css">
 <link rel="stylesheet" href="../shared/buttons.css">
 <link rel="stylesheet" href="style.css">
@@ -14,17 +14,17 @@
 <link rel="icon" href="../shared/brand/favicon.ico">
 <link rel="apple-touch-icon" href="../shared/brand/apple-touch-icon.png">
 <meta name="theme-color" content="#0A0908">
-<meta name="description" content="Дом Relictum: консьерж-сервис, персональный подбор объектов, оформление, музейная доставка и интеграция в интерьер.">
+<meta name="description" content="Дом Relictum: персональный подбор менеджером галереи, объектов, оформление, музейная доставка и интеграция в интерьер.">
 <link rel="canonical" href="https://vashikmart.github.io/relictum/02_site_v1_gallery/maison.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RELICTUM">
-<meta property="og:title" content="Дом Relictum — О нас, консьерж, подлинность">
-<meta property="og:description" content="Дом Relictum: консьерж-сервис, персональный подбор объектов, оформление, музейная доставка и интеграция в интерьер.">
+<meta property="og:title" content="Дом Relictum — О нас, галерея, подлинность">
+<meta property="og:description" content="Дом Relictum: персональный подбор менеджером галереи, объектов, оформление, музейная доставка и интеграция в интерьер.">
 <meta property="og:image" content="https://vashikmart.github.io/relictum/shared/img/gal_yakimanka_hero.jpg">
 <meta property="og:url" content="https://vashikmart.github.io/relictum/02_site_v1_gallery/maison.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Дом Relictum — О нас, консьерж, подлинность">
-<meta name="twitter:description" content="Дом Relictum: консьерж-сервис, персональный подбор объектов, оформление, музейная доставка и интеграция в интерьер.">
+<meta name="twitter:title" content="Дом Relictum — О нас, галерея, подлинность">
+<meta name="twitter:description" content="Дом Relictum: персональный подбор менеджером галереи, объектов, оформление, музейная доставка и интеграция в интерьер.">
 <meta name="twitter:image" content="https://vashikmart.github.io/relictum/shared/img/gal_yakimanka_hero.jpg">
 </head>
 <body>
@@ -57,7 +57,7 @@
   <div style="position:relative;z-index:2;width:100%;padding:clamp(120px,16vw,190px) var(--gutter) clamp(46px,6vw,80px);color:var(--ivory)">
     <div class="label reveal" style="color:var(--bronze)">Дом Relictum</div>
     <h1 class="reveal" style="font-family:var(--font-display);font-weight:400;font-size:clamp(38px,5.4vw,84px);line-height:1.05;max-width:15ch;margin:14px 0 16px">Галерея редких свидетельств времени</h1>
-    <p class="reveal" style="color:rgba(244,240,232,.85);max-width:52ch;font-size:15.5px">Дом коллекционных объектов: галерея, лаборатория, экспедиции и консьерж-сервис под одним именем.</p>
+    <p class="reveal" style="color:rgba(244,240,232,.85);max-width:52ch;font-size:15.5px">Дом коллекционных объектов: галерея, лаборатория, экспедиции и персональный сервис под одним именем.</p>
   </div>
 </header>
 
@@ -239,7 +239,7 @@
           <li><a href="interiors.html">Интерьеры</a></li>
           <li><a href="expeditions.html">Экспедиции</a></li>
           <li><a href="../15_concepts/eras.html">Эры</a></li>
-          <li><a href="maison.html#concierge">Консьерж</a></li>
+          <li><a href="maison.html#concierge">Менеджер галереи</a></li>
         </ul>
       </div>
       <div>
@@ -279,8 +279,8 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     var fd=new FormData(f), name=fd.get('name')||'', phone=fd.get('phone')||'', email=fd.get('email')||'', desc=fd.get('desc')||'';
     var contact=phone+(email?(', '+email):'');
     var S=window.RelictumShop;
-    var rec={date:new Date().toLocaleString('ru-RU'),type:'Консьерж',name:name,phone:phone,email:email,contact:contact,desc:desc,consent:!!fd.get('consent')};
-    S.addLead(rec); S.send('консьерж', rec);
+    var rec={date:new Date().toLocaleString('ru-RU'),type:'Запрос в галерею',name:name,phone:phone,email:email,contact:contact,desc:desc,consent:!!fd.get('consent')};
+    S.addLead(rec); S.send('запрос в галерею', rec);
     var u=S.user(); if(name)u.name=name;
     if(email)u.email=email; if(phone)u.phone=phone; S.saveUser(u);
     var body='Имя: '+name+'\nТелефон: '+phone+(email?('\nE-mail: '+email):'')+'\n\n'+desc;
