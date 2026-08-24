@@ -39,14 +39,6 @@
   .hcar .arrow{display:none}
 }
 /* полноширинный видео-блок «динозавры» */
-.dinoband{position:relative;min-height:82svh;display:grid;place-items:center;text-align:center;overflow:hidden;background:var(--obsidian);color:var(--ivory)}
-.dinoband video,.dinoband .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.dinoband .veil{position:absolute;inset:0;z-index:1;background:radial-gradient(120% 90% at 50% 40%,rgba(10,9,8,.62),rgba(10,9,8,.88))}
-.dinoband .in{position:relative;z-index:2;padding:80px 22px;max-width:640px}
-.dinoband .label{color:var(--bronze);margin-bottom:16px}
-.dinoband h2{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,6vw,68px);line-height:1.03;margin-bottom:18px}
-.dinoband h2 em{font-style:italic;color:var(--bronze)}
-.dinoband p{color:rgba(244,240,232,.82);max-width:44ch;margin:0 auto 30px}
 </style>
 
 <!-- rl-seo -->
@@ -83,7 +75,7 @@
     
     <li><a href="interiors.html">Интерьеры</a></li>
           <li><a href="expeditions.html">Экспедиции</a></li>
-    <li><a href="journal.html">Журнал</a></li><li><a href="../15_concepts/eras.html">Эры</a></li>
+    <li><a href="../15_concepts/eras.html">Эры</a></li>
     <li><a href="maison.html">Дом Relictum</a></li>
   </ul>
   <div class="nav-actions">
@@ -95,39 +87,48 @@
 <!-- HERO-КАРУСЕЛЬ -->
 <header class="hcar" id="hcar">
   <div class="slide dark on" data-dur="13200">
-    <div class="media"><video muted loop playsinline preload="auto" poster="../shared/img/hm_psittacosaurus.jpg" data-poster-m="../shared/img/hm_psittacosaurus_m.jpg" data-src="../shared/img/promo/hero_psittacosaurus.mp4" data-src-m="../shared/img/promo/hero_psittacosaurus_m.mp4"></video></div>
+    <div class="media"><video muted loop playsinline preload="auto" poster="../shared/img/hm_raptor.jpg" data-poster-m="../shared/img/hm_raptor_m.jpg" data-src="../shared/img/promo/hero_raptor.mp4" data-src-m="../shared/img/promo/hero_raptor_m.mp4"></video></div>
     <div class="in">
       <div class="label">Экспонат в вашем доме</div>
-      <h1>Роскошь<br>вне <em>времени</em></h1>
-      <p>Скелет динозавра в гостиной, метеорит на консоли, аммонит на книжной полке. Всё, что дом находит и готовит, рассчитано жить рядом с вами — а не за музейным стеклом.</p>
-      <div class="btn-row on-dark"><a class="btn btn-solid" href="catalog.html">Смотреть каталог</a><a class="btn" href="interiors.html">В интерьере</a></div>
-    </div>
-  </div>
-  <div class="slide dark">
-    <div class="media"><video muted loop playsinline preload="none" poster="../shared/img/era_cretaceous.jpg" data-src="../shared/img/era_cretaceous.mp4"></video></div>
-    <div class="in">
-      <div class="label">Живые эры</div>
-      <h2>Когда-то они<br>были <em>живыми</em></h2>
-      <p>Одни объекты дома были живыми, другие миллиарды лет шли к Земле через космос. Пройдите сквозь эпохи, из которых они пришли.</p>
-      <div class="btn-row on-dark"><a class="btn btn-solid" href="../15_concepts/eras.html">Войти в эры</a><a class="btn" href="../15_concepts/era-cretaceous.html">Меловой период</a></div>
-    </div>
-  </div>
-  <div class="slide dark" data-dur="13200">
-    <div class="media"><video muted loop playsinline preload="none" poster="../shared/img/hm_raptor.jpg" data-poster-m="../shared/img/hm_raptor_m.jpg" data-src="../shared/img/promo/hero_raptor.mp4" data-src-m="../shared/img/promo/hero_raptor_m.mp4"></video></div>
-    <div class="in">
-      <div class="label">Интерьеры</div>
-      <h2>Музейные древности<br>у вас <em>дома</em></h2>
-      <p>Люди вешают на стены картины, не зная, что можно повесить океан эоцена. Шесть комнат показывают, как объект живёт рядом с человеком: масштаб, соседство, свет.</p>
-      <div class="btn-row on-dark"><a class="btn btn-solid" href="interiors.html">Смотреть интерьеры</a><a class="btn" href="catalog.html">Смотреть каталог</a></div>
+      <h1>Музейные древности<br>у вас <em>дома</em></h1>
+      <p>Замените привычную живопись и предметы декора монументальными объектами природы. Посмотрите, как доисторические окаменелости и арт-объекты превращают интерьер в коллекционное пространство музейного уровня. Мы адаптируем редчайшие находки палеонтологии для жилых пространств, создавая роскошь вне времени.</p>
+      <div class="btn-row on-dark"><a class="btn btn-solid" href="catalog.html">Перейти в каталог</a><a class="btn" href="interiors.html">Примерить в интерьере</a></div>
     </div>
   </div>
   <div class="slide dark">
     <div class="media"><video muted loop playsinline preload="none" poster="../shared/img/hm_meteor.jpg" data-src="../shared/img/promo/hero_museum_meteor.mp4"></video></div>
     <div class="in">
       <div class="label">Космос</div>
-      <h2>Вещество<br>старше <em>Солнца</em></h2>
-      <p>Метеориты возрастом 4,56 миллиарда лет: железо из ядра разрушенной планеты, палласиты с кристаллами оливина, осколки Луны. Вещество старше Земли.</p>
-      <div class="btn-row on-dark"><a class="btn btn-solid" href="catalog.html#cosmos">Смотреть космос</a><a class="btn" href="journal-meteorite.html">Читать</a></div>
+      <h2>Часть Вселенной<br>в ваших <em>руках</em></h2>
+      <p>Подлинные метеориты, фрагменты Луны и Марса возрастом свыше 4,5 миллиардов лет. Самые редкие и недосягаемые объекты во Вселенной, доступные для вашей коллекции.</p>
+      <div class="btn-row on-dark"><a class="btn btn-solid" href="catalog.html#cosmos">Перейти в каталог</a><a class="btn" href="interiors.html">Примерить в интерьере</a></div>
+    </div>
+  </div>
+  <div class="slide dark" data-dur="13200">
+    <div class="media"><video muted loop playsinline preload="none" poster="../shared/img/hm_psittacosaurus.jpg" data-poster-m="../shared/img/hm_psittacosaurus_m.jpg" data-src="../shared/img/promo/hero_psittacosaurus.mp4" data-src-m="../shared/img/promo/hero_psittacosaurus_m.mp4"></video></div>
+    <div class="in">
+      <div class="label">Дом Relictum</div>
+      <h2>Роскошь<br>вне <em>времени</em></h2>
+      <p>Откройте для себя редкое направление коллекционирования, признанное ведущими аукционными домами. Скелет динозавра в гостиной или рельефный аммонит в кабинете. Дом Relictum адаптирует легендарные находки прошлого для жизни: мы убираем дистанцию музейных стёкол, позволяя миллионам лет истории стать частью вашего ежедневного эстетического опыта и уюта.</p>
+      <div class="btn-row on-dark"><a class="btn btn-solid" href="catalog.html">Перейти в каталог</a><a class="btn" href="interiors.html">Примерить в интерьере</a></div>
+    </div>
+  </div>
+  <div class="slide dark">
+    <div class="media"><video muted loop playsinline preload="none" poster="../shared/img/era_cretaceous.jpg" data-src="../shared/img/era_cretaceous.mp4"></video></div>
+    <div class="in">
+      <div class="label">Живые эры</div>
+      <h2>За пределами<br>человеческой <em>эры</em></h2>
+      <p>От полноразмерных скелетов доисторических гигантов до артефактов внеземной материи. Исследуйте уникальные объекты естественной истории, высеченные миллионами лет эволюции и сформировавшие облик нашего мира.</p>
+      <div class="btn-row on-dark"><a class="btn btn-solid" href="../15_concepts/eras.html">Исследовать Эры</a><a class="btn" href="catalog.html">Перейти в каталог</a></div>
+    </div>
+  </div>
+  <div class="slide dark">
+    <div class="media"><video muted loop playsinline preload="none" poster="../shared/img/hm_dino.jpg" data-src="../shared/img/promo/hero_museum_dino.mp4"></video></div>
+    <div class="in">
+      <div class="label">Эра динозавров</div>
+      <h2>Скульптуры,<br>высеченные <em>эволюцией</em></h2>
+      <p>Полноразмерные скелеты и эталонные окаменелости доисторических гигантов. Редчайшие свидетельства эволюции Земли, подготовленные для частных и корпоративных коллекций.</p>
+      <div class="btn-row on-dark"><a class="btn btn-solid" href="catalog.html#vita">Перейти в каталог</a><a class="btn" href="interiors.html">Смотреть в интерьере</a></div>
     </div>
   </div>
   <button class="arrow prev" aria-label="Назад">‹</button>
@@ -142,17 +143,17 @@
       <div class="pillar">
         <div class="num">I</div>
         <h3>Подлинность</h3>
-        <p>Каждый объект проходит экспертизу и получает Паспорт объекта Relictum — с историей происхождения, подписью эксперта и сертификатом.</p>
+        <p>Каждый объект коллекции проходит экспертизу и получает сертификат подлинности от профильных экспертов с детальной историей происхождения, научными характеристиками и гарантией аутентичности.</p>
       </div>
       <div class="pillar">
         <div class="num">II</div>
         <h3>Редкость</h3>
-        <p>Мы отбираем единичные объекты среди редчайших образцов в мире: подтверждённая сохранность, тонкая препарация, легальный экспорт из страны находки.</p>
+        <p>Мы отбираем объекты высшей категории сохранности, прошедшие филигранную музейную препарацию и обладающие легальным статусом экспорта из страны находки.</p>
       </div>
       <div class="pillar">
         <div class="num">III</div>
         <h3>Сопровождение</h3>
-        <p>Поиск объекта под запрос, оформление, упаковка и доставка, установка на месте. Дом ведёт объект от выбора до его места в вашем доме.</p>
+        <p>Персональный поиск экспонатов под ваш запрос, безопасная логистика и профессиональный монтаж. Представители Дома Relictum бережно сопровождают вас на каждом этапе приобретения — с момента выбора экспоната до интеграции объекта в ваш интерьер.</p>
       </div>
     </div>
   </div>
@@ -163,10 +164,10 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div>
-        <div class="label">Коллекции дома</div>
-        <h2>Три мира. Одна вечность.</h2>
+        <div class="label">Разделы коллекции</div>
+        <h2>Три измерения. Одна вечность.</h2>
       </div>
-      <p class="sub">Земля, Жизнь и Космос — три источника наших объектов. Четвёртый мир мы создаём сами.</p>
+      <p class="sub">Земля, Древняя Жизнь и Космос — три фундаментальных источника собрания Relictum.</p>
     </div>
     <div class="worlds">
       <a class="world-card reveal" href="catalog.html#vita">
@@ -174,7 +175,7 @@
         <div class="meta">
           <div class="latin">Vita</div>
           <h3>Жизнь</h3>
-          <span>Палеозой, Мезозой, Кайнозой</span>
+          <span>Скелеты гигантов, окаменелости, аммониты</span>
         </div>
       </a>
       <a class="world-card reveal" href="catalog.html#terra">
@@ -182,7 +183,7 @@
         <div class="meta">
           <div class="latin">Terra</div>
           <h3>Земля</h3>
-          <span>Минералы, Жеоды, Флора</span>
+          <span>Редчайшие кристаллы и природные минералы</span>
         </div>
       </a>
       <a class="world-card reveal" href="catalog.html#cosmos">
@@ -190,32 +191,14 @@
         <div class="meta">
           <div class="latin">Cosmos</div>
           <h3>Космос</h3>
-          <span>Железные, Палласиты, Лунные</span>
+          <span>Внеземные артефакты, палласиты и метеориты</span>
         </div>
       </a>
-      <div class="world-card reveal is-soon">
-        <img src="../shared/img/editions_megalodon_vitrine.jpg" alt="Relictum Editions" loading="lazy" decoding="async">
-        <div class="meta">
-          <div class="latin">№ 01–12</div>
-          <h3>Editions</h3>
-          <span>Авторские объекты дома</span>
-        </div>
-      </div>
-    </div>
+          </div>
   </div>
 </section>
 
-<!-- ДИНОЗАВРЫ, полноэкранное видео -->
-<section class="dinoband" id="dinoband" data-src="../shared/img/promo/hero_museum_dino.mp4">
-  <img class="poster" src="../shared/img/hm_dino.jpg" alt="Скелет пситтакозавра в чёрной студии" loading="lazy" decoding="async">
-  <div class="veil"></div>
-  <div class="in">
-    <div class="label">Век динозавров</div>
-    <h2>Динозавры,<br>которые <em>были живыми</em></h2>
-    <p>Целые скелеты и отдельные находки меловых гигантов — для дома и коллекции. Снятые так, как они того заслуживают.</p>
-    <div class="btn-row on-dark" style="justify-content:center;gap:12px"><a class="btn btn-solid" href="../15_concepts/eras.html">Смотреть эры</a><a class="btn" href="catalog.html#vita">Динозавры в каталоге</a></div>
-  </div>
-</section>
+
 
 <!-- ТОЛЬКО ЧТО ПОСТУПИЛО -->
 <section style="padding-bottom:0">
@@ -223,9 +206,9 @@
     <div class="section-head reveal">
       <div>
         <div class="label">В наличии</div>
-        <h2>Только что поступило</h2>
+        <h2>Новинки собрания</h2>
       </div>
-      <a class="link-arrow" href="catalog.html">Всё наличие</a>
+      <a class="link-arrow" href="catalog.html">Перейти в каталог</a>
     </div>
     <div class="grid-objects">
       <a class="obj-card reveal" href="../16_product_promos/mammoth-tusks.html">
@@ -338,77 +321,9 @@
   </div>
 </section>
 
-<!-- МОНУМЕНТАЛЬНАЯ КОЛЛЕКЦИЯ -->
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <div class="label">Крупная форма</div>
-        <h2>Монументальная коллекция</h2>
-      </div>
-      <p class="sub">Скелеты, черепа и панно музейного масштаба — экспонаты, вокруг которых строится пространство.</p>
-    </div>
-  </div>
-  <div class="wrap" style="margin-bottom:clamp(18px,2.6vw,40px)">
-    <a class="split reveal" href="catalog.html#grand" style="background:var(--obsidian);color:var(--ivory)">
-      <div class="media" style="margin:0"><img src="../shared/img/grand_atrium_skeleton.jpg" alt="Скелет динозавра в атриуме" style="aspect-ratio:3/2.1" loading="lazy" decoding="async"></div>
-      <div style="padding:clamp(26px,4vw,64px)">
-        <div class="label" style="color:var(--bronze)">Центральный экспонат</div>
-        <h2 style="font-size:clamp(28px,3vw,44px);margin:16px 0 14px">Скелет как архитектура</h2>
-        <p style="color:rgba(244,240,232,.72);font-size:15px;max-width:420px">Полные смонтированные скелеты для атриумов, лобби и частных галерей. Индивидуальный стальной каркас, музейный свет, инсталляция командой дома.</p>
-        <span class="link-arrow" style="margin-top:22px;color:var(--bronze)">Смотреть монументы</span>
-      </div>
-    </a>
-  </div>
-  <div class="wrap">
-    <div class="grid-objects">
-      <a class="obj-card reveal" href="../16_product_promos/exhibit.html?id=0610-psittacosaurus-skeleton">
-        <div class="ph"><img src="../shared/img/ph_psittacosaurus_skeleton.jpg?v=11" alt="Скелет пситтакозавра" loading="lazy" decoding="async"></div>
-        <div class="body">
-          <div class="id">R–0610, Монументы</div>
-          <h3>Скелет пситтакозавра</h3>
-          <div class="latin">Psittacosaurus sp.</div>
-          <div class="meta">Ляонин, Китай, ≈ 125 млн лет<br>168 см</div>
-          <div class="price"><b>Цена по запросу</b><span>Смотреть</span></div>
-        </div>
-      </a>
-      <a class="obj-card reveal" href="../16_product_promos/exhibit.html?id=cave-bear-skeleton">
-        <div class="ph"><img src="../shared/img/ph_cavebear.jpg?v=11" alt="Скелет пещерного медведя" loading="lazy" decoding="async"></div>
-        <div class="body">
-          <div class="id">R–0604, Монументы</div>
-          <h3>Скелет пещерного медведя</h3>
-          <div class="latin">Ursus spelaeus</div>
-          <div class="meta">Россия, 300–15 тыс лет<br>295 × 125 × 90 см, высота почти 3 м</div>
-          <div class="price"><b>Цена по запросу</b><span>Смотреть</span></div>
-        </div>
-      </a>
-      <a class="obj-card reveal" href="../16_product_promos/exhibit.html?id=mammoth-skull-tusks">
-        <div class="ph"><img src="../shared/img/ph_mammoth_skull.jpg?v=11" alt="Череп мамонта с бивнями" loading="lazy" decoding="async"></div>
-        <div class="body">
-          <div class="id">R–0605, Монументы</div>
-          <h3>Череп мамонта с бивнями</h3>
-          <div class="latin">Mammuthus primigenius</div>
-          <div class="meta">Якутия, Россия, ≈ 30 000 лет<br>Размах бивней 2,4 м</div>
-          <div class="price"><b>7 400 000 ₽</b><span>Смотреть</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<!-- ЖИВЫЕ ЭРЫ, видео-тизер -->
-<section style="padding:0;position:relative;overflow:hidden">
-  <a href="../15_concepts/eras.html" style="display:block;position:relative;min-height:78svh;display:grid;align-items:end">
-    <video id="erasTeaserVid" muted loop playsinline preload="none" poster="../shared/img/era_cretaceous.jpg" data-src="../shared/img/era_cretaceous.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,.5),transparent 30%,transparent 45%,rgba(17,17,17,.9))"></div>
-    <div class="wrap" style="position:relative;z-index:2;padding-bottom:clamp(50px,7vw,90px);color:var(--ivory)">
-      <div class="label" style="color:var(--bronze)">Relictum, Живые эры</div>
-      <h2 style="font-family:var(--font-display);font-size:clamp(34px,5.4vw,72px);margin:16px 0 14px;max-width:16ch">Они были живыми</h2>
-      <p style="color:rgba(244,240,232,.85);max-width:44ch;font-size:15.5px">Мамонты идут по степи, пинакозавры бредут по гобийской равнине, аммониты плывут в древнем море. Пройдите сквозь эпохи — и увидьте миры, из которых пришли наши объекты.</p>
-      <span class="link-arrow" style="margin-top:24px;color:var(--bronze)">Войти в эры</span>
-    </div>
-  </a>
-</section>
+
+
 
 <!-- ИНТЕРЬЕР -->
 <section class="band-dark">
@@ -416,11 +331,11 @@
     <div class="split">
       <div class="media reveal"><img src="../shared/img/int_library.jpg" alt="Библиотека коллекционера" style="aspect-ratio:3/2.4" loading="lazy" decoding="async"></div>
       <div class="reveal">
-        <div class="label">Интерьеры Relictum</div>
-        <h2>Вещи, которых больше не будет</h2>
-        <p>Мы отбираем объекты, за которыми стоит наука, и представляем их по существу. Каждый существует в одном экземпляре — точной копии не бывает.</p>
-        <p>Студия интерьеров Relictum подбирает объекты под архитектуру пространства: от настольного палласита до напольной жеоды и стола из окаменелого дерева.</p>
-        <a class="btn" href="maison.html#interior" style="margin-top:20px">Интерьерные проекты</a>
+        <div class="label">Дом Relictum</div>
+        <h2>Архитектура уникальных собраний</h2>
+        <p>Дом Relictum формирует готовые многосоставные коллекции и пространственные решения из редчайших объектов палеонтологии, метеоритов и монументальной геологии.</p>
+        <p>Мы разрабатываем комплексные концепции для жилых и общественных пространств, представительских офисов, корпоративных фондов, частных галерей и личных коллекций. От поиска штучных артефактов до инженерного монтажа и сценариев света — мы берём на себя весь цикл реализации. Каждая подборка уникальна: природа создаёт свои шедевры в единственном экземпляре, не оставляя повторений.</p>
+        <a class="btn" href="maison.html#concierge" style="margin-top:20px">Подобрать готовое решение</a>
       </div>
     </div>
   </div>
@@ -431,11 +346,11 @@
   <div class="wrap">
     <div class="split">
       <div class="reveal">
-        <div class="label">Экспедиции дома</div>
-        <h2>Путешествия к истокам времени</h2>
-        <p>Сахара, Атласские горы, Якутия, атлантический шельф. Мы отправляемся туда, где земля отдаёт свои реликвии, — и берём с собой клиентов дома.</p>
-        <p>Частные палеонтологические экспедиции с экспертами Relictum: вы находите свой объект сами — и он навсегда получает вашу историю в провенансе.</p>
-        <a class="btn" href="expeditions.html" style="margin-top:20px">Программа экспедиций</a>
+        <div class="label">Приватный клуб первооткрывателей</div>
+        <h2>Частные экспедиции Relictum</h2>
+        <p>Дом Relictum приглашает вас в частные палеонтологические экспедиции в самые труднодоступные точки планеты: от жарких песков Сахары до вечной мерзлоты Якутии. Вы отправитесь на раскопки в сопровождении экспертов проекта, чтобы своими руками извлечь из земли артефакты, которые будут передаваться из поколения в поколение и не подлежать повторению.</p>
+        <p>Так рождается истинная связь с предметом: вы становитесь не просто владельцем редчайшего объекта доисторического времени, а его первооткрывателем. Ваше имя навсегда вписывается в провенанс лота, соединяя историю создания Земли с вашей собственной историей.</p>
+        <a class="btn" href="expeditions.html" style="margin-top:20px">Подробнее об Экспедициях</a>
       </div>
       <div class="media wide reveal"><img src="../shared/img/expedition_morocco.jpg" alt="Экспедиция в Марокко" loading="lazy" decoding="async"></div>
     </div>
@@ -449,44 +364,13 @@
     <div class="inner">
       <div class="label" style="color:var(--bronze)">Консьерж-сервис</div>
       <h2>Не нашли то, что искали?</h2>
-      <p>Наши эксперты подберут редкий объект под любой запрос: эпоху, регион, бюджет, интерьер. Конфиденциально, с доставкой по договорённости.</p>
+      <p>Если вы ищете конкретный палеонтологический объект, редкий минерал или внеземную материю определённой эпохи — эксперты Дома Relictum помогут реализовать ваш запрос. Экспертная оценка и персональное сопровождение сделки на всех этапах включены в стоимость.</p>
       <a class="btn" style="border-color:#F4F0E8;color:#F4F0E8" href="maison.html#concierge">Персональный подбор</a>
     </div>
   </div>
 </section>
 
-<!-- ЖУРНАЛ -->
-<section>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <div class="label">Журнал Relictum</div>
-        <h2>Наука как искусство</h2>
-      </div>
-      <a class="link-arrow" href="journal.html">Все материалы</a>
-    </div>
-    <div class="journal-grid">
-      <a class="j-card reveal" href="journal-ammonite.html">
-        <div class="ph"><img src="../shared/img/journal_ammonite_macro.jpg" alt="Геометрия аммонита" loading="lazy" decoding="async"></div>
-        <div class="label rubric">Глубокое время</div>
-        <h3>Геометрия, которой 110 миллионов лет</h3>
-        <p>Как аммониты вычертили логарифмическую спираль задолго до геометрии — и почему их лопастные линии сложнее любого орнамента.</p>
-      </a>
-      <a class="j-card reveal" href="journal-meteorite.html">
-        <div class="ph"><img src="../shared/img/journal_meteor_sky.jpg" alt="Метеор в ночном небе" loading="lazy" decoding="async"></div>
-        <div class="label rubric">Космос</div>
-        <h3>Вещество старше Солнца</h3>
-        <p>Палласиты — граница ядра и мантии разрушенной протопланеты. Что мы держим в руках, когда держим метеорит.</p>
-      </a>
-      <a class="j-card reveal" href="journal-provenance.html">
-        <div class="ph"><img src="../shared/img/atelier_gloves.jpg" alt="Экспертиза в ателье" loading="lazy" decoding="async"></div>
-        <div class="label rubric">Экспертиза</div>
-        <h3>Как читать провенанс</h3>
-        <p>Пять признаков подлинности, которые проверяет наша лаборатория, прежде чем объект получает номер Relictum.</p>
-      </a>
-    </div>
-  </div>
-</section>
+
 
 <!-- УПАКОВКА -->
 <section class="band-dark" style="padding-bottom:0">
@@ -531,7 +415,6 @@
           <li><a href="maison.html">О доме</a></li>
           <li><a href="interiors.html">Интерьеры</a></li>
           <li><a href="expeditions.html">Экспедиции</a></li>
-          <li><a href="journal.html">Журнал</a></li>
           <li><a href="../15_concepts/eras.html">Эры</a></li>
         </ul>
       </div>
@@ -610,39 +493,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   setTimeout(function(){ loadVid(slides[1]); }, 2500);
   addEventListener('pointerdown',function(){playVid(slides[i])},{once:true,passive:true});
 
-  /* ленивое видео дино-блока */
-  var db=document.getElementById('dinoband');
-  if(db){
-    var loaded=false;
-    function checkDB(){
-      if(loaded)return; var r=db.getBoundingClientRect();
-      if(r.top<innerHeight*1.3 && r.bottom>0){
-        loaded=true;
-        var v=document.createElement('video'); v.muted=true;v.loop=true;v.playsInline=true;v.setAttribute('playsinline','');v.autoplay=true;v.preload='auto';v.src=db.dataset.src;
-        var pst=db.querySelector('.poster');
-        v.addEventListener('canplay',function(){if(pst)pst.style.opacity='0';v.play().catch(function(){});});
-        db.insertBefore(v,db.querySelector('.veil'));
-      }
-    }
-    addEventListener('scroll',checkDB,{passive:true}); checkDB();
-  }
 
-  /* Тизер «Живые эры»: тот же ролик, что во втором слайде карусели, 12 МБ.
-     Раньше стоял autoplay + <source src>, поэтому браузер тянул его сразу,
-     хотя блок лежит ниже первого экрана — и качал файл ВТОРОЙ раз, парал-
-     лельно с каруселью. Теперь грузим только на подходе к блоку. */
-  var tv=document.getElementById('erasTeaserVid');
-  if(tv){
-    var tvLoaded=false;
-    function checkTV(){
-      if(tvLoaded)return; var r=tv.getBoundingClientRect();
-      if(r.top<innerHeight*1.3 && r.bottom>0){
-        tvLoaded=true; tv.src=tv.dataset.src; tv.load();
-        tv.addEventListener('canplay',function(){tv.play().catch(function(){});});
-      }
-    }
-    addEventListener('scroll',checkTV,{passive:true}); checkTV();
-  }
 })();
 </script>
 <script src="../shared/shop.js"></script>
