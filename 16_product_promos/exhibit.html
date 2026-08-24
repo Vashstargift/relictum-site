@@ -345,7 +345,12 @@ if(!o){
       'Каменноугольный период':['era_paleozoic_sea.mp4','era_paleozoic_sea.jpg'],
       'Эдиакарский период':['era_precambrian.mp4','era_precambrian.jpg'],
       'Ранний докембрий':['era_precambrian.mp4','era_precambrian.jpg'],
-      'До зарождения жизни':['era_hadean.mp4','era_hadean.jpg']
+      'До зарождения жизни':['era_hadean.mp4','era_hadean.jpg'],
+      /* своих роликов у этих эпох нет — берём ближайшие по смыслу:
+         мезозойские аммониты плавают в юрском море, палеоген (65–54 млн)
+         граничит с мелом — туда же ведут и их блоки эпох в промо-данных */
+      'Мезозой':['era_jurassic_sea.mp4','era_jurassic_sea.jpg'],
+      'Палеогеновый период':['era_cretaceous.mp4','era_cretaceous.jpg']
     };
     var ev=ERA_VID[o.period];
     if(ev){
