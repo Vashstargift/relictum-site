@@ -190,7 +190,11 @@ a{color:inherit;text-decoration:none}
 .gallery .gitem:hover img{transform:scale(1.04)}
 
 /* CTA / сервис */
-.cta{background:var(--coal);color:var(--ivory);padding:clamp(56px,8vw,104px) 0;text-align:center}
+.cta{background:var(--coal);color:var(--ivory);padding:clamp(56px,8vw,104px) 0;text-align:center;position:relative;overflow:hidden}
+/* хиро-фон финального блока: экспонат в интерьере под тёмной вуалью */
+.cta .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.cta .cveil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(14,12,10,.9),rgba(14,12,10,.78) 50%,rgba(14,12,10,.92))}
+.cta .wrap{position:relative;z-index:2}
 .cta .price{font-family:var(--serif);font-size:clamp(30px,4vw,46px);margin-bottom:6px}
 .cta .note{font-size:12px;color:var(--mist);margin-bottom:30px}
 .cta .row{display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:12px;margin-bottom:52px}
@@ -569,8 +573,10 @@ if(!o){
      Так было на девяти статичных страницах-визитках — теперь у всех 38. */
   spinSec+ aliveSec+ homeSec+ comboSec+ gallerySec+ similarSec+
 
-  '<section class="cta"><div class="wrap">'+
-    '<div class="label rv" style="color:var(--gold);margin-bottom:14px">'+o.id+'</div>'+
+  '<section class="cta">'+
+    (interior&&interior.img?'<img class="bg" src="'+MV(IMG+interior.img)+'" alt="" loading="lazy" decoding="async"><div class="cveil"></div>':'')+
+    '<div class="wrap">'+
+    '<div class="label rv" style="color:var(--gold);margin-bottom:14px">'+o.name+'</div>'+
     '<div class="price rv">'+(o.price||'Цена по запросу')+(o.status?' <span style="font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)">· '+o.status+'</span>':'')+'</div>'+
     '<div class="note rv">'+(o.qty||'Один экземпляр')+', паспорт объекта, доставка и установка домом Relictum</div>'+
     '<div class="row rv on-dark">'+
