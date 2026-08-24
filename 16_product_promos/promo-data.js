@@ -185,8 +185,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     life: {
-      img: "life_megalodon.jpg",
-      diagram: "anat_megalodon.jpg",
+      img: "life_megalodon.jpg", stateLabel: "При жизни",
       title: "Пасть, к которой прилагался зуб",
       text: "Мегалодон идёт на зрителя: ряды треугольных зазубренных зубов — таких же, как экспонат. Открытый океан миоцена."
     },
@@ -792,8 +791,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     life: {
-      img: "life_spinosaurus_jaw.jpg",
-      diagram: "anat_spinosaurus_jaw.jpg",
+      img: "life_spinosaurus_jaw.jpg", stateLabel: "При жизни",
       title: "Челюсть для скользкой добычи",
       text: "Голова спинозавра в профиль, пасть приоткрыта под углом фрагмента челюсти: конические зубы, узкая крокодилья морда. Речные отмели Кем-Кема."
     },
@@ -826,8 +824,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     life: {
-      img: "life_carcharodont_claw.jpg",
-      diagram: "anat_carcharodont_claw.jpg",
+      img: "life_carcharodont_claw.jpg", stateLabel: "При жизни",
       title: "Коготь на весу",
       text: "Кархародонтозаврид заносит переднюю лапу: кривизна когтя повторяет ископаемое. Меловая пойма Северной Африки. Род — по когтю, облик обобщён."
     },
@@ -1440,12 +1437,11 @@ window.RELICTUM_PROMO = {
 
   "R–0253": {
     "interior": {
-      "img": "int_ph_cavebear_paw_front.jpg",
+      "img": "int_ph_cavebear_paw_front.jpg", stateLabel: "При жизни",
       "text": "Одна лапа на консоли держит внимание вернее, чем целая витрина: вертикаль, свет сбоку, ничего лишнего."
     },
     "life": {
-      "img": "life_cavebear_paw_front.jpg",
-      "diagram": "anat_cavebear_paw_front.jpg",
+      "img": "life_cavebear_paw_front.jpg", "stateLabel": "При жизни",
       "title": "Лапа, которой он держал ледниковый мир",
       "text": ""
     },
@@ -2867,7 +2863,6 @@ window.RELICTUM_PROMO = {
     "heroKicker": "Динозавры, Китай",
     "life": {
       "img": "life_psit_paw.jpg",
-      "diagram": "anat_psit_paw.jpg",
       "label": "При жизни",
       "stateLabel": "При жизни",
       "title": "Тот, кто оставил эту лапу",
@@ -2984,7 +2979,6 @@ window.RELICTUM_PROMO = {
     "heroKicker": "Мегалодон, По запросу",
     "life": {
       "img": "life_tooth_otodus.jpg",
-      "diagram": "anat_tooth_otodus.jpg",
       "label": "При жизни",
       "diagramLabel": "Чертёж",
       "stateLabel": "При жизни",
@@ -3014,7 +3008,6 @@ window.RELICTUM_PROMO = {
     "heroKicker": "Морские рептилии, По запросу",
     "life": {
       "img": "life_tooth_mosasaur.jpg",
-      "diagram": "anat_tooth_mosasaur.jpg",
       "label": "При жизни",
       "diagramLabel": "Чертёж",
       "stateLabel": "При жизни",
@@ -3044,7 +3037,6 @@ window.RELICTUM_PROMO = {
     "heroKicker": "Динозавры, Марокко",
     "life": {
       "img": "life_tooth_spinosaurus.jpg",
-      "diagram": "anat_tooth_spinosaurus.jpg",
       "label": "При жизни",
       "diagramLabel": "Чертёж",
       "stateLabel": "При жизни",
@@ -3292,12 +3284,11 @@ window.RELICTUM_PROMO = {
 
   "R–0306": {
     "interior": {
-      "img": "int_ph_cavebear_paw_hind.jpg",
+      "img": "int_ph_cavebear_paw_hind.jpg", stateLabel: "При жизни",
       "text": "Тяжёлая пяточная кость держит композицию снизу — лапа читается как скульптура даже издалека."
     },
     "life": {
-      "img": "life_cavebear_paw_hind.jpg",
-      "diagram": "anat_cavebear_paw_hind.jpg",
+      "img": "life_cavebear_paw_hind.jpg", "stateLabel": "При жизни",
       "title": "Опора, на которую вставал ледниковый хищник",
       "text": ""
     },

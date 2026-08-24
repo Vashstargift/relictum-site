@@ -433,7 +433,7 @@ if(!o){
         ((P&&P.profile&&P.profile.paragraphs)
           ? '<div class="lead rv">'+P.profile.paragraphs.map(function(t){return '<p>'+t+'</p>'}).join('')+'</div>'
           : '<p class="lead rv">'+life.text+'</p>')+
-        '<div class="sci rv">'+(life.note?life.note:(life.diagram?'Потяните рычажок, чтобы увидеть фото-реконструкцию экспоната.':'Потяните рычажок, чтобы увидеть, как объект лежал в недрах до извлечения.'))+'</div>'+
+        '<div class="sci rv">'+(life.note?life.note:(life.diagram?'Потяните рычажок, чтобы увидеть фото-реконструкцию экспоната.':(life.stateLabel==='При жизни'?'Потяните рычажок, чтобы увидеть фото-реконструкцию экспоната.':'Потяните рычажок, чтобы увидеть, как объект лежал в недрах до извлечения.')))+'</div>'+
       '</div>'+
       '<div class="rv">'+cmpHTML('cmpMain')+'</div>'+
     '</div></div></section>') : '';
