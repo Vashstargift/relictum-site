@@ -17,7 +17,7 @@
     "latin": "Ursus spelaeus",
     "world": "grand", "category": "Мамонтовая фауна",
     "period": "Плейстоцен", "era": "Кайнозой", "region": "Россия",
-    "age": "…", "location": "…", "size": "…", "mount": "…",
+    "age": "…", "location": "…", "size": "…",
     "price": 2500000,                # число или null («Цена по запросу»)
     "status": "в наличии",           # необязательно
     "img": "ph_cavebear_skull",
@@ -68,7 +68,6 @@ def catalog_entry(s):
         'age': s.get('age', 'По запросу'),
         'location': s.get('location', 'По запросу'),
         'size': s.get('size', 'По запросу'),
-        'mount': s.get('mount', 'Оформление по запросу клиента'),
         'description': s['description'],
         'href': f"../16_product_promos/exhibit.html?id={s['slug']}",
     }
