@@ -228,8 +228,8 @@ function joinHTML(){
       'в каталоге, персональный поиск под запрос и приглашения на закрытые события.</p>'+
     '<form id="joinForm" style="display:grid;gap:14px;max-width:420px;margin-top:30px">'+
       '<input name="name" required placeholder="Имя и фамилия" style="background:transparent;border:none;border-bottom:1px solid rgba(244,240,232,.35);color:#F4F0E8;padding:12px 2px;font-size:16px;font-family:inherit">'+
-      '<input name="email" required type="email" placeholder="E-mail" style="background:transparent;border:none;border-bottom:1px solid rgba(244,240,232,.35);color:#F4F0E8;padding:12px 2px;font-size:16px;font-family:inherit">'+
-      '<input name="phone" placeholder="Телефон (по желанию)" style="background:transparent;border:none;border-bottom:1px solid rgba(244,240,232,.35);color:#F4F0E8;padding:12px 2px;font-size:16px;font-family:inherit">'+
+      '<input name="phone" required type="tel" placeholder="Телефон" style="background:transparent;border:none;border-bottom:1px solid rgba(244,240,232,.35);color:#F4F0E8;padding:12px 2px;font-size:16px;font-family:inherit">'+
+      '<input name="email" type="email" placeholder="E-mail (по желанию)" style="background:transparent;border:none;border-bottom:1px solid rgba(244,240,232,.35);color:#F4F0E8;padding:12px 2px;font-size:16px;font-family:inherit">'+
       '<label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:rgba(244,240,232,.6);line-height:1.45"><input type="checkbox" name="consent" required style="margin-top:2px"><span>Я предоставляю своё <a href="consent.html" target="_blank" style="color:inherit;text-decoration:underline">согласие на обработку персональных данных</a> в соответствии с <a href="privacy.html" target="_blank" style="color:inherit;text-decoration:underline">политикой конфиденциальности</a></span></label>'+
       '<button class="rl-btn" style="justify-self:start;margin-top:10px">Стать патроном</button>'+
     '</form>';
@@ -243,13 +243,13 @@ function mountJoin(){
     e.preventDefault();
     if(!f.checkValidity()){ f.reportValidity(); return; }
     var fd=new FormData(f);
-    var d={name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone')||''};
+    var d={name:fd.get('name'),email:fd.get('email')||'',phone:fd.get('phone')};
     S.registerPatron(d);
     S.addLead({date:new Date().toLocaleString('ru-RU'),type:'Заявка в патроны',
-               name:d.name,contact:d.email,desc:'Телефон: '+(d.phone||'не указан')}); S.send('заявка в патроны', {date:new Date().toLocaleString('ru-RU'),type:'Заявка в патроны',
-               name:d.name,contact:d.email,desc:'Телефон: '+(d.phone||'не указан'),consent:!!(f&&f.querySelector&&f.querySelector('[name=consent]')&&f.querySelector('[name=consent]').checked)});
+               name:d.name,contact:d.phone,desc:'E-mail: '+(d.email||'не указан')}); S.send('заявка в патроны', {date:new Date().toLocaleString('ru-RU'),type:'Заявка в патроны',
+               name:d.name,phone:d.phone,email:d.email,contact:d.phone,desc:'E-mail: '+(d.email||'не указан'),consent:!!(f&&f.querySelector&&f.querySelector('[name=consent]')&&f.querySelector('[name=consent]').checked)});
     S.toast('Добро пожаловать, '+d.name.split(' ')[0]);
-    var body='Имя: '+d.name+'\nE-mail: '+d.email+'\nТелефон: '+(d.phone||'не указан');
+    var body='Имя: '+d.name+'\nТелефон: '+d.phone+'\nE-mail: '+(d.email||'не указан');
     window.location.href='mailto:info@stargift.ru?subject='+
       encodeURIComponent('Заявка в патроны дома')+'&body='+encodeURIComponent(body);
     setTimeout(mountAccount,400);

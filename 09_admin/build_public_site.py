@@ -672,7 +672,10 @@ $crm = false;
    конфиг StarGift этому сайту не читается — процессы сайтов изолированы по правам,
    а в репозиторий секрет попасть не должен. */
 $keyFile = __DIR__ . '/../.sg-key';
-if (!empty($in['consent']) && is_readable($keyFile)) {
+/* Согласие формы шлют внутри data (S.send передаёт запись формы целиком);
+   верхний уровень оставлен для совместимости. Без учёта data['consent']
+   ворота в CRM не открывались ни одной заявке — всё падало в запасную почту. */
+if ((!empty($in['consent']) || !empty($data['consent'])) && is_readable($keyFile)) {
     $key = trim((string)@file_get_contents($keyFile));
     $phone = '';
     foreach (array('phone', 'contact') as $k) {
