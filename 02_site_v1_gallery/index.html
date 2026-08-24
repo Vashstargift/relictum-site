@@ -34,11 +34,12 @@
 .hcar .arrow.prev{left:8px}.hcar .arrow.next{right:8px}
 @media(max-width:768px){
   .hcar .slide{align-items:end}
-  /* Кадр уводим к верхней кромке, а под текстом — плотная чёрная растяжка:
-     объект живёт в верхней половине экрана, текст читается на градиенте.
-     Метеорит (второй слайд) держим ниже — его объект в центре кадра. */
-  .hcar .slide .media img,.hcar .slide .media video{object-position:50% 0}
-  .hcar .slide:nth-of-type(2) .media img,.hcar .slide:nth-of-type(2) .media video{object-position:50% 16%}
+  /* Объект — в верхнюю треть баннера: кадр увеличен на 40% и сдвинут вверх,
+     нижняя часть уходит за обрез (по вертикальному видео object-position
+     не работает — cover заполняет высоту точно). Метеорит не трогаем. */
+  .hcar .slide .media{overflow:hidden}
+  .hcar .slide .media img,.hcar .slide .media video{height:140%;transform:translateY(-28.57%)}
+  .hcar .slide:nth-of-type(2) .media img,.hcar .slide:nth-of-type(2) .media video{height:100%;transform:none}
   .hcar .slide.dark .media::after{background:linear-gradient(180deg,transparent 20%,rgba(10,9,8,.45) 42%,rgba(10,9,8,.96) 68%)}
   .hcar .slide .in{margin-left:0;padding-top:calc(var(--nav-h,72px) + 16px);padding-bottom:11svh;max-width:100%}
   .hcar .slide .in .label{margin-bottom:12px}
