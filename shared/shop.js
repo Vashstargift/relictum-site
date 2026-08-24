@@ -206,11 +206,13 @@
 
   var st=document.createElement('style');
   st.textContent =
-    '.rl-fab{position:fixed;right:22px;bottom:22px;z-index:220;width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;'+
+    /* bottom 96px: угол справа внизу занимает браузерная стрелка «наверх»
+       (Яндекс.Браузер и др.) — кнопка дома живёт над ней */
+    '.rl-fab{position:fixed;right:22px;bottom:96px;z-index:220;width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;'+
       'background:#14110E;color:#F4F0E8;display:flex;align-items:center;justify-content:center;'+
       'box-shadow:0 10px 30px -8px rgba(10,9,8,.55);transition:transform .25s,background .25s}'+
     '.rl-fab:hover{transform:scale(1.06);background:#0A0908}'+
-    '.rl-cpop{position:fixed;right:22px;bottom:90px;z-index:220;width:min(320px,calc(100vw - 32px));'+
+    '.rl-cpop{position:fixed;right:22px;bottom:164px;z-index:220;width:min(320px,calc(100vw - 32px));'+
       'background:#FBF8F1;border:1px solid rgba(154,109,52,.28);box-shadow:0 30px 80px -20px rgba(10,9,8,.45);'+
       'opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .25s,transform .25s}'+
     '.rl-cpop.on{opacity:1;transform:none;pointer-events:auto}'+
@@ -233,7 +235,7 @@
     '.rl-cpop .back{width:100%;padding:9px 0 2px;background:none;border:none;cursor:pointer;font-size:11px;color:#7A7267;font-family:inherit}'+
     '.rl-cpop .ok{padding:26px 20px;text-align:center;font-size:14px;color:#14110E}'+
     '.rl-cpop .ok small{display:block;margin-top:8px;font-size:12px;color:#7A7267}'+
-    '@media(max-width:720px){.rl-fab{right:16px;bottom:16px}.rl-cpop{right:16px;bottom:84px}}';
+    '@media(max-width:720px){.rl-fab{right:16px;bottom:calc(88px + env(safe-area-inset-bottom,0px))}.rl-cpop{right:16px;bottom:calc(156px + env(safe-area-inset-bottom,0px))}}';
   document.head.appendChild(st);
 
   var icoChat='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.6-.8L3 20l1-4.2a8.3 8.3 0 0 1-1-4.3 8.4 8.4 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z"/></svg>';
