@@ -46,6 +46,10 @@ h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05}
 .era .relic small{display:block;font-size:10px;color:var(--gold);letter-spacing:.2em;margin-top:3px}
 .era .relic:hover small{color:var(--black)}
 
+/* последняя эра растворяется в чёрный фон финала без шва */
+.era:has(+ .finale) .frame::after{background:linear-gradient(180deg,rgba(10,9,8,.42) 0%,transparent 26%,transparent 44%,rgba(10,9,8,1) 100%)}
+.era:has(+ .finale) .cap{background:linear-gradient(180deg,transparent,rgba(10,9,8,.55) 30%,rgba(10,9,8,1))}
+
 /* врата/финал */
 .gate{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden}
 .gate .bg{position:absolute;inset:0;z-index:-2}
@@ -244,7 +248,7 @@ h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05}
       <div class="yrs">Мелководная лагуна</div>
       <h2>Другая планета</h2>
       <p>На ранних этапах истории Земли Луна казалась в небе в несколько раз больше и ярче, чем сегодня, занимая гораздо большую часть небосвода. В сутках было 17 часов, а первые организмы образовывали собой слои окаменелостей, сохранившиеся до наших дней.</p>
-      <a class="relic" href="../02_site_v1_gallery/catalog.html#terra"><img src="../shared/img/cat_minerals_amethyst.jpg" alt="" loading="lazy" decoding="async"><span><b>Исследовать эру →</b><small>Минералы Земли, Terra</small></span></a>
+      <a class="relic" href="strata.html"><img src="../shared/img/cat_minerals_amethyst.jpg" alt="" loading="lazy" decoding="async"><span><b>Исследовать эру →</b><small>Слои времени, спуск вглубь Земли</small></span></a>
     </div></div>
   </div>
 </section>
