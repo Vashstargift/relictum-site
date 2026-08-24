@@ -41,7 +41,11 @@ def showcase(f): return f.endswith('.html') or f.endswith('.css')
 COPY = [
     ('02_site_v1_gallery', '', showcase),
     ('16_product_promos', 'objects', html_and_js),
-    ('15_concepts', 'eras', html_only),
+    # Раздел эр скрыт с сайта (решение владельца 24.08.2026): 15_concepts в срез
+    # не кладём, а /eras/ на сервере закрывает редирект (см. hide_eras ниже) —
+    # rsync идёт без --delete, старые файлы сами не исчезнут.
+    # Вернуть раздел: раскомментировать строку и убрать hide_eras().
+    # ('15_concepts', 'eras', html_only),
     ('14_provenance', 'provenance', html_only),
 ]
 
@@ -256,7 +260,19 @@ def build():
     dropped = prune_media()
     stamp_media(OUT)   # ?v=<хэш файла> у картинок и видео — иначе кэш держит старое
     write_extras(pages)
+    hide_eras()
     return pages, stamp, dropped
+
+
+def hide_eras():
+    """Раздел эр скрыт: на сервере в /eras/ остались старые файлы (rsync без
+    --delete), поэтому кладём туда .htaccess с редиректом на главную. Убрать
+    вместе с раскомментированием 15_concepts в COPY, когда раздел вернётся."""
+    d = os.path.join(OUT, 'eras')
+    os.makedirs(d, exist_ok=True)
+    open(os.path.join(d, '.htaccess'), 'w', encoding='utf-8').write(
+        'Redirect 302 /eras/ https://relictum.gallery/\n')
+    print('   /eras/ скрыт: .htaccess-редирект на главную')
 
 
 # Медиа, которое лежит в репозитории, но на публичных страницах не встречается,
