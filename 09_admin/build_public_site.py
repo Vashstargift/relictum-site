@@ -35,13 +35,15 @@ OLD_URL = re.compile(r'https://[a-z0-9.-]*github\.io/relictum(?:-site)?/?')
 # mammoth-tusk.html, index-v2.html) удалены из репозитория 07.08.2026 —
 # всё, что здесь лежит, идёт наружу.
 def html_only(f): return f.endswith('.html')
+# deep-time скрыт с сайта (решение владельца 24.08.2026) — в срез не попадает
+def concepts(f): return f.endswith('.html') and f != 'deep-time.html'
 def html_and_js(f): return f.endswith('.html') or f.endswith('.js')
 def showcase(f): return f.endswith('.html') or f.endswith('.css')
 
 COPY = [
     ('02_site_v1_gallery', '', showcase),
     ('16_product_promos', 'objects', html_and_js),
-    ('15_concepts', 'eras', html_only),
+    ('15_concepts', 'eras', concepts),
     ('14_provenance', 'provenance', html_only),
 ]
 
@@ -756,6 +758,9 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 # визитку /objects/<slug>.html — тот же шаблон, но с фото и описанием лота в
 # OG-тегах (мессенджеры не выполняют JS и читают только статичную разметку).
 # Если визитки нет, условие -f не срабатывает и отдаётся обычный exhibit.html.
+# страница deep-time скрыта — старые ссылки уводим на «Эры»
+RedirectMatch 302 ^/eras/deep-time\.html$ https://relictum.gallery/eras/eras.html
+
 RewriteCond %{QUERY_STRING} (?:^|&)id=([0-9A-Za-z_-]+)
 RewriteCond %{DOCUMENT_ROOT}/objects/%1.html -f
 RewriteRule ^objects/exhibit\.html$ /objects/%1.html [L]
