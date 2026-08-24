@@ -254,10 +254,11 @@
       '<a class="rl-crow" href="tel:'+PHONE+'"><span class="ic">'+icoTel+'</span><span>'+PHONE_H+'</span></a>'+
       '<button type="button" class="row" data-cb><span class="ic">'+icoBack+'</span><span>Обратный звонок</span></button>';
   }
-  function formHTML(){
+  function formHTML(about){
     var u=S.user();
-    return '<div class="h"><b>Обратный звонок</b><button type="button" data-c aria-label="Закрыть">'+icoX+'</button></div>'+
-      '<form data-f><p>Оставьте номер — наш менеджер свяжется с вами в течение 15 минут после обращения.</p>'+
+    return '<div class="h"><b>'+(about?'Запрос объекта':'Обратный звонок')+'</b><button type="button" data-c aria-label="Закрыть">'+icoX+'</button></div>'+
+      '<form data-f><p>'+(about?S.esc(about)+'. ':'')+'Оставьте номер — наш менеджер свяжется с вами в течение 15 минут после обращения.</p>'+
+      '<input type="hidden" name="about" value="'+S.esc(about||'')+'">'+
       '<input type="text" name="name" placeholder="Имя" value="'+S.esc(u.name==='Гость'?'':u.name)+'" required>'+
       '<input type="tel" name="phone" placeholder="+7 (___) ___-__-__" value="'+S.esc(u.phone||'')+'" required>'+
       '<label class="cns"><input type="checkbox" name="consent" required style="margin-top:2px">'+
@@ -280,6 +281,8 @@
   function close(){ pop.classList.remove('on'); fab.innerHTML=icoChat; setTimeout(function(){ pop.innerHTML=menuHTML(); },250); }
   function open(){ pop.classList.add('on'); fab.innerHTML=icoX; }
   fab.addEventListener('click', function(){ pop.classList.contains('on')?close():open(); });
+  /* «Запросить объект» на промо-страницах открывает форму с именем лота */
+  window.RL_ASK=function(about){ pop.innerHTML=formHTML(about); open(); };
   /* значок связи в шапке открывает тот же попап (без JS уводит на #concierge) */
   document.querySelectorAll('.rl-nav-contact').forEach(function(el){
     el.addEventListener('click', function(e){ e.preventDefault(); pop.classList.contains('on')?close():open(); });
@@ -300,8 +303,10 @@
     if(!f.checkValidity()){ f.reportValidity(); return; }
     var fd=new FormData(f), name=fd.get('name')||'', phone=fd.get('phone')||'';
     var u=S.user(); if(name)u.name=name; if(phone)u.phone=phone; S.saveUser(u);
-    var rec={date:new Date().toLocaleString('ru-RU'),type:'Обратный звонок',name:name,phone:phone,contact:phone,consent:true};
-    S.addLead(rec); S.send('обратный звонок', rec);
+    var about=fd.get('about')||'';
+    var rec={date:new Date().toLocaleString('ru-RU'),type:about?('Запрос объекта: '+about):'Обратный звонок',name:name,phone:phone,contact:phone,consent:true};
+    if(about) rec.about=about;
+    S.addLead(rec); S.send(about?'запрос объекта':'обратный звонок', rec);
     pop.innerHTML=okHTML(name);
   });
 })();

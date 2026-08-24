@@ -113,7 +113,7 @@ function summary(){
   return '<div class="rl-panel"><div class="rl-label" style="margin-bottom:16px">Ваш заказ</div>'+rows+
     '<div class="rl-sum total"><span>Итог</span><span>'+S.fmt(S.total())+'</span></div>'+
     (S.hasRequestItems()?'<div class="rl-note">Часть объектов — по запросу: финальную сумму подтвердит консультант. Карта не будет списана до подтверждения.</div>':'')+
-    '<div class="rl-note">Доставка и установка на месте — включены. Страхование на время транспортировки — за счёт дома.</div></div>';
+    '<div class="rl-note">Доставка и установка на месте — включены.</div></div>';
 }
 
 function form(){
@@ -123,7 +123,6 @@ function form(){
       '<div class="rl-field"><label>Фамилия</label><input class="rl-input" name="lname" required></div></div>'+
     '<div class="rl-row"><div class="rl-field"><label>Телефон</label><input class="rl-input" type="tel" name="phone" placeholder="+7" required></div>'+
       '<div class="rl-field"><label>E-mail (по желанию)</label><input class="rl-input" type="email" name="email"></div></div>'+
-    '<div class="rl-field"><label>Адрес доставки</label><input class="rl-input" name="addr" placeholder="Город, улица, дом" required></div>'+
 
     /* Оплаты на сайте нет. Форма карты была имитацией: поля ничего не проводили,
        а надпись обещала защищённый шлюз, которого не существует. Оставляем
@@ -155,8 +154,8 @@ function bind(){
               photo:'https://relictum.gallery/shared/img/'+o.img+'.jpg'};
     });
     S.addOrder({date:new Date().toLocaleString('ru-RU'),name:u.name,email:u.email,phone:u.phone,
-                addr:fd.get('addr'),note:fd.get('note')||'',items:orderItems,total:orderTotal}); S.send('заказ', {date:new Date().toLocaleString('ru-RU'),name:u.name,email:u.email,phone:u.phone,
-                addr:fd.get('addr'),note:fd.get('note')||'',items:orderRich,total:orderTotal,payment:'по счёту',consent:!!(f&&f.querySelector&&f.querySelector('[name=consent]')&&f.querySelector('[name=consent]').checked)});
+                addr:fd.get('addr')||'',note:fd.get('note')||'',items:orderItems,total:orderTotal}); S.send('заказ', {date:new Date().toLocaleString('ru-RU'),name:u.name,email:u.email,phone:u.phone,
+                addr:fd.get('addr')||'',note:fd.get('note')||'',items:orderRich,total:orderTotal,payment:'по счёту',consent:!!(f&&f.querySelector&&f.querySelector('[name=consent]')&&f.querySelector('[name=consent]').checked)});
     var ids=S.placeOrder();
     // дублируем письмом: сетевой отправки у сайта пока нет
     var body='Имя: '+u.name+'\nE-mail: '+u.email+'\nТелефон: '+u.phone+
