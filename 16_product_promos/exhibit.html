@@ -427,7 +427,9 @@ if(!o){
       '</div>'+
     '</div></div></section>') : '';
 
-  var aliveSec = alive ? (
+  /* Блок «При жизни» снят со страниц экспонатов (решение владельца 24.08.2026):
+     данные alive в promo-data сохранены, вернуть — убрать false && ниже. */
+  var aliveSec = false && alive ? (
     '<section class="alive" id="aliveSec" data-video="'+(alive.video?MV(IMG+alive.video):'')+'">'+
       (alive.poster?'<img class="poster" src="'+MV(IMG+alive.poster)+'" alt="" loading="lazy" decoding="async">':'')+
       '<div class="veil"></div>'+
