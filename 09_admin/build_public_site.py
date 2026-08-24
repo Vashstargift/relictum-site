@@ -149,29 +149,38 @@ def fix_meta(text, rel_path):
 # ---------------------------------------------------------------------------
 
 def object_pages():
-    """{slug: (R–ID, title, description, og_image)} — из promo-data.js и catalog.js."""
+    """{slug.html: (R–ID, title, description, og_image)} — каталог целиком, promo-seo поверх.
+
+    Раньше визитки строились только для лотов с полем seo и старым href вида
+    <slug>.html — после перехода каталога на exhibit.html?id= функция молча
+    отдавала пустой словарь. Теперь визитка есть у каждого лота каталога:
+    заголовок/описание берутся из promo-data.seo, а без него — из имени и
+    описания в catalog.js. Фото — главное фото лота (img)."""
     promo = open(os.path.join(ROOT, '16_product_promos', 'promo-data.js'), encoding='utf-8').read()
     catalog = open(os.path.join(ROOT, 'shared', 'catalog.js'), encoding='utf-8').read()
 
-    # slug и картинка объекта — из каталога
-    meta = {}
-    for m in re.finditer(r'"id":\s*"(R–\d+)"(.*?)(?=\n\s*\{|\Z)', catalog, re.S):
-        rid, body = m.group(1), m.group(2)
-        href = re.search(r'"href":\s*"([^"]*)"', body)
-        img = re.search(r'"img":\s*"([^"]*)"', body)
-        meta[rid] = (href.group(1) if href else '', img.group(1) if img else '')
-
-    pages = {}
+    seo = {}
     for m in re.finditer(r'"(R–\d+)"\s*:\s*\{(.*?)\n  \}', promo, re.S):
         rid, body = m.group(1), m.group(2)
-        seo = re.search(r'seo:\s*\{\s*title:\s*"((?:[^"\\]|\\.)*)"\s*,\s*description:\s*"((?:[^"\\]|\\.)*)"\s*\}', body)
-        if not seo:
+        s = re.search(r'seo:\s*\{\s*title:\s*"((?:[^"\\]|\\.)*)"\s*,\s*description:\s*"((?:[^"\\]|\\.)*)"\s*\}', body)
+        if s:
+            seo[rid] = (s.group(1), s.group(2))
+
+    pages = {}
+    for m in re.finditer(r'"id":\s*"(R–\d+)"(.*?)(?=\n\s*\{|\Z)', catalog, re.S):
+        rid, body = m.group(1), m.group(2)
+        slug = re.search(r'"slug":\s*"([^"]*)"', body)
+        img = re.search(r'"img":\s*"([^"]*)"', body)
+        name = re.search(r'"name":\s*"([^"]*)"', body)
+        desc = re.search(r'"description":\s*"((?:[^"\\]|\\.)*)"', body)
+        if not slug or not img:
             continue
-        href, img = meta.get(rid, ('', ''))
-        slug = href.rsplit('/', 1)[-1]
-        if not slug.endswith('.html'):
-            continue
-        pages[slug] = (rid, seo.group(1), seo.group(2), img)
+        title, d = seo.get(rid, (None, None))
+        if not title:
+            title = (name.group(1) if name else rid) + ' — RELICTUM'
+        if not d:
+            d = re.sub(r'<[^>]+>', ' ', desc.group(1)).strip() if desc else 'Галерея редких объектов из глубины времени.'
+        pages[slug.group(1) + '.html'] = (rid, title, d, img.group(1))
     return pages
 
 
@@ -557,7 +566,7 @@ def write_extras(pages):
     if not FORCE_HTTPS:
         # без сертификата любой уход на https = недоступный сайт
         htaccess = htaccess.replace(
-            'RewriteCond %{REQUEST_URI} !^/\\.well-known/\nRewriteCond %{HTTPS} !=on\nRewriteRule ^(.*)$ https://relictum.gallery/$1 [R=301,L]',
+            'RewriteCond %{REQUEST_URI} !^/\.well-known/\nRewriteCond %{HTTPS} !=on\nRewriteRule ^(.*)$ https://relictum.gallery/$1 [R=301,L]',
             '# редирект на https выключен: сертификат ещё не выпущен (FORCE_HTTPS в build_public_site.py)')
         htaccess = htaccess.replace('RewriteRule ^(.*)$ https://%1/$1 [R=301,L]',
                                     'RewriteRule ^(.*)$ http://%1/$1 [R=301,L]')
@@ -737,11 +746,19 @@ RewriteEngine On
 # только https и без www.
 # ВАЖНО: /.well-known/ исключён — по нему Let's Encrypt проверяет домен по http,
 # и редирект на https сломал бы выпуск и продление сертификата.
-RewriteCond %{REQUEST_URI} !^/\\.well-known/
+RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://relictum.gallery/$1 [R=301,L]
-RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# Ссылка на лот в мессенджере: /objects/exhibit.html?id=<slug> внутренне отдаёт
+# визитку /objects/<slug>.html — тот же шаблон, но с фото и описанием лота в
+# OG-тегах (мессенджеры не выполняют JS и читают только статичную разметку).
+# Если визитки нет, условие -f не срабатывает и отдаётся обычный exhibit.html.
+RewriteCond %{QUERY_STRING} (?:^|&)id=([0-9A-Za-z_-]+)
+RewriteCond %{DOCUMENT_ROOT}/objects/%1.html -f
+RewriteRule ^objects/exhibit\.html$ /objects/%1.html [L]
 
 # /cors/<путь-к-файлу> — те же медиа, но с CORS-заголовками. Нужен браузерным
 # инструментам (Claude Design и пр.): статику Beget раздаёт nginx-ом, который
