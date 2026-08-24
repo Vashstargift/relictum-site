@@ -92,6 +92,7 @@
     </div>
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
+      <span><a href="privacy.html" style="color:inherit">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="consent.html" style="color:inherit">Согласие на обработку ПД</a> &nbsp;·&nbsp; <a href="oferta.html" style="color:inherit">Договор-оферта</a></span>
       <span><a href="tel:+74952335111" style="color:inherit">+7 495 233 5111</a> &nbsp;·&nbsp; <a href="mailto:info@stargift.ru" style="color:inherit">info@stargift.ru</a> &nbsp;·&nbsp; <a href="https://wa.me/74952335111" target="_blank" rel="noopener" style="color:inherit">WhatsApp</a></span>
       <span>Земля · Жизнь · Космос</span>
     </div>
@@ -115,7 +116,7 @@ function form(){
     '<div class="rl-label" style="margin:24px 0 14px">Как с вами связаться</div>'+
     '<div class="rl-row"><div class="rl-field"><label>Имя</label><input class="rl-input" name="name" value="'+S.esc(u.name==='Гость'?'':u.name)+'" required></div>'+
       '<div class="rl-field"><label>Телефон или e-mail</label><input class="rl-input" name="contact" value="'+S.esc(u.email||u.phone||'')+'" required></div></div>'+
-    '<label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:#7A7267;line-height:1.45;margin:8px 0"><input type="checkbox" name="consent" required style="margin-top:2px"><span>Согласен на обработку персональных данных</span></label><button class="rl-btn" type="submit" id="send" style="margin-top:6px">Отправить заявку</button>'+
+    '<label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:#7A7267;line-height:1.45;margin:8px 0"><input type="checkbox" name="consent" required style="margin-top:2px"><span>Я предоставляю своё <a href="consent.html" target="_blank" style="color:inherit;text-decoration:underline">согласие на обработку персональных данных</a> в соответствии с <a href="privacy.html" target="_blank" style="color:inherit;text-decoration:underline">политикой конфиденциальности</a></span></label><button class="rl-btn" type="submit" id="send" style="margin-top:6px">Отправить заявку</button>'+
     '<div class="rl-note" style="margin-top:14px">Отвечаем в течение рабочего дня. Заявка ни к чему не обязывает.</div>'+
   '</form>';
 }
