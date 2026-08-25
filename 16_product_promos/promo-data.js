@@ -730,8 +730,8 @@ window.RELICTUM_PROMO = {
     },
     spin: "spin_ichthyosaur_plate.mp4",
     gallery: ["int_ph_ichthyosaur_plate.jpg", "anat_ichthyosaur_plate.jpg", "life_ichthyosaur_plate.jpg", "g_ichthyo_2.jpg"],
-    interior: { video: "intv_ichthyosaur_plate.mp4", img: "int_ph_ichthyosaur_plate.jpg", text: "Горизонтальная плита с ихтиозавром задаёт стену по своей длине, а не по привычному вертикальному простенку между окнами." },
-    hook: "Mixosaurus в известняковой плите — череп, позвоночник и грудная клетка в анатомической связи.",
+    interior: { video: "intv_ichthyosaur_plate.mp4", img: "int_ph_ichthyosaur_plate.jpg", text: "Горизонтальная плита с миксозавром задаёт стену по своей длине, а не по привычному вертикальному простенку между окнами." },
+    hook: "Миксозавр в известняковой плите — череп, позвоночник и грудная клетка в анатомической связи.",
     heroKicker: "Морские рептилии, Гуйчжоу, Китай",
     story: [
       "Mixosaurus — «смешанный ящер», ранний ихтиозавр триаса, сочетавший черты наземных предков и будущих скоростных пловцов. Ихтиозавры господствовали в океанах мезозоя более ста шестидесяти миллионов лет.",
