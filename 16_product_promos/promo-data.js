@@ -735,7 +735,7 @@ window.RELICTUM_PROMO = {
       text: "Миксозавр плывёт с тем же изгибом тела, что скелет на плите: дельфинья посадка, зубастая морда, крупный глаз. Открытое триасовое море."
     },
     spin: "spin_ichthyosaur_plate.mp4",
-    gallery: ["int_ph_ichthyosaur_plate.jpg", "anat_ichthyosaur_plate.jpg", "life_ichthyosaur_plate.jpg", "g_ichthyo_2.jpg"],
+    gallery: ["int_ph_ichthyosaur_plate.jpg", "anat_ichthyosaur_plate.jpg", "life_ichthyosaur_plate.jpg"],
     interior: { video: "intv_ichthyosaur_plate.mp4", img: "int_ph_ichthyosaur_plate.jpg", text: "Горизонтальная плита с миксозавром задаёт стену по своей длине, а не по привычному вертикальному простенку между окнами." },
     hook: "Миксозавр в известняковой плите — череп, позвоночник и грудная клетка в анатомической связи.",
     heroKicker: "Морские рептилии, Гуйчжоу, Китай",
@@ -3650,6 +3650,7 @@ window.RELICTUM_PROMO = {
     "era": { "title": "Моря мезозоя", "line": "Мезозойская эра, 252–66 млн лет назад" },
     "life": {
       "img": "life_ammonite_large.jpg",
+      "diagram": "anat_ammonite_large.jpg",
       "stateLabel": "При жизни",
       "title": "Спираль в толще воды",
       "text": "Живой аммонит в той же ориентации, что и раковина: щупальца и крупный глаз у устья, камеры-поплавок держат его в толще моря."
