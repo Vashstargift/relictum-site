@@ -3,6 +3,7 @@
    Здесь — история, эпоха, медиа. Открывается: exhibit.html?id=R–XXXX */
 window.RELICTUM_PROMO = {
   "R–0612": {
+    "alive": { "title": "Длиннорылый рыболов", "text": "Дирозавр пережил великое вымирание в прибрежных водах: узкое рыло с коническими зубами брало быструю рыбу.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     life: { img: "life_dyrosaurus.jpg", diagram: "anat_dyrosaurus.jpg", label: "При жизни", title: "Пять метров вдоль африканской отмели" },
     profile: {
       facts: {
@@ -25,6 +26,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0272": {
+    "alive": { "title": "Пернатый хищник подлеска", "text": "Дромеозаврид шёл меловым лесом лёгким шагом: жёсткий хвост держал равновесие, а сложенные вдоль тела руки раскрывались при броске.", "video": "era_cretaceous.mp4", "poster": "era_cretaceous.jpg" },
     life: { img: "life_raptor.jpg", diagram: "anat_raptor.jpg", label: "При жизни", title: "Серп на второй фаланге" },
     profile: {
       facts: {
@@ -58,6 +60,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0273": {
+    "alive": { "title": "Диск в толще воды", "text": "Плоская дисковидная раковина резала воду легче шаровидных собратьев: краспедодиск шёл в толще раннемелового моря короткими толчками.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     life: { img: "life_craspedodiscus.jpg", diagram: "anat_craspedodiscus.jpg", label: "При жизни", stateLabel: "При жизни", title: "Спираль, в которой жил моллюск", text: "Головоногий моллюск в раковине той же широкой дисковидной формы: тело и щупальца выходили из устья, камеры позади наполнялись газом и держали животное в толще воды. Раннемеловое море над Русской платформой — прохладное, мутноватое, с илистым дном." },
     profile: {
       facts: {
@@ -79,6 +82,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0274": {
+    "alive": { "title": "Спираль волжского моря", "text": "Аммонит дрейфовал в мелководном море над нынешним Поволжьем; пустые камеры раковины держали его в толще воды.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     life: { img: "life_speetoniceras.jpg", diagram: "anat_speetoniceras.jpg", label: "При жизни", stateLabel: "При жизни", title: "Обычный житель Волжского моря", text: "Живой моллюск в раковине с теми же крупными рёбрами и открытой спиралью, где виден каждый оборот. Щупальца выходили из устья, камеры позади держали животное на плаву. Раннемеловое море над Русской платформой — прохладное, мутноватое, с илистым дном." },
     profile: {
       facts: {
@@ -100,6 +104,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0609": {
+    "alive": { "title": "Житель жехольских лесов", "text": "Небольшой растительноядный динозавр держался папоротникового подлеска; вулканический пепел накрывал такие леса разом — и сохранял их обитателей целиком.", "video": "era_cretaceous.mp4", "poster": "era_cretaceous.jpg" },
     life: {
       img: "life_jeholosaurus.jpg",
       diagram: "anat_jeholosaurus.jpg",
@@ -128,6 +133,7 @@ window.RELICTUM_PROMO = {
     gallery: ["int_ph_jeholosaurus.jpg", "anat_jeholosaurus.jpg", "life_jeholosaurus.jpg", "ph_jeholosaurus.jpg"]
   },
   "R–0271": {
+    "alive": { "title": "Стада последних равнин", "text": "Восьмитонный трицератопс ходил стадами по цветущим равнинам; рога и костяной воротник останавливали даже тираннозавра.", "video": "era_cretaceous.mp4", "poster": "era_cretaceous.jpg" },
     gallery: ["int_ph_triceratops.jpg", "anat_triceratops.jpg", "life_triceratops.jpg", "ph_triceratops.jpg"],
     life: {
       img: "life_triceratops.jpg",
@@ -1194,6 +1200,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0263": {
+    "alive": { "title": "Шаг тундростепи", "text": "Столбовидная нога несла шесть тонн: широкая подошва с жировой подушкой гасила каждый шаг по мёрзлой степи.", "video": "era_mammoth.mp4", "poster": "era_mammoth.jpg" },
     life: {
       img: "life_mammoth_leg.jpg",
       label: "При жизни",
@@ -1222,6 +1229,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0245": {
+    "alive": { "title": "Хищник силурийских отмелей", "text": "Ракоскорпион грёб плоскими вёслами задних ног и прижимал добычу клешнями; крупнее хищника в силурийских морях не было.", "video": "era_paleozoic_sea.mp4", "poster": "era_paleozoic_sea.jpg" },
     "interior": {"img": "int_ph_eurypterid.jpg", "text": "Плита с ракоскорпионом на двух штырях — графика палеозоя над ореховой консолью."},
     life: {
       img: "life_eurypterid.jpg",
@@ -1383,6 +1391,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0251": {
+    "alive": { "title": "Тихая жизнь эдиакария", "text": "Немианы лежали колониями на самом дне — мягкотелая жизнь, ещё не знавшая ни зубов, ни панцирей.", "video": "era_precambrian.mp4", "poster": "era_precambrian.jpg" },
     "interior": {"img": "int_ph_nemiana.jpg", "text": "Плита с медузоидами тиха и старше всех в доме — полка с книгами ей впору."},
     life: {
       img: "life_nemiana.jpg",
@@ -1436,6 +1445,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0253": {
+    "alive": { "title": "Хватка пещерного зверя", "text": "Лапа с невтяжными когтями несла до полутонны веса; теми же когтями медведь оставлял борозды на стенах пещер.", "video": "era_mammoth.mp4", "poster": "era_mammoth.jpg" },
     "interior": {
       "img": "int_ph_cavebear_paw_front.jpg", stateLabel: "При жизни",
       "text": "Одна лапа на консоли держит внимание вернее, чем целая витрина: вертикаль, свет сбоку, ничего лишнего."
@@ -1709,6 +1719,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0231": {
+    "alive": { "title": "Сад на дрейфующем стволе", "text": "Колония крепилась к плавучему стволу и качалась на течении: перистые кроны фильтровали воду тёплого триасового моря.", "video": "era_triassic_sea.mp4", "poster": "era_triassic_sea.jpg" },
     life: {
       img: "life_crinoid_fan.jpg",
       diagram: "anat_crinoid_fan.jpg",
@@ -1849,6 +1860,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0236": {
+    "alive": { "title": "Сад на дрейфующем стволе", "text": "Колония крепилась к плавучему стволу и качалась на течении: перистые кроны фильтровали воду тёплого триасового моря.", "video": "era_triassic_sea.mp4", "poster": "era_triassic_sea.jpg" },
     life: {
       img: "life_crinoid_floats.jpg",
       diagram: "anat_crinoid_floats.jpg",
@@ -1877,6 +1889,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0237": {
+    "alive": { "title": "Сад на дрейфующем стволе", "text": "Колония крепилась к плавучему стволу и качалась на течении: перистые кроны фильтровали воду тёплого триасового моря.", "video": "era_triassic_sea.mp4", "poster": "era_triassic_sea.jpg" },
     life: {
       img: "life_crinoid_pair.jpg",
       diagram: "anat_crinoid_pair.jpg",
@@ -2379,6 +2392,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0275": {
+    "alive": { "title": "Травоядный исполин пещер", "text": "Высокий гребень черепа держал жевательные мышцы зверя, кормившегося по большей части травами и кореньями; зимы он пересыпал в пещерах.", "video": "era_mammoth.mp4", "poster": "era_mammoth.jpg" },
     "seo": {
       "title": "Череп пещерного медведя из якутской мерзлоты — RELICTUM",
       "description": "Череп Ursus spelaeus возрастом около 60 000 лет, поднят из вечной мерзлоты Якутии с глубины ~70 м. Клыки и зубной ряд сохранены, монтаж с шейными позвонками на чернёной стали."
@@ -2855,6 +2869,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0291": {
+    "alive": { "title": "Лёгкий шаг мелового леса", "text": "Задние лапы несли пситтакозавра быстрым двуногим шагом; когти работали и на бегу, и на рытье.", "video": "era_cretaceous.mp4", "poster": "era_cretaceous.jpg" },
     "seo": {
       "title": "Лапа пситтакозавра — RELICTUM",
       "description": "Задняя лапа пситтакозавра в породе: кости голени и пальцы с когтями лежат так, как их застало захоронение. Ранний мел, леса на территории нынешней провинции Ляонин."
@@ -2883,6 +2898,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0292": {
+    "alive": { "title": "Житель триасовых лагун", "text": "Кейхозавр грёб конечностями-вёслами по мелководью и бил рыбу броском длинной шеи; на сушу он не выходил.", "video": "era_triassic_sea.mp4", "poster": "era_triassic_sea.jpg" },
     "seo": {
       "title": "Скелет кейхозавра — RELICTUM",
       "description": "Скелет кейхозавра на плите светлого известняка: длинная шея, небольшой череп, конечности-вёсла и длинный хвост. Сочленение сохранено — животное лежит так, как опустилось на дно три"
@@ -2911,6 +2927,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0293": {
+    "alive": { "title": "Пловец мадагаскарских вод", "text": "Клеоницерас плавал раковиной вперёд, выталкивая воду из воронки; жил моллюск только в последней камере спирали.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     "seo": {
       "title": "Аммонит Cleoniceras — RELICTUM",
       "description": "Пара половин раковины Cleoniceras — рода крупных аммонитов мелового периода. Раковина замещена кальцитом, и на распиле открывается спираль камер с глубоким синим отливом."
@@ -2941,6 +2958,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0294": {
+    "alive": { "title": "Рядовой житель юрских морей", "text": "Аммониты шли в юрских морях косяками: их спирали были таким же фоном эпохи, каким сегодня стали косяки рыб.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     "seo": {
       "title": "Аммонит юрский — RELICTUM",
       "description": "Полированная раковина юрского аммонита медово-серых тонов: спираль открыта, видно чередование оборотов и линии роста."
@@ -2971,6 +2989,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0295": {
+    "alive": { "title": "Акула на вершине цепи", "text": "Шестиметровый Otodus obliquus патрулировал тёплые моря палеогенового периода — из его линии позже вышел мегалодон.", "video": "era_neogene.mp4", "poster": "era_neogene.jpg" },
     "seo": {
       "title": "Зуб акулы Otodus obliquus — RELICTUM",
       "description": "Зуб Otodus obliquus — крупной акулы палеогена, предковой линии мегалодона. Широкое треугольное лезвие эмали, светлый корень и боковые зубчики по краям."
@@ -3000,6 +3019,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0296": {
+    "alive": { "title": "Хватка последних морей", "text": "Конический зуб сидел в мощной челюсти мозазавра; дополнительный ряд зубов на нёбе не давал добыче выскользнуть.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     "seo": {
       "title": "Зуб мозазавра — RELICTUM",
       "description": "Зуб мозазавра — морской рептилии мелового периода: массивный конус эмали с тонкими вертикальными рёбрами и костным корнем."
@@ -3029,6 +3049,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0297": {
+    "alive": { "title": "Рыболов меловых рек", "text": "Спинозавр брал добычу в реках и дельтах: конические зубы без зазубрин держали скользкую рыбу, как острога.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     "seo": {
       "title": "Зуб спинозавра в раме — RELICTUM",
       "description": "Зуб спинозавра, оформленный в глубокую раму: длинный конус эмали с тонкими вертикальными рёбрами — форма, приспособленная удерживать рыбу."
@@ -3058,6 +3079,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0298": {
+    "alive": { "title": "Спираль волжского моря", "text": "Аммонит дрейфовал в мелководном море над нынешним Поволжьем; пустые камеры раковины держали его в толще воды.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     "seo": {
       "title": "Аммонит Speetoniceras, 20 см — RELICTUM",
       "description": "Раковина Speetoniceras versicolor около 20 см из Поволжья, ранний мел. Крупные регулярные рёбра, часть внешнего оборота утрачена — видно устройство камер."
@@ -3088,6 +3110,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0299": {
+    "alive": { "title": "На дне юрского моря", "text": "После смерти раковина легла на дно и вросла в известковый осадок — порода сохранила её в том положении, в котором аммонит закончил путь.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     "seo": {
       "title": "Юрский аммонит в породе — RELICTUM",
       "description": "Аммонит возрастом около 174 млн лет, оставленный в блоке известняка. Раковина занимает почти весь блок, порода вокруг не обработана."
@@ -3118,6 +3141,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0300": {
+    "alive": { "title": "Спираль волжского моря", "text": "Аммонит дрейфовал в мелководном море над нынешним Поволжьем; пустые камеры раковины держали его в толще воды.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     "seo": {
       "title": "Аммонит Speetoniceras versicolor из Поволжья — RELICTUM",
       "description": "Крупная раковина Speetoniceras versicolor бронзового оттенка, ранний мел, Поволжье. Толщина раковины нарастает от центра к наружной жилой камере."
@@ -3148,6 +3172,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0301": {
+    "alive": { "title": "Донный строй ордовика", "text": "Трилобиты шли по дну группами — плита сохранила несколько особей разом, стоп-кадром придонной жизни.", "video": "era_paleozoic_sea.mp4", "poster": "era_paleozoic_sea.jpg" },
     "seo": {
       "title": "Плита с трилобитами Xenasaphus devexus — RELICTUM",
       "description": "Несколько десятков целых трилобитов Xenasaphus devexus на одной плите — мортальное скопление ордовикского моря: животных засыпало разом, взаимное расположение сохранено."
@@ -3283,6 +3308,7 @@ window.RELICTUM_PROMO = {
   },
 
   "R–0306": {
+    "alive": { "title": "Хватка пещерного зверя", "text": "Лапа с невтяжными когтями несла до полутонны веса; теми же когтями медведь оставлял борозды на стенах пещер.", "video": "era_mammoth.mp4", "poster": "era_mammoth.jpg" },
     "interior": {
       "img": "int_ph_cavebear_paw_hind.jpg", stateLabel: "При жизни",
       "text": "Тяжёлая пяточная кость держит композицию снизу — лапа читается как скульптура даже издалека."
@@ -3512,6 +3538,7 @@ window.RELICTUM_PROMO = {
     "gallery": []
   },
   "R–0618": {
+    "alive": { "title": "Кит на вершине цепи", "text": "Базилозавр шёл в толще тёплого моря длинным змеевидным телом; следы его укусов находят на черепах малых китов.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     "hook": "Кит, которого приняли за морского змея.",
     "profile": {
       "facts": {
@@ -3530,14 +3557,16 @@ window.RELICTUM_PROMO = {
     "era": { "title": "Моря после динозавров", "line": "Палеогеновый период, около 40–34 млн лет назад" },
     "life": {
       "img": "life_basilosaurus.jpg",
+      "diagram": "anat_basilosaurus.jpg",
       "stateLabel": "При жизни",
       "title": "Кит, ещё помнивший сушу",
       "text": "Базилозавр в том же профиле, что и череп: гладкая китовая кожа, длинные челюсти с коническими зубами. Тёплое море эоцена."
     },
     "interior": { "img": "int_ph_basilosaurus.jpg", "text": "Метровый череп на тонкой чёрной стойке живёт на длинной консоли: тёплая стена, направленный свет лампы — и зубчатый профиль читается как графика." },
-    "gallery": ["int_ph_basilosaurus.jpg", "g_basilosaurus_1.jpg", "g_basilosaurus_2.jpg"]
+    "gallery": ["int_ph_basilosaurus.jpg", "life_basilosaurus.jpg"]
   },
   "R–0619": {
+    "alive": { "title": "Верхний хищник мелового моря", "text": "Мозазавр патрулировал шельфовые моря последних миллионов лет мезозоя; короткий бросок с удара хвоста не оставлял добыче хода.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     "hook": "Морской ящер последних меловых морей.",
     "profile": {
       "facts": {
@@ -3556,6 +3585,7 @@ window.RELICTUM_PROMO = {
     "era": { "title": "Последние меловые моря", "line": "Меловой период, ≈ 72–66 млн лет назад", "href": "../15_concepts/era-cretaceous.html" },
     "life": {
       "img": "life_mosasaurus_skull.jpg",
+      "diagram": "anat_mosasaurus_skull.jpg",
       "stateLabel": "При жизни",
       "title": "Хозяин последних меловых морей",
       "text": "Мозазавр в том же профиле, что и череп: чешуйчатая кожа, конические зубы, крупный глаз. Открытое море позднемелового времени."
@@ -3600,6 +3630,7 @@ window.RELICTUM_PROMO = {
     "gallery": []
   },
   "R–0621": {
+    "alive": { "title": "Реактивный ход", "text": "Выталкивая воду из воронки, аммонит двигался толчками, раковиной вперёд; камеры спирали держали его на нужной глубине.", "video": "era_jurassic_sea.mp4", "poster": "era_jurassic_sea.jpg" },
     "hook": "Сорок пять сантиметров полированной спирали: строение раковины, открытое до самого центра.",
     "heroKicker": "Аммониты, мезозойская эра",
     "profile": {
