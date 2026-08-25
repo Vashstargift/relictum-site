@@ -2580,7 +2580,6 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0618",
-    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Древние киты",
