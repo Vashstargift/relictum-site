@@ -3548,6 +3548,7 @@ window.RELICTUM_PROMO = {
       ]
     },
     "era": { "title": "Последние моря мела", "line": "Меловой период, ≈ 72–66 млн лет назад", "href": "../15_concepts/era-cretaceous.html" },
-    "gallery": []
+    "interior": { "img": "int_ph_mosasaurus_skull.jpg", "text": "Череп на изогнутой чёрной дуге встаёт на каменный столик у дивана: приглушённый свет, зубной ряд в профиль — и предмет держит комнату без витрины." },
+    "gallery": ["int_ph_mosasaurus_skull.jpg"]
   }
 };
