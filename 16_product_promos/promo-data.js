@@ -235,7 +235,7 @@ window.RELICTUM_PROMO = {
     ],
     era: { title: "Ледниковая Евразия", line: "Плейстоцен, 2,6 млн – 11 тыс лет назад", href: "../15_concepts/era-pleistocene.html" },
     alive: { title: "Зимовщик ледниковых пещер", text: "Зимой он неделями спал в глубоких пещерах Европы и Сибири, оставляя на стенах царапины когтей и утоптанные земляные лежанки.", video: "era_mammoth.mp4", poster: "beast_cavebear.jpg" },
-    interior: { video: "intv_cavebear.mp4", img: "int_ph_cavebear.jpg", text: "Скелет такого размера держит пространство просторного холла или галереи и не нуждается в соседстве другой крупной мебели." },
+    interior: { video: "intv_cavebear.mp4", img: "int_ph_cavebear.jpg", text: "В большой гостиной скелет стоит в полный рост между камином и окном: тёмный каменный постамент отделяет его от мебели, а двусветный объём оставляет запас над головой." },
     gallery: ["int_ph_cavebear.jpg", "anat_cavebear.jpg", "life_cavebear.jpg", "g_cavebear_1.jpg", "g_cavebear_2.jpg", "g_cavebear_3.jpg"]
   },
   "R–0605": {
