@@ -2601,7 +2601,6 @@ window.RELICTUM_CATALOG = [
   },
   {
     "id": "R–0619",
-    "hidden": true,
     "world": "vita",
     "worldLabel": "Жизнь",
     "category": "Морские рептилии",
