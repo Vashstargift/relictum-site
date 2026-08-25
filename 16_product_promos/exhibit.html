@@ -745,13 +745,12 @@ if(!o){
 (function(){
   function fit(v){
     if(!v.videoWidth||!v.videoHeight) return;
-    var frame=v.parentElement, fb=frame.getBoundingClientRect();
-    if(!fb.width||!fb.height) return;
-    var rv=v.videoWidth/v.videoHeight, rf=fb.width/fb.height;
-    var close=Math.abs(rv-rf)/rf < 0.08;
-    v.style.objectFit = close ? 'cover' : 'contain';
-    var bg=frame.querySelector('.sbg');
-    if(bg) bg.style.display = close ? 'none' : '';
+    /* решаем по самому ролику, а не по рамке: рамка в момент loadedmetadata
+       может ещё не иметь размеров, и сравнение с ней промахивалось в contain */
+    var horizontal = v.videoWidth >= v.videoHeight;
+    v.style.objectFit = horizontal ? 'cover' : 'contain';
+    var bg=v.parentElement.querySelector('.sbg');
+    if(bg) bg.style.display = horizontal ? 'none' : '';
   }
   function bind(){
     document.querySelectorAll('.spin .sframe video').forEach(function(v){
