@@ -626,7 +626,7 @@ window.RELICTUM_PROMO = {
       title: "Четыре крыла на лесной подстилке",
       text: "Анхиорнис в той же распластанной позе, что отпечаток: чёрно-серое оперение с белыми полосами и рыжий хохолок — окрас известен по ископаемым меланосомам."
     },
-    spin: "spin_anchiornis.mp4",
+    spin: "spin_anchiornis.mp4", spinPoster: "spin_anchiornis_poster.jpg",
     gallery: ["int_ph_anchiornis.jpg", "anat_anchiornis.jpg", "life_anchiornis.jpg", "ph_anchiornis.jpg"],
     interior: { video: "intv_anchiornis.mp4", img: "int_ph_anchiornis.jpg", text: "Перьевой контур анхиорниса на плите разбирают только вблизи — экспонат вешают в кабинете на уровне глаз, а не над дверным проёмом." },
     hook: "Anchiornis huxleyi на плите позднего юрского периода — пернатый теропод с читаемыми зубами и когтями.",
