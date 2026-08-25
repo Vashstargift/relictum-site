@@ -55,6 +55,8 @@
    Размер поднимаем только на узких экранах — на десктопе вид не меняется. */
 @media (max-width: 760px) { .rail-sort select { font-size: 16px; } }
 .filters-toggle { display:none; }
+/* «Ок» внизу панели — только на мобильных: подтверждает выбор и закрывает панель */
+.rail-apply { display:none; }
 .active-chips { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:13px; }
 .active-chips:empty { margin-bottom:0; }
 .active-chips .ac { max-width:100%; }
@@ -65,13 +67,16 @@
 
 @media (max-width:900px) {
   .cat-layout { grid-template-columns:1fr; }
-  .filters-rail { position:fixed; inset:0; z-index:120; transform:translateX(-100%); transition:transform .42s var(--ease); overflow-y:auto; border:none; background:var(--ivory); }
+  .filters-rail { position:fixed; inset:0; z-index:120; max-height:none; transform:translateX(-100%); transition:transform .42s var(--ease); overflow-y:auto; border:none; background:var(--ivory); }
   body.filters-open { overflow:hidden; }
   body.filters-open .filters-rail { transform:none; }
   .cat-toolbar { display:flex; }
   .filters-toggle { display:inline-flex; align-items:center; gap:9px; padding:11px 18px; border:1px solid var(--obsidian); background:transparent; font-family:var(--font-ui); font-size:11px; letter-spacing:.16em; text-transform:uppercase; cursor:pointer; color:var(--obsidian); }
   .filters-toggle .fn { background:var(--bronze-deep); color:var(--ivory); border-radius:9px; padding:0 7px; font-size:10px; }
   .rail-close { display:block; }
+  .rail-apply { display:block; position:sticky; bottom:0; z-index:5; width:100%; padding:17px 20px;
+    background:var(--obsidian); color:var(--ivory); border:none; cursor:pointer;
+    font-family:var(--font-ui); font-size:12px; letter-spacing:.2em; text-transform:uppercase; }
 }
 
 @media (max-width:760px){ .fsearch input, .price-inputs input, .sort-wrap select { font-size:16px } }
@@ -146,12 +151,13 @@
         <div class="rail-count" id="count"></div>
         <label class="rail-sort">Порядок
           <select id="sort">
-            <option value="default">Кураторский</option>
+            <option value="default">По умолчанию</option>
             <option value="asc">Цена: по возрастанию</option>
             <option value="desc">Цена: по убыванию</option>
           </select>
         </label>
       </div>
+      <button class="rail-apply" id="railApply">Ок</button>
     </aside>
 
     <!-- РЕЗУЛЬТАТЫ -->
@@ -395,6 +401,8 @@ function render() {
   countEl.textContent = countText;
   $("#countM").textContent = countText;
   $("#toggleCount").textContent = activeCount();
+  const pl = n => n%10===1&&n%100!==11 ? "объект" : (n%10>=2&&n%10<=4&&(n%100<10||n%100>=20) ? "объекта" : "объектов");
+  $("#railApply").textContent = "Ок · " + items.length + " " + pl(items.length);
   renderChips();
   syncBadges();
 }
@@ -430,6 +438,7 @@ $("#reset").addEventListener("click", resetAll);
 // мобильная панель
 $("#filtersToggle").addEventListener("click", () => document.body.classList.add("filters-open"));
 $("#railClose").addEventListener("click", () => document.body.classList.remove("filters-open"));
+$("#railApply").addEventListener("click", () => document.body.classList.remove("filters-open"));
 
 // стартовый фильтр по якорю (#cosmos и т.п.)
 const hash = location.hash.replace("#","");
