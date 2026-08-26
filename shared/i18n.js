@@ -757,7 +757,7 @@ function mountSwitch(){
   var host=document.querySelector('.nav-actions');
   var wrap=document.createElement('div');
   wrap.id='rlLang';
-  wrap.style.cssText='position:relative;display:inline-flex;align-items:center;color:inherit';
+  wrap.style.cssText='position:relative;display:inline-flex;align-items:center';
   var btn=document.createElement('button');
   btn.type='button'; btn.setAttribute('aria-label','Язык сайта');
   btn.style.cssText='display:inline-flex;align-items:center;gap:7px;background:none;border:none;padding:0;margin:0;cursor:pointer;color:inherit;'+
