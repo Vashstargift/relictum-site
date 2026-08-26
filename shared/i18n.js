@@ -544,10 +544,7 @@ function apply(lang){
   document.documentElement.dir=(lang==='ar')?'rtl':'ltr';
   heads(document.body,lang);
   walk(document.body,lang);
-  var b=document.getElementById('rlLangBtns');
-  if(b){ var bs=b.querySelectorAll('button');
-    for(var i=0;i<bs.length;i++) bs[i].style.color=(bs[i].dataset.l===lang)?'var(--gold,#E9C98A)':'';
-  }
+  markSwitch(lang);
   applying=false;
 }
 var lotsState=0;   /* 0 — не грузили, 1 — грузим, 2 — готово */
@@ -573,20 +570,47 @@ function set(lang){
   apply(lang);
 }
 
-/* ---------- переключатель ---------- */
+/* ---------- переключатель в шапке ---------- */
+var GLOBE='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"><circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8M12 3.6c2.2 2.3 3.3 5.2 3.3 8.4s-1.1 6.1-3.3 8.4c-2.2-2.3-3.3-5.2-3.3-8.4S9.8 5.9 12 3.6z"/></svg>';
 function mountSwitch(){
-  if(document.getElementById('rlLangBtns')) return;
-  var d=document.createElement('div');
-  d.id='rlLangBtns';
-  d.style.cssText='position:fixed;bottom:18px;left:18px;z-index:400;display:flex;gap:2px;background:rgba(10,9,8,.82);backdrop-filter:blur(8px);border:1px solid rgba(233,201,138,.35);padding:4px 6px;border-radius:2px;direction:ltr';
+  if(document.getElementById('rlLang')) return;
+  var host=document.querySelector('.nav-actions');
+  var wrap=document.createElement('div');
+  wrap.id='rlLang';
+  wrap.style.cssText='position:relative;display:inline-flex;align-items:center;color:inherit';
+  var btn=document.createElement('button');
+  btn.type='button'; btn.setAttribute('aria-label','Язык сайта');
+  btn.style.cssText='display:inline-flex;align-items:center;gap:6px;background:none;border:none;padding:0;margin:0;cursor:pointer;color:inherit;'+
+    'font-family:Inter,system-ui,sans-serif;font-size:11.5px;font-weight:500;letter-spacing:.14em;line-height:1';
+  var cur=document.createElement('span'); cur.id='rlLangCur'; cur.textContent=LABEL[cur0()];
+  btn.innerHTML=GLOBE; btn.appendChild(cur);
+  var menu=document.createElement('div');
+  menu.id='rlLangMenu';
+  menu.style.cssText='position:absolute;top:calc(100% + 14px);inset-inline-end:0;display:none;flex-direction:column;min-width:132px;'+
+    'background:#14110E;border:1px solid rgba(233,201,138,.4);padding:5px 0;z-index:600;box-shadow:0 14px 34px rgba(10,9,8,.4)';
   LANGS.forEach(function(l){
     var b=document.createElement('button');
-    b.textContent=LABEL[l]; b.dataset.l=l;
-    b.style.cssText='background:none;border:none;cursor:pointer;font:500 10.5px/1.6 Inter,sans-serif;letter-spacing:.08em;color:rgba(244,240,232,.75);padding:3px 7px';
-    b.onclick=function(){ set(l); };
-    d.appendChild(b);
+    b.type='button'; b.dataset.l=l; b.textContent=LABEL[l];
+    b.style.cssText='display:block;width:100%;text-align:start;background:none;border:none;cursor:pointer;padding:9px 16px;'+
+      'font-family:Inter,system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:rgba(244,240,232,.8);transition:.2s';
+    b.onmouseenter=function(){ b.style.background='rgba(233,201,138,.14)'; b.style.color='#F4F0E8'; };
+    b.onmouseleave=function(){ b.style.background='none'; b.style.color=(l===cur0()?'#E9C98A':'rgba(244,240,232,.8)'); };
+    b.onclick=function(e){ e.stopPropagation(); menu.style.display='none'; set(l); };
+    menu.appendChild(b);
   });
-  document.body.appendChild(d);
+  btn.onclick=function(e){ e.stopPropagation(); menu.style.display=(menu.style.display==='flex'?'none':'flex'); };
+  document.addEventListener('click', function(){ menu.style.display='none'; });
+  wrap.appendChild(btn); wrap.appendChild(menu);
+  if(host) host.appendChild(wrap);
+  else { wrap.style.cssText+=';position:fixed;bottom:18px;inset-inline-start:18px;z-index:600;background:rgba(10,9,8,.85);color:#F4F0E8;padding:8px 12px;border:1px solid rgba(233,201,138,.4)'; document.body.appendChild(wrap); }
+}
+function cur0(){ return cur(); }
+function markSwitch(lang){
+  var c=document.getElementById('rlLangCur'); if(c) c.textContent=LABEL[lang];
+  var m=document.getElementById('rlLangMenu');
+  if(m) [].forEach.call(m.querySelectorAll('button'), function(b){
+    b.style.color=(b.dataset.l===lang)?'#E9C98A':'rgba(244,240,232,.8)';
+  });
 }
 
 /* ---------- запуск ---------- */
