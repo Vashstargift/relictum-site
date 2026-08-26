@@ -501,9 +501,10 @@ function buildFrags(){
   var list=[];
   var push=function(k,v){ if(k&&v) list.push([k,v]); };
   for(var i=0;i<FRAG_OK.length;i++){ var k=FRAG_OK[i]; if(D[k]) push(k,D[k]); }
-  /* названия лотов — целиком, иначе «Череп трицератопса» рвётся на половинки */
-  if(window.RELICTUM_CATALOG) for(var j=0;j<window.RELICTUM_CATALOG.length;j++){
-    var nm=window.RELICTUM_CATALOG[j].name; if(nm&&D[nm]) push(nm,D[nm]);
+  /* длинные фразы словаря (названия лотов и т.п.) — целиком, иначе
+     «Череп трицератопса» рвётся на половинки. Точку исключаем: это уже проза. */
+  for(var k3 in D){
+    if(k3.length>=12 && k3.indexOf('.')<0 && FRAG_OK.indexOf(k3)<0) push(k3,D[k3]);
   }
   for(var k2 in F) push(k2,F[k2]);
   list.sort(function(a,b){ return b[0].length-a[0].length; });
