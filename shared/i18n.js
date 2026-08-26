@@ -353,14 +353,88 @@ var D={
 "Галерея Stargift":["Stargift gallery","Stargift 画廊","صالة ستارغيفت"]
 };
 
+
+/* ---------- фрагменты: единицы, локалитеты, служебные слова ---------- */
+var F={
+"млрд лет":["billion years","十亿年","مليار سنة"],
+"млн лет":["Mya","百万年","مليون سنة"],
+"тыс лет":["thousand years","千年","ألف سنة"],
+"тыс. лет":["thousand years","千年","ألف سنة"],
+"млн":["million","百万","مليون"],
+"Высота":["Height","高度","الارتفاع"],
+"Длина":["Length","长度","الطول"],
+"Ширина":["Width","宽度","العرض"],
+"Диаметр":["Diameter","直径","القطر"],
+"Вес":["Weight","重量","الوزن"],
+"Размах":["Span","展幅","الامتداد"],
+"Плита":["Slab","岩板","لوح"],
+"плита":["slab","岩板","لوح"],
+"длина скелета":["skeleton length","骨架长度","طول الهيكل"],
+"Череп":["Skull","头骨","الجمجمة"],
+"череп":["skull","头骨","جمجمة"],
+"Набор из":["Set of","一套","مجموعة من"],
+"предметов":["items","件","قطع"],
+"экземпляра":["specimens","件标本","عينات"],
+"около":["about","约","نحو"],
+"Ляонин":["Liaoning","辽宁","لياونينغ"],
+"Гуйчжоу":["Guizhou","贵州","قويتشو"],
+"Ганьсу":["Gansu","甘肃","قانسو"],
+"Якутия":["Yakutia","雅库特","ياقوتيا"],
+"Магаданская область":["Magadan region","马加丹州","إقليم ماغادان"],
+"Рязанская область":["Ryazan region","梁赞州","إقليم ريازان"],
+"Ульяновская область":["Ulyanovsk region","乌里扬诺夫斯克州","إقليم أوليانوفسك"],
+"Поволжье":["the Volga region","伏尔加地区","منطقة الفولغا"],
+"Сахара":["Sahara","撒哈拉","الصحراء"],
+"Тыва":["Tuva","图瓦","توفا"],
+"Приморье":["Primorye","滨海边疆区","بريموريه"],
+"Башкирия":["Bashkiria","巴什基里亚","باشكيريا"],
+"Челябинская область":["Chelyabinsk region","车里雅宾斯克州","إقليم تشيليابينسك"],
+"Воронежская область":["Voronezh region","沃罗涅日州","إقليم فورونيج"],
+"Северная Америка":["North America","北美","أمريكا الشمالية"],
+"Северная Африка":["North Africa","北非","شمال أفريقيا"],
+"Южная Америка":["South America","南美","أمريكا الجنوبية"],
+"Поздний мел":["Late Cretaceous","晚白垩世","الطباشيري المتأخر"],
+"Ранний мел":["Early Cretaceous","早白垩世","الطباشيري المبكر"],
+"см":["cm","厘米","سم"],
+"мм":["mm","毫米","مم"],
+"кг":["kg","公斤","كغ"],
+"шт":["pcs","件","قطعة"]
+};
+
 /* ---------- движок ---------- */
 var IDX={en:0,zh:1,ar:2};
 function cur(){ try{ return localStorage.getItem('relictum_lang')||'ru'; }catch(e){ return 'ru'; } }
+var CYR=/[А-Яа-яЁё]/;
+var FRAGS=null;
+function buildFrags(){
+  var list=[];
+  var push=function(k,v){ if(k&&v) list.push([k,v]); };
+  for(var k in D) push(k,D[k]);
+  for(var k2 in F) push(k2,F[k2]);
+  list.sort(function(a,b){ return b[0].length-a[0].length; });
+  FRAGS=list.map(function(p){
+    var esc=p[0].replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    return [new RegExp('(^|[^А-Яа-яЁёA-Za-z])'+esc+'(?![А-Яа-яЁёA-Za-z])','g'), p[1]];
+  });
+  return FRAGS;
+}
 function tr(s,lang){
   var t=s.trim(); if(!t) return null;
-  var hit=D[t]; if(!hit) return null;
-  var v=hit[IDX[lang]]; if(!v) return null;
-  return s.replace(t,v);
+  var hit=D[t];
+  if(hit){ var v=hit[IDX[lang]]; if(v) return s.replace(t,v); }
+  if(!CYR.test(s)) return null;
+  /* составные строки: «R–0610, Монументы», «Ляонин, Китай, ≈ 125 млн лет», «168 см» */
+  var list=FRAGS||buildFrags(), out=s, changed=false;
+  for(var i=0;i<list.length;i++){
+    var re=list[i][0], val=list[i][1][IDX[lang]];
+    if(!val) continue;
+    re.lastIndex=0;
+    if(!re.test(out)) continue;
+    re.lastIndex=0;
+    out=out.replace(re,function(m,p1){ return p1+val; });
+    changed=true;
+  }
+  return changed?out:null;
 }
 function walk(root,lang){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);
