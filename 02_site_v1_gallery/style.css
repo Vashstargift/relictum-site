@@ -73,11 +73,13 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-
 }
 .nav.on-dark:not(.scrolled) .nav-wordmark,
 .nav.on-dark:not(.scrolled) .nav-links a,
-.nav.on-dark:not(.scrolled) .nav-actions a { color: var(--bone); text-shadow: 0 1px 10px rgba(10, 9, 8, .5); }
+.nav.on-dark:not(.scrolled) .nav-actions a,
+.nav.on-dark:not(.scrolled) .nav-actions #rlLang { color: var(--bone); text-shadow: 0 1px 10px rgba(10, 9, 8, .5); }
 .nav.on-dark:not(.scrolled) .nav-tag { color: var(--sand); text-shadow: 0 1px 10px rgba(10, 9, 8, .5); }
 .nav.on-dark:not(.scrolled) .nav-links a:hover,
 .nav.on-dark:not(.scrolled) .nav-links a.active { color: #fff; border-color: var(--sand); }
-.nav.on-dark:not(.scrolled) .nav-actions a:hover { color: #fff; }
+.nav.on-dark:not(.scrolled) .nav-actions a:hover,
+.nav.on-dark:not(.scrolled) .nav-actions #rlLang:hover { color: #fff; }
 .nav.on-dark:not(.scrolled) .nav-burger span { background: var(--bone); }
 
 .nav-logo { display: flex; align-items: center; gap: 14px; }
@@ -97,8 +99,10 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-
 }
 .nav-links a:hover, .nav-links a.active { border-color: var(--bronze); color: var(--bronze-deep); }
 .nav-actions { display: flex; gap: 20px; align-items: center; font-size: 12px; letter-spacing: .12em; }
-.nav-actions a { color: var(--stone); transition: color .3s; }
-.nav-actions a:hover { color: var(--obsidian); }
+.nav-actions a,
+.nav-actions #rlLang { color: var(--stone); transition: color .3s; }
+.nav-actions a:hover,
+.nav-actions #rlLang:hover { color: var(--obsidian); }
 /* ---------- Мобильное меню ---------- */
 /* На десктопе бургер и выезжающая панель скрыты: без этого панель
    падает в поток и печатает пункты строкой внизу страницы */
@@ -391,3 +395,8 @@ footer ul a { display: inline-block; padding: 6px 0; }
 /* Зона нажатия ссылок-стрелок: сама строка 23px, для пальца маловато.
    Отступ добавляем только на телефоне, чтобы не менять ритм на десктопе. */
 @media (max-width: 760px) { .link-arrow { padding: 7px 0; } .crumbs a { display: inline-block; padding: 5px 0; } }
+
+/* Переключатель языков — такой же значок в ряду шапки: тон, размер, выравнивание */
+.nav-actions #rlLang { display: inline-flex; align-items: center; line-height: 1; }
+.nav-actions #rlLang > button { line-height: 1; }
+.nav-actions #rlLang svg { display: block; }
