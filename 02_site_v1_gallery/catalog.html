@@ -143,7 +143,7 @@
         <button class="rail-close" id="railClose" aria-label="Закрыть" style="font-size:20px;line-height:1">✕</button>
       </div>
       <div class="fsearch">
-        <input id="search" placeholder="Поиск: вид, место, эпоха…">
+        <input id="search" placeholder="Поиск: артикул, вид, место, эпоха…">
       </div>
       <div id="facets"></div>
       <div class="rail-foot">
@@ -321,6 +321,16 @@ FACETS.forEach((f, i) => {
 })();
 
 // ---- Фильтрация ----
+/* Шифр лота пишется через длинное тире (R–0619). Ищем его во всех написаниях:
+   с тире, с дефисом, слитно и просто цифрами — «0619», «619» тоже находят лот. */
+function idForms(id) {
+  const raw = String(id || "").toLowerCase();
+  const hy  = raw.replace(/[\u2013\u2014\u2212]/g, "-");
+  const solid = hy.replace(/[-\s]/g, "");
+  const num = (raw.match(/\d+/) || [""])[0];
+  return [raw, hy, solid, num, num.replace(/^0+/, "")].join(" ");
+}
+
 function matches(o) {
   for (const k of ["avail","kind","world","era","period","region"])
     if (state[k].size && !state[k].has(o[k])) return false;
@@ -331,7 +341,8 @@ function matches(o) {
   if (state.priceMin != null && (o.priceValue == null || o.priceValue < state.priceMin)) return false;
   if (state.priceMax != null && (o.priceValue == null || o.priceValue > state.priceMax)) return false;
   if (state.q) {
-    const hay = (o.name+" "+o.latin+" "+o.meta+" "+o.worldLabel+" "+o.era+" "+o.category+" "+o.kind+" "+o.avail+" "+o.period+" "+o.region).toLowerCase();
+    const hay = (idForms(o.id)+" "+o.name+" "+o.latin+" "+o.meta+" "+o.worldLabel+" "+o.era+" "+o.category+" "+o.kind+" "+o.avail+" "+o.period+" "+o.region)
+      .toLowerCase().replace(/[\u2013\u2014\u2212]/g, "-");
     if (!hay.includes(state.q)) return false;
   }
   return true;
@@ -431,7 +442,7 @@ facetsEl.addEventListener("input", e => {
   if (e.target.id==="pmin") { state.priceMin = e.target.value?+e.target.value:null; render(); }
   if (e.target.id==="pmax") { state.priceMax = e.target.value?+e.target.value:null; render(); }
 });
-searchEl.addEventListener("input", () => { state.q = searchEl.value.trim().toLowerCase(); render(); });
+searchEl.addEventListener("input", () => { state.q = searchEl.value.trim().toLowerCase().replace(/[\u2013\u2014\u2212]/g, "-"); render(); });
 sortEl.addEventListener("change", render);
 $("#reset").addEventListener("click", resetAll);
 
