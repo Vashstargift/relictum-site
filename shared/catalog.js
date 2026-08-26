@@ -1528,7 +1528,7 @@ window.RELICTUM_CATALOG = [
     "img": "ph_butterflies_dark",
     "priceValue": null,
     "slug": "0264-butterflies-dark",
-    "size": "По запросу",
+    "size": "40 × 6 × 50 см (Д × Ш × В)",
     "description": "Кабинетная коллекция из четырнадцати тропических бабочек.",
     "href": "../16_product_promos/exhibit.html?id=0264-butterflies-dark"
   },
@@ -1696,7 +1696,7 @@ window.RELICTUM_CATALOG = [
     "img": "ph_butterflies_blue",
     "priceValue": null,
     "slug": "0265-butterflies-blue",
-    "size": "По запросу",
+    "size": "40 × 6 × 50 см (Д × Ш × В)",
     "description": "Кабинетная коллекция из четырнадцати тропических бабочек.",
     "href": "../16_product_promos/exhibit.html?id=0265-butterflies-blue"
   },
@@ -1880,7 +1880,7 @@ window.RELICTUM_CATALOG = [
     "img": "ph_butterflies_amber",
     "priceValue": null,
     "slug": "0267-butterflies-amber",
-    "size": "По запросу",
+    "size": "40 × 6 × 50 см (Д × Ш × В)",
     "description": "Кабинетная коллекция из четырнадцати тропических бабочек.",
     "href": "../16_product_promos/exhibit.html?id=0267-butterflies-amber"
   },
@@ -2152,7 +2152,7 @@ window.RELICTUM_CATALOG = [
     "img": "ph_butterflies_warm",
     "priceValue": null,
     "slug": "0269-butterflies-warm",
-    "size": "По запросу",
+    "size": "40 × 6 × 50 см (Д × Ш × В)",
     "description": "Кабинетная коллекция из четырнадцати бабочек.",
     "href": "../16_product_promos/exhibit.html?id=0269-butterflies-warm"
   },
