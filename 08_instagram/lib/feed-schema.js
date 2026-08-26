@@ -15,7 +15,10 @@ const { IMG_DIR } = require('./paths.js');
 const { findExhibit } = require('./sources.js');
 const { checkPostFacts, resolveSource } = require('./facts.js');
 
-const RUBRICS = ['object', 'figure', 'era', 'interior', 'expedition', 'ritual', 'editions'];
+// Рубрики ленты. «Ритуал», «Экспедиции» и «Editions» сняты 25.08.2026:
+// первые две не обеспечены съёмкой, третья ждёт самого тиража, а держать
+// в системе рубрику без материала — значит обещать ленте то, чего нет.
+const RUBRICS = ['object', 'figure', 'era', 'interior'];
 const TEMPLATES = ['cover', 'figure', 'era', 'spec', 'end'];
 const FORMATS = ['carousel', 'reel', 'single'];
 const CROPS = ['4:5', '1:1'];

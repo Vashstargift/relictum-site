@@ -47,9 +47,12 @@ test('неизвестная рубрика отклоняется', () => {
   assert.match(r.problems.join(' '), /рубрика/);
 });
 
-test('семь рубрик, среди них era', () => {
-  assert.equal(RUBRICS.length, 7);
-  assert.ok(RUBRICS.includes('era'));
+test('четыре рабочие рубрики; снятые с ленты не принимаются', () => {
+  assert.deepEqual(RUBRICS, ['object', 'figure', 'era', 'interior']);
+  // Рубрики без материала сняты 25.08.2026 — пост с ними не должен пройти.
+  for (const gone of ['ritual', 'expedition', 'editions']) {
+    assert.ok(!RUBRICS.includes(gone), `рубрика «${gone}» снята с ленты`);
+  }
 });
 
 test('несуществующий файл ассета отклоняется', () => {

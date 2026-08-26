@@ -337,7 +337,7 @@ window.RELICTUM_FEED = [
   {
     id: 'p14',
     date: '2026-09-15',
-    rubric: 'ritual',
+    rubric: 'interior',
     slot: 15,
     exhibit: null,
     format: 'carousel',
