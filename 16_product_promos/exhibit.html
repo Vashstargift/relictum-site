@@ -710,7 +710,10 @@ if(!o){
   ['heroAsk','ctaAsk'].forEach(function(id){
     var el=document.getElementById(id);
     if(el) el.addEventListener('click', function(e){
-      if(window.RL_ASK){ e.preventDefault(); window.RL_ASK(o.name+' ('+o.id+')'); }
+      if(window.RL_ASK){ e.preventDefault(); window.RL_ASK({
+        id:o.id, name:o.name, price:o.price||'', url:location.href,
+        photo:location.origin+location.pathname.replace(/[^/]*$/,'')+'../shared/img/'+o.img+'.jpg'
+      }); }
     });
   });
   if(window.RelictumShop){

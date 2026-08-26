@@ -256,9 +256,19 @@
   }
   function formHTML(about){
     var u=S.user();
-    return '<div class="h"><b>'+(about?'Запрос объекта':'Обратный звонок')+'</b><button type="button" data-c aria-label="Закрыть">'+icoX+'</button></div>'+
-      '<form data-f><p>'+(about?S.esc(about)+'. ':'')+'Оставьте номер — наш менеджер свяжется с вами в течение 15 минут после обращения.</p>'+
-      '<input type="hidden" name="about" value="'+S.esc(about||'')+'">'+
+    /* about может быть строкой (обратный звонок) или объектом лота.
+       Во втором случае в заявку уходят шифр, цена, ссылка и фото —
+       менеджер видит предмет сразу, без поиска по каталогу. */
+    var lot = (about && typeof about === 'object') ? about : null;
+    var title = lot ? (lot.name + ' (' + lot.id + ')') : (about || '');
+    return '<div class="h"><b>'+(title?'Запрос объекта':'Обратный звонок')+'</b><button type="button" data-c aria-label="Закрыть">'+icoX+'</button></div>'+
+      '<form data-f><p>'+(title?S.esc(title)+'. ':'')+'Оставьте номер — наш менеджер свяжется с вами в течение 15 минут после обращения.</p>'+
+      '<input type="hidden" name="about" value="'+S.esc(title)+'">'+
+      (lot ? '<input type="hidden" name="lot_id" value="'+S.esc(lot.id||'')+'">'+
+             '<input type="hidden" name="lot_name" value="'+S.esc(lot.name||'')+'">'+
+             '<input type="hidden" name="lot_price" value="'+S.esc(lot.price||'')+'">'+
+             '<input type="hidden" name="lot_url" value="'+S.esc(lot.url||'')+'">'+
+             '<input type="hidden" name="lot_photo" value="'+S.esc(lot.photo||'')+'">' : '')+
       '<input type="text" name="name" placeholder="Имя" value="'+S.esc(u.name==='Гость'?'':u.name)+'" required>'+
       '<input type="tel" name="phone" placeholder="+7 (___) ___-__-__" value="'+S.esc(u.phone||'')+'" required>'+
       '<label class="cns"><input type="checkbox" name="consent" required style="margin-top:2px">'+

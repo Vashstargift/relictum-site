@@ -625,8 +625,9 @@ $kind = clean($in['kind']);
 $data = isset($in['data']) && is_array($in['data']) ? $in['data'] : array();
 
 /* Служебное в письмо не пишем: дом читает заявку, а не дамп формы. */
-$SKIP   = array('date','type','consent','items','total','contact','page','payment');
-$LABELS = array('name'=>'Имя','phone'=>'Телефон','email'=>'Почта','desc'=>'Запрос',
+$SKIP   = array('date','type','consent','items','total','contact','page','payment',
+                'lot_id','lot_name','lot_price','lot_url','lot_photo');
+$LABELS = array('name'=>'Имя','phone'=>'Телефон','email'=>'Почта','desc'=>'Запрос','about'=>'Объект',
                 'note'=>'Комментарий','addr'=>'Доставка','era'=>'Эпоха','budget'=>'Бюджет');
 $lines = array();
 foreach ($data as $k => $v) {
@@ -703,9 +704,28 @@ if ((!empty($in['consent']) || !empty($data['consent'])) && is_readable($keyFile
            заказ: только для 'order' он собирает письмо вёрсткой, с фотографией
            и ссылкой на объект. Всё прочее уходит типом 'relictum' и ложится в
            общий список заявок. */
+        /* Запрос конкретного лота: собираем позицию, чтобы в CRM были
+           фото, ссылка и цена, а не одна строка текста. */
+        if (empty($data['items']) && !empty($data['lot_id'])) {
+            $lotPrice = 0;
+            if (!empty($data['lot_price'])) {
+                $digits = preg_replace('/[^0-9]/u', '', $data['lot_price']);
+                $lotPrice = $digits === '' ? 0 : (int)$digits;
+            }
+            $data['items'] = array(array(
+                'id'       => clean($data['lot_id']),
+                'title'    => clean(isset($data['lot_name']) ? $data['lot_name'] : ''),
+                'price'    => $lotPrice,
+                'quantity' => 1,
+                'url'      => clean(isset($data['lot_url']) ? $data['lot_url'] : ''),
+                'photo'    => clean(isset($data['lot_photo']) ? $data['lot_photo'] : ''),
+            ));
+            $lines[] = 'Ссылка: ' . clean($data['lot_url']);
+            if (!empty($data['lot_price'])) { $lines[] = 'Цена: ' . clean($data['lot_price']); }
+        }
         $rich = (!empty($data['items']) && is_array($data['items']) && !empty($data['items'][0]['title']));
         $payload = array(
-            'form_type' => $rich ? 'order' : 'relictum',
+            'form_type' => (!empty($data['lot_id']) ? 'relictum' : ($rich ? 'order' : 'relictum')),
             'name'      => isset($data['name']) ? clean($data['name']) : 'Гость Relictum',
             'phone'     => $phone,
             'email'     => isset($data['email']) ? clean($data['email']) : '',
@@ -713,7 +733,7 @@ if ((!empty($in['consent']) || !empty($data['consent'])) && is_readable($keyFile
                            . implode("\n", $lines),
             'consent'   => true,
         );
-        if ($rich) {
+        if ($rich || !empty($data['lot_id'])) {
             $payload['items']   = $data['items'];
             $payload['total']   = isset($data['total']) ? $data['total'] : 0;
             $payload['payment'] = isset($data['payment']) ? clean($data['payment']) : 'по счёту';
