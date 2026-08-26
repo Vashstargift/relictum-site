@@ -40,11 +40,13 @@ footer .wrap { max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter); }
 }
 .nav.on-dark:not(.scrolled) .nav-wordmark,
 .nav.on-dark:not(.scrolled) .nav-links a,
-.nav.on-dark:not(.scrolled) .nav-actions a { color: var(--bone); text-shadow: 0 1px 10px rgba(10, 9, 8, .5); }
+.nav.on-dark:not(.scrolled) .nav-actions a,
+.nav.on-dark:not(.scrolled) .nav-actions #rlLang { color: var(--bone); text-shadow: 0 1px 10px rgba(10, 9, 8, .5); }
 .nav.on-dark:not(.scrolled) .nav-tag { color: var(--sand); text-shadow: 0 1px 10px rgba(10, 9, 8, .5); }
 .nav.on-dark:not(.scrolled) .nav-links a:hover,
 .nav.on-dark:not(.scrolled) .nav-links a.active { color: #fff; border-color: var(--sand); }
-.nav.on-dark:not(.scrolled) .nav-actions a:hover { color: #fff; }
+.nav.on-dark:not(.scrolled) .nav-actions a:hover,
+.nav.on-dark:not(.scrolled) .nav-actions #rlLang:hover { color: #fff; }
 .nav.on-dark:not(.scrolled) .nav-burger span { background: var(--bone); }
 
 .nav-logo { display: flex; align-items: center; gap: 14px; }
@@ -65,11 +67,13 @@ footer .wrap { max-width: 1440px; margin: 0 auto; padding: 0 var(--gutter); }
 }
 .nav-links a:hover, .nav-links a.active { border-color: var(--bronze); color: var(--bronze-deep); }
 .nav-actions { display: flex; gap: 20px; align-items: center; font-size: 12px; letter-spacing: .12em; }
-.nav-actions a { color: var(--stone); transition: color .3s; }
+.nav-actions a,
+.nav-actions #rlLang { color: var(--stone); transition: color .3s; }
 .nav-logo, .nav-links a, .nav-actions a, .nav-drawer a { text-decoration: none; }
 .nav-logo { color: var(--obsidian); }
 footer a { text-decoration: none; }
-.nav-actions a:hover { color: var(--obsidian); }
+.nav-actions a:hover,
+.nav-actions #rlLang:hover { color: var(--obsidian); }
 
 /* Свой межстрочный интервал: у страниц он разный (витрина 1.65, эры 1.7,
    паспорт 1.6), как и базовый кегль (15 против 16), и всё это наследовалось в подвал — из-за этого он был разной высоты. */
@@ -99,11 +103,13 @@ footer ul a { display: inline-block; padding: 6px 0; }
 }
 .nav.on-dark.scrolled .nav-wordmark,
 .nav.on-dark.scrolled .nav-links a,
-.nav.on-dark.scrolled .nav-actions a { color: var(--bone); text-shadow: none; }
+.nav.on-dark.scrolled .nav-actions a,
+.nav.on-dark.scrolled .nav-actions #rlLang { color: var(--bone); text-shadow: none; }
 .nav.on-dark.scrolled .nav-tag { color: var(--sand); text-shadow: none; }
 .nav.on-dark.scrolled .nav-links a:hover,
 .nav.on-dark.scrolled .nav-links a.active { color: #fff; border-color: var(--sand); }
-.nav.on-dark.scrolled .nav-actions a:hover { color: #fff; }
+.nav.on-dark.scrolled .nav-actions a:hover,
+.nav.on-dark.scrolled .nav-actions #rlLang:hover { color: #fff; }
 .nav.on-dark.scrolled .nav-burger span { background: var(--bone); }
 .nav.on-dark .nav-logo { color: var(--bone); }
 
@@ -144,3 +150,9 @@ footer ul a { display: inline-block; padding: 6px 0; }
   .nav-drawer-sep { width: 46px; height: 1px; background: var(--hairline); margin: 6px 0; }
 }
 /* ---------- Мобильные формы ---------- */
+
+/* Переключатель языков живёт в ряду значков шапки: те же серый тон, размер и
+   вертикальное выравнивание. Без line-height:1 текст рядом с иконкой уезжал вниз. */
+.nav-actions #rlLang { display: inline-flex; align-items: center; line-height: 1; }
+.nav-actions #rlLang > button { line-height: 1; }
+.nav-actions #rlLang svg { display: block; }

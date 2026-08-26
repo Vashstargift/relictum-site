@@ -751,7 +751,7 @@ function set(lang){
 }
 
 /* ---------- переключатель в шапке ---------- */
-var GLOBE='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"><circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8M12 3.6c2.2 2.3 3.3 5.2 3.3 8.4s-1.1 6.1-3.3 8.4c-2.2-2.3-3.3-5.2-3.3-8.4S9.8 5.9 12 3.6z"/></svg>';
+var GLOBE='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8M12 3.6c2.2 2.3 3.3 5.2 3.3 8.4s-1.1 6.1-3.3 8.4c-2.2-2.3-3.3-5.2-3.3-8.4S9.8 5.9 12 3.6z"/></svg>';
 function mountSwitch(){
   if(document.getElementById('rlLang')) return;
   var host=document.querySelector('.nav-actions');
@@ -760,8 +760,9 @@ function mountSwitch(){
   wrap.style.cssText='position:relative;display:inline-flex;align-items:center;color:inherit';
   var btn=document.createElement('button');
   btn.type='button'; btn.setAttribute('aria-label','Язык сайта');
-  btn.style.cssText='display:inline-flex;align-items:center;gap:6px;background:none;border:none;padding:0;margin:0;cursor:pointer;color:inherit;'+
-    'font-family:Inter,system-ui,sans-serif;font-size:11.5px;font-weight:500;letter-spacing:.14em;line-height:1';
+  btn.style.cssText='display:inline-flex;align-items:center;gap:7px;background:none;border:none;padding:0;margin:0;cursor:pointer;color:inherit;'+
+    'font-family:Inter,system-ui,sans-serif;font-size:12px;font-weight:400;letter-spacing:.12em;line-height:1;'+
+    'transition:color .3s';
   var cur=document.createElement('span'); cur.id='rlLangCur'; cur.textContent=LABEL[cur0()];
   btn.innerHTML=GLOBE; btn.appendChild(cur);
   var menu=document.createElement('div');
