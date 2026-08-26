@@ -3,6 +3,7 @@
    русскими. Арабский включает RTL. Выбор языка хранится в localStorage. */
 (function(){
 'use strict';
+var SELF=(document.currentScript&&document.currentScript.src)||'';
 var LANGS=['ru','en','zh','ar'];
 var LABEL={ru:'RU',en:'EN',zh:'中文',ar:'عربي'};
 
@@ -469,9 +470,10 @@ function buildFrags(){
   });
   return FRAGS;
 }
+var DL={};
 function tr(s,lang){
   var t=s.trim(); if(!t) return null;
-  var hit=D[t];
+  var hit=D[t]||DL[t];
   if(hit){ var v=hit[IDX[lang]]; if(v) return s.replace(t,v); }
   if(!CYR.test(s)) return null;
   if(t.length>70) return null;   /* длинную прозу не рвём пофрагментно */
@@ -524,9 +526,26 @@ function apply(lang){
   }
   applying=false;
 }
+var lotsState=0;   /* 0 — не грузили, 1 — грузим, 2 — готово */
+function ensureLots(cb){
+  if(lotsState===2){ cb&&cb(); return; }
+  if(lotsState===1) return;
+  lotsState=1;
+  var sc=document.createElement('script');
+  sc.src=SELF.replace(/i18n\.js.*$/,'i18n-lots.js');
+  sc.onload=function(){
+    lotsState=2;
+    var L=window.RELICTUM_I18N_LOTS;
+    if(L){ for(var k in L) if(!DL[k]) DL[k]=L[k]; }
+    cb&&cb();
+  };
+  sc.onerror=function(){ lotsState=2; cb&&cb(); };
+  document.head.appendChild(sc);
+}
 function set(lang){
   if(LANGS.indexOf(lang)<0) return;
   try{ localStorage.setItem('relictum_lang',lang); }catch(e){}
+  if(lang!=='ru'){ ensureLots(function(){ apply(lang); }); }
   apply(lang);
 }
 
@@ -549,7 +568,7 @@ function mountSwitch(){
 /* ---------- запуск ---------- */
 function boot(){
   mountSwitch();
-  if(cur()!=='ru') apply(cur()); else apply('ru');
+  if(cur()!=='ru'){ apply(cur()); ensureLots(function(){ apply(cur()); }); } else apply('ru');
   /* клиентские рендеры (каталог, exhibit) дорисовывают DOM после загрузки */
   var t=null;
   new MutationObserver(function(){
