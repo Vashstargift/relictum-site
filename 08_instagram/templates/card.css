@@ -6,6 +6,8 @@
   --bronze: #B08A55;
   --deep: #9A6D34;
   --stone: #7A7267;
+  /* золото читается на фотографии там, где бронза уже глохнет */
+  --gold: #C8A163;
   --line: rgba(154, 109, 52, .28);
   --serif: 'Cormorant Garamond', serif;
   --sans: 'Inter', sans-serif;

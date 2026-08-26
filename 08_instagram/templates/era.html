@@ -4,18 +4,27 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../../shared/fonts.css">
 <link rel="stylesheet" href="card.css">
+<link rel="stylesheet" href="over.css">
 </head>
-<body class="center">
-  <div class="kicker" id="kicker"></div>
-  <div class="big" id="when"></div>
-  <div class="rule" style="width:220px"></div>
-  <div class="sub" id="fact" style="max-width:760px"></div>
+<body class="over">
+  <img class="bg" id="bg" alt="">
+  <div class="veil"></div>
+  <div class="block">
+    <div class="kicker" id="era"></div>
+    <div class="big" id="when"></div>
+    <div class="sub" id="fact"></div>
+  </div>
+  <img class="mark" src="../../shared/brand/Relictum_comet_gold.png" alt="">
 <!--CARD_DATA-->
 <script>
   var d = window.CARD_DATA || {};
-  document.getElementById('kicker').textContent = d.era || '';
+  document.getElementById('bg').src = d.bgUrl || '';
+  document.getElementById('era').textContent = d.era || '';
+  // Датировка — та самая строка, которую валидатор требует подтвердить
+  // фактом поста: печатаем её дословно, без переносов и сокращений.
   document.getElementById('when').textContent = d.when || '';
-  document.getElementById('fact').textContent = d.fact || '';
+  var fact = document.getElementById('fact');
+  if (d.fact) fact.textContent = d.fact; else fact.remove();
 </script>
 </body>
 </html>

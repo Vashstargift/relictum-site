@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const { execFile } = require('child_process');
-const { TEMPLATES_DIR } = require('./paths.js');
+const { TEMPLATES_DIR, IMG_DIR } = require('./paths.js');
 
 const DEFAULT_CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
@@ -57,7 +57,18 @@ async function renderCard({ tpl, data, out, width = 1080, height = 1350 }) {
   if (!html.includes('<!--CARD_DATA-->')) {
     throw new Error(`в шаблоне ${tpl} нет маркера <!--CARD_DATA-->`);
   }
-  const injected = buildInjectedHtml(html, data);
+  // Карточки-«поверх кадра» стоят на фотографии из shared/img: в данных лежит
+  // одно имя файла (bg), а шаблону нужен абсолютный file://-адрес. Резолвим
+  // здесь, чтобы feed-data.js оставался списком имён, а не путей.
+  const cardData = Object.assign({}, data);
+  if (cardData.bg) {
+    const bgFile = path.join(IMG_DIR, cardData.bg);
+    if (!fs.existsSync(bgFile)) {
+      throw new Error(`подложка карточки не найдена: ${cardData.bg}`);
+    }
+    cardData.bgUrl = `file://${bgFile}`;
+  }
+  const injected = buildInjectedHtml(html, cardData);
 
   // временный файл кладём рядом с шаблонами, чтобы относительные пути к CSS
   // работали; имя гарантированно уникально (pid+время+случайные байты), чтобы

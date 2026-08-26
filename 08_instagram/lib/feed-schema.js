@@ -35,6 +35,11 @@ const DEFAULT_ASPECT_BY_FORMAT = { single: '1:1' };
 // Пределы данных карточки — правильное место остановить перегруз контента
 // это валидатор ленты («сократи»), а не рендерер, который молча ужимает
 // шрифт до нечитаемого. Карточки должны быть свёрстаны, а не подогнаны.
+// Карточки направления «поверх кадра» стоят на фотографии из shared/img.
+// Без подложки они отрендерятся чёрным прямоугольником — молча и незаметно,
+// поэтому подложка обязательна на уровне валидатора.
+const TEMPLATES_NEEDING_BG = ['cover', 'figure', 'spec', 'era'];
+
 const SPEC_MAX_ROWS = 5; // паспорт (tpl=spec): не больше строк в data.rows
 const MAX_TEXT_LENGTH = 220; // любое текстовое значение в data карточки
 const MAX_TITLE_LENGTH = 60; // заголовок карточки: data.title/data.name
@@ -113,6 +118,16 @@ function collectTexts(value, fieldPath, out) {
 // поста, сюда передаём только текст «что именно превышено».
 function validateCardData(frame, frameLabel, bad) {
   const data = frame.data || {};
+
+  if (TEMPLATES_NEEDING_BG.includes(frame.tpl)) {
+    if (!data.bg) {
+      bad(`${frameLabel}: у карточки «${frame.tpl}» нет подложки (data.bg) — она стоит на фотографии`);
+    } else if (/[:/\\]/.test(data.bg)) {
+      bad(`${frameLabel}: data.bg должен быть именем файла в shared/img, а не путём`);
+    } else if (!fs.existsSync(path.join(IMG_DIR, data.bg))) {
+      bad(`${frameLabel}: подложка «${data.bg}» не найдена в shared/img`);
+    }
+  }
 
   const titleField = TITLE_FIELD_BY_TEMPLATE[frame.tpl];
   if (titleField && typeof data[titleField] === 'string' && data[titleField].length > MAX_TITLE_LENGTH) {
@@ -456,6 +471,7 @@ module.exports = {
   TEMPLATES,
   ASPECTS,
   SPEC_MAX_ROWS,
+  TEMPLATES_NEEDING_BG,
   MAX_TEXT_LENGTH,
   MAX_TITLE_LENGTH,
   MAX_BIG_LENGTH,

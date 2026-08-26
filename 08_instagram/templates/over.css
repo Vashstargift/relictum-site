@@ -1,0 +1,111 @@
+/* Карточки «поверх кадра» — направление B, выбранное владельцем 25.08.2026.
+   Собрано по разбору лент Sotheby's и Christie's, правила там же:
+   · затемнение ТОЛЬКО снизу, ровно под текстом — ровная вуаль по всему кадру
+     гасит интерьер, ради которого снимали, и её не делает ни один из домов;
+   · порядок блока жёсткий: мелкий капслок-кикер, крупный сериф, пояснение
+     курсивным серифом; всё прижато влево вниз, центровки нет;
+   · знак дома мелко и всегда в одном месте — правый нижний угол.
+   Файл подключается шаблонами cover/figure/spec/era поверх card.css. */
+
+body.over {
+  position: relative;
+  color: var(--ivory);
+  display: block;
+  padding: 0;
+}
+
+body.over .bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Градиент поднимается от нижнего края и растворяется к середине кадра. */
+body.over .veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(10, 9, 8, .93) 0%,
+    rgba(10, 9, 8, .80) 20%,
+    rgba(10, 9, 8, .34) 42%,
+    rgba(10, 9, 8, 0) 64%);
+}
+
+/* Правый отступ оставляет место знаку дома. */
+body.over .block {
+  position: absolute;
+  left: 84px;
+  right: 250px;
+  bottom: 84px;
+}
+
+body.over .kicker {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+body.over .big {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 104px;
+  line-height: 1.02;
+  margin-top: 14px;
+}
+
+body.over .title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 1.04;
+  margin-top: 14px;
+}
+
+body.over .sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 33px;
+  line-height: 1.38;
+  color: rgba(244, 240, 232, .9);
+  margin-top: 18px;
+}
+
+/* Строки паспорта идут в ряд: на кадре вертикальный список занял бы
+   слишком много высоты и полез бы в светлую часть фотографии. */
+body.over .rows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 58px;
+  margin-top: 28px;
+}
+
+body.over .rows b {
+  display: block;
+  font-family: var(--sans);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+body.over .rows span {
+  display: block;
+  font-family: var(--sans);
+  font-size: 27px;
+  font-weight: 300;
+  margin-top: 7px;
+}
+
+body.over .mark {
+  position: absolute;
+  right: 74px;
+  bottom: 86px;
+  width: 190px;
+  opacity: .95;
+}

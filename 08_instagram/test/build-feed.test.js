@@ -186,9 +186,11 @@ test('buildPost: высота карточки берётся из пропор�
   const s = loadSources();
   const feed = loadFeed();
 
+  // p02 — пост-цифра: после перехода на карточки «поверх кадра» у него один
+  // кадр, он же карточка (отдельный чистый снимок был дублем той же съёмки).
   const square = feed.find((p) => p.id === 'p02'); // aspect: 1:1
   const rSquare = await buildPost(s, square, OUT);
-  const squarePng = readPngSize(fs.readFileSync(path.join(rSquare.dir, rSquare.files[1])));
+  const squarePng = readPngSize(fs.readFileSync(path.join(rSquare.dir, rSquare.files[0])));
   assert.equal(squarePng.width, 1080);
   assert.equal(squarePng.height, 1080, 'пост 1:1 должен давать квадратную карточку');
 

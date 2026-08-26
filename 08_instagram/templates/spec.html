@@ -4,29 +4,34 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../../shared/fonts.css">
 <link rel="stylesheet" href="card.css">
+<link rel="stylesheet" href="over.css">
 </head>
-<body>
-  <div class="content">
+<body class="over">
+  <img class="bg" id="bg" alt="">
+  <div class="veil"></div>
+  <div class="block">
     <div class="kicker">Паспорт объекта</div>
     <div class="title" id="name"></div>
-    <div class="rule"></div>
-    <div class="spec" id="rows"></div>
+    <div class="rows" id="rows"></div>
   </div>
-  <div class="foot">RELICTUM</div>
+  <img class="mark" src="../../shared/brand/Relictum_comet_gold.png" alt="">
 <!--CARD_DATA-->
 <script>
   var d = window.CARD_DATA || {};
+  document.getElementById('bg').src = d.bgUrl || '';
   document.getElementById('name').textContent = d.name || '';
-  var rows = d.rows || [];
-  var container = document.getElementById('rows');
-  rows.forEach(function (r) {
-    var row = document.createElement('div');
+  // Строки собираем узлами, а не разметкой: значения приходят из паспорта
+  // экспоната, и угловая скобка в них не должна ломать вёрстку строки.
+  var box = document.getElementById('rows');
+  (d.rows || []).forEach(function (r) {
+    var cell = document.createElement('div');
     var label = document.createElement('b');
     label.textContent = r[0];
-    row.appendChild(label);
-    row.appendChild(document.createElement('br'));
-    row.appendChild(document.createTextNode(r[1]));
-    container.appendChild(row);
+    var value = document.createElement('span');
+    value.textContent = r[1];
+    cell.appendChild(label);
+    cell.appendChild(value);
+    box.appendChild(cell);
   });
 </script>
 </body>

@@ -304,7 +304,7 @@ function specRows(n) {
 
 test('паспорт: шесть строк в data.rows (больше предела) отклоняется', () => {
   const r = validatePost(s, goodPost({
-    frames: [{ type: 'card', tpl: 'spec', data: { name: 'Экспонат', rows: specRows(SPEC_MAX_ROWS + 1) } }],
+    frames: [{ type: 'card', tpl: 'spec', data: { bg: 'ph_megalodon.jpg', name: 'Экспонат', rows: specRows(SPEC_MAX_ROWS + 1) } }],
   }));
   assert.equal(r.ok, false);
   assert.match(r.problems.join(' '), /паспорте больше 5 строк/);
@@ -324,7 +324,7 @@ test('паспорт: пять строк в data.rows (ровно предел)
   ];
   assert.equal(rows.length, SPEC_MAX_ROWS, 'в фикстуре ровно SPEC_MAX_ROWS строк — иначе тест перестаёт быть тестом границы');
   const r = validatePost(s, goodPost({
-    frames: [{ type: 'card', tpl: 'spec', data: { name: 'Экспонат', rows } }],
+    frames: [{ type: 'card', tpl: 'spec', data: { bg: 'ph_megalodon.jpg', name: 'Экспонат', rows } }],
     facts: rows.map(([label, value]) => ({
       claim: label,
       value,
@@ -337,7 +337,7 @@ test('паспорт: пять строк в data.rows (ровно предел)
 
 test('паспорт: строка не из двух непустых строк отклоняется', () => {
   const r = validatePost(s, goodPost({
-    frames: [{ type: 'card', tpl: 'spec', data: { name: 'Экспонат', rows: [['Только метка']] } }],
+    frames: [{ type: 'card', tpl: 'spec', data: { bg: 'ph_megalodon.jpg', name: 'Экспонат', rows: [['Только метка']] } }],
   }));
   assert.equal(r.ok, false);
   assert.match(r.problems.join(' '), /парой из двух непустых строк/);
@@ -345,7 +345,7 @@ test('паспорт: строка не из двух непустых стро�
 
 test('паспорт: строка с пустым вторым элементом тоже отклоняется', () => {
   const r = validatePost(s, goodPost({
-    frames: [{ type: 'card', tpl: 'spec', data: { name: 'Экспонат', rows: [['Метка', '   ']] } }],
+    frames: [{ type: 'card', tpl: 'spec', data: { bg: 'ph_megalodon.jpg', name: 'Экспонат', rows: [['Метка', '   ']] } }],
   }));
   assert.equal(r.ok, false);
   assert.match(r.problems.join(' '), /парой из двух непустых строк/);
@@ -368,7 +368,7 @@ test('текст в data ровно предела (220 знаков) прохо
 
 test('заголовок карточки длиннее предела (61 знак) отклоняется', () => {
   const r = validatePost(s, goodPost({
-    frames: [{ type: 'card', tpl: 'cover', data: { title: 'а'.repeat(MAX_TITLE_LENGTH + 1) } }],
+    frames: [{ type: 'card', tpl: 'cover', data: { bg: 'ph_megalodon.jpg', title: 'а'.repeat(MAX_TITLE_LENGTH + 1) } }],
   }));
   assert.equal(r.ok, false);
   assert.match(r.problems.join(' '), new RegExp(`заголовок карточки .* длиннее ${MAX_TITLE_LENGTH} знаков`));
@@ -376,7 +376,7 @@ test('заголовок карточки длиннее предела (61 зн
 
 test('заголовок карточки ровно предела (60 знаков) проходит', () => {
   const r = validatePost(s, goodPost({
-    frames: [{ type: 'card', tpl: 'cover', data: { title: 'а'.repeat(MAX_TITLE_LENGTH), kicker: 'x', sub: 'x' } }],
+    frames: [{ type: 'card', tpl: 'cover', data: { bg: 'ph_megalodon.jpg', title: 'а'.repeat(MAX_TITLE_LENGTH), kicker: 'x', sub: 'x' } }],
   }));
   assert.equal(r.ok, true, r.problems.join('; '));
 });
@@ -388,7 +388,7 @@ function eraPost(over = {}) {
     rubric: 'era',
     exhibit: null,
     frames: [
-      { type: 'card', tpl: 'era', data: { era: 'Меловой период', when: '145 — 66 млн лет назад', fact: 'Проверочный факт.' } },
+      { type: 'card', tpl: 'era', data: { bg: 'ph_megalodon.jpg', era: 'Меловой период', when: '145 — 66 млн лет назад', fact: 'Проверочный факт.' } },
       { type: 'card', tpl: 'end', data: {} },
     ],
     facts: [],
@@ -431,7 +431,7 @@ test('пост с карточкой figure без подтверждающег�
   const r = validatePost(s, goodPost({
     rubric: 'figure',
     exhibit: null,
-    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Сеймчан', big: '≈ 4,56 млрд лет', sub: 'x' } }],
+    frames: [{ type: 'card', tpl: 'figure', data: { bg: 'ph_megalodon.jpg', name: 'Сеймчан', big: '≈ 4,56 млрд лет', sub: 'x' } }],
     facts: [],
   }));
   assert.equal(r.ok, false);
@@ -442,7 +442,7 @@ test('пост с карточкой figure с подтверждающим фа
   const r = validatePost(s, goodPost({
     rubric: 'figure',
     exhibit: null,
-    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Сеймчан', big: '≈ 4,56 млрд лет', sub: 'x' } }],
+    frames: [{ type: 'card', tpl: 'figure', data: { bg: 'ph_megalodon.jpg', name: 'Сеймчан', big: '≈ 4,56 млрд лет', sub: 'x' } }],
     facts: [{ claim: 'возраст', value: '≈ 4,56 млрд лет', source: 'catalog.js:seymchan-pallasite.age', checked: true }],
   }));
   assert.equal(r.ok, true, r.problems.join('; '));
@@ -454,6 +454,7 @@ test('пост с карточкой figure с подтверждающим фа
 test('пост с карточкой spec: строка без подтверждающего факта отклоняется', () => {
   const r = validatePost(s, goodPost({
     frames: [{ type: 'card', tpl: 'spec', data: {
+      bg: 'ph_megalodon.jpg',
       name: 'Зуб мегалодона',
       rows: [['Возраст', '≈ 23 млн лет, миоцен']],
     } }],
@@ -466,6 +467,7 @@ test('пост с карточкой spec: строка без подтверж�
 test('пост с карточкой spec: все строки с подтверждающими фактами проходят', () => {
   const r = validatePost(s, goodPost({
     frames: [{ type: 'card', tpl: 'spec', data: {
+      bg: 'ph_megalodon.jpg',
       name: 'Зуб мегалодона',
       rows: [['Возраст', '≈ 23 млн лет, миоцен'], ['Оформление', 'Стальной стенд']],
     } }],
@@ -544,7 +546,7 @@ test('карточка «Цифра»: крупное поле длиннее п
   const r = validatePost(s, goodPost({
     rubric: 'figure',
     exhibit: null,
-    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Трилобит', big: 'а'.repeat(MAX_BIG_LENGTH + 1), sub: 'x' } }],
+    frames: [{ type: 'card', tpl: 'figure', data: { bg: 'ph_megalodon.jpg', name: 'Трилобит', big: 'а'.repeat(MAX_BIG_LENGTH + 1), sub: 'x' } }],
     facts: [],
   }));
   assert.equal(r.ok, false);
@@ -565,7 +567,7 @@ test('карточка «Цифра»: период вынесен в подза
   const r = validatePost(s, goodPost({
     rubric: 'figure',
     exhibit: null,
-    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Трилобит', big: '≈ 480–472 млн лет', period: 'ранний ордовик', sub: 'x' } }],
+    frames: [{ type: 'card', tpl: 'figure', data: { bg: 'ph_megalodon.jpg', name: 'Трилобит', big: '≈ 480–472 млн лет', period: 'ранний ордовик', sub: 'x' } }],
     facts: [{ claim: 'возраст', value: '≈ 480–472 млн лет, ранний ордовик', source: 'catalog.js:0217-dikelokephalina.age', checked: true }],
   }));
   assert.equal(r.ok, true, r.problems.join('; '));
@@ -575,7 +577,7 @@ test('карточка «Цифра»: период на карточке, ко�
   const r = validatePost(s, goodPost({
     rubric: 'figure',
     exhibit: null,
-    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Трилобит', big: '≈ 480–472 млн лет', period: 'поздний ордовик', sub: 'x' } }],
+    frames: [{ type: 'card', tpl: 'figure', data: { bg: 'ph_megalodon.jpg', name: 'Трилобит', big: '≈ 480–472 млн лет', period: 'поздний ордовик', sub: 'x' } }],
     facts: [{ claim: 'возраст', value: '≈ 480–472 млн лет, ранний ордовик', source: 'catalog.js:0217-dikelokephalina.age', checked: true }],
   }));
   assert.equal(r.ok, false);
@@ -593,7 +595,7 @@ function reconstructionPost(over = {}) {
   return goodPost(Object.assign({
     rubric: 'figure',
     exhibit: null,
-    frames: [{ type: 'card', tpl: 'figure', data: { name: 'Dunkleosteus', big: '≈ 360 млн лет', period: 'поздний девон', sub: 'Возраст панцирной рыбы как вида.' } }],
+    frames: [{ type: 'card', tpl: 'figure', data: { bg: 'ph_megalodon.jpg', name: 'Dunkleosteus', big: '≈ 360 млн лет', period: 'поздний девон', sub: 'Возраст панцирной рыбы как вида.' } }],
     caption: { lead: 'Броня вместо зубов', body: 'Панцирная рыба девонских морей.', cta: '' },
     facts: [{ claim: 'возраст', value: '≈ 360 млн лет, поздний девон', source: 'catalog.js:0219-dunkleosteus.age', checked: true }],
   }, over));
@@ -608,6 +610,7 @@ test('пост об экспонате-реконструкции без сло�
 test('пост об экспонате-реконструкции проходит, если карточка называет это прямо', () => {
   const r = validatePost(s, reconstructionPost({
     frames: [{ type: 'card', tpl: 'figure', data: {
+      bg: 'ph_megalodon.jpg',
       name: 'Dunkleosteus',
       big: '≈ 360 млн лет',
       period: 'поздний девон',
