@@ -48,6 +48,11 @@
    начинался на одной высоте с панелью, а не под тулбаром */
 .rail-foot { border-top:1px solid var(--hairline); padding:15px 20px 18px; }
 .rail-count { font-size:12.5px; color:var(--stone); letter-spacing:.04em; }
+.rail-copy { width:100%; margin-top:13px; padding:11px 12px; background:transparent; cursor:pointer;
+  border:1px solid var(--bronze-deep); color:var(--bronze-deep);
+  font-family:var(--font-ui); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; transition:.3s var(--ease); }
+.rail-copy:hover { background:var(--obsidian); border-color:var(--obsidian); color:var(--ivory); }
+.rail-copy.done { background:var(--obsidian); border-color:var(--obsidian); color:var(--ivory); }
 .rail-sort { display:block; margin-top:13px; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); }
 .rail-sort select { width:100%; margin-top:7px; border:1px solid var(--hairline); background:transparent; padding:10px 12px;
   font-family:var(--font-ui); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--obsidian); cursor:pointer; }
@@ -149,6 +154,7 @@
       <div class="rail-foot">
         <div class="active-chips" id="activeChips"></div>
         <div class="rail-count" id="count"></div>
+        <button type="button" id="copyLink" class="rail-copy">Скопировать ссылку</button>
         <label class="rail-sort">Порядок
           <select id="sort">
             <option value="default">По умолчанию</option>
@@ -416,6 +422,7 @@ function render() {
   $("#railApply").textContent = "Ок · " + items.length + " " + pl(items.length);
   renderChips();
   syncBadges();
+  syncURL();
 }
 
 function resetAll() {
@@ -424,6 +431,39 @@ function resetAll() {
   facetsEl.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false);
   $("#pmin").value=""; $("#pmax").value=""; searchEl.value="";
   render();
+}
+
+/* ---- Фильтры в адресе страницы ----
+   Состояние пишется в query-строку, поэтому ссылку с выбранными фильтрами
+   («в наличии», раздел, эпоха) можно скопировать из адресной строки и отправить. */
+const URL_KEYS = ["avail","kind","world","era","period","region","price"];
+function syncURL() {
+  const p = new URLSearchParams();
+  URL_KEYS.forEach(k => { if (state[k].size) p.set(k, [...state[k]].join(",")); });
+  if (state.q) p.set("q", searchEl.value.trim());
+  if (sortEl.value !== "default") p.set("sort", sortEl.value);
+  if (state.priceMin != null) p.set("pmin", state.priceMin);
+  if (state.priceMax != null) p.set("pmax", state.priceMax);
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? location.pathname + "?" + qs : location.pathname);
+}
+function applyURL() {
+  const p = new URLSearchParams(location.search);
+  let any = false;
+  URL_KEYS.forEach(k => {
+    const v = p.get(k); if (!v) return;
+    v.split(",").filter(Boolean).forEach(val => {
+      state[k].add(val); any = true;
+      const cb = facetsEl.querySelector(`input[data-k="${k}"][value="${CSS.escape(val)}"]`);
+      if (cb) cb.checked = true;
+    });
+  });
+  const q = p.get("q");
+  if (q) { searchEl.value = q; state.q = q.trim().toLowerCase().replace(/[\u2013\u2014\u2212]/g, "-"); any = true; }
+  const st = p.get("sort"); if (st) { sortEl.value = st; any = true; }
+  const mn = p.get("pmin"); if (mn) { state.priceMin = +mn; $("#pmin").value = mn; any = true; }
+  const mx = p.get("pmax"); if (mx) { state.priceMax = +mx; $("#pmax").value = mx; any = true; }
+  return any;
 }
 
 // ---- События ----
@@ -446,16 +486,37 @@ searchEl.addEventListener("input", () => { state.q = searchEl.value.trim().toLow
 sortEl.addEventListener("change", render);
 $("#reset").addEventListener("click", resetAll);
 
+/* Ссылка с текущими фильтрами — чтобы отправить клиенту готовую подборку */
+$("#copyLink").addEventListener("click", () => {
+  const btn = $("#copyLink"), was = btn.textContent, url = location.href;
+  const done = () => {
+    btn.textContent = "Ссылка скопирована";
+    btn.classList.add("done");
+    setTimeout(() => { btn.textContent = was; btn.classList.remove("done"); }, 2200);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url).then(done).catch(() => prompt("Ссылка:", url));
+  } else {
+    const t = document.createElement("textarea");
+    t.value = url; t.style.position = "fixed"; t.style.opacity = "0";
+    document.body.appendChild(t); t.select();
+    try { document.execCommand("copy"); done(); } catch (e) { prompt("Ссылка:", url); }
+    document.body.removeChild(t);
+  }
+});
+
 // мобильная панель
 $("#filtersToggle").addEventListener("click", () => document.body.classList.add("filters-open"));
 $("#railClose").addEventListener("click", () => document.body.classList.remove("filters-open"));
 $("#railApply").addEventListener("click", () => document.body.classList.remove("filters-open"));
 
-// стартовый фильтр по якорю (#cosmos и т.п.)
-const hash = location.hash.replace("#","");
-if (["vita","terra","cosmos","editions","grand"].includes(hash)) {
-  state.world.add(hash);
-  const cb = facetsEl.querySelector(`input[data-k="world"][value="${hash}"]`); if(cb) cb.checked=true;
+// состояние из адреса; если его нет — стартовый фильтр по якорю (#cosmos и т.п.)
+if (!applyURL()) {
+  const hash = location.hash.replace("#","");
+  if (["vita","terra","cosmos","editions","grand"].includes(hash)) {
+    state.world.add(hash);
+    const cb = facetsEl.querySelector(`input[data-k="world"][value="${hash}"]`); if(cb) cb.checked=true;
+  }
 }
 render();
 </script>
