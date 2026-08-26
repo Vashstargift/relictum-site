@@ -412,6 +412,44 @@ function checkRhythm(feed) {
 // Проверяем отдельно от ритма: среди товарных постов (exhibit задан)
 // с валидным slot должно быть больше одной РАЗНОЙ колонки — если товарных
 // меньше двух, «полоса» физически невозможна, и проверка не срабатывает.
+// Каждая рубрика идёт по сетке своей диагональю. Сетка профиля — три
+// колонки, поэтому рубрики чередуются циклом с периодом четыре: пост рубрики
+// попадает в слоты k, k+4, k+8…, и его колонка сдвигается ровно на одну.
+// Без этой проверки диагонали разъезжаются молча — валидатор ритма их не
+// видит, потому что «2+1» считает только товарные посты.
+function checkRubricDiagonals(feed) {
+  const problems = [];
+  const colOf = (slot) => ((slot - 1) % 3) + 1;
+  const byRubric = new Map();
+
+  for (const p of feed) {
+    if (!p || !Number.isInteger(p.slot) || p.slot < 1 || !RUBRICS.includes(p.rubric)) continue;
+    if (!byRubric.has(p.rubric)) byRubric.set(p.rubric, []);
+    byRubric.get(p.rubric).push(p);
+  }
+
+  for (const [rubric, posts] of byRubric) {
+    if (posts.length < 2) continue;
+    const sorted = posts.slice().sort((a, b) => a.slot - b.slot);
+    for (let i = 1; i < sorted.length; i++) {
+      const prev = colOf(sorted[i - 1].slot);
+      const cur = colOf(sorted[i].slot);
+      const expected = (prev % 3) + 1;
+      if (cur !== expected) {
+        problems.push(
+          `раскладка сетки: рубрика «${rubric}» перестала идти диагональю — `
+          + `${sorted[i - 1].id} (slot ${sorted[i - 1].slot}) стоит в колонке ${prev}, `
+          + `значит ${sorted[i].id} (slot ${sorted[i].slot}) ожидался в колонке ${expected}, `
+          + `а стоит в ${cur}; рубрики чередуются с периодом 4, порядок: ${RUBRICS.join(', ')}`
+        );
+        break;
+      }
+    }
+  }
+
+  return { ok: problems.length === 0, problems };
+}
+
 function checkGridLayout(feed) {
   const problems = [];
   const goods = feed.filter(
@@ -464,6 +502,7 @@ function validateFeed(sources, feed) {
 
   problems.push(...checkRhythm(feed).problems);
   problems.push(...checkGridLayout(feed).problems);
+  problems.push(...checkRubricDiagonals(feed).problems);
 
   const ok = problems.length === 0 && posts.every((p) => p.ok);
   return { ok, posts, problems };
@@ -484,5 +523,6 @@ module.exports = {
   validatePost,
   checkRhythm,
   checkGridLayout,
+  checkRubricDiagonals,
   validateFeed,
 };

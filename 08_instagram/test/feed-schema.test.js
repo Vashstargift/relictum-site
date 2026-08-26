@@ -5,6 +5,7 @@ const {
   validatePost,
   checkRhythm,
   checkGridLayout,
+  checkRubricDiagonals,
   validateFeed,
   postAspect,
   RUBRICS,
@@ -45,6 +46,34 @@ test('неизвестная рубрика отклоняется', () => {
   const r = validatePost(s, goodPost({ rubric: 'мемы' }));
   assert.equal(r.ok, false);
   assert.match(r.problems.join(' '), /рубрика/);
+});
+
+// Каждая рубрика идёт по сетке своей диагональю: рубрики чередуются циклом
+// с периодом 4, поэтому колонка поста рубрики сдвигается ровно на одну.
+test('раскладка диагоналями: правильный цикл рубрик проходит', () => {
+  const feed = ['object', 'figure', 'era', 'interior'].length
+    ? Array.from({ length: 12 }, (_, i) => ({
+        id: 'd' + (i + 1),
+        slot: i + 1,
+        rubric: ['object', 'figure', 'era', 'interior'][i % 4],
+        exhibit: null,
+      }))
+    : [];
+  assert.equal(checkRubricDiagonals(feed).ok, true);
+});
+
+test('раскладка диагоналями: сбитый цикл рубрик отклоняется', () => {
+  const feed = [
+    { id: 'a', slot: 1, rubric: 'object', exhibit: null },
+    { id: 'b', slot: 2, rubric: 'figure', exhibit: null },
+    { id: 'c', slot: 3, rubric: 'era', exhibit: null },
+    { id: 'd', slot: 4, rubric: 'interior', exhibit: null },
+    { id: 'e', slot: 5, rubric: 'figure', exhibit: null },
+    { id: 'f', slot: 6, rubric: 'object', exhibit: null },
+  ];
+  const r = checkRubricDiagonals(feed);
+  assert.equal(r.ok, false);
+  assert.match(r.problems.join(' '), /перестала идти диагональю/);
 });
 
 test('четыре рабочие рубрики; снятые с ленты не принимаются', () => {
