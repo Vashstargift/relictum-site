@@ -89,7 +89,11 @@ test('meta.json перечисляет все файлы папки, включ�
   assert.equal(cover.order, frame.order);
 
   const frameOrders = meta.files.filter((e) => e.role === 'frame').map((e) => e.order);
-  assert.deepEqual(frameOrders, [1, 2, 3, 4], 'порядок листания по кадрам должен идти без пропусков и повторов');
+  // Число кадров у поста меняется при правках композиции, поэтому проверяем
+  // само свойство — нумерация идёт подряд с единицы, без пропусков и повторов.
+  const expectedOrders = post.frames.map((_, i) => i + 1);
+  assert.deepEqual(frameOrders, expectedOrders,
+    'порядок листания по кадрам должен идти без пропусков и повторов');
 });
 
 // Находка 2: --all бросал всю сборку при падении одного поста — остальные
