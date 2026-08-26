@@ -18,6 +18,18 @@
 .rail-close { display:none; }
 .fsearch { padding:15px 20px; border-bottom:1px solid var(--hairline); }
 .fsearch input { width:100%; border:1px solid var(--hairline); background:transparent; padding:11px 12px; font-family:var(--font-ui); font-size:13px; color:var(--obsidian); }
+/* Строка поиска над каталогом — всегда на виду, на любой ширине */
+.cat-search { display:flex; align-items:center; gap:11px; margin:0 0 clamp(20px,2.6vw,32px);
+  border:1px solid var(--hairline); background:var(--bone); padding:0 16px; }
+.cat-search svg { flex:none; color:var(--bronze-deep); }
+.cat-search input { flex:1; border:none; background:transparent; padding:15px 0;
+  font-family:var(--font-ui); font-size:14.5px; color:var(--obsidian); outline:none; }
+.cat-search input::placeholder { color:var(--stone); }
+.cat-search button { flex:none; background:none; border:none; cursor:pointer; padding:6px;
+  font-size:14px; line-height:1; color:var(--stone); }
+.cat-search button:hover { color:var(--obsidian); }
+@media (max-width:760px){ .cat-search input { font-size:16px; padding:13px 0; } }
+
 .fgroup { border-bottom:1px solid var(--hairline); }
 .fgroup:last-child { border-bottom:none; }
 .fgroup-h { width:100%; display:flex; align-items:center; gap:9px; padding:14px 20px; background:none; border:none;
@@ -139,6 +151,13 @@
 </header>
 
 <div class="wrap">
+  <!-- Поиск вынесен над каталогом: он нужен всегда, а панель фильтров
+       на мобильном закрыта и ради поиска её пришлось бы открывать. -->
+  <div class="cat-search">
+    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><circle cx="10.4" cy="10.4" r="6.1"/><path d="M14.9 14.9L20.4 20.4"/></svg>
+    <input id="search" placeholder="Поиск: артикул, вид, место, эпоха…">
+    <button type="button" id="searchClear" aria-label="Очистить поиск" hidden>✕</button>
+  </div>
   <div class="cat-layout">
     <!-- ФИЛЬТРЫ -->
     <aside class="filters-rail" id="rail">
@@ -146,9 +165,6 @@
         <span class="t">Фильтры</span>
         <button id="reset">Сбросить</button>
         <button class="rail-close" id="railClose" aria-label="Закрыть" style="font-size:20px;line-height:1">✕</button>
-      </div>
-      <div class="fsearch">
-        <input id="search" placeholder="Поиск: артикул, вид, место, эпоха…">
       </div>
       <div id="facets"></div>
       <div class="rail-foot">
@@ -482,7 +498,14 @@ facetsEl.addEventListener("input", e => {
   if (e.target.id==="pmin") { state.priceMin = e.target.value?+e.target.value:null; render(); }
   if (e.target.id==="pmax") { state.priceMax = e.target.value?+e.target.value:null; render(); }
 });
-searchEl.addEventListener("input", () => { state.q = searchEl.value.trim().toLowerCase().replace(/[\u2013\u2014\u2212]/g, "-"); render(); });
+searchEl.addEventListener("input", () => {
+  state.q = searchEl.value.trim().toLowerCase().replace(/[\u2013\u2014\u2212]/g, "-");
+  $("#searchClear").hidden = !searchEl.value;
+  render();
+});
+$("#searchClear").addEventListener("click", () => {
+  searchEl.value = ""; state.q = ""; $("#searchClear").hidden = true; searchEl.focus(); render();
+});
 sortEl.addEventListener("change", render);
 $("#reset").addEventListener("click", resetAll);
 
