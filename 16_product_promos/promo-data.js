@@ -964,7 +964,7 @@ window.RELICTUM_PROMO = {
       text: "Носорог повторяет постановку скелета шаг в шаг. Мамонтовая степь, сухая трава и первый снег — ландшафт, в котором вид прожил сотни тысяч лет."
     },
     spin: "spin_rhino_skeleton.mp4",
-    gallery: ["int_ph_rhino_skeleton.jpg", "anat_rhino_skeleton.jpg", "life_rhino_skeleton.jpg", "g_rhinoskel_2.jpg"],
+    gallery: ["int_ph_rhino_skeleton.jpg", "anat_rhino_skeleton.jpg", "life_rhino_skeleton.jpg", "ph_rhino_skeleton.jpg"],
     interior: { video: "intv_rhino_skeleton.mp4", img: "int_ph_rhino_skeleton.jpg", text: "Шерстистый носорог в собранном виде занимает угол просторной комнаты целиком — вокруг оставляют проход, а не расставляют мебель." },
     hook: "Скрытая опора со стороны не читается — скелет шерстистого носорога из Якутии.",
     heroKicker: "Мамонтовая фауна, Якутия, Россия",
@@ -2349,7 +2349,7 @@ window.RELICTUM_PROMO = {
       text: "Волк идёт тем же крадущимся шагом, в котором застыл скелет. Кромка заснеженной тайги в синих сумерках."
     },
     spin: "spin_pleistocene_wolf.mp4",
-    gallery: ["int_ph_pleistocene_wolf.jpg", "anat_pleistocene_wolf.jpg", "life_pleistocene_wolf.jpg", "g_wolf_2.jpg", "g_wolf_3.jpg", "ph_pleistocene_wolf.jpg"],
+    gallery: ["int_ph_pleistocene_wolf.jpg", "anat_pleistocene_wolf.jpg", "life_pleistocene_wolf.jpg", "ph_pleistocene_wolf.jpg"],
     interior: { video: "intv_pleistocene_wolf.mp4", img: "int_ph_pleistocene_wolf.jpg", text: "Плейстоценовый волк на низком подиуме умещается на широкой консоли — компактнее носорога и мамонта, но держится той же ледниковой компании." },
     hook: "Современник мамонта и шерстистого носорога — скелет плейстоценового волка ледниковой Евразии.",
     heroKicker: "Мамонтовая фауна, Россия",
@@ -2379,7 +2379,7 @@ window.RELICTUM_PROMO = {
       text: "Мамонт повторяет шаг скелета: покатая спина, высокий купол головы, дуги бивней. Заснеженная степь в низком золотом свете."
     },
     spin: "spin_mammoth_skeleton.mp4",
-    gallery: ["int_ph_mammoth_skeleton.jpg", "anat_mammoth_skeleton.jpg", "life_mammoth_skeleton.jpg", "g_mammothskel_1.jpg", "g_mammothskel_2.jpg", "ph_mammoth_skeleton.jpg"],
+    gallery: ["int_ph_mammoth_skeleton.jpg", "anat_mammoth_skeleton.jpg", "life_mammoth_skeleton.jpg", "ph_mammoth_skeleton.jpg"],
     interior: { video: "intv_mammoth_skeleton.mp4", img: "int_ph_mammoth_skeleton.jpg", text: "Мамонт в полном сборе занимает комнату целиком; несущую способность пола под его весом дом проверяет заранее, до выбора места установки." },
     hook: "Полный скелет шерстистого мамонта на скрытом стальном каркасе, монтаж прямо на месте.",
     heroKicker: "Мамонтовая фауна, Якутия",
