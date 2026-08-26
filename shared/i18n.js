@@ -243,6 +243,15 @@ var D={
 "Череп базилозавра":["Basilosaurus skull","龙王鲸头骨","جمجمة باسيلوصور"],
 "Череп мозазавра":["Mosasaurus skull","沧龙头骨","جمجمة موزاصور"],
 "Аммонит полированный крупный":["Large polished ammonite","大型抛光菊石","أمونيت كبير مصقول"],
+/* --- авторы проекта --- */
+"Коллекционер, меценат, сооснователь галереи «Stargift» и арт-проекта Yoomoota":["Collector, patron of the arts, co-founder of the Stargift gallery and the Yoomoota art project", "收藏家、艺术赞助人，Stargift 画廊与 Yoomoota 艺术项目联合创始人", "جامع تحف وراعٍ للفنون، شريك مؤسس لصالة Stargift ومشروع Yoomoota الفني"],
+"Коллекционер, художник, сооснователь галереи «Stargift» и арт-проекта Yoomoota":["Collector, artist, co-founder of the Stargift gallery and the Yoomoota art project", "收藏家、艺术家，Stargift 画廊与 Yoomoota 艺术项目联合创始人", "جامع تحف وفنان، شريك مؤسس لصالة Stargift ومشروع Yoomoota الفني"],
+"Предприниматель, общественный деятель. Коллекционер древностей, основатель галереи «Artefactum»":["Entrepreneur and public figure. Collector of antiquities, founder of the Artefactum gallery", "企业家、社会活动家。古物收藏家，Artefactum 画廊创始人", "رجل أعمال وشخصية عامة. جامع للآثار ومؤسس صالة Artefactum"],
+"Культуролог, популяризатор палеонтологии, основатель Paleo Hunters и Paleo Expeditions":["Culturologist, populariser of palaeontology, founder of Paleo Hunters and Paleo Expeditions", "文化学者、古生物学普及者，Paleo Hunters 与 Paleo Expeditions 创始人", "باحث ثقافي ومروّج لعلم الأحافير، مؤسس Paleo Hunters وPaleo Expeditions"],
+"Илья Слуцкин":["Ilya Slutskin", "伊利亚·斯卢茨金", "إيليا سلوتسكين"],
+"Вашик Мартиросян":["Vashik Martirosyan", "瓦希克·马蒂罗相", "فاشيك مارتيروسيان"],
+"Андрей Зайкин":["Andrey Zaikin", "安德烈·扎伊金", "أندريه زايكين"],
+"Михаил Воскресенский":["Mikhail Voskresensky", "米哈伊尔·沃斯克列先斯基", "ميخائيل فوسكريسينسكي"],
 /* --- состояния слайдера --- */
 "Скелет":["Skeleton", "骨架", "الهيكل"],
 "Экспонат":["The object", "展品", "القطعة"],
