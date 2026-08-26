@@ -243,6 +243,120 @@ var D={
 "Череп базилозавра":["Basilosaurus skull","龙王鲸头骨","جمجمة باسيلوصور"],
 "Череп мозазавра":["Mosasaurus skull","沧龙头骨","جمجمة موزاصور"],
 "Аммонит полированный крупный":["Large polished ammonite","大型抛光菊石","أمونيت كبير مصقول"],
+/* --- страницы эр, страты, подвал, формы --- */
+", Каталог":[", Catalogue", "，目录", "، الفهرس"],
+", Персональный поиск":[", Personal search", "，专属寻珍", "، بحث شخصي"],
+"12 м":["12 m", "12 米", "12 م"],
+"2 м":["2 m", "2 米", "2 م"],
+"250 cm, общий вес пары 74 kg":["250 cm, combined weight of the pair 74 kg", "250 厘米，一对总重 74 公斤", "250 سم، الوزن الإجمالي للزوج 74 كغ"],
+"8 т":["8 t", "8 吨", "8 طن"],
+"9 м":["9 m", "9 米", "9 م"],
+"Pleistocene, мамонты":["Pleistocene, mammoths", "更新世，猛犸象", "العصر البليستوسيني، الماموث"],
+"Russia, более 12 000 лет":["Russia, over 12,000 years", "俄罗斯，逾 12 000 年", "روسيا، أكثر من 12 000 سنة"],
+"R–0221, Коготь крупного теропода":["R–0221, Claw of a large theropod", "R–0221，大型兽脚类恐龙趾爪", "R–0221، مخلب ثيروبود كبير"],
+"R–0224, Ammonites полированные":["R–0224, Polished ammonites", "R–0224，抛光菊石", "R–0224، أمونيت مصقول"],
+"R–0271, Skull трицератопса":["R–0271, Triceratops skull", "R–0271，三角龙头骨", "R–0271، جمجمة تريسيراتوبس"],
+"Yakutia, Russia, ≈ 30 000 лет":["Yakutia, Russia, ≈ 30 000 years", "雅库特，俄罗斯，≈ 30 000 年", "ياقوتيا، روسيا، ≈ 30 000 سنة"],
+"© 2026 RELICTUM. Все права защищены.":["© 2026 RELICTUM. All rights reserved.", "© 2026 RELICTUM。保留所有权利。", "© 2026 RELICTUM. جميع الحقوق محفوظة."],
+"Агадес, Niger, 167–161 Mya":["Agadez, Niger, 167–161 Mya", "阿加德兹，尼日尔，167–161 百万年前", "أغاديز، النيجر، 167–161 مليون سنة مضت"],
+"Белый мел и мергель — дно мелового моря. Здесь заканчивается мезозой: зубы тираннозавра и ":["White chalk and marl — the floor of the Cretaceous sea. Here the Mesozoic ends: teeth of Tyrannosaurus and ", "白垩与泥灰岩——白垩纪海底。中生代在此终结：霸王龙的牙齿与", "الطباشير الأبيض والمارل — قاع البحر الطباشيري. هنا ينتهي الدهر الوسيط: أسنان التيرانوصور و"],
+"Бронзовая ребристая раковина":["Bronze ribbed shell", "青铜色肋纹贝壳", "صدفة مضلَّعة برونزية"],
+"Войти в эпоху →":["Enter the epoch →", "进入该纪元 →", "ادخل الحقبة →"],
+"Восемь тонн, зубы в двадцать сантиметров и самый мощный укус, измеренный у наземных хищник":["Eight tonnes, twenty-centimetre teeth and the most powerful bite ever measured in a land predat", "八吨之躯，二十厘米的利齿，以及在陆生掠食者中测得的最强咬合", "ثماني أطنان، وأسنان بطول عشرين سنتيمترًا، وأقوى عضّة قيست لدى المفترسات البري"],
+"Все эры":["All eras", "全部纪元", "جميع الحقب"],
+"Гадей":["Hadean", "冥古宙", "الدهر الجهنمي"],
+"Глубже осадочных архивов пород уже нет — только базальт и раскалённая мантия: огонь, из ко":["Below this there are no sedimentary archives left — only basalt and the molten mantle: the fire from whi", "沉积岩的档案到此为止——再往下只有玄武岩与炽热的地幔：那正是", "أعمق من أرشيف الصخور الرسوبية لا شيء — سوى البازلت والوشاح المتوهِّج: النار التي من"],
+"Глубокая вода":["Deep water", "深水", "مياه عميقة"],
+"Граница мантии":["Mantle boundary", "地幔边界", "حدّ الوشاح"],
+"Загора, Morocco, ≈ 480–472 Mya":["Zagora, Morocco, ≈ 480–472 Mya", "扎戈拉，摩洛哥，≈ 480–472 百万年前", "زاكورة، المغرب، ≈ 480–472 مليون سنة مضت"],
+"Из мелового периода":["From the Cretaceous period", "来自白垩纪", "من العصر الطباشيري"],
+"Исследовать эру →":["Explore the era →", "探索该纪元 →", "استكشف الحقبة →"],
+"Каждый объект подлинный и передаётся с паспортом происхождения дома Relictum.":["Every object is authentic and is handed over with the provenance passport of the house of Relictum.", "每一件藏品均为真品，并附有 Relictum 之家出具的来源证书。", "كل قطعة أصلية وتُسلَّم مع جواز المنشأ الصادر عن دار Relictum."],
+"Каталог — только часть собрания дома. Опишите, что вы ищете, и дом найдёт объект под ваш з":["The catalogue is only part of the house collection. Describe what you are looking for and the house will find an object for your requ", "目录仅是本家藏品的一部分。请描述您所寻之物，本家将为您的需", "الفهرس ليس إلا جزءًا من مجموعة الدار. صِف ما تبحث عنه، وستجد الدار القطعة التي تلائم طل"],
+"Каштаново-красный, с перламутром":["Chestnut red, with nacre", "栗红色，带珍珠光泽", "أحمر كستنائي مع عرق اللؤلؤ"],
+"Леса отступают, саванны и степи воцарились на земле. На суше правят саблезубые кошки, убий":["Forests retreat, savannahs and steppes take hold of the land. Sabre-toothed cats rule the ground, kill", "森林退去，稀树草原与草原统治大地。陆上由剑齿虎称霸，猎杀", "تتراجع الغابات وتسود السافانا والسهوب. على اليابسة تحكم القطط ذات الأنياب السيفية، قاتل"],
+"Листайте вниз, −4,5 billion years":["Scroll down, −4.5 billion years", "向下滚动，−45 亿年", "مرّر للأسفل، −4٫5 مليار سنة"],
+"Листайте, познакомьтесь с обитателями":["Scroll to meet the inhabitants", "继续滚动，认识这里的居民", "مرّر للتعرّف على السكّان"],
+"Листайте, эры оживают":["Scroll, the eras come alive", "滚动，纪元随之苏醒", "مرّر، فتدبّ الحياة في الحقب"],
+"Мелководная лагуна":["Shallow lagoon", "浅水潟湖", "بحيرة شاطئية ضحلة"],
+"Меловой":["Cretaceous", "白垩纪", "الطباشيري"],
+"Море бронированных рыб: четырёхметровый дунклеостей правит глубиной, панцирные ботриолепис":["A sea of armoured fish: the four-metre Dunkleosteus rules the depths, armoured Bothriolepis", "披甲鱼类之海：四米长的邓氏鱼统治深水，具甲的沟鳞鱼", "بحر الأسماك المدرَّعة: الدنكليوستيوس بطول أربعة أمتار يحكم الأعماق، والبوثريوليبيس المدرَّع"],
+"Мороз жжёт кожу, вокруг — бескрайняя ледяная степь, где каждый день становится борьбой за ":["Frost burns the skin, and all around lies an endless icy steppe where each day becomes a struggle for ", "严寒灼痛皮肤，四周是无垠的冰封草原，每一天都成为求", "الصقيع يلسع الجلد، وحولك سهوب جليدية لا نهاية لها، حيث يغدو كل يوم صراعًا من أجل "],
+"Морское дно":["Sea floor", "海底", "قاع البحر"],
+"Мы поднимаем":["We raise", "我们抬升", "نحن نرفع"],
+"На ранних этапах истории Земли Луна казалась в небе в несколько раз больше и ярче, чем сег":["In the early stages of Earth's history the Moon appeared in the sky several times larger and brighter than tod", "在地球历史的早期，月亮在天空中看上去比今天大数倍，也更明", "في المراحل المبكرة من تاريخ الأرض بدا القمر في السماء أكبر بعدة أضعاف وأشدّ سطوعًا مما هو علي"],
+"Обитатели и объекты":["Inhabitants and objects", "居民与藏品", "السكّان والقطع"],
+"Обратный звонок":["Request a call", "回电请求", "طلب معاودة الاتصال"],
+"Объект из любой эпохи и с любой глубины может стоять у вас дома: бивни мамонта, зубы мегал":["An object from any epoch and any depth may stand in your home: mammoth tusks, teeth of megal", "任何纪元、任何深度的藏品都可置于您的家中：猛犸象牙、巨齿", "قطعة من أي حقبة ومن أي عمق يمكن أن تقف في بيتك: أنياب الماموث، وأسنان الميغالو"],
+"Объектов: 108":["Objects: 108", "藏品：108", "عدد القطع: 108"],
+"Океан магмы, чёрные острова остывающей коры, метеоры в дымном небе. Отсюда — вещество палл":["An ocean of magma, black islands of cooling crust, meteors in a smoky sky. From here comes the matter of the pall", "岩浆之洋，冷却地壳的黑色岛屿，烟霭天空中的流星。橄榄陨", "محيط من الصهارة، وجزر سوداء من قشرة تبرد، وشهب في سماء دخانية. من هنا تأتي مادة البال"],
+"Останки динозавров положили начало мифам о гигантах и драконах, а теперь к истокам легенд ":["The remains of dinosaurs gave rise to myths of giants and dragons, and now to the sources of those legends ", "恐龙遗骸催生了关于巨人与龙的神话，而如今，传说之源", "بقايا الديناصورات كانت أصل أساطير العمالقة والتنانين، والآن إلى منابع الأسطورة "],
+"Открытая вода":["Open water", "开阔水域", "مياه مفتوحة"],
+"Палеогеновый и неогеновый периоды":["Paleogene and Neogene periods", "古近纪与新近纪", "العصران الباليوجيني والنيوجيني"],
+"Папоротниковая саванна":["Fern savannah", "蕨类稀树草原", "سافانا السرخس"],
+"Первые метры — почва и ледниковые отложения. Здесь, в вечной мерзлоте, лежат бивни мамонто":["The first metres are soil and glacial deposits. Here, in the permafrost, lie the tusks of mammot", "最初几米是土壤与冰川沉积。在这永久冻土之中，埋藏着猛犸", "الأمتار الأولى تربة ورواسب جليدية. هنا، في التربة الصقيعية، ترقد أنياب الماموث"],
+"Пески Сахары и фосфатные бассейны Атласа — эпицентр наследия доисторической эры. Уникальны":["The sands of the Sahara and the phosphate basins of the Atlas — the epicentre of prehistoric heritage. Unique", "撒哈拉的沙与阿特拉斯的磷酸盐盆地——史前遗产的中心。独一无二", "رمال الصحراء الكبرى وأحواض الفوسفات في الأطلس — بؤرة إرث ما قبل التاريخ. فريد"],
+"Песчаники кайнозоя. В этих слоях — зубы мегалодона, крупнейшей акулы в истории, и янтарь: ":["Cenozoic sandstones. In these layers lie the teeth of megalodon, the largest shark in history, and amber: ", "新生代砂岩。这些岩层中有巨齿鲨——史上最大鲨鱼的牙齿，以及琥珀：", "أحجار رملية من الحقبة الحديثة. في هذه الطبقات أسنان الميغالودون، أكبر قرش في التاريخ، والكهرمان: "],
+"Под вашими ногами — архив планеты. Каждый метр вниз — миллионы лет назад.":["Beneath your feet lies the archive of the planet. Every metre down is millions of years back.", "您脚下是这颗行星的档案。每向下一米，便是数百万年之前。", "تحت قدميك أرشيف الكوكب. كل متر إلى الأسفل هو ملايين السنين إلى الوراء."],
+"Подлинные метеориты, фрагменты Луны и Марса возрастом свыше 4,5 миллиардов лет. Самые редк":["Authentic meteorites, fragments of the Moon and Mars over 4.5 billion years old. The rare", "真品陨石，以及逾 45 亿年的月球与火星碎片。最稀", "نيازك أصلية وشظايا من القمر والمريخ يتجاوز عمرها 4٫5 مليار سنة. أندر"],
+"Подлинные объекты — ископаемые, минералы, метеориты — в каталоге дома Relictum.":["Authentic objects — fossils, minerals, meteorites — in the catalogue of the house of Relictum.", "真品藏品——化石、矿物、陨石——尽在 Relictum 之家目录。", "قطع أصلية — أحافير ومعادن ونيازك — في فهرس دار Relictum."],
+"Пока динозавры правили сушей, моря принадлежали аммонитам. Их раковины закручены в логариф":["While dinosaurs ruled the land, the seas belonged to ammonites. Their shells are coiled in a logarith", "当恐龙统治陆地时，海洋属于菊石。它们的壳体依对数", "بينما حكمت الديناصورات اليابسة، كانت البحار للأمونيت. أصدافها ملتفّة وفق لولب لوغاريت"],
+"Полноразмерные скелеты и эталонные окаменелости доисторических гигантов. Редчайшие свидете":["Full-size skeletons and reference fossils of prehistoric giants. The rarest witnes", "史前巨兽的全尺寸骨架与标准化石。最罕见的见", "هياكل عظمية بالحجم الكامل وأحافير مرجعية لعمالقة ما قبل التاريخ. أندر شواه"],
+"Полосатые железные руды и строматолиты — окаменевшие маты первых бактерий. Почти четыре ми":["Banded iron formations and stromatolites — the fossilised mats of the first bacteria. Almost four bil", "条带状铁建造与叠层石——最早细菌的石化菌席。近四", "تشكيلات الحديد المخطَّط والستروماتوليت — حصائر متحجرة لأولى البكتيريا. قرابة أربعة ملي"],
+"Полчища плавающих аммонитов дрейфуют в столбах света. Изредка их покой нарушают охотящиеся":["Hosts of drifting ammonites float in columns of light. Now and then their calm is broken by hunting", "成群的菊石在光柱中漂浮。它们的宁静偶尔被捕猎的", "أسراب من الأمونيت السابحة تنجرف في أعمدة الضوء. وبين حين وآخر يقطع سكونها صيدُ"],
+"После величайшего вымирания жизнь в море начинается заново. Прародители дельфинов охотятся":["After the greatest extinction, life in the sea begins anew. The forebears of dolphins hunt", "在最大规模的灭绝之后，海洋生命重新开始。海豚的先祖在此捕猎", "بعد أعظم انقراض، تبدأ الحياة في البحر من جديد. أسلاف الدلافين تصطاد"],
+"Последняя и величайшая эпоха динозавров. Тёплые моря, цветущие растения, гиганты на суше —":["The last and greatest age of the dinosaurs. Warm seas, flowering plants, giants on land —", "恐龙最后也是最伟大的时代。温暖的海洋、开花的植物、陆上的巨兽——", "آخر وأعظم عصور الديناصورات. بحار دافئة ونباتات مزهرة وعمالقة على اليابسة —"],
+"Прикоснитесь к ушедшим":["Touch what has passed", "触碰逝去之物", "المس ما مضى"],
+"Путешествуйте по эрам":["Travel through the eras", "穿行于各个纪元", "ارتحل عبر الحقب"],
+"Редкие минералы и древний янтарь эоценовой эпохи — природные формы для пространства покоя ":["Rare minerals and ancient Eocene amber — natural forms for a space of stillness ", "稀有矿物与始新世的远古琥珀——为静谧空间而生的自然形态 ", "معادن نادرة وكهرمان قديم من العصر الأيوسيني — أشكال طبيعية لفضاء من السكينة "],
+"Рогатый гигант мелового периода: костяной воротник до двух метров и три рога, которыми он ":["The horned giant of the Cretaceous period: a bony frill up to two metres and three horns with which it ", "白垩纪的有角巨兽：颈盾可达两米，另有三只角，它以此 ", "عملاق العصر الطباشيري المقرَّن: ياقة عظمية تبلغ مترين وثلاثة قرون كان بها "],
+"Рождение планеты":["Birth of the planet", "行星的诞生", "ولادة الكوكب"],
+"Связаться с домом":["Contact the house", "联系本家", "التواصل مع الدار"],
+"Скелеты динозавров, внеземная материя и древние окаменелости — мы подберём экспонаты музей":["Dinosaur skeletons, extraterrestrial matter and ancient fossils — we will select exhibits of museu", "恐龙骨架、地外物质与远古化石——我们为您甄选博物", "هياكل الديناصورات والمادة الفضائية والأحافير القديمة — نختار لك قطعًا بمستوى المتاح"],
+"Слои времени, спуск вглубь Земли":["Layers of time, a descent into the Earth", "时间的层理，向地球深处下行", "طبقات الزمن، نزول إلى أعماق الأرض"],
+"Смотреть экспонат →":["View the exhibit →", "查看展品 →", "عرض القطعة →"],
+"Смятые в складки сланцы. До динозавров отсюда дальше, чем от динозавров до вас. Трилобиты ":["Shales crumpled into folds. From here the dinosaurs are further away than the dinosaurs are from you. Trilobites ", "被褶皱揉皱的页岩。此处距恐龙，比恐龙距您更为遥远。三叶虫 ", "صخور طَفَلية مطوية. المسافة من هنا إلى الديناصورات أبعد مما بينها وبينك. ثلاثيات الفصوص "],
+"Спираль моря":["Spiral of the sea", "海之螺旋", "لولب البحر"],
+"Спуск вглубь Земли":["Descent into the Earth", "向地球深处下行", "النزول إلى أعماق الأرض"],
+"Страта":["Strata", "地层", "الطبقة"],
+"Суммарный вес 7 kg":["Total weight 7 kg", "总重 7 公斤", "الوزن الإجمالي 7 كغ"],
+"Сухая саванна":["Dry savannah", "干旱稀树草原", "سافانا جافة"],
+"ТЦ «Гименей», 10:00–22:00, без выходных":["Gimenei shopping centre, 10:00–22:00, open daily", "«希梅涅伊» 购物中心，10:00–22:00，全年无休", "مركز «غيمينيه» التجاري، 10:00–22:00، يوميًا دون عطلة"],
+"Так рождается истинная связь с предметом: вы становитесь не просто владельцем редчайшего о":["This is how a true bond with an object is born: you become not merely the owner of the rarest obj", "真正与物的联结由此诞生：您不只是这件稀世之物的拥有", "هكذا تولد الصلة الحقيقية بالقطعة: لا تغدو مجرد مالك لأندر قط"],
+"Три рога":["Three horns", "三只角", "ثلاثة قرون"],
+"Тёмные сланцы юрского океана. В них — ихтиозавры с самыми большими глазами в истории позво":["Dark shales of the Jurassic ocean. Within them are ichthyosaurs with the largest eyes in the history of vertebr", "侏罗纪海洋的暗色页岩。其中有鱼龙——脊椎动物史上最大的眼", "صخور طَفَلية داكنة من محيط العصر الجوراسي. فيها إكثيوصورات بأكبر عيون في تاريخ الفقار"],
+"Тёплая лагуна":["Warm lagoon", "温暖潟湖", "بحيرة شاطئية دافئة"],
+"Тёплые моря покрывают континенты: дно принадлежит трилобитам, а в толще воды охотятся наут":["Warm seas cover the continents: the floor belongs to trilobites, while nautil hunt in the water column", "温暖的海洋覆盖大陆：海底属于三叶虫，水体之中则由鹦鹉螺", "بحار دافئة تغطي القارات: القاع لثلاثيات الفصوص، وفي عمود الماء تصطاد النوتي"],
+"Ульяновские берега Волги, аулы Дагестана, аммонитовые склоны Кавказа — снято участниками, ":["The Ulyanovsk banks of the Volga, the auls of Dagestan, the ammonite slopes of the Caucasus — filmed by participants, ", "乌里扬诺夫斯克的伏尔加河岸、达吉斯坦的山村、高加索的菊石坡地——由参与者拍摄，", "ضفاف الفولغا في أوليانوفسك، وقرى داغستان، ومنحدرات الأمونيت في القوقاز — صوّرها المشاركون، "],
+"Хелл-Крик":["Hell Creek", "地狱溪", "هيل كريك"],
+"Хотите заранее увидеть, как доисторический объект или внеземная материя впишутся в архитек":["Would you like to see in advance how a prehistoric object or extraterrestrial matter will fit into the architec", "想提前看到史前藏品或地外物质如何融入您的建筑", "هل ترغب في أن ترى مسبقًا كيف تنسجم قطعة من عصور ما قبل التاريخ أو مادة فضائية مع العمار"],
+"Царь-ящер":["The king of lizards", "蜥蜴之王", "ملك السحالي"],
+"Частные палеонтологические экспедиции с экспертами дома. Вы находите объект своими руками ":["Private palaeontological expeditions with the experts of the house. You find the object with your own hands ", "与本家专家同行的私人古生物考察。您亲手发现藏品 ", "بعثات أحفورية خاصة برفقة خبراء الدار. تعثر على القطعة بيديك "],
+"Четвертичный период":["Quaternary period", "第四纪", "العصر الرباعي"],
+"Экспонаты этой эпохи":["Exhibits of this epoch", "该纪元的展品", "قطع هذه الحقبة"],
+"Юра, первое перо":["Jurassic, the first feather", "侏罗纪，第一根羽毛", "الجوراسي، الريشة الأولى"],
+"Юрский и триасовый периоды":["Jurassic and Triassic periods", "侏罗纪与三叠纪", "العصران الجوراسي والترياسي"],
+"Я предоставляю своё":["I give my", "我提供本人的", "أمنح"],
+"в ваших":["in your", "在您的", "في"],
+"в соответствии с":["in accordance with", "依据", "وفقًا لـ"],
+"вес":["weight", "重量", "الوزن"],
+"времени":["of time", "时间", "الزمن"],
+"время наверх":["time to the surface", "时间至地表", "الزمن إلى السطح"],
+"высеченные":["carved", "雕琢而成", "منحوتة"],
+"длина":["length", "长度", "الطول"],
+"длина тираннозавра":["length of Tyrannosaurus", "霸王龙体长", "طول التيرانوصور"],
+"км":["km", "公里", "كم"],
+"лет":["years", "年", "سنة"],
+"лет длился период":["years the period lasted", "年，该纪持续", "سنة استمرّ العصر"],
+"лет назад — конец эры":["years ago — the end of the era", "年前——纪元的终结", "سنة مضت — نهاية الحقبة"],
+"от 10 000 000 ₽":["from 10 000 000 ₽", "10 000 000 ₽ 起", "ابتداءً من 10 000 000 ₽"],
+"период":["period", "纪", "العصر"],
+"политикой конфиденциальности":["the privacy policy", "隐私政策", "سياسة الخصوصية"],
+"руках":["hands", "手中", "يديك"],
+"согласие на обработку персональных данных":["consent to the processing of personal data", "个人数据处理同意", "الموافقة على معالجة البيانات الشخصية"],
+"теплее, чем сегодня":["warmer than today", "比今天更温暖", "أدفأ مما هو اليوم"],
+"эволюцией":["by evolution", "由演化", "بفعل التطور"],
+"эпохам лично":["the epochs in person", "亲身走进各纪元", "الحقب شخصيًا"],
 /* --- авторы проекта --- */
 "Коллекционер, меценат, сооснователь галереи «Stargift» и арт-проекта Yoomoota":["Collector, patron of the arts, co-founder of the Stargift gallery and the Yoomoota art project", "收藏家、艺术赞助人，Stargift 画廊与 Yoomoota 艺术项目联合创始人", "جامع تحف وراعٍ للفنون، شريك مؤسس لصالة Stargift ومشروع Yoomoota الفني"],
 "Коллекционер, художник, сооснователь галереи «Stargift» и арт-проекта Yoomoota":["Collector, artist, co-founder of the Stargift gallery and the Yoomoota art project", "收藏家、艺术家，Stargift 画廊与 Yoomoota 艺术项目联合创始人", "جامع تحف وفنان، شريك مؤسس لصالة Stargift ومشروع Yoomoota الفني"],
@@ -627,8 +741,32 @@ function mountSwitch(){
   else { wrap.style.cssText+=';position:fixed;bottom:18px;inset-inline-start:18px;z-index:600;background:rgba(10,9,8,.85);color:#F4F0E8;padding:8px 12px;border:1px solid rgba(233,201,138,.4)'; document.body.appendChild(wrap); }
 }
 function cur0(){ return cur(); }
+/* На узких экранах шапка сворачивается в бургер-меню — дублируем выбор языка там */
+function mountDrawer(){
+  var inner=document.querySelector('.nav-drawer-inner');
+  if(!inner || document.getElementById('rlLangDrawer')) return;
+  var row=document.createElement('div');
+  row.id='rlLangDrawer';
+  row.style.cssText='display:flex;gap:6px;justify-content:center;margin-top:26px;padding-top:22px;'+
+    'border-top:1px solid rgba(176,138,85,.3);flex-wrap:wrap;direction:ltr';
+  LANGS.forEach(function(l){
+    var b=document.createElement('button');
+    b.type='button'; b.dataset.l=l; b.textContent=LABEL[l];
+    b.style.cssText='background:none;border:1px solid rgba(176,138,85,.45);cursor:pointer;padding:9px 15px;'+
+      'font-family:Inter,system-ui,sans-serif;font-size:12px;letter-spacing:.14em;color:#14110E';
+    b.onclick=function(e){ e.stopPropagation(); set(l); document.body.classList.remove('nav-open'); };
+    row.appendChild(b);
+  });
+  inner.appendChild(row);
+  markSwitch(cur());
+}
 function markSwitch(lang){
   var c=document.getElementById('rlLangCur'); if(c) c.textContent=LABEL[lang];
+  var dr=document.getElementById('rlLangDrawer');
+  if(dr) [].forEach.call(dr.querySelectorAll('button'), function(b){
+    var on=(b.dataset.l===lang);
+    b.style.background=on?'#14110E':'none'; b.style.color=on?'#F4F0E8':'#14110E';
+  });
   var m=document.getElementById('rlLangMenu');
   if(m) [].forEach.call(m.querySelectorAll('button'), function(b){
     b.style.color=(b.dataset.l===lang)?'#E9C98A':'rgba(244,240,232,.8)';
@@ -637,7 +775,8 @@ function markSwitch(lang){
 
 /* ---------- запуск ---------- */
 function boot(){
-  mountSwitch();
+  mountSwitch(); mountDrawer();
+  setTimeout(mountDrawer, 600); setTimeout(mountDrawer, 2000);
   if(cur()!=='ru'){ apply(cur()); ensureLots(function(){ apply(cur()); }); } else apply('ru');
   /* клиентские рендеры (каталог, exhibit) дорисовывают DOM после загрузки */
   var t=null;
