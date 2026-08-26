@@ -270,9 +270,6 @@ var D={
 "Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.":["A gallery of rare objects from the depths of time. Earth · Life · Cosmos.","来自时间深处的珍稀藏品画廊。大地 · 生命 · 宇宙。","صالة عرض لقطع نادرة من أعماق الزمن. الأرض · الحياة · الكون."],
 "Земля · Жизнь · Космос":["Earth · Life · Cosmos","大地 · 生命 · 宇宙","الأرض · الحياة · الكون"],
 "Три измерения. Одна вечность.":["Three dimensions. One eternity.","三个维度，一个永恒。","ثلاثة أبعاد. أبدية واحدة."],
-"До начала":["Before the dawn","在人类历史","قبل بداية"],
-"истории":["of human","开始","تاريخ"],
-"людей":["history","之前","البشر"],
 "Внеземные артефакты, палласиты и метеориты":["Extraterrestrial artefacts, pallasites and meteorites","地外造物、橄榄陨铁与陨石","قطع من خارج الأرض: بالاسيت ونيازك"],
 "Редчайшие кристаллы и природные минералы":["The rarest crystals and natural minerals","最稀有的晶体与天然矿物","أندر البلورات والمعادن الطبيعية"],
 "Скелеты гигантов, окаменелости, аммониты":["Skeletons of giants, fossils, ammonites","巨兽骨架、化石与菊石","هياكل العمالقة والأحافير والأمونيتات"],
@@ -401,6 +398,35 @@ var F={
 "шт":["pcs","件","قطعة"]
 };
 
+
+/* ---------- заголовки целиком (разбиты на узлы <br>/<em>) ---------- */
+var H={
+"Роскошь вне времени":["Luxury beyond <em>time</em>","<em>超越时间</em>的奢华","فخامة <em>تتجاوز الزمن</em>"],
+"До начала истории людей":["Before the dawn of <em>human history</em>","在<em>人类历史</em>开始之前","قبل بداية <em>تاريخ البشر</em>"],
+"Комплексные решения для ваших пространств":["Complete solutions for your spaces","为您的空间提供整体方案","حلول متكاملة لمساحاتك"],
+"Произведения искусства, созданные за миллионы лет самой природой":["Works of art created by nature itself over millions of years","由自然历经数百万年创作的艺术品","أعمال فنية صنعتها الطبيعة عبر ملايين السنين"],
+"Объекты, несущие в себе миллионы лет истории":["Objects that carry millions of years of history","承载数百万年历史的藏品","قطع تحمل ملايين السنين من التاريخ"],
+"Путешествия к истокам времени":["Journeys to the origins of time","溯源时间之旅","رحلات إلى منابع الزمن"],
+"Уникальные экспонаты в вашем интерьере":["Unique exhibits in your interior","独一无二的藏品融入您的空间","قطع فريدة في مساحتك"],
+"История Земли в каждом пространстве":["The Earth's history in every space","每个空间中的地球史","تاريخ الأرض في كل مساحة"],
+"Три измерения. Одна вечность.":["Three dimensions. One eternity.","三个维度，一个永恒。","ثلاثة أبعاد. أبدية واحدة."]
+};
+function heads(root,lang){
+  var hs=root.querySelectorAll?root.querySelectorAll('h1,h2,h3,.hero .sub,.rl-tagline'):[];
+  for(var i=0;i<hs.length;i++){
+    var el=hs[i];
+    if(el.__ruHTML===undefined){
+      var key=(el.textContent||'').replace(/\s+/g,' ').trim();
+      if(!H[key]) { el.__ruHTML=null; continue; }
+      el.__ruHTML=el.innerHTML; el.__key=key;
+    }
+    if(el.__ruHTML===null) continue;
+    if(lang==='ru'){ el.innerHTML=el.__ruHTML; continue; }
+    var v=H[el.__key][IDX[lang]];
+    if(v) el.innerHTML=v;
+  }
+}
+
 /* ---------- движок ---------- */
 var IDX={en:0,zh:1,ar:2};
 function cur(){ try{ return localStorage.getItem('relictum_lang')||'ru'; }catch(e){ return 'ru'; } }
@@ -423,6 +449,7 @@ function tr(s,lang){
   var hit=D[t];
   if(hit){ var v=hit[IDX[lang]]; if(v) return s.replace(t,v); }
   if(!CYR.test(s)) return null;
+  if(t.length>70) return null;   /* длинную прозу не рвём пофрагментно */
   /* составные строки: «R–0610, Монументы», «Ляонин, Китай, ≈ 125 млн лет», «168 см» */
   var list=FRAGS||buildFrags(), out=s, changed=false;
   for(var i=0;i<list.length;i++){
@@ -464,6 +491,7 @@ function apply(lang){
   applying=true;
   document.documentElement.lang=lang==='zh'?'zh-CN':lang;
   document.documentElement.dir=(lang==='ar')?'rtl':'ltr';
+  heads(document.body,lang);
   walk(document.body,lang);
   var b=document.getElementById('rlLangBtns');
   if(b){ var bs=b.querySelectorAll('button');
