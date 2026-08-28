@@ -31,6 +31,10 @@
 .press-logo{width:auto;display:block;opacity:.9;filter:saturate(.92)}
 .j-card:hover .press-logo{opacity:1}
 .concierge::after{background:linear-gradient(180deg,rgba(17,17,17,.72),rgba(17,17,17,.86))}
+.j-card .ph{position:relative}
+.j-card .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,9,8,.55);border:1px solid rgba(244,240,232,.75);display:flex;align-items:center;justify-content:center;transition:background .4s var(--ease)}
+.j-card:hover .play{background:rgba(10,9,8,.72)}
+.j-card .play svg{margin-left:3px}
 .press-date{font-family:var(--font-ui);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);white-space:nowrap}
 </style>
 </head>
@@ -68,6 +72,12 @@
 <section style="padding-top:30px">
   <div class="wrap">
     <div class="journal-grid" id="grid">
+      <a class="j-card reveal" href="https://www.m24.ru/videos/28082026/935228" target="_blank" rel="noopener">
+        <div class="ph"><img src="../shared/img/gal_yakimanka_5.jpg" alt="Сюжет «Москвы 24» о выставке «Реликтум: следы времени»" loading="lazy" decoding="async"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="#F4F0E8"><path d="M8 5.5v13l11-6.5z"/></svg></span></div>
+        <div class="press-meta"><img class="press-logo" src="../shared/img/press_m24.png" alt="Москва 24" style="height:20px" loading="lazy" decoding="async"><span class="press-date">ТВ-сюжет · 28 августа 2026</span></div>
+        <h3>В Москве открылась выставка-продажа, на которой можно купить скелет динозавра</h3>
+        <p>Репортаж из галереи на Большой Якиманке: в экспозиции «Реликтум: следы времени» представлены останки древних рептилий.</p>
+      </a>
       <a class="j-card reveal" href="https://vm.ru/news/1353446-skelety-dinozavrov-i-fragmenty-meteoritov-vystavili-na-prodazhu-v-moskve" target="_blank" rel="noopener">
         <div class="ph"><img src="../shared/img/gal_yakimanka_10.jpg" alt="Вечерняя Москва о выставке «Реликтум: следы времени»" loading="lazy" decoding="async"></div>
         <div class="press-meta"><img class="press-logo" src="../shared/img/press_vm.png" alt="Вечерняя Москва" style="height:26px" loading="lazy" decoding="async"><span class="press-date">26 августа 2026</span></div>
