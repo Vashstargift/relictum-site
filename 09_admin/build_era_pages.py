@@ -78,7 +78,7 @@ def card(o):
     href = o.get('href') or ('../16_product_promos/exhibit.html?id=' + o['slug'])
     return (
         f'      <a class="card" href="{href}">\n'
-        f'        <div class="im"><img src="../shared/img/{o["img"]}.jpg?v=11" alt="" loading="lazy" decoding="async"></div>\n'
+        f'        <div class="im"><img src="../shared/img/{o["img"]}.jpg?v=12" alt="" loading="lazy" decoding="async"></div>\n'
         f'        <div class="b"><div class="id">{o["id"]}, {o["worldLabel"]}</div>'
         f'<h3>{o["name"]}</h3><div class="lat">{o["latin"]}</div>'
         f'<div class="pr"><b>{o["price"]}</b><span>Смотреть</span></div></div>\n'
@@ -89,7 +89,7 @@ def card(o):
 def relic(o):
     return (
         f'    <a class="relic" href="{o.get("href")}">'
-        f'<img src="../shared/img/{o["img"]}.jpg?v=11" alt="" loading="lazy" decoding="async">'
+        f'<img src="../shared/img/{o["img"]}.jpg?v=12" alt="" loading="lazy" decoding="async">'
         f'<span><b>Смотреть экспонат →</b><small>{o["id"]}, {o["name"]}</small></span></a>\n'
     )
 

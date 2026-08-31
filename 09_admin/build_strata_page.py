@@ -50,7 +50,7 @@ def catalog():
 def find_link(o):
     return (
         f'<a class="find" href="{o["href"]}">'
-        f'<img src="../shared/img/{o["img"]}.jpg?v=11" alt="" loading="lazy" decoding="async">'
+        f'<img src="../shared/img/{o["img"]}.jpg?v=12" alt="" loading="lazy" decoding="async">'
         f'{o["name"]}</a>'
     )
 
@@ -91,7 +91,7 @@ def main():
             if i >= len(items):
                 continue
             old_src = re.search(r'src="([^"]*)"', fl).group(1)
-            blk = blk.replace(fl, fl.replace(old_src, f'../shared/img/{items[i]["img"]}.jpg?v=11'), 1)
+            blk = blk.replace(fl, fl.replace(old_src, f'../shared/img/{items[i]["img"]}.jpg?v=12'), 1)
 
         report.append(f'  {title}: находок {len(items)}, плашек {min(len(floats), len(items))}')
         return blk
