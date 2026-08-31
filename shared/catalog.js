@@ -2743,7 +2743,7 @@ window.RELICTUM_CATALOG = [
       "name": "Регмаглиптовый Сеймчан",
       "meta": "Магаданская область, Россия, ≈ 4,56 млрд лет<br>3 791 г",
       "price": "5 500 000 ₽",
-      "img": "ph_seymchan_regma",
+      "img": "ph_seymchan_regmaglypt",
       "priceValue": 5500000,
       "slug": "0630-seymchan-regmaglypt",
       "age": "≈ 4,56 млрд лет",
