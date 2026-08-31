@@ -3771,11 +3771,7 @@ window.RELICTUM_PROMO = {
           "video": "vid_meteor.mp4",
           "poster": "ph_seymchan_regmaglypt.jpg"
       },
-      "gallery": [
-          "g_seymchan_regma_1.jpg",
-          "g_seymchan_regma_2.jpg",
-          "ph_seymchan_regma.jpg"
-      ]
+      "gallery": ["ph_seymchan_regmaglypt.jpg"]
   },
 
   "R–0631": {
@@ -3798,11 +3794,7 @@ window.RELICTUM_PROMO = {
           "video": "era_mammoth.mp4",
           "poster": "era_mammoth.jpg"
       },
-      "gallery": [
-          "g_mammoth_sphere_a_1.jpg",
-          "g_mammoth_spheres_pair.jpg",
-          "ph_mammoth_sphere_a.jpg"
-      ]
+      "gallery": ["ph_mammoth_sphere_a.jpg"]
   },
 
   "R–0632": {
@@ -3825,9 +3817,6 @@ window.RELICTUM_PROMO = {
           "video": "era_mammoth.mp4",
           "poster": "era_mammoth.jpg"
       },
-      "gallery": [
-          "g_mammoth_spheres_pair.jpg",
-          "ph_mammoth_sphere_b.jpg"
-      ]
+      "gallery": ["ph_mammoth_sphere_b.jpg"]
   }
 };
