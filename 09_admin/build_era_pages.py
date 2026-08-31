@@ -27,11 +27,11 @@ ERAS = os.path.join(ROOT, '15_concepts')
 # «Мезофой» — полированные аммониты R–0224: они охватывают весь мезозой,
 # поэтому попадают и в триас, и в юру, и в мел.
 ERA_PERIODS = {
-    'era-devonian':    ['Девон'],
-    'era-triassic':    ['Триас', 'Мезозой'],
-    'era-jurassic':    ['Юра', 'Мезозой'],
-    'era-cretaceous':  ['Мел', 'Мезозой'],
-    'era-neogene':     ['Неоген', 'Миоцен'],
+    'era-devonian':    ['Девон', 'Девонский период'],
+    'era-triassic':    ['Триас', 'Мезозой', 'Триасовый период'],
+    'era-jurassic':    ['Юра', 'Мезозой', 'Юрский период'],
+    'era-cretaceous':  ['Мел', 'Мезозой', 'Меловой период'],
+    'era-neogene':     ['Неоген', 'Миоцен', 'Неогеновый период'],
     'era-pleistocene': ['Плейстоцен'],
 }
 
@@ -50,7 +50,8 @@ BEAST_LINK = {
     'Mammuthus primigenius':    'R–0617',   # полный скелет — самый крупный из трёх
     'Ursus spelaeus':           'R–0604',
     'Cleoniceras besairiei':    'R–0224',   # аммолит снят с сайта, спираль показывают полированные аммониты
-    # Tyrannosaurus rex и Triceratops horridus — предметов нет, ссылки не будет
+    'Tyrannosaurus rex':        'R–0221',   # коготь крупного теропода
+    'Triceratops horridus':     'R–0271',   # череп трицератопса
 }
 
 RELIC_CSS = """/* Ссылка на экспонат того же вида — та же плашка, что кнопки перехода в эры */
@@ -133,7 +134,7 @@ def main():
             done.append(f'ссылок на экспонаты: {added}')
 
         # --- 3. нижний блок: все предметы эры
-        items = [o for o in cat if o.get('period') in periods]
+        items = [o for o in cat if o.get('period') in periods and not o.get('hidden')]
         items.sort(key=lambda o: o['id'])
         grid = '    <div class="grid">\n' + ''.join(card(o) for o in items) + '    </div>'
         new, n = re.subn(r'    <div class="grid">.*?\n    </div>', grid, s, count=1, flags=re.S)
