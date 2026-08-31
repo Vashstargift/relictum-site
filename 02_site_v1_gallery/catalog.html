@@ -420,7 +420,7 @@ function render() {
   // остальные лениво. Ленивая загрузка того, что уже на экране, только тормозит.
   grid.innerHTML = items.length ? items.map((o, n) => `
     <a class="obj-card" href="${o.href||('object.html?id='+encodeURIComponent(o.id))}">
-      <div class="ph">${o.status?'<span class="badge">'+o.status+'</span>':''}<img src="../shared/img/${o.img}.jpg?v=${window.RELICTUM_MV||11}" alt="${o.name}"${n < 4 ? '' : ' loading="lazy"'} decoding="async"></div>
+      <div class="ph">${o.status?'<span class="badge">'+o.status+'</span>':''}<img src="../shared/img/${o.img}.jpg?v=${window.RELICTUM_MV||12}" alt="${o.name}"${n < 4 ? '' : ' loading="lazy"'} decoding="async"></div>
       <div class="body">
         <div class="id">${o.id}, ${o.worldLabel}</div>
         <h3>${o.name}</h3>
