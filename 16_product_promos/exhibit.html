@@ -328,7 +328,9 @@ if(!o){
   var hook = P?P.hook : (o.description||'');
   var kickPlace=(o.location&&o.location!=='—')?o.location:((o.region&&o.region!=='—')?o.region:'');
   var kick = (P&&P.heroKicker) || (o.category&&o.category!=='—'?o.category:o.worldLabel) + (kickPlace?', '+kickPlace:'');
-  var storyHtml = (P&&P.story)?P.story.map(function(t){return '<p>'+t+'</p>'}).join('') : '<p>'+(o.description||'')+'</p>';
+  /* Одно поле «Описание» (07.09.2026): абзацы из CRM кормят и «При жизни», и «Историю». */
+  var storyParas = (P&&P.profile&&P.profile.paragraphs)?P.profile.paragraphs:((P&&P.story)?P.story:String(o.description||'').split(/\n\s*\n/));
+  var storyHtml = storyParas.filter(function(t){return t&&t.trim()}).map(function(t){return '<p>'+t+'</p>'}).join('');
   var alive = P?P.alive:null;
   /* У части экспонатов своего ролика «встретить живым» нет — тогда блок
      «При жизни» показывает стандартное видео их эпохи (те же ролики,

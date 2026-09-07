@@ -167,7 +167,7 @@
   document.getElementById('oCode').textContent = o.id+', '+o.worldLabel+', '+o.category;
   document.getElementById('oName').textContent = o.name;
   document.getElementById('oLatin').textContent = o.latin;
-  document.getElementById('oDesc').textContent = o.description||'';
+  document.getElementById('oDesc').textContent = String(o.description||'').split(/\n\s*\n/)[0]||'';
   document.getElementById('oPrice').textContent = o.price;
   if(o.qty){ var oq=document.getElementById('oQty'); oq.textContent=o.qty; oq.style.display='block'; }
 

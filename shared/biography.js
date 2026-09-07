@@ -35,7 +35,7 @@
 
     var ageShort=(o.age||'').split(',')[0].trim();
     var aliveTitle=(p.alive&&p.alive.title)||(o.world==='cosmos'?'До Земли':'При жизни');
-    var aliveText=(p.alive&&p.alive.text)||o.description||'';
+    var aliveText=(p.alive&&p.alive.text)||(p.profile&&p.profile.paragraphs&&p.profile.paragraphs[0])||String(o.description||'').split(/\n\s*\n/)[0]||'';
     var findText=o.location||'Происхождение прослежено, данные в паспорте объекта.';
     var mountText='Атрибуция дома, шифр '+o.id+', Паспорт объекта Relictum.';
     var steps=[
