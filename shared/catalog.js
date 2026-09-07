@@ -101,7 +101,7 @@ window.RELICTUM_CATALOG = [
     "latin": "Chinga Iron",
     "meta": "Чинге, Тыва, Россия, ≈ 4,5 млрд лет",
     "price": "300 000 ₽",
-    "img": "ph_chinge",
+    "img": "ph_chinge_2",
     "priceValue": 300000,
     "slug": "0104-chinga-iron",
     "age": "≈ 4,5 млрд лет",

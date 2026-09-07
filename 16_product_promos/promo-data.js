@@ -468,9 +468,9 @@ window.RELICTUM_PROMO = {
     hook: "Богатый никелем атаксит с тёмной корой, найденный на реке Чинге в Тыве.",
     heroKicker: "Метеориты, Тыва",
     era: { title: "Рождение Солнечной системы", line: "≈ 4,5 млрд лет назад", href: "../02_site_v1_gallery/journal-meteorite.html" },
-    alive: { title: "Железный дождь Тывы", text: "Этот обломок падал дождём вместе с сотнями других над Тывой, а форму ему придали не резец, а миллионы лет в космосе.", video: "vid_meteor.mp4", poster: "ph_chinge.jpg" },
+    alive: { title: "Железный дождь Тывы", text: "Этот обломок падал дождём вместе с сотнями других над Тывой, а форму ему придали не резец, а миллионы лет в космосе.", video: "vid_meteor.mp4", poster: "ph_chinge_2.jpg" },
     interior: { video: "intv_chinge.mp4", img: "int_ph_chinge.jpg", text: "Небольшой метеорит Чинге занимает место на консоли в прихожей или кабинете, не требуя вокруг себя пустой стены." },
-    gallery: ["int_ph_chinge.jpg", "g_chinge_2.jpg", "g_chinge_3.jpg", "ph_chinge.jpg"]
+    gallery: ["int_ph_chinge.jpg", "g_chinge_2.jpg", "g_chinge_3.jpg", "ph_chinge_2.jpg"]
   },
   "R–0105": {
     "profile": {
@@ -3880,9 +3880,9 @@ window.RELICTUM_PROMO = {
           "video": "vid_meteor.mp4",
           "poster": "ph_met_seymchan_0634.jpg"
       },
-      "gallery": [
-          "ph_met_seymchan_0634.jpg"
-      ]
+      "spin": "spin_met_seymchan_0634.mp4",
+    "interior": {"img": "int_ph_met_seymchan_0634.jpg", "text": "Сеймчан лучше всего раскрывается против света: поставьте срез так, чтобы окно било в спину, и оливин загорится янтарём."},
+    "gallery": ["int_ph_met_seymchan_0634.jpg", "g_met_seymchan_0634_1.jpg", "ph_met_seymchan_0634.jpg"]
   },
 
   "R–0635": {
@@ -3910,9 +3910,9 @@ window.RELICTUM_PROMO = {
           "video": "vid_meteor.mp4",
           "poster": "ph_met_seymchan_0635.jpg"
       },
-      "gallery": [
-          "ph_met_seymchan_0635.jpg"
-      ]
+      "spin": "spin_met_seymchan_0635.mp4",
+    "interior": {"img": "int_ph_met_seymchan_0635.jpg", "text": "Небольшой цельнометаллический срез с видманштеттеновым узором уместен на консоли даже у окна: боковой свет подчёркивает ржавую кромку коры."},
+    "gallery": ["int_ph_met_seymchan_0635.jpg", "g_met_seymchan_0635_1.jpg", "ph_met_seymchan_0635.jpg"]
   },
 
   "R–0636": {
@@ -3940,9 +3940,9 @@ window.RELICTUM_PROMO = {
           "video": "vid_meteor.mp4",
           "poster": "ph_met_seymchan_0636.jpg"
       },
-      "gallery": [
-          "ph_met_seymchan_0636.jpg"
-      ]
+      "spin": "spin_met_seymchan_0636.mp4",
+    "interior": {"img": "int_ph_met_seymchan_0636.jpg", "text": "Крупный срез с широким видманштеттеновым узором требует простора вокруг — ставьте его отдельно на консоли, под скользящим светом от окна."},
+    "gallery": ["int_ph_met_seymchan_0636.jpg", "g_met_seymchan_0636_1.jpg", "ph_met_seymchan_0636.jpg"]
   },
 
   "R–0637": {
@@ -3970,9 +3970,9 @@ window.RELICTUM_PROMO = {
           "video": "vid_meteor.mp4",
           "poster": "ph_met_seymchan_0637.jpg"
       },
-      "gallery": [
-          "ph_met_seymchan_0637.jpg"
-      ]
+      "spin": "spin_met_seymchan_0637.mp4",
+    "interior": {"img": "int_ph_met_seymchan_0637.jpg", "text": "Бурая кора по верхнему краю среза заметнее при естественном свете сбоку, поэтому место у окна на консоли раскрывает её фактуру."},
+    "gallery": ["int_ph_met_seymchan_0637.jpg", "g_met_seymchan_0637_1.jpg", "ph_met_seymchan_0637.jpg"]
   },
 
   "R–0638": {
@@ -4000,8 +4000,8 @@ window.RELICTUM_PROMO = {
           "video": "vid_meteor.mp4",
           "poster": "ph_met_seymchan_0638.jpg"
       },
-      "gallery": [
-          "ph_met_seymchan_0638.jpg"
-      ]
+      "spin": "spin_met_seymchan_0638.mp4",
+    "interior": {"img": "int_ph_met_seymchan_0638.jpg", "text": "Плотная россыпь оливина в этом срезе палласита особенно ярко горит на просвет, поэтому консоль ближе к окну подходит лучше, чем угол комнаты."},
+    "gallery": ["int_ph_met_seymchan_0638.jpg", "g_met_seymchan_0638_1.jpg", "ph_met_seymchan_0638.jpg"]
   }
 };
