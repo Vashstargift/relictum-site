@@ -3771,7 +3771,8 @@ window.RELICTUM_PROMO = {
           "video": "vid_meteor.mp4",
           "poster": "ph_seymchan_regmaglypt.jpg"
       },
-      "gallery": ["ph_seymchan_regmaglypt.jpg"]
+      "interior": {"img": "int_ph_seymchan_regmaglypt.jpg", "text": "Регмаглиптовый рельеф Сеймчана читается лучше в дневном свете от окна, поэтому мраморная консоль в паре шагов от него — предпочтительное место."},
+    "gallery": ["int_ph_seymchan_regmaglypt.jpg", "g_seymchan_regmaglypt_1.jpg", "ph_seymchan_regmaglypt.jpg"]
   },
 
   "R–0631": {
