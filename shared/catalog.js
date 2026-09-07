@@ -3289,4 +3289,4 @@ window.RELICTUM_CATALOG = [
         "status": "Под заказ"
     }
 ];
-window.RELICTUM_GALLERIES = {"Гименей":{"full":"ТЦ «Гименей», Москва, Большая Якиманка, 22","short":"Большая Якиманка, 22"},"Времена года":{"full":"Галереи «Времена года», Москва, Кутузовский проспект, 48","short":"Кутузовский проспект, 48"},"Dream House":{"full":"ТЦ «Dream House», Барвиха, Рублёво-Успенское шоссе, 85/1","short":"Барвиха, Dream House"}};
+window.RELICTUM_GALLERIES = {"Гименей":{"full":"ТЦ «Гименей»","short":"ТЦ «Гименей»"},"Времена года":{"full":"Галереи «Времена года»","short":"Галереи «Времена года»"},"Dream House":{"full":"ТЦ «Dream House»","short":"ТЦ «Dream House»"}};

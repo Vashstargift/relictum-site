@@ -333,7 +333,7 @@ if(!o){
   var storyParas = (P&&P.profile&&P.profile.paragraphs)?P.profile.paragraphs:((P&&P.story)?P.story:String(o.description||'').split(/\n\s*\n/));
   /* «В наличии. адрес» — где стоит лот; только у лотов без статуса «Под заказ/Продан». */
   var GA=window.RELICTUM_GALLERIES||{};
-  var whereFull = (!o.status && o.galleries && o.galleries.length) ? 'В наличии. '+o.galleries.map(function(g){return (GA[g]&&GA[g].full)||g}).join('; ') : '';
+  var whereFull = (!o.status && o.galleries && o.galleries.length) ? 'В наличии — '+o.galleries.map(function(g){return (GA[g]&&GA[g].full)||g}).join('; ') : '';
   var storyHtml = storyParas.filter(function(t){return t&&t.trim()}).map(function(t){return '<p>'+t+'</p>'}).join('');
   var alive = P?P.alive:null;
   /* У части экспонатов своего ролика «встретить живым» нет — тогда блок
