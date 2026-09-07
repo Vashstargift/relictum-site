@@ -44,7 +44,7 @@ BEAST_LINK = {
     'Mixosaurus sp.':           'R–0218',
     'Anchiornis huxleyi':       'R–0214',
     'Arietites sp.':            'R–0633',   # 45 см; R–0211 продан и скрыт
-    'Machairodus sp.':          'R–0208',
+    'Machairodus sp.':          'R–0640',   # новый череп саблезубой; R–0208 скрыт
     'Dinocrocuta gigantea':     'R–0226',
     'Otodus megalodon':         'R–0201',
     'Mammuthus primigenius':    'R–0617',   # полный скелет — самый крупный из трёх
