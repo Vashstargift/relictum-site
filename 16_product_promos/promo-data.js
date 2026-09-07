@@ -4030,8 +4030,8 @@ window.RELICTUM_PROMO = {
           "video": "vid_meteor.mp4",
           "poster": "ph_chelyabinsk4.jpg"
       },
-      "gallery": [
-          "ph_chelyabinsk4.jpg"
-      ]
+      "spin": "spin_chelyabinsk4.mp4",
+    "interior": {"img": "int_ph_chelyabinsk4.jpg", "text": "Мраморная консоль в гостиной у окна: метеорит рядом со стопкой книг, тёмная кора плавления держит взгляд без лишнего декора."},
+    "gallery": ["int_ph_chelyabinsk4.jpg", "g_chelyabinsk4_1.jpg", "ph_chelyabinsk4.jpg"]
   }
 };
