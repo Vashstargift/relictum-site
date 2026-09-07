@@ -326,7 +326,8 @@ if(!o){
   window.RL_BIO_ID=o.id;
   document.title=o.name+' — '+o.id+', RELICTUM';
   var hook = P?P.hook : (o.description||'');
-  var kick = (P&&P.heroKicker) || (o.category&&o.category!=='—'?o.category:o.worldLabel) + (o.region&&o.region!=='—'?', '+o.region:'');
+  var kickPlace=(o.location&&o.location!=='—')?o.location:((o.region&&o.region!=='—')?o.region:'');
+  var kick = (P&&P.heroKicker) || (o.category&&o.category!=='—'?o.category:o.worldLabel) + (kickPlace?', '+kickPlace:'');
   var storyHtml = (P&&P.story)?P.story.map(function(t){return '<p>'+t+'</p>'}).join('') : '<p>'+(o.description||'')+'</p>';
   var alive = P?P.alive:null;
   /* У части экспонатов своего ролика «встретить живым» нет — тогда блок
