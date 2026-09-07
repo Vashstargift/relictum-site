@@ -101,7 +101,10 @@ cd ~/relictum-vashikmart/public && python3 -m http.server 8123
 ```bash
 # бэкап того, что уже лежит на сервере (со второго раза и далее)
 ssh -i ~/.ssh/id_ed25519 stargift@stargift.beget.tech \
-  "cp -a ~/relictum.gallery/public_html ~/relictum-backup-$(date +%Y%m%d-%H%M%S)"
+  "cp -r ~/relictum.gallery/public_html ~/relictum-backup-$(date +%Y%m%d-%H%M%S)"
+# ⚠️ именно cp -r, НЕ cp -a: с 07.09.2026 у файлов на сервере появились ACL (знак «+» в ls -l),
+# и cp -a падает на «preserving permissions: Operation not permitted» — копия при этом полная,
+# но ненулевой код выхода рвёт цепочку «бэкап && rsync».
 
 # первая полная заливка (~255 МБ, идёт долго; последующие — только изменённое)
 rsync -rlzc -e "ssh -i ~/.ssh/id_ed25519" \
