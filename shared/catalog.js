@@ -1372,7 +1372,7 @@ window.RELICTUM_CATALOG = [
     "name": "Композиция из метеоритов Дронино",
     "meta": "Рязанская область, ≈ 4,5 млрд лет<br>Суммарный вес 7 кг",
     "price": "3 000 000 ₽",
-    "img": "ph_dronino_composition",
+    "img": "ph_dronino_composition_2",
     "priceValue": 3000000,
     "slug": "0302-dronino-composition",
     "age": "≈ 4,5 млрд лет",
