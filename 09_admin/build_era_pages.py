@@ -43,7 +43,7 @@ BEAST_LINK = {
     'Keichousaurus hui':        'R–0212',
     'Mixosaurus sp.':           'R–0218',
     'Anchiornis huxleyi':       'R–0214',
-    'Arietites sp.':            'R–0211',
+    'Arietites sp.':            'R–0633',   # 45 см; R–0211 продан и скрыт
     'Machairodus sp.':          'R–0208',
     'Dinocrocuta gigantea':     'R–0226',
     'Otodus megalodon':         'R–0201',
