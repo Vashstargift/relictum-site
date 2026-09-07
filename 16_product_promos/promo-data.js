@@ -4060,9 +4060,9 @@ window.RELICTUM_PROMO = {
           "video": "vid_sabertooth.mp4",
           "poster": "ph_sabertooth_0640.jpg"
       },
-      "gallery": [
-          "ph_sabertooth_0640.jpg"
-      ]
+      "spin": "spin_sabertooth_0640.mp4",
+    "interior": {"img": "int_ph_sabertooth_0640.jpg", "text": "Массивный череп саблезубой кошки требует тёмной консоли ниже уровня глаз — так пасть читается силуэтом против дневного света из окна."},
+    "gallery": ["int_ph_sabertooth_0640.jpg", "g_sabertooth_0640_1.jpg", "ph_sabertooth_0640.jpg"]
   },
 
   "R–0641": {
@@ -4090,8 +4090,8 @@ window.RELICTUM_PROMO = {
           "video": "vid_sabertooth.mp4",
           "poster": "ph_sabertooth_0641.jpg"
       },
-      "gallery": [
-          "ph_sabertooth_0641.jpg"
-      ]
+      "spin": "spin_sabertooth_0641.mp4",
+    "interior": {"img": "int_ph_sabertooth_0641.jpg", "text": "Парящий на тонком стержне череп лучше смотрится у самой стены библиотеки, где боковой свет из окна очерчивает контур челюсти."},
+    "gallery": ["int_ph_sabertooth_0641.jpg", "g_sabertooth_0641_1.jpg", "ph_sabertooth_0641.jpg"]
   }
 };
