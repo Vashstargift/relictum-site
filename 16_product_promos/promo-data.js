@@ -3794,7 +3794,8 @@ window.RELICTUM_PROMO = {
           "video": "era_mammoth.mp4",
           "poster": "era_mammoth.jpg"
       },
-      "gallery": ["ph_mammoth_sphere_a.jpg"]
+      "interior": {"img": "int_ph_mammoth_sphere_a.jpg", "text": "Крупный шар из зуба мамонта на посеребрённой треноге занимает центр консоли в светлой гостиной без соседства других предметов."},
+    "gallery": ["int_ph_mammoth_sphere_a.jpg", "g_mammoth_sphere_a_1.jpg", "ph_mammoth_sphere_a.jpg"]
   },
 
   "R–0632": {
@@ -3817,7 +3818,8 @@ window.RELICTUM_PROMO = {
           "video": "era_mammoth.mp4",
           "poster": "era_mammoth.jpg"
       },
-      "gallery": ["ph_mammoth_sphere_b.jpg"]
+      "interior": {"img": "int_ph_mammoth_sphere_b.jpg", "text": "Шар поменьше с частым контрастным рисунком полос хорошо смотрится рядом с крупным на одной консоли, создавая парную композицию."},
+    "gallery": ["int_ph_mammoth_sphere_b.jpg", "g_mammoth_sphere_b_1.jpg", "ph_mammoth_sphere_b.jpg"]
   },
 
   "R–0633": {
@@ -3832,7 +3834,8 @@ window.RELICTUM_PROMO = {
           "title": "Аммонит Arietites 45 см — RELICTUM",
           "description": "Аммонит Arietites, ранняя юра, около 200–190 млн лет, найден во Франции. Раковина 45 см, полностью отпрепарирована, на стойке из чернёной стали. RELICTUM."
       },
-      "hook": "Раннеюрский аммонит Arietites диаметром 45 сантиметров, спираль читается от устья до центра.",
+      "spin": "spin_arietites_45.mp4",
+    "hook": "Раннеюрский аммонит Arietites диаметром 45 сантиметров, спираль читается от устья до центра.",
       "heroKicker": "Аммониты, Франция",
       "era": {
           "title": "Юрские моря",
@@ -3845,8 +3848,7 @@ window.RELICTUM_PROMO = {
           "video": "era_jurassic_sea.mp4",
           "poster": "sci_jurassic_sea.jpg"
       },
-      "gallery": [
-          "ph_arietites_45.jpg"
-      ]
+      "interior": {"img": "int_ph_arietites_45.jpg", "text": "Аммонит Arietites на чернёной стали хорошо стоит на низкой консоли у высокого окна — дневной свет подчёркивает рельеф спирали."},
+    "gallery": ["int_ph_arietites_45.jpg", "g_arietites_45_1.jpg", "ph_arietites_45.jpg"]
   }
 };
