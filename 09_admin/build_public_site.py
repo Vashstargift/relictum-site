@@ -575,6 +575,13 @@ def write_extras(pages):
     open(os.path.join(OUT, '.htaccess'), 'w', encoding='utf-8').write(htaccess)
     open(os.path.join(OUT, 'cors.php'), 'w', encoding='utf-8').write(CORS_PHP)
     open(os.path.join(OUT, 'send.php'), 'w', encoding='utf-8').write(SEND_PHP)
+    # узел публикации из CRM StarGift: ключ берём с сервера при сборке, в git он не попадает
+    key = node_key()
+    if key:
+        open(os.path.join(OUT, 'relictum-node.php'), 'w', encoding='utf-8').write(NODE_PHP.replace('__NODE_KEY__', key))
+        print('   relictum-node.php: собран с ключом')
+    else:
+        print('   ⚠ relictum-node.php НЕ собран: ключ RELICTUM_NODE_KEY не получен с сервера')
     open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(PAGE_404)
 
 
@@ -871,6 +878,78 @@ PAGE_404 = """<!DOCTYPE html>
 </div>
 </body>
 </html>
+"""
+
+
+def node_key():
+    """RELICTUM_NODE_KEY из ~/stargift.ru/.env на сервере (или из окружения)."""
+    if os.environ.get('RELICTUM_NODE_KEY'):
+        return os.environ['RELICTUM_NODE_KEY'].strip()
+    try:
+        out = subprocess.run(['ssh', '-i', os.path.expanduser('~/.ssh/id_ed25519'), 'stargift@stargift.beget.tech',
+                              "grep -E '^RELICTUM_NODE_KEY=' ~/stargift.ru/.env | cut -d= -f2-"],
+                             capture_output=True, text=True, timeout=30).stdout.strip().strip('"\'')
+        return out or None
+    except Exception:
+        return None
+
+
+# Узел на relictum.gallery: принимает от CRM StarGift (сервер-к-серверу) готовые данные
+# и файлы и пишет их в свой веб-корень — у PHP этого сайта есть права на свои файлы,
+# у PHP stargift.ru — нет (изоляция сайтов на Beget через ACL).
+NODE_PHP = r"""<?php
+/* relictum-node.php — генерируется билдером, руками не править. PHP 5.6-совместимый.
+   POST JSON, заголовок X-Node-Key. action: ping | write_data | write_image */
+header('Content-Type: application/json; charset=utf-8');
+define('NODE_KEY', '__NODE_KEY__');
+$key = isset($_SERVER['HTTP_X_NODE_KEY']) ? $_SERVER['HTTP_X_NODE_KEY'] : '';
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || NODE_KEY === '' || !hash_equals(NODE_KEY, $key)) { http_response_code(403); echo '{"error":"forbidden"}'; exit; }
+$body = json_decode(file_get_contents('php://input'), true);
+if (!is_array($body)) { http_response_code(400); echo '{"error":"bad_json"}'; exit; }
+$root = dirname(__FILE__);
+function node_out($d, $code = 200) { http_response_code($code); echo json_encode($d, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); exit; }
+function node_atomic($path, $content) {
+    $tmp = $path . '.tmp-' . getmypid();
+    if (file_put_contents($tmp, $content) === false) node_out(array('error' => 'write_failed', 'path' => basename($path)), 500);
+    if (!rename($tmp, $path)) { @unlink($tmp); node_out(array('error' => 'rename_failed', 'path' => basename($path)), 500); }
+    @chmod($path, 0644);
+}
+$action = isset($body['action']) ? $body['action'] : '';
+if ($action === 'ping') {
+    node_out(array('ok' => true, 'writable' => is_writable($root . '/shared') && is_writable($root . '/objects'),
+                   'php' => PHP_VERSION, 'user' => get_current_user()));
+}
+if ($action === 'write_data') {
+    $catalog = isset($body['catalog_js']) ? $body['catalog_js'] : ''; $promo = isset($body['promo_js']) ? $body['promo_js'] : '';
+    if (strpos($catalog, 'window.RELICTUM_CATALOG') === false || strpos($promo, 'window.RELICTUM_PROMO') === false) node_out(array('error' => 'bad_payload'), 400);
+    $bak = $root . '/shared/_data-backups'; if (!is_dir($bak)) @mkdir($bak, 0755, true);
+    $stamp = date('Ymd-His');
+    @copy($root . '/shared/catalog.js', "$bak/catalog-$stamp.js"); @copy($root . '/objects/promo-data.js', "$bak/promo-data-$stamp.js");
+    $baks = glob("$bak/catalog-*.js"); if (!$baks) $baks = array(); sort($baks);
+    $extra = count($baks) - 5;
+    if ($extra > 0) foreach (array_slice($baks, 0, $extra) as $b) { @unlink($b); @unlink(str_replace('catalog-', 'promo-data-', $b)); }
+    node_atomic($root . '/shared/catalog.js', $catalog); node_atomic($root . '/objects/promo-data.js', $promo);
+    $ch = substr(md5($catalog), 0, 8); $ph = substr(md5($promo), 0, 8); $updated = 0;
+    $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root, FilesystemIterator::SKIP_DOTS));
+    foreach ($it as $f) {
+        if ($f->getExtension() !== 'html') continue;
+        $p = $f->getPathname(); if (strpos($p, '/_data-backups/') !== false) continue;
+        $t = file_get_contents($p); $cnt = 0;
+        $n = preg_replace(array('/catalog\.js\?v=[a-f0-9]{8}/', '/promo-data\.js\?v=[a-f0-9]{8}/'), array('catalog.js?v=' . $ch, 'promo-data.js?v=' . $ph), $t, -1, $cnt);
+        if ($cnt > 0 && $n !== $t) { node_atomic($p, $n); $updated++; }
+    }
+    node_out(array('ok' => true, 'catalog_hash' => $ch, 'promo_hash' => $ph, 'html_updated' => $updated));
+}
+if ($action === 'write_image') {
+    $name = basename(isset($body['name']) ? (string)$body['name'] : '');
+    if (!preg_match('/^[a-z0-9_.-]+\.(jpg|jpeg|png|webp|mp4)$/i', $name)) node_out(array('error' => 'bad_name'), 400);
+    $data = base64_decode(isset($body['data']) ? (string)$body['data'] : '', true);
+    if ($data === false || strlen($data) < 100) node_out(array('error' => 'bad_data'), 400);
+    $dir = $root . '/shared/img'; if (!is_dir($dir)) @mkdir($dir, 0755, true);
+    node_atomic($dir . '/' . $name, $data);
+    node_out(array('ok' => true, 'name' => $name, 'bytes' => strlen($data), 'url' => 'https://relictum.gallery/shared/img/' . $name));
+}
+node_out(array('error' => 'unknown_action'), 400);
 """
 
 
