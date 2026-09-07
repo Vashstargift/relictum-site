@@ -46,6 +46,7 @@ a{color:inherit;text-decoration:none}
 .hero .txt .buy-price{font-family:var(--serif);font-size:clamp(23px,2.6vw,32px);line-height:1;color:var(--black)}
 /* Количество экземпляров — тихая капитель бронзой сразу под ценой.
    Отрицательный отступ съедает часть общего gap колонки .buy. */
+.hero .txt .buy .buy-where{margin:-4px 0 12px;color:var(--deep);font-size:12.5px;letter-spacing:.04em;line-height:1.45;max-width:36ch}
 .hero .txt .buy .buy-qty{margin-top:-10px;color:var(--deep);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;line-height:1.1}
 /* Кнопка контурная, а не сплошная: на светлом первом экране чёрная плашка
    перебивала цену, набранную антиквой. Заливка приходит при наведении. */
@@ -330,6 +331,9 @@ if(!o){
   var kick = (P&&P.heroKicker) || (o.category&&o.category!=='—'?o.category:o.worldLabel) + (kickPlace?', '+kickPlace:'');
   /* Одно поле «Описание» (07.09.2026): абзацы из CRM кормят и «При жизни», и «Историю». */
   var storyParas = (P&&P.profile&&P.profile.paragraphs)?P.profile.paragraphs:((P&&P.story)?P.story:String(o.description||'').split(/\n\s*\n/));
+  /* «В наличии. адрес» — где стоит лот; только у лотов без статуса «Под заказ/Продан». */
+  var GA=window.RELICTUM_GALLERIES||{};
+  var whereFull = (!o.status && o.galleries && o.galleries.length) ? 'В наличии. '+o.galleries.map(function(g){return (GA[g]&&GA[g].full)||g}).join('; ') : '';
   var storyHtml = storyParas.filter(function(t){return t&&t.trim()}).map(function(t){return '<p>'+t+'</p>'}).join('');
   var alive = P?P.alive:null;
   /* У части экспонатов своего ролика «встретить живым» нет — тогда блок
@@ -535,6 +539,7 @@ if(!o){
       '<div class="buy rv">'+
         '<div class="buy-price">'+(o.price||'Цена по запросу')+'</div>'+
         (o.qty?'<div class="buy-qty">'+o.qty+'</div>':'')+
+        (whereFull?'<div class="buy-where">'+whereFull+'</div>':'')+
         '<div class="buy-row">'+
           (o.priceValue
             ? '<button type="button" class="btn" id="heroCart">Добавить в корзину</button>'
@@ -577,6 +582,7 @@ if(!o){
     '<div class="wrap">'+
     '<div class="rv" style="color:var(--gold);font-family:var(--serif);font-size:clamp(24px,3.4vw,40px);line-height:1.15;margin-bottom:10px">'+o.name+'</div>'+
     '<div class="price rv">'+(o.price||'Цена по запросу')+(o.status?' <span style="font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)">· '+o.status+'</span>':'')+'</div>'+
+    (whereFull?'<div class="rv" style="margin:-6px 0 18px;font-size:12.5px;letter-spacing:.08em;color:rgba(244,240,232,.72)">'+whereFull+'</div>':'')+
     '<div class="row rv on-dark">'+
       '<button type="button" class="btn solid" id="exCart">Добавить в корзину</button>'+
       '<a class="btn ghost" id="ctaAsk" href="mailto:info@stargift.ru?subject=Запрос: '+encodeURIComponent(o.name+' ('+o.id+')')+'">Запросить объект</a>'+

@@ -426,6 +426,7 @@ function render() {
         <h3>${o.name}</h3>
         <div class="latin">${o.latin||""}</div>
         <div class="meta">${o.meta}</div>
+        ${(!o.status&&o.galleries&&o.galleries.length)?'<div class="where">В наличии. '+o.galleries.map(g=>((window.RELICTUM_GALLERIES||{})[g]||{}).short||g).join('; ')+'</div>':''}
         <div class="price"><b>${o.price}</b><span>Смотреть</span></div>
       </div>
     </a>`).join("") :
