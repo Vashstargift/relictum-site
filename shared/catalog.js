@@ -782,7 +782,7 @@ window.RELICTUM_CATALOG = [
         "name": "Череп пситтакозавра",
         "meta": "Провинция Ляонин, Китай, ≈ 125 млн лет<br>Череп ≈ 15 см",
         "price": "1 900 000 ₽",
-        "img": "ph_psittacosaurus_skull",
+        "img": "ph_psittacosaurus_skull_260910132029",
         "priceValue": 1900000,
         "slug": "0213-psittacosaurus-skull",
         "age": "≈ 125 млн лет",
