@@ -200,7 +200,7 @@
     <div class="inner">
       <div class="label" style="color:var(--bronze)">Менеджер галереи</div>
       <h2>Не нашли то, что искали?</h2>
-      <p>Если вы ищете конкретный палеонтологический объект, редкий минерал или внеземную материю определённой эпохи — эксперты Дома Relictum помогут реализовать ваш запрос. Экспертная оценка и персональное сопровождение сделки на всех этапах включены в стоимость.</p>
+      <p>Если вы ищете конкретный палеонтологический экспонат, редкий минерал или внеземную материю определённой эпохи — эксперты Дома Relictum помогут реализовать ваш запрос. Экспертная оценка и персональное сопровождение сделки на всех этапах включены в стоимость.</p>
       <a class="btn" style="border-color:#F4F0E8;color:#F4F0E8" href="request.html">Персональный подбор</a>
     </div>
   </div>
@@ -211,7 +211,7 @@
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -283,7 +283,7 @@ CATALOG.forEach(o => {
 
 const FACETS = [
   {key:"avail", label:"Наличие", order:["В наличии","Под заказ"]},
-  {key:"kind", label:"Тип объекта", order:KINDS.map(k => k[0])},
+  {key:"kind", label:"Тип экспоната", order:KINDS.map(k => k[0])},
   {key:"world", label:"Мир", labels:{vita:"Жизнь",terra:"Земля",cosmos:"Космос",grand:"Монументы",editions:"Editions"}, order:["vita","terra","cosmos","grand","editions"]},
   /* Делим по эрам, а не по видам (решение владельца 06.08): «Мегалодон»,
      «Саблезубые кошки», «Трилобиты» — это виды, а не структура коллекции.
@@ -430,14 +430,14 @@ function render() {
         <div class="price"><b>${o.price}</b><span>Смотреть</span></div>
       </div>
     </a>`).join("") :
-    `<div class="no-results" style="grid-column:1/-1"><p>По вашему запросу объектов не найдено.</p><button class="btn" id="resetEmpty">Сбросить фильтры</button></div>`;
+    `<div class="no-results" style="grid-column:1/-1"><p>По вашему запросу экспонатов не найдено.</p><button class="btn" id="resetEmpty">Сбросить фильтры</button></div>`;
   if (!items.length) $("#resetEmpty").addEventListener("click", resetAll);
 
-  const countText = "Объектов: " + items.length + (activeCount() ? " из " + CATALOG.length : "");
+  const countText = "Экспонатов: " + items.length + (activeCount() ? " из " + CATALOG.length : "");
   countEl.textContent = countText;
   $("#countM").textContent = countText;
   $("#toggleCount").textContent = activeCount();
-  const pl = n => n%10===1&&n%100!==11 ? "объект" : (n%10>=2&&n%10<=4&&(n%100<10||n%100>=20) ? "объекта" : "объектов");
+  const pl = n => n%10===1&&n%100!==11 ? "экспонат" : (n%10>=2&&n%10<=4&&(n%100<10||n%100>=20) ? "экспоната" : "экспонатов");
   $("#railApply").textContent = "Ок · " + items.length + " " + pl(items.length);
   renderChips();
   syncBadges();

@@ -68,7 +68,7 @@
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -117,7 +117,7 @@ var S=window.RelictumShop, IMG='../shared/img/';
    «уже купленные» вещи и чужие интересы. Кабинет должен показывать только
    то, что человек сделал сам. */
 
-var ALL_INTERESTS=['Метеориты','Лунные объекты','Динозавры','Мамонтовая фауна','Саблезубые кошки','Аммониты','Трилобиты','Минералы','Флора','Монументы','Editions','Интерьерные объекты'];
+var ALL_INTERESTS=['Метеориты','Лунные экспонаты','Динозавры','Мамонтовая фауна','Саблезубые кошки','Аммониты','Трилобиты','Минералы','Флора','Монументы','Editions','Интерьерные экспонаты'];
 
 function mini(o,favBtn){
   return '<a class="rl-mini" href="'+(o.href||('object.html?id='+o.id))+'"><img src="'+IMG+o.img+'.jpg?v=12" alt="'+o.name+'" loading="lazy" decoding="async">'+
@@ -152,9 +152,9 @@ function pane_promo(){
   return '<div class="rl-grid2"><div>'+
     '<h2 class="rl-h" style="font-size:30px;margin-bottom:16px">Ваши привилегии</h2>'+
     '<div class="rl-data">'+
-      '<div><div class="k">Личная скидка</div><div class="v">'+t.discount+'% на объекты с указанной ценой</div></div>'+
-      '<div><div class="k">Ранний доступ</div><div class="v">Новые объекты — до публикации в каталоге</div></div>'+
-      '<div><div class="k">Менеджер галереи</div><div class="v">Персональный поиск объектов под запрос</div></div>'+
+      '<div><div class="k">Личная скидка</div><div class="v">'+t.discount+'% на экспонаты с указанной ценой</div></div>'+
+      '<div><div class="k">Ранний доступ</div><div class="v">Новые экспонаты — до публикации в каталоге</div></div>'+
+      '<div><div class="k">Менеджер галереи</div><div class="v">Персональный поиск экспонатов под запрос</div></div>'+
       '<div><div class="k">Экспедиции</div><div class="v">Приглашения на закрытые события дома</div></div>'+
     '</div>'+
     '<p class="rl-muted" style="margin-top:22px">Следующий статус: <b style="color:var(--rl-deep)">'+next+'</b></p>'+
@@ -165,18 +165,18 @@ function pane_promo(){
 }
 function pane_collection(){
   var items=(S.user().purchased||[]).map(S.item).filter(Boolean);
-  if(!items.length) return '<div class="rl-empty"><h2 class="rl-h" style="font-size:28px;margin-bottom:12px">Коллекция пока пуста</h2><p class="rl-muted" style="margin-bottom:22px">Оформленные объекты появятся здесь.</p><a class="rl-btn" style="width:auto;display:inline-block" href="catalog.html">Начать коллекцию</a></div>';
-  return '<div class="rl-label" style="margin-bottom:16px">Приобретённые объекты, демо-данные</div><div class="rl-cards">'+items.map(function(o){return mini(o,false)}).join('')+'</div>';
+  if(!items.length) return '<div class="rl-empty"><h2 class="rl-h" style="font-size:28px;margin-bottom:12px">Коллекция пока пуста</h2><p class="rl-muted" style="margin-bottom:22px">Оформленные экспонаты появятся здесь.</p><a class="rl-btn" style="width:auto;display:inline-block" href="catalog.html">Начать коллекцию</a></div>';
+  return '<div class="rl-label" style="margin-bottom:16px">Приобретённые экспонаты, демо-данные</div><div class="rl-cards">'+items.map(function(o){return mini(o,false)}).join('')+'</div>';
 }
 function pane_favorites(){
   var items=S.favItems();
-  if(!items.length) return '<div class="rl-empty"><h2 class="rl-h" style="font-size:28px;margin-bottom:12px">В избранном пусто</h2><p class="rl-muted" style="margin-bottom:22px">Отмечайте понравившиеся объекты сердечком — они соберутся здесь.</p><a class="rl-btn" style="width:auto;display:inline-block" href="catalog.html">Открыть каталог</a></div>';
-  return '<div class="rl-label" style="margin-bottom:16px">Избранные объекты</div><div class="rl-cards" id="favGrid">'+items.map(function(o){return mini(o,true)}).join('')+'</div>';
+  if(!items.length) return '<div class="rl-empty"><h2 class="rl-h" style="font-size:28px;margin-bottom:12px">В избранном пусто</h2><p class="rl-muted" style="margin-bottom:22px">Отмечайте понравившиеся экспонаты сердечком — они соберутся здесь.</p><a class="rl-btn" style="width:auto;display:inline-block" href="catalog.html">Открыть каталог</a></div>';
+  return '<div class="rl-label" style="margin-bottom:16px">Избранные экспонаты</div><div class="rl-cards" id="favGrid">'+items.map(function(o){return mini(o,true)}).join('')+'</div>';
 }
 function pane_interests(){
   var u=S.user();
   return '<h2 class="rl-h" style="font-size:28px;margin-bottom:8px">Что вам интересно</h2>'+
-    '<p class="rl-muted" style="margin-bottom:20px">Отметьте темы — консультант будет предлагать релевантные объекты и приглашать на события.</p>'+
+    '<p class="rl-muted" style="margin-bottom:20px">Отметьте темы — консультант будет предлагать релевантные экспонаты и приглашать на события.</p>'+
     '<div class="rl-chips" id="intChips">'+ALL_INTERESTS.map(function(x){var on=u.interests.indexOf(x)>=0;return '<button class="rl-chip'+(on?' on':'')+'" data-i="'+x+'">'+x+'</button>'}).join('')+'</div>';
 }
 function pane_data(){

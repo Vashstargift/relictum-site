@@ -15,17 +15,17 @@
 <link rel="icon" href="../shared/brand/favicon.ico">
 <link rel="apple-touch-icon" href="../shared/brand/apple-touch-icon.png">
 <meta name="theme-color" content="#0A0908">
-<meta name="description" content="Корзина RELICTUM: выбранные объекты, оформление заказа с доставкой и установкой на месте.">
+<meta name="description" content="Корзина RELICTUM: выбранные экспонаты, оформление заказа с доставкой и установкой на месте.">
 <link rel="canonical" href="https://vashikmart.github.io/relictum/02_site_v1_gallery/cart.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RELICTUM">
 <meta property="og:title" content="Корзина — RELICTUM">
-<meta property="og:description" content="Корзина RELICTUM: выбранные объекты, оформление заказа с доставкой и установкой на месте.">
+<meta property="og:description" content="Корзина RELICTUM: выбранные экспонаты, оформление заказа с доставкой и установкой на месте.">
 <meta property="og:image" content="https://vashikmart.github.io/relictum/shared/img/int_ph_triceratops.jpg">
 <meta property="og:url" content="https://vashikmart.github.io/relictum/02_site_v1_gallery/cart.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Корзина — RELICTUM">
-<meta name="twitter:description" content="Корзина RELICTUM: выбранные объекты, оформление заказа с доставкой и установкой на месте.">
+<meta name="twitter:description" content="Корзина RELICTUM: выбранные экспонаты, оформление заказа с доставкой и установкой на месте.">
 <meta name="twitter:image" content="https://vashikmart.github.io/relictum/shared/img/int_ph_triceratops.jpg">
 </head>
 <body>
@@ -64,7 +64,7 @@
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -112,7 +112,7 @@ function render(){
   var items=S.cartItems(), area=document.getElementById('cartArea');
   if(!items.length){
     area.innerHTML='<div class="rl-empty"><div class="rl-label" style="margin-bottom:12px">Пусто</div>'+
-      '<h2 class="rl-h" style="font-size:32px;margin-bottom:14px">В корзине пока нет объектов</h2>'+
+      '<h2 class="rl-h" style="font-size:32px;margin-bottom:14px">В корзине пока нет экспонатов</h2>'+
       '<p class="rl-muted" style="margin-bottom:26px">Начните с каталога или доверьте подбор менеджеру галереи.</p>'+
       '<div class="rl-btn-row">'+
       '<a class="rl-btn" href="catalog.html">Открыть каталог</a>'+
@@ -132,15 +132,15 @@ function render(){
   var total=S.total(), req=S.hasRequestItems();
   area.innerHTML='<div class="rl-grid2"><div>'+rows+'</div>'+
     '<div class="rl-panel"><div class="rl-label" style="margin-bottom:18px">Итог</div>'+
-      '<div class="rl-sum"><span>Объектов</span><span>'+items.length+'</span></div>'+
+      '<div class="rl-sum"><span>Экспонатов</span><span>'+items.length+'</span></div>'+
       '<div class="rl-sum"><span>С указанной ценой</span><span>'+S.fmt(total)+'</span></div>'+
-      (req?'<div class="rl-note">Часть объектов — «цена по запросу». Их стоимость и условия подтвердит ваш персональный консультант после оформления.</div>':'')+
+      (req?'<div class="rl-note">Часть экспонатов — «цена по запросу». Их стоимость и условия подтвердит ваш персональный консультант после оформления.</div>':'')+
       '<div class="rl-sum total"><span>К оформлению</span><span>'+S.fmt(total)+'</span></div>'+
       '<a class="rl-btn" style="margin-top:18px" href="checkout.html">Оформить заказ</a>'+
       '<a class="rl-btn ghost" style="margin-top:10px" href="catalog.html">Продолжить выбор</a>'+
     '</div></div>';
   area.querySelectorAll('.rm').forEach(function(b){
-    b.addEventListener('click',function(){ S.removeFromCart(b.dataset.id); S.toast('Объект убран из корзины'); render(); });
+    b.addEventListener('click',function(){ S.removeFromCart(b.dataset.id); S.toast('Экспонат убран из корзины'); render(); });
   });
 }
 render();

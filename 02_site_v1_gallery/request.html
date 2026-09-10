@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Персональный поиск — RELICTUM</title>
-<meta name="description" content="Не нашли нужный экспонат? Оставьте заявку — дом Relictum найдёт объект под ваш запрос: вид, эпоха, размер, бюджет.">
+<meta name="description" content="Не нашли нужный экспонат? Оставьте заявку — дом Relictum найдёт экспонат под ваш запрос: вид, эпоха, размер, бюджет.">
 <link rel="stylesheet" href="../shared/fonts.css">
 <link rel="stylesheet" href="../shared/buttons.css">
 <link rel="stylesheet" href="style.css">
@@ -20,12 +20,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RELICTUM">
 <meta property="og:title" content="Персональный поиск — RELICTUM">
-<meta property="og:description" content="Не нашли нужный экспонат? Оставьте заявку — дом Relictum найдёт объект под ваш запрос: вид, эпоха, размер, бюджет.">
+<meta property="og:description" content="Не нашли нужный экспонат? Оставьте заявку — дом Relictum найдёт экспонат под ваш запрос: вид, эпоха, размер, бюджет.">
 <meta property="og:image" content="https://vashikmart.github.io/relictum/shared/img/int_ph_triceratops.jpg">
 <meta property="og:url" content="https://vashikmart.github.io/relictum/02_site_v1_gallery/request.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Персональный поиск — RELICTUM">
-<meta name="twitter:description" content="Не нашли нужный экспонат? Оставьте заявку — дом Relictum найдёт объект под ваш запрос: вид, эпоха, размер, бюджет.">
+<meta name="twitter:description" content="Не нашли нужный экспонат? Оставьте заявку — дом Relictum найдёт экспонат под ваш запрос: вид, эпоха, размер, бюджет.">
 <meta name="twitter:image" content="https://vashikmart.github.io/relictum/shared/img/int_ph_triceratops.jpg">
 </head>
 <body>
@@ -49,8 +49,8 @@
 <header class="page-head">
   <div class="wrap">
     <div class="crumbs"><a href="index.html">Главная</a>, Персональный поиск</div>
-    <h1>Не нашли нужный объект?</h1>
-    <p style="color:var(--stone);max-width:560px;margin-top:18px">Каталог — только часть собрания дома. Опишите, что вы ищете, и дом найдёт объект под ваш запрос: по коллекции, по эпохе, под конкретное пространство или повод. Это и есть работа менеджера галереи Relictum.</p>
+    <h1>Не нашли нужный экспонат?</h1>
+    <p style="color:var(--stone);max-width:560px;margin-top:18px">Каталог — только часть собрания дома. Опишите, что вы ищете, и дом найдёт экспонат под ваш запрос: по коллекции, по эпохе, под конкретное пространство или повод. Это и есть работа менеджера галереи Relictum.</p>
   </div>
 </header>
 
@@ -61,7 +61,7 @@
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -109,7 +109,7 @@ function form(){
   var u=S.user();
   return '<form id="rq">'+
     '<div class="rl-field"><label>Что вы ищете</label>'+
-      '<select class="rl-select" name="type"><option>Конкретный вид или объект</option><option>Объект под интерьер / пространство</option><option>Подарок</option><option>Пополнение коллекции</option><option>Монумент (скелет, череп, крупная форма)</option><option>Инвестиционный объект</option></select></div>'+
+      '<select class="rl-select" name="type"><option>Конкретный вид или экспонат</option><option>Экспонат под интерьер / пространство</option><option>Подарок</option><option>Пополнение коллекции</option><option>Монумент (скелет, череп, крупная форма)</option><option>Инвестиционный экспонат</option></select></div>'+
     '<div class="rl-row"><div class="rl-field"><label>Категория</label>'+
       '<select class="rl-select" name="era"><option value="">Не важно</option><option>Древности — палеонтология</option><option>Минералы</option><option>Метеориты</option><option>Мамонтовая фауна</option><option>Динозавры</option><option>Монументы</option></select></div>'+
       '<div class="rl-field"><label>Бюджет</label>'+
@@ -127,7 +127,7 @@ function success(){
   area.innerHTML='<div class="rl-success"><div class="ok">✓</div>'+
     '<div class="rl-label" style="margin-bottom:12px">Заявка принята</div>'+
     '<h2 class="rl-h" style="font-size:32px;margin-bottom:14px">Мы начали поиск</h2>'+
-    '<p class="rl-muted" style="margin-bottom:28px">Персональный консультант дома изучит запрос и вернётся с вариантами — включая объекты, которых нет в открытом каталоге. Обычно это занимает от одного дня до недели в зависимости от редкости.</p>'+
+    '<p class="rl-muted" style="margin-bottom:28px">Персональный консультант дома изучит запрос и вернётся с вариантами — включая экспонаты, которых нет в открытом каталоге. Обычно это занимает от одного дня до недели в зависимости от редкости.</p>'+
     '<a class="rl-btn" style="width:auto;display:inline-block" href="catalog.html">Пока посмотреть каталог</a></div>';
   window.scrollTo(0,0);
 }
@@ -139,7 +139,7 @@ document.getElementById('rq').addEventListener('submit',function(e){
   var u=S.user(),fd=new FormData(f); if(fd.get('name'))u.name=fd.get('name');
   var ph=fd.get('phone')||'', em=fd.get('email')||''; if(ph)u.phone=ph; if(em)u.email=em; S.saveUser(u);
   var c=ph+(em?(', '+em):'');
-  S.addLead({date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),contact:c}); S.send('запрос объекта', {date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),phone:ph,email:em,contact:c,consent:!!(f&&f.querySelector&&f.querySelector('[name=consent]')&&f.querySelector('[name=consent]').checked)});
+  S.addLead({date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),contact:c}); S.send('запрос экспоната', {date:new Date().toLocaleString('ru-RU'),type:fd.get('type'),era:fd.get('era'),budget:fd.get('budget'),desc:fd.get('desc'),name:fd.get('name'),phone:ph,email:em,contact:c,consent:!!(f&&f.querySelector&&f.querySelector('[name=consent]')&&f.querySelector('[name=consent]').checked)});
   setTimeout(success,1100);
 });
 </script>

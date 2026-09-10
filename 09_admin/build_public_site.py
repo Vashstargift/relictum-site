@@ -567,7 +567,7 @@ def write_collections(stamp):
     items, promo = arranged_items()
     made, tiles, used_imgs = [], [], set()
 
-    def render(slug, c, cards, count, og_image, related, jsonld, hero_img, split_img, grid_title, wide=False):
+    def render(slug, c, cards, count, og_image, related, jsonld, hero_img, split_img, grid_title, wide=False, sub=''):
         t = tpl
         intro = list(c['intro']) + ['', '']
         for k, v in {'{{TITLE}}': esc_html(c['title']), '{{DESC}}': esc_html(c['description']), '{{URL}}': DOMAIN + '/' + slug + '.html',
@@ -577,7 +577,8 @@ def write_collections(stamp):
                      '{{RELATED}}': related, '{{JSONLD}}': jsonld, '{{GRID_TITLE}}': esc_html(grid_title),
                      '{{HERO_IMG}}': hero_img + '?v=' + media_stamp(), '{{HERO_ALT}}': esc_html(c['h1']),
                      '{{SPLIT_IMG}}': split_img + '?v=' + media_stamp(), '{{SPLIT_ALT}}': esc_html(c['kicker']),
-                     '{{GRID_CLASS}}': ' lp-wide' if wide else ''}.items():
+                     '{{GRID_CLASS}}': ' lp-wide' if wide else '',
+                     '{{SUB}}': sub}.items():
             t = t.replace(k, v)
         if not related:   # на хабе все подборки уже плитками — «Смотрите также» лишний
             t = re.sub(r'\s*<div class="label reveal" style="margin-top:40px">Смотрите также</div>\s*<ul class="lp-chips reveal"></ul>', '', t, count=1)
@@ -616,7 +617,8 @@ def write_collections(stamp):
         hero_img = 'shared/img/' + hero
         split_img = 'shared/img/' + split
         grid_title = {'gift': 'Что подарить', 'interior': 'Предметы для пространства', 'category': 'Лоты в наличии и под заказ'}[group]
-        render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url)), hero_img, split_img, grid_title, wide=(group == 'interior'))
+        render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url)), hero_img, split_img, grid_title, wide=(group == 'interior'),
+               sub=f'Экспонатов: {len(sel)}. У каждого есть паспорт происхождения, и все они доступны к просмотру в галерее.')
         tiles.append((slug, group, c, sel[0], len(sel), hero_img))   # плитка хаба — интерьерный кадр (3:2), не канон
 
     # хаб «Подарки и интерьер»
@@ -629,7 +631,7 @@ def write_collections(stamp):
                       '<div class="meta">' + esc_html(c['description']) + '</div><div class="price"><b>Объектов: ' + str(cnt) + '</b><span>Смотреть</span></div></div></a>')
         url = DOMAIN + '/podarki.html'
         page_ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': hub['h1'], 'url': url, 'description': hub['description'], 'isPartOf': {'@id': DOMAIN + '/#site'}}
-        render('podarki', hub, cards, len(tiles), DOMAIN + '/shared/img/int_hero_salon.jpg', '', ld(page_ld), 'shared/img/int_hero_salon.jpg', 'shared/img/grand_atrium_skeleton.jpg', 'Подборки по поводу и пространству', wide=True)
+        render('podarki', hub, cards, len(tiles), DOMAIN + '/shared/img/int_hero_salon.jpg', '', ld(page_ld), 'shared/img/int_hero_salon.jpg', 'shared/img/grand_atrium_skeleton.jpg', 'Подборки по поводу и пространству', wide=True, sub=f'Подборок: {len(tiles)}. Экспонаты каждой из них доступны к просмотру в галерее.')
     print(f'  посадочных: {len(made)}')
     return made
 

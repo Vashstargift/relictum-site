@@ -15,17 +15,17 @@
 <link rel="icon" href="../shared/brand/favicon.ico">
 <link rel="apple-touch-icon" href="../shared/brand/apple-touch-icon.png">
 <meta name="theme-color" content="#0A0908">
-<meta name="description" content="Оформление заказа RELICTUM: контактные данные и доставка. Резервирование объекта и подтверждение консультантом.">
+<meta name="description" content="Оформление заказа RELICTUM: контактные данные и доставка. Резервирование экспоната и подтверждение консультантом.">
 <link rel="canonical" href="https://vashikmart.github.io/relictum/02_site_v1_gallery/checkout.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RELICTUM">
 <meta property="og:title" content="Оформление заказа — RELICTUM">
-<meta property="og:description" content="Оформление заказа RELICTUM: контактные данные и доставка. Резервирование объекта и подтверждение консультантом.">
+<meta property="og:description" content="Оформление заказа RELICTUM: контактные данные и доставка. Резервирование экспоната и подтверждение консультантом.">
 <meta property="og:image" content="https://vashikmart.github.io/relictum/shared/img/int_ph_triceratops.jpg">
 <meta property="og:url" content="https://vashikmart.github.io/relictum/02_site_v1_gallery/checkout.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Оформление заказа — RELICTUM">
-<meta name="twitter:description" content="Оформление заказа RELICTUM: контактные данные и доставка. Резервирование объекта и подтверждение консультантом.">
+<meta name="twitter:description" content="Оформление заказа RELICTUM: контактные данные и доставка. Резервирование экспоната и подтверждение консультантом.">
 <meta name="twitter:image" content="https://vashikmart.github.io/relictum/shared/img/int_ph_triceratops.jpg">
 </head>
 <body>
@@ -60,7 +60,7 @@
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -112,7 +112,7 @@ function summary(){
   }).join('');
   return '<div class="rl-panel"><div class="rl-label" style="margin-bottom:16px">Ваш заказ</div>'+rows+
     '<div class="rl-sum total"><span>Итог</span><span>'+S.fmt(S.total())+'</span></div>'+
-    (S.hasRequestItems()?'<div class="rl-note">Часть объектов — по запросу: финальную сумму подтвердит консультант. Карта не будет списана до подтверждения.</div>':'')+
+    (S.hasRequestItems()?'<div class="rl-note">Часть экспонатов — по запросу: финальную сумму подтвердит консультант. Карта не будет списана до подтверждения.</div>':'')+
     '<div class="rl-note">Доставка и установка на месте — включены.</div></div>';
 }
 
@@ -128,7 +128,7 @@ function form(){
        а надпись обещала защищённый шлюз, которого не существует. Оставляем
        честный порядок — заявка, дальше связывается менеджер. */
     '<div class="rl-label" style="margin:28px 0 16px">Как проходит оформление</div>'+
-    '<div class="rl-note">С вами свяжется персональный менеджер дома: подтвердит наличие и итоговую сумму, согласует доставку и удобный способ оплаты. Объекты резервируются за вами на время согласования.</div>'+
+    '<div class="rl-note">С вами свяжется персональный менеджер дома: подтвердит наличие и итоговую сумму, согласует доставку и удобный способ оплаты. Экспонаты резервируются за вами на время согласования.</div>'+
     '<div class="rl-field"><label>Комментарий к заказу (по желанию)</label><input class="rl-input" name="note" placeholder="Сроки, пожелания по доставке и оформлению"></div>'+
     '<label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:#7A7267;line-height:1.45;margin:8px 0"><input type="checkbox" name="consent" required style="margin-top:2px"><span>Я предоставляю своё <a href="consent.html" target="_blank" style="color:inherit;text-decoration:underline">согласие на обработку персональных данных</a> в соответствии с <a href="privacy.html" target="_blank" style="color:inherit;text-decoration:underline">политикой конфиденциальности</a> и принимаю условия <a href="oferta.html" target="_blank" style="color:inherit;text-decoration:underline">договора-оферты</a></span></label><button class="rl-btn" type="submit" id="pay" style="margin-top:8px">Отправить заявку</button>'+
     '</div>'+summary()+'</div></form>';
@@ -145,7 +145,7 @@ function bind(){
     var u=S.user(); var fd=new FormData(f);
     u.name=(fd.get('fname')+' '+fd.get('lname')).trim(); u.email=fd.get('email'); u.phone=fd.get('phone'); S.saveUser(u);
     var orderItems=S.cartItems().map(function(o){return o.name}); var orderTotal=S.total();
-    /* Для письма — полные карточки: имя, цена, ссылка на объект и фото.
+    /* Для письма — полные карточки: имя, цена, ссылка на экспонат и фото.
        Ссылку берём из href каталога: у части экспонатов свои страницы. */
     var orderRich=S.cartItems().map(function(o){
       var page=String(o.href||'').replace('../16_product_promos/','');
@@ -160,7 +160,7 @@ function bind(){
     // дублируем письмом: сетевой отправки у сайта пока нет
     var body='Имя: '+u.name+'\nE-mail: '+u.email+'\nТелефон: '+u.phone+
              '\nАдрес: '+(fd.get('addr')||'')+'\nКомментарий: '+(fd.get('note')||'—')+
-             '\n\nОбъекты:\n'+orderItems.join('\n')+'\nИтог: '+S.fmt(orderTotal);
+             '\n\nЭкспонаты:\n'+orderItems.join('\n')+'\nИтог: '+S.fmt(orderTotal);
     setTimeout(function(){
       success(ids.length, body);
     }, 400);
@@ -170,8 +170,8 @@ function bind(){
 function success(n, body){
   area.innerHTML='<div class="rl-success"><div class="ok">✓</div>'+
     '<div class="rl-label" style="margin-bottom:12px">Заявка принята</div>'+
-    '<h2 class="rl-h" style="font-size:34px;margin-bottom:14px">Спасибо. Объект зарезервирован.</h2>'+
-    '<p class="rl-muted" style="margin-bottom:10px">'+n+' объект'+(n>1?'а':'')+' отложено за вами. Наш менеджер свяжется с вами в течение 15 минут после обращения: подтвердит наличие и итоговую сумму, согласует доставку и удобный способ оплаты.</p>'+
+    '<h2 class="rl-h" style="font-size:34px;margin-bottom:14px">Спасибо. Экспонат зарезервирован.</h2>'+
+    '<p class="rl-muted" style="margin-bottom:10px">'+n+' экспонат'+(n>1?'а':'')+' отложено за вами. Наш менеджер свяжется с вами в течение 15 минут после обращения: подтвердит наличие и итоговую сумму, согласует доставку и удобный способ оплаты.</p>'+
     '<p class="rl-muted" style="margin-bottom:24px">Оплата на сайте не проводится — все расчёты идут напрямую с домом.</p>'+
     '<a class="rl-btn" style="width:auto;display:inline-block" href="mailto:info@stargift.ru?subject='+
       encodeURIComponent('Заказ в Relictum')+'&body='+encodeURIComponent(body||'')+'">Продублировать письмом</a> '+

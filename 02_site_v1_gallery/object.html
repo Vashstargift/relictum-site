@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Объект — RELICTUM</title>
+<title>Экспонат — RELICTUM</title>
 <link rel="stylesheet" href="../shared/fonts.css">
 <link rel="stylesheet" href="../shared/buttons.css">
 <link rel="stylesheet" href="style.css">
@@ -17,17 +17,17 @@
 <link rel="icon" href="../shared/brand/favicon.ico">
 <link rel="apple-touch-icon" href="../shared/brand/apple-touch-icon.png">
 <meta name="theme-color" content="#0A0908">
-<meta name="description" content="Экспонат RELICTUM с паспортом провенанса: возраст, происхождение, размер и история объекта. Доставка и установка домом.">
+<meta name="description" content="Экспонат RELICTUM с паспортом провенанса: возраст, происхождение, размер и история экспоната. Доставка и установка домом.">
 <link rel="canonical" href="https://vashikmart.github.io/relictum/02_site_v1_gallery/object.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RELICTUM">
-<meta property="og:title" content="Объект — RELICTUM">
-<meta property="og:description" content="Экспонат RELICTUM с паспортом провенанса: возраст, происхождение, размер и история объекта. Доставка и установка домом.">
+<meta property="og:title" content="Экспонат — RELICTUM">
+<meta property="og:description" content="Экспонат RELICTUM с паспортом провенанса: возраст, происхождение, размер и история экспоната. Доставка и установка домом.">
 <meta property="og:image" content="https://vashikmart.github.io/relictum/shared/img/int_ph_triceratops.jpg">
 <meta property="og:url" content="https://vashikmart.github.io/relictum/02_site_v1_gallery/object.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Объект — RELICTUM">
-<meta name="twitter:description" content="Экспонат RELICTUM с паспортом провенанса: возраст, происхождение, размер и история объекта. Доставка и установка домом.">
+<meta name="twitter:title" content="Экспонат — RELICTUM">
+<meta name="twitter:description" content="Экспонат RELICTUM с паспортом провенанса: возраст, происхождение, размер и история экспоната. Доставка и установка домом.">
 <meta name="twitter:image" content="https://vashikmart.github.io/relictum/shared/img/int_ph_triceratops.jpg">
 </head>
 <body>
@@ -85,8 +85,8 @@
       </div>
 
       <div class="prov-card" id="provenance">
-        <div class="label">Паспорт объекта Relictum</div>
-        <p>Каждый объект дома получает нумерованный паспорт: происхождение, возраст, экспертные заключения, историю владения и QR-код цифрового досье. Для объектов старше миллиона лет — это единственная биография, написанная человеком.</p>
+        <div class="label">Паспорт экспоната Relictum</div>
+        <p>Каждый экспонат дома получает нумерованный паспорт: происхождение, возраст, экспертные заключения, историю владения и QR-код цифрового досье. Для экспонатов старше миллиона лет — это единственная биография, написанная человеком.</p>
       </div>
     </div>
   </div>
@@ -97,7 +97,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="label">Сопутствующие объекты</div>
+        <div class="label">Сопутствующие экспонаты</div>
         <h2 id="relTitle">Из коллекции дома</h2>
       </div>
       <a class="link-arrow" href="catalog.html" id="relAll">Весь каталог</a>
@@ -111,7 +111,7 @@
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -190,13 +190,13 @@
   function row(k,v){ if(v) rows.push('<tr><td>'+k+'</td><td>'+v+'</td></tr>'); }
   row('Категория', o.category);
   row('Эра', o.era && o.era!=='До зарождения жизни' ? o.era : null);
-  // период показываем, только если он уточнён: у части объектов датировка охватывает всю эру
+  // период показываем, только если он уточнён: у части экспонатов датировка охватывает всю эру
   row('Период', o.period && o.period!=='—' && o.period!==o.era ? o.period : null);
   row('Возраст', o.age);
   row('Происхождение', o.location);
   row('Дата находки', o.found);
   row('Размер', o.size);
-  row('Документы','Паспорт объекта, сертификат, экспертиза');
+  row('Документы','Паспорт экспоната, сертификат, экспертиза');
   document.getElementById('oSpec').innerHTML = rows.join('');
 
   var rel = C.filter(function(x){return x.world===o.world && x.id!==o.id});
