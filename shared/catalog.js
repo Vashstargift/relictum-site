@@ -2853,7 +2853,7 @@ window.RELICTUM_CATALOG = [
         "name": "Череп Halisaurus",
         "meta": "Марокко, ≈ 72–66 млн лет",
         "price": "3 500 000 ₽",
-        "img": "ph_mosasaurus_skull_260910112314",
+        "img": "ph_mosasaurus_skull_260910115704",
         "priceValue": 3500000,
         "slug": "0619-mosasaurus-skull",
         "age": "≈ 72–66 млн лет",
