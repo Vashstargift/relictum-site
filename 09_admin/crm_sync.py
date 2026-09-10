@@ -18,9 +18,14 @@ API = 'https://stargift.ru/api/'
 SSH = ['ssh', '-i', os.path.expanduser('~/.ssh/id_ed25519'), 'stargift@stargift.beget.tech']
 
 def bot_key():
+    """Ключ бота: сначала связка ключей macOS (relictum-bot-key), иначе — с сервера по ssh и в связку.
+    SSH к Beget бывает недоступен (10.09.2026 лежал 20 минут) — кэш спасает публикацию."""
+    kc = subprocess.run(['security', 'find-generic-password', '-s', 'relictum-bot-key', '-w'], capture_output=True, text=True)
+    if kc.returncode == 0 and kc.stdout.strip(): return kc.stdout.strip()
     out = subprocess.run(SSH + ["grep -E '^(DOC_BOT_KEY|CRM_BOT_KEY)=' ~/stargift.ru/.env | head -1 | cut -d= -f2-"],
                          capture_output=True, text=True, check=True).stdout.strip().strip('"\'')
     if not out: sys.exit('бот-ключ не найден в ~/stargift.ru/.env')
+    subprocess.run(['security', 'add-generic-password', '-U', '-a', 'docbrown', '-s', 'relictum-bot-key', '-w', out], capture_output=True)
     return out
 
 def call(endpoint, method='GET', data=None, key=None):

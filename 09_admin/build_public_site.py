@@ -17,6 +17,7 @@
 Запуск:  python3 09_admin/build_public_site.py
 Выход:   public/  (в .gitignore, деплоится rsync-ом)
 """
+import html, json, sys
 import os, re, shutil, subprocess, sys
 from datetime import date
 
@@ -151,69 +152,56 @@ def fix_meta(text, rel_path):
 # ---------------------------------------------------------------------------
 
 def object_pages():
-    """{slug.html: (R–ID, title, description, og_image)} — каталог целиком, promo-seo поверх.
+    """Визитки лотов — данные из единой точки: relictum-sync.php?format=pages (CRM StarGift,
+    таблица relictum_items). Та же функция кормит узел публикации, поэтому визитка после
+    сборки среза и после «Сохранить» в CRM одинаковая: title/description из auto-SEO,
+    статичный HTML для роботов, JSON-LD Product, noindex для скрытых лотов."""
+    if 'pages' not in _PAGES_CACHE:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import crm_sync
+        _PAGES_CACHE['pages'] = crm_sync.call('relictum-sync.php?format=pages')['pages']
+    return _PAGES_CACHE['pages']
 
-    Раньше визитки строились только для лотов с полем seo и старым href вида
-    <slug>.html — после перехода каталога на exhibit.html?id= функция молча
-    отдавала пустой словарь. Теперь визитка есть у каждого лота каталога:
-    заголовок/описание берутся из promo-data.seo, а без него — из имени и
-    описания в catalog.js. Фото — главное фото лота (img)."""
-    promo = open(os.path.join(ROOT, '16_product_promos', 'promo-data.js'), encoding='utf-8').read()
-    catalog = open(os.path.join(ROOT, 'shared', 'catalog.js'), encoding='utf-8').read()
 
-    seo = {}
-    for m in re.finditer(r'"(R–\d+)"\s*:\s*\{(.*?)\n  \}', promo, re.S):
-        rid, body = m.group(1), m.group(2)
-        s = re.search(r'seo:\s*\{\s*title:\s*"((?:[^"\\]|\\.)*)"\s*,\s*description:\s*"((?:[^"\\]|\\.)*)"\s*\}', body)
-        if s:
-            seo[rid] = (s.group(1), s.group(2))
+_PAGES_CACHE = {}
 
-    pages = {}
-    for m in re.finditer(r'"id":\s*"(R–\d+)"(.*?)(?=\n\s*\{|\Z)', catalog, re.S):
-        rid, body = m.group(1), m.group(2)
-        slug = re.search(r'"slug":\s*"([^"]*)"', body)
-        img = re.search(r'"img":\s*"([^"]*)"', body)
-        name = re.search(r'"name":\s*"([^"]*)"', body)
-        desc = re.search(r'"description":\s*"((?:[^"\\]|\\.)*)"', body)
-        if not slug or not img:
-            continue
-        title, d = seo.get(rid, (None, None))
-        if not title:
-            title = (name.group(1) if name else rid) + ' — RELICTUM'
-        if not d:
-            d = re.sub(r'<[^>]+>', ' ', desc.group(1)).strip() if desc else 'Галерея редких объектов из глубины времени.'
-        pages[slug.group(1) + '.html'] = (rid, title, d, img.group(1))
-    return pages
+
+def render_object_page(t, pg):
+    """Подстановка данных визитки в шаблон exhibit.html — зеркало node_render_page() в NODE_PHP."""
+    def esc(v):
+        return html.escape(str(v), quote=True)
+    title, desc, img, url = esc(pg['title']), esc(pg['description']), esc(pg['image']), esc(pg['url'])
+
+    def one(pattern, value):
+        nonlocal t
+        t = re.sub(pattern, lambda m: m.group(1) + value + m.group(2), t, count=1)
+
+    t = re.sub(r'<title>.*?</title>', '<title>' + title + '</title>', t, count=1, flags=re.S)
+    one(r'(<meta name="description" content=")[^"]*(")', desc)
+    one(r'(<meta property="og:title" content=")[^"]*(")', title)
+    one(r'(<meta property="og:description" content=")[^"]*(")', desc)
+    one(r'(<meta property="og:type" content=")[^"]*(")', 'product')
+    one(r'(<meta property="og:image" content=")[^"]*(")', img)
+    one(r'(<meta property="og:url" content=")[^"]*(")', url)
+    one(r'(<link rel="canonical" href=")[^"]*(")', url)
+    one(r'(<meta name="twitter:title" content=")[^"]*(")', title)
+    one(r'(<meta name="twitter:description" content=")[^"]*(")', desc)
+    one(r'(<meta name="twitter:image" content=")[^"]*(")', img)
+    head = '<script>window.RL_FORCE_ID=' + json.dumps(pg['id'], ensure_ascii=False) + ';</script>\n' + pg.get('jsonld', '') + '\n'
+    if pg.get('noindex'):
+        head += '<meta name="robots" content="noindex,nofollow">\n'
+    t = t.replace('</head>', head + '</head>', 1)
+    t = re.sub(r'<main id="app">.*?</main>', lambda m: '<main id="app">' + pg.get('ssr', '') + '</main>', t, count=1, flags=re.S)
+    return t
 
 
 def write_object_pages(template_text, out_dir, stamp):
+    """Пишет objects/<slug>.html; возвращает только индексируемые (для sitemap)."""
     made = []
-    for slug, (rid, title, desc, img) in sorted(object_pages().items()):
-        rel = 'objects/' + slug
-        url = DOMAIN + '/' + rel
-        t = template_text
-
-        def one(pattern, value):
-            nonlocal t
-            t = re.sub(pattern, lambda m: m.group(1) + value + m.group(2), t, count=1)
-
-        t = re.sub(r'<title>.*?</title>', '<title>' + title + '</title>', t, count=1, flags=re.S)
-        one(r'(<meta name="description" content=")[^"]*(")', desc)
-        one(r'(<meta property="og:title" content=")[^"]*(")', title)
-        one(r'(<meta property="og:description" content=")[^"]*(")', desc)
-        one(r'(<meta property="og:type" content=")[^"]*(")', 'product')
-        one(r'(<meta property="og:image" content=")[^"]*(")', DOMAIN + '/shared/img/' + img + '.jpg')
-        one(r'(<meta property="og:url" content=")[^"]*(")', url)
-        one(r'(<link rel="canonical" href=")[^"]*(")', url)
-        one(r'(<meta name="twitter:title" content=")[^"]*(")', title)
-        one(r'(<meta name="twitter:description" content=")[^"]*(")', desc)
-        one(r'(<meta name="twitter:image" content=")[^"]*(")', DOMAIN + '/shared/img/' + img + '.jpg')
-
-        # шаблон берёт объект из ?id=, странице-визитке он задан жёстко
-        t = t.replace('</head>', '<script>window.RL_FORCE_ID="' + rid + '";</script>\n</head>', 1)
-
-        open(os.path.join(out_dir, slug), 'w', encoding='utf-8').write(t)
-        made.append(rel)
+    for pg in sorted(object_pages(), key=lambda x: x['slug']):
+        open(os.path.join(out_dir, pg['slug'] + '.html'), 'w', encoding='utf-8').write(render_object_page(template_text, pg))
+        if not pg.get('noindex'):
+            made.append('objects/' + pg['slug'] + '.html')
     return made
 
 
@@ -239,6 +227,12 @@ def build():
                 text = stamp_scripts(text, stamp)
                 pages.append(rel.replace(os.sep, '/'))
             open(os.path.join(d, f), 'w', encoding='utf-8').write(text)
+
+    # /eras/ без файла отдавал 403 — индекс папки ведёт на хаб эпох
+    open(os.path.join(OUT, 'eras', 'index.html'), 'w', encoding='utf-8').write(
+        '<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Эпохи — RELICTUM</title>'
+        '<link rel="canonical" href="' + DOMAIN + '/eras/eras.html"><meta http-equiv="refresh" content="0; url=/eras/eras.html">'
+        '</head><body><a href="/eras/eras.html">Эпохи RELICTUM</a></body></html>\n')
 
     # страницы-визитки экспонатов собираются из exhibit.html (см. object_pages)
     tpl_path = os.path.join(OUT, 'objects', 'exhibit.html')
@@ -557,6 +551,22 @@ def write_extras(pages):
     open(os.path.join(OUT, 'sitemap.xml'), 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + '\n</urlset>\n')
+
+    # llms.txt — карта сайта для нейропоиска: кто мы, разделы, лоты с описаниями
+    lots = [pg for pg in object_pages() if not pg.get('noindex')]
+    llms = ['# RELICTUM', '',
+            '> RELICTUM — московский дом редких природных артефактов: скелеты и черепа динозавров, метеориты, '
+            'аммониты, минералы, мамонтовая фауна. Каждый объект с паспортом происхождения. Галерея в ТЦ «Гименей», '
+            'Москва, ул. Большая Якиманка, 22, ежедневно 10:00–22:00, +7 495 233 5111.', '',
+            '## Разделы', f'- [Каталог]({DOMAIN}/catalog.html): все объекты с ценами и паспортами',
+            f'- [Эпохи]({DOMAIN}/eras/eras.html): страницы геологических периодов',
+            f'- [Интерьеры]({DOMAIN}/interiors.html): размещение объектов в доме и офисе',
+            f'- [Журнал]({DOMAIN}/journal.html): статьи о палеонтологии и метеоритах',
+            f'- [Пресса]({DOMAIN}/press.html): публикации о доме',
+            f'- [Галерея]({DOMAIN}/maison.html): адрес и часы работы', '',
+            '## Объекты коллекции']
+    llms += [f'- [{pg["title"].replace(" — RELICTUM", "")}]({pg["url"]}): {pg["description"]}' for pg in lots]
+    open(os.path.join(OUT, 'llms.txt'), 'w', encoding='utf-8').write('\n'.join(llms) + '\n')
 
     open(os.path.join(OUT, 'robots.txt'), 'w', encoding='utf-8').write(
         'User-agent: *\n'
@@ -919,6 +929,27 @@ if ($action === 'ping') {
     node_out(array('ok' => true, 'writable' => is_writable($root . '/shared') && is_writable($root . '/objects'),
                    'php' => PHP_VERSION, 'user' => get_current_user()));
 }
+function node_meta($t, $pattern, $value) { return preg_replace($pattern, '${1}' . str_replace(array('\\', '$'), array('\\\\', '\$'), $value) . '${2}', $t, 1); }
+function node_render_page($t, $pg) {
+    $h = function ($v) { return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); };
+    $title = $h($pg['title']); $desc = $h($pg['description']); $img = $h($pg['image']); $url = $h($pg['url']);
+    $t = preg_replace('/<title>.*?<\/title>/s', '<title>' . $title . '</title>', $t, 1);
+    $t = node_meta($t, '/(<meta name="description" content=")[^"]*(")/', $desc);
+    $t = node_meta($t, '/(<meta property="og:title" content=")[^"]*(")/', $title);
+    $t = node_meta($t, '/(<meta property="og:description" content=")[^"]*(")/', $desc);
+    $t = node_meta($t, '/(<meta property="og:type" content=")[^"]*(")/', 'product');
+    $t = node_meta($t, '/(<meta property="og:image" content=")[^"]*(")/', $img);
+    $t = node_meta($t, '/(<meta property="og:url" content=")[^"]*(")/', $url);
+    $t = node_meta($t, '/(<link rel="canonical" href=")[^"]*(")/', $url);
+    $t = node_meta($t, '/(<meta name="twitter:title" content=")[^"]*(")/', $title);
+    $t = node_meta($t, '/(<meta name="twitter:description" content=")[^"]*(")/', $desc);
+    $t = node_meta($t, '/(<meta name="twitter:image" content=")[^"]*(")/', $img);
+    $head = '<script>window.RL_FORCE_ID=' . json_encode((string)$pg['id']) . ';</script>' . "\n" . (isset($pg['jsonld']) ? $pg['jsonld'] . "\n" : '')
+          . (!empty($pg['noindex']) ? '<meta name="robots" content="noindex,nofollow">' . "\n" : '');
+    $t = str_replace('</head>', $head . '</head>', $t);
+    if (isset($pg['ssr'])) $t = preg_replace('/<main id="app">.*?<\/main>/s', '<main id="app">' . str_replace(array('\\', '$'), array('\\\\', '\$'), $pg['ssr']) . '</main>', $t, 1);
+    return $t;
+}
 if ($action === 'write_data') {
     $catalog = isset($body['catalog_js']) ? $body['catalog_js'] : ''; $promo = isset($body['promo_js']) ? $body['promo_js'] : '';
     if (strpos($catalog, 'window.RELICTUM_CATALOG') === false || strpos($promo, 'window.RELICTUM_PROMO') === false) node_out(array('error' => 'bad_payload'), 400);
@@ -929,6 +960,29 @@ if ($action === 'write_data') {
     $extra = count($baks) - 5;
     if ($extra > 0) foreach (array_slice($baks, 0, $extra) as $b) { @unlink($b); @unlink(str_replace('catalog-', 'promo-data-', $b)); }
     node_atomic($root . '/shared/catalog.js', $catalog); node_atomic($root . '/objects/promo-data.js', $promo);
+    /* визитки лотов /objects/<slug>.html — из шаблона exhibit.html и данных, которые прислала CRM
+       (title, description, og-картинка, статичный HTML для роботов, JSON-LD, noindex для скрытых) */
+    $pagesWritten = 0;
+    if (!empty($body['pages']) && is_array($body['pages'])) {
+        $tpl = @file_get_contents($root . '/objects/exhibit.html');
+        if ($tpl) {
+            $visible = array();
+            foreach ($body['pages'] as $pg) {
+                $slug = isset($pg['slug']) ? (string)$pg['slug'] : '';
+                if (!preg_match('/^[a-z0-9-]+$/', $slug)) continue;
+                node_atomic($root . '/objects/' . $slug . '.html', node_render_page($tpl, $pg)); $pagesWritten++;
+                if (empty($pg['noindex'])) $visible[] = 'https://relictum.gallery/objects/' . $slug . '.html';
+            }
+            $sm = @file_get_contents($root . '/sitemap.xml');
+            if ($sm && preg_match_all('/<url>.*?<\/url>/s', $sm, $mm)) {
+                $keep = array();
+                foreach ($mm[0] as $u) if (strpos($u, '/objects/') === false) $keep[] = '  ' . trim($u);
+                $today = date('Y-m-d');
+                foreach ($visible as $u) $keep[] = '  <url><loc>' . $u . '</loc><lastmod>' . $today . '</lastmod><priority>0.7</priority></url>';
+                node_atomic($root . '/sitemap.xml', "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n" . implode("\n", $keep) . "\n</urlset>\n");
+            }
+        }
+    }
     $ch = substr(md5($catalog), 0, 8); $ph = substr(md5($promo), 0, 8); $updated = 0;
     $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root, FilesystemIterator::SKIP_DOTS));
     foreach ($it as $f) {
@@ -938,7 +992,7 @@ if ($action === 'write_data') {
         $n = preg_replace(array('/catalog\.js\?v=[a-f0-9]{8}/', '/promo-data\.js\?v=[a-f0-9]{8}/'), array('catalog.js?v=' . $ch, 'promo-data.js?v=' . $ph), $t, -1, $cnt);
         if ($cnt > 0 && $n !== $t) { node_atomic($p, $n); $updated++; }
     }
-    node_out(array('ok' => true, 'catalog_hash' => $ch, 'promo_hash' => $ph, 'html_updated' => $updated));
+    node_out(array('ok' => true, 'catalog_hash' => $ch, 'promo_hash' => $ph, 'html_updated' => $updated, 'pages_written' => $pagesWritten));
 }
 if ($action === 'write_image') {
     $name = basename(isset($body['name']) ? (string)$body['name'] : '');
