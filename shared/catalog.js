@@ -3028,7 +3028,7 @@ window.RELICTUM_CATALOG = [
         "name": "Сфера из зуба мамонта",
         "meta": "≈ 10–40 тыс лет",
         "price": "100 000 ₽",
-        "img": "ph_mammoth_sphere_a",
+        "img": "ph_mammoth_sphere_large_260910155158",
         "priceValue": 100000,
         "slug": "0631-mammoth-sphere-large",
         "age": "≈ 10–40 тыс лет",

@@ -5354,7 +5354,7 @@ window.RELICTUM_PROMO = {
         "gallery": [
             "int_ph_mammoth_sphere_a.jpg",
             "g_mammoth_sphere_a_1.jpg",
-            "ph_mammoth_sphere_a.jpg"
+            "ph_mammoth_sphere_large_260910155158.jpg"
         ]
     },
     "R–0632": {
