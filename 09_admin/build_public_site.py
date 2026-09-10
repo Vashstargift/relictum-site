@@ -565,7 +565,7 @@ def write_collections(stamp):
     tpl = open(os.path.join(ROOT, '02_site_v1_gallery', '_collection.tpl.html'), encoding='utf-8').read()
     tpl = stamp_scripts(rewrite_links(tpl, ''), stamp)
     items, promo = arranged_items()
-    made, tiles = [], []
+    made, tiles, used_imgs = [], [], set()
 
     def render(slug, c, cards, count, og_image, related, jsonld, hero_img, split_img, grid_title, wide=False):
         t = tpl
@@ -579,6 +579,8 @@ def write_collections(stamp):
                      '{{SPLIT_IMG}}': split_img + '?v=' + media_stamp(), '{{SPLIT_ALT}}': esc_html(c['kicker']),
                      '{{GRID_CLASS}}': ' lp-wide' if wide else ''}.items():
             t = t.replace(k, v)
+        if not related:   # на хабе все подборки уже плитками — «Смотрите также» лишний
+            t = re.sub(r'\s*<div class="label reveal" style="margin-top:40px">Смотрите также</div>\s*<ul class="lp-chips reveal"></ul>', '', t, count=1)
         open(os.path.join(OUT, slug + '.html'), 'w', encoding='utf-8').write(t)
         made.append(slug + '.html')
 
@@ -606,8 +608,13 @@ def write_collections(stamp):
                        {'@type': 'ListItem', 'position': n + 1, 'url': DOMAIN + '/objects/' + o['slug'] + '.html', 'name': o['name'],
                         'image': DOMAIN + '/shared/img/' + o['img'] + '.jpg'} for n, o in enumerate(sel)]}}
         ints = [promo[o['id']]['interior']['img'] for o in sel if (promo.get(o['id']) or {}).get('interior', {}).get('img')]
-        hero_img = 'shared/img/' + (ints[0] if ints else 'int_hero_salon.jpg')
-        split_img = 'shared/img/' + (ints[1] if len(ints) > 1 else 'grand_atrium_skeleton.jpg')
+        # кадры хиро и сервисного блока — без повторов между подборками (иначе на хабе одна и та же плитка)
+        fresh = [i for i in ints if i not in used_imgs] or ints
+        hero = fresh[0] if fresh else 'int_hero_salon.jpg'; used_imgs.add(hero)
+        rest = [i for i in ints if i not in used_imgs] or [i for i in ints if i != hero]
+        split = rest[0] if rest else 'grand_atrium_skeleton.jpg'; used_imgs.add(split)
+        hero_img = 'shared/img/' + hero
+        split_img = 'shared/img/' + split
         grid_title = {'gift': 'Что подарить', 'interior': 'Предметы для пространства', 'category': 'Лоты в наличии и под заказ'}[group]
         render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url)), hero_img, split_img, grid_title, wide=(group == 'interior'))
         tiles.append((slug, group, c, sel[0], len(sel), hero_img))   # плитка хаба — интерьерный кадр (3:2), не канон
@@ -622,8 +629,7 @@ def write_collections(stamp):
                       '<div class="meta">' + esc_html(c['description']) + '</div><div class="price"><b>Объектов: ' + str(cnt) + '</b><span>Смотреть</span></div></div></a>')
         url = DOMAIN + '/podarki.html'
         page_ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': hub['h1'], 'url': url, 'description': hub['description'], 'isPartOf': {'@id': DOMAIN + '/#site'}}
-        related = ''.join('<li><a href="' + t[0] + '.html">' + esc_html(t[2]['h1']) + '</a></li>' for t in tiles)
-        render('podarki', hub, cards, len(tiles), DOMAIN + '/shared/img/int_hero_salon.jpg', related, ld(page_ld), 'shared/img/int_hero_salon.jpg', 'shared/img/grand_atrium_skeleton.jpg', 'Подборки по поводу и пространству', wide=True)
+        render('podarki', hub, cards, len(tiles), DOMAIN + '/shared/img/int_hero_salon.jpg', '', ld(page_ld), 'shared/img/int_hero_salon.jpg', 'shared/img/grand_atrium_skeleton.jpg', 'Подборки по поводу и пространству', wide=True)
     print(f'  посадочных: {len(made)}')
     return made
 
