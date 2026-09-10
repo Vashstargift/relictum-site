@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TITLE}}</title>
+<link rel="stylesheet" href="../shared/fonts.css">
+<link rel="stylesheet" href="../shared/buttons.css">
+<link rel="stylesheet" href="style.css">
+
+
+<!-- rl-seo -->
+<link rel="icon" type="image/png" sizes="32x32" href="../shared/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../shared/brand/favicon-16.png">
+<link rel="icon" href="../shared/brand/favicon.ico">
+<link rel="apple-touch-icon" href="../shared/brand/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0908">
+<meta name="description" content="{{DESC}}">
+<link rel="canonical" href="{{URL}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RELICTUM">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESC}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
+<meta property="og:url" content="{{URL}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{DESC}}">
+<meta name="twitter:image" content="{{OG_IMAGE}}">
+{{JSONLD}}
+<style>
+.lp-hero{padding:clamp(120px,15vw,180px) var(--gutter) clamp(40px,5vw,64px);background:var(--obsidian);color:var(--ivory)}
+.lp-hero .label{color:var(--bronze)}
+.lp-hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(36px,5vw,72px);line-height:1.06;max-width:16ch;margin:14px 0 18px}
+.lp-hero .intro{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,3vw,40px);max-width:1100px}
+.lp-hero .intro p{margin:0;color:rgba(244,240,232,.82);font-size:15.5px;line-height:1.7}
+.lp-grid{padding:clamp(40px,6vw,80px) var(--gutter)}
+.lp-grid .head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:26px}
+.lp-grid .head .count{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
+.lp-text{padding:0 var(--gutter) clamp(40px,6vw,80px);max-width:1100px}
+.lp-text p{color:var(--stone);font-size:15px;line-height:1.75}
+.lp-cta{margin:0 var(--gutter) clamp(40px,6vw,80px);padding:clamp(28px,4vw,48px);border:1px solid var(--linel);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;background:var(--bone)}
+.lp-cta h2{font-family:var(--font-display);font-weight:400;font-size:clamp(22px,2.6vw,34px);margin:0;max-width:24ch}
+.lp-related{padding:0 var(--gutter) clamp(50px,7vw,90px)}
+.lp-related ul{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+.lp-related a{display:inline-block;border:1px solid var(--linel);padding:9px 16px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--coal);text-decoration:none}
+.lp-related a:hover{border-color:var(--bronze);color:var(--bronze)}
+@media(max-width:760px){.lp-hero .intro{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav scrolled" id="nav">
+  <a class="nav-logo" href="index.html">
+    <img src="../shared/brand/Relictum_comet.png" alt="Relictum">
+    <span>
+      <span class="nav-wordmark">RELICTUM</span>
+      <div class="nav-tag">Роскошь вне времени</div>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="catalog.html">Каталог</a></li>
+    
+    <li><a href="interiors.html">Интерьеры</a></li>
+    <li><a href="expeditions.html">Экспедиции</a></li><li><a href="../15_concepts/eras.html">Эры</a></li>
+    <li><a href="press.html">Пресса</a></li>
+    <li><a href="maison.html">О нас</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="maison.html#concierge" class="rl-nav-contact" aria-label="Связаться с домом" title="Связаться"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 16.9v2.6a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 1.8 4.7 1.9 1.9 0 0 1 3.7 2.6h2.6a1.9 1.9 0 0 1 1.9 1.6c.12.9.34 1.79.65 2.64a1.9 1.9 0 0 1-.43 2L7.3 10a15.2 15.2 0 0 0 5.6 5.6l1.2-1.12a1.9 1.9 0 0 1 2-.43c.85.31 1.74.53 2.64.65a1.9 1.9 0 0 1 1.66 1.9z"/></svg></a>
+    <a href="catalog.html" aria-label="Поиск по каталогу"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="10.4" cy="10.4" r="6.1"/><path d="M14.9 14.9L20.4 20.4"/></svg></a>
+  </div>
+</nav>
+
+<header class="lp-hero">
+  <div class="label">{{KICKER}}</div>
+  <h1>{{H1}}</h1>
+  <div class="intro">{{INTRO}}</div>
+</header>
+
+<section class="lp-grid">
+  <div class="head"><h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(24px,3vw,40px);margin:0">Подборка дома</h2><div class="count">Объектов: {{COUNT}}</div></div>
+  <div class="grid-objects">{{CARDS}}</div>
+</section>
+
+<section class="lp-cta">
+  <h2>{{CTA}}</h2>
+  <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="request.html">Персональный подбор</a><a class="btn" style="border-color:var(--coal);color:var(--coal)" href="https://wa.me/74952335111" target="_blank" rel="noopener">WhatsApp</a></div>
+</section>
+
+<section class="lp-text"><p>{{SEO_TEXT}}</p></section>
+
+<section class="lp-related">
+  <div class="label">Смотрите также</div>
+  <ul>{{RELATED}}</ul>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.</p>
+      </div>
+      <div>
+        <h4>Коллекции</h4>
+        <ul>
+          <li><a href="catalog.html#vita">Жизнь</a></li>
+          <li><a href="catalog.html#terra">Земля</a></li>
+          <li><a href="catalog.html#cosmos">Космос</a></li>
+          <li><a href="catalog.html#grand">Монументы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Дом</h4>
+        <ul>
+          <li><a href="maison.html">О доме</a></li>
+          <li><a href="interiors.html">Интерьеры</a></li>
+          <li><a href="expeditions.html">Экспедиции</a></li>
+          <li><a href="../15_concepts/eras.html">Эры</a></li>
+          <li><a href="press.html">Пресса</a></li>
+          <li><a href="maison.html#concierge">Менеджер галереи</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li style="font-size:13.5px;color:rgba(244,240,232,.68)">Москва, ул. Большая Якиманка, 22</li>
+          <li><a href="tel:+74952335111">+7 495 233 5111</a></li>
+          <li><a href="mailto:info@stargift.ru">info@stargift.ru</a></li>
+          <li><a href="https://wa.me/74952335111" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 RELICTUM. Все права защищены.</span>
+      <span><a href="privacy.html" style="color:inherit">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="consent.html" style="color:inherit">Согласие на обработку ПД</a> &nbsp;·&nbsp; <a href="oferta.html" style="color:inherit">Договор-оферта</a></span>
+      <span>Земля · Жизнь · Космос</span>
+    </div>
+  </div>
+</footer>
+<script src="../shared/shop.js"></script>
+<script src="../shared/nav.js"></script>
+<script src="../shared/i18n.js" defer></script>
+</body>
+</html>

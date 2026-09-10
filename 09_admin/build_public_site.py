@@ -217,8 +217,8 @@ def build():
         d = os.path.join(OUT, dst_dir) if dst_dir else OUT
         os.makedirs(d, exist_ok=True)
         for f in sorted(os.listdir(s)):
-            if not os.path.isfile(os.path.join(s, f)) or not keep(f):
-                continue
+            if f.startswith('_') or not os.path.isfile(os.path.join(s, f)) or not keep(f):
+                continue   # _*.html — шаблоны, в срез не копируются
             rel = os.path.join(dst_dir, f) if dst_dir else f
             text = open(os.path.join(s, f), encoding='utf-8').read()
             text = rewrite_links(text, dst_dir)
@@ -257,6 +257,7 @@ def build():
     open(shop, 'w', encoding='utf-8').write(t)
 
     prerender_catalog()
+    pages += write_collections(stamp)   # подарочные, интерьерные и категорийные посадочные
     write_focus_map()
     dropped = prune_media()
     stamp_media(OUT)   # ?v=<хэш файла> у картинок и видео — иначе кэш держит старое
@@ -490,6 +491,133 @@ def prerender_catalog():
     t = t.replace('<div class="rail-count" id="count"></div>',
                   f'<div class="rail-count" id="count">Объектов: {len(items)}</div>', 1)
     open(p, 'w', encoding='utf-8').write(t)
+
+
+# ---------------------------------------------------------------------------
+# Посадочные страницы: подарки, интерьер, узкие категории (10.09.2026).
+#
+# Заход «со стороны подарка» как у StarGift и Люкс Подарков: «подарок директору»,
+# «VIP-подарок», «метеорит в подарок», «интерьерные решения», плюс узкие категории
+# под коммерческие запросы («купить метеорит», «череп динозавра»). Подборки
+# считаются из каталога правилами ниже — руками ничего не ведётся; тексты
+# страниц лежат в 09_admin/landing_copy.json (пишутся по правилам дома).
+# ---------------------------------------------------------------------------
+def _has(o, *cats): return o['category'] in cats
+def _pv(o): return o.get('priceValue') or 0
+def _nm(o, pat): return re.search(pat, o['name'], re.I) is not None
+
+LANDINGS = [
+    # slug, группа (gift|interior|category), правило отбора, максимум карточек
+    ('podarok-direktoru',    'gift',     lambda o, P: _has(o, 'Метеориты', 'Минералы', 'Аммониты', 'Жеоды') and 150_000 <= _pv(o) <= 3_000_000, 24),
+    ('podarok-muzhchine',    'gift',     lambda o, P: _has(o, 'Динозавры', 'Мегалодон', 'Саблезубые кошки', 'Метеориты', 'Морские рептилии') and 0 < _pv(o) <= 5_000_000, 24),
+    ('podarok-kollekcioneru','gift',     lambda o, P: _has(o, 'Динозавры', 'Морские рептилии', 'Трилобиты', 'Ископаемые рыбы', 'Эдиакарская фауна', 'Ракоскорпионы', 'Крокодилиформы', 'Древние киты', 'Аммониты'), 24),
+    ('vip-podarok',          'gift',     lambda o, P: _pv(o) >= 2_000_000 or o['world'] == 'grand', 24),
+    ('podarok-na-yubiley',   'gift',     lambda o, P: _has(o, 'Метеориты', 'Аммониты', 'Минералы', 'Ископаемая древесина', 'Бабочки') and 80_000 <= _pv(o) <= 1_500_000, 24),
+    ('meteorit-v-podarok',   'gift',     lambda o, P: _has(o, 'Метеориты'), 24),
+    ('interernye-resheniya', 'interior', lambda o, P: bool((P.get(o['id']) or {}).get('interior', {}).get('img')) and (o['world'] == 'grand' or _has(o, 'Динозавры', 'Мамонтовая фауна', 'Минералы', 'Жеоды', 'Аммониты', 'Морские рептилии')), 30),
+    ('meteority',            'category', lambda o, P: _has(o, 'Метеориты'), 999),
+    ('dinozavry',            'category', lambda o, P: _has(o, 'Динозавры'), 999),
+    ('mamontovaya-fauna',    'category', lambda o, P: _has(o, 'Мамонтовая фауна'), 999),
+    ('mineraly',             'category', lambda o, P: _has(o, 'Минералы', 'Жеоды'), 999),
+    ('ammonity',             'category', lambda o, P: _has(o, 'Аммониты'), 999),
+    ('morskie-reptilii',     'category', lambda o, P: _has(o, 'Морские рептилии', 'Ихтиозавры') or _nm(o, r'ихтиозавр|мозазавр|кейхозавр|миксозавр'), 999),
+    ('cherepa',              'category', lambda o, P: _nm(o, r'череп'), 999),
+    ('skelety',              'category', lambda o, P: _nm(o, r'скелет'), 999),
+    ('zuby-i-kogti',         'category', lambda o, P: _nm(o, r'\bзуб(?!р)|когот|когт|мегалодон'), 999),
+]
+
+
+def arranged_items():
+    """Видимые лоты в порядке витрины (shared/order.js) + промо — из уже переписанного public/."""
+    import json
+    js = ("global.window={};"
+          f"eval(require('fs').readFileSync({json.dumps(os.path.join(OUT,'shared','order.js'))},'utf8'));"
+          f"eval(require('fs').readFileSync({json.dumps(os.path.join(OUT,'shared','catalog.js'))},'utf8'));"
+          f"eval(require('fs').readFileSync({json.dumps(os.path.join(OUT,'objects','promo-data.js'))},'utf8'));"
+          "var c=window.RELICTUM_CATALOG.filter(function(o){return !o.hidden});"
+          "process.stdout.write(JSON.stringify({items:window.RELICTUM_ORDER.arrange(c),promo:window.RELICTUM_PROMO}));")
+    d = json.loads(subprocess.run(['node', '-e', js], capture_output=True, text=True, check=True).stdout)
+    return d['items'], d['promo']
+
+
+def esc_html(x): return str(x).replace('&', '&amp;').replace('<', '&lt;').replace('"', '&quot;')
+
+
+def card_html(o, n, src=None):
+    href = o.get('href') or ('object.html?id=' + o['id'])
+    lazy = '' if n < 6 else ' loading="lazy"'
+    src = src or ('shared/img/' + o['img'] + '.jpg')
+    return ('<a class="obj-card" href="' + esc_html(href) + '">'
+            '<div class="ph">' + (('<span class="badge">' + esc_html(o['status']) + '</span>') if o.get('status') else '')
+            + '<img src="' + src + '?v=' + media_stamp() + '" alt="' + esc_html(o['name']) + '"' + lazy + ' decoding="async"></div>'
+            '<div class="body"><div class="id">' + o['id'] + ', ' + esc_html(o['worldLabel']) + '</div>'
+            '<h3>' + esc_html(o['name']) + '</h3><div class="latin">' + esc_html(o.get('latin') or '') + '</div>'
+            '<div class="meta">' + (o.get('meta') or '') + '</div>'
+            '<div class="price"><b>' + esc_html(o.get('price') or '') + '</b><span>Смотреть</span></div></div></a>')
+
+
+def write_collections(stamp):
+    import json
+    copy_path = os.path.join(ROOT, '09_admin', 'landing_copy.json')
+    if not os.path.exists(copy_path):
+        print('  ! landing_copy.json нет — посадочные не собраны'); return []
+    copy = json.load(open(copy_path, encoding='utf-8'))
+    tpl = open(os.path.join(ROOT, '02_site_v1_gallery', '_collection.tpl.html'), encoding='utf-8').read()
+    tpl = stamp_scripts(rewrite_links(tpl, ''), stamp)
+    items, promo = arranged_items()
+    made, tiles = [], []
+
+    def render(slug, c, cards, count, og_image, related, jsonld):
+        t = tpl
+        for k, v in {'{{TITLE}}': esc_html(c['title']), '{{DESC}}': esc_html(c['description']), '{{URL}}': DOMAIN + '/' + slug + '.html',
+                     '{{OG_IMAGE}}': og_image, '{{KICKER}}': esc_html(c['kicker']), '{{H1}}': esc_html(c['h1']),
+                     '{{INTRO}}': ''.join('<p>' + esc_html(x) + '</p>' for x in c['intro']), '{{COUNT}}': str(count),
+                     '{{CARDS}}': cards, '{{CTA}}': esc_html(c['cta']), '{{SEO_TEXT}}': esc_html(c['seo_text']),
+                     '{{RELATED}}': related, '{{JSONLD}}': jsonld}.items():
+            t = t.replace(k, v)
+        open(os.path.join(OUT, slug + '.html'), 'w', encoding='utf-8').write(t)
+        made.append(slug + '.html')
+
+    def ld(obj): return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False) + '</script>'
+    crumbs = lambda name, url: {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': 1, 'name': 'RELICTUM', 'item': DOMAIN + '/'},
+        {'@type': 'ListItem', 'position': 2, 'name': 'Подарки и интерьер', 'item': DOMAIN + '/podarki.html'},
+        {'@type': 'ListItem', 'position': 3, 'name': name, 'item': url}]}
+
+    for slug, group, rule, cap in LANDINGS:
+        c = copy.get(slug)
+        if not c:
+            print('  ! нет текста для', slug); continue
+        sel = [o for o in items if rule(o, promo)][:cap]
+        if not sel:
+            print('  ! пустая подборка', slug); continue
+        cards = ''.join(card_html(o, n, src=('shared/img/' + promo[o['id']]['interior']['img']) if group == 'interior' else None) for n, o in enumerate(sel))
+        url = DOMAIN + '/' + slug + '.html'
+        og = DOMAIN + '/shared/img/' + (promo[sel[0]['id']]['interior']['img'] if group == 'interior' else sel[0]['img'] + '.jpg')
+        related_slugs = [x[0] for x in LANDINGS if x[0] != slug and (x[1] == group or (group != 'category' and x[1] != 'category'))][:8]
+        related = ''.join('<li><a href="' + r + '.html">' + esc_html(copy[r]['h1']) + '</a></li>' for r in related_slugs if r in copy)
+        related += '<li><a href="podarki.html">Все подборки</a></li><li><a href="catalog.html">Весь каталог</a></li>'
+        page_ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': c['h1'], 'url': url, 'description': c['description'],
+                   'isPartOf': {'@id': DOMAIN + '/#site'}, 'mainEntity': {'@type': 'ItemList', 'numberOfItems': len(sel), 'itemListElement': [
+                       {'@type': 'ListItem', 'position': n + 1, 'url': DOMAIN + '/objects/' + o['slug'] + '.html', 'name': o['name'],
+                        'image': DOMAIN + '/shared/img/' + o['img'] + '.jpg'} for n, o in enumerate(sel)]}}
+        render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url)))
+        tiles.append((slug, group, c, sel[0], len(sel), og))
+
+    # хаб «Подарки и интерьер»
+    hub = copy.get('podarki')
+    if hub and tiles:
+        cards = ''
+        for n, (slug, group, c, first, cnt, og) in enumerate(tiles):
+            cards += ('<a class="obj-card" href="' + slug + '.html"><div class="ph"><img src="' + og.replace(DOMAIN + '/', '') + '?v=' + media_stamp() + '" alt="' + esc_html(c['h1']) + '"' + ('' if n < 6 else ' loading="lazy"') + ' decoding="async"></div>'
+                      '<div class="body"><div class="id">' + {'gift': 'Подарок', 'interior': 'Интерьер', 'category': 'Коллекция'}[group] + '</div><h3>' + esc_html(c['h1']) + '</h3>'
+                      '<div class="meta">' + esc_html(c['description']) + '</div><div class="price"><b>Объектов: ' + str(cnt) + '</b><span>Смотреть</span></div></div></a>')
+        url = DOMAIN + '/podarki.html'
+        page_ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': hub['h1'], 'url': url, 'description': hub['description'], 'isPartOf': {'@id': DOMAIN + '/#site'}}
+        related = ''.join('<li><a href="' + t[0] + '.html">' + esc_html(t[2]['h1']) + '</a></li>' for t in tiles)
+        render('podarki', hub, cards, len(tiles), tiles[0][5], related, ld(page_ld))
+    print(f'  посадочных: {len(made)}')
+    return made
 
 
 def prune_media():
