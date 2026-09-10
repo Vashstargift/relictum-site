@@ -30,6 +30,8 @@
 {{JSONLD}}
 <style>
 .lp-grid .grid-objects{margin-top:6px}
+.lp-wide .obj-card .ph{aspect-ratio:3/2}
+.lp-wide .obj-card .ph img{object-fit:cover}
 .lp-chips{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:10px}
 .lp-chips a{display:inline-block;border:1px solid var(--hairline);padding:9px 16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--coal);text-decoration:none;transition:border-color .3s,color .3s}
 .lp-chips a:hover{border-color:var(--bronze);color:var(--bronze)}
@@ -38,7 +40,7 @@
 </style>
 </head>
 <body>
-<nav class="nav" id="nav">
+<nav class="nav on-dark" id="nav">
   <a class="nav-logo" href="index.html">
     <img src="../shared/brand/Relictum_comet.png" alt="Relictum">
     <span>
@@ -71,7 +73,7 @@
 </header>
 
 <!-- ПОДБОРКА -->
-<section class="lp-grid">
+<section class="lp-grid{{GRID_CLASS}}">
   <div class="wrap">
     <div class="section-head reveal">
       <div>
