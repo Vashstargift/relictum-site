@@ -198,7 +198,7 @@ window.RELICTUM_PROMO = {
             ]
         },
         "life": {
-            "img": "origin_chinge.jpg",
+            "img": "life_chinga_iron_260910183803.jpg",
             "label": "Происхождение",
             "stateLabel": "В ядре протопланеты",
             "title": "Металл из погибшего ядра",
