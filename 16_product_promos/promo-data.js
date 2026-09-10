@@ -2433,7 +2433,7 @@ window.RELICTUM_PROMO = {
         "life": {
             "img": "life_carcharodontosaurus_claw_260910153850.jpg",
             "stateLabel": "При жизни",
-            "title": "Коготь на весу",
+            "title": "Хозяин меловой поймы",
             "text": "Кархародонтозавр на берегу меловой поймы Северной Африки: морда с зубным рядом и небольшие трёхпалые передние лапы с когтями в одном кадре. Род определён по когтю, облик обобщён.",
             "label": "При жизни"
         },
@@ -2441,7 +2441,6 @@ window.RELICTUM_PROMO = {
         "gallery": [
             "int_ph_carcharodont_claw.jpg",
             "anat_carcharodont_claw.jpg",
-            "life_carcharodont_claw.jpg",
             "g_claw_2.jpg",
             "g_claw_3.jpg",
             "ph_carcharodont_claw.jpg"
