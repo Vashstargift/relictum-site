@@ -567,13 +567,16 @@ def write_collections(stamp):
     items, promo = arranged_items()
     made, tiles = [], []
 
-    def render(slug, c, cards, count, og_image, related, jsonld):
+    def render(slug, c, cards, count, og_image, related, jsonld, hero_img, split_img, grid_title):
         t = tpl
+        intro = list(c['intro']) + ['', '']
         for k, v in {'{{TITLE}}': esc_html(c['title']), '{{DESC}}': esc_html(c['description']), '{{URL}}': DOMAIN + '/' + slug + '.html',
                      '{{OG_IMAGE}}': og_image, '{{KICKER}}': esc_html(c['kicker']), '{{H1}}': esc_html(c['h1']),
-                     '{{INTRO}}': ''.join('<p>' + esc_html(x) + '</p>' for x in c['intro']), '{{COUNT}}': str(count),
+                     '{{INTRO1}}': esc_html(intro[0]), '{{INTRO2}}': esc_html(intro[1]), '{{COUNT}}': str(count),
                      '{{CARDS}}': cards, '{{CTA}}': esc_html(c['cta']), '{{SEO_TEXT}}': esc_html(c['seo_text']),
-                     '{{RELATED}}': related, '{{JSONLD}}': jsonld}.items():
+                     '{{RELATED}}': related, '{{JSONLD}}': jsonld, '{{GRID_TITLE}}': esc_html(grid_title),
+                     '{{HERO_IMG}}': hero_img + '?v=' + media_stamp(), '{{HERO_ALT}}': esc_html(c['h1']),
+                     '{{SPLIT_IMG}}': split_img + '?v=' + media_stamp(), '{{SPLIT_ALT}}': esc_html(c['kicker'])}.items():
             t = t.replace(k, v)
         open(os.path.join(OUT, slug + '.html'), 'w', encoding='utf-8').write(t)
         made.append(slug + '.html')
@@ -601,7 +604,11 @@ def write_collections(stamp):
                    'isPartOf': {'@id': DOMAIN + '/#site'}, 'mainEntity': {'@type': 'ItemList', 'numberOfItems': len(sel), 'itemListElement': [
                        {'@type': 'ListItem', 'position': n + 1, 'url': DOMAIN + '/objects/' + o['slug'] + '.html', 'name': o['name'],
                         'image': DOMAIN + '/shared/img/' + o['img'] + '.jpg'} for n, o in enumerate(sel)]}}
-        render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url)))
+        ints = [promo[o['id']]['interior']['img'] for o in sel if (promo.get(o['id']) or {}).get('interior', {}).get('img')]
+        hero_img = 'shared/img/' + (ints[0] if ints else 'int_hero_salon.jpg')
+        split_img = 'shared/img/' + (ints[1] if len(ints) > 1 else 'grand_atrium_skeleton.jpg')
+        grid_title = {'gift': 'Что подарить', 'interior': 'Предметы для пространства', 'category': 'Лоты в наличии и под заказ'}[group]
+        render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url)), hero_img, split_img, grid_title)
         tiles.append((slug, group, c, sel[0], len(sel), og))
 
     # хаб «Подарки и интерьер»
@@ -615,7 +622,7 @@ def write_collections(stamp):
         url = DOMAIN + '/podarki.html'
         page_ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': hub['h1'], 'url': url, 'description': hub['description'], 'isPartOf': {'@id': DOMAIN + '/#site'}}
         related = ''.join('<li><a href="' + t[0] + '.html">' + esc_html(t[2]['h1']) + '</a></li>' for t in tiles)
-        render('podarki', hub, cards, len(tiles), tiles[0][5], related, ld(page_ld))
+        render('podarki', hub, cards, len(tiles), DOMAIN + '/shared/img/int_hero_salon.jpg', related, ld(page_ld), 'shared/img/int_hero_salon.jpg', 'shared/img/grand_atrium_skeleton.jpg', 'Подборки по поводу и пространству')
     print(f'  посадочных: {len(made)}')
     return made
 
