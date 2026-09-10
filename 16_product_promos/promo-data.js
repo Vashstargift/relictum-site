@@ -5077,7 +5077,7 @@ window.RELICTUM_PROMO = {
             "href": "../15_concepts/era-cretaceous.html"
         },
         "life": {
-            "img": "life_mosasaurus_skull_260910112357.jpg",
+            "img": "life_mosasaurus_skull_260910112858.jpg",
             "diagram": "anat_mosasaurus_skull_260910112356.jpg",
             "stateLabel": "При жизни",
             "title": "Хозяин последних меловых морей",
