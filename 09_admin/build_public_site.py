@@ -260,6 +260,7 @@ def build():
     pages += write_collections(stamp)   # подарочные, интерьерные и категорийные посадочные
     write_focus_map()
     dropped = prune_media()
+    inject_metrika()   # Яндекс Метрика 112568027 + цели по кликам на телефон/WhatsApp
     stamp_media(OUT)   # ?v=<хэш файла> у картинок и видео — иначе кэш держит старое
     write_extras(pages)
     return pages, stamp, dropped
@@ -668,6 +669,43 @@ def prune_media():
             dropped.append((os.path.relpath(p, OUT), os.path.getsize(p)))
             os.remove(p)
     return dropped
+
+
+METRIKA_ID = 112568027   # счётчик «Relictum» в аккаунте alex@stargift.ru, создан владельцем 14.09.2026
+METRIKA = """<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=%(id)d', 'ym');
+    ym(%(id)d, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    /* цели: клик по телефону и WhatsApp; заявка/заказ/корзина отправляются из shared/shop.js */
+    document.addEventListener('click', function(e){
+        var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"], a[href*="wa.me"], a[href*="whatsapp"]') : null;
+        if (!a) return;
+        try { ym(%(id)d, 'reachGoal', /^tel:/.test(a.getAttribute('href')) ? 'phone_click' : 'whatsapp_click'); } catch (err) {}
+    }, true);
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/%(id)d" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+""" % {'id': METRIKA_ID}
+
+
+def inject_metrika():
+    """Счётчик на каждую HTML-страницу среза (и в шаблон визиток — узел публикации рендерит из него)."""
+    n = 0
+    for root, _, files in os.walk(OUT):
+        for f in files:
+            if not f.endswith('.html'):
+                continue
+            p = os.path.join(root, f)
+            t = open(p, encoding='utf-8').read()
+            if 'mc.yandex.ru/metrika' in t or '</head>' not in t:
+                continue
+            open(p, 'w', encoding='utf-8').write(t.replace('</head>', METRIKA + '</head>', 1)); n += 1
+    print(f'  метрика: {n} страниц')
 
 
 def write_extras(pages):

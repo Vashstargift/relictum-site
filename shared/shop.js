@@ -21,7 +21,7 @@
     item:item,
     cartItems:function(){ return this.getCart().map(item).filter(Boolean); },
     favItems:function(){ return this.getFavs().map(item).filter(Boolean); },
-    addToCart:function(id){ var c=read(CART_KEY); if(c.indexOf(id)<0){c.push(id);write(CART_KEY,c);} },
+    addToCart:function(id){ var c=read(CART_KEY); if(c.indexOf(id)<0){c.push(id);write(CART_KEY,c);} try{if(window.ym)ym(112568027,'reachGoal','cart_add');}catch(e){} },
     removeFromCart:function(id){ write(CART_KEY, read(CART_KEY).filter(function(x){return x!==id})); },
     clearCart:function(){ write(CART_KEY,[]); },
     toggleFav:function(id){ var f=read(FAV_KEY); var i=f.indexOf(id); if(i<0)f.push(id); else f.splice(i,1); write(FAV_KEY,f); return f.indexOf(id)>=0; },
@@ -76,6 +76,7 @@
        история заказов), но теперь письмо уходит и в дом. Ошибка сети не должна
        ломать сценарий — интерфейс уже показал подтверждение. */
     send:function(kind,rec){
+      try{if(window.ym)ym(112568027,'reachGoal',/^заказ/i.test(kind)?'order':'lead');}catch(e){}
       try{
         var url=(location.pathname.indexOf('/objects/')>=0?'../':'')+'send.php';
         return fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},
