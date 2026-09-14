@@ -671,7 +671,7 @@ def prune_media():
     return dropped
 
 
-METRIKA_ID = 112568027   # счётчик «Relictum» в аккаунте alex@stargift.ru, создан владельцем 14.09.2026
+METRIKA_ID = None   # 14.09.2026 владелец удалил оба счётчика Relictum (112567965, 112568027); при новом счётчике вписать номер — код и цели встанут сами
 METRIKA = """<!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -680,6 +680,7 @@ METRIKA = """<!-- Yandex.Metrika counter -->
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=%(id)d', 'ym');
+    window.RELICTUM_YM = %(id)d;
     ym(%(id)d, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     /* цели: клик по телефону и WhatsApp; заявка/заказ/корзина отправляются из shared/shop.js */
     document.addEventListener('click', function(e){
@@ -690,11 +691,13 @@ METRIKA = """<!-- Yandex.Metrika counter -->
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/%(id)d" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-""" % {'id': METRIKA_ID}
+""" % {'id': METRIKA_ID or 0}
 
 
 def inject_metrika():
     """Счётчик на каждую HTML-страницу среза (и в шаблон визиток — узел публикации рендерит из него)."""
+    if not METRIKA_ID:
+        print('  метрика: счётчика нет, код не ставим'); return
     n = 0
     for root, _, files in os.walk(OUT):
         for f in files:
