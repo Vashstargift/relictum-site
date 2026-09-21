@@ -43,6 +43,7 @@ def showcase(f): return f.endswith('.html') or f.endswith('.css')
 
 COPY = [
     ('02_site_v1_gallery', '', showcase),
+    ('02_site_v1_gallery/feed', 'feed', lambda f: f.endswith(('.yml', '.csv'))),
     ('16_product_promos', 'objects', html_and_js),
     ('15_concepts', 'eras', concepts),
     ('14_provenance', 'provenance', html_only),

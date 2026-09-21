@@ -1,0 +1,1862 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-09-21T11:01+03:00">
+<shop>
+<name>RELICTUM</name>
+<company>RELICTUM</company>
+<url>https://relictum.gallery/</url>
+<currencies><currency id="RUR" rate="1"/></currencies>
+<categories>
+<category id="1">Динозавры</category>
+<category id="2">Метеориты</category>
+<category id="3">Морские лилии</category>
+<category id="4">Мамонтовая фауна</category>
+<category id="5">Аммониты</category>
+<category id="6">Минералы</category>
+<category id="7">Морские рептилии</category>
+<category id="8">Бабочки</category>
+<category id="9">Ископаемые рыбы</category>
+<category id="10">Мегалодон</category>
+<category id="11">Трилобиты</category>
+<category id="12">Крокодилиформы</category>
+<category id="13">Жеоды</category>
+<category id="14">Ракоскорпионы</category>
+<category id="15">Эдиакарская фауна</category>
+<category id="16">Гиены</category>
+<category id="17">Древние киты</category>
+</categories>
+<offers>
+<offer id="R-0272" available="false">
+<name>Скелет дромеозаврида (Dromaeosauridae indet.)</name>
+<url>https://relictum.gallery/objects/0272-dromaeosaurid.html</url>
+<price>42000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_raptor.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_raptor.jpg</picture>
+<picture>https://relictum.gallery/shared/img/gal_yakimanka_4.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dromaeosaurid_260921110555.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dromaeosaurid_260921110556.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Дромеозавриды — некрупные пернатые хищники позднемелового времени, сложение которых ближе к птицам, чем к ящерам: полые кости, жёсткий хвост-балансир, сложенные вдоль тела руки с длинными пальцами. Главное их оружие — увеличенный серповидный коготь на втором пальце ноги. При беге он поднимался над землёй, чтобы не тупиться, и вводился в дело только в атаке.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">Поздний меловой период</param>
+<param name="Размер">Длина 1,2 м</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0103" available="true">
+<name>Метеорит Дронино (Dronino Iron)</name>
+<url>https://relictum.gallery/objects/0103-dronino-iron.html</url>
+<price>4500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_dronino.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_dronino.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dronino_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dronino_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_dronino.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Дронино — почти чистое никелистое железо, вещество металлического ядра небольшого тела, разрушенного столкновением. Рельеф регмаглиптов появился позже, при входе в атмосферу; сам металл застыл ещё в сердцевине протопланеты. Дронино — железный метеорит-атаксит, найденный в Рязанской области в 2000 году. Его «дикая», изъеденная рельефом форма — результат миллионов лет в космосе и огненного входа в атмосферу: следы плавления, регмаглипты, застыли на поверхности навсегда. Это вещество из ядра разрушенной протопланеты — почти чистое никелистое железо, которому около четырёх с половиной миллиардов лет. Оно старше всего живого, старше самой Земли в её нынешнем виде.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Рязанская область, Россия</param>
+<param name="Размер">13 × 9 × 26 см, вес 7,4 кг</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0271" available="false">
+<name>Череп трицератопса (Triceratops sp.)</name>
+<url>https://relictum.gallery/objects/0271-triceratops-skull.html</url>
+<price>88000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_triceratops.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_triceratops.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_triceratops.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Трицератопс жил в последние миллионы лет мезозоя — в речных поймах Северной Америки, среди папоротниковых зарослей и хвойных: четырёхтонный растительноядный динозавр, чью голову природа собрала как крепость. Костный воротник защищал шею и служил опорой челюстным мышцам, а два надглазничных рога длиной до метра — оружие: на костях находят следы столкновений и с сородичами, и с тираннозавром. На этом экземпляре сохранились и полный воротник со своими естественными проёмами, и оба надглазничных рога, и роговой клюв — сочетание, которое встречается заметно реже, чем принято думать: воротник тонок в середине и обычно ломается первым. Комплектность экземпляра — 65–70 процентов.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 68–66 млн лет</param>
+<param name="Происхождение">Северная Америка</param>
+<param name="Размер">Длина черепа 1,7 м</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0104" available="true">
+<name>Метеорит Чинге (Chinga Iron)</name>
+<url>https://relictum.gallery/objects/0104-chinga-iron.html</url>
+<price>300000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_chinge_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_chinge.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_chinge_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_chinge_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_chinge_2.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Атакситы вроде Чинге — вещество металлического ядра протопланеты, разрушенной столкновением. Пока тело было целым, этот металл остывал в его сердцевине на градус за миллион лет; скульптурную форму обломку придали не резец, а сам распад и последующий путь через космос. Чинге — богатый никелем железный метеорит (атаксит), рассыпавшийся дождём над территорией нынешней Тывы. Индивидуальные экземпляры ценятся за плотную тёмную кору и скульптурную, ни на что не похожую форму. Каждому такому обломку около четырёх с половиной миллиардов лет — это вещество старше любой горной породы Земли.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Река Чинге, Тыва, Россия</param>
+<param name="Размер">11,7 × 15,5 см, толщина 4,7 см</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0105" available="true">
+<name>Лунный метеорит в раме (Lunar meteorite)</name>
+<url>https://relictum.gallery/objects/0105-lunar-meteorite.html</url>
+<price>350000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_moon_frame.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_moon.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_moon_fragment.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_moon_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/gal_yakimanka_7.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Обломок лунной коры миллионы лет лежал в реголите, пока удар астероида не выбил его с поверхности Луны со скоростью, достаточной, чтобы преодолеть её притяжение и уйти в межпланетное пространство. Класс редкий: троктолитовых расплавных брекчий официально признано всего пять, а вся известная масса этого метеорита — меньше трёх килограммов, разбитых на множество фрагментов. Порода пережила сильный удар: отсюда мутно-серый тон, тончайшая матрица порядка ста микрон с флюидальными текстурами и включения хромшпинелида, троилита и кальцита. Это фрагмент лунной коры, выбитый с поверхности Луны ударом астероида, улетевший в космос и в конце концов упавший на Землю как лунный метеорит. В одной раме он соседствует с фотографией полной Луны — взгляд сразу связывает крошечный камень с небесным телом, с которого он когда-то был сорван.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Район Адрар, Алжир</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0231" available="false">
+<name>Морская лилия (Traumatocrinus guanlingensis)</name>
+<url>https://relictum.gallery/objects/0231-crinoid-fan.html</url>
+<price>500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_crinoid_fan.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_crinoid_fan.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_crinoid_fan_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_crinoid_fan_260921110633.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Тёплое море покрывало юг нынешнего Китая 235 миллионов лет назад. По его поверхности дрейфовали стволы деревьев, и к ним, как ожившие цветы на длинных стеблях, крепились колонии Traumatocrinus — триасовых морских лилий. Морская лилия только выглядит растением. Это животное, родственник морских звёзд и ежей: веер перистых рук раскрывался в толще воды и процеживал её, собирая планктон, а членистый стебель держал крону на дрейфующем плавнике. Когда дерево тонуло, колония опускалась на дно и оказывалась погребённой в тонком иле — так возникли плиты формации Гуаньлин, к которой относится и этот экземпляр. Иловое захоронение сохранило этих животных с редкой полнотой: кроны, перистые руки и стебли лежат в породе рельефом, как гербарий, собранный самой геологией. Каждая плита — это одна сцена той катастрофы и одна композиция, не повторяющаяся дважды. Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus сохраняет колонию в прижизненном положении — так, как она дрейфовала на своём стволе.]]></description>
+<param name="Период">Триасовый период</param>
+<param name="Возраст">≈ 235 млн лет</param>
+<param name="Происхождение">Юньнань-Гуйчжоу, Китай</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0227" available="false">
+<name>Метеорит Дронино, 128 кг (Dronino Iron)</name>
+<url>https://relictum.gallery/objects/0227-dronino-128kg.html</url>
+<price>19000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_dronino128.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_dronino128.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dronino128_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dronino128_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dronino128_3.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Железный метеорит Дронино массой сто двадцать восемь килограммов — один из самых крупных найденных фрагментов этого падения в Рязанской области. Это атаксит: почти чистое никелистое железо, вещество металлического ядра небольшого тела, разрушенного столкновением в ранней Солнечной системе. Его возраст — около четырёх с половиной миллиардов лет. Поверхность сохранила следы прохождения через атмосферу: участки плавления и рельеф регмаглиптов, сформировавшихся при огненном входе. Масса и размеры этого экземпляра выделяют его среди большинства находок Дронино.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Рязанская область, Россия</param>
+<param name="Размер">128 кг</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0609" available="false">
+<name>Скелет жехолозавра (Jeholosaurus shangyuanensis)</name>
+<url>https://relictum.gallery/objects/0609-jeholosaurus.html</url>
+<price>10000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_jeholosaurus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_jeholosaurus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_jeholosaurus.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[В раннемеловое время на месте нынешнего Ляонина росли гинкго и хвойные с папоротниковым подлеском, а вулканический пепел время от времени накрывал всё живое и превращал его в летопись. Именно этому пеплу мы обязаны знаменитой сохранностью жехольской фауны. Жехолозавр — мелкий двуногий растительноядный динозавр около метра длиной, один из ранних орнитопод. Небольшой череп с клювом и листовидными зубами, компактное тело, длинные задние ноги и очень длинный хвост-противовес: сложение бегуна, а не бойца. Этот экземпляр полон: череп, позвоночный столб с длинным хвостом, рёбра, обе пары конечностей с вытянутыми стопами. Скелет стоит в шаге, с поднятой головой, на овальном каменном основании.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 125 млн лет</param>
+<param name="Происхождение">Провинция Ляонин, Китай</param>
+<param name="Размер">Длина 70 см</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0276" available="true">
+<name>Срез метеорита Алетай (Aletai Iron)</name>
+<url>https://relictum.gallery/objects/0276-aletai-slice.html</url>
+<price>2000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_aletai.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_aletai.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_aletai_slice_260921110611.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Узор Видманштеттена на срезе — кристаллы, которые вырастают только при остывании на градус за миллион лет. Так медленно остывает лишь ядро планетного тела, укрытое каменной мантией. Алетай — железный метеорит, один из крупнейших известных на Земле. Его фрагменты найдены в китайской части Алтайских гор и разбросаны на территории протяжённостью более четырёхсот километров: это крупнейшее известное метеоритное поле рассеяния. Общий вес собранного материала превышает семьдесят четыре тонны. При полировке в металле проявляется узор Видманштеттена — рисунок из кристаллов никелистого железа. Он формируется только при чрезвычайно медленном остывании, на градус за миллион лет, в недрах космического тела. Повторить его на Земле невозможно.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Алтайские горы, Китай</param>
+<param name="Размер">40 × 32 см, вес 9 895 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0277" available="true">
+<name>Куб из метеорита Алетай (Aletai Iron)</name>
+<url>https://relictum.gallery/objects/0277-aletai-cube.html</url>
+<price>450000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_aletai_cubes.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_aletai_cubes.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_aletai_cube_260921110611.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Куб режет один и тот же металл сразу в трёх плоскостях, и на каждой грани узор идёт под своим углом. Эта решётка сложилась в ядре протопланеты и на Земле невоспроизводима. Алетай — железный метеорит, один из крупнейших известных на Земле. Его фрагменты найдены в китайской части Алтайских гор и разбросаны на территории протяжённостью более четырёхсот километров: это крупнейшее известное метеоритное поле рассеяния. Общий вес собранного материала превышает семьдесят четыре тонны. При полировке в металле проявляется узор Видманштеттена — рисунок из кристаллов никелистого железа. Он формируется только при чрезвычайно медленном остывании, на градус за миллион лет, в недрах космического тела. Повторить его на Земле невозможно.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Алтайские горы, Китай</param>
+<param name="Размер">Вес 1 267 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0278" available="true">
+<name>Шар из метеорита Алетай (Aletai Iron)</name>
+<url>https://relictum.gallery/objects/0278-aletai-sphere.html</url>
+<price>901500</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_aletai_sphere.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_aletai_sphere.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_aletai_sphere_260921110612.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[У шара нет ни одной плоской грани, и узор Видманштеттена замыкается по всей окружности. Кристаллы, которые он показывает, росли в ядре протопланеты, пока то остывало. Алетай — железный метеорит, один из крупнейших известных на Земле. Его фрагменты найдены в китайской части Алтайских гор и разбросаны на территории протяжённостью более четырёхсот километров: это крупнейшее известное метеоритное поле рассеяния. Общий вес собранного материала превышает семьдесят четыре тонны. При полировке в металле проявляется узор Видманштеттена — рисунок из кристаллов никелистого железа. Он формируется только при чрезвычайно медленном остывании, на градус за миллион лет, в недрах космического тела. Повторить его на Земле невозможно.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Алтайские горы, Китай</param>
+<param name="Размер">Вес 3 005 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0610" available="true">
+<name>Скелет пситтакозавра (Psittacosaurus sp.)</name>
+<url>https://relictum.gallery/objects/0610-psittacosaurus-skeleton.html</url>
+<price>12500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_psittacosaurus_skeleton.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_psittacosaurus_skeleton.jpg</picture>
+<picture>https://relictum.gallery/shared/img/gal_yakimanka_6.jpg</picture>
+<picture>https://relictum.gallery/shared/img/gal_yakimanka_5.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_psitskel_1.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Psittacosaurus жил около 125 миллионов лет назад в меловых лесах Азии, среди гинкго, хвойных, саговников и папоротников. Один из самых ранних и самых многочисленных цератопсов: он ходил на длинных задних ногах, жил группами, рыл норы и заботился о потомстве. Клювовидные челюсти и высокий короткий череп дали роду имя «попугайный ящер». Тело покрывала чешуя, по хвосту шла жёсткая щетина, а бурая спина с тёмными пятнами при светлом брюхе служила лесным камуфляжем; взрослый зверь достигал двух метров при весе около двадцати килограммов. Экземпляр крупный для своего рода, а комплектность скелета превышает 95 процентов — показатель, редкий даже для музейных монтажей динозавров.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 125 млн лет</param>
+<param name="Происхождение">Провинция Ляонин, Китай</param>
+<param name="Размер">Скелет 168 см</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0279" available="true">
+<name>Малый шар из метеорита Алетай (Aletai Iron)</name>
+<url>https://relictum.gallery/objects/0279-aletai-spheres-small.html</url>
+<price>80000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_aletai_ball.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_aletai_ball.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_aletai_balls.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_aletai_ball.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_aletai_spheres_small_260921110612.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Шар размером с ладонь, но металл в нём тот же, что в семидесяти четырёх тоннах поля Алетая, — вещество ядра одного тела, разлетевшегося над Алтайскими горами. Алетай — железный метеорит, один из крупнейших известных на Земле. Его фрагменты найдены в китайской части Алтайских гор и разбросаны на территории протяжённостью более четырёхсот километров: это крупнейшее известное метеоритное поле рассеяния. Общий вес собранного материала превышает семьдесят четыре тонны. При полировке в металле проявляется узор Видманштеттена — рисунок из кристаллов никелистого железа. Он формируется только при чрезвычайно медленном остывании, на градус за миллион лет, в недрах космического тела. Повторить его на Земле невозможно.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Алтайские горы, Китай</param>
+<param name="Размер">Общий вес шести шаров 460 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0280" available="true">
+<name>Метеорит Каинсаз (Kainsaz CO3)</name>
+<url>https://relictum.gallery/objects/0280-kainsaz.html</url>
+<price>2900000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_kainsaz_a.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_kainsaz_a.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_kainsaz_a.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_kainsaz_260921110613.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Углистый хондрит никогда не был в расплаве: он собрался из холодной пыли, льда и сажи допланетного облака и с тех пор почти не изменился. Каинсаз старше Земли примерно на пятьдесят миллионов лет — это материя, из которой планеты только предстояло сложить. Углистые хондриты — одни из самых древних и химически примитивных метеоритов Солнечной системы. Они сохранили органические соединения, включая аминокислоты: вещество, из которого позже сложился химический «бульон» ранней Земли. Каинсаз сформировался около 4,59 миллиарда лет назад — примерно на пятьдесят миллионов лет раньше Земли. Это почти неизменённый фрагмент материи, из которой собиралась наша планетная система.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,59 млрд лет</param>
+<param name="Происхождение">Татарстан, Россия</param>
+<param name="Размер">95 × 85 × 75 мм, вес 686 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0281" available="true">
+<name>Метеорит Dhofar (Dhofar)</name>
+<url>https://relictum.gallery/objects/0281-dhofar.html</url>
+<price>900000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_dhofar.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_dhofar.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dhofar_260921110614.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dhofar_260921110615.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Веществу около четырёх с половиной миллиардов лет: оно сложилось в небольшом теле ранней Солнечной системы и с тех пор не менялось. Путь до пустыни Дофар занял всё время существования планет. Дофар — метеорит, найденный в каменистой пустыне Омана. Пустыня сохраняет метеориты лучше любого другого ландшафта: сухой воздух и отсутствие почвы оставляют веществу шанс дожить до находки почти нетронутым. Метеориты Дофара носят имя провинции Омана, где найдены сотни экземпляров; каждый внесён под своим номером в мировой каталог метеоритов.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Дофар, Оман</param>
+<param name="Размер">Вес 1 142 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0613" available="false">
+<name>Скелет пинакозавра (Pinacosaurus)</name>
+<url>https://relictum.gallery/objects/0613-pinacosaurus.html</url>
+<price>45000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_pinacosaurus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_pinacosaurus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_pina_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_pina_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_pinacosaurus.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[На равнинах Центральной Азии позднего мела среди динозавров заметен Pinacosaurus — анкилозавр, чью спину покрывали ряды костных пластин-остеодермов. Низкое широкое туловище под панцирем не оставляло хищникам удобного места для нападения. Такая защита стоила подвижности: анкилозавры выбрали броню, а не скорость. Скелет полный и передаёт характерный низкий силуэт: массивная спина в броне, короткие мощные конечности, длинный хвост. Стальной каркас скрыт внутри костяка; основание — низкая плита из чернёной стали с вертикальными стойками. Панцирные динозавры редко сохраняют остеодермы на своих местах: у большинства находок броня лежит отдельно от костяка.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">около 80–75 млн лет</param>
+<param name="Происхождение">Центральная Азия</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0282" available="true">
+<name>Метеорит Озерки (Ozerki L6)</name>
+<url>https://relictum.gallery/objects/0282-ozerki.html</url>
+<price>546000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_ozerki_a.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_ozerki_a.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_ozerki_a.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_ozerki_260921110614.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Обыкновенный хондрит спёкся в недрах каменного астероида, и хондры — застывшие капли первого вещества — так и остались в породе. Расплава, который стёр бы их, здесь никогда не было. Озерки — метеорит, упавший в Липецкой области. Камни собрали сразу после падения, до первых дождей, — поэтому первичная кора плавления дошла нетронутой. Обычно такая кора разрушается за первые же сезоны под дождём и снегом. Здесь она цела — это и есть главная ценность образца.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Липецкая область, Россия</param>
+<param name="Размер">Вес 182 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0283" available="true">
+<name>Палласит Сеймчан (Seymchan Pallasite)</name>
+<url>https://relictum.gallery/objects/0283-seymchan-3815.html</url>
+<price>6740000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_seymchan3815.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_seymchan3815.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_seymchan_3815_260921110607.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_seymchan_3815_260921110608.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Оливин не попадает в железо случайно: такое смешение возможно ровно в одной зоне — там, где ядро протопланеты соприкасалось с её каменной мантией. Расплавленный металл просачивался между кристаллами и застывал вместе с ними под огромным давлением. Спил показывает срез этой зоны; на Земле её не существует. Палласиты — редчайший класс метеоритов. Они рождались на границе между железным ядром и каменной мантией разрушенной протопланеты: расплавленное никелистое железо просачивалось сквозь кристаллы оливина и застывало вместе с ними. Такое возможно только там, где металл и камень встречаются под огромным давлением. Сеймчан нашли в 1967 году на севере Магаданской области, и с тех пор он считается одним из самых красивых метеоритов России. На спиле видно то, что нельзя сделать ни в одной мастерской: металлическая сетка с видманштеттеновыми линиями космической кристаллизации, в которой сидят прозрачные зёрна оливина — на просвет они загораются янтарём. Возраст вещества — около 4,56 миллиарда лет: оно старше Земли.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,56 млрд лет</param>
+<param name="Происхождение">Магаданская область, Россия</param>
+<param name="Размер">Вес 3 815 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0604" available="true">
+<name>Скелет пещерного медведя (Ursus spelaeus)</name>
+<url>https://relictum.gallery/objects/cave-bear-skeleton.html</url>
+<price>10000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_cavebear.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_cavebear.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_cavebear_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_cavebear_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_cavebear_3.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Пещерный медведь Ursus spelaeus — один из крупнейших зверей ледниковой Евразии: вдвое тяжелее бурого собрата, на задних лапах — под три метра роста. При такой мощи рацион его был по большей части растительным. Зимовал он в пещерах, оставляя на стенах царапины когтей и утоптанные лежанки; подземные залы служили ему и убежищем, и последним пристанищем. Вместе с мамонтом и шерстистым носорогом он определял облик плейстоценовой фауны. Экспонат — полный скелет длиной 295 сантиметров и весом около 150 килограммов. В костяке читается фирменная диспропорция вида: мощные передние лапы при некрупных задних. Размеры выводят экземпляр в число крупнейших скелетов вида, а полнота костяка делает его пригодным для сравнительного изучения.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">более 12 000 лет</param>
+<param name="Происхождение">Россия</param>
+<param name="Размер">Длина 295 см, вес около 150 кг</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0284" available="true">
+<name>Палласит Сеймчан (Seymchan Pallasite)</name>
+<url>https://relictum.gallery/objects/0284-seymchan-28x31.html</url>
+<price>1700000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_seymchan28x31.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_seymchan28x31.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_seymchan_28x31_260921110608.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_seymchan_28x31_260921110609.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Оливин и железо встречаются в одном-единственном месте — на границе ядра и мантии протопланеты, где расплавленный металл пронизывал каменную породу. Крупный спил Сеймчана показывает этот слой целиком. Палласиты — редчайший класс метеоритов. Они рождались на границе между железным ядром и каменной мантией разрушенной протопланеты: расплавленное никелистое железо просачивалось сквозь кристаллы оливина и застывало вместе с ними. Такое возможно только там, где металл и камень встречаются под огромным давлением. Сеймчан нашли в 1967 году на севере Магаданской области, и с тех пор он считается одним из самых красивых метеоритов России. На спиле видно то, что нельзя сделать ни в одной мастерской: металлическая сетка с видманштеттеновыми линиями космической кристаллизации, в которой сидят прозрачные зёрна оливина — на просвет они загораются янтарём. Возраст вещества — около 4,56 миллиарда лет: оно старше Земли.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,56 млрд лет</param>
+<param name="Происхождение">Магаданская область, Россия</param>
+<param name="Размер">28 × 31 см</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0614" available="false">
+<name>Скелет овираптора (Oviraptoridae)</name>
+<url>https://relictum.gallery/objects/0614-oviraptor.html</url>
+<price>34000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_oviraptor.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_oviraptor.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_oviraptor_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_oviraptor_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_oviraptor_3.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[В Центральной Азии позднего мелового периода жили овирапториды — пернатые тероподы с беззубым клювом и лёгким телосложением, одни из ближайших родственников птиц среди динозавров. Имя «похититель яиц» появилось по недоразумению: первый скелет нашли на кладке, которую сочли чужой. Позднейшие находки показали, что животное высиживало собственные яйца, укрывая их телом и руками-крыльями. Экспонат относится к семейству Oviraptoridae. Скелет полный, с хорошо читаемыми элементами черепа и поясов конечностей. Овирапториды стали одним из ключевых аргументов в пользу родства динозавров и птиц: строение таза, конечностей и кисти указывает на ту же линию развития, что завершилась современными птицами.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">89,8–70,6 млн лет</param>
+<param name="Происхождение">Центральная Азия</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0605" available="false">
+<name>Череп мамонта с бивнями (Mammuthus primigenius)</name>
+<url>https://relictum.gallery/objects/mammoth-skull-tusks.html</url>
+<price>4500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_skull.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_mammoth_skull.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammothskull_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammothskull_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammothskull_3.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Тридцать тысяч лет назад на месте нынешней якутской тундры лежала мамонтовая степь — сухая, холодная, богатая травой. Её главным зверем был шерстистый мамонт Mammuthus primigenius. Бивни служили ему не только оружием: ими он счищал снег с мёрзлой травы и обдирал кору с редких деревьев. Мерзлота Якутии — едва ли не единственное место на планете, где кость и бивень сохраняются почти нетронутыми. Экземпляр — череп с полной парой бивней карамельной патины, размах бивней 2,4 метра. Он установлен на гранитном блоке с бронзовыми опорами; происхождение легальное, с полным пакетом экспертиз. Череп с обоими бивнями на месте встречается заметно реже, чем отдельные бивни. Документальная история находки и монументальная подача делают экспонат готовым к постоянному экспонированию.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">≈ 30 000 лет</param>
+<param name="Происхождение">Якутия, Россия</param>
+<param name="Размер">Размах бивней 2,4 м</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0285" available="true">
+<name>Палласит Сеймчан (Seymchan Pallasite)</name>
+<url>https://relictum.gallery/objects/0285-seymchan-28x25.html</url>
+<price>1500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_seymchan28x25.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_seymchan28x25.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Каждое зерно оливина в этом спиле когда-то плавало в жидком металле ядра. Застыли они вместе, под давлением, в толще протопланеты. Палласиты — редчайший класс метеоритов. Они рождались на границе между железным ядром и каменной мантией разрушенной протопланеты: расплавленное никелистое железо просачивалось сквозь кристаллы оливина и застывало вместе с ними. Такое возможно только там, где металл и камень встречаются под огромным давлением. Сеймчан нашли в 1967 году на севере Магаданской области, и с тех пор он считается одним из самых красивых метеоритов России. На спиле видно то, что нельзя сделать ни в одной мастерской: металлическая сетка с видманштеттеновыми линиями космической кристаллизации, в которой сидят прозрачные зёрна оливина — на просвет они загораются янтарём. Возраст вещества — около 4,56 миллиарда лет: оно старше Земли.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,56 млрд лет</param>
+<param name="Происхождение">Магаданская область, Россия</param>
+<param name="Размер">28 × 25 см</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0213" available="true">
+<name>Череп пситтакозавра (Psittacosaurus sp.)</name>
+<url>https://relictum.gallery/objects/0213-psittacosaurus-skull.html</url>
+<price>1900000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_psittacosaurus_skull_260910132029.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_psittacosaurus_skull.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_psitskull_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_psitskull_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_psitskull_3.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[В раннемеловых лесах на территории нынешней провинции Ляонин среди растительноядных динозавров многочислен род Psittacosaurus — ранняя ветвь цератопсов, ещё без рогов и костного воротника. Высокий короткий череп с роговым клювом дал роду имя: профиль действительно напоминает попугая. Клюв и плоские листовидные зубы работали как секатор — ими ящер срезал ветви и жёсткие побеги при маленькой черепной коробке и крупных глазницах. Череп длиной около пятнадцати сантиметров найден в провинции Ляонин и датируется примерно 125 миллионами лет. Выступающие скуловые элементы читаются отчётливо. Пситтакозавр — один из самых полно изученных родов динозавров: по сотням найденных экземпляров известны все возрасты зверя, от вылупления до старости.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 125 млн лет</param>
+<param name="Происхождение">Провинция Ляонин, Китай</param>
+<param name="Размер">Череп ≈ 15 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0236" available="false">
+<name>Морская лилия (Traumatocrinus guanlingensis)</name>
+<url>https://relictum.gallery/objects/0236-crinoid-floats.html</url>
+<price>500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_crinoid_floats.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_crinoid_floats.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_crinoid_floats_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_crinoid_floats_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_crinoid_floats.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Тёплое море покрывало юг нынешнего Китая 235 миллионов лет назад. По его поверхности дрейфовали стволы деревьев, и к ним, как ожившие цветы на длинных стеблях, крепились колонии Traumatocrinus — триасовых морских лилий. Морская лилия только выглядит растением. Это животное, родственник морских звёзд и ежей: веер перистых рук раскрывался в толще воды и процеживал её, собирая планктон, а членистый стебель держал крону на дрейфующем плавнике. Когда дерево тонуло, колония опускалась на дно и оказывалась погребённой в тонком иле — так возникли плиты формации Гуаньлин, к которой относится и этот экземпляр. Иловое захоронение сохранило этих животных с редкой полнотой: кроны, перистые руки и стебли лежат в породе рельефом, как гербарий, собранный самой геологией. Каждая плита — это одна сцена той катастрофы и одна композиция, не повторяющаяся дважды. Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus сохраняет колонию в прижизненном положении — так, как она дрейфовала на своём стволе.]]></description>
+<param name="Период">Триасовый период</param>
+<param name="Возраст">≈ 235 млн лет</param>
+<param name="Происхождение">Юньнань-Гуйчжоу, Китай</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0607" available="true">
+<name>Пара бивней мамонта (Mammuthus primigenius)</name>
+<url>https://relictum.gallery/objects/0607-mammuthus-primigenius.html</url>
+<price>11500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_tusks.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_tusks.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_tusks_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammuthus_primigenius_260921110604.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[По сухой холодной прерии позднего плейстоцена, занимавшей место нынешней якутской тундры, стада мамонтов ходили так же привычно, как сегодня ходят по ней олени. Бивень мамонта — это сильно разросшийся резец, растущий всю жизнь животного и откладывающийся слоями дентина. Симметричная пара бивней одного зверя доходит до нас редко: обычно находят одиночные. Эта пара поднята из якутской мерзлоты и сохранила природную патину и глубокий изгиб. Длина по наружной дуге — 250 сантиметров, общий вес пары — 74 килограмма. Возраст находки — от десяти до сорока тысяч лет. Пара из одной находки — редкость: чаще бивни расходятся по рукам поодиночке.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">10–40 тыс лет</param>
+<param name="Происхождение">Якутия, Россия</param>
+<param name="Размер">Длина по наружной дуге 250 см, общий вес пары 74 кг</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0274" available="false">
+<name>Аммонит Speetoniceras (Speetoniceras versicolor)</name>
+<url>https://relictum.gallery/objects/0274-speetoniceras.html</url>
+<price>1500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_speetoniceras.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_speetoniceras.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[В раннемеловое время на месте Поволжья лежало мелководное море — рукав, тянувшийся через нынешний Казахстан к океану Тетис. Аммониты были его рядовым населением; за ними охотились плезиозавры и крупные хищные рыбы. Сто тридцать миллионов лет спустя волжские берега отдают их раковины — спиральные, с бронзовым отливом. Speetoniceras versicolor ценят за строй пропорций: виток нарастает ровно от центра к жилой камере, ребро к ребру, без сбоя ритма. Экземпляр находится у партнёров дома в Ульяновске и выставлен здесь с их согласия.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 133–130 млн лет</param>
+<param name="Происхождение">Поволжье, Россия</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0286" available="true">
+<name>Палласит Сеймчан (Seymchan Pallasite)</name>
+<url>https://relictum.gallery/objects/0286-seymchan-17x25.html</url>
+<price>1700000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_seymchan17x25.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_seymchan17x25.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Малый спил берёт участок той же пограничной зоны: металла здесь больше, оливина меньше — значит, эта часть тела лежала ближе к ядру. Палласиты — редчайший класс метеоритов. Они рождались на границе между железным ядром и каменной мантией разрушенной протопланеты: расплавленное никелистое железо просачивалось сквозь кристаллы оливина и застывало вместе с ними. Такое возможно только там, где металл и камень встречаются под огромным давлением. Сеймчан нашли в 1967 году на севере Магаданской области, и с тех пор он считается одним из самых красивых метеоритов России. На спиле видно то, что нельзя сделать ни в одной мастерской: металлическая сетка с видманштеттеновыми линиями космической кристаллизации, в которой сидят прозрачные зёрна оливина — на просвет они загораются янтарём. Возраст вещества — около 4,56 миллиарда лет: оно старше Земли.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,56 млрд лет</param>
+<param name="Происхождение">Магаданская область, Россия</param>
+<param name="Размер">17,5 × 25 см</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0214" available="true">
+<name>Скелет пернатого динозавра (Anchiornis huxleyi)</name>
+<url>https://relictum.gallery/objects/0214-anchiornis-huxleyi.html</url>
+<price>9300000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_anchiornis.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_anchiornis.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_anchiornis.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_anchiornis_huxleyi_260921110556.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_anchiornis_huxleyi_260921110557.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Около 160 миллионов лет назад в позднеюрских лесах, отложения которых сегодня известны как формация Тяоцзишань, жил Anchiornis huxleyi — небольшой пернатый теропод, чьё имя переводится как «почти птица». Находки этого рода сыграли важную роль в изучении происхождения птиц: оперение здесь появляется задолго до способности к машущему полёту. Видовое имя дано в честь Томаса Генри Гексли, одним из первых связавшего динозавров и птиц. Сочленённый скелет лежит на известняковой плите 53,5 × 43 сантиметра с фигурным краем. Читаются зубы и когти — детали, которые при препарировании плит такого размера обычно теряются. По ископаемым меланосомам таких находок восстановлена прижизненная окраска анхиорниса: серо-чёрное тело и белые перья крыльев с чёрными кончиками. Экземпляр относится к одной из самых обсуждаемых групп современной палеонтологии; за пределами музеев Китая подобные скелеты единичны.]]></description>
+<param name="Период">Юрский период</param>
+<param name="Возраст">≈ 160 млн лет</param>
+<param name="Происхождение">Провинция Ляонин, Китай, формация Тяоцзишань</param>
+<param name="Размер">Плита 53,5 × 43 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0255" available="true">
+<name>Уваровит (Uvarovite)</name>
+<url>https://relictum.gallery/objects/0255-uvarovite.html</url>
+<price>500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_uvarovite.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_uvarovite.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_uvarovite_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_uvarovite_260921110617.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_uvarovite_260921110618.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Уваровит — редкая хромсодержащая разновидность граната с ярко-зелёной окраской. Крупных кристаллов он почти не образует, чаще всего это сплошные ковры из мелких граней на поверхности породы. В ювелирном деле используют именно такие фрагменты: множество мелких кристаллов даёт насыщенное мерцание без крупной огранки. Минерал назван в честь российского государственного деятеля и учёного, президента Санкт-Петербургской академии наук графа Сергея Семёновича Уварова (1786–1855). Сарановское месторождение в Пермском крае остаётся одним из классических источников коллекционного уваровита.]]></description>
+<param name="Период">Эдиакарский период</param>
+<param name="Возраст">≈ 550 млн лет</param>
+<param name="Происхождение">Сарановское месторождение, Пермский край, Россия</param>
+<param name="Размер">49 × 30 × 15 см, вес 2,99 кг</param>
+<param name="Раздел">Земля</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0237" available="false">
+<name>Морская лилия (Traumatocrinus guanlingensis)</name>
+<url>https://relictum.gallery/objects/0237-crinoid-pair.html</url>
+<price>500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_crinoid_pair.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_crinoid_pair.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_crinoid_pair_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_crinoid_pair_260921110634.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Тёплое море покрывало юг нынешнего Китая 235 миллионов лет назад. По его поверхности дрейфовали стволы деревьев, и к ним, как ожившие цветы на длинных стеблях, крепились колонии Traumatocrinus — триасовых морских лилий. Морская лилия только выглядит растением. Это животное, родственник морских звёзд и ежей: веер перистых рук раскрывался в толще воды и процеживал её, собирая планктон, а членистый стебель держал крону на дрейфующем плавнике. Когда дерево тонуло, колония опускалась на дно и оказывалась погребённой в тонком иле — так возникли плиты формации Гуаньлин, к которой относится и этот экземпляр. Иловое захоронение сохранило этих животных с редкой полнотой: кроны, перистые руки и стебли лежат в породе рельефом, как гербарий, собранный самой геологией. Каждая плита — это одна сцена той катастрофы и одна композиция, не повторяющаяся дважды. Морские лилии этого рода исчезли вместе со своим миром, но их изящество не устарело за четверть миллиарда лет. Плита с Traumatocrinus сохраняет колонию в прижизненном положении — так, как она дрейфовала на своём стволе.]]></description>
+<param name="Период">Триасовый период</param>
+<param name="Возраст">≈ 235 млн лет</param>
+<param name="Происхождение">Юньнань-Гуйчжоу, Китай</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0608" available="true">
+<name>Череп шерстистого носорога (Coelodonta antiquitatis)</name>
+<url>https://relictum.gallery/objects/0608-coelodonta-antiquitatis.html</url>
+<price>1600000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_rhino_skull.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_rhino.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_rhino_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_coelodonta_antiquitatis_260921110603.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_coelodonta_antiquitatis_260921110604.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Мамонтовая степь плейстоцена держалась на нескольких крупных травоядных. Вторым по величине после мамонта был шерстистый носорог Coelodonta antiquitatis — символ ледниковой Евразии. Передний рог у него вырастал до метра и служил лопатой: им зверь разгребал снег, чтобы добраться до промёрзшей травы. Рог сложен кератином и сохраняется в отложениях гораздо хуже кости. Этот череп сохранил оба рога и полный зубной ряд — сочетание, которое встречается в единичных находках. Габариты — 130 × 82 × 35 сантиметров. Возраст экземпляра — от пятидесяти до ста пятидесяти тысяч лет: кость пережила несколько оледенений.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">50–150 тыс лет</param>
+<param name="Происхождение">Якутия, Россия</param>
+<param name="Размер">130 × 82 × 35 см</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0273" available="false">
+<name>Аммонит Craspedodiscus (Craspedodiscus sp.)</name>
+<url>https://relictum.gallery/objects/0273-craspedodiscus.html</url>
+<price>1600000</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_craspedodiscus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_craspedodiscus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_craspedodiscus_260921110625.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_craspedodiscus_260921110626.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Крупные аммониты рода Craspedodiscus стали визитной карточкой Ульяновской области. Когда-то эти головоногие моллюски жили в тёплом море мелового периода, сегодня их раковины находят в береговых обнажениях. Раковина окрашена в каштановые и тёмно-красные тона, отдельные участки дают радужные переливы окаменевшего перламутра. При смене угла освещения меняется интенсивность этих отблесков, и хорошо читается слоистое строение стенки. Экземпляр происходит из Ульяновской области и находится у партнёров дома в Ульяновске, на этой площадке он демонстрируется с их согласия.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">Меловой период</param>
+<param name="Происхождение">Ульяновская область, Россия</param>
+<param name="Размер">Диаметр около 30 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0287" available="true">
+<name>Палласит Сеймчан (Seymchan Pallasite)</name>
+<url>https://relictum.gallery/objects/0287-seymchan-framed.html</url>
+<price>1700000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_seymchan_frame.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_seymchan_frame.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_seymchan_frame.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_seymchan_framed_260921110608.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Палласиты — редчайший класс метеоритов. Они рождались на границе между железным ядром и каменной мантией разрушенной протопланеты: расплавленное никелистое железо просачивалось сквозь кристаллы оливина и застывало вместе с ними. Такое возможно только там, где металл и камень встречаются под огромным давлением. Сеймчан нашли в 1967 году на севере Магаданской области, и с тех пор он считается одним из самых красивых метеоритов России. На спиле видно то, что нельзя сделать ни в одной мастерской: металлическая сетка с видманштеттеновыми линиями космической кристаллизации, в которой сидят прозрачные зёрна оливина — на просвет они загораются янтарём. Возраст вещества — около 4,56 миллиарда лет: оно старше Земли.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,56 млрд лет</param>
+<param name="Происхождение">Магаданская область, Россия</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0215" available="true">
+<name>Яйца динозавра (Elongatoolithidae)</name>
+<url>https://relictum.gallery/objects/0215-dinosaur-eggs.html</url>
+<price>1100000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_dino_eggs.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_dino_eggs.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_eggs_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_eggs_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_eggs_3.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[От позднемеловых динозавровых гнёзд до нас доходит немногое: скорлупа хрупка и почти всегда рассыпается прежде, чем успевает окаменеть. Эти два удлинённых яйца лежат на общей породе и относятся к группе Elongatoolithidae, которую находки эмбрионов связывают с овирапторозаврами — пернатыми всеядными динозаврами, похожими на нынешних казуаров. Они насиживали кладки до двадцати яиц, охраняя гнездо, как птицы. Скорлупа сохранила рельеф из бугорков, выстроенных продольными линиями; внутри яйца — каменное ядро окаменевшего осадка. Экспонат найден в провинции Ляонин. Ископаемые яйца — редкий тип свидетельства: они говорят не об отдельном животном, а о его размножении.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 89 млн лет</param>
+<param name="Происхождение">Провинция Ляонин, Китай</param>
+<param name="Размер">16 × 19,2 см, высота 7,7 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0611" available="false">
+<name>Скелет шерстистого носорога (Coelodonta antiquitatis)</name>
+<url>https://relictum.gallery/objects/0611-coelodonta-skeleton.html</url>
+<price>12000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_rhino_skeleton.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_rhino_skeleton.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_rhino_skeleton.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Coelodonta antiquitatis — зверь ледниковой Евразии под густой шерстью, весом до трёх с половиной тонн: второй по массе обитатель мамонтовой степи после мамонта. Его силуэт узнаваем: низко посаженный череп, короткая мощная шея, глубокая грудная клетка, тяжёлый таз, короткие столбчатые ноги. Так он и держался при жизни — головой к земле, всей массой вперёд. Скелет обнаружен в Якутии и сохранился целиком, с характерными крупными рогами. Возраст экземпляра — от пятидесяти до ста пятидесяти тысяч лет. Полные скелеты шерстистого носорога наперечёт даже в музейных собраниях.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">50–150 тыс лет</param>
+<param name="Происхождение">Якутия, Россия</param>
+<param name="Размер">Полный скелет</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0288" available="true">
+<name>Сеймчан без оливина (Seymchan Pallasite)</name>
+<url>https://relictum.gallery/objects/0288-seymchan-no-olivine.html</url>
+<price>1100000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_seymchan_no_olivine_260921105348.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_seymchan_no_olivine_260921105410.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_seymchan_no_olivine_260921105412.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_seymchan_no_olivine_260921110609.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_seymchan_no_olivine_260921110611.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Здесь чистый металл без единого зерна оливина: участок ядра, который не соприкасался с мантией. В соседних спилах того же тела оливин уже есть — граница проходила рядом. Сеймчан — железокаменный метеорит, найденный в Магаданской области у одноимённого посёлка. Он относится к палласитам, но этот экземпляр редок тем, что оливина в нём нет: перед нами почти чистая металлическая часть того же тела. Такие участки формировались ближе к ядру протопланеты, где каменная составляющая уже не проникала в расплав.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,56 млрд лет</param>
+<param name="Происхождение">Магаданская область, Россия</param>
+<param name="Размер">Вес 1 565 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0220" available="false">
+<name>Челюсть спинозавра (Spinosaurus aegyptiacus)</name>
+<url>https://relictum.gallery/objects/0220-spinosaurus-jaw.html</url>
+<price>5500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_spinosaurus_jaw.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_spinosaurus_jaw.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_spinojaw_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_spinojaw_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_spinosaurus_jaw.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Сеноманский век позднего мела: там, где сегодня лежит Сахара, текут широкие реки. Их берега держит Spinosaurus aegyptiacus — крупнейший хищный теропод Северной Африки. Челюсти спинозавра удлинены, а зубы конические, почти круглого сечения. Такой аппарат приспособлен не резать, а удерживать скользкую добычу. Экспонат — фрагмент нижней челюсти с сохранившимся зубным рядом. Подлинная кость животного, вокруг которого до сих пор идут научные споры, — приобретение нечастое.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">100–94 млн лет</param>
+<param name="Происхождение">Северная Африка</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0263" available="false">
+<name>Нога мамонта (Mammuthus primigenius)</name>
+<url>https://relictum.gallery/objects/0263-mammoth-leg.html</url>
+<price>20000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_leg.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_mammoth_leg.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Для мумификации нужно, чтобы нога ушла в мерзлоту быстро и не оттаивала ни разу за тысячи лет. Перед вами именно такой случай — с кожей, связками и длинной рыжей шерстью. Широкая округлая ступня — устройство, которым мамонт распределял свои тонны по снегу и болотистой тундростепи; на подошве читается прижизненный рельеф. Такой экспонат показывает зверя ближе, чем любой скелет: это не строение тела, это само тело. Редчайший случай, когда зверь ледникового мира доходит до нас не костью, а телом.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">≈ 2,6 млн – 11 тыс лет</param>
+<param name="Происхождение">Россия, зона вечной мерзлоты</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0289" available="true">
+<name>Пластина метеорита Омолон (Omolon Pallasite)</name>
+<url>https://relictum.gallery/objects/0289-omolon.html</url>
+<price>750000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_omolon.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_omolon.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_omolon.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_omolon_260921110610.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Омолон — железокаменный метеорит весом двести пятьдесят килограммов, упавший в Магаданской области, в бассейне реки Омолон. Нашёл его оленевод Иван Тынавьи. Палласиты вроде Омолона рождались на границе ядра и мантии протопланеты: металл застывал вокруг кристаллов оливина. На пластине эта структура видна целиком.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Бассейн реки Омолон, Магаданская область, Россия</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0221" available="true">
+<name>Коготь крупного теропода (Carcharodontosaurus sp.)</name>
+<url>https://relictum.gallery/objects/0221-carcharodontosaurus-claw.html</url>
+<price>15000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_carcharodont_claw.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_carcharodont_claw.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_claw_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_claw_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_carcharodont_claw.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[В сеноманском веке, около 100–94 миллионов лет назад, за вершину пищевой цепи Северной Африки со спинозавром спорил род Carcharodontosaurus — «ящер с зубами акулы», один из крупнейших хищных динозавров своего времени. Экспонат — когтевая фаланга, то есть костная основа когтя. При жизни на неё надевался роговой чехол, и коготь был заметно длиннее и острее того, что мы видим сейчас. Длина фаланги — около двадцати шести сантиметров. Отдельная кость такого размера говорит о масштабе животного точнее любого описания.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">100–94 млн лет</param>
+<param name="Происхождение">Северная Африка</param>
+<param name="Размер">≈ 26 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0615" available="false">
+<name>Скелет степного зубра (Bison priscus)</name>
+<url>https://relictum.gallery/objects/0615-bison-priscus.html</url>
+<price>5000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_bison_skeleton.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_bison_skeleton.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_bison_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_bison_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_bison_4.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Мамонтовая степь плейстоцена, от Европы до Сибири. По ней паслись стада степного зубра Bison priscus — одного из самых массивных зверей ледниковой Евразии. Самцы достигали двух тонн веса и более двух метров в холке, а размах длинных загнутых вверх рогов превышал метр. Именно этого зверя чаще других рисовали на стенах пещер люди палеолита. Комплект костей полон — от массивного черепа с рогами размахом более метра до конечностей. По нему хорошо читаются пропорции животного, постановка головы и линия спины, какими они были в мамонтовой степи. Вид существовал от 2,5 миллиона до 10 тысяч лет назад и известен науке очень хорошо; скелет даёт возможность рассматривать не отдельные кости, а целый облик крупного травоядного плейстоцена.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">2,5 млн – 10 тыс лет назад</param>
+<param name="Происхождение">Россия</param>
+<param name="Размер">Рога с размахом более метра</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0293" available="true">
+<name>Аммонит Cleoniceras (Cleoniceras sp.)</name>
+<url>https://relictum.gallery/objects/0293-cleoniceras.html</url>
+<price>200000</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_ammo_cleoniceras.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_ammo_cleoniceras.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_ammo_cleoniceras_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_cleoniceras_260921110629.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Cleoniceras — род крупных аммонитов, живших в морях мелового периода. Их раковины находят в осадочных породах Европы, Ближнего Востока и Африки, но самые красивые добывают на Мадагаскаре. Здесь раковина замещена кальцитом, способным принимать самые неожиданные цвета. Распил открывает внутреннее устройство: перегородки, камеры и сифон, которыми моллюск управлял своей плавучестью.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 113–100 млн лет</param>
+<param name="Происхождение">Мадагаскар</param>
+<param name="Размер">Пара половин, каждая в раме 34 × 5 × 38 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0212" available="true">
+<name>Скелет кейхозавра (Keichousaurus hui)</name>
+<url>https://relictum.gallery/objects/0212-keichousaurus-hui.html</url>
+<price>1800000</price>
+<currencyId>RUR</currencyId>
+<categoryId>7</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_keichousaurus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_keichousaurus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_keicho_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_keicho_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_keichousaurus.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Около 245 миллионов лет назад рептилии, не так давно освоившие сушу, начали возвращаться в море. Одна из первых таких линий — завроптеригии, к которым относится Keichousaurus hui. Небольшое тело, удлинённая шея, компактное туловище и конечности, превращённые в вёсла, — облик животного, ещё не ставшего морским до конца. Кейхозавры населяли тёплые мелководья на территории нынешнего Китая. Скелет сохранился полным и сочленённым на тёмной плите размером 35,4 × 22,5 сантиметра; длина самого животного — 30,5 сантиметра. Для этого рода такой размер считается крупным. Полная анатомическая связь костей делает плиту пригодной для изучения пропорций и посадки конечностей.]]></description>
+<param name="Период">Триасовый период</param>
+<param name="Возраст">≈ 245 млн лет</param>
+<param name="Происхождение">Гуйчжоу, Китай</param>
+<param name="Размер">Плита 35,4 × 22,5 см, длина скелета 30,5 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0302" available="true">
+<name>Композиция из метеоритов Дронино (Dronino Iron)</name>
+<url>https://relictum.gallery/objects/0302-dronino-composition.html</url>
+<price>3000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_dronino_composition_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_dronino_composition_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dronino_composition_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dronino_composition_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_dronino_composition_2.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Дронино — железный метеорит-атаксит, найденный в Рязанской области в 2000 году. Дождь его обломков рассыпался по полю задолго до находки: отдельные фрагменты лежали в земле как разбросанные части одного небесного тела, каждый со своим рельефом оплавления и коррозии. Семь таких фрагментов собраны вместе. На каждом читаются следы космического полёта и долгого пребывания в почве: корка плавления, ямки выветривания, переходы от тёмных коррозионных участков к светлому металлу. Их вещество старше Земли — почти чистое никелистое железо из глубины разрушенной протопланеты.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Рязанская область, Россия</param>
+<param name="Размер">Семь индивидуалов на общей базе, суммарный вес 7 кг</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0616" available="false">
+<name>Скелет плейстоценового волка (Canis lupus)</name>
+<url>https://relictum.gallery/objects/0616-pleistocene-wolf.html</url>
+<price>4000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_pleistocene_wolf.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_pleistocene_wolf.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_pleistocene_wolf.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Рядом с мамонтом и шерстистым носорогом по краю мамонтовой степи ледниковой Евразии держались стаи волков — крупнее и мощнее нынешних. Плейстоценовые популяции были приспособлены к охоте в открытом холодном ландшафте и к крупной добыче. Их кости находят там же, где и остатки остальной мамонтовой фауны. Экспонат — скелет плейстоценового волка, собранный для постоянного экспонирования. По нему видно, как устроено животное, приспособленное к бегу на большие расстояния: вытянутое туловище, длинные конечности, широкая грудная клетка. В составе коллекции ледникового периода такой волк показывает место среднего хищника между крупной травоядной фауной и мелкими падальщиками; его размеры позволяют видеть пропорции рядом с мамонтом или зубром.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">2,6 млн – 11 тыс лет</param>
+<param name="Происхождение">Россия</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0294" available="true">
+<name>Аммонит юрский (Ammonitida)</name>
+<url>https://relictum.gallery/objects/0294-jurassic-ammonite.html</url>
+<price>300000</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_ammo_jurassic_polished.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_ammo_jurassic_polished.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_jurassic_ammonite_260921110628.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Аммониты строили раковину камера за камерой, каждый раз чуть больше предыдущей, и всю жизнь жили только в последней. Позади оставалась череда пустых камер, наполненных газом, — они и держали животное в толще воды. Юрское море, из которого происходит этот экземпляр, существовало около ста семидесяти четырёх миллионов лет назад. В осадке вместе с илом сохранилась и раковина: виток за витком, с ритмом прироста и следами перегородок, по которым легко читать возраст и способ роста древнего моллюска.]]></description>
+<param name="Период">Юрский период</param>
+<param name="Возраст">≈ 174 млн лет</param>
+<param name="Происхождение">По запросу</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0218" available="false">
+<name>Скелет миксозавра (Mixosaurus)</name>
+<url>https://relictum.gallery/objects/0218-mixosaurus-plate.html</url>
+<price>3500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>7</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_ichthyosaur_plate.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_ichthyosaur_plate.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mixosaurus_plate_260921110558.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Около 245 миллионов лет назад, в триасовом периоде, океаны заново заселялись после великого вымирания; их новыми хищниками стали морские рептилии. Одним из них был Mixosaurus — «смешанный ящер», ранний ихтиозавр триасового периода. В его сложении ещё читаются черты наземных предков рядом с зачатками того скоростного пловца, каким ихтиозавры станут позже, приобретя облик, схожий с дельфиньим. Скелет длиной 85 сантиметров сохранился в плите тонкозернистого известняка 58 × 30 сантиметров: череп, позвоночник и элементы грудной клетки лежат в анатомической связи. Подача горизонтальная — так, как животное легло в осадок. Осадок ложился на дно быстро и мягко, поэтому кости не разошлись: скелет лежит в плите так, как животное легло на дно 245 миллионов лет назад.]]></description>
+<param name="Период">Триасовый период</param>
+<param name="Возраст">242–247 млн лет</param>
+<param name="Происхождение">Гуйчжоу, Китай</param>
+<param name="Размер">Плита 58 × 30 см, животное 85 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0264" available="true">
+<name>Коллекция бабочек (Papilionidae)</name>
+<url>https://relictum.gallery/objects/0264-butterflies-dark.html</url>
+<price>200000</price>
+<currencyId>RUR</currencyId>
+<categoryId>8</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_butterflies_dark.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_butterflies_dark.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_butterflies_dark_260921110629.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_butterflies_dark_260921110630.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Четырнадцать тропических бабочек в одной раме: тёмные парусники с ультрамариновыми, изумрудными и жёлтыми сигналами на крыльях. Каждый экземпляр расправлен вручную и подписан этикеткой вида. Энтомологическая рама — самый старый жанр кабинета натуралиста: так собирали ещё викторианские коллекционеры. Один предмет закрывает целую стену и целую тему. В составе: Papilio dehaanii (Япония), Papilio gigon (Индонезия), Papilio adamantius (Индонезия), Eurytides protesilaus (Перу), Papilio memnon, самка (Индонезия), Eurytides serville (Перу), Papilio pericles (Индонезия), Papilio peranthus (Индонезия), Papilio polytes (Индонезия), Papilio androgeus (Перу), Papilio cynorta (Камерун), Graphium codrus (Индонезия), Papilio paris (Вьетнам), Papilio delalandei (Мадагаскар). Названия — по этикеткам изготовителя; уточнения владельца будут внесены.]]></description>
+<param name="Размер">40 × 6 × 50 см (Д × Ш × В)</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0303" available="true">
+<name>Метеорит Челябинск (Chelyabinsk LL5)</name>
+<url>https://relictum.gallery/objects/0303-chelyabinsk-1.html</url>
+<price>476000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_chelyabinsk1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_chelyabinsk1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_chelyabinsk_1_260921110613.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Обыкновенный хондрит никогда не проходил через расплав: его вещество спеклось в недрах каменного астероида и осталось таким, каким было в начале Солнечной системы. Планетой это тело не стало — его разбило столкновением, и осколок шёл к Земле, пока не вспыхнул над Уралом. Утром 15 февраля 2013 года над Челябинском вспыхнул самый яркий болид века: тело около двадцати метров диаметром вошло в атмосферу и взорвалось на высоте в тридцать километров, а ударная волна выбила стёкла в тысячах домов. Осколки дождём рассыпались по снегу от Чебаркуля до Еманжелинска. Челябинск — обыкновенный хондрит типа LL5, вещество ровесника Солнечной системы. Этот индивидуал сохранил цельную кору плавления — тонкую чёрную плёнку, застывшую за несколько секунд полёта в атмосфере.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Челябинская область, Россия</param>
+<param name="Размер">70 × 55 × 30 мм, вес 119 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0223" available="false">
+<name>Череп афровенатора (Afrovenator abakensis)</name>
+<url>https://relictum.gallery/objects/0223-afrovenator-model.html</url>
+<price>125000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_afrovenator.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_afrovenator.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_afro_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_afro_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_afro_3.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Около 167–161 миллиона лет назад, в юрском периоде, по равнинам нынешнего Нигера ходил Afrovenator abakensis — «африканский охотник», сравнительно лёгкий и длинноногий хищный теропод. Вид описан по частичному скелету, сохранившему большую часть черепа: пропорции челюстей, глазниц и височных окон известны именно по этой находке. Длина черепа — около 80–90 сантиметров: узкая хищная морда, крупные височные окна и зубной ряд теропода читаются целиком. Скелет нашла экспедиция Пола Серено в 1993 году в отложениях формации Тиурарен; описание вида вышло годом позже.]]></description>
+<param name="Период">Юрский период</param>
+<param name="Возраст">прообраз 167–161 млн лет</param>
+<param name="Происхождение">Прообраз — Агадес, Нигер, авторская модель</param>
+<param name="Размер">Череп ≈ 80–90 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0260" available="true">
+<name>Малахит (Malachite)</name>
+<url>https://relictum.gallery/objects/0260-malachite-congo.html</url>
+<price>500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_malachite_congo.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_malachite_congo.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_malachite_congo_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_malachite_congo_260921110617.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Крупный образец малахита из провинции Верхняя Катанга — региона, который с конца XIX века считался одной из главных минералогических территорий Африки. Бельгийский геолог Жюль Корнэ описывал эти места как «геологическую сенсацию» из‑за концентрации медных, кобальтовых и полиметаллических руд. У малахита здесь сохранена микрокристаллическая текстура: плотный полосатый рисунок тонких волокон, по которым хорошо читается рост минерала. Между малахитовыми поверхностями вкраплён кальцит — мелкие, но правильные кристаллы, дающие иной блеск и цвет. Контраст зелёного малахита и светлого кальцита показывает, как в одном рудном теле последовательно откладывались разные минералы.]]></description>
+<param name="Происхождение">Haut-Katanga, ДР Конго</param>
+<param name="Размер">42,5 × 24 × 9,7 см, вес 5,35 кг</param>
+<param name="Раздел">Земля</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0617" available="false">
+<name>Скелет мамонта (Mammuthus primigenius)</name>
+<url>https://relictum.gallery/objects/0617-mammoth-skeleton.html</url>
+<price>45000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_skeleton.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_mammoth_skeleton.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_skeleton.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Мамонтовая степь держалась не столько климатом, сколько собственными обитателями. Стада шерстистых мамонтов веками вытаптывали и удобряли её — и вместе с ними эта степь исчезла. Mammuthus primigenius — самый узнаваемый зверь ледниковой эпохи. Якутская мерзлота сохраняет его кость лучше любых других отложений планеты. Экспонат — полный скелет шерстистого мамонта, самый крупный экспонат коллекции. Монтаж выполнен на скрытом стальном каркасе, установку производит команда дома на месте. Полный скелет мамонта задаёт масштаб всему помещению: под него подбирают зал, а не место в зале. Это и научный экспонат первой величины, и предельная точка выставочной программы.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">2,6 млн – 11 тыс лет</param>
+<param name="Происхождение">Якутия, Россия</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0298" available="true">
+<name>Аммонит Speetoniceras (Speetoniceras versicolor)</name>
+<url>https://relictum.gallery/objects/0298-speetoniceras-small.html</url>
+<price>200000</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_ammo_speet_small.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_ammo_speet_small.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_speetoniceras_small_260921110628.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Крупные раковины аммонитов рода Speetoniceras — одна из ярких особенностей палеонтологических находок Поволжья. Миллионы лет назад здесь простиралось мелководное Волжское море, связанное с древним океаном Тетис. Раковина строилась камера за камерой: моллюск жил только в последней, а пустые позади держали его в толще воды.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 133–130 млн лет</param>
+<param name="Происхождение">Поволжье, Россия</param>
+<param name="Размер">20 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0265" available="true">
+<name>Коллекция бабочек (Papilionidae)</name>
+<url>https://relictum.gallery/objects/0265-butterflies-blue.html</url>
+<price>200000</price>
+<currencyId>RUR</currencyId>
+<categoryId>8</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_butterflies_blue.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_butterflies_blue.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_butterflies_blue_260921110630.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Четырнадцать бабочек, собранных вокруг бирюзы и ультрамарина: морфо-синие крылья соседствуют с чёрно-белой графикой и лимонными акцентами. Каждый экземпляр подписан этикеткой вида. Синие тропические бабочки не содержат синего пигмента — цвет создаёт микроструктура чешуек, преломляющая свет. Рама живёт с освещением: угол меняется — меняется и цвет. В составе: Papilio lorquinianus (Индонезия), Papilio thoas (Перу), Papilio phorcas (Конго), Papilio torquatus (Перу), Papilio ulysses (Индонезия), Papilio demolion (Индонезия), Papilio arcturus (Вьетнам), Papilio karna (Индонезия), Papilio paeon (Перу), Graphium androcles (Индонезия), Papilio dardanus (Камерун), Papilio polytes, самка (Филиппины), Papilio blumei (Индонезия), Papilio polytes (Индонезия). Названия — по этикеткам изготовителя; уточнения владельца будут внесены.]]></description>
+<param name="Размер">40 × 6 × 50 см (Д × Ш × В)</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0304" available="true">
+<name>Метеорит Челябинск (Chelyabinsk LL5)</name>
+<url>https://relictum.gallery/objects/0304-chelyabinsk-2.html</url>
+<price>756000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_chelyabinsk2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_chelyabinsk2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_chelyabinsk_2_260921110614.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Челябинское тело было около двадцати метров в поперечнике — обломок каменного астероида, чьё вещество не менялось с начала Солнечной системы. Утром 15 февраля 2013 года над Челябинском вспыхнул самый яркий болид века: тело около двадцати метров диаметром взорвалось на тридцатикилометровой высоте, и осколки дождём рассыпались по снежным полям области. Челябинск — обыкновенный хондрит типа LL5. У этого индивидуала форма щита: так атмосфера обтачивает камень, летящий стабильно одной стороной вперёд. Маленький скол на кромке открывает светлую внутреннюю матрицу.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Челябинская область, Россия</param>
+<param name="Размер">75 × 40 × 45 мм, вес 189 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0291" available="true">
+<name>Лапа пситтакозавра (Psittacosaurus sp.)</name>
+<url>https://relictum.gallery/objects/0291-psittacosaurus-foot.html</url>
+<price>600000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_psit_paw.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_psit_paw.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_psittacosaurus_foot_260921110556.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Psittacosaurus — небольшой ранний цератопс около двух метров длиной. Четыре пальца задней лапы заканчивались плоскими когтями: ими зверь цеплялся за грунт при быстром двуногом шаге. Среди растительноядных динозавров раннего мела Ляонина род Psittacosaurus был одним из самых многочисленных. Высокий короткий череп с клювовидной передней частью челюстей дал роду имя: профиль действительно напоминает попугая. Пситтакозавры входят в группу цератопсов и приходятся предками трицератопсам; из «рогатого» у них пока лишь костные выросты на скулах — большие рога и воротник появятся у потомков.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 125 млн лет</param>
+<param name="Происхождение">Провинция Ляонин, Китай</param>
+<param name="Размер">18,5 × 23 см, толщина 7,3 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0253" available="true">
+<name>Лапа пещерного медведя (Ursus spelaeus)</name>
+<url>https://relictum.gallery/objects/0253-cavebear-paw-front.html</url>
+<price>250000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_cavebear_paw_front.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_cavebear_paw_front.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_cavebear_paw_front.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_cavebear_paw_front_260921110602.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Лапа пещерного медведя из Башкирии, животного, жившего здесь около 10–12 тысяч лет назад. Ursus spelaeus заметно превосходил размерами современных бурых медведей и был одним из крупнейших хищников позднего плейстоцена Евразии. Сохранность костей высокая: фаланги, плюсна, запястье — все элементы лапы на своих местах. Кости собраны на металлическом каркасе, который не видно при взгляде спереди, поэтому хорошо читается сама анатомия конечности и пропорции животного.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">≈ 10–12 тыс. лет</param>
+<param name="Происхождение">Башкортостан, Россия</param>
+<param name="Размер">25,5 × 19,5 × 9,5 см; вес 600 г</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0299" available="true">
+<name>Аммонит в породе (Ammonitida)</name>
+<url>https://relictum.gallery/objects/0299-jurassic-ammonite-block.html</url>
+<price>170000</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_ammo_jurassic_block.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_ammo_jurassic_block.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_jurassic_ammonite_block_260921110628.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Аммонит строил раковину камера за камерой и жил только в последней. Пустые камеры позади, наполненные газом, держали его в толще воды: моллюск управлял плавучестью, как подводная лодка балластом. Этот экземпляр не выбит из породы до конца — и это решение, а не недоделка. Известняк остаётся частью предмета: он показывает, в чём раковина пролежала сто семьдесят четыре миллиона лет.]]></description>
+<param name="Период">Юрский период</param>
+<param name="Возраст">≈ 174 млн лет</param>
+<param name="Происхождение">По запросу</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0292" available="true">
+<name>Скелет кейхозавра (Keichousaurus hui)</name>
+<url>https://relictum.gallery/objects/0292-keichousaurus-slab.html</url>
+<price>1500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>7</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_keicho_pink.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_keicho_pink.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_keichousaurus_slab_260921110557.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Кейхозавр — небольшая морская рептилия триасового периода, около тридцати сантиметров. Длинная шея, конечности-вёсла, длинный хвост: он не выходил на сушу и всю жизнь провёл в тёплом мелководном море. Скелеты кейхозавров находят в морских известняках провинции Гуйчжоу на юге Китая — по её старому написанию, Kweichow, род и получил имя. Известняк, в котором лежат эти скелеты, копился на дне спокойного моря слой за слоем. Осадок ложился быстро и мягко, поэтому кости не разошлись — сохранилось сочленение, редкое для морских находок.]]></description>
+<param name="Период">Триасовый период</param>
+<param name="Возраст">≈ 245 млн лет</param>
+<param name="Происхождение">Гуйчжоу, Китай</param>
+<param name="Размер">27,5 × 35,4 см, толщина 13 мм</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0267" available="true">
+<name>Коллекция бабочек (Papilionidae · Nymphalidae)</name>
+<url>https://relictum.gallery/objects/0267-butterflies-amber.html</url>
+<price>200000</price>
+<currencyId>RUR</currencyId>
+<categoryId>8</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_butterflies_amber.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_butterflies_amber.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_butterflies_amber_260921110630.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Четырнадцать бабочек тёплой гаммы: тигровые полосы, янтарь и охра рядом с чёрным бархатом крыльев парусников. Каждый экземпляр подписан этикеткой вида. Рама собрана как единая композиция: три колонки по пять экземпляров, ритм цвета выстроен по диагоналям. В составе: Papilio bachus (Перу), Papilio lowi (Филиппины), Papilio zagreus (Перу), Papilio hermeli (Филиппины), Papilio deiphobus (Индонезия), Papilio stockleyi (Таиланд; по признакам — комплекс павлиньих парусников Papilio bianor, имя на этикетке, вероятно, подвидовое), Papilio demodocus (Конго), Papilio karna (Индонезия), Papilio lycophron (Перу), Hypolimnas pandarus, самка (Индонезия), Papilio lormieri (ЦАР), Hypolimnas pandarus, самец (Индонезия), Anaea archidona (Перу), Historis odius (Перу). Названия — по этикеткам изготовителя; уточнения владельца будут внесены.]]></description>
+<param name="Размер">40 × 6 × 50 см (Д × Ш × В)</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0209" available="true">
+<name>Панцирная рыба Bothriolepis (Bothriolepis sp.)</name>
+<url>https://relictum.gallery/objects/0209-bothriolepis-sp.html</url>
+<price>4500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>9</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_bothriolepis.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_bothrio.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_bothrio_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_bothrio_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_bothriolepis.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[В водах девонского периода жили формы, которые больше не повторились никогда. Одна из них — Bothriolepis, панцирная рыба с телом, закованным в костяные пластины. Голова и передняя часть туловища у ботриолеписов защищены сплошным костяным коробом — одна из самых ранних попыток жизни носить броню. Объёмный экземпляр длиной около пятидесяти сантиметров происходит из девонских отложений: костяной панцирь головы и груди, членистые грудные плавники, гибкий хвостовой отдел. Триста пятьдесят миллионов лет — это впятеро древнее первых динозавров. Экземпляр читается и как документ раннего этапа эволюции позвоночных, и как скульптурная форма.]]></description>
+<param name="Период">Девонский период</param>
+<param name="Возраст">≈ 350 млн лет</param>
+<param name="Происхождение">Ленинградская область, Россия</param>
+<param name="Размер">50 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0201" available="true">
+<name>Зуб мегалодона (Otodus megalodon)</name>
+<url>https://relictum.gallery/objects/megalodon-tooth.html</url>
+<price>800000</price>
+<currencyId>RUR</currencyId>
+<categoryId>10</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_megalodon.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_megalodon.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_megalodon_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_megalodon_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_megalodon.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[В тёплом, богатом жизнью океане миоцена, где киты только начинали осваивать холодные широты, верх пищевой цепи занимал Otodus megalodon — крупнейшая акула за всю историю океана, весившая больше тридцати тонн и способная взять любую крупную добычу. Скелет акулы хрящевой и почти не сохраняется в породе, поэтому от мегалодона до нас дошли главным образом зубы. Терял он их постоянно: на месте выпавшего за несколько недель вырастал новый. Этот экземпляр поднят дайверами с глубины у берегов Индонезии. Высота коронки — четырнадцать с половиной сантиметров; эмаль сохранилась целиком, зазубренная режущая кромка не сточена и не подправлена. Для зуба такой величины подобное сочетание встречается редко: крупные экземпляры почти всегда несут следы износа или реставрации.]]></description>
+<param name="Период">Неогеновый период</param>
+<param name="Возраст">≈ 23 млн лет</param>
+<param name="Происхождение">Индонезия</param>
+<param name="Размер">Высота 14,5 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0217" available="true">
+<name>Гигантский трилобит (Dikelokephalina brenchleyi)</name>
+<url>https://relictum.gallery/objects/0217-dikelokephalina.html</url>
+<price>950000</price>
+<currencyId>RUR</currencyId>
+<categoryId>11</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_trilobite_giant.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_trilobite_giant.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_trilobite_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_trilobite_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_trilobite_giant.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[В начале ордовикского периода, почти полмиллиарда лет назад, дно морей древней Гондваны уже плотно заселяли членистоногие — до первых рыб оставались десятки миллионов лет. Среди крупнейших — трилобиты рода Dikelokephalina. Сланцы Fezouata под марокканской Загорой известны исключительной сохранностью ордовикской фауны. Здесь встречаются трилобиты редкой для группы величины — заметно крупнее привычных находок. Тело этого экземпляра — 33,5 × 27 сантиметра на плите 52,5 × 36,5. Сегменты проработаны глубоким рельефом и контрастируют с тёмной породой; края плиты оставлены необработанными. Размер и сохранность выводят экземпляр за рамки рядовой находки из Fezouata. Он одинаково хорошо стоит и в научном ряду, и на стене — как графика древнейшего океана.]]></description>
+<param name="Период">Ордовикский период</param>
+<param name="Возраст">≈ 480–472 млн лет</param>
+<param name="Происхождение">Загора, Марокко, формация Fezouata</param>
+<param name="Размер">Плита 52,5 × 36,5 см, тело 33,5 × 27 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0305" available="true">
+<name>Метеорит Челябинск (Chelyabinsk LL5)</name>
+<url>https://relictum.gallery/objects/0305-chelyabinsk-3.html</url>
+<price>168000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_chelyabinsk3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_chelyabinsk3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_chelyabinsk_3_260921110614.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Порода этого осколка сложилась в астероиде до того, как появились планеты, и пролежала так четыре с половиной миллиарда лет. Утром 15 февраля 2013 года над Челябинском вспыхнул самый яркий болид века. Взрыв на тридцатикилометровой высоте разорвал тело на тысячи осколков; часть из них раскололась при ударе о мёрзлую землю. Этот индивидуал — из таких: чёрная кора плавления сорвана с одного бока, и в разломе открыта светлая матрица хондрита LL5 с вкраплениями никелистого железа. Видно сразу обе природы камня: обожжённую атмосферой поверхность и первичное вещество Солнечной системы.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Челябинская область, Россия</param>
+<param name="Размер">43 × 38 × 24 мм, вес 42 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0297" available="true">
+<name>Зуб спинозавра в раме (Spinosaurus aegyptiacus)</name>
+<url>https://relictum.gallery/objects/0297-spinosaurus-tooth.html</url>
+<price>150000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_tooth_spinosaurus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_tooth_spinosaurus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_spinosaurus_tooth_260921110551.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Спинозавр — крупнейший из известных хищных динозавров: до пятнадцати метров длины и около семи тонн, крупнее тираннозавра. Единственный из гигантов, он жил у воды — на морских побережьях, в речных дельтах и болотах; узкая вытянутая морда и прямые гладкие зубы приспособлены удерживать рыбу, а не резать мясо. Его зубы не похожи на зубы прочих теропод: не сплющены и не зазубрены, а вытянуты в прямой конус с тонкими рёбрами — такими удобно удерживать скользкую добычу. Эти зубы находят в меловых отложениях Северной Африки, где сто миллионов лет назад текли реки и стояли мангровые заросли.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 112–93 млн лет</param>
+<param name="Происхождение">Марокко</param>
+<param name="Размер">Рама 34 × 5 × 44 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0275" available="true">
+<name>Череп пещерного медведя (Ursus spelaeus)</name>
+<url>https://relictum.gallery/objects/0275-cave-bear-skull.html</url>
+<price>2900000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_cavebear_skull.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_cavebear_skull.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_cave_bear_skull_260921110601.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_cave_bear_skull_260921110602.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Пещерный медведь Ursus spelaeus был крупнее нынешнего бурого и жил в Евразии всю последнюю ледниковую эпоху. Этот череп пролежал в вечной мерзлоте Якутии на глубине около семидесяти метров — условия, в которых кость почти не меняется, и потому сохранность здесь редкая даже для музейного материала. Сохранены клыки и весь зубной ряд, а по верху черепной коробки идёт высокий костный гребень — к нему крепились жевательные мышцы. Именно они давали челюстям силу, с которой медведь дробил кость. Череп идёт вместе с шейными позвонками: видно, как голова сидела на шее.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">≈ 60 000 лет</param>
+<param name="Происхождение">Якутия, Россия</param>
+<param name="Размер">40 × 30 × 28 см</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0300" available="true">
+<name>Аммонит Speetoniceras (Speetoniceras versicolor)</name>
+<url>https://relictum.gallery/objects/0300-speetoniceras-bronze.html</url>
+<price>600000</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_ammo_speet_bronze.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_ammo_speet_bronze.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_speetoniceras_bronze_260921110626.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_speetoniceras_bronze_260921110627.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Крупные раковины рода Speetoniceras — одна из ярких особенностей палеонтологических находок Поволжья. Миллионы лет назад здесь простиралось мелководное Волжское море, связанное с древним океаном Тетис; его воды населяли головоногие моллюски, служившие добычей плезиозаврам и хищным рыбам. Сегодня в меловых отложениях по берегам Волги находят их спирально закрученные раковины характерного бронзового оттенка. Speetoniceras versicolor выделяется пропорциями: толщина раковины постепенно увеличивается от центра к наружной жилой камере.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 133–130 млн лет</param>
+<param name="Происхождение">Поволжье, Россия</param>
+<param name="Размер">37 × 45 см, толщина 9,5 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0296" available="true">
+<name>Зуб мозазавра в раме (Mosasauridae)</name>
+<url>https://relictum.gallery/objects/0296-mosasaur-tooth.html</url>
+<price>150000</price>
+<currencyId>RUR</currencyId>
+<categoryId>7</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_tooth_mosasaur.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_tooth_mosasaur.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mosasaur_tooth_260921110550.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mosasaur_tooth_260921110551.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Мозазавры — морские ящеры мела, родня варанам, полностью перешедшая в воду: конечности стали ластами, тело вытянулось, появились теплокровность и живорождение — связь с сушей оборвалась навсегда. Конический зуб с острыми рёбрами от вершины к основанию — инструмент, которым мозазавр дробил панцири морских черепах и брал акул. Зубы, как у акул, менялись всю жизнь; на этом видны следы прижизненной работы. Они господствовали в морях последние двадцать миллионов лет мела и исчезли вместе с динозаврами.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 135–65 млн лет</param>
+<param name="Происхождение">По запросу</param>
+<param name="Размер">Рама 34 × 5 × 44 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0269" available="true">
+<name>Коллекция бабочек (Nymphalidae · Papilionidae · Pieridae)</name>
+<url>https://relictum.gallery/objects/0269-butterflies-warm.html</url>
+<price>200000</price>
+<currencyId>RUR</currencyId>
+<categoryId>8</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_butterflies_warm.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_butterflies_warm.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_butterflies_warm_260921110631.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Четырнадцать бабочек через всю палитру: лимонная желтизна, огненные крылья, ультрамарин и перламутр. Каждый экземпляр подписан этикеткой вида. В составе: Napeocles jucunda (Перу), Zeuxidia aurelius (Таиланд), Zeuxidia amethystus (Индонезия), Phoebis philea (Перу), Papilio gambrisius (Индонезия), Anteos menippe (Перу), Cethosia cydippe (Индонезия), Childrena childreni (Вьетнам), Baeotus baeotus (Перу), Papilio rumanzovia, самка (Филиппины), Prepona chromus (Перу), Siproeta epaphus (Перу), Papilio euchenor (Индонезия), Vindula dejone (Индонезия). Названия — по этикеткам изготовителя; уточнения владельца будут внесены.]]></description>
+<param name="Размер">40 × 6 × 50 см (Д × Ш × В)</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0219" available="false">
+<name>Череп Dunkleosteus (Dunkleosteus terrelli)</name>
+<url>https://relictum.gallery/objects/0219-dunkleosteus.html</url>
+<price>16000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>9</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_dunkleosteus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_dunkleosteus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dunkleo_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_dunkleo_3.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_dunkleosteus.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Около 360 миллионов лет назад в морях позднего девона появился один из первых суперхищников среди позвоночных — панцирная рыба Dunkleosteus terrelli. Вместо зубов у неё острые режущие костные кромки, а голову и переднюю часть тела закрывают массивные костные пластины. Она жила почти за сто миллионов лет до первых динозавров. Представленный экспонат — реконструкция черепа и головного щита, выполненная по научным данным, а не подлинная ископаемая кость. Она передаёт архитектуру головы в полном объёме. Реконструкция показывает то, что в подлинных находках обычно разрознено и деформировано.]]></description>
+<param name="Период">Девонский период</param>
+<param name="Возраст">≈ 360 млн лет</param>
+<param name="Происхождение">Реконструкция по научным данным</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0295" available="true">
+<name>Зуб акулы Otodus obliquus в раме (Otodus obliquus)</name>
+<url>https://relictum.gallery/objects/0295-otodus-tooth.html</url>
+<price>150000</price>
+<currencyId>RUR</currencyId>
+<categoryId>10</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_tooth_otodus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_tooth_otodus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_otodus_tooth_260921110550.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Otodus obliquus — крупная акула палеогенового периода, около шести метров длиной, из той линии, что позже дала мегалодона. Боковые зубчики у основания коронки — её отличительный признак: у поздних потомков они исчезнут. Этот зуб датируется примерно пятьюдесятью четырьмя миллионами лет — временем, когда после ухода морских ящеров акулы заняли вершину океанской пищевой цепи. Акулья челюсть теряет и отращивает зубы всю жизнь, поэтому зубы — самое частое, что от акул остаётся. Эмаль почти не разрушается: она доходит до нас такой, какой была.]]></description>
+<param name="Период">Палеогеновый период</param>
+<param name="Возраст">≈ 54 млн лет</param>
+<param name="Происхождение">По запросу</param>
+<param name="Размер">Рама 34 × 5 × 44 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0301" available="true">
+<name>Плита с трилобитами (Xenasaphus devexus)</name>
+<url>https://relictum.gallery/objects/0301-trilobite-plate.html</url>
+<price>1000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>11</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_trilo_plate.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_trilo_plate.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_trilobite_plate_260921110552.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Живые Xenasaphus devexus на илистом дне тёплого мелководного моря: сегментированный панцирь, головной щит с глазами, хвостовой щит. Они ползали и рылись в осадке, а при опасности сворачивались в шар. Xenasaphus devexus — трилобит семейства асафид из ордовикских морей на месте нынешней Ленинградской области. Трилобиты держались поодиночке: даже там, где они составляли заметную часть донной жизни, животные избегали соседей. Поэтому плита, на которой лежат сразу несколько десятков особей, — большая редкость, и в здешних отложениях такие скопления известны только у этого вида. Зачем трилобиты сходились вместе, наука спорит до сих пор: одни видят в этом линьку, другие — размножение. Ясно одно — группу накрыло осадком в один момент, и плита сохранила кусок морского дна таким, каким он был в тот день около 460 миллионов лет назад.]]></description>
+<param name="Период">Ордовикский период</param>
+<param name="Возраст">≈ 460 млн лет</param>
+<param name="Происхождение">По запросу</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0612" available="false">
+<name>Скелет дирозавра (Dyrosaurus sp.)</name>
+<url>https://relictum.gallery/objects/0612-dyrosaurus.html</url>
+<price>35000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>12</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_dyrosaurus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_dyrosaurus.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Около 65 миллионов лет назад море отступало от Северной Африки, оставляя мелководья и устья рек. В них держались дирозавриды — длиннорылые крокодилиформы, пережившие вымирание, которое унесло нептичьих динозавров. Дирозавр не был прямым предком современных крокодилов: это отдельная ветвь архозавров, приспособленная к жизни в солёной воде. Длинное узкое рыло с рядами конических зубов — снасть для быстрой рыбы; такая форма возникала в группе не раз. Экземпляр происходит из фосфоритового бассейна Улед-Абдун близ Хурибги — местонахождения, давшего науке большую часть известных дирозавров. Длина около пяти-шести метров.]]></description>
+<param name="Период">Палеогеновый период</param>
+<param name="Возраст">≈ 65 млн лет</param>
+<param name="Происхождение">Бассейн Улед-Абдун, Хурибга, Марокко</param>
+<param name="Размер">Около 5–6 м</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0252" available="true">
+<name>Аметист (Quartz var. amethyst)</name>
+<url>https://relictum.gallery/objects/0252-amethyst-geode123.html</url>
+<price>2000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>13</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_amethyst_geode123.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_amethyst_geode123.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_amethyst_geode123_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_amethyst_geode123_260921110619.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_amethyst_geode123_260921110620.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Жеода аметиста с несколькими сотнями кристаллов образует внутри полости плотный лес из граней: от более тёмных фиолетовых в глубине до светлых по краям. Образец добыт в штате Минас-Жерайс в Бразилии — регионе, где в толще пород мелового периода широко развиты кварцевые жилы и полости, в которых аметист кристаллизуется слоями на стенках трещин.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 130 млн лет</param>
+<param name="Происхождение">Минас-Жерайс, Бразилия</param>
+<param name="Размер">Около 123 × 23 × 22 см, вес 66 кг</param>
+<param name="Раздел">Земля</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0245" available="true">
+<name>Ракоскорпион (Balteurypterus tetragonophtalmus)</name>
+<url>https://relictum.gallery/objects/0245-eurypterid.html</url>
+<price>1200000</price>
+<currencyId>RUR</currencyId>
+<categoryId>14</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_eurypterid.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_eurypterid.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_eurypterid_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_eurypterid.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_eurypterid_260921110552.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Ракоскорпионы — вымершие морские членистоногие, которых считают первыми в своей ветви, освоившими и воду, и сушу. Всё сухопутное членистоногое разнообразие, вплоть до насекомых, — их дальняя родня. Balteurypterus tetragonophtalmus лежит на известняковой плите из силурийских отложений реки Смотрич — классического местонахождения украинских эвриптерид. Образцы с этого местонахождения сегодня фактически недоступны для российского рынка — существующие экземпляры не только научно ценны, но и крайне редки в продаже.]]></description>
+<param name="Период">Силурийский период</param>
+<param name="Возраст">≈ 430–420 млн лет</param>
+<param name="Происхождение">Хмельницкая область, река Смотрич, Украина</param>
+<param name="Размер">Плита около 33 × 28,5 × 4,5 см, вес 3,25 кг</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0251" available="true">
+<name>Медузоиды Nemiana (Nemiana simplex)</name>
+<url>https://relictum.gallery/objects/0251-nemiana.html</url>
+<price>1000000</price>
+<currencyId>RUR</currencyId>
+<categoryId>15</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_nemiana.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_nemiana.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_nemiana_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_nemiana.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_nemiana_260921110559.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Крупная плита с более чем пятьюдесятью отчётливыми отпечатками Nemiana simplex — древнейших многоклеточных организмов эпохи, предшествовавшей кембрийскому взрыву. Возраст окаменелостей — более полумиллиарда лет. Организмы были мягкотелыми, поэтому в окаменелом виде сохранялись исключительно редко: для такой фоссилизации нужны исключительные условия. Образцы с этого местонахождения сегодня фактически недоступны для российского рынка — существующие экземпляры не только научно ценны, но и крайне редки в продаже.]]></description>
+<param name="Период">Эдиакарский период</param>
+<param name="Возраст">≈ 540 млн лет</param>
+<param name="Происхождение">Могилёв-Подольский район, река Днестр, Украина</param>
+<param name="Размер">Плита около 32 × 20,5 × 3 см, вес 2,57 кг</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0226" available="false">
+<name>Череп динокрокуты (Dinocrocuta gigantea)</name>
+<url>https://relictum.gallery/objects/0226-hyena-skull.html</url>
+<price>5500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>16</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_hyena_skull.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_hyena.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_hyena_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_hyena_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_hyena_3.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[На открытых ландшафтах миоценовых Азии и Африки среди хищников выделяется Dinocrocuta gigantea — зверь, внешне похожий на гиену, но не бывший её прямым предком. Короткая высокая морда, тяжёлые скуловые дуги и зубы толщиной в палец давали ей самые мощные челюсти эпохи. Обычной добычей были звери размером с антилопу или лошадь, но известны и черепа носорогов со следами её зубов: динокрокута дробила кости, до которых другие хищники не добирались. Череп этой особи крупнее черепа пещерного медведя. Он сохранил породное основание, на котором был найден. Черепа динокрокуты редки в любых собраниях, включая музейные. Экспонат читается и как свидетельство о вымершей ветви хищников, и как экспонат с очень сильным силуэтом.]]></description>
+<param name="Период">Неогеновый период</param>
+<param name="Возраст">23–5,3 млн лет</param>
+<param name="Происхождение">Азия</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0306" available="true">
+<name>Лапа пещерного медведя (Ursus spelaeus)</name>
+<url>https://relictum.gallery/objects/0306-cavebear-paw-hind.html</url>
+<price>250000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_cavebear_paw_hind.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_cavebear_paw_hind.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_cavebear_paw_hind.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_cavebear_paw_hind_260921110603.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Лапа пещерного медведя, жившего в Башкирии около 10–12 тысяч лет назад. Этот вид значительно превосходил размером современных медведей. Кости сохранились в полном составе: плюсна, пальцы, фаланги с мощными ложами под когти. По массивности и пропорциям хорошо читается, насколько тяжёлым и приземистым был зверь.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">≈ 10–12 тыс. лет</param>
+<param name="Происхождение">Башкортостан, Россия</param>
+<param name="Размер">34,5 × 17,7 × 7,4 см; вес 632 г</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0307" available="true">
+<name>Куб из метеорита Алетай (Aletai Iron)</name>
+<url>https://relictum.gallery/objects/0307-aletai-cube-2.html</url>
+<price>450000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_aletai_cube2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_aletai_cube2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_aletai_cube2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_aletai_cube_2_260921110612.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Рисунок на гранях второго куба другой: направление кристаллов зависит от того, как лёг рез. Металл при этом один — из сердцевины одного разрушенного тела. Алетай — железный метеорит, один из крупнейших известных на Земле. Его фрагменты найдены в китайской части Алтайских гор и разбросаны на территории протяжённостью более четырёхсот километров: это крупнейшее известное метеоритное поле рассеяния. Общий вес собранного материала превышает семьдесят четыре тонны. При полировке в металле проявляется узор Видманштеттена — рисунок из кристаллов никелистого железа. Он формируется только при чрезвычайно медленном остывании, на градус за миллион лет, в недрах космического тела. Повторить его на Земле невозможно.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Алтайские горы, Китай</param>
+<param name="Размер">Вес 1 200 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0308" available="true">
+<name>Метеорит Каинсаз (Kainsaz CO3)</name>
+<url>https://relictum.gallery/objects/0308-kainsaz-2.html</url>
+<price>1760000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_kainsaz_b.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_kainsaz_b.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_kainsaz_b.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_kainsaz_2_260921110613.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Углистый хондрит собрался из холодной пыли и льда, минуя расплав, — поэтому в нём уцелели органические соединения ранней Солнечной системы. Меньший из двух камней показывает ту же нетронутую материю. Углистые хондриты — одни из самых древних и химически примитивных метеоритов Солнечной системы. Они сохранили органические соединения, включая аминокислоты: вещество, из которого позже сложился химический «бульон» ранней Земли. Каинсаз сформировался около 4,59 миллиарда лет назад — примерно на пятьдесят миллионов лет раньше Земли. Это почти неизменённый фрагмент материи, из которой собиралась наша планетная система.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,59 млрд лет</param>
+<param name="Происхождение">Татарстан, Россия</param>
+<param name="Размер">Вес 423 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0309" available="true">
+<name>Метеорит Озерки (Ozerki L6)</name>
+<url>https://relictum.gallery/objects/0309-ozerki-2.html</url>
+<price>423000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_ozerki_b.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_ozerki_b.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_ozerki_b.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_ozerki_2_260921110614.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Второй камень падения — та же порода того же астероида. До планеты это тело не доросло: его разбило столкновением, и обломки ушли к Земле. Озерки — метеорит, упавший в Липецкой области. Камни собрали сразу после падения, до первых дождей, — поэтому первичная кора плавления дошла нетронутой. Обычно такая кора разрушается за первые же сезоны под дождём и снегом. Здесь она цела — это и есть главная ценность образца.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Липецкая область, Россия</param>
+<param name="Размер">Вес 141 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0310" available="true">
+<name>Бивень мамонта (Mammuthus primigenius)</name>
+<url>https://relictum.gallery/objects/0310-mammoth-tusk-a.html</url>
+<price>500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_tusk_a.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_mammoth_tusk_a.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammoth_tusk_a_260921110605.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Бивень мамонта — разросшийся резец, который рос всю жизнь зверя и откладывался слоями дентина. Двух одинаковых бивней не бывает: у каждого свой изгиб, тон и фактура. Возраст находки — от десяти до сорока тысяч лет. Бивень добыт так, как их добывают в Якутии и сегодня, — вручную, из обрывистых речных берегов, где мерзлота отпускает кость. Он сохранил природную патину: матовую, серо-бурую, с сеткой трещин вдоль наружной дуги.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">10–40 тыс лет</param>
+<param name="Происхождение">Якутия, Россия</param>
+<param name="Размер">38 см</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0311" available="true">
+<name>Бивень мамонта (Mammuthus primigenius)</name>
+<url>https://relictum.gallery/objects/0311-mammoth-tusk-b.html</url>
+<price>500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_tusk_b.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_mammoth_tusk_b.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammoth_tusk_b_260921110605.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammoth_tusk_b_260921110606.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Бивень мамонта — разросшийся резец, который рос всю жизнь зверя и откладывался слоями дентина. Двух одинаковых бивней не бывает: у каждого свой изгиб, тон и фактура. Возраст находки — от десяти до сорока тысяч лет. Цвет бивню даёт не порода, а грунт: минералы мерзлоты за тысячи лет пропитали дентин и увели его в почти чёрный тон с синевато-серым отливом. Поверхность плотная, глянцевая, дуга ровная по всей длине.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">10–40 тыс лет</param>
+<param name="Происхождение">Якутия, Россия</param>
+<param name="Размер">42 см</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0312" available="true">
+<name>Бивень мамонта (Mammuthus primigenius)</name>
+<url>https://relictum.gallery/objects/0312-mammoth-tusk-c.html</url>
+<price>500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_tusk_c.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_mammoth_tusk_c.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammoth_tusk_c_260921110606.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Бивень мамонта — разросшийся резец, который рос всю жизнь зверя и откладывался слоями дентина. Двух одинаковых бивней не бывает: у каждого свой изгиб, тон и фактура. Возраст находки — от десяти до сорока тысяч лет. Этот бивень взял из грунта тёплый тон: медово-янтарный по всей длине, с золотыми переливами вдоль слоёв дентина. Кончик тонкий и сходит на нет — значит, животное не сточило его о наст и грунт.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">10–40 тыс лет</param>
+<param name="Происхождение">Якутия, Россия</param>
+<param name="Размер">46 см</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0313" available="true">
+<name>Бивень мамонта (Mammuthus primigenius)</name>
+<url>https://relictum.gallery/objects/0313-mammoth-tusk-d.html</url>
+<price>650000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_tusk_d.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_mammoth_tusk_d.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammoth_tusk_d_260921110606.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammoth_tusk_d_260921110607.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Бивень мамонта — это сильно разросшийся резец, растущий всю жизнь животного и откладывающийся слоями дентина: чем крупнее бивень, тем дольше прожил зверь. Возраст находки — от десяти до сорока тысяч лет. Этот бивень крупнее прочих и толще в основании, с массивным корневым концом. Кость светлая, почти кремовая, с тёмными разводами вдоль наружной дуги — след грунта, в котором она пролежала.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">10–40 тыс лет</param>
+<param name="Происхождение">Якутия, Россия</param>
+<param name="Размер">54 см</param>
+<param name="Раздел">Монументы</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0618" available="false">
+<name>Череп базилозавра (Basilosaurus)</name>
+<url>https://relictum.gallery/objects/0618-basilosaurus-skull.html</url>
+<price>6600000</price>
+<currencyId>RUR</currencyId>
+<categoryId>17</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_basilosaurus.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_basilosaurus.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Около 40–34 миллионов лет назад тёплые моря покрывали север Африки. На вершине их пищевой цепи стоял базилозавр — кит со змеевидным телом длиной до восемнадцати метров, охотившийся на крупную рыбу и других китов. Имя рода — «королевский ящер» — родилось из ошибки: в 1834 году натуралист Ричард Харлан принял найденные кости за скелет гигантской морской рептилии. Ричард Оуэн доказал, что это млекопитающее, но по правилам зоологической номенклатуры первое имя осталось за родом навсегда. Вытянутые челюсти несли зубы двух типов: конические передние удерживали добычу, зазубренные щёчные разделывали её. Следы укусов на черепах малых китов-дорудонов показали, что базилозавр охотился и на сородичей. У базилозавра ещё сохранялись крошечные задние конечности — след сухопутных предков китов. Скелеты рода из египетской «Долины китов» Вади-аль-Хитан вошли в список Всемирного наследия ЮНЕСКО.]]></description>
+<param name="Период">Палеогеновый период</param>
+<param name="Возраст">≈ 40–34 млн лет</param>
+<param name="Происхождение">Марокко</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0619" available="true">
+<name>Череп Halisaurus (Halisaurus)</name>
+<url>https://relictum.gallery/objects/0619-mosasaurus-skull.html</url>
+<price>3500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>7</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mosasaurus_skull_260910115704.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_mosasaurus_skull_260910112355.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mosasaurus_skull_260910112315.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mosasaurus_skull_260910112316.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Около 70 миллионов лет назад мелководные моря покрывали большую часть нынешней Северной Африки. Их вершиной пищевой цепи были мозазавры — морские ящеры, произошедшие от наземных предков, близких к варанам, и вернувшиеся в океан. Halisaurus — небольшой мозазавр ранней ветви семейства: три–четыре метра в длину, узкие вытянутые челюсти и частый ряд конических зубов. Он охотился на рыбу и головоногих на мелководье, уступая гигантам вроде Mosasaurus в размере, но не в скорости броска. Черепа Halisaurus находят в фосфоритовых слоях Марокко — на дне бывшего моря, где остатки ящеров накапливались миллионы лет. Полные черепа этого рода редки: тонкие кости обычно не выдерживают давления породы. Мозазавры исчезли на границе мелового и палеогенового периодов — вместе с нептичьими динозаврами, всего за пару миллионов лет до расцвета первых крупных млекопитающих.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 72–66 млн лет</param>
+<param name="Происхождение">Марокко</param>
+<param name="Размер">59 × 24 см, толщина 17 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0620" available="true">
+<name>Зуб мегалодона (Otodus megalodon)</name>
+<url>https://relictum.gallery/objects/0620-megalodon-tooth-b.html</url>
+<price>800000</price>
+<currencyId>RUR</currencyId>
+<categoryId>10</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_megalodon2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_megalodon_tooth_b_260921110548.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_megalodon_tooth_b_260921110549.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_megalodon_tooth_b_260921110551.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[В тёплом, богатом жизнью океане миоцена, где киты только начинали осваивать холодные широты, верх пищевой цепи занимал Otodus megalodon — крупнейшая акула за всю историю океана, весившая больше тридцати тонн и способная взять любую крупную добычу. Скелет акулы хрящевой и почти не сохраняется в породе, поэтому от мегалодона до нас дошли главным образом зубы. Терял он их постоянно: на месте выпавшего за несколько недель вырастал новый. Этот экземпляр поднят дайверами с глубины у берегов Индонезии. Высота коронки — четырнадцать с половиной сантиметров; эмаль сохранилась целиком, зазубренная режущая кромка не сточена и не подправлена. Для зуба такой величины подобное сочетание встречается редко: крупные экземпляры почти всегда несут следы износа или реставрации.]]></description>
+<param name="Период">Неогеновый период</param>
+<param name="Возраст">≈ 23 млн лет</param>
+<param name="Происхождение">Индонезия</param>
+<param name="Размер">Высота 14,5 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0621" available="true">
+<name>Аммонит полированный крупный (Ammonitida)</name>
+<url>https://relictum.gallery/objects/0621-ammonite-polished-large.html</url>
+<price>1400000</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_ammonite_large.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Аммониты населяли моря всей мезозойской эры: сотни миллионов лет их спиральные раковины были рядовым населением океанов — пока весь надотряд не исчез вместе с нептичьими динозаврами. Раковина строилась камера за камерой по логарифмической спирали. Моллюск занимал только последнюю, внешнюю камеру; пустые внутренние работали как поплавок и держали его в толще воды. Полировка раскрывает это устройство наглядно: перегородки камер, янтарно-коричневый рисунок стенок, светлые перламутровые зоны и прожилки кальцита, заполнившего пустоты за миллионы лет. Диаметр раковины — около сорока пяти сантиметров: аммониты такого размера встречаются заметно реже ладонных экземпляров.]]></description>
+<param name="Период">Мезозой</param>
+<param name="Возраст">252–66 млн лет</param>
+<param name="Происхождение">Россия</param>
+<param name="Размер">Диаметр около 45 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0622" available="true">
+<name>Метеорит Агоудал, 52,6 г (Agoudal Iron)</name>
+<url>https://relictum.gallery/objects/0622-agoudal-52g.html</url>
+<price>250000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_agoudal_52g.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_agoudal_52g.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_agoudal_52g.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Осколок весит 52,6 грамма — величина спичечного коробка. Острые грани скола показывают чистый металл, тёмная корка снаружи набрана за тысячи лет лежания в горах. Агоудал — железный метеорит, названный по марокканской деревне в Высоком Атласе. Осколки рассеяны по горным долинам на десятки километров; масса, снимок которой вставлен в раму, найдена в том же поле рассеяния. Железо метеорита сложилось в ядре разрушенной протопланеты и старше любой земной породы: этому веществу около четырёх с половиной миллиардов лет.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Атласские горы, Марокко</param>
+<param name="Размер">Рама 33,9 × 6,8 × 44 см</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0623" available="true">
+<name>Зуб спинозавра в белой раме (Spinosaurus aegyptiacus)</name>
+<url>https://relictum.gallery/objects/0623-spinosaurus-tooth-2.html</url>
+<price>150000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_tooth_spinosaurus_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_tooth_spinosaurus_2.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_tooth_spinosaurus_2.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Спинозавр — крупнейший из известных хищных динозавров: до пятнадцати метров длины и около семи тонн, крупнее тираннозавра. Единственный из гигантов, он жил у воды — на морских побережьях, в речных дельтах и болотах. Его зубы не похожи на зубы прочих теропод: не сплющены и не зазубрены, а вытянуты в прямой конус с тонкими рёбрами — такими удобно удерживать скользкую добычу. Зубы спинозавр терял постоянно и отращивал новые, поэтому в меловых отложениях Северной Африки они встречаются чаще, чем кости.]]></description>
+<param name="Период">Меловой период</param>
+<param name="Возраст">≈ 112–93 млн лет</param>
+<param name="Происхождение">Марокко</param>
+<param name="Размер">Рама 34 × 4,5 × 44 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0624" available="true">
+<name>Метеорит Агоудал, 323,5 г (Agoudal Iron)</name>
+<url>https://relictum.gallery/objects/0624-agoudal-323g.html</url>
+<price>450000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_met_agoudal_323g.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_met_agoudal_323g.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_met_agoudal_323g.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Фрагмент весит 323,5 грамма. Полости и наплывы на поверхности выел раскалённый воздух: при входе в атмосферу металл плавится неравномерно, и осколок вытягивается в изогнутый отросток. Агоудал — железный метеорит, названный по марокканской деревне в Высоком Атласе. Осколки рассеяны по горным долинам на десятки километров; масса, снимок которой вставлен в раму, найдена в том же поле рассеяния. Железо метеорита сложилось в ядре разрушенной протопланеты и старше любой земной породы: этому веществу около четырёх с половиной миллиардов лет.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Атласские горы, Марокко</param>
+<param name="Размер">Рама 34 × 6,6 × 44 см</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0630" available="true">
+<name>Регмаглиптовый Сеймчан (Seymchan — Pallasite, PMG)</name>
+<url>https://relictum.gallery/objects/0630-seymchan-regmaglypt.html</url>
+<price>5500000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_seymchan_regmaglypt.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_seymchan_regmaglypt.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_seymchan_regmaglypt_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_seymchan_regmaglypt.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Сеймчан — железо-каменный метеорит класса Pallasite PMG, найденный в 1967 году в Магаданской области. Его вещество сформировалось на границе ядра и мантии протопланеты около 4,56 миллиарда лет назад — раньше Земли. Регмаглипты — округлые углубления на поверхности метеорита, оставленные оплавлением вещества при прохождении плотных слоёв атмосферы. Этот рельеф — прямой след огненного торможения массы на входе. Большинство находок Сеймчана десятилетиями пролежало в слоях мерзлоты под коркой окислов толщиной около сантиметра, скрывающей регмаглиптовый рельеф. Образец весом 3 791 г с выраженными регмаглиптами — редчайший экземпляр музейного уровня.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,56 млрд лет</param>
+<param name="Происхождение">Магаданская область, Россия</param>
+<param name="Размер">Вес 3 791 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0631" available="true">
+<name>Сфера из зуба мамонта (Mammuthus primigenius)</name>
+<url>https://relictum.gallery/objects/0631-mammoth-sphere-large.html</url>
+<price>100000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_sphere_large_260910155158.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_mammoth_sphere_a.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammoth_sphere_a_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_sphere_large_260910155158.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Шар выточен из зуба шерстистого мамонта Mammuthus primigenius — крупного коренного моляра возрастом порядка 10–40 тысяч лет, поздний плейстоцен. Полосатый рисунок на поверхности — это чередующиеся пластины эмали, дентина и цемента: так устроен коренной зуб мамонта. При обточке зуба в сферу эти слои вскрываются срезом и складываются в узор на поверхности шара. Стабилизация смолой укрепляет ископаемый материал и создаёт условия для глубокой зеркальной полировки. У этого шара, крупнейшего из пары, рисунок сложен из широких тёплых бежево-коричневых полей с тонкими светлыми прожилками и синевато-серыми линиями.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">≈ 10–40 тыс лет</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0632" available="true">
+<name>Сфера из зуба мамонта (Mammuthus primigenius)</name>
+<url>https://relictum.gallery/objects/0632-mammoth-sphere-small.html</url>
+<price>80000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_sphere_b.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_mammoth_sphere_b.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_mammoth_sphere_b_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_mammoth_sphere_b.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Шар выточен из зуба шерстистого мамонта Mammuthus primigenius — коренного моляра возрастом порядка 10–40 тысяч лет, поздний плейстоцен. Полосатый рисунок на поверхности — это чередующиеся пластины эмали, дентина и цемента: так устроен коренной зуб мамонта. При обточке зуба в сферу эти слои вскрываются срезом и складываются в узор на поверхности шара. Стабилизация смолой укрепляет ископаемый материал и создаёт условия для глубокой зеркальной полировки. У этого шара, меньшего из пары, рисунок сложен из частых узких вертикальных полос: тёмные и светлые слои чередуются плотно и контрастно.]]></description>
+<param name="Период">Плейстоцен</param>
+<param name="Возраст">≈ 10–40 тыс лет</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0633" available="true">
+<name>Аммонит Arietites (Arietites sp.)</name>
+<url>https://relictum.gallery/objects/0633-arietites-45.html</url>
+<price>1800000</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_arietites_45.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_arietites_45.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_arietites_45_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_arietites_45.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_arietites_45_260921110627.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Arietites — род аммонитов раннего юрского периода, синемюрского века, около 200–190 миллионов лет назад. В эту пору головоногие моллюски с закрученной в спираль раковиной населяли тёплые эпиконтинентальные моря Европы. Раковина строится оборотами вокруг общего центра, каждый оборот несёт мощные радиальные рёбра. Название рода происходит от латинского aries, «баран»: изгиб рёбер напоминает бараний рог. Этот экземпляр достигает 45 сантиметров в диаметре, раковина отпрепарирована полностью: спираль читается от устья до самого центра. Тёмный, почти чёрный фон переходит в бронзово-коричневые участки на полированной поверхности, подчёркивая объём и рельеф рёбер.]]></description>
+<param name="Период">Юрский период</param>
+<param name="Возраст">≈ 200–190 млн лет</param>
+<param name="Происхождение">Франция</param>
+<param name="Размер">Диаметр раковины 45 см</param>
+<param name="Раздел">Жизнь</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0639" available="true">
+<name>Метеорит Челябинск (Chelyabinsk LL5)</name>
+<url>https://relictum.gallery/objects/0639-chelyabinsk-4.html</url>
+<price>210000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_chelyabinsk4.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_chelyabinsk4.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_chelyabinsk4_1.jpg</picture>
+<picture>https://relictum.gallery/shared/img/ph_chelyabinsk4.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Пятнадцатого февраля 2013 года над Челябинской областью прошёл самый яркий болид XXI века. Тело диаметром около двадцати метров вошло в атмосферу и разрушилось взрывом на высоте порядка двадцати трёх километров, рассыпав по снегу тысячи осколков обыкновенного хондрита LL5. Кора плавления образуется за секунды: трение об атмосферу разогревает поверхность камня до плавления, и тонкий слой стекленеет прямо на лету, застывая ещё до соприкосновения с землёй. Так на осколках Челябинского метеорита возникла тёмная матовая оболочка, отличающая их от вещества внутри. Этот экземпляр — небольшой окатанный индивидуал весом 42 грамма с целиком сохранившейся корой, без единого скола. На кольцевой стойке из чернёной стали камень представлен свободно: видна вся поверхность коры по кругу.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,5 млрд лет</param>
+<param name="Происхождение">Челябинская область, Россия</param>
+<param name="Размер">Вес 42 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+<offer id="R-0642" available="true">
+<name>Палласит Сеймчан (Seymchan Pallasite)</name>
+<url>https://relictum.gallery/objects/0642-seymchan-olivine-individual.html</url>
+<price>2900000</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://relictum.gallery/shared/img/ph_seymchan_olivine_individual_260921103332.jpg</picture>
+<picture>https://relictum.gallery/shared/img/int_ph_seymchan_olivine_individual_260921103403.jpg</picture>
+<picture>https://relictum.gallery/shared/img/g_seymchan_olivine_individual_260921103403.jpg</picture>
+<vendor>RELICTUM</vendor>
+<description><![CDATA[Метеорит Сеймчан найден в 1967 году на севере Магаданской области и относится к палласитам — редкому классу, в котором железо ядра и оливин мантии сложились в одну породу. Его вещество возникло около 4,56 миллиарда лет назад на границе металлического ядра и каменной оболочки небольшой протопланеты, разрушенной столкновением. Этот экземпляр — цельный индивидуал, а не срез: кристаллы оливина выступают прямо на поверхности, от медово-жёлтых до оливково-зелёных, а между ними проступает серебристый никелистый металл. Такая поверхность возникает, когда металл выветривается быстрее камня, и кристаллы остаются на виду. Масса образца 1 437 граммов при размере 15 на 8 сантиметров. Индивидуалы Сеймчана с открытыми кристаллами встречаются реже полированных срезов: большинство находок распиливают, чтобы показать структуру на просвет, а здесь оливин виден без единого пропила.]]></description>
+<param name="Период">До зарождения жизни</param>
+<param name="Возраст">≈ 4,56 млрд лет</param>
+<param name="Происхождение">Магаданская область, Россия</param>
+<param name="Размер">15 × 8 см, 1 437 г</param>
+<param name="Раздел">Космос</param>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+</offer>
+</offers>
+</shop>
+</yml_catalog>
