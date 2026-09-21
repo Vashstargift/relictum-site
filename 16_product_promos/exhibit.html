@@ -376,13 +376,15 @@ if(!o){
   var gallery = (function(){
     var out=[], seen={};
     function add(x){ if(x && !seen[x]){ seen[x]=1; out.push(x); } }
+    /* 21.09.2026, решение владельца: в галерее только ракурсы экспоната.
+       Чертёж, реконструкция и интерьер живут в своих блоках выше (и открываются
+       там на весь экран), в сетку ракурсов не попадают. Нечётный счёт добирается
+       главным кадром, чтобы ряды из двух колонок были полными. */
+    var skip={};
     if(P){
-      /* Чертёж и реконструкция идут парой первыми — в сетке из двух колонок
-         они всегда встают в один ряд и читаются рядом, как задумано. */
-      add(P.life && P.life.diagram);
-      add(P.life && P.life.img);
-      add(P.interior && P.interior.img);
-      (P.gallery||[]).forEach(add);
+      if(P.life){ skip[P.life.diagram]=1; skip[P.life.img]=1; }
+      if(P.interior){ skip[P.interior.img]=1; }
+      (P.gallery||[]).forEach(function(f){ if(!skip[f] && !/^(int_ph_|anat_|life_|situ_|origin_|raw_met_|tile_)/.test(f)) add(f); });
     }
     if(out.length && out.length%2) add(o.img+'.jpg');
     return out.length>=2 ? out : [];

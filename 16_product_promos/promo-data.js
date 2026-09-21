@@ -22,7 +22,6 @@ window.RELICTUM_PROMO = {
             "text": "Срез палласита занимает место на письменном столе или каминной полке, оставаясь предметом камерного, не парадного масштаба."
         },
         "gallery": [
-            "int_ph_seymchan.jpg",
             "g_seymchan_1.jpg",
             "g_seymchan_2.jpg",
             "g_seymchan_3.jpg"
@@ -135,7 +134,6 @@ window.RELICTUM_PROMO = {
             "text": "Метеорит Дронино существует в единственном экземпляре, и место для него в комнате получается индивидуальным, а не типовым."
         },
         "gallery": [
-            "int_ph_dronino.jpg",
             "g_dronino_2.jpg",
             "g_dronino_3.jpg",
             "ph_dronino.jpg"
@@ -149,9 +147,6 @@ window.RELICTUM_PROMO = {
             "poster": "era_cretaceous.jpg"
         },
         "gallery": [
-            "int_ph_triceratops.jpg",
-            "anat_triceratops.jpg",
-            "life_triceratops.jpg",
             "ph_triceratops.jpg"
         ],
         "life": {
@@ -231,7 +226,6 @@ window.RELICTUM_PROMO = {
             "text": "Небольшой метеорит Чинге занимает место на консоли в прихожей или кабинете, не требуя вокруг себя пустой стены."
         },
         "gallery": [
-            "int_ph_chinge.jpg",
             "g_chinge_2.jpg",
             "g_chinge_3.jpg",
             "ph_chinge_2.jpg"
@@ -265,7 +259,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Целестин крайне редко образует кристаллы такого размера.",
         "gallery": [
-            "situ_celestine.jpg",
             "g_celestine_1.jpg"
         ],
         "seo": {
@@ -318,7 +311,6 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "g_moon_fragment.jpg",
-            "int_ph_moon.jpg",
             "g_moon_3.jpg",
             "gal_yakimanka_7.jpg",
             "g_lunar_meteorite_260921110616.jpg"
@@ -357,9 +349,6 @@ window.RELICTUM_PROMO = {
             "text": "Плита с морской лилией держит стену как гравюра большого формата: тёплый камень, глубокий рельеф, ни одной повторяющейся композиции в серии."
         },
         "gallery": [
-            "int_ph_crinoid_fan.jpg",
-            "anat_crinoid_fan.jpg",
-            "life_crinoid_fan.jpg",
             "g_crinoid_fan_1.jpg",
             "g_crinoid_fan_260921110633.jpg"
         ],
@@ -391,7 +380,6 @@ window.RELICTUM_PROMO = {
             "text": "Монументальный метеорит Дронино рассчитан на консоль или пол, выдерживающие серьёзный вес."
         },
         "gallery": [
-            "int_ph_dronino128.jpg",
             "g_dronino128_1.jpg",
             "g_dronino128_2.jpg",
             "g_dronino128_3.jpg",
@@ -462,9 +450,6 @@ window.RELICTUM_PROMO = {
             "href": "../15_concepts/era-cretaceous.html"
         },
         "gallery": [
-            "int_ph_jeholosaurus.jpg",
-            "anat_jeholosaurus.jpg",
-            "life_jeholosaurus.jpg",
             "ph_jeholosaurus.jpg"
         ],
         "seo": {
@@ -531,7 +516,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Редкий минерал; образцы такого размера — особенная редкость.",
         "gallery": [
-            "situ_pseudomalachite.jpg",
             "g_pseudomalachite_1.jpg",
             "g_pseudomalachite_260921110616.jpg",
             "g_pseudomalachite_260921110617.jpg"
@@ -599,9 +583,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_round.jpg",
-            "anat_crinoid_round.jpg",
-            "life_crinoid_round.jpg",
             "g_crinoid_round_2.jpg"
         ],
         "hook": "Редкая подача: крона раскрыта полным кругом, руки читаются до кончиков.",
@@ -669,9 +650,6 @@ window.RELICTUM_PROMO = {
         "gallery": [
             "gal_yakimanka_6.jpg",
             "gal_yakimanka_5.jpg",
-            "int_ph_psittacosaurus_skeleton.jpg",
-            "anat_psittacosaurus_skeleton.jpg",
-            "life_psittacosaurus_skeleton.jpg",
             "g_psitskel_1.jpg",
             "g_psitskel_2.jpg",
             "ph_psittacosaurus_skeleton.jpg",
@@ -720,9 +698,7 @@ window.RELICTUM_PROMO = {
             "text": "Один шар держит консоль сам; шесть встают на общую стойку — тогда узор читается как повторяющийся мотив."
         },
         "gallery": [
-            "int_ph_met_aletai_ball.jpg",
             "ph_met_aletai_balls.jpg",
-            "int_ph_met_aletai_balls.jpg",
             "ph_met_aletai_ball.jpg",
             "g_aletai_spheres_small_260921110612.jpg",
             "g_aletai_spheres_small_260921110613.jpg"
@@ -763,7 +739,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Десять крупных кубов и сотня кристаллов поменьше — правильная геометрия без единой огранки.",
         "gallery": [
-            "situ_pyrite.jpg",
             "g_pyrite_1.jpg",
             "g_pyrite_260921110619.jpg"
         ],
@@ -793,7 +768,6 @@ window.RELICTUM_PROMO = {
             "text": "Тёмный камень на чернёной стали просит одного бокового источника — фактура коры читается только в косом свете."
         },
         "gallery": [
-            "int_ph_met_kainsaz_a.jpg",
             "ph_met_kainsaz_a.jpg",
             "g_kainsaz_260921110613.jpg"
         ],
@@ -832,9 +806,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_frame_fan.jpg",
-            "anat_crinoid_frame_fan.jpg",
-            "life_crinoid_frame_fan.jpg",
             "g_crinoid_frame_fan_1.jpg"
         ],
         "hook": "Морская лилия веером на прямом стебле, в деревянной раме.",
@@ -909,9 +880,6 @@ window.RELICTUM_PROMO = {
             "text": "Стальной каркас скелета пинакозавра задаёт маршрут взгляда по светлой галерейной комнате. Монтаж дом проводит на месте."
         },
         "gallery": [
-            "int_ph_pinacosaurus.jpg",
-            "anat_pinacosaurus.jpg",
-            "life_pinacosaurus.jpg",
             "g_pina_1.jpg",
             "g_pina_3.jpg",
             "ph_pinacosaurus.jpg"
@@ -954,7 +922,6 @@ window.RELICTUM_PROMO = {
             "text": "Чёрная кора не отражает свет, а поглощает его: камень читается силуэтом на светлой стене."
         },
         "gallery": [
-            "int_ph_met_ozerki_a.jpg",
             "ph_met_ozerki_a.jpg",
             "g_ozerki_260921110614.jpg"
         ],
@@ -994,7 +961,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Три генерации кварца в одном образце: агат, бесцветный кварц и фиолетовый аметист.",
         "gallery": [
-            "situ_amethyst_druse45.jpg",
             "g_amethyst_druse45_1.jpg"
         ],
         "seo": {
@@ -1061,9 +1027,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_bud.jpg",
-            "anat_crinoid_bud.jpg",
-            "life_crinoid_bud.jpg",
             "g_crinoid_bud_1.jpg"
         ],
         "hook": "Сомкнутая крона на изящно изогнутом стебле — самый графичный экземпляр серии.",
@@ -1120,9 +1083,6 @@ window.RELICTUM_PROMO = {
             "text": "В большой гостиной скелет стоит в полный рост между камином и окном: тёмный каменный постамент отделяет его от мебели, а двусветный объём оставляет запас над головой."
         },
         "gallery": [
-            "int_ph_cavebear.jpg",
-            "anat_cavebear.jpg",
-            "life_cavebear.jpg",
             "g_cavebear_1.jpg",
             "g_cavebear_2.jpg",
             "g_cavebear_3.jpg",
@@ -1194,9 +1154,6 @@ window.RELICTUM_PROMO = {
             "text": "Овираптор в динамичной позе занимает свободный угол кабинета — беззубый клюв и лёгкий костяк скелета смотрят в комнату, не в стену."
         },
         "gallery": [
-            "int_ph_oviraptor.jpg",
-            "anat_oviraptor.jpg",
-            "life_oviraptor.jpg",
             "g_oviraptor_1.jpg",
             "g_oviraptor_2.jpg",
             "g_oviraptor_3.jpg",
@@ -1250,7 +1207,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Аметистовая друза с россыпью золотистого пирита по граням.",
         "gallery": [
-            "situ_fluorite_pyrite.jpg",
             "g_fluorite_pyrite_1.jpg",
             "g_fluorite_pyrite_260921110622.jpg"
         ],
@@ -1287,9 +1243,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_tall.jpg",
-            "anat_crinoid_tall.jpg",
-            "life_crinoid_tall.jpg",
             "g_crinoid_tall_1.jpg"
         ],
         "hook": "Высокая вертикальная композиция: веер венчает стебель во всю плиту.",
@@ -1346,9 +1299,6 @@ window.RELICTUM_PROMO = {
             "text": "Череп с бивнями занимает нишу над консолью или каминным порталом, задавая масштаб всей комнате без дополнительного декора."
         },
         "gallery": [
-            "int_ph_mammoth_skull.jpg",
-            "anat_mammoth_skull.jpg",
-            "life_mammoth_skull.jpg",
             "g_mammothskull_1.jpg",
             "g_mammothskull_2.jpg",
             "g_mammothskull_3.jpg",
@@ -1411,9 +1361,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_psittacosaurus_skull.mp4",
         "gallery": [
-            "int_ph_psittacosaurus_skull.jpg",
-            "anat_psittacosaurus_skull.jpg",
-            "life_psittacosaurus_skull.jpg",
             "g_psitskull_1.jpg",
             "g_psitskull_2.jpg",
             "g_psitskull_3.jpg",
@@ -1472,7 +1419,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Уругвайский аметист — особо насыщенный цвет кристаллов.",
         "gallery": [
-            "situ_amethyst_druse35.jpg",
             "g_amethyst_druse35_1.jpg",
             "g_amethyst_druse35_260921110620.jpg",
             "g_amethyst_druse35_260921110621.jpg"
@@ -1516,9 +1462,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_floats.jpg",
-            "anat_crinoid_floats.jpg",
-            "life_crinoid_floats.jpg",
             "g_crinoid_floats_1.jpg",
             "g_crinoid_floats_2.jpg",
             "ph_crinoid_floats.jpg",
@@ -1583,9 +1526,6 @@ window.RELICTUM_PROMO = {
             "text": "Дуга бивней занимает стену просторной гостиной или кабинета целиком, не оставляя места для другого декора."
         },
         "gallery": [
-            "int_ph_tusks.jpg",
-            "anat_mammoth_tusks.jpg",
-            "life_mammoth_tusks.jpg",
             "g_tusks_3.jpg",
             "g_mammuthus_primigenius_260921110604.jpg"
         ]
@@ -1684,9 +1624,6 @@ window.RELICTUM_PROMO = {
         "spin": "spin_anchiornis.mp4",
         "spinPoster": "spin_anchiornis_poster.jpg",
         "gallery": [
-            "int_ph_anchiornis.jpg",
-            "anat_anchiornis.jpg",
-            "life_anchiornis.jpg",
             "ph_anchiornis.jpg",
             "g_anchiornis_huxleyi_260921110556.jpg",
             "g_anchiornis_huxleyi_260921110557.jpg"
@@ -1743,7 +1680,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Редкий хромовый гранат, названный в честь графа Уварова.",
         "gallery": [
-            "situ_uvarovite.jpg",
             "g_uvarovite_1.jpg",
             "g_uvarovite_260921110617.jpg",
             "g_uvarovite_260921110618.jpg",
@@ -1788,9 +1724,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_pair.jpg",
-            "anat_crinoid_pair.jpg",
-            "life_crinoid_pair.jpg",
             "g_crinoid_pair_1.jpg",
             "g_crinoid_pair_260921110634.jpg"
         ],
@@ -1852,9 +1785,6 @@ window.RELICTUM_PROMO = {
             "text": "Тёмному кабинету хватает одного этого черепа. Постамент дом изготавливает под конкретную поверхность и вес экспоната."
         },
         "gallery": [
-            "int_ph_rhino.jpg",
-            "anat_rhino_skull.jpg",
-            "life_rhino_skull.jpg",
             "g_rhino_2.jpg",
             "g_coelodonta_antiquitatis_260921110603.jpg",
             "g_coelodonta_antiquitatis_260921110604.jpg"
@@ -1924,7 +1854,6 @@ window.RELICTUM_PROMO = {
             "text": "Спил в глубокой раме готов к стене: вешается как графика, а читается как окно в космос."
         },
         "gallery": [
-            "int_ph_met_seymchan_frame.jpg",
             "ph_met_seymchan_frame.jpg",
             "g_seymchan_framed_260921110608.jpg"
         ],
@@ -1959,9 +1888,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_dino_eggs.mp4",
         "gallery": [
-            "int_ph_dino_eggs.jpg",
-            "anat_dino_eggs.jpg",
-            "life_dino_eggs.jpg",
             "g_eggs_1.jpg",
             "g_eggs_2.jpg",
             "g_eggs_3.jpg",
@@ -2018,7 +1944,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Друза с кристаллом больше 13 сантиметров — редкий размер для антимонита.",
         "gallery": [
-            "situ_stibnite.jpg",
             "g_stibnite_1.jpg"
         ],
         "seo": {
@@ -2054,9 +1979,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_arc.jpg",
-            "anat_crinoid_arc.jpg",
-            "life_crinoid_arc.jpg",
             "g_crinoid_arc_1.jpg"
         ],
         "hook": "Стебель входит в кадр дугой из угла — динамичная композиция для кабинета.",
@@ -2095,9 +2017,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_rhino_skeleton.mp4",
         "gallery": [
-            "int_ph_rhino_skeleton.jpg",
-            "anat_rhino_skeleton.jpg",
-            "life_rhino_skeleton.jpg",
             "ph_rhino_skeleton.jpg"
         ],
         "interior": {
@@ -2148,9 +2067,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_arietites.mp4",
         "gallery": [
-            "int_ph_arietites.jpg",
-            "anat_arietites.jpg",
-            "life_arietites.jpg",
             "g_arietites_1.jpg",
             "g_arietites_2.jpg",
             "g_arietites_3.jpg"
@@ -2234,9 +2150,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_spinosaurus_jaw.mp4",
         "gallery": [
-            "int_ph_spinosaurus_jaw.jpg",
-            "anat_spinosaurus_jaw.jpg",
-            "life_spinosaurus_jaw.jpg",
             "g_spinojaw_2.jpg",
             "g_spinojaw_3.jpg",
             "ph_spinosaurus_jaw.jpg"
@@ -2292,7 +2205,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Более двухсот кристаллов с золотистыми включениями гётита.",
         "gallery": [
-            "situ_amethyst_druse51.jpg",
             "g_amethyst_druse51_1.jpg",
             "g_amethyst_druse51_260921110621.jpg",
             "g_amethyst_druse51_260921110622.jpg"
@@ -2330,9 +2242,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_small_fan.jpg",
-            "anat_crinoid_small_fan.jpg",
-            "life_crinoid_small_fan.jpg",
             "ph_crinoid_small_fan.jpg"
         ],
         "hook": "Камерный экземпляр: небольшой веер, склонённый набок, для настольной подачи.",
@@ -2385,10 +2294,7 @@ window.RELICTUM_PROMO = {
             "line": "Плейстоцен, 2,6 млн – 11 тыс лет назад",
             "href": "../15_concepts/era-pleistocene.html"
         },
-        "gallery": [
-            "int_ph_mammoth_leg.jpg",
-            "life_mammoth_leg.jpg"
-        ],
+        "gallery": [],
         "seo": {
             "title": "Нога мамонта — RELICTUM",
             "description": "Для мумификации нужно, чтобы нога ушла в мерзлоту быстро и не оттаивала ни разу за тысячи лет. Перед вами именно такой случай — с кожей, связками и длинной…"
@@ -2424,12 +2330,8 @@ window.RELICTUM_PROMO = {
             "text": "Так комплект из семи предметов встаёт на открытую полку. Кадр — визуализация подачи: съёмка сделана с крупнейшего предмета, остальные показаны по его образцу."
         },
         "gallery": [
-            "int_ph_ammonites_set.jpg",
-            "anat_ammonite_studio.jpg",
-            "life_ammonite_studio.jpg",
             "g_ammonites_2.jpg",
-            "g_ammonites_3.jpg",
-            "int_ph_ammonite.jpg"
+            "g_ammonites_3.jpg"
         ],
         "hook": "Семь полированных аммонитов: срезы с раскрытыми камерами и цельные экземпляры с перламутровой поверхностью.",
         "heroKicker": "Аммониты, Россия",
@@ -2469,7 +2371,6 @@ window.RELICTUM_PROMO = {
             "text": "Кабинетная рама встаёт на консоль или стену: над фрагментом — снимок той самой глыбы, из которой он вырезан."
         },
         "gallery": [
-            "int_ph_met_omolon.jpg",
             "ph_met_omolon.jpg",
             "g_omolon_260921110610.jpg"
         ],
@@ -2505,8 +2406,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_carcharodont_claw.mp4",
         "gallery": [
-            "int_ph_carcharodont_claw.jpg",
-            "anat_carcharodont_claw.jpg",
             "g_claw_2.jpg",
             "g_claw_3.jpg",
             "ph_carcharodont_claw.jpg",
@@ -2563,7 +2462,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Сотня чётких кристаллов с полностью отработанного месторождения.",
         "gallery": [
-            "situ_rockcrystal47.jpg",
             "g_rockcrystal47_1.jpg",
             "g_rockcrystal47_260921110622.jpg",
             "g_rockcrystal47_260921110623.jpg"
@@ -2601,9 +2499,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_colony_tall.jpg",
-            "anat_crinoid_colony_tall.jpg",
-            "life_crinoid_colony_tall.jpg",
             "g_crinoid_colony_tall_1.jpg"
         ],
         "hook": "Высокая плита с целой колонией — десятки крон на тонких стеблях.",
@@ -2647,9 +2542,6 @@ window.RELICTUM_PROMO = {
             "text": "Собранный скелет занимает середину гостиной и задаёт ей масштаб: подиум держит дистанцию, мебель расставляется по периметру."
         },
         "gallery": [
-            "int_ph_bison_skeleton.jpg",
-            "anat_bison_skeleton.jpg",
-            "life_bison_skeleton.jpg",
             "g_bison_1.jpg",
             "g_bison_2.jpg",
             "g_bison_4.jpg"
@@ -2733,9 +2625,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_keichousaurus.mp4",
         "gallery": [
-            "int_ph_keichousaurus.jpg",
-            "anat_keichousaurus.jpg",
-            "life_keichousaurus.jpg",
             "g_keicho_2.jpg",
             "g_keicho_3.jpg",
             "ph_keichousaurus.jpg"
@@ -2776,7 +2665,6 @@ window.RELICTUM_PROMO = {
             "text": "Композиция задумана для длинного стола: камни стоят вдоль оси, как канделябры, и не мешают разговору через стол. Ей достаточно ровной поверхности и бокового света."
         },
         "gallery": [
-            "int_ph_dronino_composition_2.jpg",
             "g_dronino_composition_1.jpg",
             "g_dronino_composition_2.jpg",
             "ph_dronino_composition_2.jpg"
@@ -2812,9 +2700,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_pterosaur.mp4",
         "gallery": [
-            "int_ph_pterosaur.jpg",
-            "anat_pterosaur.jpg",
-            "life_pterosaur.jpg",
             "g_ptero_3.jpg"
         ],
         "interior": {
@@ -2868,7 +2753,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Марматит — железистая разновидность сфалерита с почти металлическим блеском.",
         "gallery": [
-            "situ_sphalerite.jpg",
             "g_sphalerite_1.jpg",
             "g_sphalerite_260921110624.jpg"
         ],
@@ -2905,9 +2789,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_colony.jpg",
-            "anat_crinoid_colony.jpg",
-            "life_crinoid_colony.jpg",
             "g_crinoid_colony_1.jpg"
         ],
         "hook": "Колония, расходящаяся из одного узла, сохранилась целиком.",
@@ -2946,9 +2827,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_pleistocene_wolf.mp4",
         "gallery": [
-            "int_ph_pleistocene_wolf.jpg",
-            "anat_pleistocene_wolf.jpg",
-            "life_pleistocene_wolf.jpg",
             "ph_pleistocene_wolf.jpg"
         ],
         "interior": {
@@ -3034,9 +2912,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_ichthyosaur_plate.mp4",
         "gallery": [
-            "int_ph_ichthyosaur_plate.jpg",
-            "anat_ichthyosaur_plate.jpg",
-            "life_ichthyosaur_plate.jpg",
             "g_mixosaurus_plate_260921110558.jpg"
         ],
         "interior": {
@@ -3090,8 +2965,6 @@ window.RELICTUM_PROMO = {
             "text": "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате."
         },
         "gallery": [
-            "int_ph_butterflies_dark.jpg",
-            "life_butterflies_dark.jpg",
             "g_butterflies_dark_260921110629.jpg",
             "g_butterflies_dark_260921110630.jpg"
         ],
@@ -3155,9 +3028,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_afrovenator.mp4",
         "gallery": [
-            "int_ph_afrovenator.jpg",
-            "anat_afrovenator.jpg",
-            "life_afrovenator.jpg",
             "g_afro_1.jpg",
             "g_afro_2.jpg",
             "g_afro_3.jpg"
@@ -3213,7 +3083,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Крупный натёчный малахит из «геологической сенсации» Катанги.",
         "gallery": [
-            "situ_malachite_congo.jpg",
             "g_malachite_congo_1.jpg",
             "g_malachite_congo_260921110617.jpg"
         ],
@@ -3250,9 +3119,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_group.jpg",
-            "anat_crinoid_group.jpg",
-            "life_crinoid_group.jpg",
             "g_crinoid_group_1.jpg"
         ],
         "hook": "Группа крон на плите свободной формы — самый скульптурный экземпляр.",
@@ -3291,9 +3157,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_mammoth_skeleton.mp4",
         "gallery": [
-            "int_ph_mammoth_skeleton.jpg",
-            "anat_mammoth_skeleton.jpg",
-            "life_mammoth_skeleton.jpg",
             "ph_mammoth_skeleton.jpg"
         ],
         "interior": {
@@ -3384,9 +3247,6 @@ window.RELICTUM_PROMO = {
             "text": "Полутораметровая плита ведёт себя как произведение искусства: горизонтальный монтаж над консолью, скользящий свет по рельефу кости."
         },
         "gallery": [
-            "int_ph_nothosaurus.jpg",
-            "anat_nothosaurus.jpg",
-            "life_nothosaurus.jpg",
             "ph_nothosaurus.jpg"
         ],
         "hook": "Скелет от черепа до хвоста на цельной плите длиной более полутора метров.",
@@ -3435,8 +3295,6 @@ window.RELICTUM_PROMO = {
             "text": "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате."
         },
         "gallery": [
-            "int_ph_butterflies_blue.jpg",
-            "life_butterflies_blue.jpg",
             "g_butterflies_blue_260921110630.jpg"
         ],
         "seo": {
@@ -3472,9 +3330,6 @@ window.RELICTUM_PROMO = {
             "text": "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате."
         },
         "gallery": [
-            "int_ph_snake_portrait.jpg",
-            "anat_snake_portrait.jpg",
-            "life_snake_portrait.jpg",
             "ph_snake_portrait.jpg",
             "g_snake_portrait_260921110631.jpg"
         ],
@@ -3577,7 +3432,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Сотня кристаллов, выстроенных в одном направлении.",
         "gallery": [
-            "situ_rockcrystal50.jpg",
             "g_rockcrystal50_1.jpg",
             "g_rockcrystal50_260921110623.jpg"
         ],
@@ -3614,9 +3468,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_cluster.jpg",
-            "anat_crinoid_cluster.jpg",
-            "life_crinoid_cluster.jpg",
             "g_crinoid_cluster_1.jpg"
         ],
         "hook": "Плотное переплетение крон и стеблей во всю плиту.",
@@ -3662,9 +3513,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Передняя лапа хищника, превосходившего размером современных медведей.",
         "gallery": [
-            "anat_cavebear_paw_front.jpg",
-            "life_cavebear_paws.jpg",
-            "int_ph_cavebear_paw_front.jpg",
             "ph_cavebear_paw_front.jpg",
             "g_cavebear_paw_front_260921110602.jpg"
         ],
@@ -3773,8 +3621,6 @@ window.RELICTUM_PROMO = {
             "text": "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате."
         },
         "gallery": [
-            "int_ph_butterflies_amber.jpg",
-            "life_butterflies_amber.jpg",
             "g_butterflies_amber_260921110630.jpg"
         ],
         "seo": {
@@ -3810,9 +3656,6 @@ window.RELICTUM_PROMO = {
             "text": "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате."
         },
         "gallery": [
-            "int_ph_snake_large.jpg",
-            "anat_snake_large.jpg",
-            "life_snake_large.jpg",
             "ph_snake_large.jpg",
             "g_snake_large_260921110632.jpg"
         ],
@@ -3868,9 +3711,6 @@ window.RELICTUM_PROMO = {
             "text": "Панцирная рыба занимает открытую полку или консоль в кабинете, прихожей или библиотеке."
         },
         "gallery": [
-            "int_ph_bothrio.jpg",
-            "anat_bothriolepis.jpg",
-            "life_bothriolepis.jpg",
             "g_bothrio_2.jpg",
             "g_bothrio_3.jpg",
             "ph_bothriolepis.jpg"
@@ -3905,9 +3745,6 @@ window.RELICTUM_PROMO = {
             "text": "Витрина уже собрана: стекло на чёрном основании ставится на каменную консоль или низкий стеллаж и не требует ни подсветки, ни отдельного постамента."
         },
         "gallery": [
-            "int_ph_cave_lion_vitrine.jpg",
-            "anat_cave_lion_vitrine.jpg",
-            "life_cave_lion_vitrine.jpg",
             "g_cavelion_vitrine_1.jpg"
         ],
         "hook": "Полный череп с нижней челюстью — редкость: обычно челюсть теряется в отложениях.",
@@ -3973,9 +3810,6 @@ window.RELICTUM_PROMO = {
             "text": "Зуб держит стол сам по себе: стальной стенд поднимает его на уровень взгляда, а направленный свет проявляет зазубрины кромки."
         },
         "gallery": [
-            "int_ph_megalodon.jpg",
-            "anat_megalodon.jpg",
-            "life_megalodon.jpg",
             "g_megalodon_1.jpg",
             "g_megalodon_2.jpg",
             "ph_megalodon.jpg",
@@ -4006,9 +3840,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_trilobite_giant.mp4",
         "gallery": [
-            "int_ph_trilobite_giant.jpg",
-            "anat_trilobite_giant.jpg",
-            "life_trilobite_giant.jpg",
             "g_trilobite_2.jpg",
             "g_trilobite_3.jpg",
             "ph_trilobite_giant.jpg",
@@ -4131,7 +3962,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Огромная септария с перегородками из симбирцита.",
         "gallery": [
-            "situ_septaria.jpg",
             "g_septaria_1.jpg",
             "g_septaria_260921110624.jpg"
         ],
@@ -4168,9 +3998,6 @@ window.RELICTUM_PROMO = {
             ]
         },
         "gallery": [
-            "int_ph_crinoid_trio.jpg",
-            "anat_crinoid_trio.jpg",
-            "life_crinoid_trio.jpg",
             "g_crinoid_trio_1.jpg"
         ],
         "hook": "Три кроны в одном кадре камня — ритмичная вертикальная плита.",
@@ -4322,8 +4149,6 @@ window.RELICTUM_PROMO = {
             "text": "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате."
         },
         "gallery": [
-            "int_ph_butterflies_warm.jpg",
-            "life_butterflies_warm.jpg",
             "g_butterflies_warm_260921110631.jpg"
         ],
         "seo": {
@@ -4359,9 +4184,6 @@ window.RELICTUM_PROMO = {
             "text": "Рама под стеклом — готовый кабинетный жанр: одна вещь держит стену и задаёт тему всей комнате."
         },
         "gallery": [
-            "int_ph_snake_tall.jpg",
-            "anat_snake_tall.jpg",
-            "life_snake_tall.jpg",
             "ph_snake_tall.jpg",
             "g_snake_tall_260921110632.jpg",
             "g_snake_tall_260921110633.jpg"
@@ -4396,9 +4218,6 @@ window.RELICTUM_PROMO = {
         },
         "spin": "spin_dunkleosteus.mp4",
         "gallery": [
-            "int_ph_dunkleosteus.jpg",
-            "anat_dunkleosteus.jpg",
-            "life_dunkleosteus.jpg",
             "g_dunkleo_2.jpg",
             "g_dunkleo_3.jpg",
             "ph_dunkleosteus.jpg",
@@ -4445,7 +4264,6 @@ window.RELICTUM_PROMO = {
             "text": "Тёмная минерализованная кость просит тёплого света и глухого фона: каменная консоль в панельном кабинете держит череп лучше открытой полки."
         },
         "gallery": [
-            "int_ph_cave_lion2.jpg",
             "g_cavelion2_1.jpg",
             "g_cavelion2_2.jpg",
             "ph_cave_lion2.jpg"
@@ -4617,7 +4435,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Метровая жеода: сотни кристаллов аметиста в каменной чаше.",
         "gallery": [
-            "situ_amethyst_geode123.jpg",
             "g_amethyst_geode123_1.jpg",
             "g_amethyst_geode123_260921110619.jpg",
             "g_amethyst_geode123_260921110620.jpg"
@@ -4674,9 +4491,6 @@ window.RELICTUM_PROMO = {
             "text": "Череп саблезубой кошки умещается в витрину даже в комнате скромной площади, не занимая лишнего места на полке."
         },
         "gallery": [
-            "int_ph_sabertooth.jpg",
-            "anat_sabertooth.jpg",
-            "life_sabertooth.jpg",
             "g_sabertooth_2.jpg",
             "g_sabertooth_3.jpg",
             "ph_sabertooth.jpg"
@@ -4715,8 +4529,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Первые членистоногие, вышедшие из воды на сушу, — родня всем сухопутным членистоногим, включая насекомых.",
         "gallery": [
-            "anat_eurypterid.jpg",
-            "life_eurypterid.jpg",
             "g_eurypterid_1.jpg",
             "ph_eurypterid.jpg",
             "g_eurypterid_260921110552.jpg",
@@ -4761,8 +4573,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Более 50 отпечатков организмов, живших до кембрийского взрыва.",
         "gallery": [
-            "anat_nemiana.jpg",
-            "life_nemiana.jpg",
             "g_nemiana_1.jpg",
             "ph_nemiana.jpg",
             "g_nemiana_260921110559.jpg"
@@ -4802,9 +4612,6 @@ window.RELICTUM_PROMO = {
             "text": "Массивный череп динокрокуты на породном основании уверенно держит кабинет с плотной тёмной палитрой."
         },
         "gallery": [
-            "int_ph_hyena.jpg",
-            "anat_hyena_skull.jpg",
-            "life_hyena_skull.jpg",
             "g_hyena_1.jpg",
             "g_hyena_2.jpg",
             "g_hyena_3.jpg"
@@ -4890,9 +4697,6 @@ window.RELICTUM_PROMO = {
         },
         "hook": "Задняя лапа хищника, превосходившего размером современных медведей.",
         "gallery": [
-            "anat_cavebear_paw_hind.jpg",
-            "life_cavebear_paws.jpg",
-            "int_ph_cavebear_paw_hind.jpg",
             "ph_cavebear_paw_hind.jpg",
             "g_cavebear_paw_hind_260921110603.jpg"
         ],
@@ -4922,7 +4726,6 @@ window.RELICTUM_PROMO = {
             "text": "Куб не требует подставки и не спорит с интерьером: металл держит свет сам, достаточно ровной горизонтали."
         },
         "gallery": [
-            "int_ph_met_aletai_cube2.jpg",
             "ph_met_aletai_cube2.jpg",
             "g_aletai_cube_2_260921110612.jpg"
         ],
@@ -4954,7 +4757,6 @@ window.RELICTUM_PROMO = {
             "text": "Камень размером в ладонь держит полку книжного стеллажа не хуже скульптуры — при условии, что рядом пусто."
         },
         "gallery": [
-            "int_ph_met_kainsaz_b.jpg",
             "ph_met_kainsaz_b.jpg",
             "g_kainsaz_2_260921110613.jpg"
         ],
@@ -4986,7 +4788,6 @@ window.RELICTUM_PROMO = {
             "text": "Небольшой камень на чернёной стали занимает угол консоли и не спорит ни с чем вокруг."
         },
         "gallery": [
-            "int_ph_met_ozerki_b.jpg",
             "ph_met_ozerki_b.jpg",
             "g_ozerki_2_260921110614.jpg"
         ],
@@ -5174,10 +4975,7 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_basilosaurus.jpg",
             "text": "Метровый череп на тонкой чёрной стойке живёт на длинной консоли: тёплая стена, направленный свет лампы — и зубчатый профиль читается как графика."
         },
-        "gallery": [
-            "int_ph_basilosaurus.jpg",
-            "life_basilosaurus.jpg"
-        ],
+        "gallery": [],
         "seo": {
             "title": "Череп базилозавра — RELICTUM",
             "description": "Около 40–34 миллионов лет назад тёплые моря покрывали север Африки. На вершине их пищевой цепи стоял базилозавр — кит со змеевидным телом длиной до…"
@@ -5343,8 +5141,6 @@ window.RELICTUM_PROMO = {
             "text": "Рама вешается на стену как графический лист: тёмный осколок на кремовом поле читается с трёх шагов."
         },
         "gallery": [
-            "int_ph_met_agoudal_52g.jpg",
-            "raw_met_agoudal.jpg",
             "ph_met_agoudal_52g.jpg"
         ],
         "profile": {
@@ -5386,8 +5182,6 @@ window.RELICTUM_PROMO = {
             "text": "Светлая рама уводит вес в тень: на стене работает силуэт зуба, а не оправа."
         },
         "gallery": [
-            "int_ph_tooth_spinosaurus_2.jpg",
-            "life_tooth_spinosaurus.jpg",
             "ph_tooth_spinosaurus_2.jpg"
         ],
         "profile": {
@@ -5423,8 +5217,6 @@ window.RELICTUM_PROMO = {
             "text": "Изогнутый отросток держит раму сам: на светлой стене он читается как рисунок тушью."
         },
         "gallery": [
-            "int_ph_met_agoudal_323g.jpg",
-            "raw_met_agoudal.jpg",
             "ph_met_agoudal_323g.jpg"
         ],
         "profile": {
@@ -5466,7 +5258,6 @@ window.RELICTUM_PROMO = {
             "text": "Регмаглиптовый рельеф Сеймчана читается лучше в дневном свете от окна, поэтому мраморная консоль в паре шагов от него — предпочтительное место."
         },
         "gallery": [
-            "int_ph_seymchan_regmaglypt.jpg",
             "g_seymchan_regmaglypt_1.jpg",
             "ph_seymchan_regmaglypt.jpg"
         ]
@@ -5497,7 +5288,6 @@ window.RELICTUM_PROMO = {
             "text": "Крупный шар из зуба мамонта на посеребрённой треноге занимает центр консоли в светлой гостиной без соседства других предметов."
         },
         "gallery": [
-            "int_ph_mammoth_sphere_a.jpg",
             "g_mammoth_sphere_a_1.jpg",
             "ph_mammoth_sphere_large_260910155158.jpg"
         ]
@@ -5528,7 +5318,6 @@ window.RELICTUM_PROMO = {
             "text": "Шар поменьше с частым контрастным рисунком полос хорошо смотрится рядом с крупным на одной консоли, создавая парную композицию."
         },
         "gallery": [
-            "int_ph_mammoth_sphere_b.jpg",
             "g_mammoth_sphere_b_1.jpg",
             "ph_mammoth_sphere_b.jpg"
         ]
@@ -5564,7 +5353,6 @@ window.RELICTUM_PROMO = {
             "text": "Аммонит Arietites на чернёной стали хорошо стоит на низкой консоли у высокого окна — дневной свет подчёркивает рельеф спирали."
         },
         "gallery": [
-            "int_ph_arietites_45.jpg",
             "g_arietites_45_1.jpg",
             "ph_arietites_45.jpg",
             "g_arietites_45_260921110627.jpg"
@@ -5601,7 +5389,6 @@ window.RELICTUM_PROMO = {
             "text": "Сеймчан лучше всего раскрывается против света: поставьте срез так, чтобы окно било в спину, и оливин загорится янтарём."
         },
         "gallery": [
-            "int_ph_met_seymchan_0634.jpg",
             "g_met_seymchan_0634_1.jpg",
             "ph_met_seymchan_0634.jpg"
         ]
@@ -5637,7 +5424,6 @@ window.RELICTUM_PROMO = {
             "text": "Небольшой цельнометаллический срез с видманштеттеновым узором уместен на консоли даже у окна: боковой свет подчёркивает ржавую кромку коры."
         },
         "gallery": [
-            "int_ph_met_seymchan_0635.jpg",
             "g_met_seymchan_0635_1.jpg",
             "ph_met_seymchan_0635.jpg"
         ]
@@ -5673,7 +5459,6 @@ window.RELICTUM_PROMO = {
             "text": "Крупный срез с широким видманштеттеновым узором требует простора вокруг — ставьте его отдельно на консоли, под скользящим светом от окна."
         },
         "gallery": [
-            "int_ph_met_seymchan_0636.jpg",
             "g_met_seymchan_0636_1.jpg",
             "ph_met_seymchan_0636.jpg",
             "g_seymchan_plain_large_260921110610.jpg",
@@ -5711,7 +5496,6 @@ window.RELICTUM_PROMO = {
             "text": "Бурая кора по верхнему краю среза заметнее при естественном свете сбоку, поэтому место у окна на консоли раскрывает её фактуру."
         },
         "gallery": [
-            "int_ph_met_seymchan_0637.jpg",
             "g_met_seymchan_0637_1.jpg",
             "ph_met_seymchan_0637.jpg"
         ]
@@ -5787,7 +5571,6 @@ window.RELICTUM_PROMO = {
             "text": "Мраморная консоль в гостиной у окна: метеорит рядом со стопкой книг, тёмная кора плавления держит взгляд без лишнего декора."
         },
         "gallery": [
-            "int_ph_chelyabinsk4.jpg",
             "g_chelyabinsk4_1.jpg",
             "ph_chelyabinsk4.jpg"
         ]
@@ -5823,7 +5606,6 @@ window.RELICTUM_PROMO = {
             "text": "Массивный череп саблезубой кошки требует тёмной консоли ниже уровня глаз — так пасть читается силуэтом против дневного света из окна."
         },
         "gallery": [
-            "int_ph_sabertooth_0640.jpg",
             "g_sabertooth_0640_1.jpg",
             "ph_sabertooth_0640.jpg"
         ]
@@ -5859,7 +5641,6 @@ window.RELICTUM_PROMO = {
             "text": "Парящий на тонком стержне череп лучше смотрится у самой стены библиотеки, где боковой свет из окна очерчивает контур челюсти."
         },
         "gallery": [
-            "int_ph_sabertooth_0641.jpg",
             "g_sabertooth_0641_1.jpg",
             "ph_sabertooth_0641.jpg"
         ]
