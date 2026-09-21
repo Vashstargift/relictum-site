@@ -671,7 +671,7 @@ def prune_media():
     return dropped
 
 
-METRIKA_ID = None   # 14.09.2026 владелец удалил оба счётчика Relictum (112567965, 112568027); при новом счётчике вписать номер — код и цели встанут сами
+METRIKA_ID = 112582573   # счётчик «Relictum», создан владельцем 21.09.2026 (под другим логином; alex@stargift.ru нужен доступ для целей)
 METRIKA = """<!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
