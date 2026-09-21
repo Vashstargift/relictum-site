@@ -85,7 +85,9 @@ window.RELICTUM_PROMO = {
             "href": "../15_concepts/era-cretaceous.html"
         },
         "gallery": [
-            "gal_yakimanka_4.jpg"
+            "gal_yakimanka_4.jpg",
+            "g_dromaeosaurid_260921110555.jpg",
+            "g_dromaeosaurid_260921110556.jpg"
         ],
         "seo": {
             "title": "Скелет дромеозаврида — RELICTUM",
@@ -318,7 +320,8 @@ window.RELICTUM_PROMO = {
             "g_moon_fragment.jpg",
             "int_ph_moon.jpg",
             "g_moon_3.jpg",
-            "gal_yakimanka_7.jpg"
+            "gal_yakimanka_7.jpg",
+            "g_lunar_meteorite_260921110616.jpg"
         ]
     },
     "R–0231": {
@@ -357,7 +360,8 @@ window.RELICTUM_PROMO = {
             "int_ph_crinoid_fan.jpg",
             "anat_crinoid_fan.jpg",
             "life_crinoid_fan.jpg",
-            "g_crinoid_fan_1.jpg"
+            "g_crinoid_fan_1.jpg",
+            "g_crinoid_fan_260921110633.jpg"
         ],
         "hook": "Крупный раскрытый веер Traumatocrinus на цельной плите — парадный экземпляр серии.",
         "era": {
@@ -390,7 +394,9 @@ window.RELICTUM_PROMO = {
             "int_ph_dronino128.jpg",
             "g_dronino128_1.jpg",
             "g_dronino128_2.jpg",
-            "g_dronino128_3.jpg"
+            "g_dronino128_3.jpg",
+            "g_dronino_128kg_260921110615.jpg",
+            "g_dronino_128kg_260921110616.jpg"
         ],
         "hook": "Метеорит Дронино массой 128 килограммов — один из крупнейших найденных экземпляров этого падения.",
         "heroKicker": "Метеориты, Рязанская область, Россия",
@@ -486,7 +492,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_met_aletai.jpg",
             "text": "Десятикилограммовый срез требует уверенной опоры: каменная консоль и боковой свет, проявляющий видманштеттенову сетку."
         },
-        "gallery": [],
+        "gallery": [
+            "g_aletai_slice_260921110611.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Узор Видманштеттена на срезе — кристаллы, которые вырастают только при остывании на градус за миллион лет. Так медленно остывает лишь ядро планетного тела, укрытое каменной мантией.",
@@ -524,7 +532,9 @@ window.RELICTUM_PROMO = {
         "hook": "Редкий минерал; образцы такого размера — особенная редкость.",
         "gallery": [
             "situ_pseudomalachite.jpg",
-            "g_pseudomalachite_1.jpg"
+            "g_pseudomalachite_1.jpg",
+            "g_pseudomalachite_260921110616.jpg",
+            "g_pseudomalachite_260921110617.jpg"
         ],
         "seo": {
             "title": "Псевдомалахит — RELICTUM",
@@ -551,7 +561,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_met_aletai_cubes.jpg",
             "text": "Куб держит стол, как пресс-папье из другого мира: строгая форма против космической текстуры граней."
         },
-        "gallery": [],
+        "gallery": [
+            "g_aletai_cube_260921110611.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Куб режет один и тот же металл сразу в трёх плоскостях, и на каждой грани узор идёт под своим углом. Эта решётка сложилась в ядре протопланеты и на Земле невоспроизводима.",
@@ -623,7 +635,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_met_aletai_sphere.jpg",
             "text": "Шар просит вращения — на консоли его переставляют, и узор каждый раз встаёт по-новому."
         },
-        "gallery": [],
+        "gallery": [
+            "g_aletai_sphere_260921110612.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "У шара нет ни одной плоской грани, и узор Видманштеттена замыкается по всей окружности. Кристаллы, которые он показывает, росли в ядре протопланеты, пока то остывало.",
@@ -660,7 +674,8 @@ window.RELICTUM_PROMO = {
             "life_psittacosaurus_skeleton.jpg",
             "g_psitskel_1.jpg",
             "g_psitskel_2.jpg",
-            "ph_psittacosaurus_skeleton.jpg"
+            "ph_psittacosaurus_skeleton.jpg",
+            "g_psittacosaurus_skeleton_260921110554.jpg"
         ],
         "interior": {
             "video": "intv_psittacosaurus_skeleton.mp4",
@@ -708,7 +723,9 @@ window.RELICTUM_PROMO = {
             "int_ph_met_aletai_ball.jpg",
             "ph_met_aletai_balls.jpg",
             "int_ph_met_aletai_balls.jpg",
-            "ph_met_aletai_ball.jpg"
+            "ph_met_aletai_ball.jpg",
+            "g_aletai_spheres_small_260921110612.jpg",
+            "g_aletai_spheres_small_260921110613.jpg"
         ],
         "profile": {
             "paragraphs": [
@@ -747,7 +764,8 @@ window.RELICTUM_PROMO = {
         "hook": "Десять крупных кубов и сотня кристаллов поменьше — правильная геометрия без единой огранки.",
         "gallery": [
             "situ_pyrite.jpg",
-            "g_pyrite_1.jpg"
+            "g_pyrite_1.jpg",
+            "g_pyrite_260921110619.jpg"
         ],
         "seo": {
             "title": "Пирит — RELICTUM",
@@ -776,7 +794,8 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_met_kainsaz_a.jpg",
-            "ph_met_kainsaz_a.jpg"
+            "ph_met_kainsaz_a.jpg",
+            "g_kainsaz_260921110613.jpg"
         ],
         "profile": {
             "paragraphs": [
@@ -849,7 +868,10 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_met_dhofar.jpg",
             "text": "Пустынный камень тепло выглядит на дереве — охра его коры отвечает ореху."
         },
-        "gallery": [],
+        "gallery": [
+            "g_dhofar_260921110614.jpg",
+            "g_dhofar_260921110615.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Веществу около четырёх с половиной миллиардов лет: оно сложилось в небольшом теле ранней Солнечной системы и с тех пор не менялось. Путь до пустыни Дофар занял всё время существования планет.",
@@ -933,7 +955,8 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_met_ozerki_a.jpg",
-            "ph_met_ozerki_a.jpg"
+            "ph_met_ozerki_a.jpg",
+            "g_ozerki_260921110614.jpg"
         ],
         "profile": {
             "paragraphs": [
@@ -999,7 +1022,10 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_met_seymchan3815.jpg",
             "text": "Вес спила — почти четыре килограмма: крупнейшая пластина Сеймчана в собрании дома."
         },
-        "gallery": [],
+        "gallery": [
+            "g_seymchan_3815_260921110607.jpg",
+            "g_seymchan_3815_260921110608.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Оливин не попадает в железо случайно: такое смешение возможно ровно в одной зоне — там, где ядро протопланеты соприкасалось с её каменной мантией. Расплавленный металл просачивался между кристаллами и застывал вместе с ними под огромным давлением. Спил показывает срез этой зоны; на Земле её не существует.",
@@ -1099,7 +1125,9 @@ window.RELICTUM_PROMO = {
             "life_cavebear.jpg",
             "g_cavebear_1.jpg",
             "g_cavebear_2.jpg",
-            "g_cavebear_3.jpg"
+            "g_cavebear_3.jpg",
+            "g_cave_bear_skeleton_260921110600.jpg",
+            "g_cave_bear_skeleton_260921110601.jpg"
         ],
         "seo": {
             "title": "Скелет пещерного медведя — RELICTUM",
@@ -1125,7 +1153,10 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_met_seymchan28x31.jpg",
             "text": "Широкий спил работает как картина на подставке — оливины загораются против окна."
         },
-        "gallery": [],
+        "gallery": [
+            "g_seymchan_28x31_260921110608.jpg",
+            "g_seymchan_28x31_260921110609.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Оливин и железо встречаются в одном-единственном месте — на границе ядра и мантии протопланеты, где расплавленный металл пронизывал каменную породу. Крупный спил Сеймчана показывает этот слой целиком.",
@@ -1168,7 +1199,9 @@ window.RELICTUM_PROMO = {
             "life_oviraptor.jpg",
             "g_oviraptor_1.jpg",
             "g_oviraptor_2.jpg",
-            "g_oviraptor_3.jpg"
+            "g_oviraptor_3.jpg",
+            "g_oviraptor_260921110554.jpg",
+            "g_oviraptor_260921110555.jpg"
         ],
         "hook": "Беззубый клюв и лёгкое сложение — скелет овираптора позднего мела Центральной Азии.",
         "heroKicker": "Динозавры, Центральная Азия",
@@ -1218,7 +1251,8 @@ window.RELICTUM_PROMO = {
         "hook": "Аметистовая друза с россыпью золотистого пирита по граням.",
         "gallery": [
             "situ_fluorite_pyrite.jpg",
-            "g_fluorite_pyrite_1.jpg"
+            "g_fluorite_pyrite_1.jpg",
+            "g_fluorite_pyrite_260921110622.jpg"
         ],
         "seo": {
             "title": "Флюорит с пиритом — RELICTUM",
@@ -1317,7 +1351,8 @@ window.RELICTUM_PROMO = {
             "life_mammoth_skull.jpg",
             "g_mammothskull_1.jpg",
             "g_mammothskull_2.jpg",
-            "g_mammothskull_3.jpg"
+            "g_mammothskull_3.jpg",
+            "g_mammoth_skull_tusks_260921110604.jpg"
         ],
         "seo": {
             "title": "Череп мамонта с бивнями — RELICTUM",
@@ -1381,7 +1416,9 @@ window.RELICTUM_PROMO = {
             "life_psittacosaurus_skull.jpg",
             "g_psitskull_1.jpg",
             "g_psitskull_2.jpg",
-            "g_psitskull_3.jpg"
+            "g_psitskull_3.jpg",
+            "g_psittacosaurus_skull_260921110553.jpg",
+            "g_psittacosaurus_skull_260921110554.jpg"
         ],
         "interior": {
             "video": "intv_psittacosaurus_skull.mp4",
@@ -1436,7 +1473,9 @@ window.RELICTUM_PROMO = {
         "hook": "Уругвайский аметист — особо насыщенный цвет кристаллов.",
         "gallery": [
             "situ_amethyst_druse35.jpg",
-            "g_amethyst_druse35_1.jpg"
+            "g_amethyst_druse35_1.jpg",
+            "g_amethyst_druse35_260921110620.jpg",
+            "g_amethyst_druse35_260921110621.jpg"
         ],
         "seo": {
             "title": "Аметист — RELICTUM",
@@ -1482,7 +1521,9 @@ window.RELICTUM_PROMO = {
             "life_crinoid_floats.jpg",
             "g_crinoid_floats_1.jpg",
             "g_crinoid_floats_2.jpg",
-            "ph_crinoid_floats.jpg"
+            "ph_crinoid_floats.jpg",
+            "g_crinoid_floats_260921110633.jpg",
+            "g_crinoid_floats_260921110634.jpg"
         ],
         "hook": "Взрослая крона и рядом — малые кроны той же колонии, редкий групповой сюжет.",
         "era": {
@@ -1545,7 +1586,8 @@ window.RELICTUM_PROMO = {
             "int_ph_tusks.jpg",
             "anat_mammoth_tusks.jpg",
             "life_mammoth_tusks.jpg",
-            "g_tusks_3.jpg"
+            "g_tusks_3.jpg",
+            "g_mammuthus_primigenius_260921110604.jpg"
         ]
     },
     "R–0274": {
@@ -1645,7 +1687,9 @@ window.RELICTUM_PROMO = {
             "int_ph_anchiornis.jpg",
             "anat_anchiornis.jpg",
             "life_anchiornis.jpg",
-            "ph_anchiornis.jpg"
+            "ph_anchiornis.jpg",
+            "g_anchiornis_huxleyi_260921110556.jpg",
+            "g_anchiornis_huxleyi_260921110557.jpg"
         ],
         "interior": {
             "video": "intv_anchiornis.mp4",
@@ -1700,7 +1744,10 @@ window.RELICTUM_PROMO = {
         "hook": "Редкий хромовый гранат, названный в честь графа Уварова.",
         "gallery": [
             "situ_uvarovite.jpg",
-            "g_uvarovite_1.jpg"
+            "g_uvarovite_1.jpg",
+            "g_uvarovite_260921110617.jpg",
+            "g_uvarovite_260921110618.jpg",
+            "g_uvarovite_260921110619.jpg"
         ],
         "seo": {
             "title": "Уваровит — RELICTUM",
@@ -1744,7 +1791,8 @@ window.RELICTUM_PROMO = {
             "int_ph_crinoid_pair.jpg",
             "anat_crinoid_pair.jpg",
             "life_crinoid_pair.jpg",
-            "g_crinoid_pair_1.jpg"
+            "g_crinoid_pair_1.jpg",
+            "g_crinoid_pair_260921110634.jpg"
         ],
         "hook": "Два стебля уходят параллельно вниз — строгая, почти каллиграфическая плита.",
         "era": {
@@ -1807,7 +1855,9 @@ window.RELICTUM_PROMO = {
             "int_ph_rhino.jpg",
             "anat_rhino_skull.jpg",
             "life_rhino_skull.jpg",
-            "g_rhino_2.jpg"
+            "g_rhino_2.jpg",
+            "g_coelodonta_antiquitatis_260921110603.jpg",
+            "g_coelodonta_antiquitatis_260921110604.jpg"
         ]
     },
     "R–0273": {
@@ -1844,7 +1894,10 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_craspedodiscus.jpg",
             "text": "Такому аммониту нужен направленный луч: от угла света зависит, вспыхнет ли перламутр."
         },
-        "gallery": [],
+        "gallery": [
+            "g_craspedodiscus_260921110625.jpg",
+            "g_craspedodiscus_260921110626.jpg"
+        ],
         "seo": {
             "title": "Аммонит Craspedodiscus — RELICTUM",
             "description": "Крупные аммониты рода Craspedodiscus стали визитной карточкой Ульяновской области. Когда-то эти головоногие моллюски жили в тёплом море мелового периода,…"
@@ -1872,7 +1925,8 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_met_seymchan_frame.jpg",
-            "ph_met_seymchan_frame.jpg"
+            "ph_met_seymchan_frame.jpg",
+            "g_seymchan_framed_260921110608.jpg"
         ],
         "profile": {
             "paragraphs": [
@@ -1910,7 +1964,8 @@ window.RELICTUM_PROMO = {
             "life_dino_eggs.jpg",
             "g_eggs_1.jpg",
             "g_eggs_2.jpg",
-            "g_eggs_3.jpg"
+            "g_eggs_3.jpg",
+            "g_dinosaur_eggs_260921110558.jpg"
         ],
         "interior": {
             "video": "intv_dino_eggs.mp4",
@@ -2143,7 +2198,9 @@ window.RELICTUM_PROMO = {
             "text": "Металл без оливина строже всего смотрится на тёмном камне — сталь к стали."
         },
         "gallery": [
-            "g_seymchan_no_olivine_260921105412.jpg"
+            "g_seymchan_no_olivine_260921105412.jpg",
+            "g_seymchan_no_olivine_260921110609.jpg",
+            "g_seymchan_no_olivine_260921110611.jpg"
         ],
         "profile": {
             "paragraphs": [
@@ -2236,7 +2293,9 @@ window.RELICTUM_PROMO = {
         "hook": "Более двухсот кристаллов с золотистыми включениями гётита.",
         "gallery": [
             "situ_amethyst_druse51.jpg",
-            "g_amethyst_druse51_1.jpg"
+            "g_amethyst_druse51_1.jpg",
+            "g_amethyst_druse51_260921110621.jpg",
+            "g_amethyst_druse51_260921110622.jpg"
         ],
         "seo": {
             "title": "Аметист — RELICTUM",
@@ -2411,7 +2470,8 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_met_omolon.jpg",
-            "ph_met_omolon.jpg"
+            "ph_met_omolon.jpg",
+            "g_omolon_260921110610.jpg"
         ],
         "profile": {
             "paragraphs": [
@@ -2449,7 +2509,8 @@ window.RELICTUM_PROMO = {
             "anat_carcharodont_claw.jpg",
             "g_claw_2.jpg",
             "g_claw_3.jpg",
-            "ph_carcharodont_claw.jpg"
+            "ph_carcharodont_claw.jpg",
+            "g_carcharodontosaurus_claw_260921110600.jpg"
         ],
         "interior": {
             "video": "intv_carcharodont_claw.mp4",
@@ -2503,7 +2564,9 @@ window.RELICTUM_PROMO = {
         "hook": "Сотня чётких кристаллов с полностью отработанного месторождения.",
         "gallery": [
             "situ_rockcrystal47.jpg",
-            "g_rockcrystal47_1.jpg"
+            "g_rockcrystal47_1.jpg",
+            "g_rockcrystal47_260921110622.jpg",
+            "g_rockcrystal47_260921110623.jpg"
         ],
         "seo": {
             "title": "Горный хрусталь — RELICTUM",
@@ -2636,7 +2699,8 @@ window.RELICTUM_PROMO = {
             "text": "Пара половин ставится рядом или разносится по разным поверхностям — распил хорош при боковом свете."
         },
         "gallery": [
-            "g_ammo_cleoniceras_2.jpg"
+            "g_ammo_cleoniceras_2.jpg",
+            "g_cleoniceras_260921110629.jpg"
         ],
         "profile": {
             "paragraphs": [
@@ -2805,7 +2869,8 @@ window.RELICTUM_PROMO = {
         "hook": "Марматит — железистая разновидность сфалерита с почти металлическим блеском.",
         "gallery": [
             "situ_sphalerite.jpg",
-            "g_sphalerite_1.jpg"
+            "g_sphalerite_1.jpg",
+            "g_sphalerite_260921110624.jpg"
         ],
         "seo": {
             "title": "Сфалерит с кальцитом — RELICTUM",
@@ -2935,7 +3000,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_ammo_jurassic_polished.jpg",
             "text": "Полированная раковина хорошо стоит на консоли у окна: свет вдоль спирали проявляет линии роста."
         },
-        "gallery": [],
+        "gallery": [
+            "g_jurassic_ammonite_260921110628.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Аммониты строили раковину камера за камерой, каждый раз чуть больше предыдущей, и всю жизнь жили только в последней. Позади оставалась череда пустых камер, наполненных газом, — они и держали животное в толще воды.",
@@ -2969,7 +3036,8 @@ window.RELICTUM_PROMO = {
         "gallery": [
             "int_ph_ichthyosaur_plate.jpg",
             "anat_ichthyosaur_plate.jpg",
-            "life_ichthyosaur_plate.jpg"
+            "life_ichthyosaur_plate.jpg",
+            "g_mixosaurus_plate_260921110558.jpg"
         ],
         "interior": {
             "video": "intv_ichthyosaur_plate.mp4",
@@ -3023,7 +3091,9 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_butterflies_dark.jpg",
-            "life_butterflies_dark.jpg"
+            "life_butterflies_dark.jpg",
+            "g_butterflies_dark_260921110629.jpg",
+            "g_butterflies_dark_260921110630.jpg"
         ],
         "seo": {
             "title": "Коллекция бабочек — RELICTUM",
@@ -3050,7 +3120,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_chelyabinsk1.jpg",
             "text": "Осколок на кольцевой подставке — предмет камерного масштаба: его место на полке кабинета или рабочем столе, на расстоянии руки."
         },
-        "gallery": [],
+        "gallery": [
+            "g_chelyabinsk_1_260921110613.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Обыкновенный хондрит никогда не проходил через расплав: его вещество спеклось в недрах каменного астероида и осталось таким, каким было в начале Солнечной системы. Планетой это тело не стало — его разбило столкновением, и осколок шёл к Земле, пока не вспыхнул над Уралом.",
@@ -3142,7 +3214,8 @@ window.RELICTUM_PROMO = {
         "hook": "Крупный натёчный малахит из «геологической сенсации» Катанги.",
         "gallery": [
             "situ_malachite_congo.jpg",
-            "g_malachite_congo_1.jpg"
+            "g_malachite_congo_1.jpg",
+            "g_malachite_congo_260921110617.jpg"
         ],
         "seo": {
             "title": "Малахит — RELICTUM",
@@ -3272,7 +3345,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_ammo_speet_small.jpg",
             "text": "Раковина такого размера не спорит с обстановкой: ей хватает одной полки и бокового света, который проявляет рёбра."
         },
-        "gallery": [],
+        "gallery": [
+            "g_speetoniceras_small_260921110628.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Крупные раковины аммонитов рода Speetoniceras — одна из ярких особенностей палеонтологических находок Поволжья. Миллионы лет назад здесь простиралось мелководное Волжское море, связанное с древним океаном Тетис.",
@@ -3361,7 +3436,8 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_butterflies_blue.jpg",
-            "life_butterflies_blue.jpg"
+            "life_butterflies_blue.jpg",
+            "g_butterflies_blue_260921110630.jpg"
         ],
         "seo": {
             "title": "Коллекция бабочек — RELICTUM",
@@ -3399,7 +3475,8 @@ window.RELICTUM_PROMO = {
             "int_ph_snake_portrait.jpg",
             "anat_snake_portrait.jpg",
             "life_snake_portrait.jpg",
-            "ph_snake_portrait.jpg"
+            "ph_snake_portrait.jpg",
+            "g_snake_portrait_260921110631.jpg"
         ],
         "seo": {
             "title": "Скелет змеи — RELICTUM",
@@ -3426,7 +3503,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_chelyabinsk2.jpg",
             "text": "Осколок на кольцевой подставке — предмет камерного масштаба: полка кабинета, консоль, рабочий стол."
         },
-        "gallery": [],
+        "gallery": [
+            "g_chelyabinsk_2_260921110614.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Челябинское тело было около двадцати метров в поперечнике — обломок каменного астероида, чьё вещество не менялось с начала Солнечной системы.",
@@ -3459,7 +3538,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_psit_paw.jpg",
             "text": "Лапа в породе не требует витрины: камень сам служит ей рамой, и на консоли она читается как рельеф."
         },
-        "gallery": [],
+        "gallery": [
+            "g_psittacosaurus_foot_260921110556.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Psittacosaurus — небольшой ранний цератопс около двух метров длиной. Четыре пальца задней лапы заканчивались плоскими когтями: ими зверь цеплялся за грунт при быстром двуногом шаге.",
@@ -3497,7 +3578,8 @@ window.RELICTUM_PROMO = {
         "hook": "Сотня кристаллов, выстроенных в одном направлении.",
         "gallery": [
             "situ_rockcrystal50.jpg",
-            "g_rockcrystal50_1.jpg"
+            "g_rockcrystal50_1.jpg",
+            "g_rockcrystal50_260921110623.jpg"
         ],
         "seo": {
             "title": "Горный хрусталь — RELICTUM",
@@ -3583,7 +3665,8 @@ window.RELICTUM_PROMO = {
             "anat_cavebear_paw_front.jpg",
             "life_cavebear_paws.jpg",
             "int_ph_cavebear_paw_front.jpg",
-            "ph_cavebear_paw_front.jpg"
+            "ph_cavebear_paw_front.jpg",
+            "g_cavebear_paw_front_260921110602.jpg"
         ],
         "seo": {
             "title": "Лапа пещерного медведя — RELICTUM",
@@ -3617,7 +3700,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_ammo_jurassic_block.jpg",
             "text": "Аммонит в породе стоит как обломок стены: камень даёт ему вес и оправу, и на консоли он не нуждается ни в подсветке, ни в витрине."
         },
-        "gallery": [],
+        "gallery": [
+            "g_jurassic_ammonite_block_260921110628.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Аммонит строил раковину камера за камерой и жил только в последней. Пустые камеры позади, наполненные газом, держали его в толще воды: моллюск управлял плавучестью, как подводная лодка балластом.",
@@ -3649,7 +3734,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_keicho_pink.jpg",
             "text": "Плита вешается на стену как рельеф или ставится на консоль под наклоном — скелет читается с двух шагов."
         },
-        "gallery": [],
+        "gallery": [
+            "g_keichousaurus_slab_260921110557.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Кейхозавр — небольшая морская рептилия триасового периода, около тридцати сантиметров. Длинная шея, конечности-вёсла, длинный хвост: он не выходил на сушу и всю жизнь провёл в тёплом мелководном море.",
@@ -3687,7 +3774,8 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_butterflies_amber.jpg",
-            "life_butterflies_amber.jpg"
+            "life_butterflies_amber.jpg",
+            "g_butterflies_amber_260921110630.jpg"
         ],
         "seo": {
             "title": "Коллекция бабочек — RELICTUM",
@@ -3725,7 +3813,8 @@ window.RELICTUM_PROMO = {
             "int_ph_snake_large.jpg",
             "anat_snake_large.jpg",
             "life_snake_large.jpg",
-            "ph_snake_large.jpg"
+            "ph_snake_large.jpg",
+            "g_snake_large_260921110632.jpg"
         ],
         "seo": {
             "title": "Скелет змеи — RELICTUM",
@@ -3889,7 +3978,8 @@ window.RELICTUM_PROMO = {
             "life_megalodon.jpg",
             "g_megalodon_1.jpg",
             "g_megalodon_2.jpg",
-            "ph_megalodon.jpg"
+            "ph_megalodon.jpg",
+            "g_megalodon_tooth_260921110548.jpg"
         ]
     },
     "R–0217": {
@@ -3921,7 +4011,8 @@ window.RELICTUM_PROMO = {
             "life_trilobite_giant.jpg",
             "g_trilobite_2.jpg",
             "g_trilobite_3.jpg",
-            "ph_trilobite_giant.jpg"
+            "ph_trilobite_giant.jpg",
+            "g_dikelokephalina_260921110552.jpg"
         ],
         "interior": {
             "video": "intv_trilobite_giant.mp4",
@@ -3965,7 +4056,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_chelyabinsk3.jpg",
             "text": "Осколок ставят сколом к свету: блёстки металла в разломе живут при боковом освещении."
         },
-        "gallery": [],
+        "gallery": [
+            "g_chelyabinsk_3_260921110614.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Порода этого осколка сложилась в астероиде до того, как появились планеты, и пролежала так четыре с половиной миллиарда лет.",
@@ -3999,7 +4092,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_tooth_spinosaurus.jpg",
             "text": "Рама позволяет повесить зуб на стену — он работает как графичный предмет, а не как экспонат под стеклом."
         },
-        "gallery": [],
+        "gallery": [
+            "g_spinosaurus_tooth_260921110551.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Спинозавр — крупнейший из известных хищных динозавров: до пятнадцати метров длины и около семи тонн, крупнее тираннозавра. Единственный из гигантов, он жил у воды — на морских побережьях, в речных дельтах и болотах; узкая вытянутая морда и прямые гладкие зубы приспособлены удерживать рыбу, а не резать мясо.",
@@ -4037,7 +4132,8 @@ window.RELICTUM_PROMO = {
         "hook": "Огромная септария с перегородками из симбирцита.",
         "gallery": [
             "situ_septaria.jpg",
-            "g_septaria_1.jpg"
+            "g_septaria_1.jpg",
+            "g_septaria_260921110624.jpg"
         ],
         "seo": {
             "title": "Септария — RELICTUM",
@@ -4114,7 +4210,10 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_cavebear_skull.jpg",
             "text": "Череп на чернёной стали читается как скульптура: тяжёлый силуэт, открытая пасть, дуга шейных позвонков. Ему нужна одна опорная поверхность и свет сбоку — больше ничего."
         },
-        "gallery": [],
+        "gallery": [
+            "g_cave_bear_skull_260921110601.jpg",
+            "g_cave_bear_skull_260921110602.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Пещерный медведь Ursus spelaeus был крупнее нынешнего бурого и жил в Евразии всю последнюю ледниковую эпоху. Этот череп пролежал в вечной мерзлоте Якутии на глубине около семидесяти метров — условия, в которых кость почти не меняется, и потому сохранность здесь редкая даже для музейного материала.",
@@ -4148,7 +4247,10 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_ammo_speet_bronze.jpg",
             "text": "Бронзовый отлив раковины отзывается на тёплый свет: место такому предмету у окна или у лампы, где он меняется в течение дня."
         },
-        "gallery": [],
+        "gallery": [
+            "g_speetoniceras_bronze_260921110626.jpg",
+            "g_speetoniceras_bronze_260921110627.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Крупные раковины рода Speetoniceras — одна из ярких особенностей палеонтологических находок Поволжья. Миллионы лет назад здесь простиралось мелководное Волжское море, связанное с древним океаном Тетис; его воды населяли головоногие моллюски, служившие добычей плезиозаврам и хищным рыбам.",
@@ -4181,7 +4283,10 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_tooth_mosasaur.jpg",
             "text": "Зуб мозазавра держат в поле зрения, а не под стеклом: он читается вблизи, по рёбрам эмали."
         },
-        "gallery": [],
+        "gallery": [
+            "g_mosasaur_tooth_260921110550.jpg",
+            "g_mosasaur_tooth_260921110551.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Мозазавры — морские ящеры мела, родня варанам, полностью перешедшая в воду: конечности стали ластами, тело вытянулось, появились теплокровность и живорождение — связь с сушей оборвалась навсегда.",
@@ -4218,7 +4323,8 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_butterflies_warm.jpg",
-            "life_butterflies_warm.jpg"
+            "life_butterflies_warm.jpg",
+            "g_butterflies_warm_260921110631.jpg"
         ],
         "seo": {
             "title": "Коллекция бабочек — RELICTUM",
@@ -4256,7 +4362,9 @@ window.RELICTUM_PROMO = {
             "int_ph_snake_tall.jpg",
             "anat_snake_tall.jpg",
             "life_snake_tall.jpg",
-            "ph_snake_tall.jpg"
+            "ph_snake_tall.jpg",
+            "g_snake_tall_260921110632.jpg",
+            "g_snake_tall_260921110633.jpg"
         ],
         "seo": {
             "title": "Скелет змеи — RELICTUM",
@@ -4293,7 +4401,9 @@ window.RELICTUM_PROMO = {
             "life_dunkleosteus.jpg",
             "g_dunkleo_2.jpg",
             "g_dunkleo_3.jpg",
-            "ph_dunkleosteus.jpg"
+            "ph_dunkleosteus.jpg",
+            "g_dunkleosteus_260921110559.jpg",
+            "g_dunkleosteus_260921110600.jpg"
         ],
         "interior": {
             "video": "intv_dunkleosteus.mp4",
@@ -4388,7 +4498,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_tooth_otodus.jpg",
             "text": "Зуб на стальной подставке — предмет камерный: его место на рабочем столе или на полке у книг, а не в центре комнаты."
         },
-        "gallery": [],
+        "gallery": [
+            "g_otodus_tooth_260921110550.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Otodus obliquus — крупная акула палеогенового периода, около шести метров длиной, из той линии, что позже дала мегалодона. Боковые зубчики у основания коронки — её отличительный признак: у поздних потомков они исчезнут.",
@@ -4423,7 +4535,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_trilo_plate.jpg",
             "text": "Плита кладётся на постамент почти горизонтально или ставится под наклоном к свету: боковое освещение проявляет рельеф панцирей, при фронтальном они пропадают."
         },
-        "gallery": [],
+        "gallery": [
+            "g_trilobite_plate_260921110552.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Живые Xenasaphus devexus на илистом дне тёплого мелководного моря: сегментированный панцирь, головной щит с глазами, хвостовой щит. Они ползали и рылись в осадке, а при опасности сворачивались в шар.",
@@ -4504,7 +4618,9 @@ window.RELICTUM_PROMO = {
         "hook": "Метровая жеода: сотни кристаллов аметиста в каменной чаше.",
         "gallery": [
             "situ_amethyst_geode123.jpg",
-            "g_amethyst_geode123_1.jpg"
+            "g_amethyst_geode123_1.jpg",
+            "g_amethyst_geode123_260921110619.jpg",
+            "g_amethyst_geode123_260921110620.jpg"
         ],
         "seo": {
             "title": "Аметист — RELICTUM",
@@ -4602,7 +4718,9 @@ window.RELICTUM_PROMO = {
             "anat_eurypterid.jpg",
             "life_eurypterid.jpg",
             "g_eurypterid_1.jpg",
-            "ph_eurypterid.jpg"
+            "ph_eurypterid.jpg",
+            "g_eurypterid_260921110552.jpg",
+            "g_eurypterid_260921110553.jpg"
         ],
         "seo": {
             "title": "Ракоскорпион — RELICTUM",
@@ -4646,7 +4764,8 @@ window.RELICTUM_PROMO = {
             "anat_nemiana.jpg",
             "life_nemiana.jpg",
             "g_nemiana_1.jpg",
-            "ph_nemiana.jpg"
+            "ph_nemiana.jpg",
+            "g_nemiana_260921110559.jpg"
         ],
         "seo": {
             "title": "Медузоиды Nemiana — RELICTUM",
@@ -4728,7 +4847,10 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_wood_petrified.jpg",
             "text": "Спил окаменелого дерева читается как срез времени: на полированной плоскости видны кольца, каждое из которых — год юрского леса."
         },
-        "gallery": [],
+        "gallery": [
+            "g_petrified_wood_260921110624.jpg",
+            "g_petrified_wood_260921110625.jpg"
+        ],
         "profile": {
             "paragraphs": [
                 "Араукария юрского периода: прямой ствол в толстой чешуйчатой коре и крона жёстких ветвей высоко над землёй. Такие леса стояли по всей планете, и годичные кольца этого дерева отсчитывали в них год за годом.",
@@ -4771,7 +4893,8 @@ window.RELICTUM_PROMO = {
             "anat_cavebear_paw_hind.jpg",
             "life_cavebear_paws.jpg",
             "int_ph_cavebear_paw_hind.jpg",
-            "ph_cavebear_paw_hind.jpg"
+            "ph_cavebear_paw_hind.jpg",
+            "g_cavebear_paw_hind_260921110603.jpg"
         ],
         "seo": {
             "title": "Лапа пещерного медведя — RELICTUM",
@@ -4800,7 +4923,8 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_met_aletai_cube2.jpg",
-            "ph_met_aletai_cube2.jpg"
+            "ph_met_aletai_cube2.jpg",
+            "g_aletai_cube_2_260921110612.jpg"
         ],
         "profile": {
             "paragraphs": [
@@ -4831,7 +4955,8 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_met_kainsaz_b.jpg",
-            "ph_met_kainsaz_b.jpg"
+            "ph_met_kainsaz_b.jpg",
+            "g_kainsaz_2_260921110613.jpg"
         ],
         "profile": {
             "paragraphs": [
@@ -4862,7 +4987,8 @@ window.RELICTUM_PROMO = {
         },
         "gallery": [
             "int_ph_met_ozerki_b.jpg",
-            "ph_met_ozerki_b.jpg"
+            "ph_met_ozerki_b.jpg",
+            "g_ozerki_2_260921110614.jpg"
         ],
         "profile": {
             "paragraphs": [
@@ -4902,7 +5028,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_mammoth_tusk_a.jpg",
             "text": "Бивень стоит на консоли дугой вверх: вертикаль держит угол комнаты и не спорит с тем, что висит на стене."
         },
-        "gallery": []
+        "gallery": [
+            "g_mammoth_tusk_a_260921110605.jpg"
+        ]
     },
     "R–0311": {
         "life": {
@@ -4934,7 +5062,10 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_mammoth_tusk_b.jpg",
             "text": "Тёмный бивень читается силуэтом: стоя у светлой стены он рисует чистую дугу, нужен один направленный источник."
         },
-        "gallery": []
+        "gallery": [
+            "g_mammoth_tusk_b_260921110605.jpg",
+            "g_mammoth_tusk_b_260921110606.jpg"
+        ]
     },
     "R–0312": {
         "life": {
@@ -4966,7 +5097,9 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_mammoth_tusk_c.jpg",
             "text": "Медовый тон отзывается на тёплое дерево: стоящему бивню идёт ореховая или дубовая консоль."
         },
-        "gallery": []
+        "gallery": [
+            "g_mammoth_tusk_c_260921110606.jpg"
+        ]
     },
     "R–0313": {
         "life": {
@@ -4998,7 +5131,10 @@ window.RELICTUM_PROMO = {
             "img": "int_ph_mammoth_tusk_d.jpg",
             "text": "Крупный бивень не ставят к другим предметам: ему нужна пустая консоль и расстояние, с которого видна вся дуга от корня до кончика."
         },
-        "gallery": []
+        "gallery": [
+            "g_mammoth_tusk_d_260921110606.jpg",
+            "g_mammoth_tusk_d_260921110607.jpg"
+        ]
     },
     "R–0618": {
         "alive": {
@@ -5131,7 +5267,11 @@ window.RELICTUM_PROMO = {
             "text": "Восемнадцать метров длины и охота на китов: двадцать миллионов лет мегалодон занимал верх пищевой цепи, пока океан не остыл и киты не ушли в холодные воды.",
             "poster": "beast_megalodon.jpg"
         },
-        "gallery": [],
+        "gallery": [
+            "g_megalodon_tooth_b_260921110548.jpg",
+            "g_megalodon_tooth_b_260921110549.jpg",
+            "g_megalodon_tooth_b_260921110551.jpg"
+        ],
         "seo": {
             "title": "Зуб мегалодона — RELICTUM",
             "description": "В тёплом, богатом жизнью океане миоцена, где киты только начинали осваивать холодные широты, верх пищевой цепи занимал Otodus megalodon — крупнейшая акула…"
@@ -5426,7 +5566,8 @@ window.RELICTUM_PROMO = {
         "gallery": [
             "int_ph_arietites_45.jpg",
             "g_arietites_45_1.jpg",
-            "ph_arietites_45.jpg"
+            "ph_arietites_45.jpg",
+            "g_arietites_45_260921110627.jpg"
         ]
     },
     "R–0634": {
@@ -5534,7 +5675,9 @@ window.RELICTUM_PROMO = {
         "gallery": [
             "int_ph_met_seymchan_0636.jpg",
             "g_met_seymchan_0636_1.jpg",
-            "ph_met_seymchan_0636.jpg"
+            "ph_met_seymchan_0636.jpg",
+            "g_seymchan_plain_large_260921110610.jpg",
+            "g_seymchan_plain_large_260921110611.jpg"
         ]
     },
     "R–0637": {
