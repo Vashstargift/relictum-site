@@ -982,6 +982,10 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 # Если визитки нет, условие -f не срабатывает и отдаётся обычный exhibit.html.
 # страница deep-time скрыта — старые ссылки уводим на «Эры»
 RedirectMatch 302 ^/eras/deep-time\.html$ https://relictum.gallery/eras/eras.html
+# переименованные лоты (старые адреса из QR/ссылок ведут на новые визитки)
+RedirectMatch 301 ^/objects/0638-seymchan-olivine-dense\.html$ https://relictum.gallery/objects/0638-maslyanino-iron.html
+RewriteCond %{QUERY_STRING} ^id=0638-seymchan-olivine-dense$
+RewriteRule ^objects/exhibit\.html$ https://relictum.gallery/objects/0638-maslyanino-iron.html? [R=301,L]
 
 RewriteCond %{QUERY_STRING} (?:^|&)id=([0-9A-Za-z_-]+)
 RewriteCond %{DOCUMENT_ROOT}/objects/%1.html -f
