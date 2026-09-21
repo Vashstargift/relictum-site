@@ -43,7 +43,6 @@ def showcase(f): return f.endswith('.html') or f.endswith('.css')
 
 COPY = [
     ('02_site_v1_gallery', '', showcase),
-    ('02_site_v1_gallery/feed', 'feed', lambda f: f.endswith(('.yml', '.csv'))),
     ('16_product_promos', 'objects', html_and_js),
     ('15_concepts', 'eras', concepts),
     ('14_provenance', 'provenance', html_only),
@@ -1172,6 +1171,12 @@ if ($action === 'write_data') {
                 node_atomic($root . '/sitemap.xml', "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n" . implode("\n", $keep) . "\n</urlset>\n");
             }
         }
+    }
+    /* товарные фиды для рекламы — из той же публикации */
+    if (!empty($body['feeds']) && is_array($body['feeds'])) {
+        if (!is_dir($root . '/feed')) @mkdir($root . '/feed', 0755, true);
+        if (!empty($body['feeds']['yml'])) node_atomic($root . '/feed/relictum.yml', $body['feeds']['yml']);
+        if (!empty($body['feeds']['csv'])) node_atomic($root . '/feed/relictum.csv', $body['feeds']['csv']);
     }
     $ch = substr(md5($catalog), 0, 8); $ph = substr(md5($promo), 0, 8); $updated = 0;
     $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root, FilesystemIterator::SKIP_DOTS));
