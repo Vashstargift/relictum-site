@@ -1176,7 +1176,7 @@ window.RELICTUM_CATALOG = [
         "name": "Сеймчан без оливина",
         "meta": "Магаданская область, Россия, ≈ 4,56 млрд лет<br>1 565 г",
         "price": "1 100 000 ₽",
-        "img": "ph_met_seymchan_plain",
+        "img": "ph_seymchan_no_olivine_260921105348",
         "priceValue": 1100000,
         "slug": "0288-seymchan-no-olivine",
         "age": "≈ 4,56 млрд лет",
