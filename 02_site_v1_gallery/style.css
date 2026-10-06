@@ -599,3 +599,7 @@ body.nav-open .buybar, body.nav-open .rl-fab, body.nav-open .rl-cpop { display: 
   footer .f-bottom span:last-child { gap: 0 14px; }
   footer .f-bottom span:last-child a { padding: 5px 0; }
 }
+
+/* Арабская версия (rtl): суммы с пробелами между разрядами не должны переворачиваться */
+[dir="rtl"] .price b, [dir="rtl"] .buy-price, [dir="rtl"] .bb-p b, [dir="rtl"] .pr b, [dir="rtl"] .rl-line-item .price,
+[dir="rtl"] .nd-phone, [dir="rtl"] a[href^="tel:"] { direction: ltr; unicode-bidi: isolate; }

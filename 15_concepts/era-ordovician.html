@@ -289,8 +289,8 @@ a{color:inherit;text-decoration:none}
 /* Цены и номера карточек эпохи — живые, из каталога CRM */
 addEventListener('DOMContentLoaded', function(){
   var by = {}; (window.RELICTUM_CATALOG || []).forEach(function(o){ if (o.slug) by[o.slug] = o; });
-  document.querySelectorAll('.shop a.card[href*="id="]').forEach(function(a){
-    var m = a.getAttribute('href').match(/id=([^&#]+)/), o = m && by[m[1]];
+  document.querySelectorAll('.shop a.card[href*="id="], .shop a.card[href*="objects/"]').forEach(function(a){
+    var m = a.getAttribute('href').match(/id=([^&#]+)|objects\/([^\/?#]+)\.html/), o = m && by[m[1] || m[2]];
     if (!o) return;
     if (o.hidden) { a.remove(); return; }
     var b = a.querySelector('.pr b');

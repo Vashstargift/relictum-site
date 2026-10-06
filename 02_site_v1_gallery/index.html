@@ -516,8 +516,8 @@ document.querySelectorAll('p.m-more').forEach(function(p){
 addEventListener('DOMContentLoaded', function(){
   var cat = window.RELICTUM_CATALOG || [], by = {};
   cat.forEach(function(o){ if (o.slug) by[o.slug] = o; });
-  document.querySelectorAll('.obj-card[href*="id="]').forEach(function(a){
-    var m = a.getAttribute('href').match(/id=([^&#]+)/), o = m && by[m[1]], b = a.querySelector('.price b');
+  document.querySelectorAll('.obj-card[href*="id="], .obj-card[href*="objects/"]').forEach(function(a){
+    var m = a.getAttribute('href').match(/id=([^&#]+)|objects\/([^\/?#]+)\.html/), o = m && by[m[1] || m[2]], b = a.querySelector('.price b');
     if (o && o.price && o.price !== 'Цена по запросу' && b) b.textContent = o.price;
   });
 });

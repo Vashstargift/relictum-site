@@ -453,7 +453,7 @@ function render() {
   const total = items.length;
   if (MOBILE() && total > shown) items = items.slice(0, shown);
   const mb = $("#moreBtn");
-  if (mb) { const rest = total - items.length; mb.hidden = rest <= 0; mb.textContent = "Показать ещё · " + Math.min(rest, STEP) + " из " + rest; }
+  if (mb) { const rest = total - items.length; mb.hidden = rest <= 0; mb.innerHTML = "<span>Показать ещё</span> <span>+" + Math.min(rest, STEP) + "</span>"; }
   grid.innerHTML = items.length ? items.map((o, n) => `
     <a class="obj-card" href="${o.href||('object.html?id='+encodeURIComponent(o.id))}">
       <div class="ph">${o.status?'<span class="badge">'+o.status+'</span>':''}<img src="../shared/img/${o.img}.jpg?v=${window.RELICTUM_MV||12}" alt="${o.name}"${n < 4 ? '' : ' loading="lazy"'} decoding="async"></div>

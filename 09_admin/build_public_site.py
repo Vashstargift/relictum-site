@@ -89,7 +89,9 @@ def rewrite_links(text, scope):
 DATA_FILES = ['shared/catalog.js', 'shared/order.js', '16_product_promos/promo-data.js',
               'shared/shop.js', 'shared/nav.js', 'shared/biography.js',
               'shared/chrome.css', 'shared/shop.css', 'shared/fonts.css', 'shared/buttons.css',
-              '02_site_v1_gallery/style.css']
+              '02_site_v1_gallery/style.css',
+              # 06.10.2026: словари и вспомогательные скрипты — иначе их правки неделю живут в кэше браузера
+              'shared/i18n.js', 'shared/i18n-lots.js', 'shared/focus.js', '09_admin/i18n_pages.json']
 
 
 def data_stamp():
@@ -815,10 +817,15 @@ def seo_links():
     chips = ''.join(f'<li><a href="{s}.html">{labels[s]}</a></li>' for s in sections)
     row = ('<ul class="cat-sections" aria-label="Разделы коллекции" style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-wrap:wrap;gap:10px">'
            + chips + '</ul>\n      ')
-    t = t.replace('<div class="grid-objects" id="grid">', row + '<div class="grid-objects" id="grid">', 1)
+    # 06.10.2026: в живой вёрстке над сеткой стоят быстрые фильтры телефона (#kindChips), а у сетки класс compact —
+    # ставим ряд перед ними; на телефоне ряд скрыт (там свои фильтры-разделы), ссылки остаются в разметке
+    anchor = '<div class="kind-chips" id="kindChips">' if 'id="kindChips"' in t else '<div class="grid-objects compact" id="grid">'
+    assert anchor in t, 'catalog.html: не найдено место для ряда разделов'
+    t = t.replace(anchor, row + anchor, 1)
     t = t.replace('</head>', '<style>.cat-sections a{display:inline-block;border:1px solid var(--hairline);padding:9px 16px;font-size:12px;'
                   'letter-spacing:.1em;text-transform:uppercase;color:inherit;text-decoration:none}'
-                  '.cat-sections a:hover{border-color:var(--bronze);color:var(--bronze)}</style>\n</head>', 1)
+                  '.cat-sections a:hover{border-color:var(--bronze);color:var(--bronze)}'
+                  '@media(max-width:900px){.cat-sections{display:none!important}}</style>\n</head>', 1)
     open(cat, 'w', encoding='utf-8').write(t)
     print(f'  перелинковка: {changed} страниц, разделов {len(sections)}')
 
@@ -1461,7 +1468,7 @@ $data = isset($in['data']) && is_array($in['data']) ? $in['data'] : array();
 $SKIP   = array('date','type','consent','items','total','contact','page','payment',
                 'lot_id','lot_name','lot_price','lot_url','lot_photo');
 $LABELS = array('name'=>'Имя','phone'=>'Телефон','email'=>'Почта','desc'=>'Запрос','about'=>'Объект',
-                'note'=>'Комментарий','addr'=>'Доставка','era'=>'Эпоха','budget'=>'Бюджет');
+                'note'=>'Комментарий','addr'=>'Доставка','era'=>'Эпоха','budget'=>'Бюджет','room'=>'Помещение','style'=>'Стиль интерьера','space'=>'Сколько места','kind'=>'Тип экспоната');
 $lines = array();
 foreach ($data as $k => $v) {
     if (in_array($k, $SKIP, true) || $v === '' || $v === null) { continue; }
@@ -1826,13 +1833,27 @@ if ($action === 'write_data') {
             foreach ($body['pages'] as $pg) {
                 $slug = isset($pg['slug']) ? (string)$pg['slug'] : '';
                 if (!preg_match('/^[a-z0-9-]+$/', $slug)) continue;
-                node_atomic($root . '/objects/' . $slug . '.html', node_render_page($tpl, $pg)); $pagesWritten++;
+                $page = node_render_page($tpl, $pg);
+                /* 06.10.2026: hreflang-связка с языковыми версиями визитки, если сборка их выложила
+                   (/en|zh|ar/objects/<slug>.html) — иначе каждая публикация рвала обратные ссылки ru↔en */
+                $alt = '';
+                foreach (array('en' => 'en', 'zh' => 'zh-Hans', 'ar' => 'ar') as $lg => $hl) {
+                    if (is_file($root . '/' . $lg . '/objects/' . $slug . '.html'))
+                        $alt .= '<link rel="alternate" hreflang="' . $hl . '" href="https://relictum.gallery/' . $lg . '/objects/' . $slug . '.html">' . "\n";
+                }
+                if ($alt !== '') {
+                    $ru = 'https://relictum.gallery/objects/' . $slug . '.html';
+                    $alt = '<link rel="alternate" hreflang="ru" href="' . $ru . '">' . "\n" . $alt . '<link rel="alternate" hreflang="x-default" href="' . $ru . '">' . "\n";
+                    $page = str_replace('</head>', $alt . '</head>', $page);
+                }
+                node_atomic($root . '/objects/' . $slug . '.html', $page); $pagesWritten++;
                 if (empty($pg['noindex'])) $visible[] = 'https://relictum.gallery/objects/' . $slug . '.html';
             }
             $sm = @file_get_contents($root . '/sitemap.xml');
             if ($sm && preg_match_all('/<url>.*?<\/url>/s', $sm, $mm)) {
                 $keep = array();
-                foreach ($mm[0] as $u) if (strpos($u, '/objects/') === false) $keep[] = '  ' . trim($u);
+                /* русские визитки пересобираются ниже; языковые /en|zh|ar/objects/ — от сборки сайта, их сохраняем */
+                foreach ($mm[0] as $u) if (strpos($u, '/objects/') === false || preg_match('#\.gallery/(en|zh|ar)/objects/#', $u)) $keep[] = '  ' . trim($u);
                 $today = date('Y-m-d');
                 foreach ($visible as $u) $keep[] = '  <url><loc>' . $u . '</loc><lastmod>' . $today . '</lastmod><priority>0.7</priority></url>';
                 node_atomic($root . '/sitemap.xml', "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n" . implode("\n", $keep) . "\n</urlset>\n");
