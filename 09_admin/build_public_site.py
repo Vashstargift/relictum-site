@@ -517,6 +517,9 @@ def _has(o, *cats): return o['category'] in cats
 def _pv(o): return o.get('priceValue') or 0
 def _nm(o, pat): return re.search(pat, o['name'], re.I) is not None
 
+# 06.10.2026 (владелец): страницы собираются и доступны по адресу, но в списки подборок
+# (ряд в каталоге, плитки хаба, «Смотрите также») не выводятся
+UNLISTED_LANDINGS = {'chelyabinskij-meteorit', 'zub-megalodona'}
 LANDINGS = [
     # slug, группа (gift|interior|category), правило отбора, максимум карточек
     ('podarok-direktoru',    'gift',     lambda o, P: _has(o, 'Метеориты', 'Минералы', 'Аммониты', 'Жеоды') and 150_000 <= _pv(o) <= 3_000_000, 24),
@@ -710,13 +713,14 @@ def write_collections(stamp):
         c = copy.get(slug)
         if not c:
             print('  ! нет текста для', slug); continue
-        sel = [o for o in items if rule(o, promo)][:cap]
+        # 06.10.2026 (владелец): в подборках только то, что есть в галерее — подпись обещает «все доступны к просмотру»
+        sel = [o for o in items if rule(o, promo) and o.get('status') != 'Под заказ'][:cap]
         if not sel:
             print('  ! пустая подборка', slug); continue
         cards = ''.join(card_html(o, n, src=('shared/img/' + promo[o['id']]['interior']['img']) if group == 'interior' else None) for n, o in enumerate(sel))
         url = DOMAIN + '/' + slug + '.html'
         og = DOMAIN + '/shared/img/' + (promo[sel[0]['id']]['interior']['img'] if group == 'interior' else sel[0]['img'] + '.jpg')
-        related_slugs = [x[0] for x in LANDINGS if x[0] != slug and (x[1] == group or (group != 'category' and x[1] != 'category'))][:8]
+        related_slugs = [x[0] for x in LANDINGS if x[0] != slug and x[0] not in UNLISTED_LANDINGS and (x[1] == group or (group != 'category' and x[1] != 'category'))][:8]
         related = ''.join('<li><a href="' + r + '.html">' + esc_html(copy[r]['h1']) + '</a></li>' for r in related_slugs if r in copy)
         related += '<li><a href="podarki.html">Все подборки</a></li><li><a href="catalog.html">Весь каталог</a></li>'
         page_ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': c['h1'], 'url': url, 'description': c['description'],
@@ -731,11 +735,12 @@ def write_collections(stamp):
         split = rest[0] if rest else 'grand_atrium_skeleton.jpg'; used_imgs.add(split)
         hero_img = 'shared/img/' + hero
         split_img = 'shared/img/' + split
-        grid_title = {'gift': 'Что подарить', 'interior': 'Предметы для пространства', 'category': 'Лоты в наличии и под заказ'}[group]
+        grid_title = {'gift': 'Что подарить', 'interior': 'Предметы для пространства', 'category': 'Лоты в наличии'}[group]
         extra = interior_strip(sel, skip=(hero, split)) if group == 'gift' else ''
         render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url, group)), hero_img, split_img, grid_title, wide=(group == 'interior'), extra=extra, page_items=sel,
                sub=fmt_tr('Экспонатов: {n}. У каждого есть паспорт происхождения, и все они доступны к просмотру в галерее.', {'n': len(sel)}))
-        tiles.append((slug, group, c, sel[0], len(sel), hero_img))   # плитка хаба — интерьерный кадр (3:2), не канон
+        if slug not in UNLISTED_LANDINGS:
+            tiles.append((slug, group, c, sel[0], len(sel), hero_img))   # плитка хаба — интерьерный кадр (3:2), не канон
 
     # хаб «Подарки и интерьер»
     hub = copy.get('podarki')
@@ -773,8 +778,7 @@ SECTION_LINKS = [            # slug посадочной, подпись — п�
     ('meteority', 'Метеориты'), ('dinozavry', 'Динозавры'), ('skelety', 'Скелеты'),
     ('cherepa', 'Черепа'), ('zuby-i-kogti', 'Зубы и когти'), ('mamontovaya-fauna', 'Мамонтовая фауна'),
     ('morskie-reptilii', 'Морские рептилии'), ('ammonity', 'Аммониты'), ('mineraly', 'Минералы'),
-    ('pallasity', 'Палласиты'), ('chelyabinskij-meteorit', 'Челябинский метеорит'), ('bivni-mamonta', 'Бивни мамонта'),
-    ('trilobity', 'Трилобиты'), ('zub-megalodona', 'Зуб мегалодона'),
+    ('pallasity', 'Палласиты'), ('bivni-mamonta', 'Бивни мамонта'), ('trilobity', 'Трилобиты'),
 ]
 FOOTER_SECTIONS = ['meteority', 'dinozavry', 'skelety', 'cherepa', 'mamontovaya-fauna', 'ammonity', 'mineraly']
 EXHIBIT_LINK = re.compile(r'href="((?:\.\./)?(?:objects/)?)exhibit\.html\?id=([0-9a-z-]+)"')
@@ -945,6 +949,11 @@ def img_dims():
             parts = re.split(r'(<script\b.*?</script>)', t, flags=re.S)
             n = ''.join(x if x.startswith('<script') else IMG_TAG.sub(add, x) for x in parts)
             if n != t:
+                # 06.10.2026: атрибут height браузер берёт как высоту, если стили её не задают, —
+                # картинки с width:100% (интерьеры, портреты, обложки статей) вытягивались до 1000+ px.
+                # Правило с самой низкой специфичностью и первым в <head>: любая высота из стилей страницы его перебивает.
+                if 'img{height:auto}' not in n:
+                    n = re.sub(r'(<head[^>]*>)', r'\1<style>img{height:auto}</style>', n, count=1)
                 open(p, 'w', encoding='utf-8').write(n)
     print(f'  размеры картинок: {done}')
 
