@@ -70,7 +70,7 @@
   font-family:var(--font-ui); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--obsidian); cursor:pointer; }
 /* На телефоне поле мельче 16px заставляет iOS увеличивать страницу при касании.
    Размер поднимаем только на узких экранах — на десктопе вид не меняется. */
-@media (max-width: 760px) { .rail-sort select { font-size: 16px; } }
+@media (max-width: 760px) { .rail-sort select { font-size: 16px; text-transform: none; letter-spacing: 0; height: 46px; padding: 0 12px; } }
 .filters-toggle { display:none; }
 /* «Ок» внизу панели — только на мобильных: подтверждает выбор и закрывает панель */
 .rail-apply { display:none; }
@@ -79,6 +79,19 @@
 .active-chips .ac { max-width:100%; }
 .active-chips .ac { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; background:var(--obsidian); color:var(--ivory); font-size:11px; letter-spacing:.06em; }
 .active-chips .ac b { cursor:pointer; font-weight:400; font-size:13px; line-height:1; }
+
+/* быстрые разделы и «Показать ещё» — только телефон и планшет */
+.cat-layout > * { min-width:0; }  /* иначе полоса разделов распирает колонку и страница едет вбок */
+.kind-chips, .more-btn { display:none; }
+@media (max-width:900px) {
+  .kind-chips { display:flex; gap:8px; overflow-x:auto; margin:0 calc(-1 * var(--gutter)) 16px; padding:2px var(--gutter) 4px; scrollbar-width:none; }
+  .kind-chips::-webkit-scrollbar { display:none; }
+  .kind-chips button { flex:none; height:38px; padding:0 15px; border:1px solid var(--hairline); background:var(--bone); color:var(--obsidian);
+    font-family:var(--font-ui); font-size:12.5px; letter-spacing:.02em; white-space:nowrap; cursor:pointer; }
+  .kind-chips button.on { background:var(--obsidian); color:var(--ivory); border-color:var(--obsidian); }
+  .more-btn:not([hidden]) { display:block; width:100%; margin-top:18px; height:50px; border:1px solid var(--obsidian); background:transparent; color:var(--obsidian);
+    font-family:var(--font-ui); font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; cursor:pointer; }
+}
 .no-results { padding:70px 0; text-align:center; color:var(--stone); }
 .no-results button { margin-top:16px; }
 
@@ -91,9 +104,11 @@
   .filters-toggle { display:inline-flex; align-items:center; gap:9px; padding:11px 18px; border:1px solid var(--obsidian); background:transparent; font-family:var(--font-ui); font-size:11px; letter-spacing:.16em; text-transform:uppercase; cursor:pointer; color:var(--obsidian); }
   .filters-toggle .fn { background:var(--bronze-deep); color:var(--ivory); border-radius:9px; padding:0 7px; font-size:10px; }
   .rail-close { display:block; }
+  /* 02.10.2026: нижняя кнопка — «Искать» (владелец: понятнее, чем «Ок · N экспонатов») */
   .rail-apply { display:block; position:sticky; bottom:0; z-index:5; width:100%; padding:17px 20px;
     background:var(--obsidian); color:var(--ivory); border:none; cursor:pointer;
     font-family:var(--font-ui); font-size:12px; letter-spacing:.2em; text-transform:uppercase; }
+  body.filters-open .rl-fab, body.filters-open .rl-cpop { display:none; }
 }
 
 @media (max-width:760px){ .fsearch input, .price-inputs input, .sort-wrap select { font-size:16px } }
@@ -180,7 +195,7 @@
           </select>
         </label>
       </div>
-      <button class="rail-apply" id="railApply">Ок</button>
+      <button class="rail-apply" id="railApply">Искать</button>
     </aside>
 
     <!-- РЕЗУЛЬТАТЫ -->
@@ -189,7 +204,9 @@
         <button class="filters-toggle" id="filtersToggle">Фильтры <span class="fn" id="toggleCount">0</span></button>
         <span class="count-m" id="countM"></span>
       </div>
-      <div class="grid-objects" id="grid"></div>
+      <div class="kind-chips" id="kindChips"></div>
+      <div class="grid-objects compact" id="grid"></div>
+      <button type="button" class="more-btn" id="moreBtn" hidden></button>
     </div>
   </div>
 </div>
@@ -211,7 +228,7 @@
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -230,7 +247,6 @@
           <li><a href="expeditions.html">Экспедиции</a></li>
           <li><a href="../15_concepts/eras.html">Эры</a></li>
           <li><a href="press.html">Пресса</a></li>
-          <li><a href="maison.html#concierge">Менеджер галереи</a></li>
         </ul>
       </div>
       <div>
@@ -246,7 +262,6 @@
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
       <span><a href="privacy.html" style="color:inherit">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="consent.html" style="color:inherit">Согласие на обработку ПД</a> &nbsp;·&nbsp; <a href="oferta.html" style="color:inherit">Договор-оферта</a></span>
-      <span>Земля · Жизнь · Космос</span>
     </div>
   </div>
 </footer>
@@ -279,10 +294,14 @@ KINDS.forEach(([kind, cats]) => cats.forEach(c => { KIND_OF[c] = kind; }));
 CATALOG.forEach(o => {
   o.kind  = KIND_OF[o.category] || o.category;
   o.avail = o.status === "Под заказ" ? "Под заказ" : "В наличии";
+  /* Галерея: только у лотов, которые реально стоят в зале (без статуса «Под заказ/Продан»). */
+  o.gal   = (!o.status && Array.isArray(o.galleries)) ? o.galleries : [];
 });
+const GAL_LABELS = Object.fromEntries(Object.entries(window.RELICTUM_GALLERIES || {}).map(([k, v]) => [k, (v && v.short) || k]));
 
 const FACETS = [
   {key:"avail", label:"Наличие", order:["В наличии","Под заказ"]},
+  {key:"gal", label:"Галерея", multi:true, labels:GAL_LABELS, order:["Гименей","Времена года","Dream House"]},
   {key:"kind", label:"Тип экспоната", order:KINDS.map(k => k[0])},
   {key:"world", label:"Мир", labels:{vita:"Жизнь",terra:"Земля",cosmos:"Космос",grand:"Монументы",editions:"Editions"}, order:["vita","terra","cosmos","grand","editions"]},
   /* Делим по эрам, а не по видам (решение владельца 06.08): «Мегалодон»,
@@ -300,7 +319,7 @@ const PRICE_BRACKETS = [
   {id:"request", label:"Цена по запросу", test:v=>v==null}
 ];
 
-const state = {avail:new Set(),kind:new Set(),world:new Set(),era:new Set(),period:new Set(),region:new Set(),price:new Set(),q:"",sort:"default",priceMin:null,priceMax:null};
+const state = {avail:new Set(),gal:new Set(),kind:new Set(),world:new Set(),era:new Set(),period:new Set(),region:new Set(),price:new Set(),q:"",sort:"default",priceMin:null,priceMax:null};
 
 const $ = s => document.querySelector(s);
 const facetsEl = $("#facets"), grid = $("#grid"), countEl = $("#count"),
@@ -309,22 +328,22 @@ const facetsEl = $("#facets"), grid = $("#grid"), countEl = $("#count"),
 // ---- Построение фильтров ----
 function optionValues(key) {
   const facet = FACETS.find(f => f.key === key);
-  let vals = [...new Set(CATALOG.map(o => o[key]).filter(v => v && v !== "—"))];
+  let vals = [...new Set((facet.multi ? CATALOG.flatMap(o => o[key] || []) : CATALOG.map(o => o[key])).filter(v => v && v !== "—"))];
   if (facet.skip) vals = vals.filter(v => facet.skip.indexOf(v) < 0);
   if (facet.order) vals.sort((a,b) => facet.order.indexOf(a) - facet.order.indexOf(b));
   else vals.sort((a,b) => a.localeCompare(b,'ru'));
   return vals;
 }
-function countFor(key, val) { return CATALOG.filter(o => o[key] === val).length; }
+function countFor(key, val) { return CATALOG.filter(o => Array.isArray(o[key]) ? o[key].includes(val) : o[key] === val).length; }
 
 FACETS.forEach((f, i) => {
-  const g = document.createElement("div"); g.className = "fgroup" + (i < 2 ? " open" : "");
+  const g = document.createElement("div"); g.className = "fgroup" + (i < 3 ? " open" : "");
   let opts = "";
   optionValues(f.key).forEach(v => {
     const lbl = f.labels ? (f.labels[v] || v) : v;
     opts += `<label class="fopt"><input type="checkbox" data-k="${f.key}" value="${v}"><span>${lbl}</span><span class="fc">${countFor(f.key,v)}</span></label>`;
   });
-  g.innerHTML = `<button type="button" class="fgroup-h" aria-expanded="${i<2}">${f.label}`
+  g.innerHTML = `<button type="button" class="fgroup-h" aria-expanded="${i<3}">${f.label}`
     + `<span class="badge" data-badge="${f.key}" hidden>0</span><span class="chev">▾</span></button>`
     + `<div class="fgroup-body">${opts}</div>`;
   facetsEl.appendChild(g);
@@ -358,6 +377,7 @@ function idForms(id) {
 function matches(o) {
   for (const k of ["avail","kind","world","era","period","region"])
     if (state[k].size && !state[k].has(o[k])) return false;
+  if (state.gal.size && !o.gal.some(g => state.gal.has(g))) return false;
   if (state.price.size) {
     const ok = PRICE_BRACKETS.some(b => state.price.has(b.id) && b.test(o.priceValue));
     if (!ok) return false;
@@ -365,7 +385,7 @@ function matches(o) {
   if (state.priceMin != null && (o.priceValue == null || o.priceValue < state.priceMin)) return false;
   if (state.priceMax != null && (o.priceValue == null || o.priceValue > state.priceMax)) return false;
   if (state.q) {
-    const hay = (idForms(o.id)+" "+o.name+" "+o.latin+" "+o.meta+" "+o.worldLabel+" "+o.era+" "+o.category+" "+o.kind+" "+o.avail+" "+o.period+" "+o.region)
+    const hay = (idForms(o.id)+" "+o.name+" "+o.latin+" "+o.meta+" "+o.worldLabel+" "+o.era+" "+o.category+" "+o.kind+" "+o.avail+" "+o.period+" "+o.region+" "+o.gal.map(g=>GAL_LABELS[g]||g).join(" "))
       .toLowerCase().replace(/[\u2013\u2014\u2212]/g, "-");
     if (!hay.includes(state.q)) return false;
   }
@@ -373,19 +393,20 @@ function matches(o) {
 }
 
 function activeCount() {
-  return state.avail.size+state.kind.size+state.world.size+state.era.size+state.period.size+state.region.size+state.price.size+
+  return state.avail.size+state.gal.size+state.kind.size+state.world.size+state.era.size+state.period.size+state.region.size+state.price.size+
     (state.priceMin!=null?1:0)+(state.priceMax!=null?1:0);
 }
 
 function labelFor(k,v){
   if(k==="world") return (FACETS.find(f=>f.key==="world").labels||{})[v]||v;
+  if(k==="gal") return GAL_LABELS[v]||v;
   if(k==="price") return (PRICE_BRACKETS.find(b=>b.id===v)||{}).label||v;
   return v;
 }
 
 function renderChips() {
   const chips = [];
-  ["avail","kind","world","era","period","region","price"].forEach(k => {
+  ["avail","gal","kind","world","era","period","region","price"].forEach(k => {
     state[k].forEach(v => chips.push({k,v,text:labelFor(k,v)}));
   });
   if (state.priceMin!=null) chips.push({k:"priceMin",v:null,text:"от "+state.priceMin.toLocaleString('ru')+" ₽"});
@@ -410,6 +431,16 @@ function syncBadges() {
   });
 }
 
+/* 02.10.2026 Телефон: быстрые разделы над сеткой и порции по 24 лота */
+const MOBILE = () => matchMedia("(max-width:900px)").matches;
+const STEP = 24; let shown = STEP, keepShown = false;
+const chipsKinds = () => optionValues("kind").map(k => [k, countFor("kind", k)]).sort((a,b) => b[1]-a[1]);
+function renderKindChips() {
+  const el = $("#kindChips"); if (!el) return;
+  const one = state.kind.size === 1 ? [...state.kind][0] : null;
+  el.innerHTML = `<button type="button" data-kind="" class="${!state.kind.size?'on':''}">Все</button>` +
+    chipsKinds().map(([k]) => `<button type="button" data-kind="${k}" class="${one===k?'on':''}">${k}</button>`).join("");
+}
 function render() {
   let items = CATALOG.filter(matches);
   if (sortEl.value === "default") items = window.RELICTUM_ORDER.arrange(items);
@@ -418,6 +449,11 @@ function render() {
 
   // Первый ряд карточек виден сразу — его фото грузим обычным образом,
   // остальные лениво. Ленивая загрузка того, что уже на экране, только тормозит.
+  if (!keepShown) shown = STEP; keepShown = false;
+  const total = items.length;
+  if (MOBILE() && total > shown) items = items.slice(0, shown);
+  const mb = $("#moreBtn");
+  if (mb) { const rest = total - items.length; mb.hidden = rest <= 0; mb.textContent = "Показать ещё · " + Math.min(rest, STEP) + " из " + rest; }
   grid.innerHTML = items.length ? items.map((o, n) => `
     <a class="obj-card" href="${o.href||('object.html?id='+encodeURIComponent(o.id))}">
       <div class="ph">${o.status?'<span class="badge">'+o.status+'</span>':''}<img src="../shared/img/${o.img}.jpg?v=${window.RELICTUM_MV||12}" alt="${o.name}"${n < 4 ? '' : ' loading="lazy"'} decoding="async"></div>
@@ -433,12 +469,13 @@ function render() {
     `<div class="no-results" style="grid-column:1/-1"><p>По вашему запросу экспонатов не найдено.</p><button class="btn" id="resetEmpty">Сбросить фильтры</button></div>`;
   if (!items.length) $("#resetEmpty").addEventListener("click", resetAll);
 
-  const countText = "Экспонатов: " + items.length + (activeCount() ? " из " + CATALOG.length : "");
+  const countText = "Экспонатов: " + total + (activeCount() ? " из " + CATALOG.length : "");
   countEl.textContent = countText;
   $("#countM").textContent = countText;
   $("#toggleCount").textContent = activeCount();
   const pl = n => n%10===1&&n%100!==11 ? "экспонат" : (n%10>=2&&n%10<=4&&(n%100<10||n%100>=20) ? "экспоната" : "экспонатов");
-  $("#railApply").textContent = "Ок · " + items.length + " " + pl(items.length);
+  $("#railApply").textContent = "Искать";
+  renderKindChips();
   renderChips();
   syncBadges();
   syncURL();
@@ -455,7 +492,7 @@ function resetAll() {
 /* ---- Фильтры в адресе страницы ----
    Состояние пишется в query-строку, поэтому ссылку с выбранными фильтрами
    («в наличии», раздел, эпоха) можно скопировать из адресной строки и отправить. */
-const URL_KEYS = ["avail","kind","world","era","period","region","price"];
+const URL_KEYS = ["avail","gal","kind","world","era","period","region","price"];
 function syncURL() {
   const p = new URLSearchParams();
   URL_KEYS.forEach(k => { if (state[k].size) p.set(k, [...state[k]].join(",")); });
@@ -529,6 +566,16 @@ $("#copyLink").addEventListener("click", () => {
     try { document.execCommand("copy"); done(); } catch (e) { prompt("Ссылка:", url); }
     document.body.removeChild(t);
   }
+});
+
+$("#moreBtn").addEventListener("click", () => { shown += STEP; keepShown = true; render(); });
+$("#kindChips").addEventListener("click", e => {
+  const b = e.target.closest("button[data-kind]"); if (!b) return;
+  const k = b.dataset.kind, was = state.kind.size === 1 && state.kind.has(k);
+  state.kind.clear(); if (k && !was) state.kind.add(k);
+  facetsEl.querySelectorAll('input[data-k="kind"]').forEach(c => c.checked = state.kind.has(c.value));
+  render();
+  const on = $("#kindChips .on"); if (on) on.scrollIntoView({inline:"center", block:"nearest", behavior:"smooth"});
 });
 
 // мобильная панель

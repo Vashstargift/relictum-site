@@ -54,6 +54,7 @@ var D={
 /* фильтры каталога */
 "Фильтры":["Filters","筛选","تصفية"],
 "Сбросить":["Reset","重置","إعادة ضبط"],
+"Искать":["Search","搜索","بحث"],
 "Скопировать ссылку":["Copy link", "复制链接", "نسخ الرابط"],
 "Ссылка скопирована":["Link copied", "链接已复制", "تم نسخ الرابط"],
 "Сбросить фильтры":["Reset filters","重置筛选","إعادة ضبط التصفية"],
@@ -462,7 +463,7 @@ var D={
 "до, ₽":["to, ₽","至，卢布","إلى، ₽"],
 /* --- главная --- */
 "Дом Relictum":["Maison Relictum","Relictum 之家","دار ريليكتوم"],
-"Галерея редких объектов из глубины времени. Земля · Жизнь · Космос.":["A gallery of rare objects from the depths of time. Earth · Life · Cosmos.","来自时间深处的珍稀藏品画廊。大地 · 生命 · 宇宙。","صالة عرض لقطع نادرة من أعماق الزمن. الأرض · الحياة · الكون."],
+"Галерея редких объектов из глубины времени.":["A gallery of rare objects from the depths of time. Earth · Life · Cosmos.","来自时间深处的珍稀藏品画廊。大地 · 生命 · 宇宙。","صالة عرض لقطع نادرة من أعماق الزمن. الأرض · الحياة · الكون."],
 "Земля · Жизнь · Космос":["Earth · Life · Cosmos","大地 · 生命 · 宇宙","الأرض · الحياة · الكون"],
 "Три измерения. Одна вечность.":["Three dimensions. One eternity.","三个维度，一个永恒。","ثلاثة أبعاد. أبدية واحدة."],
 "Внеземные артефакты, палласиты и метеориты":["Extraterrestrial artefacts, pallasites and meteorites","地外造物、橄榄陨铁与陨石","قطع من خارج الأرض: بالاسيت ونيازك"],
@@ -791,19 +792,20 @@ function cur0(){ return cur(); }
 function mountDrawer(){
   var inner=document.querySelector('.nav-drawer-inner');
   if(!inner || document.getElementById('rlLangDrawer')) return;
+  var slot=document.querySelector('.nav-drawer .nd-lang');   /* новое меню: тонкая текстовая строка, оформление в CSS */
   var row=document.createElement('div');
   row.id='rlLangDrawer';
-  row.style.cssText='display:flex;gap:6px;justify-content:center;margin-top:26px;padding-top:22px;'+
+  if(!slot) row.style.cssText='display:flex;gap:6px;justify-content:center;margin-top:26px;padding-top:22px;'+
     'border-top:1px solid rgba(176,138,85,.3);flex-wrap:wrap;direction:ltr';
   LANGS.forEach(function(l){
     var b=document.createElement('button');
     b.type='button'; b.dataset.l=l; b.textContent=LABEL[l];
-    b.style.cssText='background:none;border:1px solid rgba(176,138,85,.45);cursor:pointer;padding:9px 15px;'+
+    if(!slot) b.style.cssText='background:none;border:1px solid rgba(176,138,85,.45);cursor:pointer;padding:9px 15px;'+
       'font-family:Inter,system-ui,sans-serif;font-size:12px;letter-spacing:.14em;color:#14110E';
     b.onclick=function(e){ e.stopPropagation(); set(l); document.body.classList.remove('nav-open'); };
     row.appendChild(b);
   });
-  inner.appendChild(row);
+  (slot||inner).appendChild(row);
   markSwitch(cur());
 }
 function markSwitch(lang){
@@ -811,7 +813,8 @@ function markSwitch(lang){
   var dr=document.getElementById('rlLangDrawer');
   if(dr) [].forEach.call(dr.querySelectorAll('button'), function(b){
     var on=(b.dataset.l===lang);
-    b.style.background=on?'#14110E':'none'; b.style.color=on?'#F4F0E8':'#14110E';
+    b.classList.toggle('on',on);
+    if(!dr.closest('.nd-lang')){ b.style.background=on?'#14110E':'none'; b.style.color=on?'#F4F0E8':'#14110E'; }
   });
   var m=document.getElementById('rlLangMenu');
   if(m) [].forEach.call(m.querySelectorAll('button'), function(b){

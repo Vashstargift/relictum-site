@@ -238,6 +238,7 @@ def build():
     tpl_path = os.path.join(OUT, 'objects', 'exhibit.html')
     tpl = open(tpl_path, encoding='utf-8').read()
     pages += write_object_pages(tpl, os.path.join(OUT, 'objects'), stamp)
+    open(os.path.join(OUT, 'objects', '_resolve.php'), 'w', encoding='utf-8').write(RESOLVE_PHP)
 
     # медиа и общие скрипты
     shutil.copytree(os.path.join(ROOT, 'shared'), os.path.join(OUT, 'shared'),
@@ -487,8 +488,8 @@ def prerender_catalog():
             '<div class="price"><b>' + esc(price) + '</b><span>Смотреть</span></div></div></a>')
     p = os.path.join(OUT, 'catalog.html')
     t = open(p, encoding='utf-8').read()
-    t = t.replace('<div class="grid-objects" id="grid"></div>',
-                  '<div class="grid-objects" id="grid">' + ''.join(cards) + '</div>', 1)
+    t = t.replace('<div class="grid-objects compact" id="grid"></div>',
+                  '<div class="grid-objects compact" id="grid">' + ''.join(cards) + '</div>', 1)
     t = t.replace('<div class="rail-count" id="count"></div>',
                   f'<div class="rail-count" id="count">Объектов: {len(items)}</div>', 1)
     open(p, 'w', encoding='utf-8').write(t)
@@ -581,6 +582,8 @@ def write_collections(stamp):
                      '{{GRID_CLASS}}': ' lp-wide' if wide else '',
                      '{{SUB}}': sub}.items():
             t = t.replace(k, v)
+        if slug == 'interernye-resheniya':   # у интерьерной подборки своя форма подбора
+            t = t.replace('href="request.html">Персональный подбор', 'href="interior-request.html">Подбор в интерьер', 1)
         if not related:   # на хабе все подборки уже плитками — «Смотрите также» лишний
             t = re.sub(r'\s*<div class="label reveal" style="margin-top:40px">Смотрите также</div>\s*<ul class="lp-chips reveal"></ul>', '', t, count=1)
         open(os.path.join(OUT, slug + '.html'), 'w', encoding='utf-8').write(t)
@@ -964,6 +967,25 @@ if (!$crm) { $mailed = @mail($TO, $subject, $body, $headers); }
 echo json_encode(array('ok' => ($crm || $mailed), 'crm' => $crm, 'mail' => $mailed));
 """
 
+RESOLVE_PHP = r"""<?php
+/* Резолвер «кривых» ссылок на визитки (30.09.2026): /objects/0262, /objects/0262-Septaria.html,
+   /objects/0262-septaria.html— и т.п. По номеру лота ищем визитку и уводим на неё 301-м. PHP 5.6. */
+$p = isset($_GET['p']) ? (string)$_GET['p'] : '';
+$p = rawurldecode($p);
+if (preg_match('/(\d{4})/', $p, $m)) {
+    $hits = glob(__DIR__ . '/' . $m[1] . '-*.html');
+    if ($hits && count($hits) === 1) {
+        header('Location: https://relictum.gallery/objects/' . basename($hits[0]), true, 301); exit;
+    }
+    $lc = strtolower(preg_replace('/\.html.*$/i', '', $p));
+    foreach ((array)$hits as $h) { if (strtolower(basename($h, '.html')) === basename($lc)) { header('Location: https://relictum.gallery/objects/' . basename($h), true, 301); exit; } }
+    if ($hits) { header('Location: https://relictum.gallery/objects/' . basename($hits[0]), true, 301); exit; }
+}
+header('HTTP/1.1 404 Not Found');
+$f = dirname(__DIR__) . '/404.html';
+if (is_file($f)) readfile($f); else echo 'Not found';
+"""
+
 HTACCESS = r"""# RELICTUM — relictum.gallery
 RewriteEngine On
 
@@ -990,6 +1012,18 @@ RewriteRule ^objects/exhibit\.html$ https://relictum.gallery/objects/0638-maslya
 RewriteCond %{QUERY_STRING} (?:^|&)id=([0-9A-Za-z_-]+)
 RewriteCond %{DOCUMENT_ROOT}/objects/%1.html -f
 RewriteRule ^objects/exhibit\.html$ /objects/%1.html [L]
+
+# Терпимые адреса визиток (30.09.2026): без .html, с хвостом после .html,
+# слаг без папки objects/, только номер лота — всё уводим на правильный адрес.
+RewriteCond %{DOCUMENT_ROOT}/objects/$1.html -f
+RewriteRule ^objects/([0-9a-z-]+)/?$ https://relictum.gallery/objects/$1.html [R=301,L]
+RewriteCond %{DOCUMENT_ROOT}/objects/$1.html -f
+RewriteRule ^objects/([0-9a-z-]+)\.html.+$ https://relictum.gallery/objects/$1.html [R=301,L]
+RewriteCond %{DOCUMENT_ROOT}/objects/$1.html -f
+RewriteRule ^([0-9]{4}-[0-9a-z-]+)(?:\.html)?/?$ https://relictum.gallery/objects/$1.html [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^objects/(.+)$ /objects/_resolve.php?p=$1 [L,QSA]
 
 # /cors/<путь-к-файлу> — те же медиа, но с CORS-заголовками. Нужен браузерным
 # инструментам (Claude Design и пр.): статику Beget раздаёт nginx-ом, который

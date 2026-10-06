@@ -129,14 +129,24 @@
     '.rl-navlink:hover{opacity:1}'+
     '.rl-badge{position:absolute;top:-7px;right:-9px;background:#B08A55;color:#0A0908;font-family:Inter,sans-serif;font-style:normal;font-size:9px;font-weight:600;min-width:15px;height:15px;line-height:15px;text-align:center;border-radius:8px;padding:0 3px}'+
     '.rl-toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:#14110E;color:#F4F0E8;padding:14px 24px;font-family:Inter,sans-serif;font-size:13px;letter-spacing:.04em;border:1px solid rgba(176,138,85,.4);opacity:0;transition:.4s cubic-bezier(.23,1,.32,1);z-index:9999;pointer-events:none}'+
-    '.rl-toast.on{opacity:1;transform:translateX(-50%) translateY(0)}';
+    '.rl-toast.on{opacity:1;transform:translateX(-50%) translateY(0)}'+
+    '.rl-toast.link.on{pointer-events:auto}.rl-toast-go{display:block;margin-top:6px;color:#E9C98A;font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none}'+
+    '@media(max-width:600px){.rl-toast{left:12px;right:12px;transform:translateY(20px);text-align:center}.rl-toast.on{transform:none}}';
   var st=document.createElement('style'); st.textContent=css; document.head.appendChild(st);
 
   var toastEl;
-  Shop.toast=function(msg){
+  /* toast(msg, 'cart') — сообщение со ссылкой в корзину (после «Добавить в корзину») */
+  Shop.toast=function(msg, link){
     if(!toastEl){ toastEl=document.createElement('div'); toastEl.className='rl-toast'; document.body.appendChild(toastEl); }
-    toastEl.textContent=msg; toastEl.classList.add('on');
-    clearTimeout(toastEl._t); toastEl._t=setTimeout(function(){toastEl.classList.remove('on')},2200);
+    toastEl.textContent=msg;
+    if(link==='cart'){
+      var a=document.createElement('a'); a.className='rl-toast-go'; a.textContent='Перейти в корзину →';
+      a.href=(/\/(objects|eras|provenance)\//.test(location.pathname)?'../':'')+'cart.html';
+      if(location.pathname.indexOf('/16_product_promos/')>=0) a.href='../02_site_v1_gallery/cart.html';
+      toastEl.appendChild(a); toastEl.classList.add('link');
+    } else toastEl.classList.remove('link');
+    toastEl.classList.add('on');
+    clearTimeout(toastEl._t); toastEl._t=setTimeout(function(){toastEl.classList.remove('on')}, link?4200:2200);
   };
 
   if(document.readyState!=='loading') render();
@@ -219,7 +229,7 @@
     '.rl-cpop.on{opacity:1;transform:none;pointer-events:auto}'+
     '.rl-cpop .h{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(154,109,52,.18)}'+
     '.rl-cpop .h b{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#9A6D34;font-weight:500}'+
-    '.rl-cpop .h button{background:none;border:none;cursor:pointer;font-size:18px;line-height:1;color:#7A7267;padding:2px 4px}'+
+    '.rl-cpop .h button{background:none;border:none;cursor:pointer;font-size:18px;line-height:1;color:#7A7267;width:40px;height:40px;margin:-10px -10px -10px 0;display:flex;align-items:center;justify-content:center;padding:0}'+
     '.rl-cpop .row{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid rgba(154,109,52,.1);'+
       'color:#14110E;font-size:14px;cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;width:100%;text-align:left;font-family:inherit;transition:background .25s}'+
     'a.rl-crow{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid rgba(154,109,52,.1);color:#14110E;font-size:14px;transition:background .25s}'+
@@ -236,7 +246,9 @@
     '.rl-cpop .back{width:100%;padding:9px 0 2px;background:none;border:none;cursor:pointer;font-size:11px;color:#7A7267;font-family:inherit}'+
     '.rl-cpop .ok{padding:26px 20px;text-align:center;font-size:14px;color:#14110E}'+
     '.rl-cpop .ok small{display:block;margin-top:8px;font-size:12px;color:#7A7267}'+
-    '@media(max-width:720px){.rl-fab{right:16px;bottom:calc(88px + env(safe-area-inset-bottom,0px))}.rl-cpop{right:16px;bottom:calc(156px + env(safe-area-inset-bottom,0px))}}';
+    '@media(max-width:720px){.rl-fab{right:14px;width:48px;height:48px;bottom:calc(84px + env(safe-area-inset-bottom,0px))}.rl-fab svg{width:21px;height:21px}.rl-cpop{right:14px;bottom:calc(144px + env(safe-area-inset-bottom,0px))}'+
+    /* телефон: при прокрутке вниз кнопка уходит, чтобы не закрывать текст и цены; при прокрутке вверх возвращается */
+    '.rl-fab{transition:transform .3s,opacity .3s,background .25s}.rl-fab.away{transform:translateY(150px);opacity:0;pointer-events:none}}';
   document.head.appendChild(st);
 
   var icoChat='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.6-.8L3 20l1-4.2a8.3 8.3 0 0 1-1-4.3 8.4 8.4 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z"/></svg>';
@@ -292,6 +304,13 @@
   function close(){ pop.classList.remove('on'); fab.innerHTML=icoChat; setTimeout(function(){ pop.innerHTML=menuHTML(); },250); }
   function open(){ pop.classList.add('on'); fab.innerHTML=icoX; }
   fab.addEventListener('click', function(){ pop.classList.contains('on')?close():open(); });
+  (function(){ var lastY=scrollY;
+    addEventListener('scroll', function(){
+      var y=scrollY, d=y-lastY; if(Math.abs(d)<8) return;
+      fab.classList.toggle('away', d>0 && y>240 && !pop.classList.contains('on') && innerWidth<=720);
+      lastY=y;
+    }, {passive:true});
+  })();
   /* «Запросить объект» на промо-страницах открывает форму с именем лота */
   window.RL_ASK=function(about){ pop.innerHTML=formHTML(about); open(); };
   /* значок связи в шапке открывает тот же попап (без JS уводит на #concierge) */

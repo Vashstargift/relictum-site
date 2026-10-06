@@ -26,9 +26,9 @@
 .hcar .slide.dark .btn:hover{background:var(--ivory);color:var(--obsidian)}
 .hcar .slide.dark .btn.btn-solid{background:var(--ivory);color:var(--obsidian)}
 .hcar .slide.dark .btn.btn-solid:hover{background:var(--bronze);border-color:var(--bronze);color:var(--obsidian)}
-.hcar .dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:6;display:flex;gap:12px}
-.hcar .dots button{width:34px;height:2px;border:none;background:rgba(255,255,255,.4);cursor:pointer;padding:0;transition:background .4s}
-.hcar .dots button.on{background:var(--bronze)}
+.hcar .dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:6;display:flex;gap:12px}
+.hcar .dots button{width:34px;height:26px;border:none;background:rgba(255,255,255,.4);background-clip:content-box;cursor:pointer;padding:12px 0;transition:background .4s}
+.hcar .dots button.on{background-color:var(--bronze)}
 .hcar .arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:52px;height:52px;border:none;background:transparent;color:rgba(255,255,255,.6);font-size:26px;cursor:pointer;transition:color .3s}
 .hcar .arrow:hover{color:#fff}
 .hcar .arrow.prev{left:8px}.hcar .arrow.next{right:8px}
@@ -217,7 +217,7 @@
       </div>
       <a class="link-arrow" href="catalog.html">Перейти в каталог</a>
     </div>
-    <div class="grid-objects">
+    <div class="grid-objects rail">
       <a class="obj-card reveal" href="../16_product_promos/exhibit.html?id=0607-mammuthus-primigenius">
         <div class="ph"><img src="../shared/img/ph_mammoth_tusks.jpg?v=12" alt="Пара бивней мамонта" loading="lazy" decoding="async"></div>
         <div class="body">
@@ -263,7 +263,7 @@
       </div>
       <a class="link-arrow" href="catalog.html">Весь каталог</a>
     </div>
-    <div class="grid-objects">
+    <div class="grid-objects rail">
       <a class="obj-card reveal" href="../16_product_promos/exhibit.html?id=0615-bison-priscus">
         <div class="ph"><img src="../shared/img/ph_bison_skeleton.jpg?v=12" alt="Скелет степного зубра" loading="lazy" decoding="async"></div>
         <div class="body">
@@ -341,7 +341,7 @@
         <div class="label">Дом Relictum</div>
         <h2>Комплексные решения для&nbsp;ваших пространств</h2>
         <p>Дом Relictum формирует готовые многосоставные коллекции и пространственные решения из редчайших экспонатов палеонтологии, метеоритов и монументальной геологии.</p>
-        <p>Мы разрабатываем комплексные концепции для жилых и общественных пространств, представительских офисов, корпоративных фондов, частных галерей и личных коллекций. От поиска штучных артефактов до инженерного монтажа и сценариев света — мы берём на себя весь цикл реализации. Каждая подборка уникальна: природа создаёт свои шедевры в единственном экземпляре, не оставляя повторений.</p>
+        <p class="m-more">Мы разрабатываем комплексные концепции для жилых и общественных пространств, представительских офисов, корпоративных фондов, частных галерей и личных коллекций. От поиска штучных артефактов до инженерного монтажа и сценариев света — мы берём на себя весь цикл реализации. Каждая подборка уникальна: природа создаёт свои шедевры в единственном экземпляре, не оставляя повторений.</p>
         <a class="btn" href="request.html" style="margin-top:20px">Подобрать готовое решение</a>
       </div>
     </div>
@@ -356,7 +356,7 @@
         <div class="label">Приватный клуб первооткрывателей</div>
         <h2>Частные экспедиции Relictum</h2>
         <p>Дом Relictum приглашает вас в частные палеонтологические экспедиции в самые труднодоступные точки планеты: от жарких песков Сахары до вечной мерзлоты Якутии. Вы отправитесь на раскопки в сопровождении экспертов проекта, чтобы своими руками извлечь из земли артефакты, которые будут передаваться из поколения в поколение и не подлежать повторению.</p>
-        <p>Так рождается истинная связь с предметом: вы становитесь не просто владельцем редчайшего экспоната доисторического времени, а его первооткрывателем. Ваше имя навсегда вписывается в провенанс лота, соединяя историю создания Земли с вашей собственной историей.</p>
+        <p class="m-more">Так рождается истинная связь с предметом: вы становитесь не просто владельцем редчайшего экспоната доисторического времени, а его первооткрывателем. Ваше имя навсегда вписывается в провенанс лота, соединяя историю создания Земли с вашей собственной историей.</p>
         <a class="btn" href="expeditions.html" style="margin-top:20px">Подробнее об Экспедициях</a>
       </div>
       <div class="media wide reveal"><img src="../shared/img/expedition_morocco.jpg" alt="Экспедиция в Марокко" loading="lazy" decoding="async"></div>
@@ -388,7 +388,7 @@
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -407,7 +407,6 @@
           <li><a href="expeditions.html">Экспедиции</a></li>
           <li><a href="../15_concepts/eras.html">Эры</a></li>
           <li><a href="press.html">Пресса</a></li>
-          <li><a href="maison.html#concierge">Менеджер галереи</a></li>
         </ul>
       </div>
       <div>
@@ -423,7 +422,6 @@
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
       <span><a href="privacy.html" style="color:inherit">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="consent.html" style="color:inherit">Согласие на обработку ПД</a> &nbsp;·&nbsp; <a href="oferta.html" style="color:inherit">Договор-оферта</a></span>
-      <span>Земля · Жизнь · Космос</span>
     </div>
   </div>
 </footer>
@@ -490,6 +488,38 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 <script src="../shared/shop.js"></script>
 <script src="../shared/nav.js"></script>
+<script src="../shared/catalog.js" defer></script>
+<script>
+/* Телефон: длинный второй абзац показан первыми строками с затуханием;
+   круглая стрелка под ним раскрывает текст целиком и сворачивает обратно */
+document.querySelectorAll('p.m-more').forEach(function(p){
+  var b=document.createElement('button'); b.type='button'; b.className='m-more-btn';
+  b.setAttribute('aria-label','Читать полностью'); b.setAttribute('aria-expanded','false');
+  b.innerHTML='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5l6 6 6-6"/></svg>';
+  b.addEventListener('click',function(){
+    var open=!p.classList.contains('open');
+    p.style.maxHeight=p.offsetHeight+'px'; void p.offsetHeight;   /* старт анимации — текущая высота */
+    p.classList.toggle('open',open);
+    p.style.maxHeight=open?p.scrollHeight+'px':'';
+    b.setAttribute('aria-expanded',open); b.setAttribute('aria-label',open?'Свернуть':'Читать полностью');
+  });
+  /* нажатие на сам затухающий текст тоже раскрывает его */
+  p.addEventListener('transitionend',function(){ if(p.classList.contains('open')) p.style.maxHeight='none'; });
+  p.addEventListener('click',function(){ if(!p.classList.contains('open') && getComputedStyle(b).display!=='none') b.click(); });
+  p.parentNode.insertBefore(b,p.nextSibling);
+});
+</script>
+<script>
+/* Цены на карточках главной — живые, из каталога CRM (обновляются при каждой публикации) */
+addEventListener('DOMContentLoaded', function(){
+  var cat = window.RELICTUM_CATALOG || [], by = {};
+  cat.forEach(function(o){ if (o.slug) by[o.slug] = o; });
+  document.querySelectorAll('.obj-card[href*="id="]').forEach(function(a){
+    var m = a.getAttribute('href').match(/id=([^&#]+)/), o = m && by[m[1]], b = a.querySelector('.price b');
+    if (o && o.price && o.price !== 'Цена по запросу' && b) b.textContent = o.price;
+  });
+});
+</script>
 <script src="../shared/i18n.js" defer></script>
 </body>
 </html>

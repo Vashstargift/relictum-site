@@ -35,6 +35,20 @@
 .j-card .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(10,9,8,.55);border:1px solid rgba(244,240,232,.75);display:flex;align-items:center;justify-content:center;transition:background .4s var(--ease)}
 .j-card:hover .play{background:rgba(10,9,8,.72)}
 .j-card .play svg{margin-left:3px}
+/* 02.10.2026 телефон: список — миниатюра слева, издание, дата и заголовок справа; подводка открывается по ссылке */
+@media(max-width:600px){
+  .journal-grid{gap:0}
+  .j-card{display:grid;grid-template-columns:108px 1fr;grid-template-rows:auto 1fr;column-gap:14px;padding:16px 0;border-bottom:1px solid var(--hairline)}
+  .j-card .ph{grid-row:1 / 3;aspect-ratio:1/1}
+  .j-card .press-meta{margin:0 0 6px;min-height:0;gap:8px}
+  .j-card .press-logo{height:15px!important;max-width:110px;object-fit:contain;object-position:left center}
+  .j-card .press-date{font-size:9.5px;letter-spacing:.12em;white-space:normal}
+  .j-card h3{font-size:17px;line-height:1.25;margin:0}
+  .j-card p{display:none}
+  .j-card .play{width:34px;height:34px}
+  .j-card .play svg{width:12px;height:12px}
+  .j-card.reveal{opacity:1;transform:none}
+}
 .press-date{font-family:var(--font-ui);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);white-space:nowrap}
 </style>
 </head>
@@ -213,7 +227,7 @@
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -232,7 +246,6 @@
           <li><a href="expeditions.html">Экспедиции</a></li>
           <li><a href="../15_concepts/eras.html">Эры</a></li>
           <li><a href="press.html">Пресса</a></li>
-          <li><a href="maison.html#concierge">Менеджер галереи</a></li>
         </ul>
       </div>
       <div>
@@ -248,7 +261,6 @@
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
       <span><a href="privacy.html" style="color:inherit">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="consent.html" style="color:inherit">Согласие на обработку ПД</a> &nbsp;·&nbsp; <a href="oferta.html" style="color:inherit">Договор-оферта</a></span>
-      <span>Земля · Жизнь · Космос</span>
     </div>
   </div>
 </footer>

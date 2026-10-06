@@ -85,7 +85,7 @@
         <h2>Авторы проекта</h2>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(16px,2.4vw,30px)">
+    <div class="founders" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(16px,2.4vw,30px)">
       <div class="reveal">
         <img src="../shared/img/founder_ilya.jpg" alt="Илья Слуцкин" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--bone)" loading="lazy" decoding="async">
         <p style="font-family:var(--font-display);font-size:20px;margin:14px 0 0;color:#14110E">Илья Слуцкин</p>
@@ -127,9 +127,16 @@
     .gslider .gs-a{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border:none;background:rgba(10,9,8,.45);color:#F4F0E8;font-size:22px;line-height:1;cursor:pointer;transition:background .3s;backdrop-filter:blur(4px)}
     .gslider .gs-a:hover{background:rgba(10,9,8,.75)}
     .gslider .gs-a.prev{left:0}.gslider .gs-a.next{right:0}
-    .gslider .gs-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
-    .gslider .gs-dots button{width:26px;height:2px;border:none;padding:0;background:rgba(244,240,232,.45);cursor:pointer;transition:background .3s}
-    .gslider .gs-dots button.on{background:var(--bronze)}
+    .gslider .gs-dots{position:absolute;bottom:2px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
+    .gslider .gs-dots button{width:26px;height:26px;border:none;padding:12px 0;background:rgba(244,240,232,.45);background-clip:content-box;cursor:pointer;transition:background .3s}
+    .gslider .gs-dots button.on{background-color:var(--bronze)}
+    /* 02.10.2026 телефон: авторы в две колонки вместо четырёх портретов на весь экран */
+    @media(max-width:600px){
+      .founders{grid-template-columns:1fr 1fr!important;gap:22px 12px!important}
+      .founders p:first-of-type{font-size:16px!important;margin-top:10px!important;line-height:1.25}
+      .founders p+p{font-size:11.5px!important;line-height:1.5!important}
+      .founders .reveal{opacity:1;transform:none}
+    }
     @media(max-width:720px){.gslider{aspect-ratio:4/3}}
     </style>
     <div class="reveal gslider" id="gslider" style="margin:0 0 22px">
@@ -165,26 +172,7 @@
   </div>
 </section>
 
-<!-- ГАЛЕРЕЯ ВЖИВУЮ -->
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <div class="label">Галерея дома</div>
-        <h2>Дом Relictum вживую</h2>
-      </div>
-    </div>
-    <div class="gal">
-      <div class="media reveal" style="margin-bottom:14px"><img src="../shared/img/gal_yakimanka_1.jpg" alt="Зал дома Relictum: пещерный медведь, бивни мамонта и пситтакозавр" loading="lazy" decoding="async"></div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
-        <div class="media reveal" style="margin:0"><img src="../shared/img/gal_yakimanka_3.jpg" alt="Пещерный медведь в центре зала, вокруг — бивни и аммониты" loading="lazy" decoding="async"></div>
-        <div class="media reveal" style="margin:0"><img src="../shared/img/gal_yakimanka_8.jpg" alt="Зал дома: череп пещерного медведя на консоли, в глубине — скелет" loading="lazy" decoding="async"></div>
-        <div class="media reveal" style="margin:0"><img src="../shared/img/gal_yakimanka_4.jpg" alt="Скелет дромеозаврида в стеклянной витрине" loading="lazy" decoding="async"></div>
-        <div class="media reveal" style="margin:0"><img src="../shared/img/gal_yakimanka_5.jpg" alt="Скелет пситтакозавра на консоли у рельефной стены" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Блок «Дом Relictum вживую» убран (решение владельца 22.09.2026): дублирует слайдер галереи выше -->
 
 <!-- Блок убран (решение владельца 24.08.2026): provenance -->
 
@@ -225,7 +213,7 @@
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -244,7 +232,6 @@
           <li><a href="expeditions.html">Экспедиции</a></li>
           <li><a href="../15_concepts/eras.html">Эры</a></li>
           <li><a href="press.html">Пресса</a></li>
-          <li><a href="maison.html#concierge">Менеджер галереи</a></li>
         </ul>
       </div>
       <div>
@@ -260,7 +247,6 @@
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
       <span><a href="privacy.html" style="color:inherit">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="consent.html" style="color:inherit">Согласие на обработку ПД</a> &nbsp;·&nbsp; <a href="oferta.html" style="color:inherit">Договор-оферта</a></span>
-      <span>Земля · Жизнь · Космос</span>
     </div>
   </div>
 </footer>

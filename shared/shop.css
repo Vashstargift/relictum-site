@@ -90,3 +90,14 @@
 @media (max-width:760px){
   .rl-input,.rl-select,.rl-textarea{font-size:16px}
 }
+/* 02.10.2026 телефон: название лота во всю ширину, цена и «Убрать» строкой под ним */
+@media(max-width:600px){
+  .rl-line-item{grid-template-columns:84px 1fr;gap:4px 14px;align-items:start;padding:18px 0}
+  .rl-line-item > a{grid-row:1 / 3}
+  .rl-line-item .thumb{width:84px;height:104px}
+  .rl-line-item h3{font-size:19px}
+  .rl-line-item > div:last-child{grid-column:2;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .rl-line-item .price{text-align:left;font-size:20px}
+  .rl-line-item .rm{margin:0;width:auto;padding:12px 0 12px 12px}
+}
+@media(max-width:600px){input[type=checkbox]{width:20px;height:20px;flex:none}}

@@ -119,6 +119,11 @@ a{color:inherit;text-decoration:none}
 .cmp input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--bone,#FBF8F1);border:1px solid var(--bronze,#B08A55);box-shadow:0 1px 6px rgba(10,9,8,.18)}
 .cmp .marks{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--deep);margin-top:6px}
 .cmp .marks b{font-weight:400;color:var(--black)}
+.cmp .marks a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(176,138,85,.4);padding-bottom:1px}
+.cmp .marks a:hover{color:var(--bronze,#B08A55);border-bottom-color:currentColor}
+.cmp-pop .marks a:hover{color:var(--gold,#E9C98A)}
+.img-pop .open{position:absolute;z-index:2;bottom:18px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold,#E9C98A);text-decoration:none;border-bottom:1px solid rgba(233,201,138,.45);white-space:nowrap}
+.img-pop .open:hover{color:var(--bone,#FBF8F1)}
 /* полноэкранный просмотр кадра галереи */
 .img-pop{position:fixed;inset:0;z-index:300;background:rgba(10,9,8,.94);display:none;place-items:center;padding:4vh 4vw}
 .img-pop.on{display:grid}
@@ -132,12 +137,16 @@ a{color:inherit;text-decoration:none}
 .cmp-pop .frame{cursor:default}
 .cmp-pop .x{position:absolute;z-index:2;top:18px;right:22px;background:none;border:none;color:var(--mist,#B9B2A6);font-size:30px;line-height:1;cursor:pointer;padding:8px}
 .cmp-pop .x:hover{color:var(--bone,#FBF8F1)}
+/* 02.10.2026 телефон: крупнее зоны нажатия — крестики попапов и переключатели сравнения */
+.img-pop .x,.cmp-pop .x{width:48px;height:48px;padding:0;display:flex;align-items:center;justify-content:center;top:10px;right:10px}
+@media(max-width:760px){.cmp .marks{margin-top:2px}.cmp .marks a,.cmp .marks b{display:inline-block;padding:13px 0 11px;background-clip:content-box}.cmp .marks a{border-bottom:none;text-decoration:underline;text-decoration-color:rgba(176,138,85,.5);text-underline-offset:4px}}
 .cmp-pop .marks{color:var(--mist,#B9B2A6)}
 .cmp-pop .marks b{color:var(--bone,#FBF8F1)}
 /* similar — «Смотрите похожие» перед CTA */
 .similar{padding:clamp(56px,7vw,100px) 0;background:var(--ivory,#F4F0E8)}
 .similar .in2{max-width:1120px;margin:0 auto}
 .similar h2{margin:6px 0 26px}
+@media(max-width:600px){.grid-objects.rail .obj-card.rv{opacity:1;transform:none}.similar{overflow-x:hidden}}
 /* apprise — оценка экземпляра под главным фото */
 .apprise{margin-top:0;border:1px solid var(--linel,#E4DCCB);border-top:0;background:var(--bone,#FBF8F1);padding:16px 18px}
 .apprise .row{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:7px 0;align-items:baseline}
@@ -181,7 +190,7 @@ a{color:inherit;text-decoration:none}
 /* галерея ракурсов */
 .gallery{padding:clamp(44px,6vw,84px) 0 clamp(44px,6vw,84px)}
 .gallery .ggrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:680px){.gallery .ggrid{grid-template-columns:1fr}}
+@media(max-width:680px){.gallery .ggrid{gap:8px}}
 .gallery .gitem{border:1px solid var(--linel);overflow:hidden;background:var(--bone);position:relative}
 /* Плитки одного горизонтального формата: сетка держит ровный ритм, кадр
    заполняет плитку без светлых полей. Подрезка не теряет ничего — по клику
@@ -211,6 +220,39 @@ a{color:inherit;text-decoration:none}
 .foot .foot-links{display:flex;gap:22px;justify-content:center;margin-top:14px}
 
 .err{min-height:100svh;display:grid;place-items:center;text-align:center;padding:40px}
+/* 02.10.2026 Телефон: фото первым, сразу под ним имя, цена и кнопка; описание и оценка ниже.
+   .ph тоже «растворяется», чтобы фото и плашка «Сохранность/Ценность» встали в порядок отдельно. */
+@media(max-width:600px){
+  .hero{padding-top:calc(var(--nav-h,72px) + 10px)}
+  .hero .ph{display:contents}
+  .hero .ph img{order:0;border:1px solid var(--linel)}
+  .hero .txt .kick{order:1;margin:18px 0 10px}
+  .hero h1{order:1;font-size:34px;margin:0 0 4px}
+  .hero .lat{order:1;margin-bottom:0;font-size:17px}
+  .hero .txt .buy{order:2;margin:16px 0 0;gap:10px;align-items:stretch;text-align:left}
+  .hero .txt .buy .buy-price{font-size:26px}
+  .hero .txt .buy .buy-where{margin:-2px 0 4px}
+  .hero .txt .buy .btn{max-width:none}
+  .hero .txt .buy .buy-row{justify-content:flex-start;gap:14px}
+  .hero .hook{order:3;margin:22px 0 0;font-size:15px}
+  .hero .apprise{order:4;margin-top:18px;border-top:1px solid var(--linel,#E4DCCB)}
+}
+/* закреплённая полоса покупки — только телефон */
+.buybar{display:none}
+@media(max-width:760px){
+  .buybar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:210;align-items:center;gap:10px;
+    padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px)) 16px;background:#14110E;color:#F4F0E8;
+    border-top:1px solid rgba(176,138,85,.35);transform:translateY(110%);transition:transform .35s var(--ease)}
+  .buybar.on{transform:none}
+  .buybar .bb-p{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
+  .buybar .bb-p b{font-family:var(--serif);font-weight:400;font-size:18px}
+  .buybar .bb-p span{font-size:11px;color:rgba(244,240,232,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .buybar .bb-main{height:44px;padding:0 18px;background:#F4F0E8;color:#14110E;border:none;cursor:pointer;
+    font-family:inherit;font-size:11px;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+  .buybar .bb-wa{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(244,240,232,.35);color:#F4F0E8;flex:none}
+  body.has-buybar .rl-fab{display:none}
+  body.has-buybar .rl-toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
 </style>
 
 <!-- rl-seo -->
@@ -263,7 +305,7 @@ a{color:inherit;text-decoration:none}
     <div class="f-grid">
       <div>
         <img src="../shared/brand/Relictum_lockup_dark.png" alt="RELICTUM — Роскошь вне времени" width="1096" height="539" style="width:260px;height:auto;margin-left:-6px" loading="lazy" decoding="async">
-        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени. Земля · Жизнь · Космос.</p>
+        <p style="font-size:13px;color:rgba(244,240,232,.55);max-width:300px;margin-top:18px">Галерея редких экспонатов из глубины времени.</p>
       </div>
       <div>
         <h4>Коллекции</h4>
@@ -282,7 +324,6 @@ a{color:inherit;text-decoration:none}
           <li><a href="../02_site_v1_gallery/expeditions.html">Экспедиции</a></li>
           <li><a href="../15_concepts/eras.html">Эры</a></li>
           <li><a href="../02_site_v1_gallery/press.html">Пресса</a></li>
-          <li><a href="../02_site_v1_gallery/maison.html#concierge">Менеджер галереи</a></li>
         </ul>
       </div>
       <div>
@@ -298,7 +339,6 @@ a{color:inherit;text-decoration:none}
     <div class="f-bottom">
       <span>© 2026 RELICTUM. Все права защищены.</span>
       <span><a href="../02_site_v1_gallery/privacy.html" style="color:inherit">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="../02_site_v1_gallery/consent.html" style="color:inherit">Согласие на обработку ПД</a> &nbsp;·&nbsp; <a href="../02_site_v1_gallery/oferta.html" style="color:inherit">Договор-оферта</a></span>
-      <span>Земля · Жизнь · Космос</span>
     </div>
   </div>
 </footer>
@@ -333,7 +373,8 @@ if(!o){
   var storyParas = (P&&P.profile&&P.profile.paragraphs)?P.profile.paragraphs:((P&&P.story)?P.story:String(o.description||'').split(/\n\s*\n/));
   /* «В наличии. адрес» — где стоит лот; только у лотов без статуса «Под заказ/Продан». */
   var GA=window.RELICTUM_GALLERIES||{};
-  var whereFull = (!o.status && o.galleries && o.galleries.length) ? 'В наличии — '+o.galleries.map(function(g){return (GA[g]&&GA[g].full)||g}).join('; ') : '';
+  /* Без статуса лот в наличии; если галерея не указана (лот у партнёров) — просто «В наличии». */
+  var whereFull = !o.status ? ('В наличии' + ((o.galleries && o.galleries.length) ? ' — '+o.galleries.map(function(g){return (GA[g]&&GA[g].full)||g}).join('; ') : '')) : '';
   var storyHtml = storyParas.filter(function(t){return t&&t.trim()}).map(function(t){return '<p>'+t+'</p>'}).join('');
   var alive = P?P.alive:null;
   /* У части экспонатов своего ролика «встретить живым» нет — тогда блок
@@ -409,7 +450,8 @@ if(!o){
     ['Возраст', o.age],
     ['Происхождение', o.location||o.region],
     ['Дата находки', o.found],
-    ['Размер', o.size]
+    ['Размер', o.size],
+    ['Вес', o.weight]
   ].filter(function(c){return known(c[1])}).concat((P&&P.profile&&P.profile.facts)?Object.keys(P.profile.facts).filter(function(k){return k!=='Сохранность'&&k!=='Ценность'&&k!=='Редкость'&&k!=='Особенности'&&known(P.profile.facts[k])}).map(function(k){return [k,P.profile.facts[k]]}):[]).map(function(c){return '<div class="cell rv"><div class="k">'+c[0]+'</div><div class="v">'+c[1]+'</div></div>'}).join('');
 
   var life = (P&&P.life&&P.life.img)?P.life:null;   /* без фотореконструкции блока «При жизни» нет (чертёж один не показываем) */
@@ -425,9 +467,9 @@ if(!o){
         /* Средний слой у скелетов — скелет, у зубов и раковин — чертёж экспоната.
            Подпись берётся из данных, чтобы не называть скелетом одиночный зуб. */
         ? '<div class="ctrl"><input type="range" min="0" max="200" value="0" step="0.5" aria-label="Экспонат — '+(life.diagramLabel||'скелет').toLowerCase()+' — при жизни">'+
-          '<div class="marks"><b>Экспонат</b><span>'+(life.diagramLabel||'Скелет')+'</span><span>При жизни</span></div></div>'
+          '<div class="marks"><b><a href="'+MV(IMG+o.img+'.jpg')+'" target="_blank" rel="noopener" title="Открыть кадр в новой вкладке">Экспонат</a></b><span><a href="'+MV(IMG+life.diagram)+'" target="_blank" rel="noopener" title="Открыть кадр в новой вкладке">'+(life.diagramLabel||'Скелет')+'</a></span><span><a href="'+MV(IMG+life.img)+'" target="_blank" rel="noopener" title="Открыть кадр в новой вкладке">При жизни</a></span></div></div>'
         : '<div class="ctrl"><input type="range" min="0" max="100" value="0" step="0.5" aria-label="Экспонат — в недрах">'+
-          '<div class="marks"><b>Экспонат</b><span>'+(life.stateLabel||'В недрах')+'</span></div></div>')+
+          '<div class="marks"><b><a href="'+MV(IMG+o.img+'.jpg')+'" target="_blank" rel="noopener" title="Открыть кадр в новой вкладке">Экспонат</a></b><span><a href="'+MV(IMG+life.img)+'" target="_blank" rel="noopener" title="Открыть кадр в новой вкладке">'+(life.stateLabel||'В недрах')+'</a></span></div></div>')+
     '</div>';
   }
   var lifeSec = life ? (
@@ -460,7 +502,7 @@ if(!o){
     '<section class="similar"><div class="wrap"><div class="in2">'+
       '<div class="label rv">Коллекция</div>'+
       '<h2 class="rv">Смотрите похожие</h2>'+
-      '<div class="grid-objects">'+
+      '<div class="grid-objects rail">'+
         similar.map(function(c){return '<a class="obj-card rv" href="'+sameFolder(c.href)+'">'+
           '<div class="ph"><img src="'+MV(IMG+c.img+'.jpg')+'" alt="'+c.name+'" loading="lazy" decoding="async"></div>'+
           '<div class="body"><div class="id">'+c.id+', '+c.worldLabel+'</div>'+
@@ -535,7 +577,7 @@ if(!o){
       '<div class="kick rv">'+kick+'</div>'+
       '<h1 class="rv">'+o.name+'</h1>'+
       '<div class="lat rv">'+(o.latin||'')+'</div>'+
-      '<p class="hook rv">'+hook+'</p>'+
+      ((hook)?'<p class="hook rv">'+(hook)+'</p>':'')+
       /* Цена и действие сразу у фото: раньше их можно было найти только
          прокрутив страницу до самого низа. Нижний блок покупки остаётся. */
       '<div class="buy rv">'+
@@ -549,7 +591,6 @@ if(!o){
           (o.status?'<span class="status">'+o.status+'</span>':'')+
         '</div>'+
       '</div>'+
-      '<div class="rv"><span class="scrollcue">Листайте</span></div>'+
     '</div>'+
     /* Главное фото первого экрана: грузим сразу и с высоким приоритетом —
        это самый крупный элемент страницы, ленивая загрузка его тормозила.
@@ -645,15 +686,16 @@ if(!o){
     var items=document.querySelectorAll('.gallery .gitem img');
     if(!items.length) return;
     var pop=document.createElement('div'); pop.className='img-pop';
-    pop.innerHTML='<button class="x" aria-label="Закрыть">&times;</button><img alt="">';
+    pop.innerHTML='<button class="x" aria-label="Закрыть">&times;</button><img alt=""><a class="open" href="#" target="_blank" rel="noopener">Открыть в новой вкладке ↗</a>';
     document.body.appendChild(pop);
-    var big=pop.querySelector('img');
+    var big=pop.querySelector('img'), openA=pop.querySelector('.open');
+    openA.addEventListener('click',function(e){ e.stopPropagation(); });
     function close(){ pop.classList.remove('on'); document.body.style.overflow=''; }
     pop.addEventListener('click',function(e){ if(e.target!==big) close(); });
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
     items.forEach(function(im){
       im.addEventListener('click',function(){
-        big.src=im.getAttribute('data-full')||im.currentSrc||im.src; big.alt=im.alt||'';
+        big.src=im.getAttribute('data-full')||im.currentSrc||im.src; big.alt=im.alt||''; openA.href=big.src;
         pop.classList.add('on'); document.body.style.overflow='hidden';
       });
     });
@@ -739,7 +781,7 @@ if(!o){
       [c,hc].forEach(function(btn){
         if(!btn) return;
         if(inCart){ btn.textContent='В корзине ✓, перейти'; btn.onclick=function(){location.href='../02_site_v1_gallery/cart.html';}; }
-        else { btn.textContent='Добавить в корзину'; btn.onclick=function(){ Sx.addToCart(o.id); Sx.toast('«'+o.name+'» в корзине'); exRender(); }; }
+        else { btn.textContent='Добавить в корзину'; btn.onclick=function(){ Sx.addToCart(o.id); Sx.toast('«'+o.name+'» в корзине','cart'); exRender(); }; }
       });
       fb.innerHTML = Sx.inFav(o.id)
         ? 'В избранном<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" style="vertical-align:-2px;margin-left:7px"><path d="M12 2.6l2.1 6.05 6.3.35-4.9 3.95 1.65 6.1L12 15.6l-5.15 3.45 1.65-6.1-4.9-3.95 6.3-.35z"/></svg>'
@@ -747,6 +789,34 @@ if(!o){
       fb.onclick=function(){ var on=Sx.toggleFav(o.id); Sx.toast(on?'Добавлено в избранное':'Убрано из избранного'); exRender(); };
     };
     exRender();
+
+    /* 02.10.2026 Телефон: закреплённая полоса покупки. Видна, пока кнопка первого экрана
+       вне экрана, и прячется у нижнего блока покупки, чтобы не дублировать его. */
+    var bar=document.createElement('div'); bar.className='buybar';
+    var waText='Здравствуйте! Интересует '+o.id+' «'+o.name+'» '+location.href;
+    bar.innerHTML='<div class="bb-p"><b>'+(o.price||'Цена по запросу')+'</b><span>'+o.name+'</span></div>'+
+      '<button type="button" class="bb-main"></button>'+
+      '<a class="bb-wa" href="https://wa.me/74952335111?text='+encodeURIComponent(waText)+'" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">'+
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35M12.05 21.8a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.9 9.9 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.89-9.89 2.64 0 5.12 1.03 6.99 2.9a9.8 9.8 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.89 9.89m8.41-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.8 11.8 0 0 0-3.48-8.41z"/></svg></a>';
+    document.body.appendChild(bar); document.body.classList.add('has-buybar');
+    var bbMain=bar.querySelector('.bb-main');
+    var bbRender=function(){
+      if(!o.priceValue){ bbMain.textContent='Запросить';
+        bbMain.onclick=function(){ if(window.RL_ASK) window.RL_ASK({id:o.id,name:o.name,price:o.price||'',url:location.href,
+          photo:location.origin+location.pathname.replace(/[^/]*$/,'')+'../shared/img/'+o.img+'.jpg'}); }; return; }
+      if(Sx.inCart(o.id)){ bbMain.textContent='В корзине →'; bbMain.onclick=function(){ location.href='../02_site_v1_gallery/cart.html'; }; }
+      else { bbMain.textContent='В корзину'; bbMain.onclick=function(){ Sx.addToCart(o.id); Sx.toast('«'+o.name+'» в корзине','cart'); exRender(); bbRender(); }; }
+    };
+    var exPrev=exRender; exRender=function(){ exPrev(); bbRender(); };
+    bbRender();
+    var heroBuy=document.querySelector('.hero .buy-row'), ctaSec=document.querySelector('section.cta');
+    var bbTick=function(){
+      var r=heroBuy?heroBuy.getBoundingClientRect():{top:-1,bottom:-1};
+      var ct=ctaSec?ctaSec.getBoundingClientRect().top:1e9;
+      /* полоса видна, пока кнопка первого экрана вне экрана (ещё ниже или уже выше) и до нижнего блока покупки */
+      bar.classList.toggle('on', (r.bottom<0 || r.top>innerHeight-70) && ct>innerHeight-40);
+    };
+    addEventListener('scroll',bbTick,{passive:true}); addEventListener('resize',bbTick); bbTick();
   }
 }
 </script>
