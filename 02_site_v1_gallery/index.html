@@ -21,6 +21,8 @@
 .hcar .slide .in .label{margin-bottom:22px;color:var(--bronze)}
 .hcar .slide h1,.hcar .slide h2{font-size:clamp(46px,6.6vw,96px);font-weight:400;font-family:var(--font-display);line-height:1.02;margin-bottom:20px}
 .hcar .slide h1 em,.hcar .slide h2 em{font-style:italic;color:var(--bronze)}
+/* H1 первого слайда — надпись-рубрика: говорит поисковику, что продаём; слоган остаётся крупным h2 */
+.hcar .slide h1.label{font-family:var(--font-ui);font-size:11px;font-weight:500;line-height:1.5}
 .hcar .slide p{font-size:17px;max-width:min(440px,90vw);margin-bottom:34px;color:rgba(244,240,232,.84)}
 .hcar .slide.dark .btn{border-color:var(--ivory);color:var(--ivory)}
 .hcar .slide.dark .btn:hover{background:var(--ivory);color:var(--obsidian)}
@@ -105,8 +107,8 @@
   <div class="slide dark on" data-dur="13200">
     <div class="media"><video muted loop playsinline preload="auto" poster="../shared/img/hm_psittacosaurus.jpg" data-poster-m="../shared/img/hm_psittacosaurus_m.jpg" data-src="../shared/img/promo/hero_psittacosaurus.mp4" data-src-m="../shared/img/promo/hero_psittacosaurus_m.mp4"></video></div>
     <div class="in">
-      <div class="label">Дом Relictum</div>
-      <h1>Роскошь<br>вне <em>времени</em></h1>
+      <h1 class="label">Скелеты динозавров, метеориты и минералы</h1>
+      <h2>Роскошь<br>вне <em>времени</em></h2>
       <p>Откройте для себя редкое направление коллекционирования, признанное ведущими аукционными домами. Скелет динозавра в гостиной или рельефный аммонит в кабинете. Дом Relictum адаптирует легендарные находки прошлого для жизни: мы убираем дистанцию музейных стёкол, позволяя миллионам лет истории стать частью вашего ежедневного эстетического опыта и уюта.</p>
       <div class="btn-row on-dark"><a class="btn btn-solid" href="catalog.html">Перейти в каталог</a><a class="btn" href="interiors.html">Примерить в интерьере</a></div>
     </div>

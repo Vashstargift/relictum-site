@@ -189,7 +189,7 @@ def render_object_page(t, pg):
     one(r'(<meta name="twitter:image" content=")[^"]*(")', img)
     head = '<script>window.RL_FORCE_ID=' + json.dumps(pg['id'], ensure_ascii=False) + ';</script>\n' + pg.get('jsonld', '') + '\n'
     if pg.get('noindex'):
-        head += '<meta name="robots" content="noindex,nofollow">\n'
+        head += '<meta name="robots" content="noindex,follow">\n'   # архив: вне выдачи, ссылки на соседние лоты работают
     t = t.replace('</head>', head + '</head>', 1)
     t = re.sub(r'<main id="app">.*?</main>', lambda m: '<main id="app">' + pg.get('ssr', '') + '</main>', t, count=1, flags=re.S)
     return t
@@ -259,10 +259,17 @@ def build():
 
     prerender_catalog()
     pages += write_collections(stamp)   # подарочные, интерьерные и категорийные посадочные
+    pages += write_faq(stamp)           # /faq.html из 09_admin/faq.json
+    journal_seo()                       # Article + дата + og:image у статей журнала
+    write_page_i18n()                   # shared/i18n-pages.js — переводы главной, подарков, посадочных и журнала
+    seo_links()                         # подвал → посадочные, лоты → канон, index.html → /
     write_focus_map()
     dropped = prune_media()
     inject_metrika()   # Яндекс Метрика 112568027 + цели по кликам на телефон/WhatsApp
     stamp_media(OUT)   # ?v=<хэш файла> у картинок и видео — иначе кэш держит старое
+    img_dims()         # width/height у <img> — без «прыжков» страницы при загрузке
+    webp_pictures()    # WebP рядом с JPEG и <picture> — картинки вдвое легче
+    pages += lang_versions()   # /en/ /zh/ /ar/ — статичные переводы + hreflang
     write_extras(pages)
     return pages, stamp, dropped
 
@@ -526,6 +533,12 @@ LANDINGS = [
     ('cherepa',              'category', lambda o, P: _nm(o, r'череп'), 999),
     ('skelety',              'category', lambda o, P: _nm(o, r'скелет'), 999),
     ('zuby-i-kogti',         'category', lambda o, P: _nm(o, r'\bзуб(?!р)|когот|когт|мегалодон'), 999),
+    # узкие разделы под коммерческие запросы, где сайта не было в выдаче (аудит 05.10.2026)
+    ('bivni-mamonta',        'category', lambda o, P: _nm(o, r'бив[ен]'), 999),
+    ('pallasity',            'category', lambda o, P: _has(o, 'Метеориты') and (_nm(o, r'палласит|сеймчан') or re.search(r'pallasite', o.get('latin') or '', re.I) is not None), 999),
+    ('chelyabinskij-meteorit', 'category', lambda o, P: _nm(o, r'челябинск'), 999),
+    ('trilobity',            'category', lambda o, P: _has(o, 'Трилобиты'), 999),
+    ('zub-megalodona',       'category', lambda o, P: _has(o, 'Мегалодон'), 999),
 ]
 
 
@@ -569,7 +582,10 @@ def write_collections(stamp):
     items, promo = arranged_items()
     made, tiles, used_imgs = [], [], set()
 
-    def render(slug, c, cards, count, og_image, related, jsonld, hero_img, split_img, grid_title, wide=False, sub=''):
+    def render(slug, c, cards, count, og_image, related, jsonld, hero_img, split_img, grid_title, wide=False, sub='', extra='', page_items=None):
+        faq_html, faq_ld = faq_block(c, page_items)
+        jsonld = jsonld + faq_ld
+        hero_cta, pitch_top, pitch_bottom = pitch_blocks(c)
         t = tpl
         intro = list(c['intro']) + ['', '']
         for k, v in {'{{TITLE}}': esc_html(c['title']), '{{DESC}}': esc_html(c['description']), '{{URL}}': DOMAIN + '/' + slug + '.html',
@@ -580,20 +596,113 @@ def write_collections(stamp):
                      '{{HERO_IMG}}': hero_img + '?v=' + media_stamp(), '{{HERO_ALT}}': esc_html(c['h1']),
                      '{{SPLIT_IMG}}': split_img + '?v=' + media_stamp(), '{{SPLIT_ALT}}': esc_html(c['kicker']),
                      '{{GRID_CLASS}}': ' lp-wide' if wide else '',
-                     '{{SUB}}': sub}.items():
+                     '{{SUB}}': sub, '{{GIFT_INTERIOR}}': extra, '{{FAQ}}': faq_html,
+                     '{{HERO_CTA}}': hero_cta, '{{PITCH_TOP}}': pitch_top, '{{PITCH_BOTTOM}}': pitch_bottom}.items():
             t = t.replace(k, v)
         if slug == 'interernye-resheniya':   # у интерьерной подборки своя форма подбора
             t = t.replace('href="request.html">Персональный подбор', 'href="interior-request.html">Подбор в интерьер', 1)
+        if pitch_bottom:  # у продающей страницы свой блок сервиса — общий «Сервис дома» дублировал бы его
+            t = re.sub(r'<!-- СЕРВИС ДОМА -->\s*<section class="band-dark">.*?</section>\s*', '', t, count=1, flags=re.S)
         if not related:   # на хабе все подборки уже плитками — «Смотрите также» лишний
             t = re.sub(r'\s*<div class="label reveal" style="margin-top:40px">Смотрите также</div>\s*<ul class="lp-chips reveal"></ul>', '', t, count=1)
         open(os.path.join(OUT, slug + '.html'), 'w', encoding='utf-8').write(t)
         made.append(slug + '.html')
 
     def ld(obj): return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False) + '</script>'
-    crumbs = lambda name, url: {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
-        {'@type': 'ListItem', 'position': 1, 'name': 'RELICTUM', 'item': DOMAIN + '/'},
-        {'@type': 'ListItem', 'position': 2, 'name': 'Подарки и интерьер', 'item': DOMAIN + '/podarki.html'},
-        {'@type': 'ListItem', 'position': 3, 'name': name, 'item': url}]}
+
+    # Цифры для ответов FAQ считаются из каталога — текст в landing_copy.json не устаревает
+    prices = sorted(o['priceValue'] for o in items if o.get('priceValue'))
+    rub = lambda v: f'{v:,}'.replace(',', ' ') + ' ₽'
+    facts = {'count': len(items), 'min_price': rub(prices[0]) if prices else '',
+             'under_500k': sum(1 for v in prices if v <= 500_000), 'over_10m': sum(1 for v in prices if v >= 10_000_000)}
+
+    def faq_block(c, page_items=None):
+        """Блок «Частые вопросы» + FAQPage JSON-LD — только если у страницы в landing_copy.json есть faq.
+        Кроме общих цифр каталога доступны цифры самой подборки: {n} — лотов, {price_range} — «от … до …»."""
+        f, pp = dict(facts), None
+        if page_items is not None:
+            pp = sorted(o['priceValue'] for o in page_items if o.get('priceValue'))
+            f['n'] = len(page_items)
+            f['price_range'] = price_range(pp, rub)
+        qa = [(q, fmt_tr(a, f, pp, rub)) for q, a in c.get('faq', [])]
+        if not qa:
+            return '', ''
+        body = ''.join(f'<h3>{esc_html(q)}</h3><p>{esc_html(a)}</p>' for q, a in qa)
+        block = ('<section class="lp-about"><div class="wrap"><div class="section-head reveal"><div>'
+                 '<div class="label">Вопросы и ответы</div><h2>Частые вопросы</h2></div></div>'
+                 '<div class="lp-faq reveal">' + body + '</div></div></section>')
+        return block, '\n' + ld({'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in qa]})
+
+    def pitch_blocks(c):
+        """Продающие блоки по образцу stargift.ru/vip: кнопки в хиро, «почему это сильный подарок»,
+        сервис с фото (зигзаг), полоса доверия, финальный призыв. Всё из landing_copy.json;
+        блок без текста не выводится — так в JSON можно держать заготовки под будущие услуги."""
+        btn = lambda label, href, light=False: (f'<a class="btn{" btn-solid" if light else ""}" href="{esc_html(href)}"'
+                                               + (' target="_blank" rel="noopener"' if href.startswith('http') else '') + f'>{esc_html(label)}</a>')
+        hero = ''
+        if c.get('hero_cta'):
+            hero = ('<div class="lp-hero-cta reveal on-dark">' + btn('Подобрать подарок', 'request.html', True)
+                    + btn('Написать в WhatsApp', 'https://wa.me/74952335111') + '</div>')
+        usp = [(t, x) for t, x in c.get('usp', []) if x]
+        top = ''
+        if usp:
+            top = ('<section><div class="wrap"><div class="section-head reveal"><div><div class="label">' + esc_html(c.get('usp_label', 'Почему это сильный подарок'))
+                   + '</div><h2>' + esc_html(c.get('usp_title', '')) + '</h2></div></div><div class="lp-usp reveal">'
+                   + ''.join(f'<div><div class="num">{i + 1:02d}</div><h3>{esc_html(t)}</h3><p>{esc_html(x)}</p></div>' for i, (t, x) in enumerate(usp))
+                   + '</div></div></section>')
+        rows = [r for r in c.get('services', []) if r.get('text')]
+        bottom = ''
+        if rows:
+            bottom += ('<section><div class="wrap"><div class="section-head reveal"><div><div class="label">Сервис дома</div><h2>'
+                       + esc_html(c.get('services_title', 'Персональный сервис')) + '</h2></div></div><div class="lp-svc">')
+            for r in rows:
+                img = (f'<div class="media"><img src="shared/img/{r["img"]}?v={media_stamp()}" alt="{esc_html(r["title"])}" loading="lazy" decoding="async"></div>'
+                       if r.get('img') else '<div class="media"></div>')
+                cta = btn(r['cta'], r['href']) if r.get('cta') and r.get('href') else ''
+                bottom += (f'<div class="row reveal">{img}<div><div class="label">{esc_html(r.get("kicker", ""))}</div>'
+                           f'<h3>{esc_html(r["title"])}</h3><p>{esc_html(r["text"])}</p><div style="margin-top:20px">{cta}</div></div></div>')
+            bottom += '</div></div></section>'
+        tr = c.get('trust') or {}
+        if tr.get('text'):
+            bottom += ('<section class="band-dark lp-trust"><div class="wrap reveal"><div class="label" style="color:var(--bronze)">'
+                       + esc_html(tr.get('label', 'О нас пишут')) + '</div><blockquote>' + esc_html(tr['text']) + '</blockquote>'
+                       + (btn(tr['link_label'], tr['link_href']) if tr.get('link_href') else '') + '</div></section>')
+        cb = c.get('cta_band') or {}
+        if cb.get('title'):
+            bottom += ('<section class="lp-cta"><div class="wrap reveal"><div class="label">Персональный подбор</div><h2>' + esc_html(cb['title'])
+                       + '</h2><p style="color:var(--stone);max-width:56ch;margin:14px auto 0">' + esc_html(cb.get('text', '')) + '</p>'
+                       + '<div class="lp-hero-cta">' + btn('Оставить заявку', 'request.html', True) + btn('+7 495 233 5111', 'tel:+74952335111')
+                       + btn('WhatsApp', 'https://wa.me/74952335111') + '</div></div></section>')
+        return hero, top, bottom
+
+    def interior_strip(lots, skip=(), title='Как подарок будет выглядеть у получателя'):
+        """Подарок в интерьере: до 4 кадров «в доме/кабинете» из подборки со ссылкой на лот.
+        Студийное фото показывает предмет, интерьерное — что он сделает с пространством."""
+        shots, seen = [], set(skip)
+        for o in lots:
+            img = (promo.get(o['id']) or {}).get('interior', {}).get('img')
+            if img and img not in seen:
+                seen.add(img)
+                shots.append((o, img))
+            if len(shots) == 4:
+                break
+        if len(shots) < 2:
+            return ''
+        cells = ''.join(f'<a href="objects/{o["slug"]}.html"><img src="shared/img/{img}?v={media_stamp()}" alt="{esc_html(o["name"])} в интерьере" loading="lazy" decoding="async"><span>{esc_html(o["name"])}</span></a>'
+                        for o, img in shots)
+        return ('<section class="lp-grid"><div class="wrap"><div class="section-head reveal"><div>'
+                '<div class="label">Подарок в интерьере</div><h2>' + title + '</h2></div>'
+                '<p class="sub">Так предмет выглядит не на витрине, а в доме или кабинете: проще оценить масштаб и выбрать место — стол, полку или нишу.</p></div>'
+                '<div class="lp-int reveal">' + cells + '</div></div></section>')
+    # Категории («Метеориты», «Черепа»…) — разделы каталога, а не подарочные подборки:
+    # их родитель в хлебных крошках — каталог, у подарочных и интерьерной — хаб подарков.
+    def crumbs(name, url, group):
+        parent = ('Каталог', DOMAIN + '/catalog.html') if group == 'category' else ('Подарки и интерьер', DOMAIN + '/podarki.html')
+        return {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': 'RELICTUM', 'item': DOMAIN + '/'},
+            {'@type': 'ListItem', 'position': 2, 'name': parent[0], 'item': parent[1]},
+            {'@type': 'ListItem', 'position': 3, 'name': name, 'item': url}]}
 
     for slug, group, rule, cap in LANDINGS:
         c = copy.get(slug)
@@ -621,8 +730,9 @@ def write_collections(stamp):
         hero_img = 'shared/img/' + hero
         split_img = 'shared/img/' + split
         grid_title = {'gift': 'Что подарить', 'interior': 'Предметы для пространства', 'category': 'Лоты в наличии и под заказ'}[group]
-        render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url)), hero_img, split_img, grid_title, wide=(group == 'interior'),
-               sub=f'Экспонатов: {len(sel)}. У каждого есть паспорт происхождения, и все они доступны к просмотру в галерее.')
+        extra = interior_strip(sel, skip=(hero, split)) if group == 'gift' else ''
+        render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url, group)), hero_img, split_img, grid_title, wide=(group == 'interior'), extra=extra, page_items=sel,
+               sub=fmt_tr('Экспонатов: {n}. У каждого есть паспорт происхождения, и все они доступны к просмотру в галерее.', {'n': len(sel)}))
         tiles.append((slug, group, c, sel[0], len(sel), hero_img))   # плитка хаба — интерьерный кадр (3:2), не канон
 
     # хаб «Подарки и интерьер»
@@ -635,8 +745,525 @@ def write_collections(stamp):
                       '<div class="meta">' + esc_html(c['description']) + '</div><div class="price"><b>Объектов: ' + str(cnt) + '</b><span>Смотреть</span></div></div></a>')
         url = DOMAIN + '/podarki.html'
         page_ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': hub['h1'], 'url': url, 'description': hub['description'], 'isPartOf': {'@id': DOMAIN + '/#site'}}
-        render('podarki', hub, cards, len(tiles), DOMAIN + '/shared/img/int_hero_salon.jpg', '', ld(page_ld), 'shared/img/int_hero_salon.jpg', 'shared/img/grand_atrium_skeleton.jpg', 'Подборки по поводу и пространству', wide=True, sub=f'Подборок: {len(tiles)}. Экспонаты каждой из них доступны к просмотру в галерее.')
+        render('podarki', hub, cards, len(tiles), DOMAIN + '/shared/img/int_hero_salon.jpg', '', ld(page_ld), 'shared/img/int_hero_salon.jpg', 'shared/img/grand_atrium_skeleton.jpg', 'Подборки по поводу и пространству', wide=True, sub=fmt_tr('Подборок: {n}. Экспонаты каждой из них доступны к просмотру в галерее.', {'n': len(tiles)}),
+               extra=interior_strip([o for o in items if any(r(o, promo) for _s, g, r, _c in LANDINGS if g == 'gift')],
+                                    skip=('int_hero_salon.jpg',), title='Подарок, который становится частью интерьера'))
     print(f'  посадочных: {len(made)}')
+    return made
+
+
+# ---------------------------------------------------------------------------
+# Перелинковка для поиска (SEO-аудит, 05.10.2026)
+#
+# 1. Посадочные категорий («Метеориты», «Скелеты»…) ссылались только друг на друга
+#    и с хаба подарков — из меню, каталога и карточек на них не вело ничего, и
+#    поисковик считал их второстепенными. Колонка «Коллекции» в подвале теперь
+#    ведёт на них со всех страниц, а над сеткой каталога — ряд разделов.
+# 2. Ссылки на лоты вели на /objects/exhibit.html?id=<slug>. Адрес работает
+#    (.htaccess отдаёт визитку), но canonical у визитки — /objects/<slug>.html,
+#    и поисковик получал два адреса одной страницы. Ссылаемся сразу на канон —
+#    только если визитка на самом деле собрана.
+# 3. Ссылки на index.html — на корень папки: главная одна, «/».
+# Делается после сборки по готовым страницам: так правка не зависит от того,
+# как устроена разметка конкретной страницы.
+# ---------------------------------------------------------------------------
+SECTION_LINKS = [            # slug посадочной, подпись — порядок в подвале и на каталоге
+    ('meteority', 'Метеориты'), ('dinozavry', 'Динозавры'), ('skelety', 'Скелеты'),
+    ('cherepa', 'Черепа'), ('zuby-i-kogti', 'Зубы и когти'), ('mamontovaya-fauna', 'Мамонтовая фауна'),
+    ('morskie-reptilii', 'Морские рептилии'), ('ammonity', 'Аммониты'), ('mineraly', 'Минералы'),
+    ('pallasity', 'Палласиты'), ('chelyabinskij-meteorit', 'Челябинский метеорит'), ('bivni-mamonta', 'Бивни мамонта'),
+    ('trilobity', 'Трилобиты'), ('zub-megalodona', 'Зуб мегалодона'),
+]
+FOOTER_SECTIONS = ['meteority', 'dinozavry', 'skelety', 'cherepa', 'mamontovaya-fauna', 'ammonity', 'mineraly']
+EXHIBIT_LINK = re.compile(r'href="((?:\.\./)?(?:objects/)?)exhibit\.html\?id=([0-9a-z-]+)"')
+
+
+def seo_links():
+    labels = dict(SECTION_LINKS)
+    have = {f[:-5] for f in os.listdir(os.path.join(OUT, 'objects')) if f.endswith('.html')}
+    sections = [s for s, _ in SECTION_LINKS if os.path.exists(os.path.join(OUT, s + '.html'))]
+    changed = 0
+    for dp, _, fs in os.walk(OUT):
+        for f in fs:
+            if not f.endswith('.html'):
+                continue
+            p = os.path.join(dp, f)
+            depth = os.path.relpath(p, OUT).replace(os.sep, '/').count('/')
+            up = '../' * depth
+            t = open(p, encoding='utf-8').read()
+            n = t
+            # 1. подвал: «Коллекции» → посадочные категорий + подарки
+            items = ''.join(f'<li><a href="{up}{s}.html">{labels[s]}</a></li>' for s in FOOTER_SECTIONS if s in sections)
+            if items:
+                n = re.sub(r'(<h4>Коллекции</h4>\s*<ul>).*?(</ul>)',
+                           lambda m: m.group(1) + '\n          ' + items + f'<li><a href="{up}podarki.html">Подарки и интерьер</a></li>\n        ' + m.group(2),
+                           n, count=1, flags=re.S)
+            # 1б. подвал: «Частые вопросы» отдельной ссылкой в колонке «Дом»
+            if os.path.exists(os.path.join(OUT, 'faq.html')) and 'faq.html">Частые вопросы' not in n:
+                n = re.sub(r'(<h4>Дом</h4>\s*<ul>.*?)(</ul>)',
+                           lambda m: m.group(1) + f'  <li><a href="{up}faq.html">Частые вопросы</a></li>\n        ' + m.group(2), n, count=1, flags=re.S)
+            # 2. лоты — на канонический адрес визитки
+            n = EXHIBIT_LINK.sub(lambda m: f'href="{m.group(1)}{m.group(2)}.html"' if m.group(2) in have else m.group(0), n)
+            # 3. главная — корень, а не index.html
+            n = re.sub(r'href="((?:\.\./)*(?:[0-9a-z_-]+/)*)index\.html(#[^"]*)?"', lambda m: 'href="' + (m.group(1) or './') + (m.group(2) or '') + '"', n)
+            if n != t:
+                open(p, 'w', encoding='utf-8').write(n)
+                changed += 1
+    # ряд разделов над сеткой каталога
+    cat = os.path.join(OUT, 'catalog.html')
+    t = open(cat, encoding='utf-8').read()
+    chips = ''.join(f'<li><a href="{s}.html">{labels[s]}</a></li>' for s in sections)
+    row = ('<ul class="cat-sections" aria-label="Разделы коллекции" style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-wrap:wrap;gap:10px">'
+           + chips + '</ul>\n      ')
+    t = t.replace('<div class="grid-objects" id="grid">', row + '<div class="grid-objects" id="grid">', 1)
+    t = t.replace('</head>', '<style>.cat-sections a{display:inline-block;border:1px solid var(--hairline);padding:9px 16px;font-size:12px;'
+                  'letter-spacing:.1em;text-transform:uppercase;color:inherit;text-decoration:none}'
+                  '.cat-sections a:hover{border-color:var(--bronze);color:var(--bronze)}</style>\n</head>', 1)
+    open(cat, 'w', encoding='utf-8').write(t)
+    print(f'  перелинковка: {changed} страниц, разделов {len(sections)}')
+
+
+# ---------------------------------------------------------------------------
+# Частые вопросы — отдельная страница /faq.html (05.10.2026)
+#
+# Вопросы и ответы лежат в 09_admin/faq.json по группам. Ответ с пустой строкой —
+# заготовка: вопрос в JSON есть, на сайт не выходит, пока владелец не даст ответ.
+# Оболочку (шапка, подвал, стили) берём у уже собранной oferta.html — так страница
+# всегда совпадает с текущим оформлением текстовых страниц сайта.
+# ---------------------------------------------------------------------------
+def write_faq(stamp):
+    import json
+    src = os.path.join(ROOT, '09_admin', 'faq.json')
+    shell_path = os.path.join(OUT, 'oferta.html')
+    if not os.path.exists(src) or not os.path.exists(shell_path):
+        print('  ! faq.json или oferta.html нет — страница FAQ не собрана'); return []
+    d = json.load(open(src, encoding='utf-8'))
+    js = ("global.window={};"
+          f"eval(require('fs').readFileSync({json.dumps(os.path.join(OUT,'shared','catalog.js'))},'utf8'));"
+          "process.stdout.write(JSON.stringify(window.RELICTUM_CATALOG.filter(function(o){return !o.hidden})))")
+    items = json.loads(subprocess.run(['node', '-e', js], capture_output=True, text=True, check=True).stdout)
+    prices = sorted(o['priceValue'] for o in items if o.get('priceValue'))
+    rub = lambda v: f'{v:,}'.replace(',', '\u00a0') + '\u00a0₽'
+    facts = {'count': len(items), 'min_price': rub(prices[0]) if prices else '', 'max_price': rub(prices[-1]) if prices else '',
+             'under_500k': sum(1 for v in prices if v <= 500_000), 'over_10m': sum(1 for v in prices if v >= 10_000_000),
+             'on_request': sum(1 for o in items if not o.get('priceValue'))}
+    body, qa_all, toc = '', [], ''
+    for g in d['groups']:
+        qa = [q for q in g['items'] if q[1]]
+        if not qa:
+            continue
+        toc += f'<li><a href="#{g["id"]}">{esc_html(g["name"])}</a></li>'
+        body += f'<h2 id="{g["id"]}">{esc_html(g["name"])}</h2>'
+        for q in qa:
+            a = q[1].format(**facts)
+            link = f' <a href="{esc_html(q[2])}">{esc_html(q[3])}</a>' if len(q) > 3 and q[2] else ''
+            body += f'<h3>{esc_html(q[0])}</h3><p>{esc_html(a)}{link}</p>'
+            qa_all.append((q[0], a))
+    url = DOMAIN + '/faq.html'
+    ld = json.dumps({'@context': 'https://schema.org', '@type': 'FAQPage', 'url': url, 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in qa_all]}, ensure_ascii=False)
+    main = ('<div class="wrap" style="padding-top:var(--head-top)">\n'
+            '  <div class="crumbs" style="margin-bottom:34px"><a href="./">Главная</a>, Частые вопросы</div>\n'
+            '  <div class="doc">\n    <div class="label">Вопросы и ответы</div>\n'
+            f'    <h1>{esc_html(d["h1"])}</h1>\n    <p>{esc_html(d["intro"])}</p>\n'
+            f'    <ul>{toc}</ul>\n    {body}\n'
+            f'    <h2>Не нашли ответ?</h2><p>{esc_html(d["contact"])}</p>\n'
+            '  </div>\n</div>\n\n')
+    t = open(shell_path, encoding='utf-8').read()
+    t = re.sub(r'<div class="wrap" style="padding-top:var\(--head-top\)">.*?(?=<footer>)', lambda m: main, t, count=1, flags=re.S)
+    t = re.sub(r'<title>.*?</title>', '<title>' + esc_html(d['title']) + '</title>', t, count=1, flags=re.S)
+    t = re.sub(r'(<meta name="description" content=")[^"]*(")', lambda m: m.group(1) + esc_html(d['description']) + m.group(2), t, count=1)
+    for prop in ('og:title', 'twitter:title'):
+        t = re.sub(r'(<meta (?:property|name)="' + prop + r'" content=")[^"]*(")', lambda m: m.group(1) + esc_html(d['title']) + m.group(2), t, count=1)
+    for prop in ('og:description', 'twitter:description'):
+        t = re.sub(r'(<meta (?:property|name)="' + prop + r'" content=")[^"]*(")', lambda m: m.group(1) + esc_html(d['description']) + m.group(2), t, count=1)
+    # у оферты noindex и нет canonical — FAQ, наоборот, должна индексироваться
+    t = re.sub(r'<meta name="robots"[^>]*>\s*', '', t)
+    t = re.sub(r'<link rel="canonical"[^>]*>\s*', '', t)
+    t = re.sub(r'(<meta property="og:url" content=")[^"]*(")', lambda m: m.group(1) + url + m.group(2), t, count=1)
+    t = t.replace('</head>', '<link rel="canonical" href="' + url + '">\n<script type="application/ld+json">' + ld + '</script>\n</head>', 1)
+    open(os.path.join(OUT, 'faq.html'), 'w', encoding='utf-8').write(t)
+    drafts = sum(1 for g in d['groups'] for q in g['items'] if not q[1])
+    print(f'  FAQ: вопросов {len(qa_all)}, заготовок без ответа {drafts}')
+    return ['faq.html']
+
+
+
+# ---------------------------------------------------------------------------
+# Ширина и высота у картинок (05.10.2026)
+#
+# У 1177 из 1516 <img> не было width/height: браузер не знал пропорций до загрузки
+# файла, и страница «прыгала» (CLS — один из Core Web Vitals). Размеры берём из
+# самих файлов медиатеки; на отображение это не влияет — CSS задаёт ширину,
+# а атрибуты дают только пропорции для резерва места.
+# ---------------------------------------------------------------------------
+IMG_TAG = re.compile(r'<img\b[^>]*>')
+
+
+def img_dims():
+    try:
+        from PIL import Image
+    except ImportError:
+        print('  ! Pillow не установлен — размеры картинок не проставлены'); return
+    cache, done = {}, 0
+    for dp, _, fs in os.walk(OUT):
+        for f in fs:
+            if not f.endswith('.html'):
+                continue
+            p = os.path.join(dp, f)
+            t = open(p, encoding='utf-8').read()
+
+            def add(m):
+                nonlocal done
+                tag = m.group(0)
+                if ' width=' in tag or ' height=' in tag:
+                    return tag
+                src = re.search(r'\ssrc="([^"?#]+)', tag)
+                if not src or src.group(1).startswith(('http', 'data:', '/')):
+                    return tag
+                fp = os.path.normpath(os.path.join(dp, src.group(1)))
+                if fp not in cache:
+                    try:
+                        with Image.open(fp) as im:
+                            cache[fp] = im.size
+                    except Exception:
+                        cache[fp] = None
+                if not cache[fp]:
+                    return tag
+                done += 1
+                w, h = cache[fp]
+                return tag[:-1].rstrip('/').rstrip() + f' width="{w}" height="{h}">'
+
+            # картинки внутри <script> (шаблоны JS) не трогаем
+            parts = re.split(r'(<script\b.*?</script>)', t, flags=re.S)
+            n = ''.join(x if x.startswith('<script') else IMG_TAG.sub(add, x) for x in parts)
+            if n != t:
+                open(p, 'w', encoding='utf-8').write(n)
+    print(f'  размеры картинок: {done}')
+
+
+
+# ---------------------------------------------------------------------------
+# Журнал: разметка статьи, дата, картинка для соцсетей (05.10.2026)
+#
+# У статей не было ни даты, ни разметки Article, а og:image у всех был один
+# (череп трицератопса). Даты и главная картинка лежат в 09_admin/journal_meta.json;
+# здесь они попадают в JSON-LD Article + BreadcrumbList, og:image и подпись статьи.
+# ---------------------------------------------------------------------------
+MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа',
+          'сентября', 'октября', 'ноября', 'декабря']
+
+
+def ru_date(iso):
+    y, m, d = iso.split('-')
+    return f'{int(d)} {MONTHS[int(m) - 1]} {y}'
+
+
+MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+MONTHS_AR = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']
+BYLINE_WORDS = {'en': ('Published {p}', ', updated {m}'), 'zh': ('发布于 {p}', '，更新于 {m}'), 'ar': ('نُشر في {p}', '، وحُدّث في {m}')}
+
+
+def lang_date(iso, lang):
+    y, m, d = (int(x) for x in iso.split('-'))
+    return {'en': f'{d} {MONTHS_EN[m - 1]} {y}', 'zh': f'{y}年{m}月{d}日', 'ar': f'{d} {MONTHS_AR[m - 1]} {y}'}[lang]
+
+
+def journal_seo():
+    import json
+    src = os.path.join(ROOT, '09_admin', 'journal_meta.json')
+    if not os.path.exists(src):
+        print('  ! journal_meta.json нет — разметка статей не добавлена'); return
+    meta = json.load(open(src, encoding='utf-8'))
+    done = 0
+    for slug, m in meta.items():
+        p = os.path.join(OUT, slug + '.html')
+        if not os.path.exists(p):
+            continue
+        t = open(p, encoding='utf-8').read()
+        url = f'{DOMAIN}/{slug}.html'
+        h1 = re.search(r'<h1>(.*?)</h1>', t, re.S)
+        desc = re.search(r'<meta name="description" content="([^"]*)"', t)
+        headline = html.unescape(re.sub(r'<[^>]+>', '', h1.group(1))).strip() if h1 else slug
+        image = f'{DOMAIN}/shared/img/{m["image"]}' if m.get('image') else ''
+        org = {'@type': 'Organization', 'name': 'RELICTUM', 'url': DOMAIN + '/',
+               'logo': {'@type': 'ImageObject', 'url': DOMAIN + '/shared/brand/apple-touch-icon.png'}}
+        art = {'@context': 'https://schema.org', '@type': 'Article', 'headline': headline,
+               'description': html.unescape(desc.group(1)) if desc else '', 'inLanguage': 'ru',
+               'datePublished': m['published'], 'dateModified': m.get('modified') or m['published'],
+               'author': {'@type': 'Organization', 'name': 'Редакция журнала RELICTUM', 'url': DOMAIN + '/journal.html'},
+               'publisher': org, 'mainEntityOfPage': url}
+        if image:
+            art['image'] = [image]
+        bc = {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': 'RELICTUM', 'item': DOMAIN + '/'},
+            {'@type': 'ListItem', 'position': 2, 'name': 'Журнал', 'item': DOMAIN + '/journal.html'},
+            {'@type': 'ListItem', 'position': 3, 'name': headline, 'item': url}]}
+        ld = ''.join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + '</script>\n' for x in (art, bc))
+        t = t.replace('</head>', ld + '</head>', 1)
+        if image:
+            t = re.sub(r'(<meta (?:property="og:image"|name="twitter:image") content=")[^"]*(")', lambda mm: mm.group(1) + image + mm.group(2), t)
+        t = re.sub(r'(<meta property="og:type" content=")[^"]*(")', r'\1article\2', t, count=1)
+        when = 'Опубликовано ' + ru_date(m['published'])
+        if m.get('modified') and m['modified'] != m['published']:
+            when += ', обновлено ' + ru_date(m['modified'])
+        by = re.search(r'<div class="byline">(.*?)</div>', t)
+        if by:
+            t = t.replace(by.group(0), '<div class="byline">' + by.group(1) + ' · ' + when + '</div>', 1)
+            # перевод подписи: автор — по словарю, даты — на языке версии
+            who = PAGE_TR.get(html.unescape(by.group(1)).strip())
+            if who:
+                res = []
+                for lang, w in zip(('en', 'zh', 'ar'), who):
+                    pw, mw = BYLINE_WORDS[lang]
+                    tail = pw.format(p=lang_date(m['published'], lang))
+                    if m.get('modified') and m['modified'] != m['published']:
+                        tail += mw.format(m=lang_date(m['modified'], lang))
+                    res.append(w + ' · ' + tail)
+                PAGE_TR_DONE[html.unescape(by.group(1)).strip() + ' · ' + when] = res
+        open(p, 'w', encoding='utf-8').write(t)
+        done += 1
+    print(f'  журнал: разметка у {done} статей')
+
+
+
+# ---------------------------------------------------------------------------
+# WebP рядом с JPEG (05.10.2026)
+#
+# Фото медиатеки отдавались только в JPEG; WebP того же качества в среднем на 50%
+# легче (проверено на выборке медиатеки). Для каждой <img src="…/x.jpg"> из
+# статичной разметки сборщик кладёт рядом x.webp и оборачивает картинку в
+# <picture> с <source type="image/webp">: браузер без WebP возьмёт JPEG.
+# picture{display:contents} — обёртка не создаёт своего блока, вёрстка как была.
+# Картинки внутри <script> (шаблоны JS) и уже обёрнутые не трогаются.
+# ---------------------------------------------------------------------------
+WEBP_QUALITY = 80
+
+
+def webp_pictures():
+    try:
+        from PIL import Image
+    except ImportError:
+        print('  ! Pillow не установлен — WebP не собраны'); return
+    made, wrapped, cache = 0, 0, {}
+
+    def webp_for(jpg_path):
+        nonlocal made
+        if jpg_path in cache:
+            return cache[jpg_path]
+        wp = jpg_path[:-4] + '.webp'
+        ok = False
+        try:
+            if not os.path.exists(wp) or os.path.getmtime(wp) < os.path.getmtime(jpg_path):
+                with Image.open(jpg_path) as im:
+                    im.save(wp, 'WEBP', quality=WEBP_QUALITY, method=4)
+                made += 1
+            ok = os.path.getsize(wp) < os.path.getsize(jpg_path)   # WebP не легче — не используем
+        except Exception:
+            ok = False
+        cache[jpg_path] = ok
+        return ok
+
+    for dp, _, fs in os.walk(OUT):
+        for f in fs:
+            if not f.endswith('.html'):
+                continue
+            p = os.path.join(dp, f)
+            t = open(p, encoding='utf-8').read()
+            count = 0
+
+            def wrap(part):
+                nonlocal count
+                out, pos = [], 0
+                for m in IMG_TAG.finditer(part):
+                    tag = m.group(0)
+                    src = re.search(r'\ssrc="([^"?#]+\.jpe?g)(\?[^"]*)?"', tag, re.I)
+                    before = part[max(0, m.start() - 120):m.start()]
+                    if not src or src.group(1).startswith(('http', 'data:', '/')) or '<source' in before[-80:]:
+                        continue
+                    fp = os.path.normpath(os.path.join(dp, src.group(1)))
+                    if not os.path.exists(fp) or not webp_for(fp):
+                        continue
+                    web = re.sub(r'\.jpe?g$', '.webp', src.group(1), flags=re.I) + (src.group(2) or '')
+                    out.append(part[pos:m.start()])
+                    out.append(f'<picture><source type="image/webp" srcset="{web}">{tag}</picture>')
+                    pos = m.end()
+                    count += 1
+                out.append(part[pos:])
+                return ''.join(out)
+
+            parts = re.split(r'(<script\b.*?</script>)', t, flags=re.S)
+            n = ''.join(x if x.startswith('<script') else wrap(x) for x in parts)
+            if count:
+                n = n.replace('</head>', '<style>picture{display:contents}</style>\n</head>', 1)
+                open(p, 'w', encoding='utf-8').write(n)
+                wrapped += count
+    print(f'  WebP: файлов {made}, картинок в <picture> {wrapped}')
+
+
+
+# ---------------------------------------------------------------------------
+# Языковые версии /en/, /zh/, /ar/ (05.10.2026)
+#
+# Перевод в браузере (shared/i18n.js) поисковики не видят: адрес у страницы один,
+# русский. Здесь те же словари применяются при сборке (09_admin/i18n_static.py),
+# и переведённая страница получает свой адрес и hreflang-связку с русской.
+#
+# Версия создаётся только если после перевода русского осталось не больше
+# LANG_MAX_CYR видимого текста — полурусская страница хуже, чем никакая.
+# Поэтому набор страниц определяется словарём: пополнили словарь — при следующей
+# сборке на этом языке появятся новые страницы.
+#
+# <base href> указывает на папку русского оригинала: картинки, стили, скрипты и
+# ссылки на непереведённые страницы ведут туда же, куда у оригинала. Ссылки на
+# страницы, у которых есть перевод, переписываются на /<язык>/….
+# ---------------------------------------------------------------------------
+# Переводы текстов главной, подарков и посадочных лежат в 09_admin/i18n_pages.json: {"русская строка": [en, zh, ar]}.
+# Строки с {n}, {price_range}… — шаблоны ответов FAQ и подзаголовков: сборка подставляет в них цифры каталога
+# и кладёт в shared/i18n-pages.js уже готовые фразы на всех языках. Поменяли русский текст в landing_copy.json —
+# поправьте ключ и перевод в i18n_pages.json, иначе строка останется непереведённой.
+PAGE_TR_SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'i18n_pages.json')
+PAGE_TR = json.load(open(PAGE_TR_SRC, encoding='utf-8')) if os.path.exists(PAGE_TR_SRC) else {}
+PAGE_TR_DONE = {}
+PRICE_WORDS = {'ru': ('по запросу', 'от {a}', 'от {a} до {b}'), 'en': ('on request', 'from {a}', 'from {a} to {b}'),
+               'zh': ('面议', '{a} 起', '{a} 至 {b}'), 'ar': ('عند الطلب', 'من {a}', 'من {a} إلى {b}')}
+
+
+def price_range(pp, rub, lang='ru'):
+    w = PRICE_WORDS[lang]
+    if not pp:
+        return w[0]
+    if len(pp) == 1 or pp[0] == pp[-1]:
+        return w[1].format(a=rub(pp[0]))
+    return w[2].format(a=rub(pp[0]), b=rub(pp[-1]))
+
+
+def fmt_tr(tpl, f, pp=None, rub=None):
+    """tpl.format(**f) — и та же фраза на en/zh/ar в PAGE_TR_DONE, если шаблон переведён."""
+    ru = tpl.format(**f)
+    v = PAGE_TR.get(tpl)
+    if v and '{' in tpl:
+        res = []
+        for lang, t in zip(('en', 'zh', 'ar'), v):
+            g = dict(f)
+            if 'price_range' in f and rub:
+                g['price_range'] = price_range(pp, rub, lang)
+            res.append(t.format(**g))
+        PAGE_TR_DONE[ru] = res
+    return ru
+
+
+def write_page_i18n():
+    d = {k: v for k, v in PAGE_TR.items() if '{' not in k}
+    d.update(PAGE_TR_DONE)
+    open(os.path.join(OUT, 'shared', 'i18n-pages.js'), 'w', encoding='utf-8').write(
+        '/* Сгенерировано build_public_site.py из 09_admin/i18n_pages.json — не править руками */\n'
+        'window.RELICTUM_I18N_PAGES=' + json.dumps(d, ensure_ascii=False) + ';\n')
+    print(f'  переводы страниц: {len(d)} строк')
+
+
+LANG_MAX_CYR = 0.10
+LANG_SKIP = {'404.html', 'object.html', 'objects/exhibit.html', 'eras/index.html', 'account.html', 'cart.html', 'checkout.html'}
+
+
+def lang_versions():
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import i18n_static as I
+    try:
+        T = I.Translator(I.load_dicts(OUT))
+    except Exception as e:
+        print('  ! словари i18n не прочитаны — языковые версии не собраны:', e); return []
+    src = {}
+    for dp, _, fs in os.walk(OUT):
+        rel_dp = os.path.relpath(dp, OUT).replace(os.sep, '/')
+        if rel_dp.split('/')[0] in I.LANGS or rel_dp.startswith('shared'):
+            continue
+        for f in fs:
+            if not f.endswith('.html'):
+                continue
+            rel = (f if rel_dp == '.' else rel_dp + '/' + f)
+            if rel in LANG_SKIP or rel.startswith(('yandex_', 'google')):
+                continue
+            t = open(os.path.join(dp, f), encoding='utf-8').read()
+            if re.search(r'<meta name="robots" content="[^"]*noindex', t):
+                continue
+            src[rel] = t
+    done = {lang: {} for lang in I.LANGS}
+    for lang in I.LANGS:
+        for rel, t in src.items():
+            o = T.page(t, lang)
+            if I.visible_share(o) <= LANG_MAX_CYR:
+                done[lang][rel] = o
+    url = lambda lang, rel: DOMAIN + '/' + ('' if lang == 'ru' else lang + '/') + ('' if rel == 'index.html' else rel)
+
+    def alternates(rel):
+        tags = [f'<link rel="alternate" hreflang="ru" href="{url("ru", rel)}">']
+        tags += [f'<link rel="alternate" hreflang="{I.HREFLANG[l]}" href="{url(l, rel)}">' for l in I.LANGS if rel in done[l]]
+        tags.append(f'<link rel="alternate" hreflang="x-default" href="{url("ru", rel)}">')
+        return '\n'.join(tags) + '\n'
+
+    def meta_tr(t, lang):
+        def one(m):
+            o = T.tr(html.unescape(m.group(2)), lang)
+            return m.group(1) + (html.escape(o, quote=True) if o else m.group(2)) + m.group(3)
+        t = re.sub(r'(<title>)(.*?)(</title>)', one, t, count=1, flags=re.S)
+        t = re.sub(r'(<meta (?:name="description"|property="og:title"|property="og:description"|name="twitter:title"|name="twitter:description") content=")([^"]*)(")', one, t)
+        def ld(m):
+            try:
+                d = json.loads(m.group(2))
+            except Exception:
+                return m.group(0)
+            def walk(x):
+                if isinstance(x, dict):
+                    return {k: (T.tr(v, lang) or v) if k in ('name', 'headline', 'description', 'category', 'text') and isinstance(v, str) else walk(v) for k, v in x.items()}
+                if isinstance(x, list):
+                    return [walk(v) for v in x]
+                return x
+            d = walk(d)
+            if isinstance(d, dict) and d.get('inLanguage') == 'ru':
+                d['inLanguage'] = 'zh-Hans' if lang == 'zh' else lang
+            return m.group(1) + json.dumps(d, ensure_ascii=False) + m.group(3)
+        return re.sub(r'(<script type="application/ld\+json">)(.*?)(</script>)', ld, t, flags=re.S)
+
+    made = []
+    for lang in I.LANGS:
+        have = done[lang]
+        for rel, t in have.items():
+            folder = rel.rsplit('/', 1)[0] + '/' if '/' in rel else ''
+            me = url(lang, rel)
+
+            def href(m):
+                v = m.group(2)
+                if v.startswith('#'):
+                    return m.group(1) + me + v + m.group(3)
+                if v.startswith(('http', '/', 'mailto:', 'tel:', 'javascript:', 'data:')):
+                    return m.group(0)
+                path, tail = re.match(r'([^?#]*)(.*)', v).groups()
+                tgt = os.path.normpath(folder + path).replace(os.sep, '/') if path else rel
+                if tgt.endswith('/') or tgt in ('.', ''):
+                    tgt = (tgt.rstrip('/') + '/index.html').lstrip('./') or 'index.html'
+                if tgt in have:
+                    return m.group(1) + url(lang, tgt) + tail + m.group(3)
+                return m.group(0)
+            t = re.sub(r'(\shref=")([^"]*)(")', href, t)
+            t = meta_tr(t, lang)
+            t = re.sub(r'<html lang="[^"]*"', '<html lang="' + ('zh-CN' if lang == 'zh' else lang) + '" data-rl-lang="' + lang + '"'
+                       + (' dir="rtl"' if lang == 'ar' else ''), t, count=1)
+            t = re.sub(r'<link rel="canonical"[^>]*>\s*', '', t)
+            t = re.sub(r'(<meta property="og:url" content=")[^"]*(")', lambda m: m.group(1) + me + m.group(2), t, count=1)
+            t = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + f'\n<base href="/{folder}">', t, count=1)
+            t = t.replace('</head>', f'<link rel="canonical" href="{me}">\n' + alternates(rel) + '</head>', 1)
+            out = os.path.join(OUT, lang, rel)
+            os.makedirs(os.path.dirname(out), exist_ok=True)
+            open(out, 'w', encoding='utf-8').write(t)
+            made.append(lang + '/' + rel)
+    # русским оригиналам — та же hreflang-связка
+    for rel in src:
+        if any(rel in done[l] for l in I.LANGS):
+            p = os.path.join(OUT, rel)
+            t = open(p, encoding='utf-8').read()
+            open(p, 'w', encoding='utf-8').write(t.replace('</head>', alternates(rel) + '</head>', 1))
+    print('  языковые версии: ' + ', '.join(f'{l} — {len(done[l])}' for l in I.LANGS) + f' (порог русского текста {int(LANG_MAX_CYR * 100)}%)')
     return made
 
 
@@ -751,7 +1378,8 @@ def write_extras(pages):
             f'- [Интерьеры]({DOMAIN}/interiors.html): размещение объектов в доме и офисе',
             f'- [Журнал]({DOMAIN}/journal.html): статьи о палеонтологии и метеоритах',
             f'- [Пресса]({DOMAIN}/press.html): публикации о доме',
-            f'- [Галерея]({DOMAIN}/maison.html): адрес и часы работы', '',
+            f'- [Галерея]({DOMAIN}/maison.html): адрес и часы работы',
+            f'- [Частые вопросы]({DOMAIN}/faq.html): подлинность, паспорт экспоната, цены, оплата, доставка, возврат', '',
             '## Объекты коллекции']
     llms += [f'- [{pg["title"].replace(" — RELICTUM", "")}]({pg["url"]}): {pg["description"]}' for pg in lots]
     open(os.path.join(OUT, 'llms.txt'), 'w', encoding='utf-8').write('\n'.join(llms) + '\n')
@@ -998,6 +1626,11 @@ RewriteRule ^(.*)$ https://relictum.gallery/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
+# главная одна — «/»; /index.html (и /eras/index.html и т.п.) уводим на папку.
+# THE_REQUEST — чтобы не зациклить внутреннюю отдачу index.html для «/».
+RewriteCond %{THE_REQUEST} \s/((?:[^\s?]*/)?)index\.html[\s?]
+RewriteRule ^ https://relictum.gallery/%1 [R=301,L]
+
 # Ссылка на лот в мессенджере: /objects/exhibit.html?id=<slug> внутренне отдаёт
 # визитку /objects/<slug>.html — тот же шаблон, но с фото и описанием лота в
 # OG-тегах (мессенджеры не выполняют JS и читают только статичную разметку).
@@ -1168,7 +1801,7 @@ function node_render_page($t, $pg) {
     $t = node_meta($t, '/(<meta name="twitter:description" content=")[^"]*(")/', $desc);
     $t = node_meta($t, '/(<meta name="twitter:image" content=")[^"]*(")/', $img);
     $head = '<script>window.RL_FORCE_ID=' . json_encode((string)$pg['id']) . ';</script>' . "\n" . (isset($pg['jsonld']) ? $pg['jsonld'] . "\n" : '')
-          . (!empty($pg['noindex']) ? '<meta name="robots" content="noindex,nofollow">' . "\n" : '');
+          . (!empty($pg['noindex']) ? '<meta name="robots" content="noindex,follow">' . "\n" : '');
     $t = str_replace('</head>', $head . '</head>', $t);
     if (isset($pg['ssr'])) $t = preg_replace('/<main id="app">.*?<\/main>/s', '<main id="app">' . str_replace(array('\\', '$'), array('\\\\', '\$'), $pg['ssr']) . '</main>', $t, 1);
     return $t;

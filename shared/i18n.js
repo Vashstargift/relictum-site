@@ -9,6 +9,22 @@ var LABEL={ru:'RU',en:'EN',zh:'中文',ar:'عربي'};
 
 /* ---------- UI, навигация, секции ---------- */
 var D={
+"Пресса":["Press", "媒体报道", "الصحافة"],
+"Скелеты":["Skeletons", "骨架", "الهياكل العظمية"],
+"Черепа":["Skulls", "头骨", "الجماجم"],
+"Частые вопросы":["FAQ", "常见问题", "الأسئلة الشائعة"],
+"Подарки и интерьер":["Gifts and interiors", "礼品与室内陈设", "هدايا وديكور"],
+"Связаться":["Contact", "联系我们", "تواصل معنا"],
+"Поиск по каталогу":["Search the catalogue", "搜索目录", "البحث في الكتالوج"],
+"Артикул":["Ref.", "编号", "الرمز"],
+"Каталог RELICTUM":["RELICTUM catalogue", "RELICTUM 目录", "كتالوج RELICTUM"],
+"Продан":["Sold", "已售", "مباع"],
+"Метеорит Агоудал":["Agoudal meteorite", "阿古达尔陨石", "نيزك أغودال"],
+"Сфера из зуба мамонта":["Mammoth tooth sphere", "猛犸象牙齿球", "كرة من سن الماموث"],
+"Палласиты":["Pallasites", "橄榄陨铁", "البالاسيت"],
+"Бивни мамонта":["Mammoth tusks", "猛犸象牙", "أنياب الماموث"],
+"Челябинский метеорит":["Chelyabinsk meteorite", "车里雅宾斯克陨石", "نيزك تشيليابينسك"],
+"Зубы и когти":["Teeth and claws", "牙齿与爪", "أسنان ومخالب"],
 "Каталог":["Catalogue","收藏目录","الكتالوج"],
 "Интерьеры":["Interiors","空间陈列","الديكور الداخلي"],
 "Экспедиции":["Expeditions","科考探险","البعثات"],
@@ -21,6 +37,7 @@ var D={
 "Коллекции":["Collections","收藏系列","المجموعات"],
 "Контакты":["Contacts","联系方式","اتصل بنا"],
 "Роскошь вне времени":["Luxury beyond time","超越时间的奢华","فخامة تتجاوز الزمن"],
+"Скелеты динозавров, метеориты и минералы":["Dinosaur skeletons, meteorites and minerals","恐龙骨架、陨石与矿物","هياكل الديناصورات والنيازك والمعادن"],
 "Смотреть":["View","查看","عرض"],
 "Листайте":["Scroll","滑动浏览","مرر"],
 "Загрузка…":["Loading…","加载中…","جار التحميل…"],
@@ -549,6 +566,20 @@ var D={
 
 /* ---------- фрагменты: единицы, локалитеты, служебные слова ---------- */
 var F={
+"Галерея редких экспонатов из глубины времени":["A gallery of rare exhibits from deep time", "来自时间深处的珍稀展品画廊", "معرض لقطع نادرة من أعماق الزمن"],
+"Провинция Ляонин":["Liaoning Province", "辽宁省", "مقاطعة لياونينغ"],
+"Юньнань":["Yunnan", "云南", "يونان"],
+"Алтайские горы":["Altai Mountains", "阿尔泰山", "جبال ألتاي"],
+"Ленинградская область":["Leningrad Oblast", "列宁格勒州", "مقاطعة لينينغراد"],
+"Башкортостан":["Bashkortostan", "巴什科尔托斯坦", "باشكورتوستان"],
+"Татарстан":["Tatarstan", "鞑靼斯坦", "تتارستان"],
+"Липецкая область":["Lipetsk Oblast", "利佩茨克州", "مقاطعة ليبيتسك"],
+"Перекатное месторождение":["Perekatnoye deposit", "佩列卡特诺耶矿床", "رواسب بيريكاتنويه"],
+"ТЦ «Гименей»":["Gimenei shopping centre", "吉梅涅伊购物中心", "مركز جيمينيي التجاري"],
+"Неоген":["Neogene", "新近纪", "النيوجين"],
+"толщина":["thickness", "厚", "السماكة"],
+"высота":["height", "高", "الارتفاع"],
+"Рама":["Frame", "框", "الإطار"],
 "общий вес пары":["combined weight of the pair", "一对总重", "الوزن الإجمالي للزوج"],
 "40 × 6 × 50 см (Д × Ш × В)":["40 × 6 × 50 cm (L × W × H)", "40 × 6 × 50 厘米（长 × 宽 × 高）", "40 × 6 × 50 سم (الطول × العرض × الارتفاع)"],
 "Суммарный вес":["Total weight", "总重", "الوزن الإجمالي"],
@@ -607,7 +638,42 @@ var F={
 "см":["cm","厘米","سم"],
 "мм":["mm","毫米","مم"],
 "кг":["kg","公斤","كغ"],
-"шт":["pcs","件","قطعة"]
+"шт":["pcs","件","قطعة"],
+"Объектов":["Objects", "藏品数", "عدد القطع"],
+"в интерьере":["in an interior", "陈设效果", "في الديكور"],
+"формация Тяоцзишань":["Tiaojishan Formation", "髫髻山组", "تكوين تياوجيشان"],
+"авторская модель":["author's model", "原创模型", "نموذج فني"],
+"Прообраз":["Prototype", "原型", "النموذج الأصلي"],
+"Реконструкция по научным данным":["Reconstruction based on scientific data", "依据科学资料复原", "إعادة بناء وفق بيانات علمية"],
+"зона вечной мерзлоты":["permafrost zone", "永久冻土带", "منطقة التربة الصقيعية"],
+"Река Чинге":["Chinge River", "钦格河", "نهر تشينغي"],
+"Район Адрар":["Adrar region", "阿德拉尔地区", "منطقة أدرار"],
+"Алжир":["Algeria", "阿尔及利亚", "الجزائر"],
+"Сарановское месторождение":["Saranovskoye deposit", "萨拉诺夫斯科耶矿床", "رواسب سارانوفسكويه"],
+"Пермский край":["Perm Krai", "彼尔姆边疆区", "إقليم بيرم"],
+"Атласские горы":["Atlas Mountains", "阿特拉斯山脉", "جبال الأطلس"],
+"Новосибирская область":["Novosibirsk Oblast", "新西伯利亚州", "مقاطعة نوفوسيبيرسك"],
+"Анкаш":["Áncash", "安卡什", "أنكاش"],
+"Риу-Гранди-ду-Сул":["Rio Grande do Sul", "南里奥格兰德", "ريو غراندي دو سول"],
+"Артигас":["Artigas", "阿蒂加斯", "أرتيغاس"],
+"Хунань":["Hunan", "湖南", "هونان"],
+"Минас-Жерайс":["Minas Gerais", "米纳斯吉拉斯", "ميناس جيرايس"],
+"Бассейн Улед-Абдун":["Ouled Abdoun Basin", "乌莱德阿卜敦盆地", "حوض أولاد عبدون"],
+"Хурибга":["Khouribga", "胡里卜盖", "خريبكة"],
+"по наружной дуге":["along the outer curve", "沿外弧", "على طول القوس الخارجي"],
+"Около":["About", "约", "نحو"],
+"пара":["pair", "一对", "زوج"],
+"раковины":["of the shell", "壳", "للصدفة"],
+"каждого шара":["of each sphere", "每颗球", "لكل كرة"],
+"шесть шаров вместе":["six spheres together", "六颗合计", "ست كرات معاً"],
+"Семь индивидуалов на общей базе":["Seven individuals on a shared base", "七块完整陨石同置一座", "سبع قطع كاملة على قاعدة واحدة"],
+"семь индивидуалов":["seven individuals", "七块完整陨石", "سبع قطع كاملة"],
+"Зуб спинозавра в белой раме":["Spinosaurus tooth in a white frame", "白框棘龙牙齿", "سن سبينوصور في إطار أبيض"],
+"Регмаглиптовый Сеймчан":["Seymchan with regmaglypts", "带气印的塞姆昌陨石", "سيمتشان بآثار التذرية"],
+"Метеорит Маслянино":["Maslyanino meteorite", "马斯利亚尼诺陨石", "نيزك ماسليانينو"],
+"Пара аммонитов на плите":["Pair of ammonites on a slab", "板上的一对菊石", "زوج أمونيت على لوح"],
+"формация":["Formation","组","تكوين"],
+"прообраз":["prototype","原型","النموذج الأصلي"]
 };
 
 
@@ -645,7 +711,11 @@ function heads(root,lang){
 
 /* ---------- движок ---------- */
 var IDX={en:0,zh:1,ar:2};
-function cur(){ try{ return localStorage.getItem('relictum_lang')||'ru'; }catch(e){ return 'ru'; } }
+function cur(){ var f=document.documentElement.getAttribute('data-rl-lang'); if(f) return f;
+  try{ return localStorage.getItem('relictum_lang')||'ru'; }catch(e){ return 'ru'; } }
+/* статичная языковая версия страницы (/en/…, /zh/…, /ar/…) — из hreflang в <head> */
+function altUrl(lang){ var l=document.querySelector('link[rel="alternate"][hreflang="'+({ru:'ru',en:'en',zh:'zh-Hans',ar:'ar'})[lang]+'"]'); /* путь без домена — переключение работает и на тестовой копии сайта */
+  return l?l.getAttribute('href').replace(/^https?:\/\/[^\/]+/,''):null; }
 var CYR=/[А-Яа-яЁё]/;
 var FRAGS=null;
 var FRAG_OK=("Космос|Земля|Жизнь|Монументы|"+
@@ -677,6 +747,7 @@ function buildFrags(){
   return FRAGS;
 }
 var DL={};
+var GRAM=['g','克','غ'];
 function tr(s,lang){
   var t=s.trim(); if(!t) return null;
   var hit=D[t]||DL[t];
@@ -694,6 +765,9 @@ function tr(s,lang){
     out=out.replace(re,function(m,p1){ return p1+val; });
     changed=true;
   }
+  /* граммы: «1 267 г», «89 г, …» — но не «1967 г.» */
+  var g2=out.replace(/(\d) г(?=$|[,;)])/g,'$1 '+GRAM[IDX[lang]]);
+  if(g2!==out){ out=g2; changed=true; }
   return changed?out:null;
 }
 function walk(root,lang){
@@ -726,6 +800,12 @@ function apply(lang){
   document.documentElement.dir=(lang==='ar')?'rtl':'ltr';
   heads(document.body,lang);
   walk(document.body,lang);
+  /* заголовок вкладки: карточка лота переписывает его скриптом по-русски */
+  if(CYR.test(document.title)) document.__ruTitle=document.title;
+  if(document.__ruTitle){
+    if(lang==='ru'){ if(document.title!==document.__ruTitle) document.title=document.__ruTitle; }
+    else { var tt=tr(document.__ruTitle,lang); if(tt && document.title!==tt) document.title=tt; }
+  }
   markSwitch(lang);
   applying=false;
 }
@@ -734,20 +814,27 @@ function ensureLots(cb){
   if(lotsState===2){ cb&&cb(); return; }
   if(lotsState===1) return;
   lotsState=1;
-  var sc=document.createElement('script');
-  sc.src=SELF.replace(/i18n\.js.*$/,'i18n-lots.js');
-  sc.onload=function(){
+  /* тексты лотов и тексты страниц (главная, подарки, посадочные) — два файла, ждём оба */
+  var q=(SELF.match(/\?.*$/)||[''])[0], left=2;
+  function done(){
+    if(--left) return;
     lotsState=2;
-    var L=window.RELICTUM_I18N_LOTS;
-    if(L){ for(var k in L) if(!DL[k]) DL[k]=L[k]; }
+    [window.RELICTUM_I18N_PAGES, window.RELICTUM_I18N_LOTS].forEach(function(L){
+      if(L){ for(var k in L) if(!DL[k]) DL[k]=L[k]; }
+    });
     cb&&cb();
-  };
-  sc.onerror=function(){ lotsState=2; cb&&cb(); };
-  document.head.appendChild(sc);
+  }
+  ['i18n-lots.js','i18n-pages.js'].forEach(function(f){
+    var sc=document.createElement('script');
+    sc.src=SELF.replace(/i18n\.js.*$/,f)+q;
+    sc.onload=done; sc.onerror=done;
+    document.head.appendChild(sc);
+  });
 }
 function set(lang){
   if(LANGS.indexOf(lang)<0) return;
   try{ localStorage.setItem('relictum_lang',lang); }catch(e){}
+  var u=altUrl(lang); if(u && u!==location.pathname){ location.href=u; return; }
   if(lang!=='ru'){ ensureLots(function(){ apply(lang); }); }
   apply(lang);
 }

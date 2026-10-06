@@ -1,0 +1,82 @@
+{
+ "journal-ammonite": {
+  "published": "2026-07-07",
+  "modified": "2026-10-05",
+  "image": "journal_ammonite_macro.jpg"
+ },
+ "journal-apex-stegosaurus": {
+  "published": "2026-10-05",
+  "modified": "2026-10-05",
+  "image": "int_ph_anchiornis.jpg"
+ },
+ "journal-cabinet": {
+  "published": "2026-07-08",
+  "modified": "2026-10-05",
+  "image": "blog_ammonite_interior.jpg"
+ },
+ "journal-ceratosaurus": {
+  "published": "2026-10-05",
+  "modified": "2026-10-05",
+  "image": "int_ph_psittacosaurus_skeleton.jpg"
+ },
+ "journal-chelyabinsk": {
+  "published": "2026-10-05",
+  "modified": "2026-10-05",
+  "image": "int_ph_chelyabinsk1.jpg"
+ },
+ "journal-fakes": {
+  "published": "2026-07-08",
+  "modified": "2026-10-05",
+  "image": "blog_fakes.jpg"
+ },
+ "journal-gus-trex": {
+  "published": "2026-10-05",
+  "modified": "2026-10-05",
+  "image": "int_ph_triceratops.jpg"
+ },
+ "journal-kemkem": {
+  "published": "2026-07-08",
+  "modified": "2026-10-05",
+  "image": "expedition_morocco.jpg"
+ },
+ "journal-mammoth-fauna": {
+  "published": "2026-07-08",
+  "modified": "2026-10-05",
+  "image": "blog_mammoth_fauna.jpg"
+ },
+ "journal-mammoth-tusk": {
+  "published": "2026-10-05",
+  "modified": "2026-10-05",
+  "image": "int_ph_tusks.jpg"
+ },
+ "journal-mars-meteorite": {
+  "published": "2026-10-05",
+  "modified": "2026-10-05",
+  "image": "int_ph_moon.jpg"
+ },
+ "journal-megalodon": {
+  "published": "2026-07-08",
+  "modified": "2026-10-05",
+  "image": "prod_megalodon_tooth.jpg"
+ },
+ "journal-meteorite": {
+  "published": "2026-07-07",
+  "modified": "2026-10-05",
+  "image": "journal_meteor_sky.jpg"
+ },
+ "journal-meteorite-guide": {
+  "published": "2026-07-08",
+  "modified": "2026-10-05",
+  "image": "blog_meteorites.jpg"
+ },
+ "journal-preparation": {
+  "published": "2026-07-08",
+  "modified": "2026-10-05",
+  "image": "trilobite_raw.jpg"
+ },
+ "journal-provenance": {
+  "published": "2026-07-07",
+  "modified": "2026-09-10",
+  "image": "atelier_gloves.jpg"
+ }
+}
