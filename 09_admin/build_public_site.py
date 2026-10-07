@@ -45,7 +45,7 @@ COPY = [
     ('02_site_v1_gallery', '', showcase),
     ('16_product_promos', 'objects', html_and_js),
     ('15_concepts', 'eras', concepts),
-    ('14_provenance', 'provenance', html_only),
+    # ('14_provenance', 'provenance', html_only),   # 07.10.2026: страница-макет паспорта снята по решению владельца
 ]
 
 # правила переписывания ссылок по «этажам» публичного сайта
@@ -610,7 +610,7 @@ def write_collections(stamp):
         if pitch_bottom:  # у продающей страницы свой блок сервиса — общий «Сервис дома» дублировал бы его
             t = re.sub(r'<!-- СЕРВИС ДОМА -->\s*<section class="band-dark">.*?</section>\s*', '', t, count=1, flags=re.S)
         if not related:   # на хабе все подборки уже плитками — «Смотрите также» лишний
-            t = re.sub(r'\s*<div class="label reveal" style="margin-top:40px">Смотрите также</div>\s*<ul class="lp-chips reveal"></ul>', '', t, count=1)
+            t = re.sub(r'\s*<div class="lp-more">\s*<div class="label reveal">Смотрите также</div>\s*<ul class="lp-chips reveal"></ul>\s*</div>', '', t, count=1)
         open(os.path.join(OUT, slug + '.html'), 'w', encoding='utf-8').write(t)
         made.append(slug + '.html')
 
@@ -1661,6 +1661,18 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 # THE_REQUEST — чтобы не зациклить внутреннюю отдачу index.html для «/».
 RewriteCond %{THE_REQUEST} \s/((?:[^\s?]*/)?)index\.html[\s?]
 RewriteRule ^ https://relictum.gallery/%1 [R=301,L]
+
+# старые визитки лотов (до перехода на /objects/<номер>-<слаг>.html) — на нынешние страницы; черновик «Страты» v2 снят (07.10.2026)
+RewriteRule ^objects/mammoth-tusks\.html$ https://relictum.gallery/objects/0607-mammuthus-primigenius.html [R=301,L]
+RewriteRule ^objects/rhino-skull\.html$ https://relictum.gallery/objects/0608-coelodonta-antiquitatis.html [R=301,L]
+RewriteRule ^objects/bothriolepis\.html$ https://relictum.gallery/objects/0209-bothriolepis-sp.html [R=301,L]
+RewriteRule ^objects/lunar-frame\.html$ https://relictum.gallery/objects/0105-lunar-meteorite.html [R=301,L]
+RewriteRule ^objects/meteorite-chinge\.html$ https://relictum.gallery/objects/0104-chinga-iron.html [R=301,L]
+RewriteRule ^objects/meteorite-dronino\.html$ https://relictum.gallery/objects/0103-dronino-iron.html [R=301,L]
+RewriteRule ^objects/sabertooth-skull\.html$ https://relictum.gallery/objects/0208-machairodus-sp.html [R=301,L]
+RewriteRule ^eras/strata-v2\.html$ https://relictum.gallery/eras/strata.html [R=301,L]
+# страница-макет паспорта снята 07.10.2026 — старые ссылки ведут на раздел о документах в «Частых вопросах»
+RewriteRule ^provenance(/.*)?$ https://relictum.gallery/faq.html#podlinnost [R=301,L,NE]
 
 # Ссылка на лот в мессенджере: /objects/exhibit.html?id=<slug> внутренне отдаёт
 # визитку /objects/<slug>.html — тот же шаблон, но с фото и описанием лота в
