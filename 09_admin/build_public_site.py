@@ -1507,8 +1507,26 @@ def write_extras(pages):
             f'- [Пресса]({DOMAIN}/press.html): публикации о доме',
             f'- [Галерея]({DOMAIN}/maison.html): адрес и часы работы',
             f'- [Частые вопросы]({DOMAIN}/faq.html): подлинность, паспорт экспоната, цены, оплата, доставка, возврат', '',
-            '## Объекты коллекции']
-    llms += [f'- [{pg["title"].replace(" — RELICTUM", "")}]({pg["url"]}): {pg["description"]}' for pg in lots]
+            '']
+    # 07.10.2026: разделы коллекции (посадочные) и статьи журнала — главное, что цитирует нейропоиск
+    try:
+        lc = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'landing_copy.json'), encoding='utf-8'))
+        secs = [(s, lc[s]) for s in sorted(lc) if s != 'podarki' and os.path.exists(os.path.join(OUT, s + '.html'))]
+        if secs:
+            llms += ['## Разделы коллекции и подборки'] + [f'- [{c.get("h1", s)}]({DOMAIN}/{s}.html): {c.get("description", "")}' for s, c in secs] + ['']
+    except Exception as e:
+        print('  ! llms.txt: посадочные не добавлены —', e)
+    arts = []
+    for f in sorted(os.listdir(OUT)):
+        if f.startswith('journal-') and f.endswith('.html'):
+            b = open(os.path.join(OUT, f), encoding='utf-8').read()
+            tt = re.search(r'<title>(.*?)</title>', b, re.S); dd = re.search(r'<meta name="description" content="([^"]*)"', b)
+            if tt:
+                arts.append(f'- [{html.unescape(tt.group(1)).split(" — Журнал")[0].strip()}]({DOMAIN}/{f}): {html.unescape(dd.group(1)) if dd else ""}')
+    if arts:
+        llms += ['## Журнал'] + arts + ['']
+    llms += ['## Объекты коллекции']
+    llms += [f'- [{re.sub(r",? ?RELICTUM$", "", pg["title"].replace(" — RELICTUM", "")).rstrip(" ,")}]({pg["url"]}): {pg["description"]}' for pg in lots]
     open(os.path.join(OUT, 'llms.txt'), 'w', encoding='utf-8').write('\n'.join(llms) + '\n')
 
     open(os.path.join(OUT, 'robots.txt'), 'w', encoding='utf-8').write(

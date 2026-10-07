@@ -14,10 +14,10 @@
 "从史前巨兽的完整骨架到地外物质的珍品。探索由数百万年演化雕琢、塑造了我们世界面貌的独特自然史藏品。",
 "من الهياكل الكاملة لعمالقة ما قبل التاريخ إلى قطع من مادة خارج الأرض. استكشف قطعاً فريدة من التاريخ الطبيعي نحتتها ملايين السنين من التطور وشكّلت ملامح عالمنا."
 ],
-"Подлинные метеориты, фрагменты Луны и Марса возрастом свыше 4,5 миллиардов лет. Самые редкие и недосягаемые экспонаты во Вселенной, доступные для вашей коллекции.": [
-"Genuine meteorites, fragments of the Moon and Mars more than 4.5 billion years old. The rarest and most unreachable objects in the Universe, available for your collection.",
-"真品陨石，以及逾45亿年历史的月球与火星碎片。宇宙中最稀有、最遥不可及的藏品，现可纳入您的收藏。",
-"نيازك أصلية وشظايا من القمر والمريخ يزيد عمرها على 4.5 مليار سنة. أندر القطع وأبعدها منالاً في الكون، متاحة لمجموعتك."
+"Подлинные метеориты — вещество ранней Солнечной системы возрастом около 4,5 миллиарда лет, фрагменты Луны и Марса. Самые редкие и недосягаемые экспонаты во Вселенной, доступные для вашей коллекции.": [
+"Genuine meteorites — matter of the early Solar System around 4.5 billion years old, fragments of the Moon and Mars. The rarest and most unreachable objects in the Universe, available for your collection.",
+"真品陨石——约45亿年历史的早期太阳系物质，以及月球与火星碎片。宇宙中最稀有、最遥不可及的藏品，现可纳入您的收藏。",
+"نيازك أصلية — مادة من النظام الشمسي المبكر عمرها نحو 4.5 مليار سنة، وشظايا من القمر والمريخ. أندر القطع وأبعدها منالاً في الكون، متاحة لمجموعتك."
 ],
 "Каждый экспонат коллекции проходит экспертизу и получает сертификат подлинности от профильных экспертов с научными характеристиками и гарантией аутентичности.": [
 "Every exhibit in the collection is examined and receives a certificate of authenticity from specialist experts, with scientific characteristics and a guarantee of authenticity.",
@@ -704,10 +704,10 @@
 "陨石作礼 · 莫斯科 | RELICTUM",
 "نيزك هدية — موسكو | RELICTUM"
 ],
-"Сеймчан, Чинге и лунный метеорит с историей падения. Метеорит в подарок: покажем вживую в галерее, упакуем и привезём к нужной дате.": [
-"Seymchan, Chinge and a lunar meteorite with a story of its fall. A meteorite as a gift: we will show it at the gallery, pack it and deliver it by the date you need.",
-"塞姆昌、钦格以及附坠落故事的月球陨石。以陨石作礼：画廊现场展示，精心包装，按时送达。",
-"سيمتشان وتشينغي ونيزك قمري بقصة سقوطه. نيزك هدية: نعرضه في المعرض ونغلّفه ونوصله في الموعد المطلوب."
+"Сеймчан, Чинге и лунный метеорит с историей находки. Метеорит в подарок: покажем вживую в галерее, упакуем и привезём к нужной дате.": [
+"Seymchan, Chinge and a lunar meteorite with a story of its find. A meteorite as a gift: we will show it at the gallery, pack it and deliver it by the date you need.",
+"塞姆昌、钦格以及附发现故事的月球陨石。以陨石作礼：画廊现场展示，精心包装，按时送达。",
+"سيمتشان وتشينغي ونيزك قمري بقصة العثور عليه. نيزك هدية: نعرضه في المعرض ونغلّفه ونوصله في الموعد المطلوب."
 ],
 "Метеорит в подарок": [
 "A meteorite as a gift",
@@ -829,10 +829,10 @@
 "如何辨别真陨石？",
 "كيف تميّز النيزك الحقيقي؟"
 ],
-"У большинства метеоритов есть кора плавления — тонкая тёмная корка от прохождения атмосферы — и регмаглипты, вмятины, похожие на отпечатки пальцев. Железные метеориты заметно тяжелее земных камней того же размера и притягивают магнит, а на протравленном срезе видны видманштеттеновы фигуры — узор, который не возникает в земных породах.": [
-"Most meteorites have a fusion crust — a thin dark skin formed during passage through the atmosphere — and regmaglypts, depressions that look like thumbprints. Iron meteorites are noticeably heavier than terrestrial rocks of the same size and attract a magnet, and an etched slice shows Widmanstätten patterns — a structure that does not form in terrestrial rocks.",
-"大多数陨石都有熔壳——穿越大气时形成的一层薄薄的深色外壳——以及形似指印的气印。铁陨石明显比同等大小的地球岩石更重，能吸附磁铁，蚀刻后的切面可见维德曼施泰滕纹——地球岩石中不会形成的图案。",
-"لمعظم النيازك قشرة انصهار — طبقة رقيقة داكنة تتكون أثناء عبور الغلاف الجوي — وآثار تذرية تشبه بصمات الأصابع. والنيازك الحديدية أثقل بوضوح من صخور الأرض المماثلة حجماً وتجذب المغناطيس، وتظهر على شريحتها المحفورة أشكال فيدمانشتاتن — نمط لا يتكون في صخور الأرض."
+"У свежих метеоритов есть кора плавления — тонкая тёмная корка от прохождения атмосферы, а у многих, особенно железных, — регмаглипты, вмятины, похожие на отпечатки пальцев. Железные метеориты заметно тяжелее земных камней того же размера и притягивают магнит, а на протравленном срезе видны видманштеттеновы фигуры — узор, который не возникает в земных породах.": [
+"Fresh meteorites have a fusion crust — a thin dark skin formed during passage through the atmosphere — and many, especially iron ones, have regmaglypts, depressions that look like thumbprints. Iron meteorites are noticeably heavier than terrestrial rocks of the same size and attract a magnet, and an etched slice shows Widmanstätten patterns — a pattern that does not form in terrestrial rocks.",
+"新鲜陨石都有熔壳——穿越大气时形成的一层薄薄的深色外壳——许多陨石，尤其是铁陨石，还带有形似指印的气印。铁陨石明显比同等大小的地球岩石更重，能吸附磁铁，蚀刻后的切面可见维德曼施泰滕纹——地球岩石中不会形成的图案。",
+"للنيازك الحديثة قشرة انصهار — طبقة رقيقة داكنة تتكون أثناء عبور الغلاف الجوي — وللكثير منها، ولا سيما الحديدية، آثار تذرية تشبه بصمات الأصابع. والنيازك الحديدية أثقل بوضوح من صخور الأرض المماثلة حجماً وتجذب المغناطيس، وتظهر على شريحتها المحفورة أشكال فيدمانشتاتن — نمط لا يتكون في صخور الأرض."
 ],
 "Какие бывают метеориты?": [
 "What types of meteorites are there?",
@@ -959,10 +959,10 @@
 "画廊经理会根据您的收藏、空间与预算甄选藏品，并讲解每件的来历与特点。欢迎莅临 RELICTUM 画廊。选定后我们安排细心配送与大件藏品的专业安装。",
 "سيختار مدير المعرض قطعة تناسب مجموعتك وديكورك وميزانيتك، ويشرح منشأ كل خيار وخصائصه. نستقبلك في معرض RELICTUM. وبعد الاختيار ننظم توصيلاً عناية وتركيباً احترافياً للقطعة الكبيرة."
 ],
-"Мамонтовая фауна хорошо работает в интерьере за счёт масштаба и узнаваемых форм. Бивень мамонта оценивают по длине, изгибу, цвету и состоянию поверхности: ровный тёплый тон и умеренное количество трещин выглядят спокойнее. Крупному бивню нужна подставка с двумя точками опоры и место по диагонали, чтобы линия читалась целиком. Череп мамонта, пещерный медведь или рог шерстистого носорога компактнее и органично смотрятся в кабинете. Если планируете ставить бивень мамонта в помещение с сухим воздухом, уточните, как стабилизирована кость и чем за ней ухаживать.": [
-"Mammoth fauna works well in interiors thanks to its scale and recognisable forms. A mammoth tusk is judged by its length, curve, colour and surface condition: an even warm tone and a moderate amount of cracking look calmer. A large tusk needs a stand with two points of support and a diagonal position so that its line reads in full. A mammoth skull, a cave bear or a woolly rhinoceros horn is more compact and looks natural in a study. If you plan to place a mammoth tusk in a room with dry air, ask how the ivory has been stabilised and how to care for it.",
-"猛犸动物群凭借其体量与辨识度高的形态，在室内陈设中效果出众。评判猛犸象牙看长度、弧度、颜色与表面状态：均匀温暖的色调和适量的裂纹更显沉稳。大型象牙需要两点支撑的底座，并沿对角线摆放，让线条完整呈现。猛犸头骨、洞熊或披毛犀角更为小巧，摆在书房里十分自然。若打算将猛犸象牙放在空气干燥的房间，请询问象牙的加固方式与保养方法。",
-"تنجح حيوانات عصر الماموث في الديكور بفضل حجمها وأشكالها المألوفة. يُقيَّم ناب الماموث بطوله وانحنائه ولونه وحالة سطحه: فاللون الدافئ المتجانس والتشققات المعتدلة تبدو أهدأ. يحتاج الناب الكبير إلى حامل بنقطتي ارتكاز ووضع قطري لتُقرأ خطوطه كاملة. أما جمجمة الماموث أو دب الكهوف أو قرن وحيد القرن الصوفي فأصغر حجماً وتبدو طبيعية في المكتب. وإن كنت ستضع الناب في غرفة جافة الهواء فاسأل عن طريقة تثبيت العاج والعناية به."
+"Мамонтовая фауна хорошо работает в интерьере за счёт масштаба и узнаваемых форм. Бивень мамонта оценивают по длине, изгибу, цвету и состоянию поверхности: ровный тёплый тон и умеренное количество трещин выглядят спокойнее. Крупному бивню нужна подставка с двумя точками опоры и место по диагонали, чтобы линия читалась целиком. Череп мамонта, пещерный медведь или рог шерстистого носорога компактнее и органично смотрятся в кабинете. Если планируете ставить бивень мамонта в помещение с сухим воздухом, уточните, как стабилизирован бивень и чем за ним ухаживать.": [
+"Mammoth fauna works well in interiors thanks to its scale and recognisable forms. A mammoth tusk is judged by its length, curve, colour and surface condition: an even warm tone and a moderate amount of cracking look calmer. A large tusk needs a stand with two points of support and a diagonal position so that its line reads in full. A mammoth skull, a cave bear or a woolly rhinoceros horn is more compact and looks natural in a study. If you plan to place a mammoth tusk in a room with dry air, ask how the tusk has been stabilised and how to care for it.",
+"猛犸动物群凭借其体量与辨识度高的形态，在室内陈设中效果出众。评判猛犸象牙看长度、弧度、颜色与表面状态：均匀温暖的色调和适量的裂纹更显沉稳。大型象牙需要两点支撑的底座，并沿对角线摆放，让线条完整呈现。猛犸头骨、洞熊或披毛犀角更为小巧，摆在书房里十分自然。若打算将猛犸象牙放在空气干燥的房间，请询问象牙本身的加固方式与保养方法。",
+"تنجح حيوانات عصر الماموث في الديكور بفضل حجمها وأشكالها المألوفة. يُقيَّم ناب الماموث بطوله وانحنائه ولونه وحالة سطحه: فاللون الدافئ المتجانس والتشققات المعتدلة تبدو أهدأ. يحتاج الناب الكبير إلى حامل بنقطتي ارتكاز ووضع قطري لتُقرأ خطوطه كاملة. أما جمجمة الماموث أو دب الكهوف أو قرن وحيد القرن الصوفي فأصغر حجماً وتبدو طبيعية في المكتب. وإن كنت ستضع ناب ماموث في غرفة جافة الهواء فاسأل عن طريقة تثبيت الناب والعناية به."
 ],
 "Подберём экспонат мамонтовой фауны": [
 "We will find a mammoth fauna piece for you",
@@ -1044,10 +1044,10 @@
 "收藏中有哪些矿物？",
 "ما المعادن الموجودة في المجموعة؟"
 ],
-"Экспонатов в разделе: {n} — аметист, горный хрусталь, малахит, пирит, флюорит, антимонит, сфалерит, уваровит и септарии — друзы и жеоды для интерьера.": [
-"Exhibits in this section: {n} — amethyst, rock crystal, malachite, pyrite, fluorite, stibnite, sphalerite, uvarovite and septaria — druses and geodes for interiors.",
-"本栏目共有藏品 {n} 件——紫水晶、水晶、孔雀石、黄铁矿、萤石、辉锑矿、闪锌矿、钙铬榴石与龟背石——适合室内陈设的晶簇与晶洞。",
-"عدد القطع في هذا القسم: {n} — جمشت وبلور صخري ومالاكيت وبيريت وفلوريت وستيبنيت وسفاليريت وأوفاروفيت وسبتاريا — دروزات وجيودات للديكور."
+"Экспонатов в разделе: {n} — аметист, горный хрусталь, малахит, пирит, флюорит, антимонит, сфалерит, уваровит, а также септариевые конкреции, друзы и жеоды для интерьера.": [
+"Exhibits in this section: {n} — amethyst, rock crystal, malachite, pyrite, fluorite, stibnite, sphalerite, uvarovite, as well as septarian concretions, druses and geodes for interiors.",
+"本栏目共有藏品 {n} 件——紫水晶、水晶、孔雀石、黄铁矿、萤石、辉锑矿、闪锌矿、钙铬榴石，以及适合室内陈设的龟背石结核、晶簇与晶洞。",
+"عدد القطع في هذا القسم: {n} — جمشت وبلور صخري ومالاكيت وبيريت وفلوريت وستيبنيت وسفاليريت وأوفاروفيت، إضافةً إلى عُقيدات سبتارية ودروزات وجيودات للديكور."
 ],
 "Сколько стоят интерьерные минералы?": [
 "How much do interior minerals cost?",
@@ -1184,10 +1184,10 @@
 "收藏中有哪些海生爬行动物？",
 "ما الزواحف البحرية الموجودة في المجموعة؟"
 ],
-"Экспонатов в разделе: {n} — скелеты кейхозавра и миксозавра, череп мозазавра Halisaurus. Эти животные жили в морях мезозоя одновременно с динозаврами.": [
-"Exhibits in this section: {n} — Keichousaurus and Mixosaurus skeletons and a skull of the mosasaur Halisaurus. These animals lived in the Mesozoic seas at the same time as the dinosaurs.",
-"本栏目共有藏品 {n} 件——贵州龙与混鱼龙骨架，以及沧龙类 Halisaurus 的头骨。这些动物与恐龙同时生活在中生代的海洋中。",
-"عدد القطع في هذا القسم: {n} — هياكل كيتشوصور وميكسوصور وجمجمة الموزاصور Halisaurus. عاشت هذه الحيوانات في بحار حقب الحياة الوسطى في زمن الديناصورات."
+"Экспонатов в разделе: {n} — скелеты кейхозавра и миксозавра, череп мозазавра Halisaurus. Эти животные жили в морях мезозоя: кейхозавр и миксозавр — в среднем триасе, ещё до расцвета динозавров, Halisaurus — в конце мела, рядом с последними из них.": [
+"Exhibits in this section: {n} — Keichousaurus and Mixosaurus skeletons and a skull of the mosasaur Halisaurus. These animals lived in the Mesozoic seas: Keichousaurus and Mixosaurus in the Middle Triassic, before the rise of the dinosaurs, and Halisaurus at the end of the Cretaceous, alongside the last of them.",
+"本栏目共有藏品 {n} 件——贵州龙与混鱼龙骨架，以及沧龙类 Halisaurus 的头骨。这些动物生活在中生代的海洋中：贵州龙与混鱼龙生活于中三叠世，早于恐龙的繁盛；Halisaurus 则生活于白垩纪末期，与最后的恐龙同在。",
+"عدد القطع في هذا القسم: {n} — هياكل كيتشوصور وميكسوصور وجمجمة الموزاصور Halisaurus. عاشت هذه الحيوانات في بحار حقب الحياة الوسطى: كيتشوصور وميكسوصور في الترياسي الأوسط، قبل ازدهار الديناصورات، وHalisaurus في أواخر الطباشيري، إلى جانب آخرها."
 ],
 "Сколько стоят окаменелости морских рептилий?": [
 "How much do marine reptile fossils cost?",
@@ -1449,10 +1449,10 @@
 "RELICTUM 经理会帮您根据空间挑选象牙，就长度、弧度与底座给出建议，并在画廊现场展示。大型象牙的配送与安装由我们负责。",
 "سيساعدك مدير RELICTUM على اختيار ناب يناسب مساحتك، فيقترح الطول والانحناء ونوع الحامل، ويعرض القطع في المعرض. ونتولى توصيل الأنياب الكبيرة وتركيبها."
 ],
-"Бивень мамонта выбирают по длине, изгибу, цвету и состоянию поверхности. Длинный бивень с выраженной спиралью читается с другого конца комнаты, поэтому ему нужно место по диагонали и подставка с двумя точками опоры. Ровный медовый или кремовый тон и умеренная сетка трещин — признаки хорошо сохранившейся кости; тёмные участки от минералов мерзлоты тоже естественны и делают экземпляр узнаваемым. Пара бивней требует симметрии и простора — в небольшой комнате лучше смотрится один бивень. Если в помещении сухой воздух, уточните у менеджера, как стабилизирована кость и как за ней ухаживать.": [
-"A mammoth tusk is chosen by length, curve, colour and surface condition. A long tusk with a pronounced spiral reads from the other end of the room, so it needs a diagonal position and a stand with two points of support. An even honey or cream tone and a moderate network of cracks are signs of well-preserved ivory; dark patches from permafrost minerals are natural too and make a specimen distinctive. A pair of tusks needs symmetry and space — in a small room a single tusk looks better. If the air in the room is dry, ask the manager how the ivory has been stabilised and how to care for it.",
-"挑选猛犸象牙看长度、弧度、颜色与表面状态。螺旋明显的长象牙在房间另一端也能看清，因此需要沿对角线摆放，并配两点支撑的底座。均匀的蜜色或奶油色以及适度的裂纹网，是象牙保存良好的标志；冻土矿物留下的深色斑块同样自然，让每件都独具辨识度。成对象牙需要对称与开阔的空间——小房间里单支更好看。若室内空气干燥，请向经理了解象牙的加固方式与保养方法。",
-"يُختار ناب الماموث حسب الطول والانحناء واللون وحالة السطح. الناب الطويل ذو اللولب الواضح يُرى من الطرف الآخر للغرفة، لذا يحتاج إلى وضع قطري وحامل بنقطتي ارتكاز. اللون العسلي أو الكريمي المتجانس وشبكة التشققات المعتدلة علامات على عاج محفوظ جيداً؛ والبقع الداكنة من معادن التربة الصقيعية طبيعية أيضاً وتجعل القطعة مميزة. يحتاج زوج الأنياب إلى تناظر واتساع — وفي الغرفة الصغيرة يبدو الناب المنفرد أجمل. وإن كان هواء الغرفة جافاً فاسأل المدير عن طريقة تثبيت العاج والعناية به."
+"Бивень мамонта выбирают по длине, изгибу, цвету и состоянию поверхности. Длинный бивень с выраженной спиралью читается с другого конца комнаты, поэтому ему нужно место по диагонали и подставка с двумя точками опоры. Ровный медовый или кремовый тон и умеренная сетка трещин — признаки хорошо сохранившегося бивня; тёмные участки от минералов мерзлоты тоже естественны и делают экземпляр узнаваемым. Пара бивней требует симметрии и простора — в небольшой комнате лучше смотрится один бивень. Если в помещении сухой воздух, уточните у менеджера, как стабилизирован бивень и как за ним ухаживать.": [
+"A mammoth tusk is chosen by length, curve, colour and surface condition. A long tusk with a pronounced spiral reads from the other end of the room, so it needs a diagonal position and a stand with two points of support. An even honey or cream tone and a moderate network of cracks are signs of a well-preserved tusk; dark patches from permafrost minerals are natural too and make a specimen distinctive. A pair of tusks needs symmetry and space — in a small room a single tusk looks better. If the air in the room is dry, ask the manager how the tusk has been stabilised and how to care for it.",
+"挑选猛犸象牙看长度、弧度、颜色与表面状态。螺旋明显的长象牙在房间另一端也能看清，因此需要沿对角线摆放，并配两点支撑的底座。均匀的蜜色或奶油色以及适度的裂纹网，是象牙保存良好的标志；冻土矿物留下的深色斑块同样自然，让每件都独具辨识度。成对象牙需要对称与开阔的空间——小房间里单支更好看。若室内空气干燥，请向经理了解象牙本身的加固方式与保养方法。",
+"يُختار ناب الماموث حسب الطول والانحناء واللون وحالة السطح. الناب الطويل ذو اللولب الواضح يُرى من الطرف الآخر للغرفة، لذا يحتاج إلى وضع قطري وحامل بنقطتي ارتكاز. اللون العسلي أو الكريمي المتجانس وشبكة التشققات المعتدلة علامات على ناب محفوظ جيداً؛ والبقع الداكنة من معادن التربة الصقيعية طبيعية أيضاً وتجعل القطعة مميزة. يحتاج زوج الأنياب إلى تناظر واتساع — وفي الغرفة الصغيرة يبدو الناب المنفرد أجمل. وإن كان هواء الغرفة جافاً فاسأل المدير عن طريقة تثبيت الناب والعناية به."
 ],
 "Подберём бивень под ваше пространство": [
 "We will find a tusk for your space",
@@ -1544,10 +1544,10 @@
 "什么是橄榄陨铁？",
 "ما البالاسيت؟"
 ],
-"Железокаменный метеорит: никелистое железо с кристаллами оливина. Такое сочетание возникало на границе металлического ядра и каменной мантии протопланеты, разрушенной столкновением, — на Земле его не бывает.": [
-"A stony-iron meteorite: nickel-iron with olivine crystals. This combination formed at the boundary between the metallic core and the rocky mantle of a protoplanet destroyed by a collision — it does not occur on Earth.",
-"一种石铁陨石：铁镍中嵌有橄榄石晶体。这种组合形成于一颗因撞击而解体的原行星的金属核与岩石幔交界处——地球上并不存在。",
-"نيزك حديدي حجري: حديد نيكلي ببلورات أوليفين. نشأ هذا المزيج عند الحد بين اللب المعدني والوشاح الصخري لكوكب أولي دمّره اصطدام — ولا يوجد على الأرض."
+"Железокаменный метеорит: никелистое железо с кристаллами оливина. По классической модели такое сочетание возникало на границе металлического ядра и каменной мантии протопланеты, разрушенной столкновением, — на Земле его не бывает.": [
+"A stony-iron meteorite: nickel-iron with olivine crystals. In the classical model, this combination formed at the boundary between the metallic core and the rocky mantle of a protoplanet destroyed by a collision — it does not occur on Earth.",
+"一种石铁陨石：铁镍中嵌有橄榄石晶体。按照经典模型，这种组合形成于一颗因撞击而解体的原行星的金属核与岩石幔交界处——地球上并不存在。",
+"نيزك حديدي حجري: حديد نيكلي ببلورات أوليفين. ووفقًا للنموذج الكلاسيكي، نشأ هذا المزيج عند الحد بين اللب المعدني والوشاح الصخري لكوكب أولي دمّره اصطدام — ولا يوجد على الأرض."
 ],
 "Почему палласиты ценятся выше других метеоритов?": [
 "Why are pallasites valued more highly than other meteorites?",
@@ -1869,10 +1869,10 @@
 "一条生长却不改变形状的螺线",
 "حلزون ينمو دون أن يغيّر شكله"
 ],
-"Логарифмическая спираль обладает редким свойством: она может увеличиваться сколько угодно, оставаясь подобной самой себе. Молодая раковина и взрослая — одна и та же форма в разном масштабе. Для животного это было не эстетикой, а инженерным решением: моллюск достраивал новые, всё более просторные камеры, не перестраивая старые. Он просто добавлял виток — и жил в последней, самой большой камере, а прежние заполнял газом для плавучести.": [
-"The logarithmic spiral has a rare property: it can grow indefinitely while remaining similar to itself. A young shell and an adult one are the same form at different scales. For the animal this was not aesthetics but an engineering solution: the mollusc added new, ever more spacious chambers without rebuilding the old ones. It simply added a whorl — living in the last and largest chamber, while filling the earlier ones with gas for buoyancy.",
-"对数螺线有一种罕见的特性：它可以无限增大，却始终与自身相似。幼壳与成壳是同一形状的不同尺度。对这种动物而言，这并非审美，而是一种工程方案：软体动物不断加建愈加宽敞的新腔室，而无需改造旧腔室。它只是多添一圈——栖身于最后也是最大的腔室中，并在先前的腔室里充入气体以获得浮力。",
-"يتمتع الحلزون اللوغاريتمي بخاصية نادرة: يمكنه أن يكبر بلا حدّ ويبقى مشابهًا لنفسه. فالصدفة الفتية والصدفة البالغة شكل واحد بمقياسين مختلفين. ولم يكن ذلك عند الحيوان جماليات، بل حلًّا هندسيًّا: فقد كان الرخويّ يضيف حجرات جديدة أرحب فأرحب دون أن يعيد بناء القديمة. كان يضيف لفّة فحسب — ويعيش في الحجرة الأخيرة الكبرى، ويملأ ما سبقها بالغاز ليطفو."
+"Логарифмическая спираль обладает редким свойством: она может увеличиваться сколько угодно, оставаясь подобной самой себе. Молодая раковина и взрослая — одна и та же форма в разном масштабе. Для животного это было не эстетикой, а инженерным решением: моллюск достраивал новые, всё более просторные камеры, не перестраивая старые. Он просто добавлял виток — и жил в последней, самой большой камере, а прежние камеры наполнял газом и жидкостью, регулируя плавучесть.": [
+"The logarithmic spiral has a rare property: it can grow indefinitely while remaining similar to itself. A young shell and an adult one are the same form at different scales. For the animal this was not aesthetics but an engineering solution: the mollusc added new, ever more spacious chambers without rebuilding the old ones. It simply added a whorl — living in the last and largest chamber, while filling the earlier chambers with gas and liquid to regulate buoyancy.",
+"对数螺线有一种罕见的特性：它可以无限增大，却始终与自身相似。幼壳与成壳是同一形状的不同尺度。对这种动物而言，这并非审美，而是一种工程方案：软体动物不断加建愈加宽敞的新腔室，而无需改造旧腔室。它只是多添一圈——栖身于最后也是最大的腔室中，并在先前的腔室里充入气体和液体，以调节浮力。",
+"يتمتع الحلزون اللوغاريتمي بخاصية نادرة: يمكنه أن يكبر بلا حدّ ويبقى مشابهًا لنفسه. فالصدفة الفتية والصدفة البالغة شكل واحد بمقياسين مختلفين. ولم يكن ذلك عند الحيوان جماليات، بل حلًّا هندسيًّا: فقد كان الرخويّ يضيف حجرات جديدة أرحب فأرحب دون أن يعيد بناء القديمة. كان يضيف لفّة فحسب — ويعيش في الحجرة الأخيرة الكبرى، ويملأ الحجرات السابقة بالغاز والسائل لتنظيم الطفو."
 ],
 "Именно поэтому распил аммонита так завораживает: видна вся его биография. Крошечная начальная камера в центре — точка рождения. Дальше — ряд камер, каждая чуть больше предыдущей, расходящихся спиралью к внешнему краю. Это дневник роста, который вёлся автоматически — по одному и тому же закону геометрии.": [
 "This is precisely why a sectioned ammonite is so mesmerising: its entire biography is visible. The tiny initial chamber at the centre is the point of birth. Then comes a series of chambers, each slightly larger than the last, spiralling out towards the outer edge. It is a growth diary kept automatically — according to one and the same law of geometry.",
@@ -1899,10 +1899,10 @@
 "这些线条具有类分形特征：其弯折在越来越小的尺度上重复出现，如同海岸线或雪花。而最重要的是，每一个菊石属都有其独特的缝合线图案。其复杂程度揭示了演化年代：古老类型的线条简单而呈波状；侏罗纪和白垩纪的类型则通常极其繁复，带有数十个层层嵌套的分支。专家看一眼缝合线，便能说出属名并大致判定年代——正如笔迹学家凭字迹认出书写者。",
 "هذه الخطوط شبيهة بالكسيريات: تتكرر انثناءاتها بمقاييس أصغر فأصغر، كخط الساحل أو ندفة الثلج. والأهم من ذلك أن لكل جنس من الأمونيتات نمط درز خاصًّا به. ومن درجة تعقيدها يُقرأ العصر التطوري: ففي الأشكال القديمة تكون الخطوط بسيطة متموّجة؛ أما في الجوراسية والطباشيرية فهي في الغالب بالغة التشعّب، بعشرات الفصوص المتداخلة. وحين ينظر المختص إلى الدرز يسمّي الجنس ويؤرّخ اللقية تقريبًا — كما يتعرّف خبير الخطوط على اليد من خطّها."
 ],
-"Наш экземпляр — Cleoniceras besairiei с Мадагаскара, из меловых отложений возрастом около ста десяти миллионов лет. Его камеры заполнены кальцитом медовых оттенков, а поверхность после полировки отдаёт перламутровым отливом. Это не обработанный камень и не украшение: это документ, в котором записана и математика роста, и подпись вымершего рода.": [
-"Our specimen is Cleoniceras besairiei from Madagascar, from Cretaceous deposits around one hundred and ten million years old. Its chambers are filled with honey-toned calcite, and after polishing its surface takes on a nacreous sheen. This is neither a worked stone nor a piece of jewellery: it is a document recording both the mathematics of growth and the signature of an extinct genus.",
-"我们的这件标本是来自马达加斯加的 Cleoniceras besairiei，出自距今约一亿一千万年的白垩纪地层。其腔室中充填着蜂蜜色调的方解石，抛光后的表面泛出珍珠般的光泽。它既非加工过的石头，也非饰品：而是一份文献，记录着生长的数学，也记录着一个已灭绝之属的签名。",
-"عيّنتنا هي Cleoniceras besairiei من مدغشقر، من رواسب طباشيرية عمرها نحو مئة وعشرة ملايين سنة. حجراتها مملوءة بكالسيت بدرجات العسل، ويكتسي سطحها بعد الصقل بريقًا لؤلؤيًّا. ليست حجرًا مشغولًا ولا حلية: إنها وثيقة دُوّنت فيها رياضيات النموّ وتوقيع جنس منقرض معًا."
+"Наш экземпляр — Cleoniceras с Мадагаскара, из меловых отложений возрастом около ста десяти миллионов лет. Его камеры заполнены кальцитом медовых оттенков, а поверхность после полировки отдаёт перламутровым отливом. Это не обработанный камень и не украшение: это документ, в котором записана и математика роста, и подпись вымершего рода.": [
+"Our specimen is Cleoniceras from Madagascar, from Cretaceous deposits around one hundred and ten million years old. Its chambers are filled with honey-toned calcite, and after polishing its surface takes on a nacreous sheen. This is neither a worked stone nor a piece of jewellery: it is a document recording both the mathematics of growth and the signature of an extinct genus.",
+"我们的这件标本是来自马达加斯加的 Cleoniceras，出自距今约一亿一千万年的白垩纪地层。其腔室中充填着蜂蜜色调的方解石，抛光后的表面泛出珍珠般的光泽。它既非加工过的石头，也非饰品：而是一份文献，记录着生长的数学，也记录着一个已灭绝之属的签名。",
+"عيّنتنا هي Cleoniceras من مدغشقر، من رواسب طباشيرية عمرها نحو مئة وعشرة ملايين سنة. حجراتها مملوءة بكالسيت بدرجات العسل، ويكتسي سطحها بعد الصقل بريقًا لؤلؤيًّا. ليست حجرًا مشغولًا ولا حلية: إنها وثيقة دُوّنت فيها رياضيات النموّ وتوقيع جنس منقرض معًا."
 ],
 "Почему это стоит держать дома": [
 "Why it belongs in a home",
@@ -2239,10 +2239,10 @@
 "为何要看到“修整前后”",
 "لماذا من المهم رؤية «قبل وبعد»"
 ],
-"Когда рядом лежат исходная плита и готовый экземпляр, становится понятно, за что цена. Это не наценка за редкость камня — это оплаченное мастерство, превратившее геологический факт в объект, на который хочется смотреть. Ценность трилобита создаётся дважды: один раз — 400 миллионов лет назад, второй — под микроскопом препаратора.": [
-"When the original slab and the finished specimen lie side by side, it becomes clear what the price is for. It is not a mark-up for the rarity of the stone — it is paid-for mastery that has turned a geological fact into an object one wants to look at. A trilobite's value is created twice: once 400 million years ago, and a second time under the preparator's microscope.",
-"当原始岩板与完成的标本并排摆放时，价格为何而付便一目了然。这并非石头稀有的溢价——而是为技艺所付的报酬，正是这份技艺把一个地质事实变成了令人想要凝视的物件。三叶虫的价值被创造了两次：一次在4亿年前，另一次在修复师的显微镜下。",
-"حين يوضع اللوح الأصلي والعيّنة الجاهزة جنبًا إلى جنب، يتضح لماذا هذا السعر. ليس علاوة على ندرة الحجر — بل هو ثمن مهارة حوّلت حقيقة جيولوجية إلى قطعة يرغب المرء في تأمّلها. تُصنع قيمة ثلاثي الفصوص مرتين: مرة قبل 400 مليون سنة، ومرة ثانية تحت مجهر المحضّر."
+"Когда рядом лежат исходная плита и готовый экземпляр, становится понятно, за что цена. Это не наценка за редкость камня — это оплаченное мастерство, превратившее геологический факт в объект, на который хочется смотреть. Ценность трилобита создаётся дважды: один раз — сотни миллионов лет назад, второй — под микроскопом препаратора.": [
+"When the original slab and the finished specimen lie side by side, it becomes clear what the price is for. It is not a mark-up for the rarity of the stone — it is paid-for mastery that has turned a geological fact into an object one wants to look at. A trilobite's value is created twice: once hundreds of millions of years ago, and a second time under the preparator's microscope.",
+"当原始岩板与完成的标本并排摆放时，价格为何而付便一目了然。这并非石头稀有的溢价——而是为技艺所付的报酬，正是这份技艺把一个地质事实变成了令人想要凝视的物件。三叶虫的价值被创造了两次：一次在数亿年前，另一次在修复师的显微镜下。",
+"حين يوضع اللوح الأصلي والعيّنة الجاهزة جنبًا إلى جنب، يتضح لماذا هذا السعر. ليس علاوة على ندرة الحجر — بل هو ثمن مهارة حوّلت حقيقة جيولوجية إلى قطعة يرغب المرء في تأمّلها. تُصنع قيمة ثلاثي الفصوص مرتين: مرة قبل مئات ملايين السنين، ومرة ثانية تحت مجهر المحضّر."
 ],
 "Трилобит Drotops": [
 "Drotops trilobite",
@@ -2274,10 +2274,10 @@
 "比地球更古老的物质",
 "مادة أقدم من الأرض"
 ],
-"Палласит — это граница ядра и мантии протопланеты, которой больше нет. Что именно мы держим в руках, когда держим метеорит.": [
-"A pallasite is the core–mantle boundary of a protoplanet that no longer exists. What exactly we hold in our hands when we hold a meteorite.",
-"橄榄陨铁是一颗已不复存在的原行星的核幔边界。当我们手握陨石时，我们握着的究竟是什么。",
-"البالاسيت هو الحد الفاصل بين لبّ ووشاح كوكب أوّلي لم يعد موجودًا. ما الذي نحمله بين أيدينا تحديدًا حين نحمل نيزكًا."
+"Палласит — вещество из глубин протопланеты, которой больше нет. Что именно мы держим в руках, когда держим метеорит.": [
+"A pallasite is matter from the depths of a protoplanet that no longer exists. What exactly we hold in our hands when we hold a meteorite.",
+"橄榄陨铁是一颗已不复存在的原行星深处的物质。当我们手握陨石时，我们握着的究竟是什么。",
+"البالاسيت مادة من أعماق كوكب أوّلي لم يعد موجودًا. ما الذي نحمله بين أيدينا تحديدًا حين نحمل نيزكًا."
 ],
 "Есть предметы старше пирамид, старше человека, старше жизни. И есть один класс предметов, который старше самой Земли. Метеорит Сеймчан относится именно к нему: возраст его вещества — около четырёх с половиной миллиардов лет, то есть он сформировался тогда же, когда рождалась Солнечная система, из того же облака газа и пыли. Держа в руках его полированный срез, вы держите материал, который был до планет.": [
 "There are objects older than the pyramids, older than humankind, older than life itself. And there is one class of objects older than the Earth itself. The Seymchan meteorite belongs to it: its matter is about four and a half billion years old, meaning it formed at the same time as the Solar System was being born, from the same cloud of gas and dust. Holding a polished slice of it, you hold material that existed before the planets.",
@@ -2299,10 +2299,10 @@
 "一个大型岩质天体——行星或大型小行星——会随着时间推移逐渐升温并分层。沉重的铁沉向中心，形成内核；较轻的硅酸盐留在外层，即地幔。在地球上，这道边界位于近三千公里深处，没有任何人能亲眼见到它。而按照经典模型，橄榄陨铁正是凝固的核幔边界：地幔矿物橄榄石的晶体，被封冻在内核的金属之中。",
 "يسخن الجسم الصخري الكبير — كوكبًا كان أو كويكبًا ضخمًا — مع مرور الزمن وتنفصل مكوناته إلى طبقات. فيهبط الحديد الثقيل إلى المركز مكوّنًا اللبّ، وتبقى السيليكات الأخف في الخارج، في الوشاح. وعلى الأرض يقع هذا الحد على عمق يقارب ثلاثة آلاف كيلومتر، ولن يراه إنسان أبدًا. أما البالاسيت، وفق النموذج الكلاسيكي، فهو هذا الحد المتجمد بين اللبّ والوشاح بعينه: بلورات الأوليفين، وهو معدن من معادن الوشاح، مجمّدة داخل معدن اللبّ."
 ],
-"Чтобы такое вещество оказалось у нас в руках, должна была произойти катастрофа. Родительская протопланета, успевшая разделиться на ядро и мантию, была разбита столкновением на осколки. Один из этих осколков — с самой границы двух слоёв — миллиарды лет летел сквозь пустоту, пока не упал на Землю. Палласит буквально невозможно получить иначе, чем через разрушение целого мира.": [
-"For such matter to end up in our hands, a catastrophe had to happen. The parent protoplanet, which had already separated into core and mantle, was shattered by a collision. One of the fragments — from the very boundary of the two layers — flew through the void for billions of years until it fell to Earth. A pallasite literally cannot be obtained in any other way than through the destruction of an entire world.",
-"要让这样的物质落入我们手中，必须发生一场灾难。那颗已分化出内核与地幔的母体原行星，在一次撞击中碎裂。其中一块碎片——恰好来自两层的交界处——在虚空中飞行了数十亿年，最终坠落地球。除了经由整个世界的毁灭，橄榄陨铁实在别无他途可得。",
-"ولكي تصل مثل هذه المادة إلى أيدينا، كان لا بد من وقوع كارثة. فالكوكب الأوّلي الأم، الذي كان قد انفصل إلى لبّ ووشاح، تحطّم إثر اصطدام إلى شظايا. وإحدى هذه الشظايا — من الحد الفاصل بين الطبقتين تحديدًا — ظلت تسبح في الفراغ مليارات السنين حتى سقطت على الأرض. فالبالاسيت لا يمكن الحصول عليه حرفيًا إلا عبر دمار عالم بأكمله."
+"Чтобы такое вещество оказалось у нас в руках, должна была произойти катастрофа. Родительская протопланета, успевшая разделиться на ядро и мантию, была разбита столкновением на осколки. Один из этих осколков — по классической модели, с самой границы двух слоёв — миллиарды лет летел сквозь пустоту, пока не упал на Землю. Чтобы палласит оказался на Земле, родительское тело должно было разрушиться.": [
+"For such matter to end up in our hands, a catastrophe had to happen. The parent protoplanet, which had already separated into core and mantle, was shattered by a collision. One of the fragments — in the classical model, from the very boundary of the two layers — flew through the void for billions of years until it fell to Earth. For a pallasite to end up on Earth, the parent body had to be destroyed.",
+"要让这样的物质落入我们手中，必须发生一场灾难。那颗已分化出内核与地幔的母体原行星，在一次撞击中碎裂。其中一块碎片——按照经典模型，恰好来自两层的交界处——在虚空中飞行了数十亿年，最终坠落地球。要让橄榄陨铁来到地球，其母体必须毁灭。",
+"ولكي تصل مثل هذه المادة إلى أيدينا، كان لا بد من وقوع كارثة. فالكوكب الأوّلي الأم، الذي كان قد انفصل إلى لبّ ووشاح، تحطّم إثر اصطدام إلى شظايا. وإحدى هذه الشظايا — وفقًا للنموذج الكلاسيكي، من الحد الفاصل بين الطبقتين تحديدًا — ظلت تسبح في الفراغ مليارات السنين حتى سقطت على الأرض. ولكي يصل البالاسيت إلى الأرض، كان لا بد أن يتحطم الجسم الأم."
 ],
 "Это не камень с неба. Это срез недр планеты, которой больше не существует.": [
 "This is not a stone from the sky. It is a cross-section of the depths of a planet that no longer exists.",
@@ -2774,10 +2774,10 @@
 "第三项标志：无法伪造的结构",
 "العلامة الثالثة: بنية يستحيل تزييفها"
 ],
-"У природных материалов есть узоры, которые невозможно воспроизвести. У метеоритного железа — видманштеттеновы фигуры, формирующиеся миллионы лет. У эмали зуба — микроструктура роста. У янтаря — характер трещин и включений. Эти структуры проверяются под микроскопом: их отсутствие или неправильность выдают имитацию быстрее любого другого признака.": [
-"Natural materials carry patterns that are impossible to reproduce. Meteoritic iron has Widmanstätten patterns, formed over millions of years. Tooth enamel has a growth microstructure. Amber has its characteristic cracks and inclusions. These structures are checked under the microscope: their absence or irregularity betrays an imitation faster than any other sign.",
-"天然材料具有无法复制的纹理。陨铁有历经数百万年形成的维德曼施泰滕纹，牙釉质有生长微结构，琥珀有独特的裂纹与内含物。这些结构须在显微镜下检验：一旦缺失或异常，便会比任何其他标志更快地暴露仿品。",
-"تحمل المواد الطبيعية أنماطًا يستحيل استنساخها: لحديد النيازك أشكال فيدمانشتاتن التي تتكوّن عبر ملايين السنين، ولمينا الأسنان بنية نمو دقيقة، وللكهرمان طابعه الخاص في الشقوق والشوائب. تُفحص هذه البنى تحت المجهر، وغيابها أو شذوذها يفضح التقليد أسرع من أي علامة أخرى."
+"У природных материалов есть узоры, которые невозможно воспроизвести. У железных метеоритов-октаэдритов — видманштеттеновы фигуры, формирующиеся миллионы лет. У эмали зуба — микроструктура роста. У янтаря — характер трещин и включений. Эти структуры проверяются под микроскопом: их отсутствие или неправильность выдают имитацию быстрее любого другого признака.": [
+"Natural materials carry patterns that are impossible to reproduce. Iron meteorite octahedrites have Widmanstätten patterns, formed over millions of years. Tooth enamel has a growth microstructure. Amber has its characteristic cracks and inclusions. These structures are checked under the microscope: their absence or irregularity betrays an imitation faster than any other sign.",
+"天然材料具有无法复制的纹理。铁陨石中的八面体陨铁有历经数百万年形成的维德曼施泰滕纹，牙釉质有生长微结构，琥珀有独特的裂纹与内含物。这些结构须在显微镜下检验：一旦缺失或异常，便会比任何其他标志更快地暴露仿品。",
+"تحمل المواد الطبيعية أنماطًا يستحيل استنساخها. فللنيازك الحديدية من نوع الأوكتاهدريت أشكال فيدمانشتاتن التي تتكوّن عبر ملايين السنين. ولمينا الأسنان بنية نمو دقيقة. وللكهرمان طابعه الخاص في الشقوق والشوائب. تُفحص هذه البنى تحت المجهر: وغيابها أو شذوذها يفضح التقليد أسرع من أي علامة أخرى."
 ],
 "Признак четвёртый: законность происхождения": [
 "The fourth sign: lawful origin",
@@ -2864,10 +2864,10 @@
 "猛犸草原在今天没有直接的对应物。干燥的气候、繁茂的草本植物以及兽蹄对土壤持续不断的“翻耕”，共同造就了致密而富含养分的草皮。猛犸、披毛犀、野牛、马和驯鹿成群地在其上吃草——据部分研究者估计，其密度可与今日的非洲稀树草原相比。捕食者也与之相称：洞狮、洞鬣狗、狼，某些地方还有剑齿猫科动物锯齿虎。",
 "لا نظير مباشرًا لسهوب الماموث اليوم. فقد أنتج اجتماع المناخ الجاف ووفرة الأعشاب و«الحرث» الدائم للتربة بالحوافر غطاءً عشبيًا كثيفًا مغذيًا. وعليه رعت قطعان الماموث ووحيد القرن الصوفي والبيسون والخيول والرنة، بكثافة تضاهي — وفق تقديرات بعض الباحثين — كثافة السافانا الأفريقية اليوم. وكانت المفترسات على القدر نفسه: أسود الكهوف وضباع الكهوف والذئاب، وفي بعض المواضع القطط ذات الأنياب السيفية من جنس هوموثيريوم."
 ],
-"Это была саванна Севера — и она исчезла почти без следа около 11 тысяч лет назад.": [
-"It was the savanna of the North — and it vanished almost without a trace some 11,000 years ago.",
-"那是北方的稀树草原——约1.1万年前，它几乎消失得无影无踪。",
-"كانت سافانا الشمال — واختفت دون أثر تقريبًا قبل نحو 11 ألف سنة."
+"Это была саванна Севера — и она почти исчезла на рубеже плейстоцена и голоцена, около 12–11 тысяч лет назад.": [
+"It was the savanna of the North — and it almost disappeared at the boundary between the Pleistocene and the Holocene, around 12–11 thousand years ago.",
+"那是北方的稀树草原——在更新世与全新世之交，约1.2万至1.1万年前，它几乎消失了。",
+"كانت سافانا الشمال — وكادت تختفي عند الحد بين البليستوسين والهولوسين، قبل نحو 12–11 ألف سنة."
 ],
 "Кто в ней жил": [
 "Who lived there",
@@ -2929,10 +2929,10 @@
 "随草原一同消失的",
 "ما الذي اختفى مع السهوب"
 ],
-"Около 11 тысяч лет назад климат потеплел и увлажнился, дёрн сменился болотистой тундрой и лесом, продуктивность рухнула — и великая фауна исчезла за геологическое мгновение; последние мамонты дожили на острове Врангеля примерно до четырёх тысяч лет назад. Спор о роли человека и климата не закончен. Но именно поэтому её остатки так притягательны: это последняя великая экосистема суши — и первая, которую застал человек: люди охотились на мамонтов, строили жилища из их костей и рисовали их на стенах пещер.": [
-"Around 11,000 years ago the climate grew warmer and wetter, the turf gave way to boggy tundra and forest, productivity collapsed — and the great fauna disappeared in a geological instant; the last mammoths survived on Wrangel Island until roughly four thousand years ago. The debate over the roles of humans and climate is not settled. But this is precisely why its remains are so compelling: it is the last great ecosystem of the land — and the first that humans witnessed: people hunted mammoths, built dwellings from their bones and painted them on cave walls.",
-"约1.1万年前，气候变得温暖湿润，草皮被沼泽化的苔原和森林取代，生产力骤然崩溃——伟大的动物群在地质意义上的一瞬间消失了；最后的猛犸在弗兰格尔岛上一直存活到约四千年前。关于人类与气候各自扮演何种角色的争论尚无定论。但正因如此，它的遗存才如此引人入胜：这是陆地上最后一个伟大的生态系统——也是人类亲历的第一个：人们猎捕猛犸，用它们的骨骼搭建居所，并把它们画在洞穴的岩壁上。",
-"قبل نحو 11 ألف سنة صار المناخ أدفأ وأكثر رطوبة، وحلّت التندرا المستنقعية والغابات محل الغطاء العشبي، وانهارت الإنتاجية — فاختفت الحيوانات العظيمة في لحظة جيولوجية؛ وبقي آخر الماموث على جزيرة رانجل حتى نحو أربعة آلاف سنة مضت. ولم يُحسم بعد الجدل حول دور الإنسان ودور المناخ. لكن هذا بالذات ما يجعل بقاياها آسرة إلى هذا الحد: إنها آخر نظام بيئي عظيم على اليابسة — وأول نظام شهده الإنسان: فقد اصطاد الناس الماموث، وبنوا مساكنهم من عظامه، ورسموه على جدران الكهوف."
+"Около 11 тысяч лет назад климат потеплел и увлажнился, дёрн сменился болотистой тундрой и лесом, продуктивность рухнула — и великая фауна исчезла за геологическое мгновение; последние мамонты дожили на острове Врангеля примерно до четырёх тысяч лет назад. Спор о роли человека и климата не закончен. Но именно поэтому её остатки так притягательны: это последняя великая экосистема ледникового мира, и человек жил внутри неё: люди охотились на мамонтов, строили жилища из их костей и рисовали их на стенах пещер.": [
+"Around 11,000 years ago the climate grew warmer and wetter, the turf gave way to boggy tundra and forest, productivity collapsed — and the great fauna disappeared in a geological instant; the last mammoths survived on Wrangel Island until roughly four thousand years ago. The debate over the roles of humans and climate is not settled. But this is precisely why its remains are so compelling: it is the last great ecosystem of the Ice Age world, and humans lived inside it: people hunted mammoths, built dwellings from their bones and painted them on cave walls.",
+"约1.1万年前，气候变得温暖湿润，草皮被沼泽化的苔原和森林取代，生产力骤然崩溃——伟大的动物群在地质意义上的一瞬间消失了；最后的猛犸在弗兰格尔岛上一直存活到约四千年前。关于人类与气候各自扮演何种角色的争论尚无定论。但正因如此，它的遗存才如此引人入胜：这是冰河世界最后一个伟大的生态系统，而人类曾生活在其中：人们猎捕猛犸，用它们的骨骼搭建居所，并把它们画在洞穴的岩壁上。",
+"قبل نحو 11 ألف سنة صار المناخ أدفأ وأكثر رطوبة، وحلّت التندرا المستنقعية والغابات محل الغطاء العشبي، وانهارت الإنتاجية — فاختفت الحيوانات العظيمة في لحظة جيولوجية؛ وبقي آخر الماموث على جزيرة رانجل حتى نحو أربعة آلاف سنة مضت. ولم يُحسم بعد الجدل حول دور الإنسان ودور المناخ. لكن هذا بالذات ما يجعل بقاياها آسرة إلى هذا الحد: إنها آخر نظام بيئي عظيم لعالم العصر الجليدي، وقد عاش الإنسان داخله: فقد اصطاد الناس الماموث، وبنوا مساكنهم من عظامه، ورسموه على جدران الكهوف."
 ],
 "Mammuthus primigenius, Якутия, 250 см по дуге": [
 "Mammuthus primigenius, Yakutia, 250 cm along the curve",
@@ -2979,10 +2979,10 @@
 "Apex 为何与众不同",
 "ما الذي يميّز Apex"
 ],
-"Это крупнейший и один из самых полных известных скелетов стегозавра: высота около 3,5 метра, длина около 8,2 метра, сохранность — почти 80% костей. Скелет выставлен в атриуме нового научного центра музея, а палеонтологи музея получили возможность изучать его — в том числе рост и биологию стегозавров.": [
-"It is the largest and one of the most complete known Stegosaurus skeletons: about 3.5 metres tall and about 8.2 metres long, with nearly 80% of its bones preserved. The skeleton is displayed in the atrium of the museum’s new science centre, and the museum’s palaeontologists have been given the opportunity to study it — including the growth and biology of stegosaurs.",
-"这是已知最大、也是最完整的剑龙骨架之一：高约3.5米，长约8.2米，近80%的骨骼得以保存。骨架陈列于博物馆新科学中心的中庭，博物馆的古生物学家也因此得以对其展开研究——包括剑龙的生长与生物学特征。",
-"إنه أكبر هياكل الستيغوصور المعروفة وأحد أكملها: يبلغ ارتفاعه نحو 3.5 متر وطوله نحو 8.2 متر، مع حفظ ما يقارب 80% من عظامه. يُعرض الهيكل في ردهة مركز العلوم الجديد بالمتحف، وأتيحت لعلماء الحفريات في المتحف فرصة دراسته، بما في ذلك نمو الستيغوصورات وبيولوجيتها."
+"Это крупнейший и один из самых полных известных скелетов стегозавра: высота около 3,3 метра, длина около 8,2 метра, сохранность — почти 80% костей. Скелет выставлен в атриуме нового научного центра музея, а палеонтологи музея получили возможность изучать его — в том числе рост и биологию стегозавров.": [
+"It is the largest and one of the most complete known Stegosaurus skeletons: about 3.3 metres tall and about 8.2 metres long, with nearly 80% of its bones preserved. The skeleton is displayed in the atrium of the museum’s new science centre, and the museum’s palaeontologists have been given the opportunity to study it — including the growth and biology of stegosaurs.",
+"这是已知最大、也是最完整的剑龙骨架之一：高约3.3米，长约8.2米，近80%的骨骼得以保存。骨架陈列于博物馆新科学中心的中庭，博物馆的古生物学家也因此得以对其展开研究——包括剑龙的生长与生物学特征。",
+"إنه أكبر هياكل الستيغوصور المعروفة وأحد أكملها: يبلغ ارتفاعه نحو 3.3 متر وطوله نحو 8.2 متر، مع حفظ ما يقارب 80% من عظامه. يُعرض الهيكل في ردهة مركز العلوم الجديد بالمتحف، وأتيحت لعلماء الحفريات في المتحف فرصة دراسته، بما في ذلك نمو الستيغوصورات وبيولوجيتها."
 ],
 "Частная коллекция и музей больше не противоположности: всё чаще коллекционер покупает, а музей показывает и изучает.": [
 "A private collection and a museum are no longer opposites: increasingly, the collector buys, and the museum displays and studies.",
@@ -3004,10 +3004,10 @@
 "家中的侏罗纪",
 "العصر الجوراسي في بيتك"
 ],
-"Стегозавр жил в позднем юрском периоде. Тот же мир доступен в камерном формате: пернатый динозавр юрского периода на плите из Китая, крупный аммонит Arietites диаметром около 45 сантиметров или пара юрских аммонитов на плите. Такие экспонаты не требуют монтажа и сразу становятся центром кабинета или гостиной.": [
-"Stegosaurus lived in the Late Jurassic. The same world is accessible in an intimate format: a feathered Jurassic dinosaur on a slab from China, a large Arietites ammonite about 45 centimetres in diameter, or a pair of Jurassic ammonites on a slab. Such exhibits require no mounting and immediately become the centrepiece of a study or living room.",
-"剑龙生活在晚侏罗世。同一个世界也能以更精致的尺度走进生活：一块产自中国、带有侏罗纪带羽恐龙的石板，一枚直径约45厘米的大型 Arietites 菊石，或一对侏罗纪菊石石板。这类藏品无需安装，即刻便能成为书房或客厅的焦点。",
-"عاش الستيغوصور في أواخر العصر الجوراسي. والعالم نفسه متاح في صيغة أكثر حميمية: ديناصور جوراسي ذو ريش على لوح من الصين، أو أمونيت Arietites كبير يبلغ قطره نحو 45 سنتيمترًا، أو زوج من الأمونيتات الجوراسية على لوح. لا تحتاج هذه القطع إلى تركيب، وتصبح فورًا محور المكتب أو غرفة المعيشة."
+"Стегозавр жил в позднем юрском периоде. Юрский период доступен и в камерном формате: пернатый динозавр юрского периода на плите из Китая, крупный аммонит Arietites диаметром около 45 сантиметров или пара юрских аммонитов на плите. Такие экспонаты не требуют монтажа и сразу становятся центром кабинета или гостиной.": [
+"Stegosaurus lived in the Late Jurassic. The Jurassic Period is also accessible in an intimate format: a feathered Jurassic dinosaur on a slab from China, a large Arietites ammonite about 45 centimetres in diameter, or a pair of Jurassic ammonites on a slab. Such exhibits require no mounting and immediately become the centrepiece of a study or living room.",
+"剑龙生活在晚侏罗世。侏罗纪也能以更精致的尺度走进生活：一块产自中国、带有侏罗纪带羽恐龙的石板，一枚直径约45厘米的大型 Arietites 菊石，或一对侏罗纪菊石石板。这类藏品无需安装，即刻便能成为书房或客厅的焦点。",
+"عاش الستيغوصور في أواخر العصر الجوراسي. والعصر الجوراسي متاح أيضًا في صيغة أكثر حميمية: ديناصور جوراسي ذو ريش على لوح من الصين، أو أمونيت Arietites كبير يبلغ قطره نحو 45 سنتيمترًا، أو زوج من الأمونيتات الجوراسية على لوح. لا تحتاج هذه القطع إلى تركيب، وتصبح فورًا محور المكتب أو غرفة المعيشة."
 ],
 "Для подарка особенно хорош экспонат с «биографией эпохи»: к нему легко рассказать, кто жил рядом — стегозавры, аллозавры, гигантские завроподы. Каждый экспонат RELICTUM передаётся с паспортом происхождения.": [
 "As a gift, an exhibit with a “biography of its epoch” is especially fine: it is easy to tell who lived alongside it — stegosaurs, allosaurs, giant sauropods. Every RELICTUM exhibit comes with a provenance passport.",
@@ -3224,30 +3224,30 @@
 "霸王龙骨架 Gus 在 Sotheby’s 以5010万美元成交，超过此前任何一具恐龙。这一价格背后有什么？它对希望在家中收藏化石的人又意味着什么？",
 "بيع هيكل التيرانوصور Gus في Sotheby’s مقابل 50.1 مليون دولار، أي أكثر من أي ديناصور قبله. ما الذي يقف وراء هذا السعر، وماذا يعني لمن يرغب في اقتناء أحفورة في بيته؟"
 ],
-"14 июля 2026 года в Нью-Йорке за десять минут торгов семь участников довели цену скелета тираннозавра по имени Gus до 50,1 миллиона долларов с учётом комиссии. Покупатель торговался по телефону и пожелал остаться неизвестным. Это новый мировой рекорд для динозавра на аукционе — и ещё одно подтверждение того, что окаменелости окончательно стали частью мира большого коллекционирования.": [
-"On 14 July 2026 in New York, over ten minutes of bidding, seven participants drove the price of a Tyrannosaurus skeleton named Gus to 50.1 million dollars including the buyer’s premium. The buyer bid by telephone and wished to remain anonymous. It is a new world record for a dinosaur at auction — and further confirmation that fossils have definitively become part of the world of major collecting.",
-"2026年7月14日，在纽约，经过十分钟的竞拍，七位竞买人将一具名为 Gus 的霸王龙骨架的价格推高至5010万美元（含佣金）。买家通过电话竞拍，并希望保持匿名。这是恐龙拍卖的新世界纪录，也再次证明化石已彻底跻身顶级收藏的世界。",
-"في 14 يوليو 2026 في نيويورك، وخلال عشر دقائق من المزايدة، رفع سبعة مشاركين سعر هيكل تيرانوصور يُدعى Gus إلى 50.1 مليون دولار شاملةً العمولة. وقد زايد المشتري عبر الهاتف وفضّل عدم الكشف عن هويته. إنه رقم قياسي عالمي جديد لديناصور في مزاد، وتأكيد آخر على أن الأحافير أصبحت نهائيًا جزءًا من عالم الاقتناء الكبير."
+"14 июля 2026 года в Нью-Йорке за десять минут торгов семь участников довели цену скелета тираннозавра по имени Gus до 50,1 миллиона долларов с учётом комиссии. Покупатель пожелал остаться неизвестным. Это новый мировой рекорд для динозавра на аукционе — и ещё одно подтверждение того, что окаменелости окончательно стали частью мира большого коллекционирования.": [
+"On 14 July 2026 in New York, over ten minutes of bidding, seven participants drove the price of a Tyrannosaurus skeleton named Gus to 50.1 million dollars including the buyer’s premium. The buyer wished to remain anonymous. It is a new world record for a dinosaur at auction — and further confirmation that fossils have definitively become part of the world of major collecting.",
+"2026年7月14日，在纽约，经过十分钟的竞拍，七位竞买人将一具名为 Gus 的霸王龙骨架的价格推高至5010万美元（含佣金）。买家希望保持匿名。这是恐龙拍卖的新世界纪录，也再次证明化石已彻底跻身顶级收藏的世界。",
+"في 14 يوليو 2026 في نيويورك، وخلال عشر دقائق من المزايدة، رفع سبعة مشاركين سعر هيكل تيرانوصور يُدعى Gus إلى 50.1 مليون دولار شاملةً العمولة. وفضّل المشتري عدم الكشف عن هويته. إنه رقم قياسي عالمي جديد لديناصور في مزاد، وتأكيد آخر على أن الأحافير أصبحت نهائيًا جزءًا من عالم الاقتناء الكبير."
 ],
 "Кто такой Gus": [
 "Who is Gus",
 "Gus 是谁",
 "من هو Gus"
 ],
-"Скелет нашли в округе Хардинг в Южной Дакоте, в отложениях формации Хелл-Крик, которым около 67 миллионов лет. Длина смонтированного скелета — около 11,6 метра, высота — около 3,8 метра, череп — около 1,4 метра. По данным Sotheby’s, сохранилось 63% костей по количеству и 75–80% по массе — для тираннозавра это очень высокий показатель.": [
-"The skeleton was found in Harding County, South Dakota, in deposits of the Hell Creek Formation, around 67 million years old. The mounted skeleton is about 11.6 metres long and about 3.8 metres high, with a skull of about 1.4 metres. According to Sotheby’s, 63% of the bones survive by count and 75–80% by mass — a very high figure for a Tyrannosaurus.",
-"这具骨架发现于南达科他州哈丁县的地狱溪组沉积层中，距今约6700万年。装架后的骨架长约11.6米，高约3.8米，头骨长约1.4米。据 Sotheby’s 称，按数量计保存了63%的骨骼，按质量计为75–80%——对霸王龙而言，这是非常高的比例。",
-"عُثر على الهيكل في مقاطعة هاردينغ بولاية داكوتا الجنوبية، في رواسب تكوين هيل كريك التي يبلغ عمرها نحو 67 مليون سنة. ويبلغ طول الهيكل المركَّب نحو 11.6 مترًا وارتفاعه نحو 3.8 أمتار، وطول الجمجمة نحو 1.4 متر. ووفقًا لـ Sotheby’s، حُفظ 63% من العظام عددًا و75–80% وزنًا، وهي نسبة عالية جدًا بالنسبة إلى التيرانوصور."
+"Скелет нашли в округе Хардинг в Южной Дакоте, в отложениях формации Хелл-Крик, которым около 67 миллионов лет. Длина смонтированного скелета — около 11,5 метра, высота — около 3,8 метра, череп — около 1,4 метра. По данным Sotheby’s, скелет сохранился примерно на 61% по числу костей и до 80% по массе — для тираннозавра это очень высокий показатель.": [
+"The skeleton was found in Harding County, South Dakota, in deposits of the Hell Creek Formation, around 67 million years old. The mounted skeleton is about 11.5 metres long and about 3.8 metres high, with a skull of about 1.4 metres. According to Sotheby’s, the skeleton is about 61% complete by bone count and up to 80% by mass — a very high figure for a Tyrannosaurus.",
+"这具骨架发现于南达科他州哈丁县的地狱溪组沉积层中，距今约6700万年。装架后的骨架长约11.5米，高约3.8米，头骨长约1.4米。据 Sotheby’s 称，按骨骼数量计，这具骨架保存约61%，按质量计最高达80%——对霸王龙而言，这是非常高的比例。",
+"عُثر على الهيكل في مقاطعة هاردينغ بولاية داكوتا الجنوبية، في رواسب تكوين هيل كريك التي يبلغ عمرها نحو 67 مليون سنة. ويبلغ طول الهيكل المركَّب نحو 11.5 مترًا وارتفاعه نحو 3.8 أمتار، وطول الجمجمة نحو 1.4 متر. ووفقًا لـ Sotheby’s، حُفظ الهيكل بنسبة تقارب 61% بعدد العظام وحتى 80% وزنًا، وهي نسبة عالية جدًا بالنسبة إلى التيرانوصور."
 ],
 "Лестница рекордов": [
 "A ladder of records",
 "纪录的阶梯",
 "سلّم الأرقام القياسية"
 ],
-"Gus обошёл стегозавра Apex, проданного на том же аукционе в 2024 году за 44,6 миллиона долларов. Годом позже, в 2025-м, ювенильный цератозавр ушёл за 30,5 миллиона. Ещё раньше, в 2020 году, тираннозавр Stan на Christie’s стоил 31,8 миллиона. А знаменитая Сью, проданная в 1997 году примерно за 8 миллионов, сегодня, по оценке специалистов Sotheby’s, стоила бы больше шестидесяти.": [
-"Gus surpassed the Stegosaurus Apex, sold at the same auction house in 2024 for 44.6 million dollars. A year later, in 2025, a juvenile Ceratosaurus went for 30.5 million. Earlier still, in 2020, the Tyrannosaurus Stan fetched 31.8 million at Christie’s. And the famous Sue, sold in 1997 for about 8 million, would today, by the estimate of Sotheby’s specialists, be worth more than sixty.",
-"Gus 超越了2024年在同一拍卖行以4460万美元成交的剑龙 Apex。一年后的2025年，一具幼年角鼻龙以3050万美元成交。更早在2020年，霸王龙 Stan 在 Christie’s 拍出3180万美元。而1997年以约800万美元售出的著名霸王龙“苏”，按 Sotheby’s 专家的估计，如今价值将超过6000万。",
-"تجاوز Gus الستيغوصور Apex الذي بيع في دار المزادات نفسها عام 2024 مقابل 44.6 مليون دولار. وبعد عام، في 2025، بيع سيراتوصور يافع مقابل 30.5 مليون. وقبل ذلك، في 2020، بلغ سعر التيرانوصور Stan في Christie’s مبلغ 31.8 مليون. أما «سو» الشهيرة التي بيعت عام 1997 بنحو 8 ملايين، فستساوي اليوم، بحسب تقدير متخصصي Sotheby’s، أكثر من ستين مليونًا."
+"Gus обошёл стегозавра Apex, проданного на Sotheby’s в 2024 году за 44,6 миллиона долларов. Годом позже, в 2025-м, ювенильный цератозавр ушёл за 30,5 миллиона. Ещё раньше, в 2020 году, тираннозавр Stan на Christie’s стоил 31,8 миллиона. А знаменитая Сью в 1997 году ушла примерно за 8,4 миллиона — рекорд, который тогда казался недосягаемым.": [
+"Gus surpassed the Stegosaurus Apex, sold at Sotheby’s in 2024 for 44.6 million dollars. A year later, in 2025, a juvenile Ceratosaurus went for 30.5 million. Earlier still, in 2020, the Tyrannosaurus Stan fetched 31.8 million at Christie’s. And the famous Sue went for about 8.4 million in 1997 — a record that seemed unattainable at the time.",
+"Gus 超越了2024年在 Sotheby’s 以4460万美元成交的剑龙 Apex。一年后的2025年，一具幼年角鼻龙以3050万美元成交。更早在2020年，霸王龙 Stan 在 Christie’s 拍出3180万美元。而著名的“苏”在1997年以约840万美元成交——那在当时是一个看似难以企及的纪录。",
+"تجاوز Gus الستيغوصور Apex الذي بيع في Sotheby’s عام 2024 مقابل 44.6 مليون دولار. وبعد عام، في 2025، بيع سيراتوصور يافع مقابل 30.5 مليون. وقبل ذلك، في 2020، بلغ سعر التيرانوصور Stan في Christie’s مبلغ 31.8 مليون. أما «سو» الشهيرة فبيعت عام 1997 بنحو 8.4 مليون — وهو رقم قياسي بدا آنذاك بعيد المنال."
 ],
 "За тридцать лет цена лучших скелетов выросла в шесть раз — и почти всегда её определяли одни и те же три вещи.": [
 "Over thirty years, the price of the finest skeletons has risen sixfold — and almost always it has been determined by the same three things.",
@@ -3299,7 +3299,7 @@
 "五千万美元是市场的顶端，而非入门门槛。同样的世界也能以适合客厅或书房的形式呈现。一件三角龙头骨——与霸王龙同一时代、同一北美地区的生物——可以作为大厅的核心雕塑。一具长约170厘米的鹦鹉嘴龙骨架可置于条案或低矮的底座上。一枚装框的棘龙牙齿挂在书房墙上，宛如一幅版画。",
 "خمسون مليون دولار هي أقصى حدود السوق، لا عتبة الدخول إليها. فالعالم نفسه متاح بصيغة تتّسع لها غرفة المعيشة أو المكتب. جمجمة ترايسيراتوبس، وهو معاصر للتيرانوصور من الحقبة نفسها والمناطق نفسها في أمريكا الشمالية، تؤدي دور المنحوتة المركزية في قاعة كبيرة. وهيكل بسيتاكوصور بطول نحو 170 سنتيمترًا يستقر على طاولة جانبية أو قاعدة منخفضة. وسنّ سبينوصور في إطار تُعلَّق على جدار المكتب كأنها لوحة محفورة."
 ],
-"Правило размещения одно для всех форматов: окаменелости нужны свет сбоку, чтобы читался рельеф, и место, откуда её видно целиком. Для подарка лучше камерный формат — череп, коготь или зуб в раме: его не нужно монтировать, и он сразу находит своё место на столе или в шкафу.": [
+"Правило размещения одно для всех форматов: окаменелости нужен свет сбоку, чтобы читался рельеф, и место, откуда её видно целиком. Для подарка лучше камерный формат — череп, коготь или зуб в раме: его не нужно монтировать, и он сразу находит своё место на столе или в шкафу.": [
 "The rule of placement is the same for every format: a fossil needs light from the side so that its relief reads, and a spot from which it can be seen in full. For a gift, an intimate format is best — a skull, a claw or a framed tooth: it needs no mounting and immediately finds its place on a desk or in a cabinet.",
 "无论何种形式，陈设的原则都相同：化石需要侧光，以便显出其立体纹理，还需要一个能完整看到它的位置。作为礼物，小巧的形式更为合适——头骨、爪子或装框的牙齿：无需装架，即可在书桌或柜中找到自己的位置。",
 "قاعدة العرض واحدة لكل الصيغ: تحتاج الأحفورة إلى ضوء جانبي كي تتضح تضاريسها، وإلى موضع تُرى منه كاملة. أما للهدية فالأفضل صيغة حميمة: جمجمة أو مخلب أو سنّ في إطار، فهي لا تحتاج إلى تركيب وتجد مكانها فورًا على المكتب أو في الخزانة."
@@ -3334,20 +3334,20 @@
 "已知最大的火星碎块以530万美元拍出。我们讲述一块来自另一颗行星的石头如何落入撒哈拉，以及为什么陨石始终是最有分量的礼物之一。",
 "بيع أكبر جزء معروف من المريخ في مزاد مقابل 5.3 مليون دولار. نروي كيف انتهى المطاف بحجر من كوكب آخر في الصحراء الكبرى، ولماذا يبقى النيزك من أقوى الهدايا أثرًا."
 ],
-"16 июля 2025 года на Sotheby’s в Нью-Йорке марсианский метеорит NWA 16788 был продан за 4,3 миллиона долларов, а с комиссией — примерно за 5,3 миллиона. Это самая высокая цена, когда-либо уплаченная за метеорит на аукционе. Камень весом около 24,5 килограмма — крупнейший известный фрагмент Марса на Земле.": [
-"On 16 July 2025, at Sotheby’s in New York, the Martian meteorite NWA 16788 sold for 4.3 million dollars, or about 5.3 million with the buyer’s premium. It is the highest price ever paid for a meteorite at auction. The stone, weighing about 24.5 kilograms, is the largest known fragment of Mars on Earth.",
-"2025年7月16日，在纽约 Sotheby’s，火星陨石 NWA 16788 以430万美元落槌，含佣金约530万美元。这是陨石拍卖史上的最高成交价。这块重约24.5公斤的石头，是地球上已知最大的火星碎块。",
-"في 16 يوليو 2025، في Sotheby’s بنيويورك، بيع النيزك المريخي NWA 16788 مقابل 4.3 مليون دولار، أي نحو 5.3 مليون مع العمولة. وهو أعلى سعر دُفع على الإطلاق لنيزك في مزاد. ويُعدّ هذا الحجر، الذي يزن نحو 24.5 كيلوغرامًا، أكبر جزء معروف من المريخ على الأرض."
+"16 июля 2025 года на Sotheby’s в Нью-Йорке марсианский метеорит NWA 16788 был продан за 4,3 миллиона долларов, а с комиссией — примерно за 5,3 миллиона. Это самая высокая цена, когда-либо уплаченная за метеорит на аукционе. Камень весом около 24,7 килограмма — крупнейший известный фрагмент Марса на Земле.": [
+"On 16 July 2025, at Sotheby’s in New York, the Martian meteorite NWA 16788 sold for 4.3 million dollars, or about 5.3 million with the buyer’s premium. It is the highest price ever paid for a meteorite at auction. The stone, weighing about 24.7 kilograms, is the largest known fragment of Mars on Earth.",
+"2025年7月16日，在纽约 Sotheby’s，火星陨石 NWA 16788 以430万美元落槌，含佣金约530万美元。这是陨石拍卖史上的最高成交价。这块重约24.7公斤的石头，是地球上已知最大的火星碎块。",
+"في 16 يوليو 2025، في Sotheby’s بنيويورك، بيع النيزك المريخي NWA 16788 مقابل 4.3 مليون دولار، أي نحو 5.3 مليون مع العمولة. وهو أعلى سعر دُفع على الإطلاق لنيزك في مزاد. ويُعدّ هذا الحجر، الذي يزن نحو 24.7 كيلوغرامًا، أكبر جزء معروف من المريخ على الأرض."
 ],
 "Как камень с Марса попал в Сахару": [
 "How a stone from Mars reached the Sahara",
 "火星石头如何来到撒哈拉",
 "كيف وصل حجر من المريخ إلى الصحراء الكبرى"
 ],
-"Метеорит нашёл охотник за метеоритами в нигерской части Сахары в ноябре 2023 года. Миллионы лет назад крупный астероид ударил в поверхность Марса с такой силой, что выбил обломки за пределы притяжения планеты. Часть из них, пролетев около 225 миллионов километров, упала на Землю. Пустыня — лучшее место для таких находок: тёмный камень хорошо виден на светлом песке, а сухой климат сохраняет его от выветривания.": [
-"The meteorite was found by a meteorite hunter in the Niger part of the Sahara in November 2023. Millions of years ago, a large asteroid struck the surface of Mars with such force that it hurled debris beyond the planet’s gravity. Some of it, after travelling about 225 million kilometres, fell to Earth. The desert is the best place for such finds: a dark stone stands out clearly against pale sand, and the dry climate protects it from weathering.",
-"这块陨石由一位陨石猎人于2023年11月在撒哈拉的尼日尔境内发现。数百万年前，一颗巨大的小行星猛烈撞击火星表面，将碎片抛出了这颗行星的引力范围。其中一部分在飞行约2.25亿公里后落到了地球。沙漠是此类发现的最佳地点：深色的石头在浅色沙地上十分醒目，干燥的气候又使其免受风化。",
-"عثر على النيزك صيّادُ نيازك في الجزء النيجري من الصحراء الكبرى في نوفمبر 2023. فقبل ملايين السنين ضرب كويكب كبير سطح المريخ بقوة قذفت شظاياه إلى ما وراء جاذبية الكوكب. وسقط بعضها على الأرض بعد أن قطع نحو 225 مليون كيلومتر. والصحراء أفضل مكان لمثل هذه اللُّقى: فالحجر الداكن يُرى بوضوح على الرمال الفاتحة، والمناخ الجاف يحميه من التجوية."
+"Метеорит нашёл охотник за метеоритами в нигерской части Сахары в 2023 году. Миллионы лет назад крупный астероид ударил в поверхность Марса с такой силой, что выбил обломки за пределы притяжения планеты. Часть из них, пролетев около 225 миллионов километров, упала на Землю. Пустыня — лучшее место для таких находок: тёмный камень хорошо виден на светлом песке, а сухой климат сохраняет его от выветривания.": [
+"The meteorite was found by a meteorite hunter in the Niger part of the Sahara in 2023. Millions of years ago, a large asteroid struck the surface of Mars with such force that it hurled debris beyond the planet’s gravity. Some of it, after travelling about 225 million kilometres, fell to Earth. The desert is the best place for such finds: a dark stone stands out clearly against pale sand, and the dry climate protects it from weathering.",
+"这块陨石由一位陨石猎人于2023年在撒哈拉的尼日尔境内发现。数百万年前，一颗巨大的小行星猛烈撞击火星表面，将碎片抛出了这颗行星的引力范围。其中一部分在飞行约2.25亿公里后落到了地球。沙漠是此类发现的最佳地点：深色的石头在浅色沙地上十分醒目，干燥的气候又使其免受风化。",
+"عثر على النيزك صيّادُ نيازك في الجزء النيجري من الصحراء الكبرى عام 2023. فقبل ملايين السنين ضرب كويكب كبير سطح المريخ بقوة قذفت شظاياه إلى ما وراء جاذبية الكوكب. وسقط بعضها على الأرض بعد أن قطع نحو 225 مليون كيلومتر. والصحراء أفضل مكان لمثل هذه اللُّقى: فالحجر الداكن يُرى بوضوح على الرمال الفاتحة، والمناخ الجاف يحميه من التجوية."
 ],
 "Откуда известно, что он с Марса": [
 "How we know it comes from Mars",
@@ -3374,10 +3374,10 @@
 "创纪录的火星标本是博物馆级别的珍品，但陨石的世界其实近在咫尺。装框的月球陨石是另一个天体的碎片，可以挂在墙上。塞姆昌橄榄陨铁的切片透光时，橄榄石晶粒熠熠生辉，与任何地球岩石都不相像。车里雅宾斯克陨石的碎片，则让人忆起那场被数百万人目睹的陨落。",
 "العينات المريخية القياسية نوادر بمستوى المتاحف، لكن عالم النيازك يبدأ أقرب من ذلك بكثير. فالنيزك القمري في إطار جزء من جرم سماوي آخر يمكن تعليقه على الجدار. وشريحة بالاسيت سيمتشان تتوهج بحبيبات الأوليفين حين تُرفع إلى الضوء، ولا تشبه أي حجر أرضي. أما شظية نيزك تشيليابينسك فتذكّر بسقوط شهده ملايين الناس."
 ],
-"Метеорит хорош как подарок тем, что объясняет себя сам: возраст в 4,5 миллиарда лет и внеземное происхождение не нуждаются в дополнительных словах. Для рабочего стола подойдёт срез на подставке или экземпляр в футляре, для гостиной — пластина в раме с подсветкой сзади. Каждый метеорит RELICTUM передаётся с паспортом происхождения.": [
-"A meteorite makes a fine gift because it explains itself: an age of 4.5 billion years and an extraterrestrial origin need no further words. For a desk, a slice on a stand or a specimen in a case is ideal; for a living room, a framed plate lit from behind. Every RELICTUM meteorite comes with a provenance passport.",
-"陨石之所以是一份好礼物，在于它不言自明：45亿年的年龄与天外来源无需更多言语。书桌上适合放一片带底座的切片或一件盒装标本；客厅里则适合一块背光装框的薄片。RELICTUM 的每块陨石都附有来源护照。",
-"النيزك هدية جميلة لأنه يشرح نفسه بنفسه: فعمرٌ يبلغ 4.5 مليار سنة ومنشأٌ من خارج الأرض لا يحتاجان إلى مزيد من الكلام. يناسب المكتبَ شريحةٌ على حامل أو عينة في علبة، ويناسب غرفة المعيشة لوحٌ في إطار بإضاءة خلفية. ويُسلَّم كل نيزك من RELICTUM مع جواز منشأ."
+"Метеорит хорош как подарок тем, что объясняет себя сам: внеземное происхождение и возраст в миллиарды лет не нуждаются в дополнительных словах. Для рабочего стола подойдёт срез на подставке или экземпляр в футляре, для гостиной — пластина в раме с подсветкой сзади. Каждый метеорит RELICTUM передаётся с паспортом происхождения.": [
+"A meteorite makes a fine gift because it explains itself: an extraterrestrial origin and an age in billions of years need no further words. For a desk, a slice on a stand or a specimen in a case is ideal; for a living room, a framed plate lit from behind. Every RELICTUM meteorite comes with a provenance passport.",
+"陨石之所以是一份好礼物，在于它不言自明：天外来源与以十亿年计的年龄无需更多言语。书桌上适合放一片带底座的切片或一件盒装标本；客厅里则适合一块背光装框的薄片。RELICTUM 的每块陨石都附有来源护照。",
+"النيزك هدية جميلة لأنه يشرح نفسه بنفسه: فمنشأٌ من خارج الأرض وعمرٌ بمليارات السنين لا يحتاجان إلى مزيد من الكلام. يناسب المكتبَ شريحةٌ على حامل أو عينة في علبة، ويناسب غرفة المعيشة لوحٌ في إطار بإضاءة خلفية. ويُسلَّم كل نيزك من RELICTUM مع جواز منشأ."
 ],
 "Lunar meteorite, район Адрар, Алжир": [
 "Lunar meteorite, Adrar region, Algeria",
@@ -3644,10 +3644,10 @@
 "RELICTUM 鲜活纪元：每个时代的写实影像世界——猛犸、恐龙、菊石——以及图录中留存至今的藏品。",
 "عصور RELICTUM الحية: عوالم فيديو واقعية لكل حقبة — ماموث، ديناصورات، أمونيت — وما بقي منها في الكتالوج."
 ],
-"Меловой период — RELICTUM, эра": [
-"Cretaceous Period — RELICTUM Era",
-"白垩纪 — RELICTUM 纪元",
-"العصر الطباشيري — حقبة RELICTUM"
+"Меловой период — Живые эры RELICTUM": [
+"Cretaceous Period — RELICTUM Living Eras",
+"白垩纪 — RELICTUM 鲜活纪元",
+"العصر الطباشيري — الحقب الحية من RELICTUM"
 ],
 "Меловой период RELICTUM: тираннозавры, трицератопсы и аммониты мелового мира — и экспонаты этой эпохи в каталоге дома.": [
 "RELICTUM Cretaceous Period: tyrannosaurs, triceratops, and ammonites of the Cretaceous world — and pieces from this era in the house catalog.",
