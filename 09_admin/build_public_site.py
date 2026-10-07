@@ -722,7 +722,7 @@ def write_collections(stamp):
         if sel_order:
             order_block = ('<div class="lp-order reveal" style="margin-top:clamp(48px,6vw,84px)">'
                            '<div class="section-head"><div><div class="label">Также в коллекции</div><h2>Под заказ</h2></div>'
-                           '<p class="sub">Срок и условия поставки уточнит менеджер галереи.</p></div>'
+                           '<p class="sub">Эти экспонаты мы доставим специально для вас — сроки и условия менеджер галереи обсудит с вами лично.</p></div>'
                            '<div class="grid-objects compact">' + ''.join(card_html(o, 99 + n, src=('shared/img/' + promo[o['id']]['interior']['img']) if group == 'interior' else None) for n, o in enumerate(sel_order)) + '</div></div>')
         if not sel:
             print('  ! пустая подборка', slug); continue
@@ -747,7 +747,7 @@ def write_collections(stamp):
         grid_title = {'gift': 'Что подарить', 'interior': 'Предметы для пространства', 'category': 'Лоты в наличии'}[group]
         extra = interior_strip(sel, skip=(hero, split)) if group == 'gift' else ''
         render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url, group)), hero_img, split_img, grid_title, wide=(group == 'interior'), extra=extra, page_items=sel,
-               sub='У каждого экспоната есть паспорт происхождения, и все они доступны к просмотру в галерее.',   # 07.10: без числа — «4 экспоната» читается как бедный выбор
+               sub='Каждый экспонат сопровождается сертификатом подлинности и ждёт вас в галерее: его можно увидеть вживую, прежде чем принять решение.',   # 07.10: без числа — «4 экспоната» читается как бедный выбор
                order_block=order_block)
         if slug not in UNLISTED_LANDINGS:
             tiles.append((slug, group, c, sel[0], len(sel), hero_img))   # плитка хаба — интерьерный кадр (3:2), не канон
@@ -762,7 +762,7 @@ def write_collections(stamp):
                       '<div class="meta">' + esc_html(c['description']) + '</div><div class="price"><span class="go">Смотреть подборку →</span></div></div></a>')
         url = DOMAIN + '/podarki.html'
         page_ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': hub['h1'], 'url': url, 'description': hub['description'], 'isPartOf': {'@id': DOMAIN + '/#site'}}
-        render('podarki', hub, cards, len(tiles), DOMAIN + '/shared/img/int_hero_salon.jpg', '', ld(page_ld), 'shared/img/int_hero_salon.jpg', 'shared/img/grand_atrium_skeleton.jpg', 'Подборки по поводу и пространству', wide=True, sub='Экспонаты в наличии из каждой подборки можно посмотреть в галерее.',
+        render('podarki', hub, cards, len(tiles), DOMAIN + '/shared/img/int_hero_salon.jpg', '', ld(page_ld), 'shared/img/int_hero_salon.jpg', 'shared/img/grand_atrium_skeleton.jpg', 'Подборки по поводу и пространству', wide=True, sub='В каждой подборке — экспонаты, которые ждут вас в галерее: их можно увидеть вживую.',
                extra=interior_strip([o for o in items if any(r(o, promo) for _s, g, r, _c in LANDINGS if g == 'gift')],
                                     skip=('int_hero_salon.jpg',), title='Подарок, который становится частью интерьера'))
     print(f'  посадочных: {len(made)}')
