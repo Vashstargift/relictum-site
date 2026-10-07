@@ -19,6 +19,7 @@ import subprocess
 LANGS = ['en', 'zh', 'ar']
 IDX = {'en': 0, 'zh': 1, 'ar': 2}
 GRAM = ['g', '克', 'غ']
+UNITS = {'см': ['cm', '厘米', 'سم'], 'мм': ['mm', '毫米', 'مم'], 'м': ['m', '米', 'م']}
 HREFLANG = {'ru': 'ru', 'en': 'en', 'zh': 'zh-Hans', 'ar': 'ar'}
 CYR = re.compile(r'[А-Яа-яЁё]')
 LETTER_CYR = re.compile(r'[А-Яа-яЁё]')
@@ -58,10 +59,25 @@ class Translator:
             if len(k) >= 12 and '.' not in k and k not in d['FRAG_OK']:
                 lst.append((k, v))
         lst += list(self.F.items())
+        # 07.10.2026: названия лотов (i18n-lots) — тоже фрагменты: заголовок «Аметист, 45 см — R–0249, RELICTUM»
+        # целиком в словаре не найдётся, а название внутри него — да
+        lst += [(k, v) for k, v in self.L.items() if 4 <= len(k) <= 60 and '.' not in k and '\n' not in k]
         lst.sort(key=lambda p: -len(p[0]))
         ci = re.compile(r'период|Мезозой|Кайнозой|Палеозой|Докембрий|Плейстоцен|Миоцен|зарождения жизни')
         self.frags = [(re.compile(r'(^|[^А-Яа-яЁёA-Za-z])' + re.escape(k) + r'(?![А-Яа-яЁёA-Za-z])',
                                   re.I if ci.search(k) else 0), v) for k, v in lst]
+
+    def add_names(self, names):
+        """Названия лотов — фрагментами любой длины (07.10.2026): «Аметист, 45 см — R–0249, RELICTUM»."""
+        have = {rx.pattern for rx, _ in self.frags}
+        extra = []
+        for n in set(names):
+            v = self.D.get(n) or self.L.get(n)
+            if v and len(n) >= 4:
+                rx = re.compile(r'(^|[^А-Яа-яЁёA-Za-z])' + re.escape(n) + r'(?![А-Яа-яЁёA-Za-z])')
+                if rx.pattern not in have:
+                    extra.append((rx, v))
+        self.frags = sorted(self.frags + extra, key=lambda p: -len(p[0].pattern))
 
     @staticmethod
     def nkey(x):
@@ -86,9 +102,13 @@ class Translator:
             out = rx.sub(lambda m: m.group(1) + v, out)
             changed = True
         # граммы: «1 267 г», «89 г, …» — но не «1967 г.»
-        g2 = re.sub(r'(\d) г(?=$|[,;)])', lambda m: m.group(1) + ' ' + GRAM[IDX[lang]], out)
+        g2 = re.sub(r'(\d) г(?=$|[,;)]|\s[—–])', lambda m: m.group(1) + ' ' + GRAM[IDX[lang]], out)
         if g2 != out:
             out, changed = g2, True
+        # сантиметры, миллиметры, метры: «45 см», «28 × 31 см», «1,7 м»
+        u2 = re.sub(r'(\d) (см|мм|м)(?=$|[\s,;)—–])', lambda m: m.group(1) + ' ' + UNITS[m.group(2)][IDX[lang]], out)
+        if u2 != out:
+            out, changed = u2, True
         return out if changed else None
 
     # --- страница целиком -------------------------------------------------

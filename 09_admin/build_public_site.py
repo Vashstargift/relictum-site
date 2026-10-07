@@ -1263,6 +1263,17 @@ def write_page_i18n():
 
 
 LANG_MAX_CYR = 0.10
+CYR = re.compile(r'[А-Яа-яЁё]{3,}')
+DESC_FALLBACK = {
+    'en': '{name} — a natural-history piece in the RELICTUM collection, Moscow: provenance, age, photos and price.',
+    'zh': '{name}——RELICTUM 莫斯科收藏中的自然史珍品：来源、年代、照片与价格。',
+    'ar': '{name} — قطعة من التاريخ الطبيعي في مجموعة RELICTUM في موسكو: المنشأ والعمر والصور والسعر.',
+}
+DESC_FALLBACK_NONAME = {
+    'en': 'RELICTUM, Moscow: dinosaur skeletons, meteorites, minerals and mammoth fauna with provenance passports.',
+    'zh': 'RELICTUM 莫斯科：恐龙骨架、陨石、矿物与猛犸动物群，均附来源护照。',
+    'ar': 'RELICTUM في موسكو: هياكل ديناصورات ونيازك ومعادن وحيوانات الماموث مع جوازات منشأ.',
+}
 LANG_SKIP = {'404.html', 'object.html', 'objects/exhibit.html', 'eras/index.html', 'account.html', 'cart.html', 'checkout.html'}
 
 
@@ -1271,6 +1282,7 @@ def lang_versions():
     import i18n_static as I
     try:
         T = I.Translator(I.load_dicts(OUT))
+        T.add_names([o['name'] for o in arranged_items()[0]])   # названия лотов внутри заголовков (07.10.2026)
     except Exception as e:
         print('  ! словари i18n не прочитаны — языковые версии не собраны:', e); return []
     src = {}
@@ -1308,6 +1320,14 @@ def lang_versions():
             return m.group(1) + (html.escape(o, quote=True) if o else m.group(2)) + m.group(3)
         t = re.sub(r'(<title>)(.*?)(</title>)', one, t, count=1, flags=re.S)
         t = re.sub(r'(<meta (?:name="description"|property="og:title"|property="og:description"|name="twitter:title"|name="twitter:description") content=")([^"]*)(")', one, t)
+        # 07.10.2026: описание, оставшееся русским (первый абзац текста лота из CRM — перевода у него нет),
+        # заменяем фразой на языке версии из переведённого названия — полурусский сниппет хуже шаблонного
+        ttl = html.unescape((re.search(r'<title>(.*?)</title>', t, re.S) or [None, ''])[1]).split(' — ')[0].split(' | ')[0].strip()
+        name = ttl if ttl and not CYR.search(ttl) else ''
+        fb = DESC_FALLBACK[lang].format(name=name) if name else DESC_FALLBACK_NONAME[lang]
+        def fix(m):
+            return m.group(1) + (html.escape(fb, quote=True) if CYR.search(html.unescape(m.group(2))) else m.group(2)) + m.group(3)
+        t = re.sub(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")([^"]*)(")', fix, t)
         def ld(m):
             try:
                 d = json.loads(m.group(2))
@@ -1315,7 +1335,10 @@ def lang_versions():
                 return m.group(0)
             def walk(x):
                 if isinstance(x, dict):
-                    return {k: (T.tr(v, lang) or v) if k in ('name', 'headline', 'description', 'category', 'text') and isinstance(v, str) else walk(v) for k, v in x.items()}
+                    r = {k: (T.tr(v, lang) or v) if k in ('name', 'headline', 'description', 'category', 'text') and isinstance(v, str) else walk(v) for k, v in x.items()}
+                    if isinstance(r.get('description'), str) and CYR.search(r['description']) and x.get('@type') in ('Product', 'CollectionPage', 'WebPage'):
+                        r['description'] = fb
+                    return r
                 if isinstance(x, list):
                     return [walk(v) for v in x]
                 return x
@@ -1451,6 +1474,10 @@ def write_extras(pages):
     for p in pages:
         # exhibit.html и object.html — шаблоны, живут только с ?id=
         if p.startswith('objects/exhibit.html') or p == 'object.html' or p in PRIVATE:
+            continue
+        # 07.10.2026: страницы с noindex (оферта, согласие, политика) в карту сайта не кладём — противоречивый сигнал
+        fp = os.path.join(OUT, p)
+        if os.path.isfile(fp) and re.search(r'<meta name="robots" content="[^"]*noindex', open(fp, encoding='utf-8').read()):
             continue
         urls.append(public_url(p))
     # витрина и каталог — главнее прочего
