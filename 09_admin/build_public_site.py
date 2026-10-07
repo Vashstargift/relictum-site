@@ -633,8 +633,8 @@ def write_collections(stamp):
         qa = [(q, fmt_tr(a, f, pp, rub)) for q, a in c.get('faq', [])]
         if not qa:
             return '', ''
-        body = ''.join(f'<h3>{esc_html(q)}</h3><p>{esc_html(a)}</p>' for q, a in qa)
-        block = ('<section class="lp-about"><div class="wrap"><div class="section-head reveal"><div>'
+        body = ''.join(f'<div class="qa"><h3>{esc_html(q)}</h3><p>{esc_html(a)}</p></div>' for q, a in qa)
+        block = ('<section class="lp-about lp-faq-sec"><div class="wrap"><div class="section-head reveal"><div>'
                  '<div class="label">Вопросы и ответы</div><h2>Частые вопросы</h2></div></div>'
                  '<div class="lp-faq reveal">' + body + '</div></div></section>')
         return block, '\n' + ld({'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
