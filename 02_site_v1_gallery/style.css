@@ -616,7 +616,14 @@ body.nav-open .buybar, body.nav-open .rl-fab, body.nav-open .rl-cpop { display: 
 .article-hero img { aspect-ratio: 3 / 2; display: block; }
 
 /* статьи: на компьютере текст чуть крупнее под широкую колонку; кнопки «следующая статья» не липнут к подвалу */
-@media (min-width: 900px) { .article-body p { font-size: 18px; } .article-body .lead-p { font-size: 21px; } }
+/* 07.10.2026: текст статей компактнее (владелец: «не такой большой») */
+.article-body p { font-size: 16px; line-height: 1.75; margin-bottom: 20px; }
+.article-body .lead-p { font-size: 18px; line-height: 1.65; }
+.article-body h2 { font-size: clamp(22px, 2.2vw, 28px); margin: 36px 0 14px; }
+.article-body .pull { font-size: clamp(21px, 2.2vw, 27px); }
+.article-head h1 { font-size: clamp(30px, 3.6vw, 50px); }
+.article-head .dek { font-size: clamp(17px, 1.6vw, 21px); }
+@media (max-width: 600px) { .article-body p { font-size: 15.5px; } .article-body .lead-p { font-size: 17px; } }
 .article-nav { margin-bottom: clamp(72px, 9vw, 120px); }
 
 /* карточка лота внутри статьи */

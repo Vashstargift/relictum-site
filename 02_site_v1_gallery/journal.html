@@ -245,16 +245,35 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   var chips=document.querySelectorAll('#chips .chip');
   var cards=[].slice.call(document.querySelectorAll('#grid .j-card'));
   var lead=document.getElementById('leadArticle');           // главная статья живёт вне сетки
-  if(lead) cards.push(lead);
+  if(!lead) return;
+  /* 07.10.2026: у каждого раздела своя рекомендованная статья — блок наверху подменяется,
+     а её карточка в сетке скрывается, чтобы не повторяться */
+  var FEATURED={'Новости рынка':'journal-gus-trex.html','Глубокое время':'journal-ammonite.html','Космос':'journal-meteorite.html',
+                'Экспертиза':'journal-fakes.html','Экспедиции':'journal-kemkem.html','Коллекционирование':'journal-cabinet.html'};
+  var orig={href:lead.getAttribute('href'),rubric:lead.getAttribute('data-rubric'),html:lead.innerHTML};
+  var leadSec=lead.closest('section');
+  function setLead(card){
+    if(!card){ lead.setAttribute('href',orig.href); lead.setAttribute('data-rubric',orig.rubric); lead.innerHTML=orig.html; return; }
+    var img=card.querySelector('img'), lab=card.querySelector('.label'), h=card.querySelector('h3'), pp=card.querySelector('p');
+    lead.setAttribute('href',card.getAttribute('href')); lead.setAttribute('data-rubric',card.getAttribute('data-rubric'));
+    var m=lead.querySelector('.media img'); if(m&&img){ m.src=img.currentSrc||img.src; m.alt=img.alt; var src=m.parentNode.querySelector('source'); if(src) src.remove(); }
+    var l=lead.querySelector('.label'); if(l&&lab) l.textContent=lab.textContent;
+    var h2=lead.querySelector('h2'); if(h2&&h) h2.textContent=h.textContent;
+    var lp=lead.querySelector('p'); if(lp&&pp) lp.textContent=pp.textContent;
+    var la=lead.querySelector('.link-arrow'); if(la) la.textContent='Читать статью';
+  }
   chips.forEach(function(ch){
     ch.addEventListener('click',function(){
       chips.forEach(function(c){c.classList.remove('on')});
       ch.classList.add('on');
-      var f=ch.getAttribute('data-f');
+      var f=ch.getAttribute('data-f'), want=f?FEATURED[f]:null, featCard=null;
+      var base=function(h){return (h||'').split('#')[0].split('?')[0].split('/').pop()};   // на /en/ ссылки абсолютные
+      if(want && want!==base(orig.href)) featCard=cards.filter(function(c){return base(c.getAttribute('href'))===want})[0]||null;
+      setLead(featCard);
+      if(leadSec) leadSec.style.display='';
       cards.forEach(function(card){
-        var show=(!f||card.getAttribute('data-rubric')===f);
+        var show=(!f||card.getAttribute('data-rubric')===f) && card!==featCard;
         card.style.display=show?'':'none';
-        if(card===lead){ var sec=lead.closest('section'); if(sec) sec.style.display=show?'':'none'; }
       });
     });
   });
