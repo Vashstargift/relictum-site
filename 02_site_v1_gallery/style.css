@@ -607,3 +607,10 @@ body.nav-open .buybar, body.nav-open .rl-fab, body.nav-open .rl-cpop { display: 
 /* плитки подборок (страница подарков): вместо числа — ссылка-подпись, видна и на телефоне */
 .obj-card .price span.go { margin-left: 0; }
 .grid-objects.compact .obj-card .price span.go { display: inline; font-size: 9.5px; letter-spacing: .14em; }
+
+/* ---------- Статьи журнала: одна колонка для всех частей (07.10.2026) ----------
+   Шапка стояла слева на всю ширину, обложка — во всю ширину, текст — узкой колонкой по центру:
+   края гуляли. Теперь шапка, обложка, текст, «Связанный объект» и навигация — в одной колонке. */
+.article-head .wrap > *, .article-hero, .article-body, .article-related, .article-nav { max-width: 720px; margin-left: auto; margin-right: auto; }
+.article-hero { margin-top: clamp(32px, 4vw, 52px); margin-bottom: clamp(32px, 4vw, 52px); }
+.article-hero img { aspect-ratio: 3 / 2; display: block; }
