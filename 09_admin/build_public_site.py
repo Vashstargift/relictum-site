@@ -587,7 +587,7 @@ def write_collections(stamp):
     items, promo = arranged_items()
     made, tiles, used_imgs = [], [], set()
 
-    def render(slug, c, cards, count, og_image, related, jsonld, hero_img, split_img, grid_title, wide=False, sub='', extra='', page_items=None):
+    def render(slug, c, cards, count, og_image, related, jsonld, hero_img, split_img, grid_title, wide=False, sub='', extra='', page_items=None, order_block=''):
         faq_html, faq_ld = faq_block(c, page_items)
         jsonld = jsonld + faq_ld
         hero_cta, pitch_top, pitch_bottom = pitch_blocks(c)
@@ -602,7 +602,8 @@ def write_collections(stamp):
                      '{{SPLIT_IMG}}': split_img + '?v=' + media_stamp(), '{{SPLIT_ALT}}': esc_html(c['kicker']),
                      '{{GRID_CLASS}}': ' lp-wide' if wide else '',
                      '{{SUB}}': sub, '{{GIFT_INTERIOR}}': extra, '{{FAQ}}': faq_html,
-                     '{{HERO_CTA}}': hero_cta, '{{PITCH_TOP}}': pitch_top, '{{PITCH_BOTTOM}}': pitch_bottom}.items():
+                     '{{HERO_CTA}}': hero_cta, '{{PITCH_TOP}}': pitch_top, '{{PITCH_BOTTOM}}': pitch_bottom,
+                     '{{ORDER_BLOCK}}': order_block}.items():
             t = t.replace(k, v)
         if slug == 'interernye-resheniya':   # у интерьерной подборки своя форма подбора
             t = t.replace('href="request.html">Персональный подбор', 'href="interior-request.html">Подбор в интерьер', 1)
@@ -715,6 +716,14 @@ def write_collections(stamp):
             print('  ! нет текста для', slug); continue
         # 06.10.2026 (владелец): в подборках только то, что есть в галерее — подпись обещает «все доступны к просмотру»
         sel = [o for o in items if rule(o, promo) and o.get('status') != 'Под заказ'][:cap]
+        # 07.10.2026 (владелец): лоты «Под заказ» той же подборки — отдельным блоком под основной сеткой
+        sel_order = [o for o in items if rule(o, promo) and o.get('status') == 'Под заказ'][:cap]
+        order_block = ''
+        if sel_order:
+            order_block = ('<div class="lp-order reveal" style="margin-top:clamp(48px,6vw,84px)">'
+                           '<div class="section-head"><div><div class="label">Также в коллекции</div><h2>Под заказ</h2></div>'
+                           '<p class="sub">' + esc_html(fmt_tr('Экспонатов: {n}. Срок и условия поставки уточнит менеджер галереи.', {'n': len(sel_order)})) + '</p></div>'
+                           '<div class="grid-objects compact">' + ''.join(card_html(o, 99 + n, src=('shared/img/' + promo[o['id']]['interior']['img']) if group == 'interior' else None) for n, o in enumerate(sel_order)) + '</div></div>')
         if not sel:
             print('  ! пустая подборка', slug); continue
         cards = ''.join(card_html(o, n, src=('shared/img/' + promo[o['id']]['interior']['img']) if group == 'interior' else None) for n, o in enumerate(sel))
@@ -738,7 +747,8 @@ def write_collections(stamp):
         grid_title = {'gift': 'Что подарить', 'interior': 'Предметы для пространства', 'category': 'Лоты в наличии'}[group]
         extra = interior_strip(sel, skip=(hero, split)) if group == 'gift' else ''
         render(slug, c, cards, len(sel), og, related, ld(page_ld) + '\n' + ld(crumbs(c['h1'], url, group)), hero_img, split_img, grid_title, wide=(group == 'interior'), extra=extra, page_items=sel,
-               sub=fmt_tr('Экспонатов: {n}. У каждого есть паспорт происхождения, и все они доступны к просмотру в галерее.', {'n': len(sel)}))
+               sub=fmt_tr('Экспонатов: {n}. У каждого есть паспорт происхождения, и все они доступны к просмотру в галерее.', {'n': len(sel)}),
+               order_block=order_block)
         if slug not in UNLISTED_LANDINGS:
             tiles.append((slug, group, c, sel[0], len(sel), hero_img))   # плитка хаба — интерьерный кадр (3:2), не канон
 
