@@ -603,3 +603,7 @@ body.nav-open .buybar, body.nav-open .rl-fab, body.nav-open .rl-cpop { display: 
 /* Арабская версия (rtl): суммы с пробелами между разрядами не должны переворачиваться */
 [dir="rtl"] .price b, [dir="rtl"] .buy-price, [dir="rtl"] .bb-p b, [dir="rtl"] .pr b, [dir="rtl"] .rl-line-item .price,
 [dir="rtl"] .nd-phone, [dir="rtl"] a[href^="tel:"] { direction: ltr; unicode-bidi: isolate; }
+
+/* плитки подборок (страница подарков): вместо числа — ссылка-подпись, видна и на телефоне */
+.obj-card .price span.go { margin-left: 0; }
+.grid-objects.compact .obj-card .price span.go { display: inline; font-size: 9.5px; letter-spacing: .14em; }
