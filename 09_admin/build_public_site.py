@@ -815,6 +815,10 @@ def seo_links():
                 n = re.sub(r'(<h4>Коллекции</h4>\s*<ul>).*?(</ul>)',
                            lambda m: m.group(1) + '\n          ' + items + f'<li><a href="{up}podarki.html">Подарки и интерьер</a></li>\n        ' + m.group(2),
                            n, count=1, flags=re.S)
+            # 1а. подвал: «Журнал» (статьи) в колонке «Дом» перед «Прессой» — раньше на журнал не вело ничего, кроме самих статей (07.10.2026)
+            if os.path.exists(os.path.join(OUT, 'journal.html')) and 'journal.html">Журнал' not in n:
+                n = re.sub(r'(<h4>Дом</h4>\s*<ul>.*?)(<li><a href="[^"]*press\.html">Пресса</a></li>)',
+                           lambda m: m.group(1) + f'<li><a href="{up}journal.html">Журнал</a></li>\n          ' + m.group(2), n, count=1, flags=re.S)
             # 1б. подвал: «Частые вопросы» отдельной ссылкой в колонке «Дом»
             if os.path.exists(os.path.join(OUT, 'faq.html')) and 'faq.html">Частые вопросы' not in n:
                 n = re.sub(r'(<h4>Дом</h4>\s*<ul>.*?)(</ul>)',
