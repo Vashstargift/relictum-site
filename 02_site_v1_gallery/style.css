@@ -611,6 +611,39 @@ body.nav-open .buybar, body.nav-open .rl-fab, body.nav-open .rl-cpop { display: 
 /* ---------- Статьи журнала: одна колонка для всех частей (07.10.2026) ----------
    Шапка стояла слева на всю ширину, обложка — во всю ширину, текст — узкой колонкой по центру:
    края гуляли. Теперь шапка, обложка, текст, «Связанный объект» и навигация — в одной колонке. */
-.article-head .wrap > *, .article-hero, .article-body, .article-related, .article-nav { max-width: 720px; margin-left: auto; margin-right: auto; }
+.article-head .wrap > *, .article-hero, .article-body, .article-related, .article-nav { max-width: 840px; margin-left: auto; margin-right: auto; }
 .article-hero { margin-top: clamp(32px, 4vw, 52px); margin-bottom: clamp(32px, 4vw, 52px); }
 .article-hero img { aspect-ratio: 3 / 2; display: block; }
+
+/* статьи: на компьютере текст чуть крупнее под широкую колонку; кнопки «следующая статья» не липнут к подвалу */
+@media (min-width: 900px) { .article-body p { font-size: 18px; } .article-body .lead-p { font-size: 21px; } }
+.article-nav { margin-bottom: clamp(72px, 9vw, 120px); }
+
+/* карточка лота внутри статьи */
+.art-lot { margin: 40px 0 44px; border: 1px solid var(--hairline); background: var(--bone); }
+.art-lot a { display: grid; grid-template-columns: 220px 1fr; color: inherit; text-decoration: none; }
+.art-lot-ph { background: var(--ivory); }
+.art-lot-ph img { width: 100%; height: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.art-lot-b { padding: 24px 28px; display: flex; flex-direction: column; gap: 6px; }
+.art-lot-b .label { margin-bottom: 4px; }
+.art-lot-n { font-family: var(--font-display); font-size: 26px; line-height: 1.2; color: var(--obsidian); }
+.art-lot-l { font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--bronze-deep); }
+.art-lot-m { font-size: 13px; color: var(--stone); line-height: 1.6; margin-top: 4px; }
+.art-lot-p { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--hairline); }
+.art-lot-p b { font-family: var(--font-display); font-size: 22px; font-weight: 400; color: var(--obsidian); }
+.art-lot-p span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
+.art-lot-go { align-self: flex-start; margin-top: 12px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--bronze-deep); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+.art-lot a:hover .art-lot-go { color: var(--obsidian); }
+.art-lot a:hover img { opacity: .94; }
+@media (max-width: 600px) {
+  .art-lot a { grid-template-columns: 112px 1fr; }
+  .art-lot-b { padding: 14px 14px 16px; gap: 3px; }
+  .art-lot-b .label { font-size: 9px; letter-spacing: .14em; }
+  .art-lot-n { font-size: 19px; }
+  .art-lot-l { font-size: 14px; }
+  .art-lot-m { font-size: 11.5px; }
+  .art-lot-p { padding-top: 10px; gap: 10px; }
+  .art-lot-p b { font-size: 17px; }
+  .art-lot-go { margin-top: 8px; font-size: 10px; }
+}
+[dir="rtl"] .art-lot-p b { direction: ltr; unicode-bidi: isolate; }

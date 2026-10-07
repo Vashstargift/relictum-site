@@ -263,6 +263,7 @@ def build():
     pages += write_collections(stamp)   # подарочные, интерьерные и категорийные посадочные
     pages += write_faq(stamp)           # /faq.html из 09_admin/faq.json
     journal_seo()                       # Article + дата + og:image у статей журнала
+    journal_cards(stamp)                # карточка лота внутри текста статьи (07.10.2026)
     write_page_i18n()                   # shared/i18n-pages.js — переводы главной, подарков, посадочных и журнала
     seo_links()                         # подвал → посадочные, лоты → канон, index.html → /
     write_focus_map()
@@ -999,6 +1000,74 @@ def lang_date(iso, lang):
     y, m, d = (int(x) for x in iso.split('-'))
     return {'en': f'{d} {MONTHS_EN[m - 1]} {y}', 'zh': f'{y}年{m}月{d}日', 'ar': f'{d} {MONTHS_AR[m - 1]} {y}'}[lang]
 
+
+
+# ---------------------------------------------------------------------------
+# Карточка лота внутри статьи журнала (07.10.2026, решение владельца)
+# Раньше «Связанный объект» стоял после текста мелкой строкой, а цена в нём была вписана
+# руками и устаревала. Теперь — полноценная карточка посередине статьи (перед средним
+# подзаголовком): фото, название, место и возраст, цена и наличие из каталога, кнопка.
+# При загрузке страницы цена и статус уточняются из свежего catalog.js (CRM).
+# Статьи без лота (кабинет, подделки, экспедиции, провенанс) оставляют свой блок в конце.
+# ---------------------------------------------------------------------------
+JOURNAL_LOT = {
+    'journal-ammonite': 'R–0293', 'journal-apex-stegosaurus': 'R–0214', 'journal-ceratosaurus': 'R–0610',
+    'journal-chelyabinsk': 'R–0304', 'journal-gus-trex': 'R–0271', 'journal-mammoth-fauna': 'R–0607',
+    'journal-mammoth-tusk': 'R–0607', 'journal-mars-meteorite': 'R–0105', 'journal-megalodon': 'R–0201',
+    'journal-meteorite-guide': 'R–0284', 'journal-meteorite': 'R–0283', 'journal-preparation': 'R–0217',
+}
+JOURNAL_CARD_JS = """<script>
+/* цена и наличие карточки лота в статье — из свежего каталога CRM */
+addEventListener('DOMContentLoaded',function(){var by={};(window.RELICTUM_CATALOG||[]).forEach(function(o){by[o.slug]=o});
+document.querySelectorAll('.art-lot[data-slug]').forEach(function(c){var o=by[c.getAttribute('data-slug')];if(!o)return;
+var b=c.querySelector('.art-lot-p b');if(b&&o.price&&(o.price!=='Цена по запросу'||/₽/.test(b.textContent)))b.textContent=o.price;
+var s=c.querySelector('.art-lot-p span');if(s&&o.status)s.textContent=o.status;});});
+</script>"""
+
+
+def journal_cards(stamp):
+    items, _promo = arranged_items()
+    by_id = {o['id']: o for o in items}
+    done = 0
+    for f in sorted(os.listdir(OUT)):
+        slug_page = f[:-5]
+        if not (f.startswith('journal-') and f.endswith('.html')) or slug_page not in JOURNAL_LOT:
+            continue
+        o = by_id.get(JOURNAL_LOT[slug_page])
+        if not o:
+            print('  ! журнал: лот', JOURNAL_LOT[slug_page], 'скрыт или не найден —', f); continue
+        p = os.path.join(OUT, f)
+        t = open(p, encoding='utf-8').read()
+        meta = re.sub(r'\s*<br\s*/?>\s*', ' · ', o.get('meta') or '')
+        avail = o.get('status') or 'В наличии'
+        card = ('<aside class="art-lot" data-slug="' + esc_html(o['slug']) + '"><a href="objects/' + esc_html(o['slug']) + '.html">'
+                '<div class="art-lot-ph"><img src="shared/img/' + esc_html(o['img']) + '.jpg" alt="' + esc_html(o['name']) + '" loading="lazy" decoding="async"></div>'
+                '<div class="art-lot-b"><div class="label">Экспонат из коллекции</div>'
+                '<div class="art-lot-n">' + esc_html(o['name']) + '</div>'
+                + ('<div class="art-lot-l">' + esc_html(o['latin']) + '</div>' if o.get('latin') else '')
+                + '<div class="art-lot-m">' + esc_html(meta) + '</div>'
+                '<div class="art-lot-p"><b>' + esc_html(o.get('price') or 'Цена по запросу') + '</b><span>' + esc_html(avail) + '</span></div>'
+                '<span class="art-lot-go">Смотреть экспонат →</span></div></a></aside>')
+        # в середину текста: перед средним подзаголовком, если подзаголовков меньше двух — после второго абзаца
+        s = t.find('<article class="article-body">'); e = t.find('</article>', s)
+        if s < 0 or e < 0:
+            print('  ! журнал: нет article-body в', f); continue
+        body = t[s:e]
+        h2 = [m.start() for m in re.finditer(r'<h2[\s>]', body)]
+        if len(h2) >= 2:
+            at = h2[len(h2) // 2]
+        else:
+            ps = [m.end() for m in re.finditer(r'</p>', body)]
+            at = ps[1] if len(ps) > 1 else len(body)
+        body = body[:at] + card + '\n    ' + body[at:]
+        t = t[:s] + body + t[e:]
+        # прежний блок «Связанный объект» после текста больше не нужен
+        t = re.sub(r'\s*<div class="article-related">.*?</a>\s*</div>', '', t, count=1, flags=re.S)
+        if 'art-lot[data-slug]' not in t:
+            t = t.replace('</body>', '<script src="shared/catalog.js?v=' + stamp + '" defer></script>\n' + JOURNAL_CARD_JS + '\n</body>', 1)
+        open(p, 'w', encoding='utf-8').write(t)
+        done += 1
+    print(f'  журнал: карточки лотов в {done} статьях')
 
 def journal_seo():
     import json
