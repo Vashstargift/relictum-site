@@ -634,9 +634,10 @@ def write_collections(stamp):
         if not qa:
             return '', ''
         body = ''.join(f'<div class="qa"><h3>{esc_html(q)}</h3><p>{esc_html(a)}</p></div>' for q, a in qa)
-        block = ('<section class="lp-about lp-faq-sec"><div class="wrap"><div class="section-head reveal"><div>'
+        # 07.10.2026: колонка общей секции «Частые вопросы | Как выбирать» (шаблон _collection.tpl.html)
+        block = ('<div class="lp-duo-col"><div class="section-head reveal"><div>'
                  '<div class="label">Вопросы и ответы</div><h2>Частые вопросы</h2></div></div>'
-                 '<div class="lp-faq reveal">' + body + '</div></div></section>')
+                 '<div class="lp-faq reveal">' + body + '</div></div>')
         return block, '\n' + ld({'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
             {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in qa]})
 
