@@ -1322,11 +1322,31 @@ def lang_versions():
         t = re.sub(r'(<meta (?:name="description"|property="og:title"|property="og:description"|name="twitter:title"|name="twitter:description") content=")([^"]*)(")', one, t)
         # 07.10.2026: описание, оставшееся русским (первый абзац текста лота из CRM — перевода у него нет),
         # заменяем фразой на языке версии из переведённого названия — полурусский сниппет хуже шаблонного
-        ttl = html.unescape((re.search(r'<title>(.*?)</title>', t, re.S) or [None, ''])[1]).split(' — ')[0].split(' | ')[0].strip()
+        ttl = html.unescape((re.search(r'<title>(.*?)</title>', t, re.S) or [None, ''])[1]).split(' | ')[0]
+        ttl = re.sub(r',?\s*RELICTUM\s*$', '', ttl).strip(' ,—')          # «Sea lily — R–0231»: номер лота делает шаблон уникальным
         name = ttl if ttl and not CYR.search(ttl) else ''
         fb = DESC_FALLBACK[lang].format(name=name) if name else DESC_FALLBACK_NONAME[lang]
+        def full_tr(ru):
+            # SEO-описание — первый абзац лота, обрезанный до ~160 знаков с «…»: берём перевод целого абзаца
+            # из словаря лотов и обрезаем так же. Иначе — шаблон.
+            base = ru.rstrip('…').strip()
+            if len(base) < 40:
+                return None
+            hits = [k for k in T.L if k.startswith(base)]
+            if len(hits) != 1:
+                return None
+            v = T.L[hits[0]]; v = v[I.LANGS.index(lang)] if len(v) > I.LANGS.index(lang) else None
+            if not v:
+                return None
+            if len(v) > 165:
+                cut = v[:160]; sp = cut.rfind(' ')
+                v = (cut[:sp] if sp > 80 else cut).rstrip(' ,;:') + '…'
+            return v
         def fix(m):
-            return m.group(1) + (html.escape(fb, quote=True) if CYR.search(html.unescape(m.group(2))) else m.group(2)) + m.group(3)
+            ru = html.unescape(m.group(2))
+            if not CYR.search(ru):
+                return m.group(0)
+            return m.group(1) + html.escape(full_tr(ru) or fb, quote=True) + m.group(3)
         t = re.sub(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")([^"]*)(")', fix, t)
         def ld(m):
             try:
