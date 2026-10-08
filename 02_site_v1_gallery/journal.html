@@ -224,7 +224,7 @@
         <ul>
           <li style="font-size:13.5px;color:rgba(244,240,232,.68)">Москва, ул. Большая Якиманка, 22</li>
           <li><a href="tel:+74952335111">+7 495 233 5111</a></li>
-          <li><a href="mailto:info@stargift.ru">info@stargift.ru</a></li>
+          <li><a href="mailto:info@relictum.gallery">info@relictum.gallery</a></li>
           <li><a href="https://wa.me/74952335111" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul>
       </div>
@@ -290,7 +290,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     var mail=(new FormData(f)).get('email')||'';
     try{ var a=JSON.parse(localStorage.getItem('relictum_subs')||'[]'); a.unshift({date:new Date().toLocaleString('ru-RU'),email:mail}); localStorage.setItem('relictum_subs',JSON.stringify(a)); }catch(err){}
     f.innerHTML='<p style="margin:0">Спасибо. Подтвердите подписку письмом — оно уже открыто в вашей почте.</p>';
-    window.location.href='mailto:info@stargift.ru?subject='+encodeURIComponent('Подписка на письма Relictum')+
+    window.location.href='mailto:info@relictum.gallery?subject='+encodeURIComponent('Подписка на письма Relictum')+
       '&body='+encodeURIComponent('Прошу подписать на рассылку дома: '+mail);
   });
 })();

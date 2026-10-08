@@ -94,7 +94,7 @@
         <ul>
           <li style="font-size:13.5px;color:rgba(244,240,232,.68)">Москва, ул. Большая Якиманка, 22</li>
           <li><a href="tel:+74952335111">+7 495 233 5111</a></li>
-          <li><a href="mailto:info@stargift.ru">info@stargift.ru</a></li>
+          <li><a href="mailto:info@relictum.gallery">info@relictum.gallery</a></li>
           <li><a href="https://wa.me/74952335111" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul>
       </div>
@@ -250,7 +250,7 @@ function mountJoin(){
                name:d.name,phone:d.phone,email:d.email,contact:d.phone,desc:'E-mail: '+(d.email||'не указан'),consent:!!(f&&f.querySelector&&f.querySelector('[name=consent]')&&f.querySelector('[name=consent]').checked)});
     S.toast('Добро пожаловать, '+d.name.split(' ')[0]);
     var body='Имя: '+d.name+'\nТелефон: '+d.phone+'\nE-mail: '+(d.email||'не указан');
-    window.location.href='mailto:info@stargift.ru?subject='+
+    window.location.href='mailto:info@relictum.gallery?subject='+
       encodeURIComponent('Заявка в патроны дома')+'&body='+encodeURIComponent(body);
     setTimeout(mountAccount,400);
   });
