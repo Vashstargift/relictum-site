@@ -1602,7 +1602,7 @@ SEND_PHP = r"""<?php
 /* Приём заявок и заказов с сайта -> письмо в дом.
    До этого формы писали только в localStorage посетителя, и до дома
    ничего не доходило. Адрес получателя зашит: открытого релея тут нет. */
-$TO   = 'info@stargift.ru';
+$TO   = 'info@relictum.gallery';
 $FROM = 'noreply@relictum.gallery';
 
 header('Content-Type: application/json; charset=utf-8');
