@@ -114,7 +114,7 @@ class Translator:
     def nkey(x):
         return re.sub(r'\s+', '', x).lower()
 
-    def tr(self, s, lang):
+    def tr(self, s, lang, maxlen=70):
         t = s.strip()
         if not t:
             return None
@@ -123,7 +123,7 @@ class Translator:
             v = hit[IDX[lang]] if len(hit) > IDX[lang] else None
             if v:
                 return s.replace(t, v, 1)
-        if not CYR.search(s) or len(t) > 70:
+        if not CYR.search(s) or len(t) > maxlen:
             return None
         out, changed = s, False
         for rx, val in self.frags:
@@ -140,6 +140,9 @@ class Translator:
         u2 = re.sub(r'(\d) (см|мм|м)(?=$|[\s,;)—–])', lambda m: m.group(1) + ' ' + UNITS[m.group(2)][IDX[lang]], out)
         if u2 != out:
             out, changed = u2, True
+        # 09.10.2026: в английском и китайском десятичная точка: «7,4 kg» → «7.4 kg» (тысячи «1,267» не трогаем)
+        if changed and lang in ('en', 'zh'):
+            out = re.sub(r'(\d),(\d{1,2})(?!\d)', r'\1.\2', out)
         return out if changed else None
 
     # --- страница целиком -------------------------------------------------
@@ -207,6 +210,38 @@ DESC_FALLBACK_NONAME = {
 }
 
 
+ADDRESS = {   # адрес галереи в разметке Store/Organization
+    'streetAddress': {'ул. Большая Якиманка, 22': ['22 Bolshaya Yakimanka St', '大亚基曼卡街22号', 'شارع بولشايا ياكيمانكا، 22']},
+    'addressLocality': {'Москва': ['Moscow', '莫斯科', 'موسكو']},
+    'addressRegion': {'Москва': ['Moscow', '莫斯科', 'موسكو']},
+    'addressCountry': {'Россия': ['Russia', '俄罗斯', 'روسيا']},
+}
+
+
+def cut_desc(v, limit=160):
+    """Описание для сниппета: целыми предложениями, если укладываются; иначе по слову с «…» (09.10.2026)."""
+    v = v.strip()
+    if len(v) <= limit + 5:
+        return v
+    head = v[:limit + 1]
+    ends = [m.end() for m in re.finditer(r'[.!?。！？](?=\s|$)', head)]
+    if ends and ends[-1] >= 60:
+        return v[:ends[-1]].strip()
+    cut = v[:limit]; sp = cut.rfind(' ')
+    return (cut[:sp] if sp > 80 else cut).rstrip(' ,;:') + '…'
+
+
+def local_url(v, lang, have):
+    """Абсолютный адрес сайта → адрес языковой версии, если она есть."""
+    if not v.startswith(DOMAIN + '/'):
+        return v
+    path, tail = re.match(r'([^?#]*)(.*)', v[len(DOMAIN) + 1:]).groups()
+    rel = path or 'index.html'
+    if rel.endswith('/'):
+        rel += 'index.html'
+    return lang_url(lang, rel) + tail if rel in have else v
+
+
 def lang_url(lang, rel):
     return DOMAIN + '/' + ('' if lang == 'ru' else lang + '/') + ('' if rel == 'index.html' else rel)
 
@@ -219,12 +254,14 @@ def alternates(rel, langs):
     return '\n'.join(tags) + '\n'
 
 
-def meta_tr(T, t, lang):
-    def one(m):
-        o = T.tr(htmllib.unescape(m.group(2)), lang)
+def meta_tr(T, t, lang, have=None):
+    def one(m, maxlen=70):
+        o = T.tr(htmllib.unescape(m.group(2)), lang, maxlen)
         return m.group(1) + (htmllib.escape(o, quote=True) if o else m.group(2)) + m.group(3)
-    t = re.sub(r'(<title>)(.*?)(</title>)', one, t, count=1, flags=re.S)
-    t = re.sub(r'(<meta (?:name="description"|property="og:title"|property="og:description"|name="twitter:title"|name="twitter:description") content=")([^"]*)(")', one, t)
+    title = lambda m: one(m, 160)   # заголовки лотов длиннее 70 знаков: «…, 7 кг (семь индивидуалов) — R–0302» (09.10.2026)
+    t = re.sub(r'(<title>)(.*?)(</title>)', title, t, count=1, flags=re.S)
+    t = re.sub(r'(<meta (?:property="og:title"|name="twitter:title") content=")([^"]*)(")', title, t)
+    t = re.sub(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")([^"]*)(")', one, t)
     # 07.10.2026: описание, оставшееся русским (первый абзац текста лота из CRM — перевода у него нет),
     # заменяем фразой на языке версии из переведённого названия — полурусский сниппет хуже шаблонного
     ttl = htmllib.unescape((re.search(r'<title>(.*?)</title>', t, re.S) or [None, ''])[1]).split(' | ')[0]
@@ -244,10 +281,7 @@ def meta_tr(T, t, lang):
         v = T.L[hits[0]]; v = v[LANGS.index(lang)] if len(v) > LANGS.index(lang) else None
         if not v:
             return None
-        if len(v) > 165:
-            cut = v[:160]; sp = cut.rfind(' ')
-            v = (cut[:sp] if sp > 80 else cut).rstrip(' ,;:') + '…'
-        return v
+        return cut_desc(v)
 
     def fix(m):
         ru = htmllib.unescape(m.group(2))
@@ -264,17 +298,32 @@ def meta_tr(T, t, lang):
 
         def walk(x):
             if isinstance(x, dict):
-                r = {k: (T.tr(v, lang) or v) if k in ('name', 'headline', 'description', 'category', 'text') and isinstance(v, str) else walk(v) for k, v in x.items()}
+                r = {}
+                for k, v in x.items():
+                    if isinstance(v, str) and k in ('name', 'category', 'value'):
+                        r[k] = T.tr(v, lang, maxlen=160) or v
+                    elif isinstance(v, str) and k in ('headline', 'description', 'text'):
+                        r[k] = T.tr(v, lang) or v
+                    elif isinstance(v, str) and k in ADDRESS and v in ADDRESS[k]:
+                        r[k] = ADDRESS[k][v][LANGS.index(lang)]
+                    elif isinstance(v, str) and k in ('url', 'item', '@id') and have is not None:
+                        r[k] = local_url(v, lang, have)        # 09.10.2026: разметка ведёт на свою языковую версию
+                    else:
+                        r[k] = walk(v)
+                if x.get('inLanguage') == 'ru':
+                    r['inLanguage'] = 'zh-Hans' if lang == 'zh' else lang
                 if isinstance(r.get('description'), str) and CYR3.search(r['description']) and x.get('@type') in ('Product', 'CollectionPage', 'WebPage'):
                     r['description'] = fb
+                if isinstance(r.get('description'), str) and CYR3.search(r['description']) and x.get('@type') in ('Organization', 'Store', 'WebSite', 'LocalBusiness'):
+                    r['description'] = DESC_FALLBACK_NONAME[lang]
+                if isinstance(r.get('name'), str) and CYR3.search(r['name']) and x.get('@type') in ('Store', 'Organization', 'LocalBusiness', 'WebSite'):
+                    r['name'] = 'RELICTUM'
                 return r
             if isinstance(x, list):
                 return [walk(v) for v in x]
             return x
         d = walk(d)
-        if isinstance(d, dict) and d.get('inLanguage') == 'ru':
-            d['inLanguage'] = 'zh-Hans' if lang == 'zh' else lang
-        return m.group(1) + json.dumps(d, ensure_ascii=False) + m.group(3)
+        return m.group(1) + json.dumps(d, ensure_ascii=False).replace('<', '\\u003c') + m.group(3)   # «</script>» в тексте не рвёт блок
     return re.sub(r'(<script type="application/ld\+json">)(.*?)(</script>)', ld, t, flags=re.S)
 
 
@@ -299,7 +348,7 @@ def localize(T, t, rel, lang, have, langs):
             return m.group(1) + lang_url(lang, tgt) + tail + m.group(3)
         return m.group(0)
     t = re.sub(r'(\shref=")([^"]*)(")', href, t)
-    t = meta_tr(T, t, lang)
+    t = meta_tr(T, t, lang, have)
     t = re.sub(r'<html lang="[^"]*"', '<html lang="' + ('zh-CN' if lang == 'zh' else lang) + '" data-rl-lang="' + lang + '"'
                + (' dir="rtl"' if lang == 'ar' else ''), t, count=1)
     t = re.sub(r'<link rel="canonical"[^>]*>\s*', '', t)

@@ -504,7 +504,7 @@ footer ul a { display: inline-block; padding: 6px 0; }
   .nav-actions > *:not(.rl-shopnav) { display: none !important; }
   .nav-actions .rl-shopnav { margin-left: 0; gap: 0; }
   .nav-actions .rl-navlink { width: 40px; height: 44px; align-items: center; justify-content: center; opacity: 1; }
-  .nav-actions .rl-navlink[aria-label="Личный кабинет"] { display: none; }
+  .nav-actions .rl-navlink[href$="account.html"] { display: none; }
   .nav-actions .rl-navlink svg { width: 20px; height: 20px; }
   .nav-actions .rl-badge { top: 5px; right: 1px; }
   .nav-drawer { overflow-y: auto; }
@@ -514,7 +514,7 @@ footer ul a { display: inline-block; padding: 6px 0; }
   .nav-drawer-inner .nav-drawer-extra .nde-contact a { color: var(--bronze-deep, #9A6D34); }
 }
 /* узкий телефон: надпись RELICTUM и две иконки не помещаются — оставляем корзину, избранное есть в меню */
-@media (max-width: 420px) { .nav-actions .rl-navlink[aria-label="Избранное"] { display: none; } }
+@media (max-width: 420px) { .nav-actions .rl-navlink[href$="account.html#favorites"] { display: none; } }
 
 /* ---------- Меню телефона v2 (02.10.2026): иконки сверху, разделы и языки в центре, контакты внизу ---------- */
 @media (max-width: 960px) {
@@ -654,3 +654,12 @@ body.nav-open .buybar, body.nav-open .rl-fab, body.nav-open .rl-cpop { display: 
   .art-lot-go { margin-top: 8px; font-size: 10px; }
 }
 [dir="rtl"] .art-lot-p b { direction: ltr; unicode-bidi: isolate; }
+
+/* ---------- Аудит мобильной версии 09.10.2026 ---------- */
+/* iPhone SE (320 px): длинные кнопки переносятся, а не распирают страницу */
+@media (max-width: 360px) { .btn { white-space: normal; text-align: center; } }
+/* переключатель языков в меню и ссылки «все материалы / следующая статья» — под палец */
+@media (max-width: 960px) {
+  .nav-drawer #rlLangDrawer button { min-height: 44px; }
+  .article-nav a { display: inline-block; padding: 12px 0; }
+}

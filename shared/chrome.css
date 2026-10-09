@@ -173,7 +173,7 @@ footer ul a { display: inline-block; padding: 6px 0; }
   .nav-actions > *:not(.rl-shopnav) { display: none !important; }
   .nav-actions .rl-shopnav { margin-left: 0; gap: 0; }
   .nav-actions .rl-navlink { width: 40px; height: 44px; align-items: center; justify-content: center; opacity: 1; }
-  .nav-actions .rl-navlink[aria-label="Личный кабинет"] { display: none; }
+  .nav-actions .rl-navlink[href$="account.html"] { display: none; }
   .nav-actions .rl-navlink svg { width: 20px; height: 20px; }
   .nav-actions .rl-badge { top: 5px; right: 1px; }
   .nav-drawer { overflow-y: auto; }
@@ -183,7 +183,7 @@ footer ul a { display: inline-block; padding: 6px 0; }
   .nav-drawer-inner .nav-drawer-extra .nde-contact a { color: var(--bronze-deep, #9A6D34); }
 }
 /* узкий телефон: надпись RELICTUM и две иконки не помещаются — оставляем корзину, избранное есть в меню */
-@media (max-width: 420px) { .nav-actions .rl-navlink[aria-label="Избранное"] { display: none; } }
+@media (max-width: 420px) { .nav-actions .rl-navlink[href$="account.html#favorites"] { display: none; } }
 
 /* ---------- Меню телефона v2 (02.10.2026): иконки сверху, разделы и языки в центре, контакты внизу ---------- */
 @media (max-width: 960px) {

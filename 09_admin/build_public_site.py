@@ -616,7 +616,7 @@ def write_collections(stamp):
         open(os.path.join(OUT, slug + '.html'), 'w', encoding='utf-8').write(t)
         made.append(slug + '.html')
 
-    def ld(obj): return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False) + '</script>'
+    def ld(obj): return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False).replace('<', '\\u003c') + '</script>'
 
     # Цифры для ответов FAQ считаются из каталога — текст в landing_copy.json не устаревает
     prices = sorted(o['priceValue'] for o in items if o.get('priceValue'))
@@ -1101,7 +1101,7 @@ def journal_seo():
             {'@type': 'ListItem', 'position': 1, 'name': 'RELICTUM', 'item': DOMAIN + '/'},
             {'@type': 'ListItem', 'position': 2, 'name': 'Журнал', 'item': DOMAIN + '/journal.html'},
             {'@type': 'ListItem', 'position': 3, 'name': headline, 'item': url}]}
-        ld = ''.join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + '</script>\n' for x in (art, bc))
+        ld = ''.join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False).replace('<', '\\u003c') + '</script>\n' for x in (art, bc))
         t = t.replace('</head>', ld + '</head>', 1)
         if image:
             t = re.sub(r'(<meta (?:property="og:image"|name="twitter:image") content=")[^"]*(")', lambda mm: mm.group(1) + image + mm.group(2), t)
@@ -1200,6 +1200,11 @@ def webp_pictures():
                 n = n.replace('</head>', '<style>picture{display:contents}</style>\n</head>', 1)
                 open(p, 'w', encoding='utf-8').write(n)
                 wrapped += count
+    # 09.10.2026: WebP и для всех канонов ph_* — их рисуют JS-шаблоны каталога и визитки (с откатом на JPEG)
+    imgdir = os.path.join(OUT, 'shared', 'img')
+    for f in sorted(os.listdir(imgdir)):
+        if f.startswith('ph_') and f.endswith('.jpg'):
+            webp_for(os.path.join(imgdir, f))
     print(f'  WebP: файлов {made}, картинок в <picture> {wrapped}')
 
 
@@ -1706,6 +1711,10 @@ RewriteRule ^(.*)$ https://relictum.gallery/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
+# папки без слэша (/en, /zh, /ar, /eras, /objects) — сразу на https-адрес со слэшем: иначе Apache за nginx
+# сам добавляет слэш и уводит на http (лишний шаг http→https, SEO-аудит 09.10.2026)
+RewriteRule ^(en|zh|ar|eras|objects|feed)$ https://relictum.gallery/$1/ [R=301,L]
+
 # главная одна — «/»; /index.html (и /eras/index.html и т.п.) уводим на папку.
 # THE_REQUEST — чтобы не зациклить внутреннюю отдачу index.html для «/».
 RewriteCond %{THE_REQUEST} \s/((?:[^\s?]*/)?)index\.html[\s?]
@@ -1806,7 +1815,12 @@ ErrorDocument 404 /404.html
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Content-Security-Policy "frame-ancestors 'self'"
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # 09.10.2026 (аудит): только https на год вперёд; версию PHP наружу не показываем
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always unset X-Powered-By
+  Header unset X-Powered-By
 </IfModule>
+ServerSignature Off
 """
 
 PAGE_404 = """<!DOCTYPE html>
@@ -1902,7 +1916,8 @@ function node_render_page($t, $pg) {
 if ($action === 'write_data') {
     $catalog = isset($body['catalog_js']) ? $body['catalog_js'] : ''; $promo = isset($body['promo_js']) ? $body['promo_js'] : '';
     if (strpos($catalog, 'window.RELICTUM_CATALOG') === false || strpos($promo, 'window.RELICTUM_PROMO') === false) node_out(array('error' => 'bad_payload'), 400);
-    $bak = $root . '/shared/_data-backups'; if (!is_dir($bak)) @mkdir($bak, 0755, true);
+    /* бэкапы данных — вне веб-корня (09.10.2026, аудит: из shared/ их отдавал nginx всем) */
+    $bak = dirname($root) . '/relictum-data-backups'; if (!is_dir($bak)) @mkdir($bak, 0700, true);
     $stamp = date('Ymd-His');
     @copy($root . '/shared/catalog.js', "$bak/catalog-$stamp.js"); @copy($root . '/objects/promo-data.js', "$bak/promo-data-$stamp.js");
     $baks = glob("$bak/catalog-*.js"); if (!$baks) $baks = array(); sort($baks);

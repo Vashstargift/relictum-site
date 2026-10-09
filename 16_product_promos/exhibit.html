@@ -84,7 +84,7 @@ a{color:inherit;text-decoration:none}
 /* паспорт */
 .pass{background:var(--bone);border-top:1px solid var(--linel);border-bottom:1px solid var(--linel);padding:clamp(44px,6vw,72px) 0}
 .pass .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,3vw,40px)}
-@media(max-width:760px){.pass .grid{grid-template-columns:1fr 1fr;gap:24px}}
+@media(max-width:760px){.pass .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.pass .grid .v{overflow-wrap:anywhere}}
 .pass .cell .k{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--deep);margin-bottom:8px}
 .pass .cell .v{font-family:var(--serif);font-size:clamp(19px,2.4vw,26px);line-height:1.15}
 
@@ -245,6 +245,7 @@ a{color:inherit;text-decoration:none}
     border-top:1px solid rgba(176,138,85,.35);transform:translateY(110%);transition:transform .35s var(--ease)}
   .buybar.on{transform:none}
   .buybar .bb-p{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
+  [dir=rtl] .buybar .bb-p{align-items:flex-start;text-align:start}
   .buybar .bb-p b{font-family:var(--serif);font-weight:400;font-size:18px}
   .buybar .bb-p span{font-size:11px;color:rgba(244,240,232,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .buybar .bb-main{height:44px;padding:0 18px;background:#F4F0E8;color:#14110E;border:none;cursor:pointer;
@@ -504,7 +505,7 @@ if(!o){
       '<h2 class="rv">Смотрите похожие</h2>'+
       '<div class="grid-objects rail">'+
         similar.map(function(c){return '<a class="obj-card rv" href="'+sameFolder(c.href)+'">'+
-          '<div class="ph"><img src="'+MV(IMG+c.img+'.jpg')+'" alt="'+c.name+'" loading="lazy" decoding="async"></div>'+
+          '<div class="ph"><img src="'+MV(IMG+c.img+'.webp')+'" data-jpg="'+MV(IMG+c.img+'.jpg')+'" onerror="this.onerror=null;this.src=this.dataset.jpg" alt="'+c.name+'" loading="lazy" decoding="async"></div>'+
           '<div class="body"><div class="id">'+c.id+', '+c.worldLabel+'</div>'+
           '<h3>'+c.name+'</h3><div class="latin">'+(c.latin||'')+'</div>'+
           '<div class="meta">'+(c.meta||'')+'</div>'+
@@ -597,7 +598,8 @@ if(!o){
        это самый крупный элемент страницы, ленивая загрузка его тормозила.
        Ветка heroVideo убрана: поля heroVideo в promo-data больше нет
        (ролики чёрной студии вынесены в отдельную библиотеку 05.08). */
-    '<div class="ph rv"><img src="'+MV(IMG+o.img+'.jpg')+'" alt="'+o.name+'" fetchpriority="high" decoding="async">'+
+    /* 09.10.2026: WebP в 4–6 раз легче JPEG; если WebP нет (лот только что из CRM) — браузер возьмёт JPEG */
+    '<div class="ph rv"><img src="'+MV(IMG+o.img+'.webp')+'" data-jpg="'+MV(IMG+o.img+'.jpg')+'" onerror="this.onerror=null;this.src=this.dataset.jpg" alt="'+o.name+'" fetchpriority="high" decoding="async">'+
     ((P&&P.profile&&P.profile.facts&&(P.profile.facts['Сохранность']||P.profile.facts['Ценность']||P.profile.facts['Редкость']))?
       '<div class="apprise">'+
         (P.profile.facts['Сохранность']?'<div class="row"><span>Сохранность</span><b>'+P.profile.facts['Сохранность']+'</b></div>':'')+(P.profile.facts['Редкость']?'<div class="row"><span>Редкость</span><b>'+P.profile.facts['Редкость']+'</b></div>':'')+
@@ -726,6 +728,8 @@ if(!o){
         if(src){
           var v=document.createElement('video');
           v.muted=true;v.loop=true;v.playsInline=true;v.setAttribute('playsinline','');v.autoplay=true;v.preload='auto';
+          /* 09.10.2026: на телефоне ролики эпох — вертикальные _m (в 2–4 раза легче) */
+          if(matchMedia('(max-width:767px)').matches && /\/era_[a-z_]+\.mp4/.test(src)) src=src.replace(/\.mp4/,'_m.mp4');
           v.src=src;
           var pst=a.querySelector('.poster');
           v.addEventListener('canplay',function(){if(pst)pst.style.opacity='0';v.play().catch(function(){});});

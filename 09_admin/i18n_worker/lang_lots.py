@@ -297,7 +297,34 @@ def lang_files(lang):
     return res
 
 
+def make_webp():
+    """WebP рядом с фото лотов ph_*.jpg, загруженными прямо из CRM (сборка делает их только для файлов из репо).
+    Каталог и визитка просят .webp и откатываются на .jpg — без WebP лишний 404 и тяжёлая картинка (09.10.2026)."""
+    try:
+        from PIL import Image
+    except ImportError:
+        return 0
+    imgdir, made = os.path.join(SHARED, 'img'), 0
+    for f in os.listdir(imgdir):
+        if not (f.startswith('ph_') and f.endswith('.jpg')):
+            continue
+        jp = os.path.join(imgdir, f); wp = jp[:-4] + '.webp'
+        if os.path.exists(wp) and os.path.getmtime(wp) >= os.path.getmtime(jp):
+            continue
+        try:
+            with Image.open(jp) as im:
+                im.save(wp + '.tmp', 'WEBP', quality=80, method=4)
+            os.chmod(wp + '.tmp', 0o644); os.replace(wp + '.tmp', wp); made += 1
+        except Exception as e:
+            log(f'! webp {f}: {e!r}')
+    return made
+
+
 def run_once(force=False, dry=False, no_translate=False, via_hermes=False, translate_only=False):
+    if not dry:
+        n = make_webp()
+        if n:
+            log(f'webp для фото лотов: {n}')
     catalog = I.read_js_object(os.path.join(SHARED, 'catalog.js'))
     promo = I.read_js_object(os.path.join(SITE, 'objects', 'promo-data.js'))
     if not isinstance(catalog, list) or not catalog:

@@ -103,7 +103,7 @@
   .cat-toolbar { display:flex; }
   .filters-toggle { display:inline-flex; align-items:center; gap:9px; padding:11px 18px; border:1px solid var(--obsidian); background:transparent; font-family:var(--font-ui); font-size:11px; letter-spacing:.16em; text-transform:uppercase; cursor:pointer; color:var(--obsidian); }
   .filters-toggle .fn { background:var(--bronze-deep); color:var(--ivory); border-radius:9px; padding:0 7px; font-size:10px; }
-  .rail-close { display:block; }
+  .rail-close { display:flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; }   /* палец, а не 17×20 (аудит 09.10.2026) */
   /* 02.10.2026: нижняя кнопка — «Искать» (владелец: понятнее, чем «Ок · N экспонатов») */
   .rail-apply { display:block; position:sticky; bottom:0; z-index:5; width:100%; padding:17px 20px;
     background:var(--obsidian); color:var(--ivory); border:none; cursor:pointer;
@@ -411,7 +411,9 @@ function renderChips() {
   });
   if (state.priceMin!=null) chips.push({k:"priceMin",v:null,text:"от "+state.priceMin.toLocaleString('ru')+" ₽"});
   if (state.priceMax!=null) chips.push({k:"priceMax",v:null,text:"до "+state.priceMax.toLocaleString('ru')+" ₽"});
-  chipsEl.innerHTML = chips.map(c => `<span class="ac">${c.text}<b data-k="${c.k}" data-v="${c.v}">✕</b></span>`).join("");
+  /* значения фильтров приходят и из адресной строки — в разметку только экранированными (09.10.2026, аудит: XSS по ссылке) */
+  const h = x => String(x).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+  chipsEl.innerHTML = chips.map(c => `<span class="ac">${h(c.text)}<b data-k="${h(c.k)}" data-v="${h(c.v)}">✕</b></span>`).join("");
   chipsEl.querySelectorAll("b").forEach(b => b.addEventListener("click", () => {
     const k=b.dataset.k, v=b.dataset.v;
     if(k==="priceMin"){state.priceMin=null; $("#pmin").value="";}
@@ -456,7 +458,7 @@ function render() {
   if (mb) { const rest = total - items.length; mb.hidden = rest <= 0; mb.innerHTML = "<span>Показать ещё</span> <span>+" + Math.min(rest, STEP) + "</span>"; }
   grid.innerHTML = items.length ? items.map((o, n) => `
     <a class="obj-card" href="${o.href||('object.html?id='+encodeURIComponent(o.id))}">
-      <div class="ph">${o.status?'<span class="badge">'+o.status+'</span>':''}<img src="../shared/img/${o.img}.jpg?v=${window.RELICTUM_MV||12}" alt="${o.name}"${n < 4 ? '' : ' loading="lazy"'} decoding="async"></div>
+      <div class="ph">${o.status?'<span class="badge">'+o.status+'</span>':''}<img src="../shared/img/${o.img}.webp?v=${window.RELICTUM_MV||12}" data-jpg="../shared/img/${o.img}.jpg?v=${window.RELICTUM_MV||12}" onerror="this.onerror=null;this.src=this.dataset.jpg" alt="${o.name}"${n < 4 ? '' : ' loading="lazy"'} decoding="async"></div>
       <div class="body">
         <div class="id">${o.id}, ${o.worldLabel}</div>
         <h3>${o.name}</h3>
@@ -509,6 +511,7 @@ function applyURL() {
   URL_KEYS.forEach(k => {
     const v = p.get(k); if (!v) return;
     v.split(",").filter(Boolean).forEach(val => {
+      if (val.length > 80 || /[<>"]/.test(val)) return;   // не значение фильтра, а мусор/атака
       state[k].add(val); any = true;
       const cb = facetsEl.querySelector(`input[data-k="${k}"][value="${CSS.escape(val)}"]`);
       if (cb) cb.checked = true;
