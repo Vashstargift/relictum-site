@@ -6,3 +6,4 @@ public/
 
 # превьюшки для таблицы наличия (генерятся build_stock_xlsx.py)
 09_admin/_thumbs/
+public-i18n-worker/

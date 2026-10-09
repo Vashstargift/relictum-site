@@ -23,6 +23,7 @@ from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'public')
+OUT_WORKER = os.path.join(ROOT, 'public-i18n-worker')   # → ~/relictum.gallery/i18n-worker/ (вне public_html)
 DOMAIN = 'https://relictum.gallery'
 
 # Принудительный редирект на https. Включать ТОЛЬКО когда сертификат уже выпущен:
@@ -1015,6 +1016,7 @@ JOURNAL_LOT = {
     'journal-chelyabinsk': 'R–0304', 'journal-gus-trex': 'R–0271', 'journal-mammoth-fauna': 'R–0607',
     'journal-mammoth-tusk': 'R–0607', 'journal-mars-meteorite': 'R–0105', 'journal-megalodon': 'R–0201',
     'journal-meteorite-guide': 'R–0284', 'journal-meteorite': 'R–0283', 'journal-preparation': 'R–0217',
+    'journal-seymchan': 'R–0630',
 }
 JOURNAL_CARD_JS = """<script>
 /* цена и наличие карточки лота в статье — из свежего каталога CRM */
@@ -1262,18 +1264,7 @@ def write_page_i18n():
     print(f'  переводы страниц: {len(d)} строк')
 
 
-LANG_MAX_CYR = 0.10
-CYR = re.compile(r'[А-Яа-яЁё]{3,}')
-DESC_FALLBACK = {
-    'en': '{name} — a natural-history piece in the RELICTUM collection, Moscow: provenance, age, photos and price.',
-    'zh': '{name}——RELICTUM 莫斯科收藏中的自然史珍品：来源、年代、照片与价格。',
-    'ar': '{name} — قطعة من التاريخ الطبيعي في مجموعة RELICTUM في موسكو: المنشأ والعمر والصور والسعر.',
-}
-DESC_FALLBACK_NONAME = {
-    'en': 'RELICTUM, Moscow: dinosaur skeletons, meteorites, minerals and mammoth fauna with provenance passports.',
-    'zh': 'RELICTUM 莫斯科：恐龙骨架、陨石、矿物与猛犸动物群，均附来源护照。',
-    'ar': 'RELICTUM في موسكو: هياكل ديناصورات ونيازك ومعادن وحيوانات الماموث مع جوازات منشأ.',
-}
+LANG_MAX_CYR = 0.10          # порог и запасные описания живут в 09_admin/i18n_static.py (общие с воркером)
 LANG_SKIP = {'404.html', 'object.html', 'objects/exhibit.html', 'eras/index.html', 'account.html', 'cart.html', 'checkout.html'}
 
 
@@ -1281,10 +1272,18 @@ def lang_versions():
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import i18n_static as I
     try:
-        T = I.Translator(I.load_dicts(OUT))
+        dicts = I.load_dicts(OUT)
+        T = I.Translator(dicts)
         T.add_names([o['name'] for o in arranged_items()[0]])   # названия лотов внутри заголовков (07.10.2026)
     except Exception as e:
         print('  ! словари i18n не прочитаны — языковые версии не собраны:', e); return []
+    # 09.10.2026: воркер на сервере (09_admin/i18n_worker) пересобирает языковые визитки после каждой
+    # публикации из CRM. node там нет — словари интерфейса (D, F, H) отдаём ему снимком; код — тот же
+    os.makedirs(OUT_WORKER, exist_ok=True)
+    json.dump({k: dicts[k] for k in ('D', 'F', 'H', 'FRAG_OK')}, open(os.path.join(OUT_WORKER, 'static.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+    here = os.path.dirname(os.path.abspath(__file__))
+    for f in ('i18n_static.py', 'i18n_worker/lang_lots.py'):
+        shutil.copy(os.path.join(here, f), os.path.join(OUT_WORKER, os.path.basename(f)))
     src = {}
     for dp, _, fs in os.walk(OUT):
         rel_dp = os.path.relpath(dp, OUT).replace(os.sep, '/')
@@ -1306,96 +1305,12 @@ def lang_versions():
             o = T.page(t, lang)
             if I.visible_share(o) <= LANG_MAX_CYR:
                 done[lang][rel] = o
-    url = lambda lang, rel: DOMAIN + '/' + ('' if lang == 'ru' else lang + '/') + ('' if rel == 'index.html' else rel)
-
-    def alternates(rel):
-        tags = [f'<link rel="alternate" hreflang="ru" href="{url("ru", rel)}">']
-        tags += [f'<link rel="alternate" hreflang="{I.HREFLANG[l]}" href="{url(l, rel)}">' for l in I.LANGS if rel in done[l]]
-        tags.append(f'<link rel="alternate" hreflang="x-default" href="{url("ru", rel)}">')
-        return '\n'.join(tags) + '\n'
-
-    def meta_tr(t, lang):
-        def one(m):
-            o = T.tr(html.unescape(m.group(2)), lang)
-            return m.group(1) + (html.escape(o, quote=True) if o else m.group(2)) + m.group(3)
-        t = re.sub(r'(<title>)(.*?)(</title>)', one, t, count=1, flags=re.S)
-        t = re.sub(r'(<meta (?:name="description"|property="og:title"|property="og:description"|name="twitter:title"|name="twitter:description") content=")([^"]*)(")', one, t)
-        # 07.10.2026: описание, оставшееся русским (первый абзац текста лота из CRM — перевода у него нет),
-        # заменяем фразой на языке версии из переведённого названия — полурусский сниппет хуже шаблонного
-        ttl = html.unescape((re.search(r'<title>(.*?)</title>', t, re.S) or [None, ''])[1]).split(' | ')[0]
-        ttl = re.sub(r',?\s*RELICTUM\s*$', '', ttl).strip(' ,—')          # «Sea lily — R–0231»: номер лота делает шаблон уникальным
-        name = ttl if ttl and not CYR.search(ttl) else ''
-        fb = DESC_FALLBACK[lang].format(name=name) if name else DESC_FALLBACK_NONAME[lang]
-        def full_tr(ru):
-            # SEO-описание — первый абзац лота, обрезанный до ~160 знаков с «…»: берём перевод целого абзаца
-            # из словаря лотов и обрезаем так же. Иначе — шаблон.
-            base = ru.rstrip('…').strip()
-            if len(base) < 40:
-                return None
-            hits = [k for k in T.L if k.startswith(base)]
-            if len(hits) != 1:
-                return None
-            v = T.L[hits[0]]; v = v[I.LANGS.index(lang)] if len(v) > I.LANGS.index(lang) else None
-            if not v:
-                return None
-            if len(v) > 165:
-                cut = v[:160]; sp = cut.rfind(' ')
-                v = (cut[:sp] if sp > 80 else cut).rstrip(' ,;:') + '…'
-            return v
-        def fix(m):
-            ru = html.unescape(m.group(2))
-            if not CYR.search(ru):
-                return m.group(0)
-            return m.group(1) + html.escape(full_tr(ru) or fb, quote=True) + m.group(3)
-        t = re.sub(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")([^"]*)(")', fix, t)
-        def ld(m):
-            try:
-                d = json.loads(m.group(2))
-            except Exception:
-                return m.group(0)
-            def walk(x):
-                if isinstance(x, dict):
-                    r = {k: (T.tr(v, lang) or v) if k in ('name', 'headline', 'description', 'category', 'text') and isinstance(v, str) else walk(v) for k, v in x.items()}
-                    if isinstance(r.get('description'), str) and CYR.search(r['description']) and x.get('@type') in ('Product', 'CollectionPage', 'WebPage'):
-                        r['description'] = fb
-                    return r
-                if isinstance(x, list):
-                    return [walk(v) for v in x]
-                return x
-            d = walk(d)
-            if isinstance(d, dict) and d.get('inLanguage') == 'ru':
-                d['inLanguage'] = 'zh-Hans' if lang == 'zh' else lang
-            return m.group(1) + json.dumps(d, ensure_ascii=False) + m.group(3)
-        return re.sub(r'(<script type="application/ld\+json">)(.*?)(</script>)', ld, t, flags=re.S)
-
+    langs_of = lambda rel: [l for l in I.LANGS if rel in done[l]]
     made = []
     for lang in I.LANGS:
         have = done[lang]
         for rel, t in have.items():
-            folder = rel.rsplit('/', 1)[0] + '/' if '/' in rel else ''
-            me = url(lang, rel)
-
-            def href(m):
-                v = m.group(2)
-                if v.startswith('#'):
-                    return m.group(1) + me + v + m.group(3)
-                if v.startswith(('http', '/', 'mailto:', 'tel:', 'javascript:', 'data:')):
-                    return m.group(0)
-                path, tail = re.match(r'([^?#]*)(.*)', v).groups()
-                tgt = os.path.normpath(folder + path).replace(os.sep, '/') if path else rel
-                if tgt.endswith('/') or tgt in ('.', ''):
-                    tgt = (tgt.rstrip('/') + '/index.html').lstrip('./') or 'index.html'
-                if tgt in have:
-                    return m.group(1) + url(lang, tgt) + tail + m.group(3)
-                return m.group(0)
-            t = re.sub(r'(\shref=")([^"]*)(")', href, t)
-            t = meta_tr(t, lang)
-            t = re.sub(r'<html lang="[^"]*"', '<html lang="' + ('zh-CN' if lang == 'zh' else lang) + '" data-rl-lang="' + lang + '"'
-                       + (' dir="rtl"' if lang == 'ar' else ''), t, count=1)
-            t = re.sub(r'<link rel="canonical"[^>]*>\s*', '', t)
-            t = re.sub(r'(<meta property="og:url" content=")[^"]*(")', lambda m: m.group(1) + me + m.group(2), t, count=1)
-            t = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + f'\n<base href="/{folder}">', t, count=1)
-            t = t.replace('</head>', f'<link rel="canonical" href="{me}">\n' + alternates(rel) + '</head>', 1)
+            t = I.localize(T, t, rel, lang, have, langs_of(rel))
             out = os.path.join(OUT, lang, rel)
             os.makedirs(os.path.dirname(out), exist_ok=True)
             open(out, 'w', encoding='utf-8').write(t)
@@ -1405,7 +1320,7 @@ def lang_versions():
         if any(rel in done[l] for l in I.LANGS):
             p = os.path.join(OUT, rel)
             t = open(p, encoding='utf-8').read()
-            open(p, 'w', encoding='utf-8').write(t.replace('</head>', alternates(rel) + '</head>', 1))
+            open(p, 'w', encoding='utf-8').write(t.replace('</head>', I.alternates(rel, langs_of(rel)) + '</head>', 1))
     print('  языковые версии: ' + ', '.join(f'{l} — {len(done[l])}' for l in I.LANGS) + f' (порог русского текста {int(LANG_MAX_CYR * 100)}%)')
     return made
 
@@ -1871,6 +1786,7 @@ ErrorDocument 404 /404.html
   ExpiresByType text/html "access plus 10 minutes"
 </IfModule>
 
+
 # Шрифты дома лежат у нас же. ForceType, а не AddType: сервер по умолчанию
 # отдаёт .woff2 как application/font-woff2 (устаревший тип), из-за чего правило
 # ExpiresByType font/woff2 не срабатывало и кэш был 30 дней вместо года.
@@ -2045,7 +1961,17 @@ if ($action === 'write_data') {
         $n = preg_replace(array('/catalog\.js\?v=[a-f0-9]{8}/', '/promo-data\.js\?v=[a-f0-9]{8}/'), array('catalog.js?v=' . $ch, 'promo-data.js?v=' . $ph), $t, -1, $cnt);
         if ($cnt > 0 && $n !== $t) { node_atomic($p, $n); $updated++; }
     }
-    node_out(array('ok' => true, 'catalog_hash' => $ch, 'promo_hash' => $ph, 'html_updated' => $updated, 'pages_written' => $pagesWritten));
+    /* 09.10.2026: языковые визитки /en|zh|ar/objects/ — воркер i18n-worker (перевод новых текстов + пересборка),
+       в фоне: публикация его не ждёт. Флаг pending — чтобы вторая публикация во время работы не потерялась. */
+    $worker = 'off'; $wk = dirname($root) . '/i18n-worker';
+    if ($pagesWritten > 0 && is_file($wk . '/lang_lots.py')) {
+        @touch($wk . '/pending'); $worker = 'pending';
+        if (function_exists('exec')) {
+            @exec('cd ' . escapeshellarg($wk) . ' && /usr/bin/nohup /usr/bin/setsid /usr/bin/python3 lang_lots.py --pending >/dev/null 2>&1 &');
+            $worker = 'started';
+        }
+    }
+    node_out(array('ok' => true, 'catalog_hash' => $ch, 'promo_hash' => $ph, 'html_updated' => $updated, 'pages_written' => $pagesWritten, 'i18n_worker' => $worker));
 }
 if ($action === 'write_image') {
     $name = basename(isset($body['name']) ? (string)$body['name'] : '');

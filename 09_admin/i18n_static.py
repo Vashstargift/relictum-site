@@ -44,7 +44,38 @@ def load_dicts(out_dir):
     lots = os.path.join(out_dir, 'shared', 'i18n-lots.js')
     pages = os.path.join(out_dir, 'shared', 'i18n-pages.js')   # главная, подарки, посадочные — пишет сборка
     res = subprocess.run(['node', '-e', _EXPORT_JS, js, lots, pages], capture_output=True, text=True, encoding='utf-8', check=True)
-    return json.loads(res.stdout)
+    d = json.loads(res.stdout)
+    # 09.10.2026: тексты лотов, которые сервер перевёл сам после публикации из CRM (i18n_worker) —
+    # ниже ручного словаря: ручной перевод, если он есть, главнее
+    auto = read_js_object(os.path.join(out_dir, 'shared', 'i18n-lots-auto.js'))
+    d['L'] = dict(auto, **d['L'])
+    return d
+
+
+def read_js_object(path):
+    """window.X = {…}; → dict. Файлы словарей пишутся как JSON, так что хватает json."""
+    try:
+        src = open(path, encoding='utf-8').read()
+    except OSError:
+        return {}
+    i = src.find('=', src.find('window.'))
+    if i < 0:
+        return {}
+    try:
+        return json.JSONDecoder().raw_decode(src[i + 1:].lstrip())[0]
+    except ValueError:
+        return {}
+
+
+def load_dicts_static(static_json, shared_dir):
+    """То же, что load_dicts, но без node (на сервере его нет): D, F, H, FRAG_OK — из снимка,
+    который сборка кладёт рядом с воркером; тексты лотов и страниц — из файлов сайта."""
+    d = json.load(open(static_json, encoding='utf-8'))
+    L = dict(read_js_object(os.path.join(shared_dir, 'i18n-lots-auto.js')))
+    L.update(read_js_object(os.path.join(shared_dir, 'i18n-pages.js')))
+    L.update(read_js_object(os.path.join(shared_dir, 'i18n-lots.js')))
+    d['L'] = L
+    return d
 
 
 class Translator:
@@ -155,3 +186,123 @@ def visible_share(src):
     txt = htmllib.unescape(re.sub(r'<[^>]+>', ' ', body))
     c, l = len(LETTER_CYR.findall(txt)), len(LETTER_LAT.findall(txt))
     return c / (c + l) if c + l else 1.0
+
+
+# --- языковая версия страницы целиком (09.10.2026) -------------------------------------------
+# Общий код сборщика (lang_versions в build_public_site.py) и серверного воркера (i18n_worker),
+# который пересобирает языковые визитки лотов после публикации из CRM. Логика перенесена из
+# сборщика без изменений — результат сборки байт-в-байт прежний.
+DOMAIN = 'https://relictum.gallery'
+LANG_MAX_CYR = 0.10
+CYR3 = re.compile(r'[А-Яа-яЁё]{3,}')
+DESC_FALLBACK = {
+    'en': '{name} — a natural-history piece in the RELICTUM collection, Moscow: provenance, age, photos and price.',
+    'zh': '{name}——RELICTUM 莫斯科收藏中的自然史珍品：来源、年代、照片与价格。',
+    'ar': '{name} — قطعة من التاريخ الطبيعي في مجموعة RELICTUM في موسكو: المنشأ والعمر والصور والسعر.',
+}
+DESC_FALLBACK_NONAME = {
+    'en': 'RELICTUM, Moscow: dinosaur skeletons, meteorites, minerals and mammoth fauna with provenance passports.',
+    'zh': 'RELICTUM 莫斯科：恐龙骨架、陨石、矿物与猛犸动物群，均附来源护照。',
+    'ar': 'RELICTUM في موسكو: هياكل ديناصورات ونيازك ومعادن وحيوانات الماموث مع جوازات منشأ.',
+}
+
+
+def lang_url(lang, rel):
+    return DOMAIN + '/' + ('' if lang == 'ru' else lang + '/') + ('' if rel == 'index.html' else rel)
+
+
+def alternates(rel, langs):
+    """hreflang-связка страницы rel; langs — языки, на которых у неё есть версия."""
+    tags = [f'<link rel="alternate" hreflang="ru" href="{lang_url("ru", rel)}">']
+    tags += [f'<link rel="alternate" hreflang="{HREFLANG[l]}" href="{lang_url(l, rel)}">' for l in LANGS if l in langs]
+    tags.append(f'<link rel="alternate" hreflang="x-default" href="{lang_url("ru", rel)}">')
+    return '\n'.join(tags) + '\n'
+
+
+def meta_tr(T, t, lang):
+    def one(m):
+        o = T.tr(htmllib.unescape(m.group(2)), lang)
+        return m.group(1) + (htmllib.escape(o, quote=True) if o else m.group(2)) + m.group(3)
+    t = re.sub(r'(<title>)(.*?)(</title>)', one, t, count=1, flags=re.S)
+    t = re.sub(r'(<meta (?:name="description"|property="og:title"|property="og:description"|name="twitter:title"|name="twitter:description") content=")([^"]*)(")', one, t)
+    # 07.10.2026: описание, оставшееся русским (первый абзац текста лота из CRM — перевода у него нет),
+    # заменяем фразой на языке версии из переведённого названия — полурусский сниппет хуже шаблонного
+    ttl = htmllib.unescape((re.search(r'<title>(.*?)</title>', t, re.S) or [None, ''])[1]).split(' | ')[0]
+    ttl = re.sub(r',?\s*RELICTUM\s*$', '', ttl).strip(' ,—')          # «Sea lily — R–0231»: номер лота делает шаблон уникальным
+    name = ttl if ttl and not CYR3.search(ttl) else ''
+    fb = DESC_FALLBACK[lang].format(name=name) if name else DESC_FALLBACK_NONAME[lang]
+
+    def full_tr(ru):
+        # SEO-описание — первый абзац лота, обрезанный до ~160 знаков с «…»: берём перевод целого абзаца
+        # из словаря лотов и обрезаем так же. Иначе — шаблон.
+        base = ru.rstrip('…').strip()
+        if len(base) < 40:
+            return None
+        hits = [k for k in T.L if k.startswith(base)]
+        if len(hits) != 1:
+            return None
+        v = T.L[hits[0]]; v = v[LANGS.index(lang)] if len(v) > LANGS.index(lang) else None
+        if not v:
+            return None
+        if len(v) > 165:
+            cut = v[:160]; sp = cut.rfind(' ')
+            v = (cut[:sp] if sp > 80 else cut).rstrip(' ,;:') + '…'
+        return v
+
+    def fix(m):
+        ru = htmllib.unescape(m.group(2))
+        if not CYR3.search(ru):
+            return m.group(0)
+        return m.group(1) + htmllib.escape(full_tr(ru) or fb, quote=True) + m.group(3)
+    t = re.sub(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")([^"]*)(")', fix, t)
+
+    def ld(m):
+        try:
+            d = json.loads(m.group(2))
+        except Exception:
+            return m.group(0)
+
+        def walk(x):
+            if isinstance(x, dict):
+                r = {k: (T.tr(v, lang) or v) if k in ('name', 'headline', 'description', 'category', 'text') and isinstance(v, str) else walk(v) for k, v in x.items()}
+                if isinstance(r.get('description'), str) and CYR3.search(r['description']) and x.get('@type') in ('Product', 'CollectionPage', 'WebPage'):
+                    r['description'] = fb
+                return r
+            if isinstance(x, list):
+                return [walk(v) for v in x]
+            return x
+        d = walk(d)
+        if isinstance(d, dict) and d.get('inLanguage') == 'ru':
+            d['inLanguage'] = 'zh-Hans' if lang == 'zh' else lang
+        return m.group(1) + json.dumps(d, ensure_ascii=False) + m.group(3)
+    return re.sub(r'(<script type="application/ld\+json">)(.*?)(</script>)', ld, t, flags=re.S)
+
+
+def localize(T, t, rel, lang, have, langs):
+    """Переведённая страница t (результат T.page) → готовый файл /<lang>/<rel>.
+    have — страницы, у которых есть версия на этом языке (на них переводим ссылки);
+    langs — языки, на которых есть rel (для hreflang)."""
+    folder = rel.rsplit('/', 1)[0] + '/' if '/' in rel else ''
+    me = lang_url(lang, rel)
+
+    def href(m):
+        v = m.group(2)
+        if v.startswith('#'):
+            return m.group(1) + me + v + m.group(3)
+        if v.startswith(('http', '/', 'mailto:', 'tel:', 'javascript:', 'data:')):
+            return m.group(0)
+        path, tail = re.match(r'([^?#]*)(.*)', v).groups()
+        tgt = os.path.normpath(folder + path).replace(os.sep, '/') if path else rel
+        if tgt.endswith('/') or tgt in ('.', ''):
+            tgt = (tgt.rstrip('/') + '/index.html').lstrip('./') or 'index.html'
+        if tgt in have:
+            return m.group(1) + lang_url(lang, tgt) + tail + m.group(3)
+        return m.group(0)
+    t = re.sub(r'(\shref=")([^"]*)(")', href, t)
+    t = meta_tr(T, t, lang)
+    t = re.sub(r'<html lang="[^"]*"', '<html lang="' + ('zh-CN' if lang == 'zh' else lang) + '" data-rl-lang="' + lang + '"'
+               + (' dir="rtl"' if lang == 'ar' else ''), t, count=1)
+    t = re.sub(r'<link rel="canonical"[^>]*>\s*', '', t)
+    t = re.sub(r'(<meta property="og:url" content=")[^"]*(")', lambda m: m.group(1) + me + m.group(2), t, count=1)
+    t = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + f'\n<base href="/{folder}">', t, count=1)
+    return t.replace('</head>', f'<link rel="canonical" href="{me}">\n' + alternates(rel, langs) + '</head>', 1)

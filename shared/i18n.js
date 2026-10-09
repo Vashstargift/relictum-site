@@ -123,6 +123,9 @@ var D={
 "Добавлено в избранное":["Added to favourites","已加入收藏","أضيف إلى المفضلة"],
 "Убрано из избранного":["Removed from favourites","已取消收藏","أزيل من المفضلة"],
 "Объект в 360°":["The object in 360°","360°全景","القطعة بزاوية 360°"],
+"Экспонат в 360°":["The piece in 360°","360°全景","القطعة بزاوية 360°"],
+"Визуализация экспоната":["Visualisation of the piece","藏品可视化","تصوير القطعة"],
+"Запросить экспонат":["Enquire about this piece","咨询此藏品","استفسر عن القطعة"],
 "Потяните рычажок, чтобы увидеть фото-реконструкцию экспоната":["Pull the lever to see the photo reconstruction","拉动滑杆查看复原图","اسحب الذراع لرؤية إعادة البناء المصوّرة"],
 /* миры */
 "Космос":["Cosmos","宇宙","الكون"],
@@ -826,19 +829,22 @@ function ensureLots(cb){
   if(lotsState===2){ cb&&cb(); return; }
   if(lotsState===1) return;
   lotsState=1;
-  /* тексты лотов и тексты страниц (главная, подарки, посадочные) — два файла, ждём оба */
-  var q=(SELF.match(/\?.*$/)||[''])[0], left=2;
+  /* тексты лотов, автоперевод лотов и тексты страниц (главная, подарки, посадочные) — три файла, ждём все */
+  var q=(SELF.match(/\?.*$/)||[''])[0], left=3;
   function done(){
     if(--left) return;
     lotsState=2;
-    [window.RELICTUM_I18N_PAGES, window.RELICTUM_I18N_LOTS].forEach(function(L){
+    /* i18n-lots-auto.js — тексты лотов, переведённые сервером после публикации из CRM (09.10.2026);
+       ручные словари идут раньше и главнее */
+    [window.RELICTUM_I18N_PAGES, window.RELICTUM_I18N_LOTS, window.RELICTUM_I18N_LOTS_AUTO].forEach(function(L){
       if(L){ for(var k in L) if(!DL[k]) DL[k]=L[k]; }
     });
     cb&&cb();
   }
-  ['i18n-lots.js','i18n-pages.js'].forEach(function(f){
+  ['i18n-lots.js','i18n-pages.js','i18n-lots-auto.js'].forEach(function(f){
     var sc=document.createElement('script');
-    sc.src=SELF.replace(/i18n\.js.*$/,f)+q;
+    /* автословарь дописывает сервер, а статику Beget раздаёт nginx с кэшем на 7 дней — метка раз в 10 минут */
+    sc.src=SELF.replace(/i18n\.js.*$/,f)+q+(f==='i18n-lots-auto.js'?(q?'&':'?')+'t='+Math.floor(Date.now()/6e5):'');
     sc.onload=done; sc.onerror=done;
     document.head.appendChild(sc);
   });

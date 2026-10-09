@@ -64,6 +64,16 @@ def cmd_pull():
     open(os.path.join(ROOT, 'shared', 'catalog.js'), 'w', encoding='utf-8').write(r['catalog_js'])
     open(os.path.join(ROOT, '16_product_promos', 'promo-data.js'), 'w', encoding='utf-8').write(r['promo_js'])
     print(f"pull: объектов {r['total']}, видимых {r['visible']} → catalog.js, promo-data.js")
+    # 09.10.2026: словарь автоперевода текстов лотов ведёт сервер (i18n-worker) — забираем в репо,
+    # чтобы полная сборка собрала языковые версии с ним же
+    try:
+        with urllib.request.urlopen('https://relictum.gallery/shared/i18n-lots-auto.js', timeout=60) as a:
+            body = a.read().decode()
+        if 'window.RELICTUM_I18N_LOTS_AUTO' in body:
+            open(os.path.join(ROOT, 'shared', 'i18n-lots-auto.js'), 'w', encoding='utf-8').write(body)
+            print('pull: shared/i18n-lots-auto.js — словарь автоперевода с сервера')
+    except Exception as e:
+        print('pull: словаря автоперевода на сервере нет —', e)
 
 def cmd_publish():
     r = call('relictum-publish.php', 'POST', {})
