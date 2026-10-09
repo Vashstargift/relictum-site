@@ -578,7 +578,8 @@ var D={
 "Москва, ул. Большая Якиманка, 22":["22 Bolshaya Yakimanka St., Moscow","莫斯科，大雅基曼卡街22号","موسكو، شارع بولشايا ياكيمانكا 22"],
 "Москва, Большая Якиманка, 22":["22 Bolshaya Yakimanka, Moscow","莫斯科，大雅基曼卡22号","موسكو، بولشايا ياكيمانكا 22"],
 "Договор-оферта":["Public offer","要约合同","عقد العرض"],
-"Галерея Stargift":["Stargift gallery","Stargift 画廊","صالة ستارغيفت"]
+"Галерея Stargift":["Stargift gallery","Stargift 画廊","صالة ستارغيفت"],
+"Галерея RELICTUM":["RELICTUM gallery","RELICTUM 画廊","صالة RELICTUM"]
 };
 
 

@@ -1727,7 +1727,7 @@ RewriteRule ^objects/bothriolepis\.html$ https://relictum.gallery/objects/0209-b
 RewriteRule ^objects/lunar-frame\.html$ https://relictum.gallery/objects/0105-lunar-meteorite.html [R=301,L]
 RewriteRule ^objects/meteorite-chinge\.html$ https://relictum.gallery/objects/0104-chinga-iron.html [R=301,L]
 RewriteRule ^objects/meteorite-dronino\.html$ https://relictum.gallery/objects/0103-dronino-iron.html [R=301,L]
-RewriteRule ^objects/sabertooth-skull\.html$ https://relictum.gallery/objects/0208-machairodus-sp.html [R=301,L]
+RewriteRule ^objects/sabertooth-skull\.html$ https://relictum.gallery/objects/0640-sabertooth-skull.html [R=301,L]
 RewriteRule ^eras/strata-v2\.html$ https://relictum.gallery/eras/strata.html [R=301,L]
 # страница-макет паспорта снята 07.10.2026 — старые ссылки ведут на раздел о документах в «Частых вопросах»
 RewriteRule ^provenance(/.*)?$ https://relictum.gallery/faq.html#podlinnost [R=301,L,NE]
@@ -1930,7 +1930,7 @@ if ($action === 'write_data') {
     if (!empty($body['pages']) && is_array($body['pages'])) {
         $tpl = @file_get_contents($root . '/objects/exhibit.html');
         if ($tpl) {
-            $visible = array();
+            $visible = array(); $written = array();
             foreach ($body['pages'] as $pg) {
                 $slug = isset($pg['slug']) ? (string)$pg['slug'] : '';
                 if (!preg_match('/^[a-z0-9-]+$/', $slug)) continue;
@@ -1947,8 +1947,17 @@ if ($action === 'write_data') {
                     $alt = '<link rel="alternate" hreflang="ru" href="' . $ru . '">' . "\n" . $alt . '<link rel="alternate" hreflang="x-default" href="' . $ru . '">' . "\n";
                     $page = str_replace('</head>', $alt . '</head>', $page);
                 }
-                node_atomic($root . '/objects/' . $slug . '.html', $page); $pagesWritten++;
+                node_atomic($root . '/objects/' . $slug . '.html', $page); $pagesWritten++; $written[$slug] = 1;
                 if (empty($pg['noindex'])) $visible[] = 'https://relictum.gallery/objects/' . $slug . '.html';
+            }
+            /* 09.10.2026: визитки лотов, которых больше нет в публикации (скрытые, архив), — с сайта долой:
+               переносим в бэкап вне веб-корня (не удаляем); их языковые версии убирает воркер i18n */
+            $gone = dirname($root) . '/relictum-data-backups/removed-objects';
+            foreach (count($written) >= 20 ? (array)glob($root . '/objects/*.html') : array() as $f) {   /* пустая/битая публикация ничего не уносит */
+                $b = basename($f, '.html');
+                if ($b === 'exhibit' || isset($written[$b]) || !preg_match('/^[a-z0-9-]+$/', $b)) continue;
+                if (!is_dir($gone)) @mkdir($gone, 0700, true);
+                @rename($f, $gone . '/' . $b . '.html');
             }
             $sm = @file_get_contents($root . '/sitemap.xml');
             if ($sm && preg_match_all('/<url>.*?<\/url>/s', $sm, $mm)) {

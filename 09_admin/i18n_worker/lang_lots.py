@@ -369,6 +369,16 @@ def run_once(force=False, dry=False, no_translate=False, via_hermes=False, trans
             ru['objects/' + f] = open(os.path.join(objdir, f), encoding='utf-8').read()
 
     have = {lang: lang_files(lang) for lang in I.LANGS}
+    # языковые визитки лотов, русской визитки которых больше нет (лот скрыт или в архиве), — убрать (09.10.2026)
+    orphans = 0
+    if len(ru) >= 20:
+        for lang in I.LANGS:
+            for rel in [r for r in have[lang] if r.startswith('objects/') and r != 'objects/exhibit.html' and r not in ru]:
+                try:
+                    os.remove(os.path.join(SITE, lang, rel)); orphans += 1
+                except OSError:
+                    pass
+                have[lang].discard(rel)
     todo, langs_of, out = [], {}, {}
     for rel, t in ru.items():
         noindex = re.search(r'<meta name="robots" content="[^"]*noindex', t)
@@ -409,8 +419,10 @@ def run_once(force=False, dry=False, no_translate=False, via_hermes=False, trans
         if n != t:
             atomic(p, n)
 
-    if todo:
+    if todo or orphans:
         update_sitemap(have)
+    if orphans:
+        log(f'убраны языковые визитки снятых лотов: {orphans}')
     state = {'dict': dh, 'pages': hashes, 'ran': datetime.now().isoformat(timespec='seconds')}
     atomic(STATE, json.dumps(state, ensure_ascii=False, indent=0))
     log(f'визитки: изменилось {len(todo)}, языковых записано {written}, удалено {removed}; '
