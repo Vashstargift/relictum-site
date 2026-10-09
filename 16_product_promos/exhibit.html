@@ -517,7 +517,8 @@ if(!o){
       (alive.poster?'<img class="poster" src="'+MV(IMG+alive.poster)+'" alt="" loading="lazy" decoding="async">':'')+
       '<div class="veil"></div>'+
       '<div class="in rv">'+
-        '<div class="label">'+(o.world==='cosmos'?'До Земли':'При жизни')+'</div>'+
+        /* 09.10.2026: у минералов (мир «Земля») видео эпохи — не «при жизни», а время, когда камень рождался */
+        '<div class="label">'+(o.world==='cosmos'?'До Земли':(o.world==='terra'&&!(P&&P.life&&P.life.stateLabel==='При жизни')?'Эпоха':'При жизни'))+'</div>'+
         '<h2>'+alive.title+'</h2>'+
         '<p>'+alive.text+'</p>'+
         (era&&era.href?'<a class="btn" href="'+era.href+'">Войти в эпоху →</a>':'')+
