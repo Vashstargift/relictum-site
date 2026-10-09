@@ -170,6 +170,16 @@ SCHEMA = {
 }
 
 
+def good(ru, en, zh, ar):
+    """Перевод годится: три языка, без кириллицы; иероглифы и арабское письмо обязательны, только если
+    в исходнике есть слова («1983 г.» → «1983» / «1983年» / «عام 1983» — годится и без них)."""
+    if not (en and zh and ar) or CYR.search(en + zh + ar):
+        return False
+    if len(CYR.findall(ru)) >= 6 and (not HAN.search(zh) or not ARAB.search(ar)):
+        return False
+    return True
+
+
 def translate(strings):
     """[ru] → {ru: [en, zh, ar]} через Claude; плохие ответы отбрасываются (их возьмёт следующий запуск)."""
     import anthropic
@@ -211,7 +221,7 @@ def translate(strings):
             if not isinstance(i, int) or not 0 <= i < len(chunk):
                 continue
             en, zh, ar = (it.get('en') or '').strip(), (it.get('zh') or '').strip(), (it.get('ar') or '').strip()
-            if not en or CYR.search(en + zh + ar) or not HAN.search(zh) or not ARAB.search(ar):
+            if not good(chunk[i], en, zh, ar):
                 continue
             got[chunk[i]] = [en, zh, ar]
         log(f'  перевод: {min(n + BATCH, len(strings))}/{len(strings)}, принято {len(got)}')
@@ -241,7 +251,7 @@ def translate_hermes(strings):
             if not isinstance(i, int) or not 0 <= i < len(chunk):
                 continue
             en, zh, ar = (it.get('en') or '').strip(), (it.get('zh') or '').strip(), (it.get('ar') or '').strip()
-            if not en or CYR.search(en + zh + ar) or not HAN.search(zh) or not ARAB.search(ar):
+            if not good(chunk[i], en, zh, ar):
                 continue
             got[chunk[i]] = [en, zh, ar]
         log(f'  перевод (hermes): {min(n + BATCH, len(strings))}/{len(strings)}, принято {len(got)}')
